@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+
+.white {
+	background-color: #FFFFFF;
+	font-family: 微软雅黑;
+	font-size: 13px;
+	color: #000000;
+}
+
+.gray {
+	background-color: #E8E8E8;	
+	font-family: 微软雅黑;
+	font-size: 13px;
+	color: #000000;
+}
+
+.tabtop13 {
+	margin-top: 13px;
+}
+
+.tabtop13 td {
+	background-color: #ffffff;
+	height: 13px;
+	line-height: 100%;
+}
+
+.font-center {
+	text-align: center
+}
+
+.btbg {
+	background: #e9faff !important;
+}
+
+.btbg1 {
+	background: #f2fbfe !important;
+}
+
+.btbg2 {
+	background: #f3f3f3 !important;
+}
+
+.biaoti {
+	font-family: 微软雅黑;
+	font-size: 20px;
+	font-weight: bold;
+	border-bottom: 1px dashed #CCCCCC;
+	color: #255e95;
+}
+
+.titfont {
+	font-family: 微软雅黑;
+	font-size: 13px;
+	font-weight: bold;
+	color: #255e95;	
+	background-color: #e9faff;
+}
+
+.tabtxt2 {
+	font-family: 微软雅黑;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: right;
+	padding-right: 10px;
+	color: #327cd1;
+}
+.smallTitle {
+	background: #FFFFFF !important;	
+	font-family: 宋体;
+	font-size: 13px;
+	color: #A0A0A0;
+	margin-top: 10px;
+	font-weight: bold;
+	text-align:left;
+}
+</style>
+</head>
+<body>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0"
+		align="center">
+		<tr>
+			<td align="center" class="biaoti" height="60"><span th:text="${envirtype}"></span>运营商爬取任务执行情况一览表</td>
+		</tr>
+	</table>	
+	<table width="100%" border="0" cellspacing="1" cellpadding="4"
+		bgcolor="#cccccc" class="tabtop13" align="center">	
+		<thead>
+			<div class="smallTitle">近24小时定时爬取任务执行结果：</div>		
+		</thead>
+	<tr>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">行号</td>		
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">运营商</td>			
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">省份</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">城市</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">是否需要短信</td>				
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">用户</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">手机号</td>			
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务时间</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">爬取通话详单数据</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">kettle通话详单数据</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">产品化通话详单数据</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">是否爬取完成</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务描述</td>			
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务号</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">网站负责人</td>	
+		</tr>
+		<!-- 奇偶行变色没有起作用 -->
+		<tr th:each="eachRecord,index:${oneDayCarrierList}" th:class="${index.odd}? 'gray' : 'white'">
+					<td style="white-space: nowrap" th:text="${index.count}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.carrier}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.province}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.city}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.isNeedSms}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.owner}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.phonenum}"></td>
+					<!-- 在前端页面格式化日期 ，后来又不管用了-->
+					<!-- <td style="white-space: nowrap" th:text="${#dates.format(eachRecord.taskMobile.createtime,'yyyy-MM-dd')}"></td> -->
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.createtime}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskCallCount}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.etlTreatCallCount}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.proTreatCallCount}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.finished}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.description}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.taskid}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.developer}"></td>
+				</tr>	
+	</table>
+	<table width="100%" border="0" cellspacing="1" cellpadding="4"
+		bgcolor="#cccccc" class="tabtop13" align="center">	
+		<thead>
+			<div class="smallTitle">近10天定时爬取任务执行结果对照：</div>		
+		</thead>
+		<tr>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">行号</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">运营商</td>			
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">省份</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">城市</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">手机号</td>			
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务时间</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">爬取通话详单数据</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">kettle通话详单数据</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">产品化通话详单数据</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">是否爬取完成</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务描述</td>			
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务号</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">网站负责人</td>	
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">是否需要短信</td>				
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">用户</td>
+		</tr>
+		
+		<tr th:class="${index.odd}?'gray':'white'"
+					th:each="eachRecord,index:${moreDayCarrierList}">
+					<td style="white-space: nowrap" th:text="${index.count}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.carrier}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.province}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.city}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.phonenum}"></td>
+					<!-- <td style="white-space: nowrap" th:text="${#dates.format(eachRecord.taskMobile.createtime,'yyyy-MM-dd')}"></td> -->
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.createtime}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskCallCount}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.etlTreatCallCount}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.proTreatCallCount}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.finished}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.description}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.taskid}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.developer}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.isNeedSms}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskMobile.owner}"></td>
+				</tr>	
+	</table>
+	<!--/////////////////////////////////人行征信/////////////////////////////////////  -->
+	
+	<table width="100%" border="0" cellspacing="0" cellpadding="0"
+		align="center">
+		<tr>
+			<td align="center" class="biaoti" height="60"><span th:text="${envirtype}"></span>近24小时人行征信爬取任务执行情况一览表</td>
+		</tr>
+	</table>	
+	<table width="100%" border="0" cellspacing="1" cellpadding="4"
+		bgcolor="#cccccc" class="tabtop13" align="center">	
+	<tr>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">行号</td>		
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">服务名</td>					
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务时间</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">用户</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">是否爬取完成</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务描述</td>			
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">key</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务号</td>
+			
+		</tr>
+		<tr th:each="eachRecord,index:${oneDayPbccrcList}" th:class="${index.odd}? 'gray' : 'white'">
+					<td style="white-space: nowrap" th:text="${index.count}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.serviceName}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.createtime}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.owner}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.finished}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.description}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.key}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskid}"></td>
+				</tr>	
+	</table>
+	
+	<!--/////////////////////////////////网银/////////////////////////////////////  -->
+	
+	<table width="100%" border="0" cellspacing="0" cellpadding="0"
+		align="center">
+		<tr>
+			<td align="center" class="biaoti" height="60"><span th:text="${envirtype}"></span>近24小时网银爬取任务执行情况一览表</td>
+		</tr>
+	</table>	
+	<table width="100%" border="0" cellspacing="1" cellpadding="4"
+		bgcolor="#cccccc" class="tabtop13" align="center">	
+	<tr>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">行号</td>	
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">银行名称</td>			
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">卡片类型</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">登陆类型</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">登录账号</td>			
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务时间</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">etl处理记录条数</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">是否爬取完成</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务描述</td>			
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务号</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">用户信息状态码</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">流水信息状态码</td>
+		</tr>
+		<tr th:each="eachRecord,index:${oneDayBankList}" th:class="${index.odd}? 'gray' : 'white'">
+					<td style="white-space: nowrap" th:text="${index.count}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskBank.bankType}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskBank.cardType}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskBank.loginType}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskBank.loginName}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskBank.createtime}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.recordCount}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskBank.finished}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskBank.description}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskBank.taskid}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskBank.userinfoStatus}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskBank.transflowStatus}"></td>		
+				</tr>	
+	</table>
+	
+	
+	<!--/////////////////////////////////公积金/////////////////////////////////////  -->
+	
+	<table width="100%" border="0" cellspacing="0" cellpadding="0"
+		align="center">
+		<tr>
+			<td align="center" class="biaoti" height="60"><span th:text="${envirtype}"></span>近24小时公积金爬取任务执行情况一览表</td>
+		</tr>
+	</table>	
+	<table width="100%" border="0" cellspacing="1" cellpadding="4"
+		bgcolor="#cccccc" class="tabtop13" align="center">	
+	<tr>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">行号</td>	
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">城市</td>					
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务时间</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">etl处理记录条数</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">是否爬取完成</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务描述</td>			
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务号</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">用户信息状态码</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">缴存信息状态码</td>
+		</tr>
+		<tr th:each="eachRecord,index:${oneDayHousingList}" th:class="${index.odd}? 'gray' : 'white'">
+					<td style="white-space: nowrap" th:text="${index.count}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskHousing.city}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskHousing.createtime}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.recordCount}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskHousing.finished}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskHousing.description}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskHousing.taskid}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskHousing.userinfoStatus}"></td>		
+					<td style="white-space: nowrap" th:text="${eachRecord.taskHousing.paymentStatus}"></td>		
+				</tr>	
+	</table>
+	
+	
+	<!--/////////////////////////////////社保/////////////////////////////////////  -->
+	
+	<table width="100%" border="0" cellspacing="0" cellpadding="0"
+		align="center">
+		<tr>
+			<td align="center" class="biaoti" height="60"><span th:text="${envirtype}"></span>近24小时社保爬取任务执行情况一览表</td>
+		</tr>
+	</table>	
+	<table width="100%" border="0" cellspacing="1" cellpadding="4"
+		bgcolor="#cccccc" class="tabtop13" align="center">	
+	<tr>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">行号</td>	
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">城市</td>					
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务时间</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">etl处理记录条数</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">是否爬取完成</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务描述</td>			
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">任务号</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">用户信息状态码</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">养老信息状态码</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">医疗信息状态码</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">生育信息状态码</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">失业信息状态码</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">工伤信息状态码</td>
+		</tr>
+		<tr th:each="eachRecord,index:${oneDayInsuranceList}" th:class="${index.odd}? 'gray' : 'white'">
+					<td style="white-space: nowrap" th:text="${index.count}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskInsurance.city}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskInsurance.createtime}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.recordCount}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskInsurance.finished}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskInsurance.description}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskInsurance.taskid}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskInsurance.userInfoStatus}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskInsurance.yanglaoStatus}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskInsurance.yiliaoStatus}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskInsurance.shengyuStatus}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskInsurance.shiyeStatus}"></td>
+					<td style="white-space: nowrap" th:text="${eachRecord.taskInsurance.gongshangStatus}"></td>
+				</tr>	
+	</table>
+</body>
+</html>

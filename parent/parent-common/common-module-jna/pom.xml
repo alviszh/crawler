@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sr.storm</groupId>
+	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>common-module-jna</artifactId>
+
+	<properties>
+		<!-- 文件拷贝时的编码 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- 编译时的编码 -->
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+		<!-- 编译时的版本 -->
+		<java.version>1.6</java.version> 
+		<maven.compiler.source>1.6</maven.compiler.source> 
+		<maven.compiler.target>1.6</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
+			<scope>test</scope>
+			<version>4.4.0</version>
+		</dependency>
+		<!-- <dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>platform</artifactId>
+			<version>3.5.2</version>
+			<scope>test</scope>
+		</dependency> -->
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna-platform</artifactId>
+			<version>4.4.0</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- <dependency>
+			<groupId>org.java.ext</groupId>
+			<artifactId>jnative</artifactId>
+			<version>0.0.1</version>
+			<scope>test</scope>
+		</dependency> -->
+		<!-- <dependency> <groupId>org.seleniumhq.selenium</groupId> <artifactId>selenium-java</artifactId> 
+			<scope>test</scope> <version>3.4.0</version> </dependency> <dependency> <groupId>org.seleniumhq.selenium</groupId> 
+			<artifactId>selenium-chrome-driver</artifactId> <scope>test</scope> <version>3.4.0</version> 
+			</dependency> <dependency> <groupId>org.seleniumhq.selenium</groupId> <artifactId>selenium-ie-driver</artifactId> 
+			<scope>test</scope> <version>3.4.0</version> </dependency> <dependency> <groupId>com.sr.storm</groupId> 
+			<artifactId>common-module-htmlunit</artifactId> <version>${project.version}</version> 
+			</dependency> -->
+		<!-- <dependency> <groupId>net.java.dev.jna</groupId> <artifactId>jna</artifactId> 
+			<scope>test</scope> <version>4.4.0</version> </dependency> <dependency> <groupId>net.java.dev.jna</groupId> 
+			<artifactId>platform</artifactId> <version>3.5.2</version> <scope>test</scope> 
+			</dependency> <dependency> <groupId>net.java.dev.jna</groupId> <artifactId>jna-platform</artifactId> 
+			<version>4.4.0</version> <scope>test</scope> </dependency> <dependency> <groupId>org.java.ext</groupId> 
+			<artifactId>jnative</artifactId> <version>0.0.1</version> <scope>test</scope> 
+			</dependency> <dependency> <groupId>org.eclipse.swt</groupId> <artifactId>org.eclipse.swt.win32.win32.x86_64</artifactId> 
+			<version>4.3</version> <scope>test</scope> </dependency> -->
+	</dependencies>
+
+</project>
