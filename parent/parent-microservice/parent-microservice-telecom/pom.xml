@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.sr.microservice</groupId>
@@ -10,11 +11,14 @@
 	<artifactId>parent-microservice-telecom</artifactId>
 	<packaging>pom</packaging>
 	<dependencies> 		<!-- htmlunit -->
+		<!-- 切面类主类 勿删 -->
 		<dependency>
 			<groupId>com.sr.microservice</groupId>
 			<artifactId>common-microservice-service</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<!-- 切面类主类 勿删 -->
+
 		<dependency>
 			<groupId>com.sr.storm</groupId>
 			<artifactId>common-module-crawler</artifactId>
@@ -63,16 +67,16 @@
 			<scope>test</scope>
 			<version>3.16</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 		</dependency>
 	</dependencies>
 	<modules>
-	    <module>common-microservice-telecom-common</module>
-	
-	    <module>common-microservice-telecom-beijing</module>
+		<module>common-microservice-telecom-common</module>
+
+		<module>common-microservice-telecom-beijing</module>
 		<module>common-microservice-telecom-login</module>
 		<module>common-microservice-telecom-jilin</module>
 		<module>common-microservice-telecom-shanxi3</module>
@@ -82,7 +86,7 @@
 		<module>common-microservice-telecom-liaoning</module>
 		<module>common-microservice-telecom-sichuan</module>
 		<module>common-microservice-telecom-xinjiang</module>
-		
+
 		<module>common-microservice-telecom-ningxia</module>
 		<module>common-microservice-telecom-hebei</module>
 		<module>common-microservice-telecom-guizhou</module>
@@ -90,26 +94,22 @@
 		<module>common-microservice-telecom-tianjin</module>
 		<module>common-microservice-telecom-gansu</module>
 		<module>common-microservice-telecom-yunnan</module>
-    	<module>common-microservice-telecom-shanghai</module>
-        <module>common-microservice-telecom-hunan</module>
-        <module>common-microservice-telecom-neimenggu</module>
-        <module>common-microservice-telecom-shandong</module>
-        <module>common-microservice-telecom-fujian</module>
-        <module>common-microservice-telecom-jiangxi</module>
-    	<module>common-microservice-telecom-henan</module>
-        <module>common-microservice-telecom-guangxi</module>
-    	<module>common-microservice-telecom-zhejiang</module>
-        <module>common-microservice-telecom-hubei</module>
-        <module>common-microservice-telecom-guangdong</module>
-        <module>common-microservice-telecom-anhui</module>
-        <module>common-microservice-telecom-jiangsu</module>
-		<!--
-		
-       	
-		
-        -->
+		<module>common-microservice-telecom-shanghai</module>
+		<module>common-microservice-telecom-hunan</module>
+		<module>common-microservice-telecom-neimenggu</module>
+		<module>common-microservice-telecom-shandong</module>
+		<module>common-microservice-telecom-fujian</module>
+		<module>common-microservice-telecom-jiangxi</module>
+		<module>common-microservice-telecom-henan</module>
+		<module>common-microservice-telecom-guangxi</module>
+		<module>common-microservice-telecom-zhejiang</module>
+		<module>common-microservice-telecom-hubei</module>
+		<module>common-microservice-telecom-guangdong</module>
+		<module>common-microservice-telecom-anhui</module>
+		<module>common-microservice-telecom-jiangsu</module>
+		<!-- -->
 	</modules>
- 
+
 	<profiles>
 		<profile> 			<!-- 本机开发环境 -->
 			<id>dev</id>
@@ -160,7 +160,7 @@
 				<app.telecom.beijing.name>crawler-telecom-beijing</app.telecom.beijing.name>
 				<app.telecom.heilongjiang.name>crawler-telecom-heilongjiang</app.telecom.heilongjiang.name>
 				<app.telecom.qinghai.name>crawler-telecom-qinghai</app.telecom.qinghai.name>
-			    <app.telecom.hainan.name>crawler-telecom-hainan</app.telecom.hainan.name>
+				<app.telecom.hainan.name>crawler-telecom-hainan</app.telecom.hainan.name>
 				<app.telecom.xinjiang.name>crawler-telecom-xinjiang</app.telecom.xinjiang.name>
 				<app.telecom.shanxi3.name>crawler-telecom-shanxi3</app.telecom.shanxi3.name>
 				<app.telecom.jilin.name>crawler-telecom-jilin</app.telecom.jilin.name>
@@ -228,7 +228,7 @@
 				<app.telecom.login.name>crawler-telecom-login</app.telecom.login.name>
 			</properties>
 		</profile>
-		
+
 		<profile>
 			<!-- 生产环境 -->
 			<id>mariadb5.5.56</id>
