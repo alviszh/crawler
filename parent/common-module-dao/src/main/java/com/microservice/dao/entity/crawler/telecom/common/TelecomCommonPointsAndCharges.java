@@ -1,7 +1,5 @@
 package com.microservice.dao.entity.crawler.telecom.common;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
