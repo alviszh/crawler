@@ -56,7 +56,6 @@ public class test {
         return string;
     }
 
-
     public void parseFile() throws Exception {
 
         String html="";
