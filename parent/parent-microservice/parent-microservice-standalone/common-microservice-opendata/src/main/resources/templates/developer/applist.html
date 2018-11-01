@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- head -->
+<head th:include="components/header :: header">
+<!-- head -->
+<body>
+	<!-- nav -->
+<head th:include="components/nav :: nav">
+<!-- nav -->
+<div class="container-fluid">
+	<div class="row">
+		<!-- left menu -->
+		<head th:include="components/leftmenu_developer :: leftmenu">
+<!-- left menu -->
+<form th:action="@{/developer/app/app-manage}" method="post">
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<h2 class="sub-header">我的应用</h2>
+	
+	<div class="row">
+ 	  <div class="col-lg-8"></div><!-- /.col-lg-6 -->
+	  <div class="col-lg-3">
+	    <div class="input-group">
+	      <input type="text" name="appName" id="appname" class="form-control" placeholder="应用名称" th:value="${appName}">
+	      <span class="input-group-btn">
+	        <button class="btn btn-primary" type="submit">搜索应用</button>
+	      </span>
+	    </div>
+	  </div>
+	  <div class="col-lg-1">
+	    <div class="input-group">
+	      <a th:href="@{/developer/app/editapp}"><button class="btn btn-success" type="button">添加应用</button></a>
+	    </div> 
+	  </div> 
+	</div><!-- /.row -->
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>应用名</th>
+					<th>开通时间</th>
+					<th>状态</th>
+					<th>生产环境配置</th> 
+					<th>沙箱测试</th>
+					<th>查看详情</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr th:each="obj : ${datas}" th:classappend="${obj.state.name=='已上线'}?'success':(${obj.state.name=='待审核'}?'info')">
+					<td style="vertical-align: middle"><img
+						data-src="holder.js/140x140" class="img-circle"
+						th:src="${obj.icon}"
+						data-holder-rendered="true" style="width: 60px; height: 60px;"></td>
+					<td style="vertical-align: middle" th:text="${obj.appName}"></td>
+					<td style="vertical-align: middle" th:text="${#strings.substring(obj.createtime,0,10)}"></td>
+					<td style="vertical-align: middle" th:text="${obj.state.name}"></td>
+					<td style="vertical-align: middle">
+						<a  th:href="@{/developer/app/sandbox/}+${obj.appId}+'/prod'"><button type="button" class="btn btn-danger btn-sm">生产环境</button></a>
+					</td> 
+					<td style="vertical-align: middle">
+						<a th:href="@{/developer/app/sandbox/}+${obj.appId}+'/sandbox'"><button type="button" class="btn btn-success btn-sm">沙箱测试</button></a>
+					</td>
+					<td style="vertical-align: middle">
+						<a th:href="@{/developer/app/showapp/}+${obj.appId}" ><button type="button" class="btn btn-primary btn-sm">查看详情</button></a> 
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</form>
+	</div>
+</div>
+<head th:include="components/footer :: footer">
+</body>
+</html>

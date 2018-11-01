@@ -1,0 +1,44 @@
+server: 
+  port: 4322
+  servlet:
+    context-path: /opendata
+logging: 
+  file: common-microservice-opendata-4322.log
+  level: 
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+      
+#数据源：
+spring:
+  thymeleaf: 
+    cache : ${spring.thymeleaf.cache}
+  datasource: 
+    continueOnError: true
+    hikari: 
+      minimum-idle: ${datasource.jdbc.minIdle}
+      maximum-pool-size: ${datasource.jdbc.maxPoolSize}
+    driver-class-name: ${datasource.jdbc.driver}
+    url: ${datasource.jdbc.url}
+#    jdbc:postgresql://127.0.0.1:5432/opendata
+#    ${datasource.jdbc.url}
+    username: ${datasource.jdbc.username}
+    password: ${datasource.jdbc.password}
+    type: ${datasource.jdbc.type}
+  jpa: 
+    show-sql: false
+    hibernate: 
+        ddl-auto: update 
+        naming: 
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+    properties:  
+      hibernate:  
+        dialect: ${datasource.jdbc.dialect} 
+#       dialect: org.hibernate.dialect.MySQLDialect
+        temp:
+          use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法为实现
+          
+

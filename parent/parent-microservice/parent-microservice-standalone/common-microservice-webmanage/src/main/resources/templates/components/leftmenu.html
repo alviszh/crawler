@@ -1,0 +1,574 @@
+<div class="panel-group" id="accordion" th:fragment="leftmenu">
+	<!--<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseCmcc">中国移动</h3>
+		</div>
+		<div id="collapseCmcc" th:class="${module} == 1 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseCmcc" href="#collapseCmccApi" class="list-group-item">接口说明 </a>
+				<div id="collapseCmccApi" th:class="${isApi} ? 'panel-collapse collapse in' : 'panel-collapse collapse'" style="margin-left: 20px; margin-top: 10px; margin-bottom: 10px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a th:href="@{/carrier/doc/cmcc/login}">登录</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/cmcc/sendSMS}">登录随机短信</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/cmcc/secondAttestation}">第二次验证</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/cmcc/sendVerifySMS}">第二次验证短信</a></li>
+						&lt;!&ndash; <li class="list-group-item"><a href="/carrier/doc/cmcc/getUserMessage">用户信息</a></li>
+						<li class="list-group-item"><a href="/carrier/doc/cmcc/getCallRecord">通话详单</a></li>
+						<li class="list-group-item"><a href="/carrier/doc/cmcc/getSMSMsg">短信信息</a></li>
+						<li class="list-group-item"><a href="/carrier/doc/cmcc/getCheckMsg">月账单（半年）</a></li> &ndash;&gt;
+						<li class="list-group-item"><a th:href="@{/carrier/doc/cmcc/getAllData}">爬取总接口</a></li>
+					</ul>
+				</div>
+				<a th:href="@{/carrier/cbconf/config?module=1}" class="list-group-item">回调配置</a> 
+				<a th:href="@{/carrier/cbtest/index?module=1}" class="list-group-item">回调测试</a>
+				<a th:href="@{/carrier/apitest/cmcc}" class="list-group-item">API测试</a>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseUnicom">中国联通</h3>
+		</div>
+		<div id="collapseUnicom" th:class="${module} == 2 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseUnicom" href="#collapseUnicomApi" class="list-group-item">接口说明 </a>
+				<div id="collapseUnicomApi" th:class="${isApi} ? 'panel-collapse collapse in' : 'panel-collapse collapse'" style="margin-left: 20px; margin-top: 10px; margin-bottom: 10px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a th:href="@{/carrier/doc/unicom/login}">登录</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/unicom/crawler}">爬取总接口</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/unicom/passwordlogin}">修改密码账号认证</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/unicom/passwordgetCode}">修改密码验证码获取</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/unicom/passwordsetCode}">修改密码验证码认证</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/unicom/passwordchange}">修改密码</a></li>
+					</ul>
+				</div>
+				<a th:href="@{/carrier/cbconf/config?module=2}" class="list-group-item">回调配置</a>
+				<a th:href="@{/carrier/cbtest/index?module=2}" class="list-group-item">回调测试</a>
+				<a th:href="@{/carrier/apitest/unicom}" class="list-group-item">API测试</a>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseTelcom">中国电信</h3>
+		</div>
+		<div id="collapseTelcom" th:class="${module} == 3 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseTelcom" href="#collapseTelcomApi" class="list-group-item">接口说明 </a>
+				<div id="collapseTelcomApi" th:class="${isApi} ? 'panel-collapse collapse in' : 'panel-collapse collapse'" style="margin-left: 20px; margin-top: 10px; margin-bottom: 10px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a th:href="@{/carrier/doc/telecom/login}">登录</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/telecom/telecomgetcode}">手机验证码发送</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/telecom/telecomsetcode}">手机验证码验证</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/telecom/crawler}">爬取总接口</a></li>
+					</ul>
+				</div>
+				<a th:href="@{/carrier/cbconf/config?module=3}" class="list-group-item">回调配置</a>
+				<a th:href="@{/carrier/cbtest/index?module=3}" class="list-group-item">回调测试</a>
+				<a th:href="@{/carrier/apitest/telecom}" class="list-group-item">API测试</a>
+			</div>
+		</div>
+	</div>-->
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseH5">H5页面</h3>
+		</div>
+		<div id="collapseH5"
+			th:class="${module} == 4 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseH5"
+					href="#collapseH5Api" class="list-group-item">接口说明 </a>
+				<div id="collapseH5Api"
+					th:class="${isApi} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px; margin-bottom: 10px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a
+							th:href="@{/carrier/doc/h5/style}">设置风格</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/carrier/doc/h5/hiddenTop}">隐藏头部</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/carrier/doc/h5/bizParam}">业务参数</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseETL">统一数据接口</h3>
+		</div>
+		<div id="collapseETL"
+			th:class="${module} == 5 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseETL"
+					href="#collapseETLApi" class="list-group-item">接口说明 </a>
+				<div id="collapseETLApi"
+					th:class="${isApi} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px; margin-bottom: 10px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a
+							th:href="@{/doc/etl/getphonenum}">电话号码查询</a></li>
+						<li class="list-group-item"><a th:href="@{/doc/etl/getdata}">运营商统一数据</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/etl/getmobilereport}">运营商数据报告</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/etl/getinsurance}">社保统一数据</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/etl/gethousingfund}">公积金统一数据</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/etl/getdebitcard}">网银储蓄卡统一数据</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/etl/getcreditcard}">网银信用卡统一数据</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/etl/gettaobao}">淘宝统一数据</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/etl/getsuning}">苏宁统一数据</a></li>
+						<li class="list-group-item"><a th:href="@{/doc/etl/getjd}">京东统一数据</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapsePbccrc">人行征信</h3>
+		</div>
+		<div id="collapsePbccrc"
+			th:class="${module} == 6 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapsePbccrc"
+					href="#collapsePbccrcApiV1" class="list-group-item">接口说明（V1） </a>
+				<div id="collapsePbccrcApiV1"
+					th:class="${isApiV1} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px">
+						<li class="list-group-item"><a
+							th:href="@{/doc/pbccrc/getCreditV1}">获取征信报告</a></li>
+					</ul>
+				</div>
+				<a data-toggle="collapse" data-parent="#collapsePbccrc"
+					href="#collapsePbccrcApiV2" class="list-group-item">接口说明（V2） </a>
+				<div id="collapsePbccrcApiV2"
+					th:class="${isApiV2} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<!--<li class="list-group-item"><a th:href="@{/doc/pbccrc/getLoginPage}">获取登录页</a></li>-->
+						<li class="list-group-item"><a
+							th:href="@{/doc/pbccrc/getCredit}">获取征信报告</a></li>
+					</ul>
+				</div>
+				<a data-toggle="collapse" data-parent="#collapsePbccrc"
+					href="#collapsePrecedingRule" class="list-group-item">前置规则 </a>
+				<div id="collapsePrecedingRule"
+					th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item"><a
+							th:href="@{/doc/pbccrc/precedingRuleJiemo}">借么</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/pbccrc/precedingRuleDaihu}">贷乎</a></li>
+					</ul>
+				</div>
+				<a data-toggle="collapse" data-parent="#collapsePbccrc"
+					href="#collapseAsynStatus" class="list-group-item">异步状态</a>
+				<div id="collapseAsynStatus"
+					th:class="${isAsynStatus} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item"><a
+							th:href="@{/doc/pbccrc/asynStatusJiemo}">借么</a></li>
+					</ul>
+				</div>
+				<a data-toggle="collapse" data-parent="#collapsePbccrc"
+					href="#collapseReportData" class="list-group-item">获取报告数据（汇诚） </a>
+				<div id="collapseReportData"
+					th:class="${isReportData} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item"><a
+							th:href="@{/doc/pbccrc/getReportDataJiemo}">借么</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/pbccrc/getReportDataDaihu}">贷乎</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseMobile">运营商</h3>
+		</div>
+		<div id="collapseMobile"
+			th:class="${module} == 11 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseMobile"
+					href="#collapseMobilePrecedingRule" class="list-group-item">前置规则
+				</a>
+				<div id="collapseMobilePrecedingRule"
+					th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item"><a
+							th:href="@{/doc/mobile/precedingRuleJiemo}">借么</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/mobile/precedingRuleDaihu}">贷乎</a></li>
+					</ul>
+				</div>
+				<a data-toggle="collapse" data-parent="#collapseMobile"
+					href="#collapseMobileAsynStatus" class="list-group-item">异步状态</a>
+				<div id="collapseMobileAsynStatus"
+					th:class="${isAsynStatus} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item"><a
+							th:href="@{/doc/mobile/asynStatusJiemo}">借么</a></li>
+					</ul>
+				</div>
+				<a data-toggle="collapse" data-parent="#collapseMobile"
+					href="#collapseMobileReportData" class="list-group-item">获取报告数据（汇诚）
+				</a>
+				<div id="collapseMobileReportData"
+					th:class="${isReportData} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item"><a
+							th:href="@{/doc/mobile/getReportDataJiemo}">借么</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/mobile/getReportDataDaihu}">贷乎</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/mobile/getReportDataXindongqianbao}">薪动钱包</a></li>
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#sanwang">三网</h3>
+		</div>
+		<div id="sanwang"
+			th:class="${module} == 7 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="sanwang" href="#sanwangApi"
+					class="list-group-item">接口说明 </a>
+				<div id="sanwangApi"
+					th:class="${isApi} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px; margin-bottom: 10px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a
+							th:href="@{/doc/sanwang/sanwangGet}">创建爬取任务</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/sanwang/statueGet}">获取任务状态</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseEcommerce">电商</h3>
+		</div>
+		<div id="collapseEcommerce"
+			th:class="${module} == 8 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseEcommerce"
+					href="#collapseEcommerceTB" class="list-group-item">淘宝</a>
+				<div id="collapseEcommerceTB"
+					th:class="${isApiTB} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<a data-toggle="collapse" data-parent="#collapseEcommerceTB"
+					href="#collapseEcommerceTBApi" class="list-group-item">接口说明（V1）</a>
+					<div id="collapseEcommerceTBApi"
+					th:class="${isApiTB} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+						<ul class="list-group" style="margin-bottom: 0px">
+							<li class="list-group-item"><a
+								th:href="@{/doc/ecommerce/taobao/base64ImageAgent}">获取二维码</a></li>
+							<li class="list-group-item"><a
+								th:href="@{/doc/ecommerce/taobao/checkQRcodeAgent}">检查二维码状态</a></li>
+							<li class="list-group-item"><a
+								th:href="@{/doc/ecommerce/taobao/alipay/loginAgent}">账号密码登录</a></li>
+							<li class="list-group-item"><a
+								th:href="@{/doc/ecommerce/taobao/crawlerAgent}">数据采集接口</a></li>
+						</ul>
+					</div>
+				</div>
+				<a data-toggle="collapse" data-parent="#collapseEcommerce"
+					href="#collapseEcommerceJD" class="list-group-item">京东</a>
+				<div id="collapseEcommerceJD"
+					th:class="${isApiJD} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px">
+						<li class="list-group-item"><a
+							th:href="@{/doc/pbccrc/getCreditV1}">接口说明（V1）</a></li>
+					</ul>
+				</div>
+				<a data-toggle="collapse" data-parent="#collapseEcommerce"
+					href="#collapseEcommerceApiSN" class="list-group-item">苏宁</a>
+				<div id="collapseEcommerceApiSN"
+					th:class="${isApiSN} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<!--<li class="list-group-item"><a th:href="@{/doc/pbccrc/getLoginPage}">获取登录页</a></li>-->
+						<li class="list-group-item"><a
+							th:href="@{/doc/pbccrc/getCredit}">接口说明（V1）</a></li>
+					</ul>
+				</div>
+				<a data-toggle="collapse" data-parent="#collapseEcommerce"
+					href="#collapsePrecedingRule" class="list-group-item">前置规则 </a>
+				<div id="collapsePrecedingRule"
+					th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item"><a
+							th:href="@{/doc/pbccrc/precedingRuleJiemo}">借么</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/pbccrc/precedingRuleDaihu}">贷乎</a></li>
+					</ul>
+				</div>
+				<a data-toggle="collapse" data-parent="#collapseEcommerce"
+					href="#collapseAsynStatus" class="list-group-item">异步状态</a>
+				<div id="collapseAsynStatus"
+					th:class="${isAsynStatus} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item"><a
+							th:href="@{/doc/pbccrc/asynStatusJiemo}">借么</a></li>
+					</ul>
+				</div>
+				<a data-toggle="collapse" data-parent="#collapseEcommerce"
+					href="#collapseReportData" class="list-group-item">获取报告数据（汇诚） </a>
+				<div id="collapseReportData"
+					th:class="${isReportData} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item"><a
+							th:href="@{/doc/pbccrc/getReportDataJiemo}">借么</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/pbccrc/getReportDataDaihu}">贷乎</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="collapseEcommerce"
+			th:class="${module} == 8 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseEcommerce"
+					href="#collapseEcommerceApi" class="list-group-item">接口说明 </a>
+				<div id="collapseEcommerceApi"
+					th:class="${isApi} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px; margin-bottom: 10px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a th:href="@{/doc/ecommerce/suning/login}">登录</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/ecommerce/suning/sendSMS}">短信发送</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseXuexin">学信网</h3>
+		</div>
+		<div id="collapseXuexin"
+			th:class="${module} == 9 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseXuexin"
+					href="#collapseXuexinApi" class="list-group-item">接口说明 </a>
+				<div id="collapseXuexinApi"
+					th:class="${isApi} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px; margin-bottom: 10px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a th:href="@{/doc/xuexin/check}">生成任务</a></li>
+						<li class="list-group-item"><a th:href="@{/doc/xuexin/login}">登录</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/xuexin/getdata}">获取数据</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseNaturallanguage">自然语言处理</h3>
+		</div>
+		<div id="collapseNaturallanguage"
+			th:class="${module} == 10 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseNaturallanguage"
+					href="#collapseNaturallanguageApi" class="list-group-item">接口说明
+				</a>
+				<div id="collapseNaturallanguageApi"
+					th:class="${isApi} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px; margin-bottom: 10px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a
+							th:href="@{/doc/naturallanguage/articleTag}">文章标签</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/naturallanguage/emotion}">情感倾向分析</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/naturallanguage/summary}">正文摘要</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#executor">被执行人</h3>
+		</div>
+		<div id="executor"
+			th:class="${module} == 12 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#executor"
+					href="#executorApi" class="list-group-item">接口说明 </a>
+				<div id="executorApi"
+					th:class="${isApi} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px; margin-bottom: 10px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a
+							th:href="@{/doc/honesty/executorGet}">创建爬取任务</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/honesty/executorStatueGet}">查询任务状态</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/honesty/executorSearchGet}">获取爬取数据</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseInsurance">社保</h3>
+		</div>
+		<div id="collapseInsurance"
+			th:class="${module} == 13 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseInsurance"
+					href="#collapseInsurancePrecedingRule" class="list-group-item">前置规则
+				</a>
+				<div id="collapseInsurancePrecedingRule"
+					th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item"><a
+							th:href="@{/doc/insurance/precedingRuleJiemo}">借么</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/insurance/precedingRuleDaihu}">贷乎</a></li>
+					</ul>
+				</div>
+				<a class="list-group-item" th:href="@{/doc/insurance/asynStatusDaihu}">异步状态</a>
+				<!-- <div id="collapseInsuranceAsynStatus"
+					th:class="${isAsynStatus} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item"><a
+							th:href="@{/doc/insurance/asynStatusJiemo}">借么</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/insurance/asynStatusDaihu}">贷乎</a></li>
+					</ul>
+				</div> -->
+				<a data-toggle="collapse" data-parent="#collapseInsurance"
+					href="#collapseInsuranceReportData" class="list-group-item">获取报告数据（汇诚）
+				</a>
+				<div id="collapseInsuranceReportData"
+					th:class="${isReportData} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item"><a
+							th:href="@{/doc/insurance/getReportDataJiemo}">借么</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/insurance/getReportDataDaihu}">贷乎</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseBank">网银</h3>
+		</div>
+		<div id="collapseBank"
+			th:class="${module} == 14 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseBank"
+					href="#collapseBankPrecedingRule" class="list-group-item">前置规则
+				</a>
+				<div id="collapseBankPrecedingRule"
+					th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item"><a
+							th:href="@{/doc/bank/precedingRuleJiemo}">借么</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/bank/precedingRuleDaihu}">贷乎</a></li>
+					</ul>
+				</div>
+				<a data-toggle="collapse" data-parent="#collapseBank"
+					href="#collapseBankAsynStatus" class="list-group-item">异步状态</a>
+				<div id="collapseBankAsynStatus"
+					th:class="${isAsynStatus} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item"><a
+							th:href="@{/doc/bank/asynStatusJiemo}">异步状态</a></li>
+					</ul>
+				</div>
+				<a data-toggle="collapse" data-parent="#collapseBank"
+					href="#collapseBankReportData" class="list-group-item">获取报告数据（汇诚）
+				</a>
+				<div id="collapseBankReportData"
+					th:class="${isReportData} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item"><a
+							th:href="@{/doc/bank/getReportDataJiemo}">借么</a></li>
+						<li class="list-group-item"><a
+							th:href="@{/doc/bank/getReportDataDaihu}">贷乎</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: '@app.etl.name@'
+  profiles: 
+    active: '@app.mobilecrawlertask.active@'
+#    active: dev
+  cloud: 
+    config:
+      uri: http://configserver:8000
+      label: master
+  zipkin: 
+    base-url: http://zipkinserver:9411
+  sleuth: 
+    sampler: 
+      probability: 1

@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">获取征信报告-贷乎</h2>
+            <h3 class="page-header">说明</h3>
+            <p>
+                调用该接口可以根据爬虫任务ID获取获取用户的征信报告。
+            </p>
+            <h3 class="page-header">URL</h3>
+            <p>
+                http://&lt;project&gt;/h5/pbccrc/getReportDaihu
+            </p>
+            <h3 class="page-header">格式</h3>
+            <p>
+                JSON
+            </p>
+            <h3 class="page-header">HTTP请求方式</h3>
+            <p>
+                GET
+            </p>
+            <h3 class="page-header">请求参数</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>#</th>
+                    <th>必选</th>
+                    <th>类型及范围</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>renhangzhengxinTaskId</td>
+                    <td>false</td>
+                    <td>String</td>
+                    <td>人行征信唯一标识</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3 class="page-header">注意事项</h3>
+            <ol style="margin-left: 0px;">
+            </ol>
+            <h3 class="page-header">例子</h3>
+            <p>说明：调用本接口，获取用户的征信报告。</p>
+            <p>请求：https://uatapitxboss.txtechnologies.com:9018/h5/pbccrc/getReportJieMo</p>
+            <p>返回成功：JSON</p>
+            <p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;">
+{
+	"creditreport": {
+		"idCart": "**************0758",
+		"idType": "0",
+		"marriage": "1",
+		"name": "黄棋锋",
+		"queryTime": "2018-01-11 16:10:50",
+		"reportId": "2018011100004983968010",
+		"reportTime": "2018-01-11 20:11:36"
+	},
+	"compulsoryExecution": [{
+		"reportId": "2018011100004983968010"
+	}],
+	"creditcard": [{
+		"accountType": "7",
+		"badDebts": "0",
+		"balance": 19113,
+		"bank": "中国工商银行重庆市分行",
+		"cardType": "1",
+		"creditAmt": 19113,
+		"delql5y90dayAmt": 0,
+		"delql5yAmt": 0,
+		"dueDate": "2017-12-01",
+		"isAccountcancel": "0",
+		"isActive": "1",
+		"isDelq": "0",
+		"isOverdue": "0",
+		"overDueAmount": 0,
+		"overdraftBalance": 0,
+		"overdraftl5y60dayAmt": 0,
+		"releaseDate": "2017-09-06",
+		"reportId": "2018011100004983968010",
+		"status": "1",
+		"usedAmt": 0
+	}, {
+		"accountType": "5",
+		"badDebts": "0",
+		"balance": 20380,
+		"bank": "中国工商银行重庆市分行",
+		"cardType": "1",
+		"creditAmt": 20380,
+		"delql5y90dayAmt": 0,
+		"delql5yAmt": 0,
+		"dueDate": "2017-12-01",
+		"isAccountcancel": "0",
+		"isActive": "1",
+		"isDelq": "0",
+		"isOverdue": "0",
+		"overDueAmount": 0,
+		"overdraftBalance": 0,
+		"overdraftl5y60dayAmt": 0,
+		"releaseDate": "2017-09-06",
+		"reportId": "2018011100004983968010",
+		"status": "1",
+		"usedAmt": 0
+	}, {
+		"accountType": "2",
+		"badDebts": "0",
+		"balance": 18031,
+		"bank": "中国工商银行重庆市分行",
+		"cardType": "1",
+		"creditAmt": 18031,
+		"delql5y90dayAmt": 0,
+		"delql5yAmt": 0,
+		"dueDate": "2017-12-01",
+		"isAccountcancel": "0",
+		"isActive": "1",
+		"isDelq": "0",
+		"isOverdue": "0",
+		"overDueAmount": 0,
+		"overdraftBalance": 0,
+		"overdraftl5y60dayAmt": 0,
+		"releaseDate": "2017-09-06",
+		"reportId": "2018011100004983968010",
+		"status": "1",
+		"usedAmt": 0
+	}, {
+		"accountType": "11",
+		"badDebts": "0",
+		"balance": 18693,
+		"bank": "中国工商银行重庆市分行",
+		"cardType": "1",
+		"creditAmt": 18693,
+		"delql5y90dayAmt": 0,
+		"delql5yAmt": 0,
+		"dueDate": "2017-12-01",
+		"isAccountcancel": "0",
+		"isActive": "1",
+		"isDelq": "0",
+		"isOverdue": "0",
+		"overDueAmount": 0,
+		"overdraftBalance": 0,
+		"overdraftl5y60dayAmt": 0,
+		"releaseDate": "2017-09-06",
+		"reportId": "2018011100004983968010",
+		"status": "1",
+		"usedAmt": 0
+	}, {
+		"accountType": "6",
+		"badDebts": "0",
+		"balance": 19514,
+		"bank": "中国工商银行重庆市分行",
+		"cardType": "1",
+		"creditAmt": 19514,
+		"delql5y90dayAmt": 0,
+		"delql5yAmt": 0,
+		"dueDate": "2017-12-01",
+		"isAccountcancel": "0",
+		"isActive": "1",
+		"isDelq": "0",
+		"isOverdue": "0",
+		"overDueAmount": 0,
+		"overdraftBalance": 0,
+		"overdraftl5y60dayAmt": 0,
+		"releaseDate": "2017-09-06",
+		"reportId": "2018011100004983968010",
+		"status": "1",
+		"usedAmt": 0
+	}, {
+		"accountType": "1",
+		"badDebts": "0",
+		"balance": 20000,
+		"bank": "中国工商银行重庆市分行",
+		"cardType": "1",
+		"creditAmt": 20000,
+		"delql5y90dayAmt": 0,
+		"delql5yAmt": 0,
+		"dueDate": "2017-12-01",
+		"isAccountcancel": "0",
+		"isActive": "1",
+		"isDelq": "0",
+		"isOverdue": "0",
+		"overDueAmount": 0,
+		"overdraftBalance": 0,
+		"overdraftl5y60dayAmt": 0,
+		"releaseDate": "2017-09-06",
+		"reportId": "2018011100004983968010",
+		"status": "1",
+		"usedAmt": 0
+	}],
+	"guaranteeOthers": [{
+		"guaranteeNumber": 0,
+		"reportId": "2018011100004983968010"
+	}, {
+		"guaranteeNumber": 0,
+		"reportId": "2018011100004983968010"
+	}, {
+		"guaranteeNumber": 0,
+		"reportId": "2018011100004983968010"
+	}],
+	"houseLoan": [ {
+    "queryId" : "33c5846e-aeaa-4bbd-85af-8b43da9391e3",
+    "reportId" : "2018061900005710324890",
+    "bank" : "中国光大银行股份有限公司重庆分行",
+    "releaseDate" : "2017-12-22",
+    "releaseCount" : "100000",
+    "accountType" : "人民币",
+    "deadline" : "2020-12-22",
+    "dueDate" : "2018-5",
+    "isDelq" : "false",
+    "isOverdue" : "false",
+    "balance" : "89838",
+    "overdueAmount" : "0",
+    "delql5yAmt" : "0",
+    "delql5y90dayAmt" : "0",
+	"settleDate":"2018-5",
+	"isSettle":"false",
+    "status" : "",
+    "transfer" : "false",
+    "transferDate" : ""
+	}],
+	"otherLoan": [{
+		"accountType": "1",
+		"badDebts": "0",
+		"balance": 5000,
+		"deadline": "2018-12-13",
+		"delql5y90dayAmt": 0,
+		"delql5yAmt": 0,
+		"dueDate": "2017-12-01",
+		"isDelq": "0",
+		"isOverdue": "0",
+		"isSettle": "0",
+		"loanType": "7",
+		"overdueAmount": 0,
+		"releaseCount": 5000,
+		"releaseDate": "2017-12-13",
+		"releaser": "中国工商银行重庆市分行",
+		"reportId": "2018011100004983968010",
+		"status": "5"
+	}, {
+		"accountType": "1",
+		"badDebts": "0",
+		"balance": 2577,
+		"deadline": "2018-12-25",
+		"delql5y90dayAmt": 0,
+		"delql5yAmt": 0,
+		"dueDate": "2017-12-01",
+		"isDelq": "0",
+		"isOverdue": "0",
+		"isSettle": "0",
+		"loanType": "7",
+		"overdueAmount": 0,
+		"releaseCount": 2577,
+		"releaseDate": "2017-12-10",
+		"releaser": "招联消费金融有限公司",
+		"reportId": "2018011100004983968010",
+		"status": "5"
+	}, {
+		"accountType": "1",
+		"badDebts": "0",
+		"balance": 5550,
+		"deadline": "2018-10-25",
+		"delql5y90dayAmt": 0,
+		"delql5yAmt": 0,
+		"dueDate": "2017-11-01",
+		"isDelq": "0",
+		"isOverdue": "0",
+		"isSettle": "0",
+		"loanType": "7",
+		"overdueAmount": 0,
+		"releaseCount": 6000,
+		"releaseDate": "2017-10-22",
+		"releaser": "招联消费金融有限公司",
+		"reportId": "2018011100004983968010",
+		"status": "5"
+	}, {
+		"accountType": "1",
+		"badDebts": "0",
+		"balance": 90000,
+		"deadline": "2018-08-14",
+		"delql5y90dayAmt": 0,
+		"delql5yAmt": 0,
+		"dueDate": "2017-12-01",
+		"isDelq": "0",
+		"isOverdue": "0",
+		"isSettle": "0",
+		"loanType": "7",
+		"overdueAmount": 0,
+		"releaseCount": 90000,
+		"releaseDate": "2017-9-15",
+		"releaser": "中国工商银行重庆市分行",
+		"reportId": "2018011100004983968010",
+		"status": "5"
+	}, {
+		"accountType": "1",
+		"badDebts": "0",
+		"balance": 13333,
+		"deadline": "2018-08-23",
+		"delql5y90dayAmt": 0,
+		"delql5yAmt": 0,
+		"dueDate": "2017-12-01",
+		"isDelq": "0",
+		"isOverdue": "0",
+		"isSettle": "0",
+		"loanType": "7",
+		"overdueAmount": 0,
+		"releaseCount": 20000,
+		"releaseDate": "2017-8-23",
+		"releaser": "中国工商银行重庆市分行",
+		"reportId": "2018011100004983968010",
+		"status": "5"
+	}, {
+		"accountType": "1",
+		"badDebts": "0",
+		"balance": 1883,
+		"deadline": "2018-07-18",
+		"delql5y90dayAmt": 0,
+		"delql5yAmt": 0,
+		"dueDate": "2017-12-01",
+		"isDelq": "0",
+		"isOverdue": "0",
+		"isSettle": "0",
+		"loanType": "7",
+		"overdueAmount": 0,
+		"releaseCount": 3100,
+		"releaseDate": "2017-7-18",
+		"releaser": "中国对外经济贸易信托有限公司",
+		"reportId": "2018011100004983968010",
+		"status": "5"
+	}, {
+		"accountType": "1",
+		"badDebts": "0",
+		"balance": 7000,
+		"deadline": "2018-06-25",
+		"delql5y90dayAmt": 0,
+		"delql5yAmt": 0,
+		"dueDate": "2017-12-01",
+		"isDelq": "0",
+		"isOverdue": "0",
+		"isSettle": "0",
+		"loanType": "7",
+		"overdueAmount": 0,
+		"releaseCount": 8000,
+		"releaseDate": "2017-7-15",
+		"releaser": "华融消费金融股份有限公司",
+		"reportId": "2018011100004983968010",
+		"status": "5"
+	}],
+	"queryrecore": [{
+		"queryId": "2018011100004983968010",
+		"queryOperator": "中国农业银行/sy*tem*r",
+		"queryPerson": "1",
+		"queryTime": "2018-01-02 00:00:00",
+		"reportId": "2018011100004983968010"
+	}, {
+		"queryId": "2018011100004983968010",
+		"queryOperator": "北京拉卡拉小额贷款有限责任公司/0197*1",
+		"queryPerson": "4",
+		"queryTime": "2017-12-29 00:00:00",
+		"reportId": "2018011100004983968010"
+	}, {
+		"queryId": "2018011100004983968010",
+		"queryOperator": "中国平安财产保险股份有限公司/xi*bao",
+		"queryPerson": "12",
+		"queryTime": "2017-12-27 00:00:00",
+		"reportId": "2018011100004983968010"
+	}, {
+		"queryId": "2018011100004983968010",
+		"queryOperator": "中国建设银行湖南省分行/2*5*8635",
+		"queryPerson": "1",
+		"queryTime": "2017-12-27 00:00:00",
+		"reportId": "2018011100004983968010"
+	}, {
+		"queryId": "2018011100004983968010",
+		"queryOperator": "江西银行股份有限公司/s*o*jidai03",
+		"queryPerson": "4",
+		"queryTime": "2017-12-26 00:00:00",
+		"reportId": "2018011100004983968010"
+	}]
+}
+                </pre>
+            <h3 class="page-header">返回字段说明</h3>
+            <p style="color:#3da33d;"></p>
+            <div style="width:100%;">
+                <table class="table table-bordered table-hover" style="width:90%;">
+                    <caption>返回正确data结果的字段说明对照表：</caption>
+                    <thead>
+                    <tr>
+                        <th>字段</th>
+                        <th>字段类型</th>
+                        <th>字段说明</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="3" style="text-align:center;">征信报告数据（report）</td>
+                    </tr><tr>
+                        <td>compulsoryExecution-&gt;reportId</td>
+                        <td>String</td>
+                        <td>征信数据信息-&gt;报告id</td>
+                    </tr>
+                    <tr>
+                        <td>compulsoryExecution-&gt;queryId</td>
+                        <td>String</td>
+                        <td>征信数据信息-&gt;查询编号</td>
+                    </tr>
+                    <tr>
+                        <td>compulsoryExecution-&gt;reportResult</td>
+                        <td>String</td>
+                        <td>征信数据信息-&gt;报告结果</td>
+                    </tr>
+                    <tr>
+                        <td>compulsoryExecution-&gt;reportUrl</td>
+                        <td>String</td>
+                        <td>征信数据信息-&gt;报告地址</td>
+                    </tr>
+                    <tr>
+                        <td>creditreport-&gt;reportId</td>
+                        <td>String</td>
+                        <td>征信报告基本信息-&gt;报告id</td>
+                    </tr>
+                    <tr>
+                        <td>creditreport-&gt;idCart</td>
+                        <td>String</td>
+                        <td>征信报告基本信息-&gt;报告时间</td>
+                    </tr>
+                    <tr>
+                        <td>creditreport-&gt;idCart</td>
+                        <td>String</td>
+                        <td>征信报告基本信息-&gt;证件号</td>
+                    </tr>
+                    <tr>
+                        <td>creditreport-&gt;idType</td>
+                        <td>String</td>
+                        <td>征信报告基本信息-&gt;证件类型</td>
+                    </tr>
+                    <tr>
+                        <td>creditreport-&gt;name</td>
+                        <td>String</td>
+                        <td>征信报告基本信息-&gt;姓名</td>
+                    </tr>
+                    <tr>
+                        <td>creditreport-&gt;queryTime</td>
+                        <td>String</td>
+                        <td>征信报告基本信息-&gt;报告查询时间</td>
+                    </tr>
+                    <tr>
+                        <td>creditreport-&gt;marriage</td>
+                        <td>String</td>
+                        <td>征信报告基本信息-&gt;婚姻状况</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;reportId</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;报告id</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;queryId</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;查询编号</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;bank</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;发行银行</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;releaseDate</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;发行日期</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;cardType</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;卡类型</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;accountType</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;账户类型</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;dueDate</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;截止日期</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;creditAmt</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;信用额度</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;usedAmt</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;已使用额度</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;overDueAmount</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;逾期额度</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;isDelq</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;是否逾期</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;isOverdue</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;该账户是否有逾期记录</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;delql5yAmt</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;近五年内逾期数</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;delql5y90dayAmt</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;近五年内逾期超过90天数</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;isActive</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;是否激活</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;status</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;状态</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;isAccountcancel</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;是否已销户</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;balance</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;余额</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;overdraftBalance</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;透支余额</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;overdraftl5y60dayAmt</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;发生透支超过60天的次数</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;badDebts</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;是否已变成呆账</td>
+                    </tr>
+                    <tr>
+                        <td>creditcard-&gt;remainingSum</td>
+                        <td>String</td>
+                        <td>信用卡记录明细-&gt;呆账金额</td>
+                    </tr>
+                    <tr>
+                        <td>guaranteeOthers-&gt;reportId</td>
+                        <td>String</td>
+                        <td>为他人担保记录明细-&gt;报告id</td>
+                    </tr>
+                    <tr>
+                        <td>guaranteeOthers-&gt;guaranteeNumber</td>
+                        <td>String</td>
+                        <td>为他人担保记录明细-&gt;为他人担保笔数</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;reportId</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;报告id</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;queryId</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;查询编号</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;bank</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;发卡银行</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;releaseDate</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;发卡日期</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;releaseCount</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;发放金额</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;accountType</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;账户类型</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;deadline</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;到期日期</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;dueDate</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;截至日期</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;isDelq</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;是否逾期</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;isOverdue</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;购房贷款是否有逾期</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;balance</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;余额</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;overdueAmount</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;逾期金额</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;delql5yAmt</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;近五年内逾期数</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;delql5y90dayAmt</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;近五年内逾期超过90天数</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;settleDate</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;结清日期</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;isSettle</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;购房贷款是否已结清</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;status</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;状态</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;transfer</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;是否已转出</td>
+                    </tr>
+                    <tr>
+                        <td>houseLoan-&gt;transferDate</td>
+                        <td>String</td>
+                        <td>房贷记录明细-&gt;转出日期</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;reportId</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;报告id</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;queryId</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;查询编号</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;releaser</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;发放机构</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;releaseDate</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;发放日期</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;releaseCount</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;发放金额</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;accountType</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;账户类型</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;loanType</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;贷款类型</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;deadline</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;到期日期</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;dueDate</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;截至日期</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;isDelq</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;是否逾期</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;isOverdue</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;贷款是否有逾期</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;balance</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;余额</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;delql5yAmt</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;近五年内逾期数</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;delql5y90dayAmt</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;近五年内逾期超过90天数</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;settleDate</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;结清日期</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;overdueAmount</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;逾期金额</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;status</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;状态</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;isSettle</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;贷款是否已结清</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;badDebts</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;是否已变成呆账</td>
+                    </tr>
+                    <tr>
+                        <td>otherLoan-&gt;remainingSum</td>
+                        <td>String</td>
+                        <td>其他贷款记录明细-&gt;呆账金额</td>
+                    </tr>
+                    <tr>
+                        <td>queryrecore-&gt;reportId</td>
+                        <td>String</td>
+                        <td>查询记录明细-&gt;报告id</td>
+                    </tr>
+                    <tr>
+                        <td>queryrecore-&gt;type</td>
+                        <td>String</td>
+                        <td>查询记录明细-&gt;类型</td>
+                    </tr>
+                    <tr>
+                        <td>queryrecore-&gt;queryId</td>
+                        <td>String</td>
+                        <td>查询记录明细-&gt;查询编号</td>
+                    </tr>
+                    <tr>
+                        <td>queryrecore-&gt;queryTime</td>
+                        <td>String</td>
+                        <td>查询记录明细-&gt;查询时间</td>
+                    </tr>
+                    <tr>
+                        <td>queryrecore-&gt;queryOperator</td>
+                        <td>String</td>
+                        <td>查询记录明细-&gt;查询操作员</td>
+                    </tr>
+                    <tr>
+                        <td>queryrecore-&gt;queryPerson</td>
+                        <td>String</td>
+                        <td>查询记录明细-&gt;查询原因</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

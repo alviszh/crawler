@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">获取运营商报告-借么</h2>
+            <h3 class="page-header">说明</h3>
+            <p>
+                调用该接口可以根据爬虫任务ID获取获取用户的运营商报告。
+            </p>
+            <h3 class="page-header">URL</h3>
+            <p>
+                http://&lt;project&gt;/h5/mobile/getReportJieMo
+            </p>
+            <h3 class="page-header">格式</h3>
+            <p>
+                JSON
+            </p>
+            <h3 class="page-header">HTTP请求方式</h3>
+            <p>
+                GET
+            </p>
+            <h3 class="page-header">请求参数</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>#</th>
+                    <th>必选</th>
+                    <th>类型及范围</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>yunyingshangTaskId</td>
+                    <td>false</td>
+                    <td>String</td>
+                    <td>运营商唯一标识</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3 class="page-header">注意事项</h3>
+            <ol style="margin-left: 0px;">
+            </ol>
+            <h3 class="page-header">例子</h3>
+            <p>说明：调用本接口，获取用户的运营商报告。</p>
+            <p>请求：https://uatapitxboss.txtechnologies.com:9018/h5/mobile/getReportJieMo</p>
+           <p>返回：JSON</p>
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+    loanOperatorInfo: [
+        {
+            id: 81,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            idCard: "420106198410028419",
+            idcardSame: "",
+            name: "梅荻",
+            nameSame: "",
+            location: "",
+            citySame: "",
+            peerNumber: "13520800817,13520800817,13520800817",
+            linkmanSame: "",
+            mobile: "13520800817",
+            mobileSame: "",
+            city: "北京",
+            cellPhoneEmail: "",
+            emailSame: "",
+            emailCheck: "",
+            cellPhoneAddress: "北京市朝阳区三里屯SOHU A座1903",
+            cellPhoneAddressSame: "",
+            cellPhoneRegTime: "2008-01-26",
+            cellPhoneInTime: "100010",
+            cellPhoneReliability: "1",
+            cellPhoneAvailableBalance: "77.35",
+            cellPhoneAddressSame: "",
+            isNameAndIdcardInFinanceBlack: "",
+            isNameAndMobileInFinanceBlack: "",
+            isNameAndIdcardInCourtBlack: "",
+            isAuthentication: "",
+            callingNumber: "11"
+        }
+    ],
+    phoneMonthBilling: [
+        {
+            id: 321,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2018-05",
+            callPay: "189.30",
+            associatePhone: ""
+        },
+        {
+            id: 322,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2018-04",
+            callPay: "189.60",
+            associatePhone: ""
+        },
+        {
+            id: 323,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2018-03",
+            callPay: "189.60",
+            associatePhone: ""
+            
+        },
+        {
+            id: 324,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2018-02",
+            callPay: "191.55",
+            associatePhone: ""
+            
+        },
+        {
+            id: 325,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2018-01",
+            callPay: "189.45",
+            associatePhone: ""
+            
+        },
+        {
+            id: 332,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2017-12",
+            callPay: "189.45",
+            associatePhone: ""
+        }
+        
+    ],
+    message: "success",
+    createtime: null,
+    errorCode: 800,
+    profile: "test",
+    
+}
+				</pre>
+				   
+				<h3 class="page-header">返回字段</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>对象名</th>
+							<th>字段名</th>
+							<th>类型</th>
+							<th>注释</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>idCard</td>
+							<td>String</td>
+							<td>身份证号码</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>idcardSame</td>
+							<td>String</td>
+							<td>身份证号码与身份信息身份证号码是否一致</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>Name</td>
+							<td>String</td>
+							<td>姓名</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>nameSame</td>
+							<td>String</td>
+							<td>姓名与身份信息姓名是否一致</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>location</td>
+							<td>String</td>
+							<td>通话地点TOP1</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>citySame</td>
+							<td>String</td>
+							<td>通话地点TOP1与借款申请系统省市区是否一致</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>peerNumber</td>
+							<td>String</td>
+							<td>对方号码TOP10</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>linkmanSame</td>
+							<td>String</td>
+							<td>对方号码TOP10是否与常用联系人一致</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>mobile</td>
+							<td>String</td>
+							<td>手机号码</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>mobileSame</td>
+							<td>String</td>
+							<td>手机号码与个人信息手机号码是否一致</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>city</td>
+							<td>String</td>
+							<td>号码归属地</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>cellPhoneEmail</td>
+							<td>String</td>
+							<td>邮箱</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>emailSame</td>
+							<td>String</td>
+							<td>邮箱与个人信息邮箱是否一致</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>emailCheck</td>
+							<td>String</td>
+							<td>邮箱有效性</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>cellPhoneAddress</td>
+							<td>String</td>
+							<td>通讯地址</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>cellPhoneAddressSame</td>
+							<td>String</td>
+							<td>通讯地址与个人信息现居住地址是否一致</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>cellPhoneRegTime</td>
+							<td>String</td>
+							<td>开户时间</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>cellPhoneInTime</td>
+							<td>String</td>
+							<td>入网时长</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>cellPhoneReliability</td>
+							<td>String</td>
+							<td>是否实名认证</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>cellPhoneAvailableBalance</td>
+							<td>String</td>
+							<td>账户余额</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>isNameAndIdcardInFinanceBlack</td>
+							<td>String</td>
+							<td>申请人姓名+身份证号码是否出现在金融机构黑名单</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>isNameAndMobileInFinanceBlack</td>
+							<td>String</td>
+							<td>申请人姓名+手机号码是否出现在金融机构黑名单</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>isNameAndIdcardInCourtBlack</td>
+							<td>String</td>
+							<td>申请人姓名+身份证号码是否出现在法院黑名单</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>isAuthentication</td>
+							<td>String</td>
+							<td>运营商是否认证</td>
+						</tr>
+						<tr>
+							<td>loanOperatorInfo（运营商数据信息）</td>
+							<td>callingNumber</td>
+							<td>String</td>
+							<td>主叫次数</td>
+						</tr>
+						<tr>
+							<td>phoneMonthBilling（月账单记录）</td>
+							<td>month</td>
+							<td>String</td>
+							<td>月份</td>
+						</tr>
+						<tr>
+							<td>phoneMonthBilling（月账单记录）</td>
+							<td>callPay</td>
+							<td>String</td>
+							<td>当月话费</td>
+						</tr>
+						<tr>
+							<td>phoneMonthBilling（月账单记录）</td>
+							<td>associatePhone</td>
+							<td>String</td>
+							<td>本手机关联号码</td>
+						</tr>
+					</tbody>
+				</table>
+				
+			</div>
+		</div>
+		</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

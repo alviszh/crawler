@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">公积金统一数据接口</h2>
+				<h3 class="page-header">说明</h3>
+				<p>
+					该接口通过输入的身份证号或taskid来获取统一处理过的公积金数据。
+				</p>
+				<h3 class="page-header">URL</h3>
+				<p>
+					http://10.167.202.203:8004/housing/detail
+				</p>
+				<h3 class="page-header">格式</h3>
+				<p>
+					JSON   
+				</p>
+				<h3 class="page-header">HTTP请求方式</h3>
+				<p>
+					POST/GET   
+				</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>#</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>idnum</td>
+							<td>true</td>
+							<td>String</td>
+							<td>身份证号</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>任务号</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="page-header">注意事项</h3>
+				<ol style="margin-left: 0px;">
+					<li>身份证号或taskid必须有一个，如果taskid不为空，则默认用taskid查询，如果taskid为空，则用身份证号查询，获取该身份证号最新的数据</li>
+				</ol>
+				   
+				<h3 class="page-header">例子</h3>
+				<p>说明：利用taskid和身份证号来获取完成公积金数据</p>
+				<p>请求：http://10.167.202.203:8004/housing/detail/?taskid=e5d82bae-582d-4405-b216-92b14e3f3562</p>
+				<p>返回：JSON</p>
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+	param: {
+		idnum: null,
+		taskid: "e5d82bae-582d-4405-b216-92b14e3f3562",
+	},
+	housingUserInfo: [
+	{
+		id: 21,
+		createtime: "2018-01-25 13:55:44",
+		taskId: "e5d82bae-582d-4405-b216-92b14e3f3562",
+		userName: "苗金玲",
+		idNumber: "220102198908196169",
+		userSex: null,
+		birthDate: null,
+		joinWorkDate: "2014-12-30",
+		residenceProperty: null,
+		residenceLocation: null,
+		qualifications: null,
+		mobilephoneNumber: null,
+		phoneNumber: null,
+		email: null,
+		personalIdentifier: "801142044167",
+		houseFundCity: "长春市",
+		houseFundStatus: "正常",
+		houseFundBaseMoney: "1780.00",
+		houseFundDeclareMoney: null,
+		companyName: null,
+		companyOrganizationNumber: null,
+		balance: "7647.08",
+		nationality: null,
+		liveAddress: null,
+		livePostcode: null,
+		marriageStatus: null,
+		workersProperty: null,
+		houseFundLastdate: "2017-12-28",
+		yearDepositAmount: null,
+		yearDrawAmount: null,
+		onlineTransferAmount: null,
+		transferAmount: null,
+		basicIdnumber: "230102199203192818",
+	}
+	],
+	housingDetail: [
+	{
+		id: 1,
+		createtime: "2018-01-25 13:55:45",
+		taskId: "e5d82bae-582d-4405-b216-92b14e3f3562",
+		idNumber: "230102199203192818",
+		tranDate: "2016-02-01",
+		paymentCurrentMonth: "2017-12",
+		paymentBegindate: null,
+		paymentEnddate: null,
+		paymentBaseMoney: null,
+		companyPaymentMoney: null,
+		personalPaymentMoney: null,
+		balance: "2627.08",
+		monthIncomeAmount: "208.00",
+		monthCostAmount: null,
+		companyName: "北京易才人力资源顾问有限公司长春分公司",
+		paymentType: "汇缴",
+		changeMoney: null,
+		basic_idnumber: "230102199203192818",
+	},
+	{
+		id: 2,
+		createtime: "2018-01-25 13:55:45",
+		taskId: "e5d82bae-582d-4405-b216-92b14e3f3562",
+		idNumber: "230102199203192818",
+		tranDate: "2016-02-29",
+		paymentCurrentMonth: "2017-12",
+		paymentBegindate: null,
+		paymentEnddate: null,
+		paymentBaseMoney: null,
+		companyPaymentMoney: null,
+		personalPaymentMoney: null,
+		balance: "2835.08",
+		monthIncomeAmount: "208.00",
+		monthCostAmount: null,
+		companyName: "北京易才人力资源顾问有限公司长春分公司",
+		paymentType: "汇缴",
+		changeMoney: null,
+		basic_idnumber: "230102199203192818",
+	},
+	{
+		id: 3,
+		createtime: "2018-01-25 13:55:45",
+		taskId: "e5d82bae-582d-4405-b216-92b14e3f3562",
+		idNumber: "230102199203192818",
+		tranDate: "2016-03-30",
+		paymentCurrentMonth: "2017-12",
+		paymentBegindate: null,
+		paymentEnddate: null,
+		paymentBaseMoney: null,
+		companyPaymentMoney: null,
+		personalPaymentMoney: null,
+		balance: "3043.08",
+		monthIncomeAmount: "208.00",
+		monthCostAmount: null,
+		companyName: "北京易才人力资源顾问有限公司长春分公司",
+		paymentType: "汇缴",
+		changeMoney: null,
+		basic_idnumber: "230102199203192818",
+	},
+	{
+		id: 4,
+		createtime: "2018-01-25 13:55:45",
+		taskId: "e5d82bae-582d-4405-b216-92b14e3f3562",
+		idNumber: "230102199203192818",
+		tranDate: "2016-04-27",
+		paymentCurrentMonth: "2017-12",
+		paymentBegindate: null,
+		paymentEnddate: null,
+		paymentBaseMoney: null,
+		companyPaymentMoney: null,
+		personalPaymentMoney: null,
+		balance: "3251.08",
+		monthIncomeAmount: "208.00",
+		monthCostAmount: null,
+		companyName: "北京易才人力资源顾问有限公司长春分公司",
+		paymentType: "汇缴",
+		changeMoney: null,
+		basic_idnumber: "230102199203192818",
+	}
+	],
+	message: "success",
+	createtime: 1516859858717,
+	errorCode: 800,
+}
+				</pre>
+				<h3 class="page-header">返回字段</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>对象名</th>
+							<th>字段名</th>
+							<th>类型</th>
+							<th>注释</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>userName</td>
+							<td>String</td>
+							<td>姓名</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>idNumber</td>
+							<td>String</td>
+							<td>身份证号</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>userSex</td>
+							<td>String</td>
+							<td>性别</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>birthDate</td>
+							<td>String</td>
+							<td>出生日期</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>joinWorkDate</td>
+							<td>String</td>
+							<td>参加工作日期</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>residenceProperty</td>
+							<td>String</td>
+							<td>户口性质</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>residenceLocation</td>
+							<td>String</td>
+							<td>户口所在地</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>qualifications</td>
+							<td>String</td>
+							<td>学历</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>mobilephoneNumber</td>
+							<td>String</td>
+							<td>手机号</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>phoneNumber</td>
+							<td>String</td>
+							<td>座机号</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>email</td>
+							<td>String</td>
+							<td>邮箱</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>personalIdentifier</td>
+							<td>String</td>
+							<td>公积金个人编号</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>houseFundCity</td>
+							<td>String</td>
+							<td>公积金缴纳城市</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>houseFundStatus</td>
+							<td>String</td>
+							<td>公积金状态</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>houseFundBaseMoney</td>
+							<td>String</td>
+							<td>公积金缴纳基数</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>houseFundDeclareMoney</td>
+							<td>String</td>
+							<td>公积金月申报人民币</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>companyName</td>
+							<td>String</td>
+							<td>公司名称</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>companyOrganizationNumber</td>
+							<td>String</td>
+							<td>公司编号/组织机构代码</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>balance</td>
+							<td>String</td>
+							<td>余额</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>nationality</td>
+							<td>String</td>
+							<td>民族</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>liveAddress</td>
+							<td>String</td>
+							<td>居住地址</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>livePostcode</td>
+							<td>String</td>
+							<td>居住地址邮编</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>marriageStatus</td>
+							<td>String</td>
+							<td>婚姻状况</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>workersProperty</td>
+							<td>String</td>
+							<td>职工性质</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>houseFundLastdate</td>
+							<td>String</td>
+							<td>最后缴纳记录时间</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>yearDepositAmount</td>
+							<td>String</td>
+							<td>当年缴存金额</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>yearDrawAmount</td>
+							<td>String</td>
+							<td>当年提取金额</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>onlineTransferAmount</td>
+							<td>String</td>
+							<td>线上结转金额</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>transferAmount</td>
+							<td>String</td>
+							<td>转出金额</td>
+						</tr>
+						<tr>
+							<td>housingUserInfo</td>
+							<td>basic_idnumber</td>
+							<td>string</td>
+							<td>用户表身份证号</td>
+						</tr>
+						<tr>
+							<td>housingDetail</td>
+							<td>idNumber</td>
+							<td>String</td>
+							<td>身份证号</td>
+						</tr>
+						<tr>
+							<td>housingDetail</td>
+							<td>tranDate</td>
+							<td>String</td>
+							<td>交易日期</td>
+						</tr>
+						<tr>
+							<td>housingDetail</td>
+							<td>paymentCurrentMonth</td>
+							<td>String</td>
+							<td>缴存月份</td>
+						</tr>
+						<tr>
+							<td>housingDetail</td>
+							<td>paymentBegindate</td>
+							<td>String</td>
+							<td>汇缴起始日期</td>
+						</tr>
+						<tr>
+							<td>housingDetail</td>
+							<td>paymentEnddate</td>
+							<td>String</td>
+							<td>汇缴结束日期</td>
+						</tr>
+						<tr>
+							<td>housingDetail</td>
+							<td>paymentBaseMoney</td>
+							<td>String</td>
+							<td>缴纳基数</td>
+						</tr>
+						<tr>
+							<td>housingDetail</td>
+							<td>companyPaymentMoney</td>
+							<td>String</td>
+							<td>单位缴费金额</td>
+						</tr>
+						<tr>
+							<td>housingDetail</td>
+							<td>personalPaymentMoney</td>
+							<td>String</td>
+							<td>个人缴费金额</td>
+						</tr>
+						<tr>
+							<td>housingDetail</td>
+							<td>balance</td>
+							<td>String</td>
+							<td>余额</td>
+						</tr>
+						<tr>
+							<td>housingDetail</td>
+							<td>monthIncomeAmount</td>
+							<td>String</td>
+							<td>月收入金额</td>
+						</tr>
+						<tr>
+							<td>housingDetail</td>
+							<td>monthCostAmount</td>
+							<td>String</td>
+							<td>月支出金额</td>
+						</tr>
+						<tr>
+							<td>housingDetail</td>
+							<td>companyName</td>
+							<td>String</td>
+							<td>公司名称</td>
+						</tr>
+						<tr>
+							<td>housingDetail</td>
+							<td>paymentType</td>
+							<td>String</td>
+							<td>缴费类型</td>
+						</tr>
+						<tr>
+							<td>housingDetail</td>
+							<td>changeMoney</td>
+							<td>String</td>
+							<td>变动金额</td>
+						</tr>
+						<tr>
+							<td>housingDetail</td>
+							<td>basicIdnumber</td>
+							<td>String</td>
+							<td>用户表身份证号</td>
+						</tr>												
+					</tbody>
+				</table>
+				
+				<h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p>
+				
+				<h3 class="page-header">状态码映射</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>状态码</th>
+							<th>信息</th>
+							<th>解释说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>800</td>
+							<td>success</td>
+							<td>成功</td>
+						</tr>
+						<tr>
+							<td>821</td>
+							<td>taskid is null and idnum is null!</td>
+							<td>参数为空</td>
+						</tr>
+						<tr>
+							<td>822</td>
+							<td>no data was found!</td>
+							<td>查无数据</td>
+						</tr>
+						<tr>
+							<td>823</td>
+							<td>ETL is not excuted!</td>
+							<td>数据处理程序未执行</td>
+						</tr>
+						<tr>
+							<td>824</td>
+							<td>crawler have some problems!</td>
+							<td>该任务爬取程序出现问题</td>
+						</tr>
+						<tr>
+							<td>825</td>
+							<td>taskid not matches idnum!</td>
+							<td>任务号与身份证号不匹配</td>
+						</tr>
+						<tr>
+							<td>826</td>
+							<td>this idnum is not in the system,please check!</td>
+							<td>该身份证号数据库中不存在</td>
+						</tr>
+						
+					</tbody>
+				</table>  
+<!--			<h3 class="page-header">返回字段说明</h3>  
+				<div th:replace="components/ETLbackfield :: ETLbackfield"></div> 
+			    
+				<span>备注：</span>
+			    <div th:replace="components/remark :: remark"></div> -->
+			    
+<!--			<h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p> -->
+			    
+			</div>
+		</div>
+		</div>
+		
+		 <div th:include="components/footer :: footer"></div>
+		
+</body>
+</html>

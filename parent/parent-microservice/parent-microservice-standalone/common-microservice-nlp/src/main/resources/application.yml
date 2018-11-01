@@ -1,0 +1,20 @@
+server: 
+  port: 9357
+info:
+  contact: 
+    email: dimei1@creditharmony.cn
+logging: 
+  file: common-microservice-nlp-9357.log
+  level:  
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: INFO
+# Spring boot UI 页面关闭该应用的权限限制
+management: 
+  security: 
+    enabled: false
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: http://socialeureka:8888/eureka/
+
+

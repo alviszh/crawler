@@ -1,0 +1,39 @@
+server: 
+  port: 9150
+info:
+  contact: 
+    email: zhentang3@txtechnologies.com
+#logging: 
+#  file: common-microservice-standalone-bank-ccbchina-9150.log
+#  level: 
+#    org.springframework.web: INFO
+    
+# Spring boot UI 页面关闭该应用的权限限制
+management: 
+  security: 
+    enabled: false
+
+#数据源：
+spring: 
+  datasource: 
+    url: ${spring.datasource.url}
+    username: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    initialization-mode: ${spring.datasource.initialization-mode}
+    continueOnError: ${spring.datasource.continueOnError}
+    driverClassName: ${spring.datasource.driverClassName}
+    max-active: ${spring.datasource.max-active}
+    max-idle: ${spring.datasource.max-idle}
+    min-idle: ${spring.datasource.min-idle}
+    initial-size: ${spring.datasource.initial-size}
+  jpa: 
+    database: MYSQL
+    show-sql: false
+    hibernate: 
+      ddl-auto: update
+      naming: 
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      properties: 
+        hibernate: 
+          dialect: org.hibernate.dialect.MySQL5Dialect
+

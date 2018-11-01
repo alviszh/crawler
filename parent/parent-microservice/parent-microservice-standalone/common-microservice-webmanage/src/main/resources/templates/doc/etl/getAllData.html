@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>	
+	<div th:replace="components/topart :: topart"></div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">运营商ETL数据获取接口</h2>
+				<h3 class="page-header">说明</h3>
+				<p>
+					该接口通过输入的手机号，taskid来获取完整数据。 
+				</p>
+				<h3 class="page-header">URL</h3>
+				<p>
+					http://uat.admin.txboss.txtechnologies.com/data/carrier/tasks/mobileinfo/detail 
+				</p>
+				<h3 class="page-header">格式</h3>
+				<p>
+					JSON   
+				</p>
+				<h3 class="page-header">HTTP请求方式</h3>
+				<p>
+					POST/GET   
+				</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>#</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>mobilenum</td>
+							<td>true</td>
+							<td>String</td>
+							<td>手机号</td>
+						</tr>
+						<tr>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>任务号</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="page-header">注意事项</h3>
+				<ol style="margin-left: 0px;">
+					<li>手机号或taskid必须有一个，如果taskid不为空，则默认用taskid查询，如果taskid为空，则用手机号查询，获取该手机号最新的数据</li>
+				</ol>
+				   
+				<h3 class="page-header">例子</h3>
+				<p>说明：利用taskid获取完成数据</p>
+				<p>请求：http://uat.admin.txboss.txtechnologies.com/data/carrier/tasks/mobileinfo/detail?taskid=a6c67f0d-a70b-4944-acdf-867f639074e7</p>
+				<p>返回：JSON</p>
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+  "param": {
+    "mobilenum": "13520800817",
+    "taskid": "a6c67f0d-a70b-4944-acdf-867f639074e7"
+  },
+  "mobileUserInfos": [
+    {
+      "id": 1237,
+      "createtime": "2017-08-10 15:56:58",
+      "taskId": "a6c67f0d-a70b-4944-acdf-867f639074e7",
+      "certificateType": "身份证",
+      "certificateNumber": "420106198410028419",
+      "registerAddress": "北京市朝阳区三里屯SOHU A座1903",
+      "userName": "x荻",
+      "accoutBalance": "14.66",
+      "telephoneNumber": "13520800817",
+      "carrieroperator": "移动",
+      "ascriptionProvince": "北京",
+      "ascriptionCity": "北京",
+      "userSex": null,
+      "userEmail": null
+    }
+  ],
+  "mobileCallRecordDetails": [   
+    {
+      "id": 869797,
+      "createtime": "2017-08-10 15:57:15",
+      "taskId": "a6c67f0d-a70b-4944-acdf-867f639074e7",
+      "communicationType": "本地通话",
+      "callDuration": "00:00:04",
+      "callTime": "2017-06-25 10:47:19",
+      "callLocation": "北京",
+      "oppositeNumber": "13366777357",
+      "callType": "主叫",
+      "callFee": "0.00",
+      "telephoneNumber": "13520800817",
+      "months": "2017-06"
+    }
+  ],
+  "mobileAccountInfos": [
+    {
+      "id": 1167,
+      "createtime": "2017-08-10 15:56:58",
+      "taskId": "a6c67f0d-a70b-4944-acdf-867f639074e7",
+      "accountStatus": "正常",
+      "netInDate": "2008-01-26",
+      "netInDuration": "9年7个月",
+      "realameInfo": "已登记",
+      "accountLevel": "四星用户",
+      "levelEnddate": "2017-07-31",
+      "points": "249",
+      "accountFrozenBalance": null,
+      "telephoneNumber": "13520800817"
+    }
+  ],
+  "mobileBillInfoMonths": [
+    {
+      "id": 8055,
+      "createtime": "2017-08-10 15:57:32",
+      "taskId": "a6c67f0d-a70b-4944-acdf-867f639074e7",
+      "communicationPeriod": "2017-08",
+      "monthCost": "189.30",
+      "voiceCost": null,
+      "smsCost": null,
+      "flowCost": null,
+      "penalty": null,
+      "telephoneNumber": "13520800817"
+    }
+  ],
+  "mobileBusinessInfos": [
+    {
+      "id": 1213,
+      "createtime": "2017-08-10 15:56:58",
+      "taskId": "a6c67f0d-a70b-4944-acdf-867f639074e7",
+      "brand": "神州行",
+      "businessName": "神州行B和4G套餐188套餐",
+      "businessFee": null,
+      "feeDuration": null,
+      "effectTime": null,
+      "telephoneNumber": "13520800817"
+    }
+  ],
+  "mobileFamilyNetInfos": [],
+  "mobileGroupNetInfos": [],
+  "mobilePaymentInfos": [
+    {
+      "id": 22258,
+      "createtime": "2017-08-10 15:57:34",
+      "taskId": "a6c67f0d-a70b-4944-acdf-867f639074e7",
+      "payDate": "2017-08-01",
+      "payFee": "40.00",
+      "payMode": "移动商城",
+      "payWay": "其他",
+      "telephoneNumber": "13520800817",
+      "months": "2017-08"
+    }
+  ],
+  "mobilePointsInfos": [],
+  "mobileRelationshipInfos": [],
+  "mobileSmsRecordDetails": [
+    {
+      "id": 88216,
+      "createtime": "2017-08-10 15:57:29",
+      "taskId": "a6c67f0d-a70b-4944-acdf-867f639074e7",
+      "sendTime": "2017-08-02 18:03:55",
+      "smsStatus": "发送",
+      "oppositeNumber": "18510540870",
+      "smsType": "短信",
+      "smsArea": "内地",
+      "telephoneNumber": "13520800817",
+      "months": "2017-08"
+    }
+  ],
+  "message": "success",
+  "createtime": 1503040410491,
+  "errorCode": 800
+}
+				</pre>
+				   
+				<h3 class="page-header">返回字段说明</h3>  
+				<div th:replace="components/ETLbackfield :: ETLbackfield"></div> 
+			    
+<!--			<span>备注：</span>
+			    <div th:replace="components/remark :: remark"></div> -->
+			    
+			    <h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p>
+				
+				<h3 class="page-header">状态码映射</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>状态码</th>
+							<th>信息</th>
+							<th>解释说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>800</td>
+							<td>success</td>
+							<td>成功</td>
+						</tr>
+						<tr>
+							<td>801</td>
+							<td>taskid is null and mobilenum is null!</td>
+							<td>taskid为空或者手机号为空</td>
+						</tr>
+						<tr>
+							<td>802</td>
+							<td>no data was found by this taskid!</td>
+							<td>该任务号无数据</td>
+						</tr>
+						<tr>
+							<td>803</td>
+							<td>ETL is not excuted!</td>
+							<td>数据处理程序未执行</td>
+						</tr>
+						<tr>
+							<td>804</td>
+							<td>crawler have some problems!</td>
+							<td>该任务爬取程序出现问题</td>
+						</tr>
+						<tr>
+							<td>805</td>
+							<td>taskid not matches phonenum!</td>
+							<td>任务号与电话号不匹配</td>
+						</tr>	
+					</tbody>
+				</table>			    
+			</div>
+		</div>
+		</div>
+		
+		 <div th:include="components/footer :: footer"></div>
+		
+</body>
+</html>

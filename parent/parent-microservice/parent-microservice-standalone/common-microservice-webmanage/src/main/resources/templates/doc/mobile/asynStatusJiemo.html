@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">借么-异步状态</h2>
+            <h3 class="page-header">说明</h3>
+            <p>
+                该接口为推送爬虫的异步状态
+            </p>
+            <h3 class="page-header">格式</h3>
+            <p>
+                JSON
+            </p>
+            <h3 class="page-header">HTTP请求方式</h3>
+            <p>
+                POST
+            </p>
+            <h3 class="page-header">注意事项</h3>
+            <ol style="margin-left: 0px;">
+                <!--<li></li>-->
+            </ol>
+
+            <h3 class="page-header">例子</h3>
+            <p>说明：调用借么的接口，推送异步状态</p>
+            <p>异步状态：JSON</p>
+            <p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;">
+{
+	"key": "123",
+	"statusCode": "0",
+	"message": "登录成功"
+}
+                </pre>
+
+            <h3 class="page-header">异步状态码说明</h3>
+            <p style="color:#3da33d;"></p>
+            <div style="width:100%;">
+                <table class="table table-bordered table-hover" style="width:90%;">
+                    <caption>异步状态码说明对照表：</caption>
+                    <thead>
+                    <tr>
+                        <th>码值</th>
+                        <th>说明</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>0</td>
+                        <td>登录成功</td>
+                    </tr>
+                     <tr>
+                        <td>1</td>
+                        <td>爬取成功</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>服务密码错误，请重新输入</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>服务密码错误次数超过限制，账号使用受限，请明天再试</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>密码简单或为初始密码，请重置后登录！</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>个人用户或个人证件类型禁用服务密码,请启用服务密码后重试!</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>账号输入错误，请查正后再输入！</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>证件号码信息输入不正确</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>用户名输入不正确！</td>
+                    </tr>
+                     <tr>
+                        <td>9</td>
+                        <td>用户名或证件号码信息输入不正确!</td>
+                    </tr>
+                     <tr>
+                        <td>10</td>
+                        <td>您已经在其它地点或浏览器登录过，请确认退出后重新再试!</td>
+                    </tr>
+                     <tr>
+                        <td>11</td>
+                        <td>图片验证码输入错误</td>
+                    </tr>
+                     <tr>
+                        <td>12</td>
+                        <td>短信验证码发送过于频繁</td>
+                    </tr>
+                     <tr>
+                        <td>13</td>
+                        <td>短信验证码输入错误，请耐心等待下一条短信！</td>
+                    </tr>
+                     <tr>
+                        <td>14</td>
+                        <td>服务密码错误。 可以重新输入</td>
+                    </tr>
+                     <tr>
+                        <td>15</td>
+                        <td>短信验证码输入错误次数过多，请稍候再试</td>
+                    </tr>
+                     <tr>
+                        <td>16</td>
+                        <td>短信验证码发送失败</td>
+                    </tr>
+                     <tr>
+                        <td>17</td>
+                        <td>等待用户验证码输入超时</td>
+                    </tr>
+                     <tr>
+                        <td>18</td>
+                        <td>等待用户服务密码输入超时</td>
+                    </tr>
+                     <tr>
+                        <td>19</td>
+                        <td>抱歉，该地区暂时不支持，无法提供服务!</td>
+                    </tr>
+                     <tr>
+                        <td>20</td>
+                        <td>抱歉，运营商网站正在升级中，请您稍后再试!</td>
+                    </tr>
+                     <tr>
+                        <td>21</td>
+                        <td>抱歉，该地区升级中，请明天再试!</td>
+                    </tr>
+                     <tr>
+                        <td>22</td>
+                        <td>密码尚未激活，请登陆网上营业厅激活后重试!</td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td>该卡未实名登记，请携带SIM卡和身份证到当地营业厅办理实名登记,请登记后重试!</td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>账号状态不正常</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

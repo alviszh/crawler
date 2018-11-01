@@ -1,0 +1,72 @@
+<div th:fragment="remark">
+	<table class="table table-bordered table-hover">
+	 <caption>当前步骤 （phase）说明：</caption>
+	 <thead>
+	 	<tr class="active"><th>码值</th><th>说明</th></tr>
+	 </thead>
+	 <tbody>
+	  <tr><td>READY</td><td>准备</td></tr> 
+	  <tr><td>LOGIN</td><td>认证</td></tr> 
+	  <tr><td>VALIDATE</td><td>二次验证</td></tr> 
+	  <tr><td>READY_CODE</td><td>短信验证码准备发送</td></tr> 
+	  <tr><td>SEND_CODE</td><td>短信验证码发送</td></tr> 
+	  <tr><td>WAIT_CODE</td><td>短信验证码已发送</td></tr> 
+	  <tr><td>WAIT_CODE_SECOND</td><td>二次验证短信验证码已发送</td></tr> 
+	  <tr><td>IMG_VALIDATE</td><td>二次验证：图片验证码</td></tr> 
+	  <tr><td>CRAWLER</td><td>数据采集</td></tr> 
+	  <tr><td>PASSWORD</td><td>账号验证</td></tr> 
+	  <tr><td>PASSWORD_CHANGE</td><td>密码修改</td></tr> 
+	  <tr><td>PASSWORD_READYCODE</td><td>准备发送验证码</td></tr> 
+	 </tbody>
+	</table>
+	
+	<table class="table table-bordered table-hover">
+	 <caption>步骤状态 （phase_status）说明：</caption>
+	 <thead>
+	 	<tr class="active"><th>码值</th><th>说明</th></tr>
+	 </thead>
+	 <tbody>
+	  <tr><td>DOING</td><td>进行中</td></tr> 
+	  <tr><td>SUCCESS</td><td>成功</td></tr> 
+	  <tr><td>FAIL</td><td>失败</td></tr> 
+	 </tbody>
+	</table>
+	
+	<table class="table table-bordered table-hover">
+	 <caption>错误代码（error_code）说明：</caption>
+	 <thead>
+	 	<tr class="active"><th>码值</th><th>说明</th></tr>
+	 </thead>
+	 <tbody>
+	  <tr><td>0</td><td>初始</td></tr> 
+	  <tr><td>1</td><td>成功</td></tr> 
+	  <tr><td>2</td><td>失败</td></tr> 
+	  <tr><td>200</td><td>成功</td></tr> 
+	  <tr><td>404</td><td>失败</td></tr>
+	  <tr><td>201</td><td>完成抓取，数据已存入数据库</td></tr>
+	  <tr><td>202</td><td>完成抓取，但没有新数据入库</td></tr>
+	  <tr><td>203</td><td>今日已经抓取</td></tr>
+	  <tr><td>204</td><td>数据库查询完成</td></tr>
+	  <tr><td>205</td><td>数据库查询完成,但未获取到数据</td></tr>
+	  <tr><td>206</td><td>模拟登陆成功</td></tr>
+	  <tr><td>4041</td><td>获取通话详单失败</td></tr>
+	  <tr><td>4042</td><td>登陆失败,验证码错误</td></tr>
+	  <tr><td>4043</td><td>系统繁忙，请稍后再试</td></tr>
+	  <tr><td>4044</td><td>登陆失败，请检查密码是否错误</td></tr>
+	  <tr><td>4045</td><td>登陆失败，请重试</td></tr>
+	  <tr><td>1000</td><td>登录成功</td></tr>
+	  <tr><td>1002</td><td>手机号认证失败(随机码不正确或已过期)</td></tr>
+	  <tr><td>1003</td><td>登录失败</td></tr>
+	  <tr><td>1004</td><td>详单查询异常</td></tr>
+	  <tr><td>1005</td><td>详单查询请求超时</td></tr>
+	  <tr><td>1006</td><td>短信随机码不正确或已过期，请重新获取</td></tr>
+	  <tr><td>1007</td><td>您的账户名与密码不匹配，请重新输入</td></tr>
+	  <tr><td>1008</td><td>session信息为空，请先登录!</td></tr>
+	  <tr><td>1009</td><td>网络超时！</td></tr>
+	  <tr><td>1010</td><td>尊敬的用户，单位时间内下发短信次数过多，请稍后再使用！</td></tr>
+	  <tr><td>1011</td><td>尊敬的用户，今天下发短信次数过多，请明天再使用！</td></tr>
+	  <tr><td>1012</td><td>图片验证码验证连续失败三次！</td></tr>
+	  <tr><td>1013</td><td>二次验证随机密码错误！</td></tr>
+	 </tbody>
+	</table>
+</div>

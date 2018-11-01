@@ -1,0 +1,13 @@
+server: 
+  port: 8131
+logging:
+  file: common-microservice-aws-api-8131.log
+  level: 
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: INFO
+eureka: 
+  instance: 
+    statusPageUrl: http://localhost:1222/admin
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/

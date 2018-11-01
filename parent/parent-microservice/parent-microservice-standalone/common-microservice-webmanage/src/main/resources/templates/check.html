@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<nav class="navbar sr-zql-navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand sr-zql-navbar-brand" href="#">强授权数据管理平台</a>
+			</div>
+
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<!-- <ul class="list-group">
+					<li class="list-group-item"><a href="/doc/cmccCheck">中国移动</a></li>
+					<li class="list-group-item"><a href="/doc/unicomCheck">中国联通</a></li>
+					<li class="list-group-item"><a href="/doc/telecomCheck">中国电信</a></li>
+				</ul> -->
+
+				<div class="panel-group" id="accordion">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<div class="panel-title" style="color: #06a">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">中国移动</a>
+							</div>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in">
+							<ul class="list-group">
+								<li class="list-group-item"><a th:href="@{/doc/cmccCheck}">接口说明</a></li>
+								<li class="list-group-item"><a th:href="@{/cbconf/config?module=1}">回调配置</a></li>
+								<li class="list-group-item"><a th:href="@{/cbtest/index?module=1}">回调测试</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<div class="panel-title" style="color: #06a">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">中国联通</a>
+							</div>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse">
+							<ul class="list-group">
+								<li class="list-group-item"><a th:href="@{/doc/unicomCheck}">接口说明</a></li>
+								<li class="list-group-item"><a th:href="@{/cbconf/config?module=2}">回调配置</a></li>
+								<li class="list-group-item"><a th:href="@{/cbtest/index?module=2}">回调测试</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<div class="panel-title" style="color: #06a">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">中国电信</a>
+							</div>
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse">
+							<ul class="list-group">
+								<li class="list-group-item"><a th:href="@{/doc/telecomCheck}">接口说明</a></li>
+								<li class="list-group-item"><a th:href="@{/cbconf/config?module=3}">回调配置</a></li>
+								<li class="list-group-item"><a th:href="@{/cbtest/index?module=3}">回调测试</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">身份验证接口</h2>
+				<h3 class="page-header">说明</h3>
+				<p>
+					该接口通过输入的手机号，返回手机号的运营商归属地，数据格式为JSON   
+				</p><br/>
+				<h3 class="page-header">URL</h3>
+				<p>
+					http://&lt;project&gt;/check   
+				</p><br/>
+				<h3 class="page-header">格式</h3>
+				<p>
+					JSON   
+				</p><br/>
+				<h3 class="page-header">HTTP请求方式</h3>
+				<p>
+					POST   
+				</p><br/>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>#</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>username</td>
+							<td>true</td>
+							<td>String</td>
+							<td>用户姓名</td>
+						</tr>
+						<tr>
+							<td>idnum</td>
+							<td>true</td>
+							<td>String</td>
+							<td>用户身份证号</td>
+						</tr>
+						<tr>
+							<td>mobileNum</td>
+							<td>true</td>
+							<td>String</td>
+							<td>11位手机号</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="page-header">注意事项</h3>
+				<ol style="margin-left: 0px;">
+					<li>手机号必须为11位手机号，170等虚拟运营商可能无法获取手机号归宿地 </li>
+					<li>移动部分省份（北京、湖北、内蒙古、四川、贵州、江西、山西、广东）手机号号码为特殊手机号,接口返回字段spec为true，电信、联通和其他地区移动运营商为false</li>
+				</ol>
+				   
+				<h3 class="page-header">例子</h3>
+				<p>说明：获取手机号归宿地</p>
+				<p>请求：http://10.167.202.192:32796/check</p>
+				<p>返回：JSON</p>
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+	"data": {
+		"mobileNum": "18618135874",
+		"mobileOperator": "UNICOM",
+		"spec": false,
+		"username": "梅荻",
+		"idnum": "420106198410028419",
+		"id": 2
+	},
+	"mesCode": "0000",
+	"createTime": 1498720135365,
+	"message": "查询完成"
+}
+				</pre>
+				   
+				<h3 class="page-header">返回字段说明</h3>  
+				<table class="table table-bordered table-hover" >
+				        <caption>返回正确data结果的字段说明对照表：</caption>
+				        <thead>
+				        <tr class="active">
+				            <th>返回值字段</th>
+				            <th>字段类型</th>
+				            <th>字段说明</th>
+				        </tr>
+				        </thead>
+				        <tbody>
+				        <tr>
+				            <td>mesCode</td>
+				            <td>String</td>
+				            <td>结果状态码</td>
+				        </tr>
+				        <tr>
+				            <td>createTime</td>
+				            <td>Integer</td>
+				            <td>接口返回时间戳</td>
+				        </tr>
+				        <tr>
+				            <td>message</td>
+				            <td>String</td>
+				            <td>接口状态信息</td>
+				        </tr>
+				        <tr>
+				            <td>data->mobileNum</td>
+				            <td>String</td>
+				            <td>手机号</td>
+				        </tr>
+				        <tr>
+				            <td>data->mobileOperator</td>
+				            <td>String</td>
+				            <td>运营商</td>
+				        </tr>
+				        <tr>
+				            <td>data->mobileNum</td>
+				            <td>String</td>
+				            <td>手机号</td>
+				        </tr>
+				        <tr>
+				            <td>data->spec</td>
+				            <td>Boolean</td>
+				            <td>手机运营商归属地是否特殊</td>
+				        </tr>
+				        <tr>
+				            <td>data->username</td>
+				            <td>String</td>
+				            <td>用户姓名</td>
+				        </tr>
+				        <tr>
+				            <td>data->idnum</td>
+				            <td>String</td>
+				            <td>用户身份证号</td>
+				        </tr>
+				        <tr>
+				            <td>data->id</td>
+				            <td>String</td>
+				            <td>用户唯一ID</td>
+				        </tr>
+				        </tbody> 
+			    </table> 
+			    <span>备注：</span>
+			    <table class="table table-bordered table-hover">
+			    <caption>结果状态码（mesCode）说明：</caption>
+			    <thead>
+			    	<tr class="active"><th>码值</th><th>说明</th></tr>
+			    </thead>
+			    <tbody>
+				    <tr><td>0000</td><td>登录成功</td></tr> 
+				    <tr><td>1001</td><td>随机短信发送失败</td></tr> 
+				    <tr><td>1002</td><td>手机号认证失败(随机码不正确或已过期)</td></tr> 
+				    <tr><td>1003</td><td>登录失败</td></tr> 
+			    </tbody>
+			    </table>
+			</div>
+		</div>
+		</div>
+		
+		 <div th:include="components/footer :: footer"></div>
+		
+</body>
+</html>

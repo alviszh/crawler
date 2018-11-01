@@ -1,0 +1,62 @@
+server:
+  port: 20066
+logging:
+  file: common-microservice-eureka-client-20066.log
+  level: 
+    com.gargoylesoftware.htmlunit.javascript.StrictErrorReporter : OFF
+    com.gargoylesoftware.htmlunit.javascript.host.ActiveXObject : OFF
+    com.gargoylesoftware.htmlunit.host.html.HTMLDocument : OFF
+    com.gargoylesoftware.htmlunit.html.HtmlScript : OFF
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG
+management: 
+  security: 
+    enabled: false
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaserver:8888/eureka/
+#      defaultZone: ${defaultZone}
+
+---
+#数据源：
+spring:
+  cloud:
+    stream:
+      bindings: 
+        output:                            # 频道名称（根据具体模块来命名）
+          destination: carrier-topic-01                
+          binder: kafka_binder
+      binders: 
+        kafka_binder: 
+          type: kafka 
+          environment:
+            spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
+            spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes}
+  datasource:
+    schema: classpath:/datasource/*.sql
+    initialization-mode: ${datasource.initialization-mode} 
+    continueOnError: false
+    separator: ;;
+    schema-username: ${datasource.jdbc.username}
+    schema-password: ${datasource.jdbc.password}
+    hikari: 
+      minimum-idle: ${datasource.jdbc.minIdle}
+      maximum-pool-size: ${datasource.jdbc.maxPoolSize}
+    driver-class-name: ${datasource.jdbc.driver}
+    url: ${datasource.jdbc.url}
+    username: ${datasource.jdbc.username}
+    password: ${datasource.jdbc.password}
+    type: ${datasource.jdbc.type}
+  jpa: 
+    show-sql: false
+    hibernate: 
+        ddl-auto: update
+        naming:
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl 
+    properties:  
+      hibernate:  
+        dialect: ${datasource.jdbc.dialect}
+        temp: 
+          use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法为实现
+          

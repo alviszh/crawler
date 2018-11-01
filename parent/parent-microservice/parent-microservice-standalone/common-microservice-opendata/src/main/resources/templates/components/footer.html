@@ -1,0 +1,31 @@
+<header th:fragment="footer">
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	
+		<script th:src="@{/jquery3.2.1/jquery.min.js}"></script>
+	  <script th:src="@{/datetime/jqueryui/js/jquery-1.9.1.js}"></script>
+	    <script th:src="@{/datetime/jqueryui/js/jquery-ui-1.10.2.js}"></script>
+	    <script th:src="@{/datetime/jqueryui/js/datepicker-zh-CN.js}"></script>
+	    
+		<script th:src="@{/bootstrap3.3.7/js/bootstrap.min.js}"></script>
+		
+	    
+		<script th:src="@{/js/common.js}"></script>
+		<script>
+			function getValue(url){
+			    //获取最后一个/的位置
+			    var site = url.lastIndexOf("\/");
+			    //截取最后一个/后的值
+			    return url.substring(site + 1, url.length);
+			}
+			
+		
+			if(getValue(location.href)=='contact-list'){
+				$('.nav-item').eq(0).addClass('active').siblings('li').removeClass('active');
+			}
+			if(getValue(location.href)=='contact-list-fee'){
+				$('.nav-item').eq(1).addClass('active').siblings('li').removeClass('active');
+			}
+		</script>
+</header>

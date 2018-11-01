@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="jqueryui/css/jquery-ui-1.10.2.css" />
+  <script src="jqueryui/js/jquery-1.9.1.js"></script>
+  <script src="jqueryui/js/jquery-ui-1.10.2.js"></script>
+  <script src="jqueryui/js/datepicker-zh-CN.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker({
+		//showButtonPanel: true,//显示按钮栏
+		//showOtherMonths: true,//显示其他月份
+		//changeMonth: true,//显示月份菜单
+		//changeYear: true,//显示年份菜单
+		//numberOfMonths: 3,//显示月份数量
+		//showOn: "button",//显示按钮
+		//buttonImage: "jqueryui/css/images/calendar.gif",//图片地址
+		//buttonImageOnly: true,//是否按钮只显示为图片
+		//minDate: -3,//开始日期(当天为0)
+		//maxDate: "+1Y +1M +1D",//今天之后的天数
+	});
+	$( "#datepicker" ).datepicker( "option", "zh-CN");//设置中文
+	
+  });
+  </script>
+</head>
+<body>
+ 
+<p>Date: <input type="text" id="datepicker" /></p>
+ 
+ 
+</body>
+</html>

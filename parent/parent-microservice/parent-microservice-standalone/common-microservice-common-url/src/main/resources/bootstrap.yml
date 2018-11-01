@@ -1,0 +1,14 @@
+spring: 
+  application:
+    name: common-microservice-common-url 
+  profiles:
+    active: '@app.active@' 
+  cloud:
+    config:
+      uri: http://socialconfig:8000
+      label: master
+  zipkin: 
+    base-url: http://socialzipkin:9411
+  sleuth: 
+    sampler: 
+      probability: 1

@@ -1,0 +1,12 @@
+<header th:fragment="leftmenu">
+	<div class="col-sm-3 col-md-2 sidebar">
+		<ul class="nav nav-sidebar">
+			<li class="nav-item active">
+				<a th:href="@{/contact/contact-list}" id="btn-business" class="nav-link">业务告警联系人管理<span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a th:href="@{/contact/contact-list-fee}" id="btn-fee" class="nav-link">账单余额告警联系人管理</a>
+			</li> 
+		</ul> 
+	</div>
+</header>

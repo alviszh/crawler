@@ -1,0 +1,19 @@
+server: 
+  port: 3051
+info:
+  contact: 
+    email: dimei1@creditharmony.cn
+logging: 
+  file: common-microservice-timedtask-3051.log
+  level:  
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: INFO
+# Spring boot UI 页面关闭该应用的权限限制
+management: 
+  security: 
+    enabled: true
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+    

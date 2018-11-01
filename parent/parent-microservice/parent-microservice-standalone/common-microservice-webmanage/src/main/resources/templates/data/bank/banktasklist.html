@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu_datasearch :: leftmenu"></div>
+
+        </div>
+
+        <form th:action="@{/data/bank/toBankTaskDetail}" method="post" id="bankTaskForm">
+            <input  name="taskidSearch" id="taskidSearch" style="display:none"/>
+
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h3 class="page-header">网银</h3>
+                <div class="row" style="text-align: right;margin-right: 0;margin-bottom: 15px;">
+                    <input type="text" id="taskid" name="taskid" class="form-control" placeholder="请输入TaskId" style="display: inline-block;width: 20%;">
+                    <button type="button" class="btn btn-primary" id="search" style="margin-left: 15px;">搜索</button>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <b>任务列表</b>
+                    </div>
+                    <div class="panel-body view-table-container">
+                        <table class="table table-bordered table-hover table-striped view-table">
+                            <thead>
+                            <tr>
+                                <th class="view-th">序号</th>
+                                <th class="view-th">创建时间</th>
+                                <th class="view-th">任务编号(taskid)</th>
+                                <th class="view-th">银行类型</th>
+                                <th class="view-th">状态</th>
+                                <th class="view-th">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="page" style="margin-left:15%">
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+<script th:src="@{/js/data/bank/banktasklist.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+</html>

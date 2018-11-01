@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+<style type="text/css">
+    #container {
+        min-width: 310px;
+        max-width: 800px;
+        height: 400px;
+        margin: 0 auto
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu_datasearch :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">任务统计</h2>
+
+            <div id="container"></div>
+            <br/>
+            <div id="insurancePie"></div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<script th:src="@{/Highcharts-6.0.5/code/highcharts.js}"></script>
+<script th:src="@{/Highcharts-6.0.5/code/modules/series-label.js}"></script>
+<script th:src="@{/Highcharts-6.0.5/code/modules/exporting.js}"></script>
+
+<script type="text/javascript">
+    /*Highcharts.chart('container', {
+
+        title: {
+            text: '新增调用量'
+        },
+        /!*
+         subtitle: {
+         text: '数据来源：thesolarfoundation.com'
+         },*!/
+        yAxis: {
+            title: {
+                text: '调用量'
+            }
+        },
+        xAxis: {  //x轴
+            categories: ['2017-1-10', '2017-1-12', '2017-1-13', '2017-1-14', '2017-1-15',
+                '2017-1-16', '2017-1-17']
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                //pointStart: 2010
+            }
+        },
+        credits:{
+            enabled:false
+        },
+        series: [{
+            name: '调用量',
+            data: [12,13,25,32,53,55,60]
+        }],
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+    });*/
+
+
+</script>
+
+<div th:include="components/footer :: footer"></div>
+</body>
+<script th:src="@{/js/data/insurance/insurancetaskchart.js}"></script>
+</html>

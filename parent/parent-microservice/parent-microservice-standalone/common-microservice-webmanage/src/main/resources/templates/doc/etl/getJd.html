@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">京东统一数据接口</h2>
+				<h3 class="page-header">说明</h3>
+				<p>
+					该接口通过输入的登录名或taskid来获取统一处理过的京东爬取数据。
+				</p>
+				<h3 class="page-header">URL</h3>
+				<p>
+					http://10.167.202.203:8009/ecommerce/tasks/jd/detail
+				</p>
+				<h3 class="page-header">格式</h3>
+				<p>
+					JSON   
+				</p>
+				<h3 class="page-header">HTTP请求方式</h3>
+				<p>
+					POST/GET   
+				</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>#</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>loginName</td>
+							<td>true</td>
+							<td>String</td>
+							<td>登录名</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>任务号</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="page-header">注意事项</h3>
+				<ol style="margin-left: 0px;">
+					<li>登录名或taskid必须有一个，如果taskid不为空，则默认用taskid查询，如果taskid为空，则用登录名查询，获取该登录名最新的数据</li>
+				</ol>
+				   
+				<h3 class="page-header">例子</h3>
+				<p>说明：利用taskid和登录名来获取完成数据</p>
+				<p>请求：http://10.167.202.203:8009/ecommerce/tasks/jd/detail?taskid=1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e</p>
+				<p>返回：JSON</p>
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+    "param": {
+        "loginName": null, 
+        "taskid": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e"
+    }, 
+    "addrInfoJD": [
+        {
+            "id": 64, 
+            "createtime": "2018-06-07 11:25:14", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "consignee": "梅荻", 
+            "area": "北京丰台区二环到三环", 
+            "addr": "丰台区海户西里11号楼1单元6层18", 
+            "phone": null, 
+            "fixed_phone": "135****0817"
+        }, 
+        {
+            "id": 65, 
+            "createtime": "2018-06-07 11:25:14", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "consignee": "吴静", 
+            "area": "北京海淀区三环以内", 
+            "addr": "西直门金运大厦B座103", 
+            "phone": null, 
+            "fixed_phone": "133****7357"
+        }, 
+        {
+            "id": 66, 
+            "createtime": "2018-06-07 11:25:14", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "consignee": "朱芳美", 
+            "area": "湖北武汉市汉阳区", 
+            "addr": "武汉市汉阳区马鹦路 邓甲新城 308栋 1单元 704号", 
+            "phone": null, 
+            "fixed_phone": "137****8762"
+        }, 
+        {
+            "id": 67, 
+            "createtime": "2018-06-07 11:25:14", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "consignee": "梅荻", 
+            "area": "北京海淀区四环到五环之间", 
+            "addr": "清华同方科技广场D座9楼", 
+            "phone": null, 
+            "fixed_phone": "135****0817"
+        }
+    ], 
+    "authInfoJD": [
+        {
+            "id": 26, 
+            "createtime": "2018-06-07 11:25:10", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "realNme": "梅荻", 
+            "idNumber": "420106198410028419", 
+            "authTime": "2015-06-02", 
+            "bandingPhonenumber": "135****0817", 
+            "authChannel": "京东金融实名认证", 
+            "financeService": null
+        }
+    ], 
+    "baiTiaoInfoJD": [
+        {
+            "id": 35, 
+            "createtime": "2018-06-07 11:25:35", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "loginName": "md19841002", 
+            "creditPoints": "99.9", 
+            "debts": "0.00", 
+            "creditLimit": "8354.00"
+        }
+    ], 
+    "billInfoJD": [
+        {
+            "id": 1235, 
+            "createtime": "2018-06-07 11:25:17", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "consignee": "梅荻", 
+            "billAmount": "56.80", 
+            "payWay": "在线支付", 
+            "buyTime": "2018-05-27 17:20:49", 
+            "billStatus": "已完成", 
+            "accountName": null, 
+            "receiveAddr": "北京丰台区二环到三环丰台区海户西里11号楼1单元6层18", 
+            "fixedPhone": "135****0817", 
+            "phone": null, 
+            "goodsName": "维他奶 原味豆奶植物蛋白饮料 250ml*24盒 整箱", 
+            "invoiceType": null, 
+            "invoiceTitle": null, 
+            "invoiceDescription": null, 
+            "price": null
+        }, 
+        {
+            "id": 1236, 
+            "createtime": "2018-06-07 11:25:17", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "consignee": "梅荻", 
+            "billAmount": "91.60", 
+            "payWay": "在线支付", 
+            "buyTime": "2018-05-27 17:20:49", 
+            "billStatus": "已完成", 
+            "accountName": null, 
+            "receiveAddr": "北京丰台区二环到三环丰台区海户西里11号楼1单元6层18", 
+            "fixedPhone": "135****0817", 
+            "phone": null, 
+            "goodsName": "屈臣氏（Watsons）苏打汽水330ml*24听 整箱", 
+            "invoiceType": null, 
+            "invoiceTitle": null, 
+            "invoiceDescription": null, 
+            "price": null
+        }, 
+        {
+            "id": 1237, 
+            "createtime": "2018-06-07 11:25:17", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "consignee": "梅荻", 
+            "billAmount": "103.00", 
+            "payWay": "在线支付", 
+            "buyTime": "2018-05-12 23:23:19", 
+            "billStatus": "已完成", 
+            "accountName": null, 
+            "receiveAddr": "北京丰台区二环到三环丰台区海户西里11号楼1单元6层18", 
+            "fixedPhone": "135****0817", 
+            "phone": null, 
+            "goodsName": "资生堂惠润（SUPER MiLD）柔净（绿野芳香）洗发露 替换装 400ml（日本原装进口洗发水） 所望SOMANG牛奶身体乳500ml", 
+            "invoiceType": null, 
+            "invoiceTitle": null, 
+            "invoiceDescription": null, 
+            "price": null
+        }, 
+        {
+            "id": 1240, 
+            "createtime": "2018-06-07 11:25:17", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "consignee": "梅荻", 
+            "billAmount": "9.90", 
+            "payWay": "在线支付", 
+            "buyTime": "2018-05-05 19:14:06", 
+            "billStatus": "已完成", 
+            "accountName": null, 
+            "receiveAddr": "北京丰台区二环到三环丰台区海户西里11号楼1单元6层18", 
+            "fixedPhone": "135****0817", 
+            "phone": null, 
+            "goodsName": "王致和料酒 去腥调味增鲜 厨房调料调味品1.75L中华老字号", 
+            "invoiceType": null, 
+            "invoiceTitle": null, 
+            "invoiceDescription": null, 
+            "price": null
+        }, 
+        {
+            "id": 1528, 
+            "createtime": "2018-06-07 11:25:34", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "consignee": "梅荻", 
+            "billAmount": "1499.00", 
+            "payWay": "货到付款", 
+            "buyTime": "2011-08-02 15:02:00", 
+            "billStatus": "已取消", 
+            "accountName": null, 
+            "receiveAddr": null, 
+            "fixedPhone": null, 
+            "phone": null, 
+            "goodsName": "三星（SAMSUNG）S23A550H 23英寸宽屏LED背光液晶显示器", 
+            "invoiceType": null, 
+            "invoiceTitle": null, 
+            "invoiceDescription": null, 
+            "price": null
+        }
+    ], 
+    "browseHistoryJD": [ ], 
+    "cardInfoJD": [
+        {
+            "id": 57, 
+            "createtime": "2018-06-07 11:25:15", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "bankName": "icbc", 
+            "lastNumber": "5674", 
+            "cardType": "储蓄卡", 
+            "cardHolder": "*荻", 
+            "phone": "135****0817"
+        }, 
+        {
+            "id": 58, 
+            "createtime": "2018-06-07 11:25:15", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "bankName": "bob", 
+            "lastNumber": "1518", 
+            "cardType": "储蓄卡", 
+            "cardHolder": "*荻", 
+            "phone": "135****0817"
+        }, 
+        {
+            "id": 59, 
+            "createtime": "2018-06-07 11:25:15", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "bankName": "cmb", 
+            "lastNumber": "6860", 
+            "cardType": "储蓄卡", 
+            "cardHolder": "*荻", 
+            "phone": "135****0817"
+        }, 
+        {
+            "id": 60, 
+            "createtime": "2018-06-07 11:25:15", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "bankName": "spdb", 
+            "lastNumber": "2951", 
+            "cardType": "储蓄卡", 
+            "cardHolder": "*荻", 
+            "phone": "135****0817"
+        }
+    ], 
+    "financeInfoJD": [
+        {
+            "id": 22, 
+            "createtime": "2018-06-07 11:25:15", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "financeAmount": "8.01", 
+            "yesterdayProfit": "0"
+        }
+    ], 
+    "userInfoJD": [
+        {
+            "id": 21, 
+            "createtime": "2018-06-07 11:25:11", 
+            "taskId": "1a2cdde4-c1d6-4e37-bb7b-70ff5fc37b1e", 
+            "loginName": "md19841002", 
+            "userName": "md19841002", 
+            "nickName": "jd_md1901", 
+            "sex": "0", 
+            "birthday": "1984-10-2", 
+            "hobby": null, 
+            "email": null, 
+            "realName": "梅荻", 
+            "marriage": null, 
+            "monthIncome": null, 
+            "idNumber": "420106198410028419", 
+            "education": null, 
+            "vocation": null, 
+            "isQq": null, 
+            "isWeixin": null, 
+            "accountLevel": null, 
+            "accountType": null
+        }
+    ], 
+    "createtime": 1528341984869, 
+    "message": "success", 
+    "errorCode": 500, 
+    "profile": "test"
+}
+				</pre>
+				<h3 class="page-header">返回字段</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>对象名</th>
+							<th>字段名</th>
+							<th>类型</th>
+							<th>注释</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>addrInfoJD</td>
+							<td>consignee</td>
+							<td>String</td>
+							<td>收货人</td>
+						</tr>
+						<tr>
+							<td>addrInfoJD</td>
+							<td>area</td>
+							<td>String</td>
+							<td>所在地区</td>
+						</tr>
+						<tr>
+							<td>addrInfoJD</td>
+							<td>addr</td>
+							<td>String</td>
+							<td>地址</td>
+						</tr>
+						<tr>
+							<td>addrInfoJD</td>
+							<td>phone</td>
+							<td>String</td>
+							<td>手机</td>
+						</tr>
+						<tr>
+							<td>addrInfoJD</td>
+							<td>fixedPhone</td>
+							<td>String</td>
+							<td>固定电话</td>
+						</tr>
+						<tr>
+							<td>addrInfoJD</td>
+							<td>email</td>
+							<td>String</td>
+							<td>电子邮箱</td>
+						</tr>
+						<tr>
+							<td>authInfoJD</td>
+							<td>realName</td>
+							<td>String</td>
+							<td>姓名</td>
+						</tr>
+						<tr>
+							<td>authInfoJD</td>
+							<td>idNumber</td>
+							<td>String</td>
+							<td>身份证</td>
+						</tr>
+						<tr>
+							<td>authInfoJD</td>
+							<td>authTime</td>
+							<td>String</td>
+							<td>认证时间</td>
+						</tr>
+						<tr>
+							<td>authInfoJD</td>
+							<td>bandingPhonenumber</td>
+							<td>String</td>
+							<td>绑定手机</td>
+						</tr>
+						<tr>
+							<td>authInfoJD</td>
+							<td>authChannel</td>
+							<td>String</td>
+							<td>认证渠道</td>
+						</tr>
+						<tr>
+							<td>authInfoJD</td>
+							<td>financeService</td>
+							<td>String</td>
+							<td>金融服务</td>
+						</tr>
+						<tr>
+							<td>baiTiaoInfoJD</td>
+							<td>loginName</td>
+							<td>String</td>
+							<td>登陆名</td>
+						</tr>
+						<tr>
+							<td>baiTiaoInfoJD</td>
+							<td>creditPoints</td>
+							<td>String</td>
+							<td>白条信用分</td>
+						</tr>
+						<tr>
+							<td>baiTiaoInfoJD</td>
+							<td>debts</td>
+							<td>String</td>
+							<td>白条欠款</td>
+						</tr>
+						<tr>
+							<td>baiTiaoInfoJD</td>
+							<td>limit</td>
+							<td>String</td>
+							<td>白条额度</td>
+						</tr>
+						<tr>
+							<td>billInfoJD</td>
+							<td>consignee</td>
+							<td>String</td>
+							<td>收货人</td>
+						</tr>
+						<tr>
+							<td>billInfoJD</td>
+							<td>billAmount</td>
+							<td>String</td>
+							<td>订单金额</td>
+						</tr>
+						<tr>
+							<td>billInfoJD</td>
+							<td>payWay</td>
+							<td>String</td>
+							<td>支付方式</td>
+						</tr>
+						<tr>
+							<td>billInfoJD</td>
+							<td>buyTime</td>
+							<td>String</td>
+							<td>购买时间</td>
+						</tr>
+						<tr>
+							<td>billInfoJD</td>
+							<td>billStatus</td>
+							<td>String</td>
+							<td>订单状态</td>
+						</tr>
+						<tr>
+							<td>billInfoJD</td>
+							<td>accountName</td>
+							<td>String</td>
+							<td>登录账户</td>
+						</tr>
+						<tr>
+							<td>billInfoJD</td>
+							<td>receiveAddr</td>
+							<td>String</td>
+							<td>收货地址</td>
+						</tr>
+						<tr>
+							<td>billInfoJD</td>
+							<td>fixedPhone</td>
+							<td>String</td>
+							<td>固定电话</td>
+						</tr>
+						<tr>
+							<td>billInfoJD</td>
+							<td>phone</td>
+							<td>String</td>
+							<td>手机号</td>
+						</tr>
+						<tr>
+							<td>billInfoJD</td>
+							<td>goodsName</td>
+							<td>String</td>
+							<td>商品名称</td>
+						</tr>
+						<tr>
+							<td>billInfoJD</td>
+							<td>invoiceType</td>
+							<td>String</td>
+							<td>发票类型</td>
+						</tr>
+						<tr>
+							<td>billInfoJD</td>
+							<td>invoiceTitle</td>
+							<td>String</td>
+							<td>发票抬头</td>
+						</tr>
+						<tr>
+							<td>billInfoJD</td>
+							<td>invoiceDescription</td>
+							<td>String</td>
+							<td>发票内容</td>
+						</tr>
+						<tr>
+							<td>billInfoJD</td>
+							<td>price</td>
+							<td>String</td>
+							<td>商品价格</td>
+						</tr>
+						<tr>
+							<td>browseHistoryJD</td>
+							<td>goodsName</td>
+							<td>String</td>
+							<td>商品名称</td>
+						</tr>
+						<tr>
+							<td>cardInfoJD</td>
+							<td>bankName</td>
+							<td>String</td>
+							<td>银行名称</td>
+						</tr>
+						<tr>
+							<td>cardInfoJD</td>
+							<td>lastNumber</td>
+							<td>String</td>
+							<td>尾号</td>
+						</tr>
+						<tr>
+							<td>cardInfoJD</td>
+							<td>cardType</td>
+							<td>String</td>
+							<td>银行卡类型</td>
+						</tr>
+						<tr>
+							<td>cardInfoJD</td>
+							<td>cardHolder</td>
+							<td>String</td>
+							<td>持卡人姓名</td>
+						</tr>
+						<tr>
+							<td>cardInfoJD</td>
+							<td>phone</td>
+							<td>String</td>
+							<td>手机号</td>
+						</tr>
+						<tr>
+							<td>financeInfoJD</td>
+							<td>financeAmount</td>
+							<td>String</td>
+							<td>小金库金额</td>
+						</tr>
+						<tr>
+							<td>financeInfoJD</td>
+							<td>yesterdayProfit</td>
+							<td>String</td>
+							<td>昨天收益</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>loginName</td>
+							<td>String</td>
+							<td>登录名</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>userName</td>
+							<td>String</td>
+							<td>用户名</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>nickName</td>
+							<td>String</td>
+							<td>昵称</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>sex</td>
+							<td>String</td>
+							<td>性别</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>birthday</td>
+							<td>String</td>
+							<td>生日</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>hobby</td>
+							<td>String</td>
+							<td>兴趣爱好</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>email</td>
+							<td>String</td>
+							<td>邮箱</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>realName</td>
+							<td>String</td>
+							<td>真实姓名</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>marriage</td>
+							<td>String</td>
+							<td>婚姻状况</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>monthIncome</td>
+							<td>String</td>
+							<td>月收入</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>idNumber</td>
+							<td>String</td>
+							<td>身份证号码</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>education</td>
+							<td>String</td>
+							<td>教育程度</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>vocation</td>
+							<td>String</td>
+							<td>所在行业</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>isQq</td>
+							<td>String</td>
+							<td>是否绑定QQ账号</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>isWeixin</td>
+							<td>String</td>
+							<td>是否绑定微信账号</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>accountLevel</td>
+							<td>String</td>
+							<td>会员级别</td>
+						</tr>
+						<tr>
+							<td>userInfoJD</td>
+							<td>accountType</td>
+							<td>String</td>
+							<td>会员类型</td>
+						</tr>
+																					
+					</tbody>
+				</table>
+				
+				<h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p>
+				
+				<h3 class="page-header">状态码映射</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>状态码</th>
+							<th>信息</th>
+							<th>解释说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>500</td>
+							<td>success</td>
+							<td>成功</td>
+						</tr>
+						<tr>
+							<td>501</td>
+							<td>taskid is null and idnum is null!</td>
+							<td>参数为空</td>
+						</tr>
+						<tr>
+							<td>502</td>
+							<td>no data was found!</td>
+							<td>查无数据</td>
+						</tr>
+						<tr>
+							<td>503</td>
+							<td>ETL is not excuted!</td>
+							<td>数据处理程序未执行</td>
+						</tr>
+						<tr>
+							<td>504</td>
+							<td>crawler have some problems!</td>
+							<td>该任务爬取程序出现问题</td>
+						</tr>
+						<tr>
+							<td>505</td>
+							<td>taskid not matches idnum!</td>
+							<td>任务号与身份证号不匹配</td>
+						</tr>
+						
+					</tbody>
+				</table>  
+<!--			<h3 class="page-header">返回字段说明</h3>  
+				<div th:replace="components/ETLbackfield :: ETLbackfield"></div> 
+			    
+				<span>备注：</span>
+			    <div th:replace="components/remark :: remark"></div> -->
+			    
+<!--			<h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p> -->
+			    
+			</div>
+		</div>
+		</div>
+		
+		 <div th:include="components/footer :: footer"></div>
+		
+</body>
+</html>

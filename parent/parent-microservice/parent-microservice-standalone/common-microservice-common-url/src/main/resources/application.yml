@@ -1,0 +1,16 @@
+server: 
+  port: 9358
+logging: 
+  file: common-microservice-common-url-9358.log
+  level:  
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: INFO
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: http://socialeureka:8888/eureka/
+      
+
+ 
+          
+      

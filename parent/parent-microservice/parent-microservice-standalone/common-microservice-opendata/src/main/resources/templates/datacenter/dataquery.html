@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- head -->
+<head th:include="components/header :: header">
+<!-- head -->
+<body data-query="0" data-appId="0" data-envi="0">
+	<!-- nav -->
+<head th:include="components/nav :: nav">
+<!-- nav -->
+<div class="container-fluid">
+	<div class="row">
+		<!-- left menu -->
+		<head th:include="components/leftmenu_datacenter :: leftmenu">
+<!-- left menu -->
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="data-query">
+	<h2 class="sub-header">数据查询</h2>
+
+	<form class="form-inline">
+		<!-- <li class="relative clearfix disabled" style="margin-top: 28px" th:each="listProduct : ${listProduct}">
+		<p th:text="${listProduct.id}"></p>
+	    <p th:text="${listProduct.name}"></p>
+		</li>
+		<li class="relative clearfix disabled" style="margin-top: 28px" th:each="listApp : ${listApp}">
+		<p th:text="${listApp.id}"></p>
+	    <p th:text="${listApp.appName}"></p>
+		</li> -->
+		<div class="form-group">
+			<label for="exampleInputEmail2"><font color="red">（必填）</font>应用名称： </label>
+		</div>
+		<div class="btn-group" data-toggle="buttons" id="appId">
+			<label class="btn btn-default" th:each="listApp : ${listApp}">
+			      <input class="TheRadio" onchange="changeAjax()"  type="radio" name="options1" th:text="${listApp.appName}" th:value="${listApp.id}">
+			</label>
+		</div>
+	</form>
+	</br>
+	<form class="form-inline">
+		<div class="form-group">
+			<label for="exampleInputEmail2"><font color="red">（必填）</font>运行环境： </label>
+		</div>
+		<div class="btn-group" data-toggle="buttons" id="environmentId">
+			<label class="btn btn-default"> 
+			       <input class="TheRadio" onchange="changeAjax()"   type="radio" name="options2" autocomplete="off" value="sandbox"> 沙箱环境
+			</label> 
+			<label class="btn btn-default"> 
+			       <input class="TheRadio" onchange="changeAjax()" type="radio" name="options2" autocomplete="off" value="prod"> 生产环境
+			</label>
+		</div>
+	</form>
+	</br>
+	<form class="form-inline" >
+		<div class="form-group">
+			<label for="exampleInputEmail2"><font color="red">（必填）</font>产品名称： </label>
+		</div>
+		<div class="btn-group" data-toggle="buttons" id="productId">
+			<label class="btn btn-default" th:each="listProduct : ${listProduct}"> 
+			     <input class="TheRadio" type="radio" name="options3" autocomplete="off" th:text="${listProduct.name}" th:value="${listProduct.flag}">
+			</label>
+		</div>
+	</form>
+	</br>
+	<form class="form-inline">
+		<div class="form-group">
+			<label for="exampleInputEmail2"><font color="black">（选填）</font>时间选择： </label>
+		</div>
+		<div class="input-group date startTime">
+			<span class="input-group-addon" id="sizing-addon2">开始时间</span> <input
+				type="text" id="datepicker1" class="form-control"
+				aria-describedby="sizing-addon2">
+		</div>
+		<div class="input-group date endTime">
+			<span class="input-group-addon" id="sizing-addon2">结束时间</span> <input
+				type="text" id="datepicker2" class="form-control"
+				aria-describedby="sizing-addon2">
+		</div>
+	</form>
+	</br>
+	<form class="form-inline">
+		<div class="form-group">
+			<label for="exampleInputEmail2"><font color="black">（选填）</font>查询条件： </label>
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon" id="sizing-addon2">&nbsp任务ID&nbsp&nbsp</span> 
+			<input id="taskId" type="text" class="form-control" aria-describedby="sizing-addon2">
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon" id="sizing-addon2">登录账号</span> 
+			<input id="loginNumber" type="text" class="form-control" aria-describedby="sizing-addon2">
+		</div>
+		<!-- <div class="input-group">
+			<span class="input-group-addon" id="sizing-addon2">用户ID</span>
+			<input id="userId" type="text" class="form-control" aria-describedby="sizing-addon2">
+		</div> -->
+		<button type="button" class="btn btn-primary" id="search">查询</button>
+		<button type="button" class="btn btn-default" onclick="history.go(0)">清空</button>
+	</form>
+	</br>
+	<div class="table-responsive">
+		<table class="table" style="table-layout: fixed;">
+			<thead id="head">
+				<!-- <tr>
+					<th>任务ID</th>
+					<th>登录账号</th>
+					<th>地区</th>
+					<th>任务时间</th>
+					<th>任务描述</th>
+					<th>是否完成</th>
+					<th>报告时间</th>
+					<th>报告描述</th>
+					<th>操作</th>
+				</tr> -->
+			</thead>
+			<tbody  id="add">
+			<tr>
+			    <td colspan="9" align="center" valign="middle">目前没有任何信息,请设定条件进行查询！</td>
+			</tr>
+				<!-- <tr>
+					<td style="vertical-align: middle">3d7e9077-5d48-496f-af92-6df634d86677</td>
+					<td style="vertical-align: middle">9527</td>
+					<td style="vertical-align: middle">zfm123456</td>
+					<td style="vertical-align: middle">2018-06-07 07:12:26</td>
+					<td style="vertical-align: middle">数据采集成功！</td>
+					<td style="vertical-align: middle">是</td>
+					<td style="vertical-align: middle">2018-06-07 07:12:26</td>
+					<td style="vertical-align: middle">已生成</td>
+					<td style="vertical-align: middle"><a
+						href="http://10.167.211.155:8000/carrier/reportdetail?taskid=4b1c16ba-10ea-4a71-a1e8-c1f819ec7209"
+						target="_blank"><button type="button"
+								class="btn btn-success btn-sm">查看报告</button></a> <a
+						href="http://10.167.211.155:8000/carrier/tasks/mobileinfo/report?taskid=8abd3ea1-a011-444e-8fa1-5bdc7052b660"
+						target="_blank"><button type="button"
+								class="btn btn-primary btn-sm">原始数据</button></a></td>
+				</tr> -->
+			</tbody>
+		</table>
+		<div id="page" style="margin-left:15%">
+	</div>
+</div>
+	</div>
+</div>
+<head th:include="components/footer :: footer">
+</body>
+<!-- 分页引用的 -->
+<script th:src="@{/js/paging/banktasklist.js}"></script>
+<script th:src="@{/js/paging/common.js}"></script>
+ 
+ <!-- 时间控件的引入 -->
+<link rel="stylesheet" th:href="@{/datetime/jqueryui/css/jquery-ui-1.10.2.css}" />
+<script th:src="@{/datetime/jqueryui/js/jquery-1.9.1.js}"></script>
+<script th:src="@{/datetime/jqueryui/js/jquery-ui-1.10.2.js}"></script>
+<script th:src="@{/datetime/jqueryui/js/datepicker-zh-CN.js}"></script>
+<script type="text/javascript">
+
+	$("#data-query").find('label').on("click", function() {
+		$(this).siblings("label").removeClass('btn-primary');
+		$(this).addClass("btn-primary");  
+		
+		if($(this).parent().attr('id')=='appId'){
+			$("body").data('appId',1);
+			
+			if($("body").data('appId')==1 && $("body").data('envi')==1){
+				
+				$("#productId").find('label').removeClass("disabled");
+
+			}
+		}
+		if($(this).parent().attr('id')=='environmentId'){
+			$("body").data('envi',1);
+			
+			if($("body").data('appId')==1 && $("body").data('envi')==1){
+				$("#productId").find('label').removeClass("disabled")
+			}
+		}
+	});
+	
+	$(function() {
+			/* 开始时间控件 */
+			$("#datepicker1").datepicker({
+			});
+			$("#datepicker1").datepicker("option", "dateFormat","yy-mm-dd");//设置中文
+	
+			/* 结束时间控件 */
+			$("#datepicker2").datepicker({
+			});
+			$("#datepicker2").datepicker("option", "dateFormat","yy-mm-dd");//设置中文
+	
+			/* 产品默认是不能点击的情况 */
+			$("#productId label").addClass("disabled");
+			
+	});
+	
+	function changeAjax(){
+		if($("body").data('appId')==1 && $("body").data('envi')==1){
+		    var dynamicProduct;
+			var appId = $('#appId input:radio:checked').val();
+			var environmentId = $('#environmentId input:radio:checked').val();
+			$.ajax({
+				url : "/opendata/dataCenter/findProductByAppEnvironment",
+				type : "post",
+				async : false,
+				dataType: "json",
+				data : {
+					appId : appId,
+					environmentId : environmentId
+				},
+				success : function(data) {
+					$("#productId").html("");
+					var trs = '';
+					$.each(data,function(index, app) {
+						trs += '<label class="btn btn-default" onclick="productChange(this)">'
+							  +'<input class="TheRadio" type="radio" name="options3" autocomplete="off" value="'+app.flag
+							  +'">'
+							  +app.name
+					          +'</label>'
+					})
+					$("#productId").html(trs);
+					
+					
+					console.log(data);
+				},
+				error : function() {
+					dynamicProduct = "isError";
+				}
+
+			}); 
+
+		}
+	}
+	function productChange(e){
+			$(e).siblings("label").removeClass('btn-primary');
+			$(e).addClass("btn-primary");  
+	};
+</script>
+</html>

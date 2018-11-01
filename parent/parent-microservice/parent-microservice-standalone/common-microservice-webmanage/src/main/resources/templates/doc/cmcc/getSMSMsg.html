@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">获取短信信息接口</h2>
+				<h3 class="page-header">说明</h3>
+				<p>
+					该接口通过手机号、taskId,获取短信信息   
+				</p>
+				<h3 class="page-header">URL</h3>
+				<p>
+					http://&lt;project&gt;/cmccGetsmsMsg  
+				</p>
+				<h3 class="page-header">格式</h3>
+				<p>
+					JSON   
+				</p>
+				<h3 class="page-header">HTTP请求方式</h3>
+				<p>
+					POST   
+				</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>#</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>name</td>
+							<td>true</td>
+							<td>String</td>
+							<td>手机号</td>
+						</tr>
+						<tr>
+							<td>password</td>
+							<td>true</td>
+							<td>String</td>
+							<td>服务密码</td>
+						</tr>
+						<tr>
+							<td>sms_code</td>
+							<td>true</td>
+							<td>String</td>
+							<td>随机验证码</td>
+						</tr>
+						<tr>
+							<td>user_id</td>
+							<td>true</td>
+							<td>Integer</td>
+							<td>用户id</td>
+						</tr>
+						<tr>
+							<td>task_id</td>
+							<td>true</td>
+							<td>Integer</td>
+							<td>任务id</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="page-header">注意事项</h3>
+				<ol style="margin-left: 0px;">
+					<li>手机号必须为11位手机号</li>
+				</ol>
+				   
+				<h3 class="page-header">例子</h3>
+				<p>说明：获取短信信息接口</p>
+				<p>请求：http://10.167.202.192:1002/cmccGetsmsMsg</p>
+				
+			</div>
+		</div>
+		</div>
+		
+		 <div th:include="components/footer :: footer"></div>
+		
+</body>
+</html>

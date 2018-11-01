@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: '@app.h5fund.name@'
+  thymeleaf:
+    cache: false
+  profiles:
+    active: '@app.active@'
+#    active: '@app.mobilecrawlertask.active@'
+  cloud:
+    config:
+      uri: http://configserver:8000
+      label: master
+  zipkin:
+    base-url: http://zipkinserver:9411
+  sleuth:
+    web:
+      skip-pattern: /h5/fund/tasks/status|.*\.eot|.*\.svg|.*\.tff|.*\.woff|.*\.woff2|/api-docs.*|/autoconfig|/configprops|/dump|/health|/info|/metrics.*|/mappings|/trace|/swagger.*|.*\.png|.*\.css|.*\.map|.*\.js|.*\.html|.*\.gif|/favicon.ico|/hystrix.stream
+    sampler:
+      percentage: 1
+ #zipkin地址，Sleuth会将trace数据以http的方式发送，采样率percentage=1意味着100%发送
+ #sleuth也会产生性能消耗，因此percentage=1只是为了方便调试用例，生产环境下根据需要配置
+
+ #因为机房服务器关闭了，为了能让大家开发，刚才搭建了新的eurekaserver、configserver、数据库（zipkin没有搭建，请大家先在bootstrap.yaml文件中注释）。具体需要修改的地方如下：
+ #1.修改 本机hosts 文件 C:\Windows\System32\drivers\etc\hosts
+ #增加 10.167.110.52 configserver eurekaserver
+ #原来的 10.167.202.187 configserver eurekaserver 暂时先注释掉
+
+ #2.修改微服务的配置文件 bootstrap.yaml 将configserver 的端口改成8004（原端口8000）
+
+ #3.登录github，在configserver下修改微服务的配置文件（github 地址 ：https://github.com/meidi/configserver  用户名密码：meidi/md87315450）
+ #新数据库的IP是 10.167.110.52，其他变量（库名、用户名、密码）不变
+

@@ -1,0 +1,15 @@
+<nav class="navbar sr-zql-navbar-inverse navbar-fixed-top" th:fragment="topart">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand sr-zql-navbar-brand" href="#">强授权数据管理平台</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="/webmanage">文档说明</a></li>
+			<li><a href="/webmanage/dataSearch">数据查询</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+	      <li class="dishover"><a href="#"><span class="glyphicon glyphicon-user"></span>欢迎您:<span th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.name}"></span></a></li>
+	      <li class=""><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out"></span>退出登录</a></li>
+	    </ul>
+	</div>
+</nav>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>	
+	<head th:include="components/nav :: nav">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>				
+			</div>	
+			
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			 <h2 class="page-header">开发指南-平台简介</h2>
+			
+			</div>		
+		  </div>
+		  
+		
+		 <div th:include="components/footer :: footer"></div>
+	</div>	
+</body>
+</html>

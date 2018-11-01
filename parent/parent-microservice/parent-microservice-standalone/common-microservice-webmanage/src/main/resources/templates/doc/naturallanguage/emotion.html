@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">情感倾向分析</h2>
+            <h3 class="page-header">说明</h3>
+            <p>
+            对包含主观观点信息的文本进行情感极性类别（积极、消极、中性）的判断，并给出相应的置信度。
+            </p>
+            <h3 class="page-header">URL</h3>
+            <p>
+                http://&lt;10.167.202.217:&gt;9357/nlp/emotion
+            </p>
+            <h3 class="page-header">格式</h3>
+            <p>
+                JSON
+            </p>
+            <h3 class="page-header">HTTP请求方式</h3>
+            <p>
+                POST
+            </p>
+            <h3 class="page-header">请求参数</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>#</th>
+                    <th>必选</th>
+                    <th>类型及范围</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>text_emotion</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>文本内容</td>
+                </tr>
+                </tbody>
+            </table>
+            <p style="color: #3da33d;">JSON示例:</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+   
+       {
+            "sentiment_emotion":2,    //表示情感极性分类结果
+            "confidence_emotion":0.40, //表示分类的置信度
+            "positive_prob_emotion":0.73, //表示属于积极类别的概率
+            "negative_prob_emotion":0.27  //表示属于消极类别的概率
+        }
+
+
+				</pre>
+            <h3 class="page-header">返回字段</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>字段名</th>
+                    <th>类型</th>
+                    <th>注释</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>sentiment_emotion</td>
+                    <td>String</td>
+                    <td>表示情感极性分类结果</td>
+                </tr>
+                <tr>
+                    <td>confidence_emotion</td>
+                    <td>String</td>
+                    <td>表示分类的置信度，取值范围[0,1]</td>
+                </tr>
+                <tr>
+                    <td>positive_prob_emotion</td>
+                    <td>String</td>
+                    <td>表示属于积极类别的概率 ，取值范围[0,1]</td>
+                </tr>
+                <tr>
+                    <td>negative_prob_emotion</td>
+                    <td>String</td>
+                    <td>表示属于消极类别的概率，取值范围[0,1]</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

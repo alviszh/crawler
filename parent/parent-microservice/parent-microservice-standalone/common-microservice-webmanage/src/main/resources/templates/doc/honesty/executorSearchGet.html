@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">查询接口</h2>
+				<h3 class="page-header">说明</h3>
+				<p>该接口通过传递的keys，taskid查找数据</p>
+				<h3 class="page-header">URL</h3>
+				<p>http://10.167.202.187:51829/honesty/shixin/search</p>
+				<h3 class="page-header">HTTP请求方式</h3>
+				<p>POST</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>实体名</th>
+							<th>字段名</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>HonestyJsonBean</td>
+							<td>keys</td>
+							<td>true</td>
+							<td>list&lt;Honestybean&gt;</td>
+							<td>传递的关键词</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>HonestyJsonBean</td>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>业务id，区分每一次的业务</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr> 
+							<td>HonestyJsonBean</td>
+							<td>pagenum</td>
+							<td>true</td>
+							<td>Integer</td>
+							<td>查询的第几页</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr> 
+							<td>HonestyJsonBean</td>
+							<td>pagesize</td>
+							<td>true</td>
+							<td>Integer</td>
+							<td>每页多少数量</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>Honestybean</td>
+							<td>pName</td>
+							<td>true</td>
+							<td>String</td>
+							<td>传递的关键词</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>Honestybean</td>
+							<td>pCardNum</td>
+							<td>true</td>
+							<td>String</td>
+							<td>Honestybean</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>Honestybean</td>
+							<td>pagenum</td>
+							<td>true</td>
+							<td>Integer</td>
+							<td>查询页码</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>Honestybean</td>
+							<td>pagesize</td>
+							<td>true</td>
+							<td>Integer</td>
+							<td>每页数量</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h3 class="page-header">例子</h3>
+				<p>请求：http://10.167.202.187:51829/honesty/shixin/search
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border"
+					style="color: #3da33d;"> 
+{
+"taskid": "",
+"keys": [
+  {
+"taskid": "",
+"pName": "王凯",
+"pCardNum": "1301231988****0014",
+"pagenum": 0,
+"pagesize": 2
+},
+  {
+"taskid": "",
+"pName": "李刚",
+"pCardNum": null,
+"pagenum": 0,
+"pagesize": 2
+}
+],
+"result": [
+  {
+"taskid": "",
+"pName": "王凯",
+"pCardNum": "1301231988****0014",
+"updateTime": null,
+"list": [
+  {
+"id": 169717,
+"createtime": "2018-08-08 14:53:14",
+"updatetime": null,
+"etltime": null,
+"uuid": null,
+"shixinid": 124662492,
+"iname": "王凯",
+"caseCode": "(2016)冀0302执3620号",
+"age": 28,
+"sexy": "男",
+"cardNum": "1301231988****0014",
+"courtName": "海港区人民法院",
+"areaName": "河北",
+"partyTypeName": "580",
+"gistId": "（2015）海民初字第07129号",
+"regDate": "2016年09月18日",
+"gistUnit": "秦皇岛市海港区人民法院",
+"duty": "偿还欠款人民币50万元并支付利息及违约金；王凯、正定县明威贸易有限公司对上述款项承担连带责任；案件受理费8800元，保全费3070元",
+"performance": "全部未履行",
+"performedPart": null,
+"unperformPart": null,
+"disruptTypeName": "违反财产报告制度",
+"publishDate": "2016年10月24日",
+"execMoney": null,
+"caseState": null,
+"taskid": null,
+"type": null
+}
+],
+"message": "sucess",
+"status": "200"
+},
+  {
+"taskid": "",
+"pName": "李刚",
+"pCardNum": null,
+"updateTime": null,
+"list": [
+  {
+"id": 161391,
+"createtime": "2018-07-31 03:16:55",
+"updatetime": null,
+"etltime": null,
+"uuid": null,
+"shixinid": 517532790,
+"iname": "李刚",
+"caseCode": "(2017)川0781执569号",
+"age": 54,
+"sexy": "男",
+"cardNum": "5107211962****5292",
+"courtName": "江油市人民法院",
+"areaName": "四川",
+"partyTypeName": "580",
+"gistId": "（2016）川0781 刑初316号",
+"regDate": "2017年02月23日",
+"gistUnit": "江油市人民法院",
+"duty": "详见生效判决书",
+"performance": "全部未履行",
+"performedPart": " ",
+"unperformPart": " ",
+"disruptTypeName": "违反财产报告制度的",
+"publishDate": "2017年03月28日",
+"execMoney": null,
+"caseState": null,
+"taskid": null,
+"type": null
+},
+  {
+"id": 155982,
+"createtime": "2018-07-26 20:09:55",
+"updatetime": null,
+"etltime": null,
+"uuid": null,
+"shixinid": 517371624,
+"iname": "李刚",
+"caseCode": "(2017)晋0303执60号",
+"age": 26,
+"sexy": "男",
+"cardNum": "1407241990****0059",
+"courtName": "阳泉市矿区人民法院",
+"areaName": "山西",
+"partyTypeName": "580",
+"gistId": "（2016）晋0303民初849号",
+"regDate": "2017年02月08日",
+"gistUnit": "阳泉市矿区人民法院",
+"duty": "判决如下：一、原告许喜林与被告李刚签订的坐落于三矿麻地巷28号楼2门负一层2号房屋买卖合同无效。二、被告李刚在本判决生效后十日内一次性退还原告许喜林购房款130000元。三、被告张利军不承担民事责任。 四、驳回原告其他诉讼请求。案件受理费3060元，原告许喜林负担108元，被告李刚负担2952元。如果被告未按本判决指定的期间履行给付金钱义务，应当按照《中华人民共和国民事诉讼法》第二百五十三条之规定，加倍支付迟延履行期间的债务利息",
+"performance": "全部未履行",
+"performedPart": " ",
+"unperformPart": " ",
+"disruptTypeName": "其他有履行能力而拒不履行生效法律文书确定义务的",
+"publishDate": "2017年03月27日",
+"execMoney": null,
+"caseState": null,
+"taskid": null,
+"type": null
+}
+],
+"message": "sucess",
+"status": "200"
+}
+],
+"pagenum": 0,
+"pagesize": 2,
+"priority": 0
+}
+
+</pre>
+				<h3 class="page-header">返回说明</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>实体名</th>
+							<th>字段名</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>HonestyJsonBean</td>
+							<td>keys</td>
+							<td>true</td>
+							<td>list&lt;Honestybean&gt;</td>
+							<td>传递的关键词</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>HonestyJsonBean</td>
+							<td>result</td>
+							<td>true</td>
+							<td>list&lt;HonestyShiXinBean&gt;</td>
+							<td>查询结果List</td>
+						</tr>
+					</tbody>
+					
+					<tbody>
+						<tr>
+							<td>HonestyJsonBean</td>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>业务id，区分每一次的业务</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr> 
+							<td>HonestyJsonBean</td>
+							<td>pagenum</td>
+							<td>true</td>
+							<td>Integer</td>
+							<td>查询的第几页</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr> 
+							<td>HonestyJsonBean</td>
+							<td>pagesize</td>
+							<td>true</td>
+							<td>Integer</td>
+							<td>每页多少数量</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>Honestybean</td>
+							<td>pName</td>
+							<td>true</td>
+							<td>String</td>
+							<td>传递的关键词</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>Honestybean</td>
+							<td>pCardNum</td>
+							<td>true</td>
+							<td>String</td>
+							<td>身份证号码 或组织机构代码</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>Honestybean</td>
+							<td>pagenum</td>
+							<td>true</td>
+							<td>Integer</td>
+							<td>查询页码</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>Honestybean</td>
+							<td>pagesize</td>
+							<td>true</td>
+							<td>Integer</td>
+							<td>每页数量</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>HonestyShiXinBean</td>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>业务id，区分每一次的业务</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>HonestyShiXinBean</td>
+							<td>pName</td>
+							<td>true</td>
+							<td>String</td>
+							<td>人名或公司名</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>HonestyShiXinBean</td>
+							<td>pCardNum</td>
+							<td>true</td>
+							<td>String</td>
+							<td>身份证号或组织机构代码</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>HonestyShiXinBean</td>
+							<td>list</td>
+							<td>true</td>
+							<td>list&lt;ShiXinBean&gt;</td>
+							<td>查询结果集</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>HonestyShiXinBean</td>
+							<td>message</td>
+							<td>true</td>
+							<td>String</td>
+							<td>信息</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>HonestyShiXinBean</td>
+							<td>status</td>
+							<td>true</td>
+							<td>String</td>
+							<td>状态码</td>
+						</tr>
+					</tbody>
+					
+					
+					
+					
+					
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>shixinid</td>
+							<td>true</td>
+							<td>long</td>
+							<td>失信被执行人id或被执行人id</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>iname</td>
+							<td>true</td>
+							<td>String</td>
+							<td>姓名或公司名</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>caseCode</td>
+							<td>true</td>
+							<td>String</td>
+							<td>案号</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>age</td>
+							<td>true</td>
+							<td>int</td>
+							<td>年龄</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>sexy</td>
+							<td>true</td>
+							<td>String</td>
+							<td>性别</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>cardNum</td>
+							<td>true</td>
+							<td>String</td>
+							<td>身份证号或组织机构代码</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>courtName</td>
+							<td>true</td>
+							<td>String</td>
+							<td>执行法院</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>areaName</td>
+							<td>true</td>
+							<td>String</td>
+							<td>省份</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>partyTypeName</td>
+							<td>true</td>
+							<td>String</td>
+							<td>未知含义</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>gistId</td>
+							<td>true</td>
+							<td>String</td>
+							<td>执行依据文号</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>regDate</td>
+							<td>true</td>
+							<td>String</td>
+							<td>立案时间</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>gistUnit</td>
+							<td>true</td>
+							<td>String</td>
+							<td>做出执行依据单位</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>duty</td>
+							<td>true</td>
+							<td>String</td>
+							<td>生效法律文书确定的义务</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>performance</td>
+							<td>true</td>
+							<td>String</td>
+							<td>被执行人的履行情况 </td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>performedPart</td>
+							<td>true</td>
+							<td>String</td>
+							<td>执行情况</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>unperformPart</td>
+							<td>true</td>
+							<td>String</td>
+							<td>未执行情况</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>disruptTypeName</td>
+							<td>true</td>
+							<td>String</td>
+							<td>失信被执行人行为具体情形</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>publishDate</td>
+							<td>true</td>
+							<td>String</td>
+							<td>发布时间</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>execMoney</td>
+							<td>true</td>
+							<td>String</td>
+							<td>执行标的 被执行人特有</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>caseState</td>
+							<td>true</td>
+							<td>String</td>
+							<td>0 未知 被执行人特有</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>ShiXinBean</td>
+							<td>type</td>
+							<td>true</td>
+							<td>String</td>
+							<td>null为失信被执行人，executor为被执行人</td>
+						</tr>
+					</tbody>
+					
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+	<div th:include="components/footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">网银储蓄卡统一数据接口</h2>
+				<h3 class="page-header">说明</h3>
+				<p>
+					该接口通过输入的身份证号或taskid来获取统一处理过的网银储蓄卡数据。
+				</p>
+				<h3 class="page-header">URL</h3>
+				<p>
+					http://10.167.202.203:8006/bank/tasks/debitcard/detail
+				</p>
+				<h3 class="page-header">格式</h3>
+				<p>
+					JSON   
+				</p>
+				<h3 class="page-header">HTTP请求方式</h3>
+				<p>
+					POST/GET   
+				</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>#</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>loginName</td>
+							<td>true</td>
+							<td>String</td>
+							<td>登录名</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>任务号</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="page-header">注意事项</h3>
+				<ol style="margin-left: 0px;">
+					<li>身份证号或taskid必须有一个，如果taskid不为空，则默认用taskid查询，如果taskid为空，则用登录名查询，获取该登录名最新的数据</li>
+				</ol>
+				   
+				<h3 class="page-header">例子</h3>
+				<p>说明：利用taskid和登录名来获取完成数据</p>
+				<p>请求：http://10.167.202.203:8006/bank/tasks/debitcard/detail?taskid=305af794-b1a3-45b3-8754-9e7d789e1b97</p>
+				<p>返回：JSON</p>
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+	param: {
+		loginName: null,
+		taskid: "305af794-b1a3-45b3-8754-9e7d789e1b97",
+	},
+	message: "success",
+	debiCardTransDetail: [
+	{
+		id: 4530,
+		createtime: "2017-12-29 15:24:50",
+		taskId: "305af794-b1a3-45b3-8754-9e7d789e1b97",
+		recordId: null,
+		lastNumber: "4438",
+		tranDate: "2017-11-30",
+		consumeType: "网上汇款",
+		chargeDate: null,
+		currency: null,
+		fee: "100.00",
+		balance: "100.00",
+		transLocation: "兴业银行上海分行营业部",
+		transWay: null,
+		transMode: null,
+		transDecription: "赵辉支付宝转账",
+		comment: null,
+		oppositeCardNumber: "216200100101280821",
+		oppositeCardHolder: "支付宝（中国）网络技术有限公司客户备付金",
+		oppositeBankName: "兴业银行上海分行营业部",
+		currentaccountType: null,
+	},
+	{
+		id: 4531,
+		createtime: "2017-12-29 15:24:50",
+		taskId: "305af794-b1a3-45b3-8754-9e7d789e1b97",
+		recordId: null,
+		lastNumber: "4438",
+		tranDate: "2017-11-30",
+		consumeType: "活期转定期",
+		chargeDate: null,
+		currency: null,
+		fee: "-50.00",
+		balance: "50.00",
+		transLocation: "兴业银行北京知春路支行",
+		transWay: null,
+		transMode: null,
+		transDecription: null,
+		comment: null,
+		oppositeCardNumber: null,
+		oppositeCardHolder: null,
+		oppositeBankName: null,
+		currentaccountType: null,
+		},
+	{
+		id: 4532,
+		createtime: "2017-12-29 15:24:50",
+		taskId: "305af794-b1a3-45b3-8754-9e7d789e1b97",
+		recordId: null,
+		lastNumber: "4438",
+		tranDate: "2017-12-21",
+		consumeType: "存款利息",
+		chargeDate: null,
+		currency: null,
+		fee: "0.01",
+		balance: "50.01",
+		transLocation: "兴业银行北京知春路支行",
+		transWay: null,
+		transMode: null,
+		transDecription: null,
+		comment: null,
+		oppositeCardNumber: null,
+		oppositeCardHolder: null,
+		oppositeBankName: null,
+		currentaccountType: null,
+		},
+	{
+		id: 4533,
+		createtime: "2017-12-29 15:24:50",
+		taskId: "305af794-b1a3-45b3-8754-9e7d789e1b97",
+		recordId: null,
+		lastNumber: "4438",
+		tranDate: "2017-12-29",
+		consumeType: "快捷支付",
+		chargeDate: null,
+		currency: null,
+		fee: "-50.00",
+		balance: "0.01",
+		transLocation: "兴业银行北京知春路支行",
+		transWay: null,
+		transMode: null,
+		transDecription: "支付宝-alipay,订单号2017122900002011352651621",
+		comment: null,
+		oppositeCardNumber: "321010163521000153",
+		oppositeCardHolder: "网上支付异地过渡性款项",
+		oppositeBankName: "兴业银行",
+		currentaccountType: null,
+		},
+	],
+	debitCardBaseInfo: [
+	{
+		id: 89,
+		createtime: "2017-12-29 15:24:47",
+		taskId: "305af794-b1a3-45b3-8754-9e7d789e1b97",
+		cardId: null,
+		cardType: "储蓄卡",
+		bankName: "兴业银行",
+		cardNumber: "622908323015489958",
+		lastNumber: "9958",
+		cardHolder: "陈素哲",
+		depositBank: "北京分行",
+		depositTime: "2017-11-15",
+		balance: "0.0",
+		idNumber: "230589194602151846",
+		},
+	{
+		id: 90,
+		createtime: "2017-12-29 15:24:47",
+		taskId: "305af794-b1a3-45b3-8754-9e7d789e1b97",
+		cardId: null,
+		cardType: "储蓄卡",
+		bankName: "兴业银行",
+		cardNumber: "622908323024974438",
+		lastNumber: "4438",
+		cardHolder: "赵辉",
+		depositBank: "北京分行",
+		depositTime: "2017-11-30",
+		balance: "50.01",
+		idNumber: "230589194602151846",
+		},
+	],
+	debitCardDepositInfo: [
+	{
+		id: 29,
+		createtime: "2017-12-29 15:24:47",
+		taskId: "305af794-b1a3-45b3-8754-9e7d789e1b97",
+		cardNumber: "622908323024974438",
+		depositType: "人民币定期",
+		currency: "人民币",
+		interestBegindate: "2017-11-30",
+		interestEnddate: "2018-02-28",
+		storgePeriod: "3个月",
+		storgePeriodUnit: null,
+		interestRate: null,
+		balance: "50.00",
+		}
+	],
+	createtime: 1516413522996,
+	errorCode: 800,
+}
+				</pre>
+				<h3 class="page-header">返回字段</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>对象名</th>
+							<th>字段名</th>
+							<th>类型</th>
+							<th>注释</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>debitCardBaseInfo</td>
+							<td>cardId</td>
+							<td>String</td>
+							<td>银行卡ID</td>
+						</tr>
+						<tr>
+							<td>debitCardBaseInfo</td>
+							<td>cardType</td>
+							<td>String</td>
+							<td>卡片类型</td>
+						</tr>
+						<tr>
+							<td>debitCardBaseInfo</td>
+							<td>bankName</td>
+							<td>String</td>
+							<td>银行名称</td>
+						</tr>
+						<tr>
+							<td>debitCardBaseInfo</td>
+							<td>cardNumber</td>
+							<td>String</td>
+							<td>卡片号码</td>
+						</tr>
+						<tr>
+							<td>debitCardBaseInfo</td>
+							<td>lastNumber</td>
+							<td>String</td>
+							<td>卡号后四位</td>
+						</tr>
+						<tr>
+							<td>debitCardBaseInfo</td>
+							<td>cardHolder</td>
+							<td>String</td>
+							<td>卡片持有人</td>
+						</tr>
+						<tr>
+							<td>debitCardBaseInfo</td>
+							<td>depositBank</td>
+							<td>String</td>
+							<td>开户行</td>
+						</tr>
+						<tr>
+							<td>debitCardBaseInfo</td>
+							<td>depositTime</td>
+							<td>String</td>
+							<td>开户时间</td>
+						</tr>
+						<tr>
+							<td>debitCardBaseInfo</td>
+							<td>balance</td>
+							<td>String</td>
+							<td>余额</td>
+						</tr>
+						<tr>
+							<td>debitCardBaseInfo</td>
+							<td>idNumber</td>
+							<td>String</td>
+							<td>身份证号</td>
+						</tr>
+						<tr>
+							<td>debitCardDepositInfo</td>
+							<td>cardNumber</td>
+							<td>String</td>
+							<td>卡号</td>
+						</tr>
+						<tr>
+							<td>debitCardDepositInfo</td>
+							<td>depositType</td>
+							<td>String</td>
+							<td>定期存款类型</td>
+						</tr>
+						<tr>
+							<td>debitCardDepositInfo</td>
+							<td>currency</td>
+							<td>String</td>
+							<td>币种</td>
+						</tr>
+						<tr>
+							<td>debitCardDepositInfo</td>
+							<td>interestBegindate</td>
+							<td>String</td>
+							<td>计息日期</td>
+						</tr>
+						<tr>
+							<td>debitCardDepositInfo</td>
+							<td>interestEnddate</td>
+							<td>String</td>
+							<td>到期日期</td>
+						</tr>
+						<tr>
+							<td>debitCardDepositInfo</td>
+							<td>storgePeriod</td>
+							<td>String</td>
+							<td>存期</td>
+						</tr>
+						<tr>
+							<td>debitCardDepositInfo</td>
+							<td>storgePeriodUnit</td>
+							<td>String</td>
+							<td>存期单位</td>
+						</tr>
+						<tr>
+							<td>debitCardDepositInfo</td>
+							<td>interestRate</td>
+							<td>String</td>
+							<td>利率</td>
+						</tr>
+						<tr>
+							<td>debitCardDepositInfo</td>
+							<td>balance</td>
+							<td>String</td>
+							<td>余额</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>record_id</td>
+							<td>String</td>
+							<td>记录号</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>lastNumber</td>
+							<td>String</td>
+							<td>卡号后四位</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>tranDate</td>
+							<td>String</td>
+							<td>交易日期</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>consumeType</td>
+							<td>String</td>
+							<td>消费类型</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>chargeDate</td>
+							<td>String</td>
+							<td>记账日期</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>currency</td>
+							<td>String</td>
+							<td>币种</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>fee</td>
+							<td>String</td>
+							<td>消费金额</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>balance</td>
+							<td>String</td>
+							<td>余额</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>transLocation</td>
+							<td>String</td>
+							<td>交易地点</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>transWay</td>
+							<td>String</td>
+							<td>交易方式</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>transMode</td>
+							<td>String</td>
+							<td>交易通道</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>transDecription</td>
+							<td>String</td>
+							<td>交易描述</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>comment</td>
+							<td>String</td>
+							<td>备注</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>oppositeCardNumber</td>
+							<td>String</td>
+							<td>对方卡号</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>oppositeCardHolder</td>
+							<td>String</td>
+							<td>对方持卡人</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>oppositeBankName</td>
+							<td>String</td>
+							<td>对方银行</td>
+						</tr>
+						<tr>
+							<td>debiCardTransDetail</td>
+							<td>currentaccountType</td>
+							<td>String</td>
+							<td>往来账类型</td>
+						</tr>
+												
+					</tbody>
+				</table>
+				
+				<h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p>
+				
+				<h3 class="page-header">状态码映射</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>状态码</th>
+							<th>信息</th>
+							<th>解释说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>800</td>
+							<td>success</td>
+							<td>成功</td>
+						</tr>
+						<tr>
+							<td>601</td>
+							<td>taskid is null and idnum is null!</td>
+							<td>参数为空</td>
+						</tr>
+						<tr>
+							<td>602</td>
+							<td>no data was found!</td>
+							<td>查无数据</td>
+						</tr>
+						<tr>
+							<td>603</td>
+							<td>ETL is not excuted!</td>
+							<td>数据处理程序未执行</td>
+						</tr>
+						<tr>
+							<td>604</td>
+							<td>crawler have some problems!</td>
+							<td>该任务爬取程序出现问题</td>
+						</tr>
+						<tr>
+							<td>605</td>
+							<td>taskid not matches idnum!</td>
+							<td>任务号与身份证号不匹配</td>
+						</tr>
+						
+					</tbody>
+				</table>  
+<!--			<h3 class="page-header">返回字段说明</h3>  
+				<div th:replace="components/ETLbackfield :: ETLbackfield"></div> 
+			    
+				<span>备注：</span>
+			    <div th:replace="components/remark :: remark"></div> -->
+			    
+<!--			<h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p> -->
+			    
+			</div>
+		</div>
+		</div>
+		
+		 <div th:include="components/footer :: footer"></div>
+		
+</body>
+</html>

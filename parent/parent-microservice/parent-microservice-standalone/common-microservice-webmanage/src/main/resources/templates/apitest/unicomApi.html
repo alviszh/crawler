@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+			
+			<form action="/apitest/unicom" method="post">
+				<input type="hidden" name="module" th:value="${module}" />
+				
+				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+					<h2 class="page-header">API测试</h2>
+					
+					<div class="well">
+						<h3>获取中国联通数据爬取结果</h3>
+						<table class="table table-bordered table-hover">
+							<tbody>
+								<tr>
+									<td>接口描述</td>
+									<td>根据TaskId获取账单</td>
+								</tr>
+								<tr>
+									<td>接口类型</td>
+									<td>GET</td>
+								</tr>
+								<tr>
+									<td>URL</td>
+									<td>http://10.167.202.192:1234/carrier/apitest/unicom/result/{taskId}</td>
+								</tr>
+								<tr>
+									<td>备注</td>
+									<td>根据TaskId获取爬取结果</td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<p>
+							<input type="text" id="taskId" class="form-control" placeholder="请输入TaskId" />
+						</p>
+						
+						<button type="button" class="btn btn-primary" onclick="invokeUnicomApiTest();">接口调用</button> 
+					</div>
+					
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<b>用户信息</b>
+						</div>
+						<div class="panel-body view-table-container pre-scrollable">
+							<table class="table table-bordered table-hover table-striped view-table">
+							<thead>
+								<tr>
+									<th class="view-th">序号</th>
+									<th class="view-th">用户密码</th>
+									<th class="view-th">套餐名</th>
+									<!-- <th class="view-th">provincecode</th> -->
+									<th class="view-th">手机号</th>
+									<!-- <th class="view-th">expireTime</th>
+									<th class="view-th">nettype</th>
+									<th class="view-th">areaCode</th>
+									<th class="view-th">certnum</th> -->
+									<th class="view-th">开户日期</th>
+									<!-- <th class="view-th">citycode</th>
+									<th class="view-th">paytype</th>
+									<th class="view-th">productId</th> -->
+									<th class="view-th">用户名</th>
+									<!-- <th class="view-th">brand</th>
+									<th class="view-th">productType</th>
+									<th class="view-th">packageID</th>
+									<th class="view-th">currentID</th>
+									<th class="view-th">customid</th> -->
+									<th class="view-th">用户星级</th>
+									<!-- <th class="view-th">loginType</th> -->
+									<th class="view-th">用户名</th>
+									<th class="view-th">有效期</th>
+									<!-- <th class="view-th">laststatdate</th>
+									<th class="view-th">brand_name</th>
+									<th class="view-th">is_wo</th>
+									<th class="view-th">is_20</th>
+									<th class="view-th">is_36</th> -->
+								</tr>
+							</thead>
+							<tbody id="tbody_userinfo"></tbody>
+						</table>
+						</div>
+					</div>
+					
+					
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<b>通话详单</b>
+						</div>
+						<div class="panel-body view-table-container pre-scrollable">
+							<table class="table table-bordered table-hover table-striped view-table">
+							<thead>
+								<tr>
+									<th class="view-th">序号</th>
+									<th class="view-th">用户名</th>
+									<!-- <th class="view-th">md5</th>
+									<th class="view-th">businesstype</th>
+									<th class="view-th">longtype</th>
+									<th class="view-th">thtype</th> -->
+									<th class="view-th">他人号码</th>
+									<!-- <th class="view-th">cellid</th> -->
+									<th class="view-th">语音电话</th>
+									<!-- <th class="view-th">twoplusfee</th> -->
+									<th class="view-th">共消费</th>
+									<th class="view-th">时长通话</th>
+									<th class="view-th">通话日期</th>
+									<th class="view-th">通话时间</th>
+									<th class="view-th">通话类型</th>
+									<!-- <th class="view-th">othernum</th>
+									<th class="view-th">otherarea</th>
+									<th class="view-th">romatype</th>
+									<th class="view-th">homearea</th>
+									<th class="view-th">homenum</th>
+									<th class="view-th">calltypeName</th> -->
+									<th class="view-th">国内/国外</th>
+									<th class="view-th">国内长途</th>
+									<!-- <th class="view-th">homeareaName</th>
+									<th class="view-th">otherareaName</th>
+									<th class="view-th">nativefee</th>
+									<th class="view-th">landfee</th>
+									<th class="view-th">roamfee</th> -->
+									<th class="view-th">收费</th>
+									<th class="view-th">附加费</th>
+								</tr>
+							</thead>
+							<tbody id="tbody_usercall"></tbody>
+						</table>
+						</div>
+					</div>
+					
+					
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<b>短信详单</b>
+						</div>
+						<div class="panel-body view-table-container pre-scrollable">
+							<table class="table table-bordered table-hover table-striped view-table">
+							<thead>
+								<tr>
+									<th class="view-th">序号</th>
+									<th class="view-th">手机号</th>
+									<!-- <th class="view-th">amount</th>
+									<th class="view-th">fee</th> -->
+									<th class="view-th">发送日期</th>
+									<th class="view-th">发送时间</th>
+									<!-- <th class="view-th">businesstype</th> -->
+									<th class="view-th">其他手机号</th>
+									<th class="view-th">短信类型</th>
+									<!-- <th class="view-th">otherarea</th> -->
+									<th class="view-th">归属地</th>
+									<!-- <th class="view-th">deratefee</th> -->
+								</tr>
+							</thead>
+							<tbody id="tbody_usersms"></tbody>
+						</table>
+						</div>
+					</div>
+					
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<b>历史账单</b>
+						</div>
+						<div class="panel-body view-table-container pre-scrollable">
+							<table class="table table-bordered table-hover table-striped view-table">
+							<thead>
+								<tr>
+									<th class="view-th">序号</th>
+									<th class="view-th">费用类型</th>
+									<th class="view-th">费用值</th>
+									<th class="view-th">费用值2</th>
+									<th class="view-th">费用类型2</th>
+									<th class="view-th">费用类型code2</th>
+								</tr>
+							</thead>
+							<tbody id="tbody_userdetail"></tbody>
+						</table>
+						</div>
+					</div>
+					
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<b>积分</b>
+						</div>
+						<div class="panel-body view-table-container pre-scrollable">
+							<table class="table table-bordered table-hover table-striped view-table">
+							<thead>
+								<tr>
+									<th class="view-th">序号</th>
+									<th class="view-th">日期</th>
+									<th class="view-th">新增</th>
+									<th class="view-th">积分类型</th>
+									<th class="view-th">积分数量</th>
+									<th class="view-th">积分增长日期</th>
+									<th class="view-th">积分增长类型</th>
+									<th class="view-th">积分增长数量</th>
+								</tr>
+							</thead>
+							<tbody id="tbody_userintegral"></tbody>
+						</table>
+						</div>
+					</div>
+					
+					
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<b>缴费记录</b>
+						</div>
+						<div class="panel-body view-table-container pre-scrollable">
+							<table class="table table-bordered table-hover table-striped view-table">
+							<thead>
+								<tr>
+									<th class="view-th">序号</th>
+									<th class="view-th">缴费金额</th>
+									<th class="view-th">缴费日期</th>
+									<th class="view-th">缴费类型</th>
+								</tr>
+							</thead>
+							<tbody id="tbody_userpay"></tbody>
+						</table>
+						</div>
+					</div>
+					
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<b>合约信息</b>
+						</div>
+						<div class="panel-body view-table-container pre-scrollable">
+							<table class="table table-bordered table-hover table-striped view-table">
+							<thead>
+								<tr>
+									<th class="view-th">序号</th>
+									<th class="view-th">结束时间</th>
+									<th class="view-th">业务名</th>
+									<!-- <th class="view-th">effectTime</th>
+									<th class="view-th">activityId</th> -->
+									<th class="view-th">起始时间</th>
+									<th class="view-th">结束时间</th>
+								</tr>
+							</thead>
+							<tbody id="tbody_useractivity"></tbody>
+						</table>
+						</div>
+					</div>
+					
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- 模态弹出窗内容 -->
+	<div class="modal" id="infoModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">提示</h4>
+				</div>
+				<div class="modal-body">
+					<p id="infoText"></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	
+	<div th:include="components/footer :: footer"></div>
+
+</body>
+<script src="/js/apitest_unicom.js"></script>
+</html>

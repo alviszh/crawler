@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">苏宁统一数据接口</h2>
+				<h3 class="page-header">说明</h3>
+				<p>
+					该接口通过输入的登录名或taskid来获取统一处理过的苏宁爬取数据。
+				</p>
+				<h3 class="page-header">URL</h3>
+				<p>
+					http://10.167.202.203:8009/ecommerce/tasks/suning/detail
+				</p>
+				<h3 class="page-header">格式</h3>
+				<p>
+					JSON   
+				</p>
+				<h3 class="page-header">HTTP请求方式</h3>
+				<p>
+					POST/GET   
+				</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>#</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>loginName</td>
+							<td>true</td>
+							<td>String</td>
+							<td>登录名</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>任务号</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="page-header">注意事项</h3>
+				<ol style="margin-left: 0px;">
+					<li>登录名或taskid必须有一个，如果taskid不为空，则默认用taskid查询，如果taskid为空，则用登录名查询，获取该登录名最新的数据</li>
+				</ol>
+				   
+				<h3 class="page-header">例子</h3>
+				<p>说明：利用taskid和登录名来获取完成数据</p>
+				<p>请求：http://10.167.202.203:8009/ecommerce/tasks/suning/detail?taskid=9b560bcf-aa57-41c2-84c7-e1623fa790c4</p>
+				<p>返回：JSON</p>
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+  param: {
+    loginName: null,
+    taskid: "9b560bcf-aa57-41c2-84c7-e1623fa790c4",
+    
+  },
+  userInfoSuning: [
+    {
+      id: 40,
+      createtime: "2018-06-05 18:13:50",
+      taskId: "9b560bcf-aa57-41c2-84c7-e1623fa790c4",
+      vipid: "6006846637",
+      username: "zhaochunxiang555",
+      levelNum: "V1",
+      name: "赵春香",
+      nickname: null,
+      gender: "女",
+      telNum: "150******28",
+      email: "zh***5@126.com",
+      birthday: null,
+      constellation: null,
+      address: "北京市北京市朝阳区全区",
+      
+    }
+  ],
+  orderDetailSuning: [
+    {
+      id: 181,
+      createtime: "2018-06-05 18:13:39",
+      taskId: "9b560bcf-aa57-41c2-84c7-e1623fa790c4",
+      submitTime: "2014-09-15 16:02:15",
+      transStatus: "已完成",
+      vendorName: "苏宁自营",
+      receiverName: "赵春香",
+      receiverTel: "15010004328",
+      receiverAddr: "北京北京市朝阳区全区朝阳北三环东路西坝河东里18号三元大厦16层",
+      shipModeContent: "配送",
+      productName: "欧珀莱水润感应精华露64g(答谢品）",
+      qty: "1",
+      price: "59.90",
+      
+    },
+    {
+      id: 182,
+      createtime: "2018-06-05 18:13:39",
+      taskId: "9b560bcf-aa57-41c2-84c7-e1623fa790c4",
+      submitTime: "2013-08-19 20:43:42",
+      transStatus: "已完成",
+      vendorName: "苏宁自营",
+      receiverName: "王胜利",
+      receiverTel: "15810430749",
+      receiverAddr: "北京北京市石景山区全境北京市石景山区石景山路40号信安大厦4层",
+      shipModeContent: "配送",
+      productName: "纽曼思藻油DHA软胶囊婴幼儿90粒",
+      qty: "1",
+      price: "466.00",
+      
+    },
+    {
+      id: 183,
+      createtime: "2018-06-05 18:13:40",
+      taskId: "9b560bcf-aa57-41c2-84c7-e1623fa790c4",
+      submitTime: "2013-07-11 15:13:05",
+      transStatus: "已完成",
+      vendorName: "苏宁自营",
+      receiverName: "赵春香",
+      receiverTel: "15010004328",
+      receiverAddr: "北京北京市朝阳区全区北京市朝阳区祁家豁子8号健翔大厦5层512室优购网 ",
+      shipModeContent: "配送",
+      productName: "MEXICAN稻草人 女士两折长款加厚钱包30866L-01红",
+      qty: "1",
+      price: "99.00",
+      
+    },
+    {
+      id: 184,
+      createtime: "2018-06-05 18:13:40",
+      taskId: "9b560bcf-aa57-41c2-84c7-e1623fa790c4",
+      submitTime: "2013-07-10 21:51:10",
+      transStatus: "已完成",
+      vendorName: "苏宁自营",
+      receiverName: "赵春香",
+      receiverTel: "15010004328",
+      receiverAddr: "北京北京市朝阳区全区北京市朝阳区祁家豁子8号健翔大厦5层512室优购网 ",
+      shipModeContent: "配送",
+      productName: "欧珀莱优能活肤丰润紧致面膜23ml*6片（答谢品）",
+      qty: "1",
+      price: "74.90",
+      
+    },
+    {
+      id: 185,
+      createtime: "2018-06-05 18:13:40",
+      taskId: "9b560bcf-aa57-41c2-84c7-e1623fa790c4",
+      submitTime: "2013-07-10 21:51:10",
+      transStatus: "已完成",
+      vendorName: "苏宁自营",
+      receiverName: "赵春香",
+      receiverTel: "15010004328",
+      receiverAddr: "北京北京市朝阳区全区北京市朝阳区祁家豁子8号健翔大厦5层512室优购网 ",
+      shipModeContent: "配送",
+      productName: "美即（Magic）海洋冰泉补水面膜10片装25g×10片",
+      qty: "2",
+      price: "63.00",
+      
+    },
+    {
+      id: 186,
+      createtime: "2018-06-05 18:13:40",
+      taskId: "9b560bcf-aa57-41c2-84c7-e1623fa790c4",
+      submitTime: "2013-07-10 21:31:37",
+      transStatus: "已完成",
+      vendorName: "苏宁自营",
+      receiverName: "王胜利",
+      receiverTel: "15810430749",
+      receiverAddr: "北京北京市石景山区全境北京市石景山区石景山路40号信安大厦4层",
+      shipModeContent: "配送",
+      productName: "纽曼思藻油DHA软胶囊婴幼儿30粒",
+      qty: "3",
+      price: "167.00",
+      
+    },
+    
+  ],
+  accountInfoSuning: [
+    {
+      id: 28,
+      createtime: "2018-06-05 18:13:55",
+      taskId: "9b560bcf-aa57-41c2-84c7-e1623fa790c4",
+      name: "赵春香",
+      username: null,
+      idNum: "441522199005181752",
+      phoneNum: "150******28 ",
+      email: "zh***5@126.com",
+      occupation: null,
+      address: null,
+      
+    }
+  ],
+  cardInfoSuning: [
+    {
+      id: 50,
+      createtime: "2018-06-05 18:13:57",
+      taskId: "9b560bcf-aa57-41c2-84c7-e1623fa790c4",
+      cardType: "储蓄卡",
+      bindTime: "2014-11-05 16:59:51",
+      status: "签约成功",
+      lastNum: "6603",
+      bankName: "招商银行",
+      
+    }
+  ],
+  addressInfoSuning: [
+    {
+      id: 93,
+      createtime: "2018-06-05 18:13:42",
+      taskId: "9b560bcf-aa57-41c2-84c7-e1623fa790c4",
+      name: "赵春香",
+      telNum: "150******28",
+      address: "[默认] 北京市北京市朝阳区全区朝阳北三环东路西坝河东里18号三元大厦16层",
+      
+    },
+    {
+      id: 94,
+      createtime: "2018-06-05 18:13:42",
+      taskId: "9b560bcf-aa57-41c2-84c7-e1623fa790c4",
+      name: "王胜利",
+      telNum: "158******49",
+      address: "北京市北京市石景山区全境北京市石景山区石景山路40号信安大厦4层",
+      
+    },
+    {
+      id: 95,
+      createtime: "2018-06-05 18:13:42",
+      taskId: "9b560bcf-aa57-41c2-84c7-e1623fa790c4",
+      name: "赵春香",
+      telNum: "150******28",
+      address: "北京市北京市朝阳区全区北京市朝阳区祁家豁子8号健翔大厦5层512室优购网",
+      
+    },
+    
+  ],
+  createtime: 1528277372115,
+  message: "success",
+  errorCode: 500,
+  profile: "test",
+  
+}
+				</pre>
+				<h3 class="page-header">返回字段</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>对象名</th>
+							<th>字段名</th>
+							<th>类型</th>
+							<th>注释</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>userInfoSuning</td>
+							<td>vipid</td>
+							<td>String</td>
+							<td>会员编号</td>
+						</tr>
+						<tr>
+							<td>userInfoSuning</td>
+							<td>username</td>
+							<td>String</td>
+							<td>用户名</td>
+						</tr>
+						<tr>
+							<td>userInfoSuning</td>
+							<td>levelNum</td>
+							<td>String</td>
+							<td>用户等级</td>
+						</tr>
+						<tr>
+							<td>userInfoSuning</td>
+							<td>name</td>
+							<td>String</td>
+							<td>真实姓名</td>
+						</tr>
+						<tr>
+							<td>userInfoSuning</td>
+							<td>nickname</td>
+							<td>String</td>
+							<td>昵称</td>
+						</tr>
+						<tr>
+							<td>userInfoSuning</td>
+							<td>gender</td>
+							<td>String</td>
+							<td>会员编号</td>
+						</tr>
+						<tr>
+							<td>userInfoSuning</td>
+							<td>telNum</td>
+							<td>String</td>
+							<td>手机</td>
+						</tr>
+						<tr>
+							<td>userInfoSuning</td>
+							<td>email</td>
+							<td>String</td>
+							<td>邮箱</td>
+						</tr>
+						<tr>
+							<td>userInfoSuning</td>
+							<td>birthday</td>
+							<td>String</td>
+							<td>生日</td>
+						</tr>
+						<tr>
+							<td>userInfoSuning</td>
+							<td>constellation</td>
+							<td>String</td>
+							<td>星座</td>
+						</tr>
+						<tr>
+							<td>userInfoSuning</td>
+							<td>address</td>
+							<td>String</td>
+							<td>居住地址</td>
+						</tr>
+						<tr>
+							<td>orderDetailSuning</td>
+							<td>submitTime</td>
+							<td>String</td>
+							<td>订单时间</td>
+						</tr>
+						<tr>
+							<td>orderDetailSuning</td>
+							<td>transStatus</td>
+							<td>String</td>
+							<td>订单状态</td>
+						</tr>
+						<tr>
+							<td>orderDetailSuning</td>
+							<td>vendorName</td>
+							<td>String</td>
+							<td>商家名称</td>
+						</tr>
+						<tr>
+							<td>orderDetailSuning</td>
+							<td>receiverName</td>
+							<td>String</td>
+							<td>收货人</td>
+						</tr>
+						<tr>
+							<td>orderDetailSuning</td>
+							<td>receiverTel</td>
+							<td>String</td>
+							<td>收货电话</td>
+						</tr>
+						<tr>
+							<td>orderDetailSuning</td>
+							<td>receiverAddr</td>
+							<td>String</td>
+							<td>收货地址</td>
+						</tr>
+						<tr>
+							<td>orderDetailSuning</td>
+							<td>shipModeContent</td>
+							<td>String</td>
+							<td>订单配送</td>
+						</tr>
+						<tr>
+							<td>orderDetailSuning</td>
+							<td>productName</td>
+							<td>String</td>
+							<td>商品名称</td>
+						</tr>
+						<tr>
+							<td>orderDetailSuning</td>
+							<td>qty</td>
+							<td>String</td>
+							<td>商品数量</td>
+						</tr>
+						<tr>
+							<td>orderDetailSuning</td>
+							<td>price</td>
+							<td>String</td>
+							<td>商品价格</td>
+						</tr>
+						<tr>
+							<td>accountInfoSuning</td>
+							<td>name</td>
+							<td>String</td>
+							<td>真实姓名</td>
+						</tr>
+						<tr>
+							<td>accountInfoSuning</td>
+							<td>username</td>
+							<td>String</td>
+							<td>账户名</td>
+						</tr>
+						<tr>
+							<td>accountInfoSuning</td>
+							<td>idNum</td>
+							<td>String</td>
+							<td>证件号码</td>
+						</tr>
+						<tr>
+							<td>accountInfoSuning</td>
+							<td>phoneNum</td>
+							<td>String</td>
+							<td>手机号码</td>
+						</tr>
+						<tr>
+							<td>accountInfoSuning</td>
+							<td>email</td>
+							<td>String</td>
+							<td>联系邮箱</td>
+						</tr>
+						<tr>
+							<td>accountInfoSuning</td>
+							<td>occupation</td>
+							<td>String</td>
+							<td>职业</td>
+						</tr>
+						<tr>
+							<td>accountInfoSuning</td>
+							<td>address</td>
+							<td>String</td>
+							<td>联系地址</td>
+						</tr>
+						<tr>
+							<td>addressInfoSuning</td>
+							<td>name</td>
+							<td>String</td>
+							<td>收货人</td>
+						</tr>
+						<tr>
+							<td>addressInfoSuning</td>
+							<td>telNum</td>
+							<td>String</td>
+							<td>联系电话</td>
+						</tr>
+						<tr>
+							<td>addressInfoSuning</td>
+							<td>address</td>
+							<td>String</td>
+							<td>收货地址</td>
+						</tr>
+						<tr>
+							<td>cardInfoSuning</td>
+							<td>cardType</td>
+							<td>String</td>
+							<td>绑定卡类型</td>
+						</tr>
+						<tr>
+							<td>cardInfoSuning</td>
+							<td>bindTime</td>
+							<td>String</td>
+							<td>开通时间</td>
+						</tr>
+						<tr>
+							<td>cardInfoSuning</td>
+							<td>status</td>
+							<td>String</td>
+							<td>当前状态</td>
+						</tr>
+						<tr>
+							<td>cardInfoSuning</td>
+							<td>lastNum</td>
+							<td>String</td>
+							<td>尾号</td>
+						</tr>																										
+					</tbody>
+				</table>
+				
+				<h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p>
+				
+				<h3 class="page-header">状态码映射</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>状态码</th>
+							<th>信息</th>
+							<th>解释说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>500</td>
+							<td>success</td>
+							<td>成功</td>
+						</tr>
+						<tr>
+							<td>501</td>
+							<td>taskid is null and idnum is null!</td>
+							<td>参数为空</td>
+						</tr>
+						<tr>
+							<td>502</td>
+							<td>no data was found!</td>
+							<td>查无数据</td>
+						</tr>
+						<tr>
+							<td>503</td>
+							<td>ETL is not excuted!</td>
+							<td>数据处理程序未执行</td>
+						</tr>
+						<tr>
+							<td>504</td>
+							<td>crawler have some problems!</td>
+							<td>该任务爬取程序出现问题</td>
+						</tr>
+						<tr>
+							<td>505</td>
+							<td>taskid not matches idnum!</td>
+							<td>任务号与身份证号不匹配</td>
+						</tr>
+						
+					</tbody>
+				</table>  
+<!--			<h3 class="page-header">返回字段说明</h3>  
+				<div th:replace="components/ETLbackfield :: ETLbackfield"></div> 
+			    
+				<span>备注：</span>
+			    <div th:replace="components/remark :: remark"></div> -->
+			    
+<!--			<h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p> -->
+			    
+			</div>
+		</div>
+		</div>
+		
+		 <div th:include="components/footer :: footer"></div>
+		
+</body>
+</html>

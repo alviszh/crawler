@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sr.microservice</groupId>
+		<artifactId>parent-microservice</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<!-- <groupId>com.sr.insurance</groupId> -->
+	<artifactId>parent-microservice-insurance</artifactId>
+	<packaging>pom</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zipkin</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netflix.hystrix</groupId>
+			<artifactId>hystrix-javanica</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>com.google.guava</groupId>
+					<artifactId>guava</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.sr.storm</groupId>
+			<artifactId>common-module-selenium</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sr.storm</groupId>
+			<artifactId>common-module-htmlunit</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sr.storm</groupId>
+			<artifactId>common-module-dao</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sr.storm</groupId>
+			<artifactId>common-module-crawler</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sr.storm</groupId>
+			<artifactId>common-module-log</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sr.microservice</groupId>
+			<artifactId>common-microservice-ocr</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+	<modules>
+		<module>common-microservice-insurance-service</module>
+		<module>common-microservice-insurance-beijing</module>
+		<module>common-microservice-insurance-guangzhou</module>
+		<module>common-microservice-insurance-shenzhen</module>
+		<module>common-microservice-insurance-shanghai</module>
+		<module>common-microservice-insurance-foshan</module>
+		<module>common-microservice-insurance-h5</module>
+		<module>common-microservice-insurance-chengdu</module>
+		<module>common-microservice-insurance-qingdao</module>
+		<module>common-microservice-insurance-ningbo</module>
+		<module>common-microservice-insurance-yantai</module>
+		<module>common-mircoservice-insurance-changchun</module>
+		<module>common-microservice-insurance-shijiazhuang</module>
+		<module>common-microservice-insurance-zibo</module>
+		<module>common-microservice-insurance-dongguan</module>
+		<module>common-microservice-insurance-chongqing</module>
+		<module>common-microservice-insurance-tianjin</module>
+		<module>common-microservice-insurance-suzhou</module>
+		<module>common-microservice-insurance-zhengzhou</module>
+		<module>common-microservice-insurance-xiamen</module>
+		<module>common-microservice-insurance-nanjing</module>
+		<module>common-microservice-insurance-hefei</module>
+		<module>common-microservice-insurance-guiyang</module>
+		<module>common-microservice-insurance-shenyang</module>
+		<module>common-microservice-insurance-wenzhou</module>
+		<module>common-microservice-insurance-taiyuan</module>
+		<module>common-microservice-insurance-hangzhou</module>
+		<module>common-microservice-insurance-sz-hunan</module>
+		<module>common-microservice-insurance-wuhan</module>
+		<module>common-microservice-insurance-xuzhou</module>
+		<module>common-microservice-insurance-quanzhou</module>
+		<module>common-microservice-insurance-wuxi</module>
+		<module>common-microservice-insurance-nanchang</module>
+		<module>common-microservice-insurance-jinan</module>
+		<module>common-microservice-insurance-jining</module>
+		<module>common-microservice-insurance-dezhou</module>
+		<module>common-microservice-insurance-binzhou</module>
+		<module>common-microservice-insurance-panjin</module>
+		<module>common-microservice-insurance-tieling</module>
+		<module>common-microservice-insurance-linyi</module>
+		<module>common-microservice-insurance-etl</module>
+		<module>common-microservice-insurance-anshan</module>
+		<module>common-microservice-insurance-hengshui</module>
+		<module>common-microservice-insurance-weihai</module>
+		<module>common-microservice-insurance-sz-heilongjiang</module>
+		<module>common-microservice-insurance-sz-jilin</module>
+		<module>common-microservice-insurance-zaozhuang</module>
+		<module>common-microservice-insurance-weifang</module>
+		<module>common-microservice-insurance-liaocheng</module>
+		<module>common-microservice-insurance-rizhao</module>
+		<module>common-microservice-insurance-taian</module>
+		<module>common-microservice-insurance-sz-neimenggu</module>
+		<module>common-microservice-insurance-jiyuan</module>
+		<module>common-microservice-insurance-lanzhou</module>
+		<module>common-microservice-insurance-dalian</module>
+		<module>common-microservice-insurance-leshan</module>
+		<module>common-microservice-insurance-sz-xinjiang</module>
+		<module>common-microservice-insurance-shangqiu</module>
+		<module>common-microservice-insurance-sz-shanxi3</module>
+		<module>common-microservice-insurance-nanyang</module>
+		<module>common-microservice-insurance-sz-sichuan</module>
+		<module>common-microservice-insurance-wuzhou</module>
+		<module>common-microservice-insurance-guilin</module>
+		<module>common-microservice-insurance-liuzhou</module>
+		<module>common-microservice-insurance-luoyang</module>
+		<module>common-microservice-insurance-nanning</module>
+		<module>common-microservice-insurance-liangshanyizu</module>
+		<module>common-microservice-insurance-ziyang</module>
+		<module>common-microservice-insurance-taizhou</module>
+		<!-- hyx -->
+		<module>common-microservice-insurance-suqian</module>
+		<module>common-microservice-insurance-lianyungang</module>
+		<module>common-microservice-insurance-changzhou</module>
+		<!-- hyx -->
+		<module>common-microservice-insurance-yibin</module>
+
+		<module>common-microservice-insurance-luohe</module>
+		<module>common-microservice-insurance-task</module>
+		<module>common-microservice-insurance-sz-yunnan</module>
+		<module>common-microservice-insurance-huaian</module>
+		<module>common-microservice-insurance-mianyang</module>
+		<module>common-microservice-insurance-luzhou</module>
+		<module>common-microservice-insurance-nantong</module>
+
+		<module>common-microservice-insurance-huangshi</module>
+		<module>common-microservice-insurance-jiaozuo</module>
+		<module>common-microservice-insurance-guigang</module>
+		<module>common-microservice-insurance-sz-zhejiang</module>
+		<module>common-microservice-insurance-huzhou</module>
+		<module>common-microservice-insurance-zhenjiang</module>
+		<module>common-microservice-insurance-shaoxing</module>
+		<module>common-microservice-insurance-zhoushan</module>
+		<module>common-microservice-insurance-zhuhai</module>
+		<module>common-microservice-insurance-yangzhou</module>
+		<module>common-microservice-insurance-sanming</module>
+		<module>common-microservice-insurance-fuyang</module>
+		<module>common-microservice-insurance-jingzhou</module>
+		<module>common-microservice-insurance-qianjiang</module>
+		<module>common-microservice-insurance-xiangyang</module>
+		<!--已经清理过得pom文件,如果添加新项目 请在下面添加 -->
+		<module>common-microservice-insurance-bengbu</module>
+		<module>common-microservice-insurance-maoming</module>
+		<module>common-microservice-insurance-shaoguan</module>
+		<module>common-microservice-insurance-zhanjiang</module>
+		<module>common-microservice-insurance-zhongshan</module>
+		<module>common-microservice-insurance-fuzhou3</module>
+		<module>common-microservice-insurance-enshi</module>
+		<module>common-microservice-insurance-sz-fujian</module>
+		<module>common-microservice-insurance-jian</module>
+		<module>common-microservice-insurance-zhaoqing</module>
+		<module>common-microservice-insurance-sz-shanxi</module>
+		<module>common-microservice-insurance-ganzhou</module>
+		<module>common-microservice-insurance-haikou</module>
+		<module>common-microservice-insurance-sz-hubei</module>
+		<module>common-microservice-insurance-sz-anhui</module>
+		<module>common-microservice-insurance-yichang</module>
+		<module>common-microservice-insurance-shiyan</module>
+		<module>common-microservice-insurance-xinxiang</module>
+		<module>common-microservice-insurance-jiangmen</module>
+		<module>common-microservice-insurance-huizhou</module>
+		<module>common-microservice-insurance-yulin</module>
+		<module>common-microservice-insurance-xingtai</module>
+		<module>common-microservice-insurance-anqing</module>
+		<module>common-microservice-insurance-panzhihua</module>
+		<module>common-microservice-insurance-kaifeng</module>
+		<module>common-microservice-insurance-sz-guangxi</module>
+		<module>common-microservice-insurance-dandong</module>
+	</modules>
+	<profiles>
+		<profile>
+			<!-- 本机开发环境 -->
+			<id>dev</id>
+			<properties>
+				<app.mobilecrawlertask.active>dev</app.mobilecrawlertask.active>
+				<app.beijing.name>Insurance-BeiJing-local</app.beijing.name>
+				<app.shenzhen.name>Insurance-Shenzhen-local</app.shenzhen.name>
+				<app.guangzhou.name>Insurance-GuangZhou-local</app.guangzhou.name>
+				<app.shanghai.name>Insurance-ShangHai-local</app.shanghai.name>
+				<app.shijiazhuang.name>Insurance-ShiJiaZhuang-local</app.shijiazhuang.name>
+				<app.foshan.name>Insurance-FoShan-local</app.foshan.name>
+				<app.chengdu.name>Insurance-ChengDu-local</app.chengdu.name>
+				<app.qingdao.name>Insurance-Qingdao-local</app.qingdao.name>
+				<app.ningbo.name>Insurance-NingBo-local</app.ningbo.name>
+				<app.leshan.name>Insurance-LeShan-local</app.leshan.name>
+
+				<!-- 冲突的时候别乱删代码 -->
+				<app.yantai.name>Insurance-Yantai-local</app.yantai.name>
+				<app.jinan.name>Insurance-JiNan-local</app.jinan.name>
+				<app.jining.name>Insurance-JiNing-local</app.jining.name>
+				<app.dezhou.name>Insurance-DeZhou-local</app.dezhou.name>
+				<app.binzhou.name>Insurance-BinZhou-local</app.binzhou.name>
+				<app.weihai.name>Insurance-WeiHai-local</app.weihai.name>
+				<app.zaozhuang.name>Insurance-ZaoZhuang-local</app.zaozhuang.name>
+				<app.sz.xinjiang.name>Insurance-sz-XinJiang-local</app.sz.xinjiang.name>
+				<app.mianyang.name>Insurance-MianYang-local</app.mianyang.name>
+				<app.liangshanyizu.name>Insurance-LiangShanyizu-local</app.liangshanyizu.name>
+				<app.ziyang.name>Insurance-ZiYang-local</app.ziyang.name>
+				<app.nantong.name>Insurance-NanTong-local</app.nantong.name>
+				<app.fuyang.name>Insurance-FuYang-local</app.fuyang.name>
+				<app.jingzhou.name>Insurance-JingZhou-local</app.jingzhou.name>
+				<app.qianjiang.name>Insurance-QianJiang-local</app.qianjiang.name>
+				<app.kaifeng.name>Insurance-KaiFeng-local</app.kaifeng.name>
+				<app.haerbin.name>Insurance-HaErBin-local</app.haerbin.name>
+				<!-- 冲突的时候别乱删代码 -->
+
+
+
+
+				<app.zibo.name>Insurance-ZiBo-local</app.zibo.name>
+				<app.dongguan.name>Insurance-DongGuan-local</app.dongguan.name>
+				<app.chongqing.name>Insurance-Chongqing-local</app.chongqing.name>
+				<app.tianjin.name>Insurance-Tianjin-local</app.tianjin.name>
+				<app.changchun.name>Insurance-ChangChun-local</app.changchun.name>
+				<app.suzhou.name>Insurance-Suzhou-local</app.suzhou.name>
+				<app.zhengzhou.name>Insurance-Zhengzhou-local</app.zhengzhou.name>
+				<app.xiamen.name>Insurance-Xiamen-local</app.xiamen.name>
+				<app.nanjing.name>Insurance-NanJing-local</app.nanjing.name>
+				<app.hefei.name>Insurance-HeFei-local</app.hefei.name>
+				<app.guiyang.name>Insurance-Guiyang-local</app.guiyang.name>
+				<app.shenyang.name>Insurance-Shenyang-local</app.shenyang.name>
+				<app.wenzhou.name>Insurance-Wenzhou-local</app.wenzhou.name>
+				<app.taiyuan.name>Insurance-Taiyuan-local</app.taiyuan.name>
+				<app.hangzhou.name>Insurance-HangZhou-local</app.hangzhou.name>
+				<app.sz.hunan.name>Insurance-sz-Hunan-local</app.sz.hunan.name>
+				<app.wuhan.name>Insurance-Wuhan-local</app.wuhan.name>
+				<app.xuzhou.name>Insurance-Xuzhou-local</app.xuzhou.name>
+				<app.daqing.name>Insurance-DaQing-local</app.daqing.name>
+				<app.wuxi.name>Insurance-Wuxi-local</app.wuxi.name>
+				<app.quanzhou.name>Insurance-Quanzhou-local</app.quanzhou.name>
+				<app.nanchang.name>Insurance-Nanchang-local</app.nanchang.name>
+				<app.shenyang.name>Insurance-Shenyang-local</app.shenyang.name>
+				<app.panjin.name>Insurance-PanJin-local</app.panjin.name>
+				<app.tieling.name>Insurance-TieLing-local</app.tieling.name>
+				<app.linyi.name>Insurance-LinYi-local</app.linyi.name>
+				<app.etl.name>insurance-etl-local</app.etl.name>
+				<app.anshan.name>Insurance-AnShan-local</app.anshan.name>
+				<app.hengshui.name>Insurance-HengShui-local</app.hengshui.name>
+				<app.sz.heilongjiang.name>Insurance-sz-HeiLongJiang-local</app.sz.heilongjiang.name>
+				<app.sz.jilin.name>Insurance-sz-JiLin-local</app.sz.jilin.name>
+				<app.weifang.name>Insurance-WeiFang-local</app.weifang.name>
+				<app.shanxi3.name>Insurance-ShanXi3-local</app.shanxi3.name>
+				<app.liaocheng.name>Insurance-LiaoCheng-local</app.liaocheng.name>
+				<app.rizhao.name>Insurance-RiZhao-local</app.rizhao.name>
+				<app.taian.name>Insurance-TaiAn-local</app.taian.name>
+				<app.sz.neimenggu.name>Insurance-sz-NeiMengGu-local</app.sz.neimenggu.name>
+				<app.jiyuan.name>Insurance-JiYuan-local</app.jiyuan.name>
+				<app.lanzhou.name>Insurance-LanZhou-local</app.lanzhou.name>
+				<app.dalian.name>Insurance-DaLian-local</app.dalian.name>
+				<app.pingdingshan.name>Insurance-PingDingShan-local</app.pingdingshan.name>
+				<app.shangqiu.name>Insurance-ShangQiu-local</app.shangqiu.name>
+				<app.luohe.name>Insurance-LuoHe-local</app.luohe.name>
+				<app.jiaozuo.name>Insurance-JiaoZuo-local</app.jiaozuo.name>
+				<app.insuranceTask.name>InsuranceTask</app.insuranceTask.name>
+				<app.nanyang.name>Insurance-NanYang-local</app.nanyang.name>
+				<app.sz.sichuan.name>insurance-sz-sichuan-local</app.sz.sichuan.name>
+				<app.liuzhou.name>Insurance-LiuZhou-local</app.liuzhou.name>
+				<app.wuzhou.name>Insurance-WuZhou-local</app.wuzhou.name>
+				<app.guilin.name>Insurance-GuiLin-local</app.guilin.name>
+				<app.luoyang.name>Insurance-LuoYang-local</app.luoyang.name>
+				<app.sz.yunnan.name>Insurance-sz-YunNan-local</app.sz.yunnan.name>
+				<app.nanning.name>Insurance-NanNing-local</app.nanning.name>
+				<app.huaian.name>Insurance-HuaiAn-local</app.huaian.name>
+				<app.guigang.name>Insurance-GuiGang-local</app.guigang.name>
+				<app.taizhou.name>Insurance-TaiZhou-local</app.taizhou.name>
+				<app.luzhou.name>Insurance-LuZhou-local</app.luzhou.name>
+				<app.sz.zhejiang.name>Insurance-sz-ZheJiang-local</app.sz.zhejiang.name>
+				<app.huzhou.name>Insurance-HuZhou-local</app.huzhou.name>
+				<app.zhenjiang.name>Insurance-ZhenJiang-local</app.zhenjiang.name>
+				<app.shaoxing.name>Insurance-ShaoXing-local</app.shaoxing.name>
+				<app.yibin.name>Insurance-YiBin-local</app.yibin.name>
+				<app.zhoushan.name>Insurance-ZhouShan-local</app.zhoushan.name>
+				<app.zhuhai.name>Insurance-Zhuhai-local</app.zhuhai.name>
+				<app.yangzhou.name>Insurance-YangZhou-local</app.yangzhou.name>
+				<!--hyx -->
+				<app.suqian.name>Insurance-SuQian-local</app.suqian.name>
+				<app.changzhou.name>Insurance-ChangZhou-local</app.changzhou.name>
+				<app.lianyungang.name>Insurance-LianYunGang-local</app.lianyungang.name>
+				<!--hyx -->
+				<app.sanming.name>Insurance-sanming-local</app.sanming.name>
+				<app.huangshi.name>Insurance-HuangShi-local</app.huangshi.name>
+				<app.xiangyang.name>Insurance-XiangYang-local</app.xiangyang.name>
+
+				<app.bengbu.name>Insurance-BengBu-local</app.bengbu.name>
+				<app.maoming.name>Insurance-MaoMing-local</app.maoming.name>
+				<app.shaoguan.name>Insurance-ShaoGuan-local</app.shaoguan.name>
+				<app.enshi.name>Insurance-EnShi-local</app.enshi.name>
+				<app.zhanjiang.name>Insurance-ZhanJiang-local</app.zhanjiang.name>
+				<app.zhongshan.name>Insurance-ZhongShan-local</app.zhongshan.name>
+				<app.fuzhou3.name>Insurance-FuZhou3-local</app.fuzhou3.name>
+				<app.sz.fujian.name>Insurance-sz-FuJian-local</app.sz.fujian.name>
+				<app.jian.name>Insurance-JiAn-local</app.jian.name>
+				<app.zhaoqing.name>Insurance-ZhaoQing-local</app.zhaoqing.name>
+				<app.sz.shanxi.name>Insurance-sz-ShanXi-local</app.sz.shanxi.name>
+				<app.ganzhou.name>Insurance-GanZhou-local</app.ganzhou.name>
+				<app.haikou.name>Insurance-HaiKou-local</app.haikou.name>
+				<app.sz.hubei.name>Insurance-sz-HuBei-local</app.sz.hubei.name>
+				<app.sz.anhui.name>Insurance-sz-AnHui-local</app.sz.anhui.name>
+				<app.yichang.name> Insurance-Yichang-local</app.yichang.name>
+				<app.shiyan.name>Insurance-shiyan-local</app.shiyan.name>
+				<app.xinxiang.name>Insurance-XinXiang-local</app.xinxiang.name>
+				<app.jiangmen.name> Insurance-JiangMen-local</app.jiangmen.name>
+
+				<app.huizhou.name> Insurance-HuiZhou-local</app.huizhou.name>
+				<app.yulin.name> Insurance-YuLin-local</app.yulin.name>
+
+				<app.xingtai.name> Insurance-XingTai-local</app.xingtai.name>
+
+				<app.anqing.name> Insurance-AnQing-local</app.anqing.name>
+				<app.panzhihua.name> Insurance-PanZhiHua-local</app.panzhihua.name>
+				<app.sz.guangxi.name>Insurance-sz-GuangXi-local</app.sz.guangxi.name>
+				<app.dandong.name>Insurance-Dandong-local</app.dandong.name>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<!-- 测试环境 -->
+			<id>test</id>
+			<properties>
+				<app.mobilecrawlertask.active>test</app.mobilecrawlertask.active>
+				<app.beijing.name>Insurance-BeiJing</app.beijing.name>
+				<app.shenzhen.name>Insurance-Shenzhen</app.shenzhen.name>
+				<app.guangzhou.name>Insurance-GuangZhou</app.guangzhou.name>
+				<app.shanghai.name>Insurance-ShangHai</app.shanghai.name>
+				<app.shijiazhuang.name>Insurance-ShiJiaZhuang</app.shijiazhuang.name>
+				<app.foshan.name>Insurance-FoShan</app.foshan.name>
+				<app.chengdu.name>Insurance-ChengDu</app.chengdu.name>
+				<app.qingdao.name>Insurance-Qingdao</app.qingdao.name>
+				<app.ningbo.name>Insurance-NingBo</app.ningbo.name>
+
+
+				<!-- 冲突的时候别乱删代码 -->
+				<app.yantai.name>Insurance-Yantai</app.yantai.name>
+				<app.jinan.name>Insurance-JiNan</app.jinan.name>
+				<app.jining.name>Insurance-JiNing</app.jining.name>
+				<app.dezhou.name>Insurance-DeZhou</app.dezhou.name>
+				<app.binzhou.name>Insurance-BinZhou</app.binzhou.name>
+				<app.weihai.name>Insurance-WeiHai</app.weihai.name>
+				<app.zaozhuang.name>Insurance-ZaoZhuang</app.zaozhuang.name>
+				<app.sz.xinjiang.name>Insurance-sz-XinJiang</app.sz.xinjiang.name>
+				<app.mianyang.name>Insurance-MianYang</app.mianyang.name>
+				<app.liangshanyizu.name>Insurance-LiangShanyizu</app.liangshanyizu.name>
+				<app.ziyang.name>Insurance-ZiYang</app.ziyang.name>
+				<app.nantong.name>Insurance-NanTong</app.nantong.name>
+				<app.fuyang.name>Insurance-FuYang</app.fuyang.name>
+				<app.jingzhou.name>Insurance-JingZhou</app.jingzhou.name>
+				<app.qianjiang.name>Insurance-QianJiang</app.qianjiang.name>
+				<app.kaifeng.name>Insurance-KaiFeng</app.kaifeng.name>
+				<!-- 冲突的时候别乱删代码 -->
+
+
+				<app.leshan.name>Insurance-LeShan</app.leshan.name>
+				<app.zibo.name>Insurance-ZiBo</app.zibo.name>
+				<app.dongguan.name>Insurance-DongGuan</app.dongguan.name>
+				<app.chongqing.name>Insurance-Chongqing</app.chongqing.name>
+				<app.tianjin.name>Insurance-Tianjin</app.tianjin.name>
+				<app.changchun.name>Insurance-ChangChun</app.changchun.name>
+				<app.suzhou.name>Insurance-Suzhou</app.suzhou.name>
+				<app.nanjing.name>Insurance-NanJing</app.nanjing.name>
+				<app.hefei.name>Insurance-HeFei</app.hefei.name>
+				<app.guiyang.name>Insurance-Guiyang</app.guiyang.name>
+				<app.shenyang.name>Insurance-Shenyang</app.shenyang.name>
+				<app.wenzhou.name>Insurance-Wenzhou</app.wenzhou.name>
+				<app.taiyuan.name>Insurance-Taiyuan</app.taiyuan.name>
+				<app.hangzhou.name>Insurance-HangZhou</app.hangzhou.name>
+				<app.sz.hunan.name>Insurance-sz-Hunan</app.sz.hunan.name>
+				<app.wuhan.name>Insurance-Wuhan</app.wuhan.name>
+				<app.xuzhou.name>Insurance-Xuzhou</app.xuzhou.name>
+				<app.daqing.name>Insurance-DaQing</app.daqing.name>
+				<app.haerbin.name>Insurance-HaErBin</app.haerbin.name>
+				<app.sz.hunan.name>Insurance-sz-Hunan</app.sz.hunan.name>
+				<app.wuxi.name>Insurance-Wuxi</app.wuxi.name>
+				<app.quanzhou.name>Insurance-Quanzhou</app.quanzhou.name>
+				<app.zhengzhou.name>Insurance-Zhengzhou</app.zhengzhou.name>
+				<app.xiamen.name>Insurance-Xiamen</app.xiamen.name>
+				<app.nanchang.name>Insurance-Nanchang</app.nanchang.name>
+				<app.panjin.name>Insurance-PanJin</app.panjin.name>
+				<app.tieling.name>Insurance-TieLing</app.tieling.name>
+				<app.linyi.name>Insurance-LinYi</app.linyi.name>
+				<app.etl.name>insurance-etl</app.etl.name>
+				<app.anshan.name>Insurance-AnShan</app.anshan.name>
+				<app.hengshui.name>Insurance-HengShui</app.hengshui.name>
+				<app.sz.heilongjiang.name>Insurance-sz-HeiLongJiang</app.sz.heilongjiang.name>
+				<app.sz.jilin.name>Insurance-sz-JiLin</app.sz.jilin.name>
+				<app.weifang.name>Insurance-WeiFang</app.weifang.name>
+				<app.shanxi3.name>Insurance-ShanXi3</app.shanxi3.name>
+				<app.liaocheng.name>Insurance-LiaoCheng</app.liaocheng.name>
+				<app.rizhao.name>Insurance-RiZhao</app.rizhao.name>
+				<app.taian.name>Insurance-TaiAn</app.taian.name>
+				<app.sz.neimenggu.name>Insurance-sz-NeiMengGu</app.sz.neimenggu.name>
+				<app.jiyuan.name>Insurance-JiYuan</app.jiyuan.name>
+				<app.lanzhou.name>Insurance-LanZhou</app.lanzhou.name>
+				<app.dalian.name>Insurance-DaLian</app.dalian.name>
+				<app.pingdingshan.name>Insurance-PingDingShan</app.pingdingshan.name>
+				<app.shangqiu.name>Insurance-ShangQiu</app.shangqiu.name>
+				<app.luohe.name>Insurance-LuoHe</app.luohe.name>
+				<app.jiaozuo.name>Insurance-JiaoZuo</app.jiaozuo.name>
+				<app.insuranceTask.name>InsuranceTask</app.insuranceTask.name>
+				<app.nanyang.name>Insurance-NanYang</app.nanyang.name>
+				<app.sz.sichuan.name>insurance-sz-sichuan</app.sz.sichuan.name>
+				<app.liuzhou.name>Insurance-LiuZhou</app.liuzhou.name>
+				<app.luoyang.name>Insurance-LuoYang</app.luoyang.name>
+				<app.sz.yunnan.name>Insurance-sz-YunNan</app.sz.yunnan.name>
+				<app.nanning.name>Insurance-NanNing</app.nanning.name>
+				<app.huaian.name>Insurance-HuaiAn</app.huaian.name>
+				<app.guigang.name>Insurance-GuiGang</app.guigang.name>
+				<app.wuzhou.name>Insurance-WuZhou</app.wuzhou.name>
+				<app.taizhou.name>Insurance-TaiZhou</app.taizhou.name>
+				<app.luzhou.name>Insurance-LuZhou</app.luzhou.name>
+				<app.sz.zhejiang.name>Insurance-sz-ZheJiang</app.sz.zhejiang.name>
+				<app.huzhou.name>Insurance-HuZhou</app.huzhou.name>
+				<app.zhenjiang.name>Insurance-ZhenJiang</app.zhenjiang.name>
+				<app.shaoxing.name>Insurance-ShaoXing</app.shaoxing.name>
+				<app.zhoushan.name>Insurance-ZhouShan</app.zhoushan.name>
+				<app.yibin.name>Insurance-YiBin</app.yibin.name>
+				<app.yangzhou.name>Insurance-YangZhou</app.yangzhou.name>
+
+				<!--hyx -->
+				<app.suqian.name>Insurance-SuQian</app.suqian.name>
+				<app.changzhou.name>Insurance-ChangZhou</app.changzhou.name>
+				<app.lianyungang.name>Insurance-LianYunGang</app.lianyungang.name>
+				<!--hyx -->
+				<app.yangzhou.name>Insurance-YangZhou</app.yangzhou.name>
+				<app.huangshi.name>Insurance-HuangShi</app.huangshi.name>
+				<app.zhuhai.name>Insurance-Zhuhai</app.zhuhai.name>
+				<app.yangzhou.name>Insurance-YangZhou</app.yangzhou.name>
+				<app.sanming.name>Insurance-sanming</app.sanming.name>
+				<app.huangshi.name>Insurance-HuangShi</app.huangshi.name>
+				<app.xiangyang.name>Insurance-XiangYang</app.xiangyang.name>
+
+				<app.bengbu.name>Insurance-BengBu</app.bengbu.name>
+				<app.maoming.name>Insurance-MaoMing</app.maoming.name>
+				<app.shaoguan.name>Insurance-ShaoGuan</app.shaoguan.name>
+				<app.enshi.name>Insurance-EnShi</app.enshi.name>
+
+				<app.zhanjiang.name>Insurance-ZhanJiang</app.zhanjiang.name>
+				<app.zhongshan.name>Insurance-ZhongShan</app.zhongshan.name>
+				<app.fuzhou3.name>Insurance-FuZhou3</app.fuzhou3.name>
+				<app.sz.fujian.name>Insurance-sz-FuJian</app.sz.fujian.name>
+				<app.jian.name>Insurance-JiAn-local</app.jian.name>
+				<app.zhaoqing.name>Insurance-ZhaoQing</app.zhaoqing.name>
+				<app.sz.shanxi.name>Insurance-sz-ShanXi</app.sz.shanxi.name>
+				<app.ganzhou.name>Insurance-GanZhou</app.ganzhou.name>
+				<app.haikou.name>Insurance-HaiKou</app.haikou.name>
+				<app.sz.hubei.name>Insurance-sz-HuBei</app.sz.hubei.name>
+				<app.sz.anhui.name>Insurance-sz-AnHui</app.sz.anhui.name>
+				<app.yichang.name> Insurance-Yichang</app.yichang.name>
+				<app.shiyan.name>Insurance-shiyan</app.shiyan.name>
+				<app.xinxiang.name>Insurance-XinXiang</app.xinxiang.name>
+				<app.jiangmen.name> Insurance-JiangMen</app.jiangmen.name>
+
+				<app.huizhou.name> Insurance-HuiZhou</app.huizhou.name>
+				<app.yulin.name> Insurance-YuLin</app.yulin.name>
+
+				<app.xingtai.name> Insurance-XingTai</app.xingtai.name>
+
+				<app.anqing.name> Insurance-AnQing</app.anqing.name>
+				<app.panzhihua.name> Insurance-PanZhiHua</app.panzhihua.name>
+				<app.sz.guangxi.name>Insurance-sz-GuangXi</app.sz.guangxi.name>
+				<app.dandong.name>Insurance-Dandong</app.dandong.name>
+				<app.guilin.name>Insurance-GuiLin</app.guilin.name>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 生产环境 -->
+			<id>prod</id>
+			<properties>
+				<app.mobilecrawlertask.active>prod</app.mobilecrawlertask.active>
+				<app.beijing.name>Insurance-BeiJing</app.beijing.name>
+				<app.shenzhen.name>Insurance-Shenzhen</app.shenzhen.name>
+				<app.guangzhou.name>Insurance-GuangZhou</app.guangzhou.name>
+				<app.shanghai.name>Insurance-ShangHai</app.shanghai.name>
+				<app.shijiazhuang.name>Insurance-ShiJiaZhuang</app.shijiazhuang.name>
+				<app.foshan.name>Insurance-FoShan</app.foshan.name>
+				<app.chengdu.name>Insurance-ChengDu</app.chengdu.name>
+				<app.qingdao.name>Insurance-Qingdao</app.qingdao.name>
+				<app.ningbo.name>Insurance-NingBo</app.ningbo.name>
+				<app.leshan.name>Insurance-LeShan</app.leshan.name>
+
+				<!-- 冲突的时候别乱删代码 -->
+				<app.yantai.name>Insurance-Yantai</app.yantai.name>
+				<app.jinan.name>Insurance-JiNan</app.jinan.name>
+				<app.jining.name>Insurance-JiNing</app.jining.name>
+				<app.dezhou.name>Insurance-DeZhou</app.dezhou.name>
+				<app.binzhou.name>Insurance-BinZhou</app.binzhou.name>
+				<app.weihai.name>Insurance-WeiHai</app.weihai.name>
+				<app.zaozhuang.name>Insurance-ZaoZhuang</app.zaozhuang.name>
+				<app.sz.xinjiang.name>Insurance-sz-XinJiang</app.sz.xinjiang.name>
+				<app.mianyang.name>Insurance-MianYang</app.mianyang.name>
+				<app.liangshanyizu.name>Insurance-LiangShanyizu</app.liangshanyizu.name>
+				<app.ziyang.name>Insurance-ZiYang</app.ziyang.name>
+				<app.nantong.name>Insurance-NanTong</app.nantong.name>
+				<app.fuyang.name>Insurance-FuYang</app.fuyang.name>
+				<app.jingzhou.name>Insurance-JingZhou</app.jingzhou.name>
+				<app.qianjiang.name>Insurance-QianJiang</app.qianjiang.name>
+				<app.kaifeng.name>Insurance-KaiFeng</app.kaifeng.name>
+				<!-- 冲突的时候别乱删代码 -->
+
+
+
+				<app.zibo.name>Insurance-ZiBo</app.zibo.name>
+				<app.dongguan.name>Insurance-DongGuan</app.dongguan.name>
+				<app.chongqing.name>Insurance-Chongqing</app.chongqing.name>
+				<app.tianjin.name>Insurance-Tianjin</app.tianjin.name>
+				<app.changchun.name>Insurance-ChangChun</app.changchun.name>
+				<app.suzhou.name>Insurance-Suzhou</app.suzhou.name>
+				<app.nanjing.name>Insurance-NanJing</app.nanjing.name>
+				<app.hefei.name>Insurance-HeFei</app.hefei.name>
+				<app.guiyang.name>Insurance-Guiyang</app.guiyang.name>
+				<app.shenyang.name>Insurance-Shenyang</app.shenyang.name>
+				<app.wenzhou.name>Insurance-Wenzhou</app.wenzhou.name>
+				<app.taiyuan.name>Insurance-Taiyuan</app.taiyuan.name>
+				<app.hangzhou.name>Insurance-HangZhou</app.hangzhou.name>
+				<app.sz.hunan.name>Insurance-sz-Hunan</app.sz.hunan.name>
+				<app.wuhan.name>Insurance-Wuhan</app.wuhan.name>
+				<app.xuzhou.name>Insurance-Xuzhou</app.xuzhou.name>
+				<app.daqing.name>Insurance-DaQing</app.daqing.name>
+				<app.haerbin.name>Insurance-HaErBin</app.haerbin.name>
+				<app.wuxi.name>Insurance-Wuxi</app.wuxi.name>
+				<app.quanzhou.name>Insurance-Quanzhou</app.quanzhou.name>
+				<app.zhengzhou.name>Insurance-Zhengzhou</app.zhengzhou.name>
+				<app.xiamen.name>Insurance-Xiamen</app.xiamen.name>
+				<app.nanchang.name>Insurance-Nanchang</app.nanchang.name>
+				<app.panjin.name>Insurance-PanJin</app.panjin.name>
+				<app.tieling.name>Insurance-TieLing</app.tieling.name>
+				<app.linyi.name>Insurance-LinYi</app.linyi.name>
+				<app.etl.name>insurance-etl</app.etl.name>
+				<app.anshan.name>Insurance-AnShan</app.anshan.name>
+				<app.hengshui.name>Insurance-HengShui</app.hengshui.name>
+				<app.sz.heilongjiang.name>Insurance-sz-HeiLongJiang</app.sz.heilongjiang.name>
+				<app.sz.jilin.name>Insurance-sz-JiLin</app.sz.jilin.name>
+				<app.weifang.name>Insurance-WeiFang</app.weifang.name>
+				<app.shanxi3.name>Insurance-ShanXi3</app.shanxi3.name>
+				<app.liaocheng.name>Insurance-LiaoCheng</app.liaocheng.name>
+				<app.rizhao.name>Insurance-RiZhao</app.rizhao.name>
+				<app.taian.name>Insurance-TaiAn</app.taian.name>
+				<app.sz.neimenggu.name>Insurance-sz-NeiMengGu</app.sz.neimenggu.name>
+				<app.jiyuan.name>Insurance-JiYuan</app.jiyuan.name>
+				<app.lanzhou.name>Insurance-LanZhou</app.lanzhou.name>
+				<app.dalian.name>Insurance-DaLian</app.dalian.name>
+				<app.pingdingshan.name>Insurance-PingDingShan</app.pingdingshan.name>
+				<app.shangqiu.name>Insurance-ShangQiu</app.shangqiu.name>
+				<app.luohe.name>Insurance-LuoHe</app.luohe.name>
+				<app.jiaozuo.name>Insurance-JiaoZuo</app.jiaozuo.name>
+				<app.insuranceTask.name>InsuranceTask</app.insuranceTask.name>
+				<app.nanyang.name>Insurance-NanYang</app.nanyang.name>
+				<app.sz.sichuan.name>insurance-sz-sichuan</app.sz.sichuan.name>
+				<app.liuzhou.name>Insurance-LiuZhou</app.liuzhou.name>
+				<app.wuzhou.name>Insurance-WuZhou</app.wuzhou.name>
+				<app.guilin.name>Insurance-GuiLin</app.guilin.name>
+				<app.luoyang.name>Insurance-LuoYang</app.luoyang.name>
+				<app.sz.yunnan.name>Insurance-sz-YunNan</app.sz.yunnan.name>
+				<app.nanning.name>Insurance-NanNing</app.nanning.name>
+				<app.huaian.name>Insurance-HuaiAn</app.huaian.name>
+				<app.guigang.name>Insurance-GuiGang</app.guigang.name>
+				<app.taizhou.name>Insurance-TaiZhou</app.taizhou.name>
+				<app.luzhou.name>Insurance-LuZhou</app.luzhou.name>
+				<app.sz.zhejiang.name>Insurance-sz-ZheJiang</app.sz.zhejiang.name>
+				<app.huzhou.name>Insurance-HuZhou</app.huzhou.name>
+				<app.zhenjiang.name>Insurance-ZhenJiang</app.zhenjiang.name>
+				<app.shaoxing.name>Insurance-ShaoXing</app.shaoxing.name>
+				<app.zhoushan.name>Insurance-ZhouShan</app.zhoushan.name>
+				<app.yibin.name>Insurance-YiBin</app.yibin.name>
+				<app.zhuhai.name>Insurance-Zhuhai</app.zhuhai.name>
+				<app.yangzhou.name>Insurance-YangZhou</app.yangzhou.name>
+
+				<!--hyx -->
+				<app.suqian.name>Insurance-SuQian</app.suqian.name>
+				<app.changzhou.name>Insurance-ChangZhou</app.changzhou.name>
+				<app.lianyungang.name>Insurance-LianYunGang</app.lianyungang.name>
+
+				<!--hyx -->
+				<app.sanming.name>Insurance-sanming</app.sanming.name>
+				<app.huangshi.name>Insurance-HuangShi</app.huangshi.name>
+				<app.xiangyang.name>Insurance-XiangYang</app.xiangyang.name>
+
+				<app.bengbu.name>Insurance-BengBu</app.bengbu.name>
+				<app.maoming.name>Insurance-MaoMing</app.maoming.name>
+				<app.shaoguan.name>Insurance-ShaoGuan</app.shaoguan.name>
+				<app.enshi.name>Insurance-EnShi</app.enshi.name>
+
+				<app.zhanjiang.name>Insurance-ZhanJiang</app.zhanjiang.name>
+				<app.zhongshan.name>Insurance-ZhongShan</app.zhongshan.name>
+				<app.fuzhou3.name>Insurance-FuZhou3</app.fuzhou3.name>
+				<app.sz.fujian.name>Insurance-sz-FuJian</app.sz.fujian.name>
+				<app.jian.name>Insurance-JiAn-local</app.jian.name>
+				<app.zhaoqing.name>Insurance-ZhaoQing</app.zhaoqing.name>
+				<app.sz.shanxi.name>Insurance-sz-ShanXi</app.sz.shanxi.name>
+				<app.ganzhou.name>Insurance-GanZhou</app.ganzhou.name>
+				<app.haikou.name>Insurance-HaiKou</app.haikou.name>
+				<app.sz.hubei.name>Insurance-sz-HuBei</app.sz.hubei.name>
+				<app.sz.anhui.name>Insurance-sz-AnHui</app.sz.anhui.name>
+				<app.yichang.name> Insurance-Yichang</app.yichang.name>
+				<app.shiyan.name>Insurance-shiyan</app.shiyan.name>
+				<app.xinxiang.name>Insurance-XinXiang</app.xinxiang.name>
+				<app.jiangmen.name> Insurance-JiangMen</app.jiangmen.name>
+
+				<app.huizhou.name> Insurance-HuiZhou</app.huizhou.name>
+				<app.yulin.name> Insurance-YuLin</app.yulin.name>
+
+				<app.xingtai.name> Insurance-XingTai</app.xingtai.name>
+
+				<app.anqing.name> Insurance-AnQing</app.anqing.name>
+				<app.panzhihua.name> Insurance-PanZhiHua</app.panzhihua.name>
+				<app.sz.guangxi.name>Insurance-sz-GuangXi</app.sz.guangxi.name>
+				<app.dandong.name>Insurance-Dandong</app.dandong.name>
+			</properties>
+		</profile>
+		<profile>
+
+			<!-- 生产环境 -->
+			<id>mariadb5.5.56</id>
+			<properties>
+				<app.mobilecrawlertask.active>mariadb5.5.56</app.mobilecrawlertask.active>
+				<app.insuranceTask.name>InsuranceTask</app.insuranceTask.name>
+			</properties>
+		</profile>
+	</profiles>
+</project>

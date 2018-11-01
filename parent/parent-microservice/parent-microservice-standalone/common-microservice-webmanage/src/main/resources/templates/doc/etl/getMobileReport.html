@@ -1,0 +1,2018 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>	
+	<div th:replace="components/topart :: topart"></div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">运营商数据报告</h2>
+				<h3 class="page-header">说明</h3>
+				<p>
+					该接口通过输入的手机号，taskid来获取完整数据。 
+				</p>
+				<h3 class="page-header">URL</h3>
+				<p>
+					http://uat.admin.txboss.txtechnologies.com/data/carrier/tasks/mobileinfo/report 
+				</p>
+				<h3 class="page-header">格式</h3>
+				<p>
+					JSON   
+				</p>
+				<h3 class="page-header">HTTP请求方式</h3>
+				<p>
+					POST/GET   
+				</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>#</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>mobilenum</td>
+							<td>true</td>
+							<td>String</td>
+							<td>手机号</td>
+						</tr>
+						<tr>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>任务号</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="page-header">注意事项</h3>
+				<ol style="margin-left: 0px;">
+					<li>手机号或taskid必须有一个，如果taskid不为空，则默认用taskid查询，如果taskid为空，则用手机号查询，获取该手机号最新的数据</li>
+				</ol>
+				   
+				<h3 class="page-header">例子</h3>
+				<p>说明：利用taskid获取完成数据</p>
+				<p>请求：http://uat.admin.txboss.txtechnologies.com/data/carrier/tasks/mobileinfo/detail?taskid=a6c67f0d-a70b-4944-acdf-867f639074e7</p>
+				<p>返回：JSON</p>
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+    param: {
+        mobileNum: null,
+        taskid: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+        
+    },
+    mobileReportBaseInfos: [
+        {
+            id: 81,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            dataGainTime: "2018-06-11 07:06:09",
+            updateTime: "2018-06-11 07:06:09",
+            idcardNum: "420106198410028419",
+            mobile: "13520800817",
+            commonUseTelephone: "13520800817",
+            city: "北京",
+            crawlerMonthsShould: "2018-01/2018-02/2018-03/2018-04/2018-05/2018-06",
+            crawlerMonthsFail: null,
+            crawlerMonthsWithoutRecord: "2018-06",
+            crawlerMonthsWithRecord: "2017-12/2018-01/2018-02/2018-03/2018-04/2018-05",
+            userSource: "移动",
+            cellPhoneReliability: "1",
+            userStatus: "正常",
+            cellPhoneAvailableBalance: "77.35",
+            cellPhoneRegTime: "2008-01-26",
+            contractNum: null,
+            name: "梅荻",
+            idCard: "420106198410028419",
+            addr: "北京市朝阳区三里屯SOHU A座1903",
+            businessName: "神州行B和4G套餐188套餐",
+            
+        }
+    ],
+    mobileReportCallStatisticss: [
+        {
+            id: 203,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            interactMth: "2017-12",
+            interactCnt: "59",
+            interactTime: "3888",
+            dialTime: "1767",
+            contractsCnt: "47",
+            mutualnumberCnt: "2",
+            dialCnt: "11",
+            dialedCnt: "2121",
+            callFee: "0.00",
+            
+        },
+        {
+            id: 204,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            interactMth: "2018-01",
+            interactCnt: "84",
+            interactTime: "7369",
+            dialTime: "2801",
+            contractsCnt: "48",
+            mutualnumberCnt: "7",
+            dialCnt: "22",
+            dialedCnt: "4568",
+            callFee: "0.00",
+            
+        },
+        {
+            id: 205,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            interactMth: "2018-02",
+            interactCnt: "84",
+            interactTime: "7073",
+            dialTime: "4505",
+            contractsCnt: "31",
+            mutualnumberCnt: "5",
+            dialCnt: "30",
+            dialedCnt: "2568",
+            callFee: "0.00",
+            
+        },
+        {
+            id: 206,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            interactMth: "2018-03",
+            interactCnt: "86",
+            interactTime: "6165",
+            dialTime: "1838",
+            contractsCnt: "38",
+            mutualnumberCnt: "5",
+            dialCnt: "21",
+            dialedCnt: "4327",
+            callFee: "0.00",
+            
+        },
+        {
+            id: 207,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            interactMth: "2018-04",
+            interactCnt: "83",
+            interactTime: "5508",
+            dialTime: "1802",
+            contractsCnt: "48",
+            mutualnumberCnt: "6",
+            dialCnt: "19",
+            dialedCnt: "3706",
+            callFee: "0.00",
+            
+        },
+        {
+            id: 208,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            interactMth: "2018-05",
+            interactCnt: "21",
+            interactTime: "473",
+            dialTime: "98",
+            contractsCnt: "18",
+            mutualnumberCnt: "2",
+            dialCnt: "4",
+            dialedCnt: "375",
+            callFee: "0.00",
+            
+        },
+        
+    ],
+    mobileReportCallStatisticsSixMonths: [
+        {
+            id: 43,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            interactMth: null,
+            interactCnt: "417",
+            interactTime: "30476",
+            dialTime: "12811",
+            contractsCnt: "178",
+            mutualnumberCnt: "24",
+            dialCnt: "107",
+            dialedCnt: "17665",
+            callFee: "0.00",
+            callsNumber: "6",
+            
+        }
+    ],
+    mobileReportCallStatisticsThreeMonths: [
+        {
+            id: 42,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            interactMth: null,
+            interactCnt: "161",
+            interactTime: "9909",
+            dialTime: "3421",
+            contractsCnt: "95",
+            mutualnumberCnt: "12",
+            dialCnt: "37",
+            dialedCnt: "6488",
+            callFee: "0.00",
+            callsNumber: "3",
+            
+        }
+    ],
+    mobileReportConsumptions: [
+        {
+            id: 236,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2018-05",
+            callPay: "189.30",
+            monthFlow: null,
+            netFlow: null,
+            rechangeAmount: "260.00",
+            
+        },
+        {
+            id: 237,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2018-04",
+            callPay: "189.60",
+            monthFlow: null,
+            netFlow: null,
+            rechangeAmount: "160.00",
+            
+        },
+        {
+            id: 238,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2018-03",
+            callPay: "274.96",
+            monthFlow: null,
+            netFlow: null,
+            rechangeAmount: "60.00",
+            
+        },
+        {
+            id: 239,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2018-02",
+            callPay: "191.55",
+            monthFlow: null,
+            netFlow: null,
+            rechangeAmount: "260.00",
+            
+        },
+        {
+            id: 240,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2018-01",
+            callPay: "189.45",
+            monthFlow: null,
+            netFlow: null,
+            rechangeAmount: "280.00",
+            
+        },
+        {
+            id: 241,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2017-12",
+            callPay: "189.45",
+            monthFlow: null,
+            netFlow: null,
+            rechangeAmount: "60.00",
+            
+        },
+        
+    ],
+    mobileReportConsumptionSixMonths: [
+        {
+            id: 45,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            callPay: "1224.31",
+            monthFlow: null,
+            netFlow: null,
+            rechangeAmount: "1080.00",
+            
+        }
+    ],
+    mobileReportConsumptionThreeMonths: [
+        {
+            id: 37,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            callPay: "378.90",
+            monthFlow: null,
+            netFlow: null,
+            rechangeAmount: "420.00",
+            
+        }
+    ],
+    mobileReportContractsStatisticsSixMonths: [
+        {
+            id: 222,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "1",
+            peerNumber: "13797078762",
+            callDuration: "5447",
+            callCnt: "45",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "4164",
+            callCntWorktime: "34",
+            callDurationResttime: "1283",
+            callCntWorkResttime: "11",
+            callDurationWorkday: "2944",
+            callDurationPlayday: "2503",
+            
+        },
+        {
+            id: 223,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "2",
+            peerNumber: "15210425821",
+            callDuration: "4023",
+            callCnt: "23",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "3688",
+            callCntWorktime: "20",
+            callDurationResttime: "335",
+            callCntWorkResttime: "3",
+            callDurationWorkday: "4023",
+            callDurationPlayday: "0",
+            
+        },
+        {
+            id: 224,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "3",
+            peerNumber: "13366777357",
+            callDuration: "2324",
+            callCnt: "33",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "1228",
+            callCntWorktime: "21",
+            callDurationResttime: "1096",
+            callCntWorkResttime: "12",
+            callDurationWorkday: "1754",
+            callDurationPlayday: "570",
+            
+        },
+        {
+            id: 225,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "4",
+            peerNumber: "13269791738",
+            callDuration: "1612",
+            callCnt: "6",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "1612",
+            callCntWorktime: "6",
+            callDurationResttime: "0",
+            callCntWorkResttime: "0",
+            callDurationWorkday: "1612",
+            callDurationPlayday: "0",
+            
+        },
+        {
+            id: 226,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "5",
+            peerNumber: "15807194835",
+            callDuration: "1567",
+            callCnt: "5",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "267",
+            callCntWorktime: "2",
+            callDurationResttime: "1300",
+            callCntWorkResttime: "3",
+            callDurationWorkday: "1500",
+            callDurationPlayday: "67",
+            
+        },
+        {
+            id: 227,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "6",
+            peerNumber: "15311705013",
+            callDuration: "1124",
+            callCnt: "6",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "1124",
+            callCntWorktime: "6",
+            callDurationResttime: "0",
+            callCntWorkResttime: "0",
+            callDurationWorkday: "1124",
+            callDurationPlayday: "0",
+            
+        },
+        {
+            id: 228,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "7",
+            peerNumber: "1053732268",
+            callDuration: "1026",
+            callCnt: "7",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "1026",
+            callCntWorktime: "7",
+            callDurationResttime: "0",
+            callCntWorkResttime: "0",
+            callDurationWorkday: "1026",
+            callDurationPlayday: "0",
+            
+        },
+        {
+            id: 229,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "8",
+            peerNumber: "10000",
+            callDuration: "843",
+            callCnt: "3",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "843",
+            callCntWorktime: "3",
+            callDurationResttime: "0",
+            callCntWorkResttime: "0",
+            callDurationWorkday: "843",
+            callDurationPlayday: "0",
+            
+        },
+        {
+            id: 230,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "9",
+            peerNumber: "15810601089",
+            callDuration: "661",
+            callCnt: "2",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "661",
+            callCntWorktime: "2",
+            callDurationResttime: "0",
+            callCntWorkResttime: "0",
+            callDurationWorkday: "661",
+            callDurationPlayday: "0",
+            
+        },
+        {
+            id: 231,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "10",
+            peerNumber: "17600298540",
+            callDuration: "571",
+            callCnt: "2",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "571",
+            callCntWorktime: "2",
+            callDurationResttime: "0",
+            callCntWorkResttime: "0",
+            callDurationWorkday: "571",
+            callDurationPlayday: "0",
+            
+        },
+        
+    ],
+    mobileReportContractsStatisticsThreeMonths: [
+        {
+            id: 538,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "1",
+            peerNumber: "13366777357",
+            callDuration: "2135",
+            callCnt: "28",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "1039",
+            callCntWorktime: "16",
+            callDurationResttime: "1096",
+            callCntWorkResttime: "12",
+            callDurationWorkday: "1626",
+            callDurationPlayday: "509",
+            
+        },
+        {
+            id: 539,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "2",
+            peerNumber: "15210425821",
+            callDuration: "1825",
+            callCnt: "12",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "1490",
+            callCntWorktime: "9",
+            callDurationResttime: "335",
+            callCntWorkResttime: "3",
+            callDurationWorkday: "1825",
+            callDurationPlayday: "0",
+            
+        },
+        {
+            id: 540,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "3",
+            peerNumber: "1053732268",
+            callDuration: "1026",
+            callCnt: "7",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "1026",
+            callCntWorktime: "7",
+            callDurationResttime: "0",
+            callCntWorkResttime: "0",
+            callDurationWorkday: "1026",
+            callDurationPlayday: "0",
+            
+        },
+        {
+            id: 541,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "4",
+            peerNumber: "17600298540",
+            callDuration: "571",
+            callCnt: "2",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "571",
+            callCntWorktime: "2",
+            callDurationResttime: "0",
+            callCntWorkResttime: "0",
+            callDurationWorkday: "571",
+            callDurationPlayday: "0",
+            
+        },
+        {
+            id: 542,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "5",
+            peerNumber: "13269791738",
+            callDuration: "522",
+            callCnt: "2",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "522",
+            callCntWorktime: "2",
+            callDurationResttime: "0",
+            callCntWorkResttime: "0",
+            callDurationWorkday: "522",
+            callDurationPlayday: "0",
+            
+        },
+        {
+            id: 543,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "6",
+            peerNumber: "15810601089",
+            callDuration: "458",
+            callCnt: "1",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "458",
+            callCntWorktime: "1",
+            callDurationResttime: "0",
+            callCntWorkResttime: "0",
+            callDurationWorkday: "458",
+            callDurationPlayday: "0",
+            
+        },
+        {
+            id: 544,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "7",
+            peerNumber: "8613910592628",
+            callDuration: "372",
+            callCnt: "1",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "372",
+            callCntWorktime: "1",
+            callDurationResttime: "0",
+            callCntWorkResttime: "0",
+            callDurationWorkday: "372",
+            callDurationPlayday: "0",
+            
+        },
+        {
+            id: 545,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "8",
+            peerNumber: "18712856001",
+            callDuration: "276",
+            callCnt: "1",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "276",
+            callCntWorktime: "1",
+            callDurationResttime: "0",
+            callCntWorkResttime: "0",
+            callDurationWorkday: "276",
+            callDurationPlayday: "0",
+            
+        },
+        {
+            id: 546,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "9",
+            peerNumber: "15910763286",
+            callDuration: "245",
+            callCnt: "1",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "245",
+            callCntWorktime: "1",
+            callDurationResttime: "0",
+            callCntWorkResttime: "0",
+            callDurationWorkday: "245",
+            callDurationPlayday: "0",
+            
+        },
+        {
+            id: 547,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            rankNum: "10",
+            peerNumber: "15001372382",
+            callDuration: "212",
+            callCnt: "1",
+            callDurationNight: "0",
+            callCntNight: "0",
+            callDurationWorktime: "212",
+            callCntWorktime: "1",
+            callDurationResttime: "0",
+            callCntWorkResttime: "0",
+            callDurationWorkday: "212",
+            callDurationPlayday: "0",
+            
+        },
+        
+    ],
+    mobileReportFamilyDetails: [
+        
+    ],
+    mobileReportFamilyInfos: [
+        
+    ],
+    mobileReportLocationStatisticss: [
+        {
+            id: 148,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            tradeAddr: "武汉",
+            callCnt: "28",
+            callDuration: "919",
+            interactDuration: "299",
+            interactCnt: "9",
+            callCntThreeMonth: "0",
+            callCntSixMonth: "28",
+            continuityCntThreeMonth: "0",
+            continuityCntSixMonth: "5",
+            lastCallTime: "2018-02-24 22:11:25",
+            
+        },
+        {
+            id: 149,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            tradeAddr: "漳州",
+            callCnt: "1",
+            callDuration: "37",
+            interactDuration: "0",
+            interactCnt: "0",
+            callCntThreeMonth: "0",
+            callCntSixMonth: "1",
+            continuityCntThreeMonth: "1",
+            continuityCntSixMonth: "1",
+            lastCallTime: "2018-03-12 09:32:09",
+            
+        },
+        {
+            id: 150,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            tradeAddr: "北京",
+            callCnt: "384",
+            callDuration: "29256",
+            interactDuration: "12417",
+            interactCnt: "95",
+            callCntThreeMonth: "35",
+            callCntSixMonth: "384",
+            continuityCntThreeMonth: "24",
+            continuityCntSixMonth: "24",
+            lastCallTime: "2018-05-16 17:45:34",
+            
+        },
+        {
+            id: 151,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            tradeAddr: "厦门",
+            callCnt: "4",
+            callDuration: "264",
+            interactDuration: "95",
+            interactCnt: "3",
+            callCntThreeMonth: "2",
+            callCntSixMonth: "4",
+            continuityCntThreeMonth: "2",
+            continuityCntSixMonth: "2",
+            lastCallTime: "2018-03-12 20:59:33",
+            
+        },
+        
+    ],
+    mobileReportPayments: [
+        {
+            id: 1303,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-05-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "第三方支付",
+            
+        },
+        {
+            id: 1304,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-05-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "第三方支付",
+            
+        },
+        {
+            id: 1305,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-05-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1306,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-05-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1307,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-04-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "第三方支付",
+            
+        },
+        {
+            id: 1308,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-04-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1309,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-04-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1310,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-03-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1311,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-03-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1312,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-02-09",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "第三方支付",
+            
+        },
+        {
+            id: 1313,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-02-02",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "第三方支付",
+            
+        },
+        {
+            id: 1314,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-02-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1315,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-02-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1316,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-01-30",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "第三方支付",
+            
+        },
+        {
+            id: 1317,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-01-30",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1318,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-01-30",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1319,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-01-02",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "第三方支付",
+            
+        },
+        {
+            id: 1320,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-01-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1321,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2018-01-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1322,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-12-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1323,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-12-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1324,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-11-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "第三方支付",
+            
+        },
+        {
+            id: 1325,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-11-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1326,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-11-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1327,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-10-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "第三方支付",
+            
+        },
+        {
+            id: 1328,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-10-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1329,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-10-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1330,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-09-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "第三方支付",
+            
+        },
+        {
+            id: 1331,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-09-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1332,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-09-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1333,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-08-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1334,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-08-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1335,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-07-27",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "营销活动预存受理",
+            
+        },
+        {
+            id: 1336,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-07-27",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "营销活动预存受理",
+            
+        },
+        {
+            id: 1337,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-07-27",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "第三方支付",
+            
+        },
+        {
+            id: 1338,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-07-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "第三方支付",
+            
+        },
+        {
+            id: 1339,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-07-01",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "其他",
+            
+        },
+        {
+            id: 1340,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-05-31",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "第三方支付",
+            
+        },
+        {
+            id: 1341,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            payDate: "2017-05-20",
+            businessName: null,
+            payMode: "移动商城",
+            payWay: "第三方支付",
+            
+        },
+        
+    ],
+    mobileReportSMSs: [
+        {
+            id: 321,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            peerNum: "18545996409",
+            smsCntSixMonth: "1",
+            smsCntThreeMonth: "1",
+            
+        },
+        {
+            id: 322,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            peerNum: "18655157345",
+            smsCntSixMonth: "2",
+            smsCntThreeMonth: "0",
+            
+        },
+        {
+            id: 323,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            peerNum: "13370112067",
+            smsCntSixMonth: "1",
+            smsCntThreeMonth: "1",
+            
+        },
+        {
+            id: 324,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            peerNum: "8613470260519",
+            smsCntSixMonth: "1",
+            smsCntThreeMonth: "1",
+            
+        },
+        {
+            id: 325,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            peerNum: "17305872030",
+            smsCntSixMonth: "5",
+            smsCntThreeMonth: "0",
+            
+        },
+        {
+            id: 326,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            peerNum: "18515492530",
+            smsCntSixMonth: "6",
+            smsCntThreeMonth: "5",
+            
+        },
+        {
+            id: 327,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            peerNum: "8613811807577",
+            smsCntSixMonth: "1",
+            smsCntThreeMonth: "0",
+            
+        },
+        {
+            id: 328,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            peerNum: "18510540870",
+            smsCntSixMonth: "1",
+            smsCntThreeMonth: "0",
+            
+        },
+        {
+            id: 329,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            peerNum: "13141323552",
+            smsCntSixMonth: "1",
+            smsCntThreeMonth: "1",
+            
+        },
+        {
+            id: 330,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            peerNum: "17387395280",
+            smsCntSixMonth: "9",
+            smsCntThreeMonth: "0",
+            
+        },
+        {
+            id: 331,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            peerNum: "18601154046",
+            smsCntSixMonth: "3",
+            smsCntThreeMonth: "0",
+            
+        },
+        {
+            id: 332,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            peerNum: "8613522559872",
+            smsCntSixMonth: "1",
+            smsCntThreeMonth: "0",
+            
+        },
+        
+    ],
+    message: "success",
+    createtime: 1528703534413,
+    errorCode: 800,
+    profile: "test",
+    
+}
+				</pre>
+				   
+				<h3 class="page-header">返回字段</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>对象名</th>
+							<th>字段名</th>
+							<th>类型</th>
+							<th>注释</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>dataGainTime</td>
+							<td>String</td>
+							<td>任务时间</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>updateTime</td>
+							<td>String</td>
+							<td>报告时间</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>idcardNum</td>
+							<td>String</td>
+							<td>用户身份证号码</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>mobile</td>
+							<td>String</td>
+							<td>用户手机号码</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>commonUseTelephone</td>
+							<td>String</td>
+							<td>用户手机号码</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>city</td>
+							<td>String</td>
+							<td>归属地</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>crawlerMonthsShould</td>
+							<td>String</td>
+							<td>通话记录月份采集结果集合</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>crawlerMonthsFail</td>
+							<td>String</td>
+							<td>通话记录获取失败月份集合</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>crawlerMonthsWithoutRecord</td>
+							<td>String</td>
+							<td>无通话记录月份数集合</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>crawlerMonthsWithRecord</td>
+							<td>String</td>
+							<td>有通话记录月份数集合</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>userSource</td>
+							<td>String</td>
+							<td>所属运营商</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>cellPhoneReliability</td>
+							<td>String</td>
+							<td>是否实名认证(0为否，1为是，默认为1)</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>userStatus</td>
+							<td>String</td>
+							<td>账户状态</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>cellPhoneAvailableBalance</td>
+							<td>String</td>
+							<td>账户余额</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>cellPhoneRegTime</td>
+							<td>String</td>
+							<td>入网时间</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>contractNum</td>
+							<td>String</td>
+							<td>联系电话</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>name</td>
+							<td>String</td>
+							<td>姓名</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>idCard</td>
+							<td>String</td>
+							<td>身份证号码</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>addr</td>
+							<td>String</td>
+							<td>籍贯</td>
+						</tr>
+						<tr>
+							<td>mobileReportBaseInfos（基本信息）</td>
+							<td>businessName</td>
+							<td>String</td>
+							<td>套餐名称</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticss（通话统计--单月）</td>
+							<td>interactMth</td>
+							<td>String</td>
+							<td>统计月份</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticss（通话统计--单月）</td>
+							<td>interactCnt</td>
+							<td>String</td>
+							<td>通话次数</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticss（通话统计--单月）</td>
+							<td>interactTime</td>
+							<td>String</td>
+							<td>通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticss（通话统计--单月）</td>
+							<td>dialTime</td>
+							<td>String</td>
+							<td>主叫通话（秒）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticss（通话统计--单月）</td>
+							<td>contractsCnt</td>
+							<td>String</td>
+							<td>通话号码数量（个）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticss（通话统计--单月）</td>
+							<td>mutualnumberCnt</td>
+							<td>String</td>
+							<td>互通号码数量（个）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticss（通话统计--单月）</td>
+							<td>dialCnt</td>
+							<td>String</td>
+							<td>主叫次数</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticss（通话统计--单月）</td>
+							<td>dialedCnt</td>
+							<td>String</td>
+							<td>被叫通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticss（通话统计--单月）</td>
+							<td>callFee</td>
+							<td>String</td>
+							<td>通话费用统计（元）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsThreeMonths（通话统计--近三月）</td>
+							<td>interactMth</td>
+							<td>String</td>
+							<td>统计月份</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsThreeMonths（通话统计--近三月）</td>
+							<td>interactCnt</td>
+							<td>String</td>
+							<td>通话次数</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsThreeMonths（通话统计--近三月）</td>
+							<td>interactTime</td>
+							<td>String</td>
+							<td>通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsThreeMonths（通话统计--近三月）</td>
+							<td>dialTime</td>
+							<td>String</td>
+							<td>主叫通话（秒）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsThreeMonths（通话统计--近三月）</td>
+							<td>contractsCnt</td>
+							<td>String</td>
+							<td>通话号码数量（个）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsThreeMonths（通话统计--近三月）</td>
+							<td>mutualnumberCnt</td>
+							<td>String</td>
+							<td>互通号码数量（个）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsThreeMonths（通话统计--近三月）</td>
+							<td>dialCnt</td>
+							<td>String</td>
+							<td>主叫次数</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsThreeMonths（通话统计--近三月）</td>
+							<td>dialedCnt</td>
+							<td>String</td>
+							<td>被叫通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsThreeMonths（通话统计--近三月）</td>
+							<td>callFee</td>
+							<td>String</td>
+							<td>通话费用统计（元）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsThreeMonths（通话统计--近三月）</td>
+							<td>callsNumber</td>
+							<td>String</td>
+							<td>近3个月连续通话月数</td>
+						</tr>						
+						<tr>
+							<td>mobileReportCallStatisticsSixMonths（通话统计--近六月）</td>
+							<td>interactMth</td>
+							<td>String</td>
+							<td>统计月份</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsSixMonths（通话统计--近六月）</td>
+							<td>interactCnt</td>
+							<td>String</td>
+							<td>通话次数</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsSixMonths（通话统计--近六月）</td>
+							<td>interactTime</td>
+							<td>String</td>
+							<td>通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsSixMonths（通话统计--近六月）</td>
+							<td>dialTime</td>
+							<td>String</td>
+							<td>主叫通话（秒）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsSixMonths（通话统计--近六月）</td>
+							<td>contractsCnt</td>
+							<td>String</td>
+							<td>通话号码数量（个）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsSixMonths（通话统计--近六月）</td>
+							<td>mutualnumberCnt</td>
+							<td>String</td>
+							<td>互通号码数量（个）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsSixMonths（通话统计--近六月）</td>
+							<td>dialCnt</td>
+							<td>String</td>
+							<td>主叫次数</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsSixMonths（通话统计--近六月）</td>
+							<td>dialedCnt</td>
+							<td>String</td>
+							<td>被叫通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsSixMonths（通话统计--近六月）</td>
+							<td>callFee</td>
+							<td>String</td>
+							<td>通话费用统计（元）</td>
+						</tr>
+						<tr>
+							<td>mobileReportCallStatisticsSixMonths（通话统计--近六月）</td>
+							<td>callsNumber</td>
+							<td>String</td>
+							<td>近6个月连续通话月数</td>
+						</tr>
+						<tr>
+							<td>mobileReportConsumptions（消费统计--单月）</td>
+							<td>month</td>
+							<td>String</td>
+							<td>统计月份</td>
+						</tr>
+						<tr>
+							<td>mobileReportConsumptions（消费统计--单月）</td>
+							<td>callPay</td>
+							<td>String</td>
+							<td>月消费金额</td>
+						</tr>
+						<tr>
+							<td>mobileReportConsumptions（消费统计--单月）</td>
+							<td>monthFlow</td>
+							<td>String</td>
+							<td>月流量套餐（GB）</td>
+						</tr>
+						<tr>
+							<td>mobileReportConsumptions（消费统计--单月）</td>
+							<td>netFlow</td>
+							<td>String</td>
+							<td>月流量使用量（GB）</td>
+						</tr>
+						<tr>
+							<td>mobileReportConsumptions（消费统计--单月）</td>
+							<td>rechangeAmount</td>
+							<td>String</td>
+							<td>月充值金额</td>
+						</tr>						
+						<tr>
+							<td>mobileReportConsumptionSixMonths（消费统计--近六月）</td>
+							<td>callPay</td>
+							<td>String</td>
+							<td>月消费金额</td>
+						</tr>
+						<tr>
+							<td>mobileReportConsumptionSixMonths（消费统计--近六月）</td>
+							<td>monthFlow</td>
+							<td>String</td>
+							<td>月流量套餐（GB）</td>
+						</tr>
+						<tr>
+							<td>mobileReportConsumptionSixMonths（消费统计--近六月）</td>
+							<td>netFlow</td>
+							<td>String</td>
+							<td>月流量使用量（GB）</td>
+						</tr>
+						<tr>
+							<td>mobileReportConsumptionSixMonths（消费统计--近六月）</td>
+							<td>rechangeAmount</td>
+							<td>String</td>
+							<td>月充值金额</td>
+						</tr>
+						<tr>
+							<td>mobileReportConsumptionThreeMonths（消费统计--近三月）</td>
+							<td>callPay</td>
+							<td>String</td>
+							<td>月消费金额</td>
+						</tr>
+						<tr>
+							<td>mobileReportConsumptionThreeMonths（消费统计--近三月）</td>
+							<td>monthFlow</td>
+							<td>String</td>
+							<td>月流量套餐（GB）</td>
+						</tr>
+						<tr>
+							<td>mobileReportConsumptionThreeMonths（消费统计--近三月）</td>
+							<td>netFlow</td>
+							<td>String</td>
+							<td>月流量使用量（GB）</td>
+						</tr>
+						<tr>
+							<td>mobileReportConsumptionThreeMonths（消费统计--近三月）</td>
+							<td>rechangeAmount</td>
+							<td>String</td>
+							<td>月充值金额</td>
+						</tr>
+						<tr>
+							<td>mobileReportPayments（缴费信息）</td>
+							<td>payDate</td>
+							<td>String</td>
+							<td>缴费日期</td>
+						</tr>
+						<tr>
+							<td>mobileReportPayments（缴费信息）</td>
+							<td>businessName</td>
+							<td>String</td>
+							<td>套餐名称</td>
+						</tr>
+						<tr>
+							<td>mobileReportPayments（缴费信息）</td>
+							<td>payMode</td>
+							<td>String</td>
+							<td>缴费渠道</td>
+						</tr>
+						<tr>
+							<td>mobileReportPayments（缴费信息）</td>
+							<td>payWay</td>
+							<td>String</td>
+							<td>缴费方式</td>
+						</tr>
+						<tr>
+							<td>mobileReportSMSs（短信）</td>
+							<td>peerNum</td>
+							<td>String</td>
+							<td>对方号码</td>
+						</tr>
+						<tr>
+							<td>mobileReportSMSs（短信）</td>
+							<td>smsCntThreeMonth</td>
+							<td>String</td>
+							<td>近3月短信数量</td>
+						</tr>
+						<tr>
+							<td>mobileReportSMSs（短信）</td>
+							<td>smsCntSixMonth</td>
+							<td>String</td>
+							<td>近6月短信数量</td>
+						</tr>
+						<tr>
+							<td>mobileReportLocationStatisticss（通话地分析）</td>
+							<td>tradeAddr</td>
+							<td>String</td>
+							<td>通话地</td>
+						</tr>
+						<tr>
+							<td>mobileReportLocationStatisticss（通话地分析）</td>
+							<td>callCnt</td>
+							<td>String</td>
+							<td>通话次数</td>
+						</tr>
+						<tr>
+							<td>mobileReportLocationStatisticss（通话地分析）</td>
+							<td>callDuration</td>
+							<td>String</td>
+							<td>通话时长</td>
+						</tr>
+						<tr>
+							<td>mobileReportLocationStatisticss（通话地分析）</td>
+							<td>interactDuration</td>
+							<td>String</td>
+							<td>主叫通话次数</td>
+						</tr>
+						<tr>
+							<td>mobileReportLocationStatisticss（通话地分析）</td>
+							<td>interactCnt</td>
+							<td>String</td>
+							<td>主叫通话时长</td>
+						</tr>
+						<tr>
+							<td>mobileReportLocationStatisticss（通话地分析）</td>
+							<td>callCntThreeMonth</td>
+							<td>String</td>
+							<td>近3个月通话次数</td>
+						</tr>
+						<tr>
+							<td>mobileReportLocationStatisticss（通话地分析）</td>
+							<td>callCntSixMonth</td>
+							<td>String</td>
+							<td>近6个月通话次数</td>
+						</tr>
+						<tr>
+							<td>mobileReportLocationStatisticss（通话地分析）</td>
+							<td>continuityCntThreeMonth</td>
+							<td>String</td>
+							<td>近3个月最大连续通话天数</td>
+						</tr>
+						<tr>
+							<td>mobileReportLocationStatisticss（通话地分析）</td>
+							<td>continuityCntSixMonth</td>
+							<td>String</td>
+							<td>近6个月最大连续通话天数</td>
+						</tr>
+						<tr>
+							<td>mobileReportLocationStatisticss（通话地分析）</td>
+							<td>lastCallTime</td>
+							<td>String</td>
+							<td>最近一次通话时间</td>
+						</tr>
+						<tr>
+							<td>mobileReportContractsStatisticsThreeMonths（联系人统计--近三月）</td>
+							<td>rankNum</td>
+							<td>String</td>
+							<td>排名</td>
+						</tr>
+						<tr>
+							<td>mobileReportContractsStatisticsThreeMonths（联系人统计--近三月）</td>
+							<td>peerNumber</td>
+							<td>String</td>
+							<td>对方号码</td>
+						</tr>	
+						<tr>
+							<td>mobileReportContractsStatisticsThreeMonths（联系人统计--近三月）</td>
+							<td>callDuration</td>
+							<td>String</td>
+							<td>通话时长（秒）</td>
+						</tr>	
+						<tr>
+							<td>mobileReportContractsStatisticsThreeMonths（联系人统计--近三月）</td>
+							<td>callCnt</td>
+							<td>String</td>
+							<td>通话次数</td>
+						</tr>	
+						<tr>
+							<td>mobileReportContractsStatisticsThreeMonths（联系人统计--近三月）</td>
+							<td>callDurationNight</td>
+							<td>String</td>
+							<td>深夜通话时长（秒）</td>
+						</tr>	
+						<tr>
+							<td>mobileReportContractsStatisticsThreeMonths（联系人统计--近三月）</td>
+							<td>callCntNight</td>
+							<td>String</td>
+							<td>深夜通话次数</td>
+						</tr>	
+						<tr>
+							<td>mobileReportContractsStatisticsThreeMonths（联系人统计--近三月）</td>
+							<td>callDurationWorktime</td>
+							<td>String</td>
+							<td>工作时间通话时长（秒）</td>
+						</tr>	
+						<tr>
+							<td>mobileReportContractsStatisticsThreeMonths（联系人统计--近三月）</td>
+							<td>callCntWorktime</td>
+							<td>String</td>
+							<td>工作时间通话次数</td>
+						</tr>	
+						<tr>
+							<td>mobileReportContractsStatisticsThreeMonths（联系人统计--近三月）</td>
+							<td>callDurationResttime</td>
+							<td>String</td>
+							<td>闲暇时间通话时长（秒）</td>
+						</tr>	
+						<tr>
+							<td>mobileReportContractsStatisticsThreeMonths（联系人统计--近三月）</td>
+							<td>callCntWorkResttime</td>
+							<td>String</td>
+							<td>闲暇时间通话次数</td>
+						</tr>
+						<tr>
+							<td>mobileReportContractsStatisticsThreeMonths（联系人统计--近三月）</td>
+							<td>callDurationWorkday</td>
+							<td>String</td>
+							<td>工作日通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>mobileReportContractsStatisticsThreeMonths（联系人统计--近三月）</td>
+							<td>callDurationPlayday</td>
+							<td>String</td>
+							<td>休息日通话时长（秒）</td>
+						</tr>							
+						<tr>
+							<td>mobileReportContractsStatisticsSixMonths（联系人统计--近六月）</td>
+							<td>rankNum</td>
+							<td>String</td>
+							<td>排名</td>
+						</tr>
+						<tr>
+							<td>mobileReportContractsStatisticsSixMonths（联系人统计--近六月）</td>
+							<td>peerNumber</td>
+							<td>String</td>
+							<td>对方号码</td>
+						</tr>	
+						<tr>
+							<td>mobileReportContractsStatisticsSixMonths（联系人统计--近六月）</td>
+							<td>callDuration</td>
+							<td>String</td>
+							<td>通话时长（秒）</td>
+						</tr>	
+						<tr>
+							<td>mobileReportContractsStatisticsSixMonths（联系人统计--近六月）</td>
+							<td>callCnt</td>
+							<td>String</td>
+							<td>通话次数</td>
+						</tr>	
+						<tr>
+							<td>mobileReportContractsStatisticsSixMonths（联系人统计--近六月）</td>
+							<td>callDurationNight</td>
+							<td>String</td>
+							<td>深夜通话时长（秒）</td>
+						</tr>	
+						<tr>
+							<td>mobileReportContractsStatisticsSixMonths（联系人统计--近六月）</td>
+							<td>callCntNight</td>
+							<td>String</td>
+							<td>深夜通话次数</td>
+						</tr>	
+						<tr>
+							<td>mobileReportContractsStatisticsSixMonths（联系人统计--近六月）</td>
+							<td>callDurationWorktime</td>
+							<td>String</td>
+							<td>工作时间通话时长（秒）</td>
+						</tr>	
+						<tr>
+							<td>mobileReportContractsStatisticsSixMonths（联系人统计--近六月）</td>
+							<td>callCntWorktime</td>
+							<td>String</td>
+							<td>工作时间通话次数</td>
+						</tr>	
+						<tr>
+							<td>mobileReportContractsStatisticsSixMonths（联系人统计--近六月）</td>
+							<td>callDurationResttime</td>
+							<td>String</td>
+							<td>闲暇时间通话时长（秒）</td>
+						</tr>	
+						<tr>
+							<td>mobileReportContractsStatisticsSixMonths（联系人统计--近六月）</td>
+							<td>callCntWorkResttime</td>
+							<td>String</td>
+							<td>闲暇时间通话次数</td>
+						</tr>
+						<tr>
+							<td>mobileReportContractsStatisticsSixMonths（联系人统计--近六月）</td>
+							<td>callDurationWorkday</td>
+							<td>String</td>
+							<td>工作日通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>mobileReportContractsStatisticsSixMonths（联系人统计--近六月）</td>
+							<td>callDurationPlayday</td>
+							<td>String</td>
+							<td>休息日通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>mobileReportFamilyInfos（亲情网）</td>
+							<td>familyNetworkNum</td>
+							<td>String</td>
+							<td>亲情网编号</td>
+						</tr>
+						<tr>
+							<td>mobileReportFamilyInfos（亲情网）</td>
+							<td>code</td>
+							<td>String</td>
+							<td>亲情网状态码</td>
+						</tr>
+						<tr>
+							<td>mobileReportFamilyInfos（亲情网）</td>
+							<td>message</td>
+							<td>String</td>
+							<td>状态描述</td>
+						</tr>
+						<tr>
+							<td>mobileReportFamilyDetails（亲情网明细）</td>
+							<td>familyNetworkNum</td>
+							<td>String</td>
+							<td>亲情网编号</td>
+						</tr>
+						<tr>
+							<td>mobileReportFamilyDetails（亲情网明细）</td>
+							<td>trombone</td>
+							<td>String</td>
+							<td>长号</td>
+						</tr>
+						<tr>
+							<td>mobileReportFamilyDetails（亲情网明细）</td>
+							<td>cornet</td>
+							<td>String</td>
+							<td>短号</td>
+						</tr>
+						<tr>
+							<td>mobileReportFamilyDetails（亲情网明细）</td>
+							<td>memberType</td>
+							<td>String</td>
+							<td>成员类型</td>
+						</tr>
+						<tr>
+							<td>mobileReportFamilyDetails（亲情网明细）</td>
+							<td>joinDate</td>
+							<td>String</td>
+							<td>加入日期</td>
+						</tr>	
+						<tr>
+							<td>mobileReportFamilyDetails（亲情网明细）</td>
+							<td>expiryDate</td>
+							<td>String</td>
+							<td>失效日期</td>
+						</tr>																					
+					</tbody>
+				</table>
+			    
+<!--			<span>备注：</span>
+			    <div th:replace="components/remark :: remark"></div> -->
+			    
+			    <h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p>
+				
+				<h3 class="page-header">状态码映射</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>状态码</th>
+							<th>信息</th>
+							<th>解释说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>800</td>
+							<td>success</td>
+							<td>成功</td>
+						</tr>
+						<tr>
+							<td>801</td>
+							<td>taskid is null and mobilenum is null!</td>
+							<td>taskid为空或者手机号为空</td>
+						</tr>
+						<tr>
+							<td>802</td>
+							<td>no data was found by this taskid!</td>
+							<td>该任务号无数据</td>
+						</tr>
+						<tr>
+							<td>803</td>
+							<td>ETL is not excuted!</td>
+							<td>数据处理程序未执行</td>
+						</tr>
+						<tr>
+							<td>804</td>
+							<td>crawler have some problems!</td>
+							<td>该任务爬取程序出现问题</td>
+						</tr>
+						<tr>
+							<td>805</td>
+							<td>taskid not matches phonenum!</td>
+							<td>任务号与电话号不匹配</td>
+						</tr>	
+					</tbody>
+				</table>			    
+			</div>
+		</div>
+		</div>
+		
+		 <div th:include="components/footer :: footer"></div>
+		
+</body>
+</html>

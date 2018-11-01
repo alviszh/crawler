@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sr.microservice</groupId>
+		<artifactId>parent-microservice</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<!-- <groupId>com.sr.standalone</groupId> -->
+	<artifactId>parent-microservice-standalone</artifactId>
+	<packaging>pom</packaging>
+
+
+	<modules>
+
+		<module>common-microservice-standalone-service</module> 
+		<module>common-microservice-pbccrc-h5</module>
+		<module>common-microservice-middle</module>
+		<module>common-microservice-pbccrc</module>
+		<module>common-microservice-common-url</module>
+		<module>common-microservice-tesseract</module>
+		<module>common-microservice-mail</module> 
+		<module>common-microservice-maimai</module>
+
+   	    <!-- 将监控任务分成爬虫层面和系统层面 -->
+   	    <module>common-microservice-monitor-crawler</module>
+   	    <module>common-microservice-monitor-system</module>
+		<module>common-microservice-monitor-sms</module>
+		<module>common-microservice-monitor-platform</module>
+		<module>common-microservice-xuexin</module>
+		<module>common-microservice-webmanage</module>
+		<module>common-microservice-opendata</module>
+		
+		<module>common-microservice-standalone-task</module>
+	    <!--暂时不用-->
+		<!-- <module>common-microservice-3rd-api</module> -->
+		<!-- <module>common-microservice-eureka-listen</module> --> 
+		
+		<!--
+		<module>common-elasticsearch-demo</module>
+   	    <module>common-microservice-timedtask</module>
+   	    <module>common-microservice-standalone-task</module>
+   	    -->
+   	    <module>common-microservice-aws-api</module>
+   	    <module>common-microservice-qq</module> 
+    	<module>common-microservice-ip-api</module>
+    	<module>common-microservice-wechat</module>
+    	<module>common-microservice-phone</module>
+  </modules>
+
+	<profiles>
+		<profile> 			<!-- 本机开发环境 -->
+			<id>dev</id>
+			<properties>
+				<app.active>dev</app.active>
+				<app.3rdapi.name>api-3rd-local</app.3rdapi.name>
+				<app.h5pbccrc.name>pbccrc-h5-local</app.h5pbccrc.name>
+				<app.h5qq.name>qq-h5-local</app.h5qq.name>
+				<app.middle.name>middle-local</app.middle.name>
+				<app.xuexin.name>Xuexin-local</app.xuexin.name>
+				<app.mail.name>mail-local</app.mail.name>
+				<app.pbccrc.name>pbccrc-local</app.pbccrc.name>
+				<app.aws.api>api-aws-local</app.aws.api>
+				<app.common.url.name>Common-Url-local</app.common.url.name>
+				<app.social.web.name>social-web-local</app.social.web.name>
+				<app.timed.task.name>timed-task-local</app.timed.task.name>
+				<app.executor.name>executor-local</app.executor.name>
+				<app.standalonetask.name>standalone-task-local</app.standalonetask.name>
+				<app.ip.api>api-ip-local</app.ip.api>
+                <app.maimai.name>maimai-local</app.maimai.name>
+
+				<app.opendata.name>opendata-local</app.opendata.name>
+				<app.qq.name>qq-local</app.qq.name>
+				<app.sql.name>sql-test-local</app.sql.name>
+				
+				<app.monitor.crawler.name>monitor-crawler-local</app.monitor.crawler.name>
+				<app.monitor.system.name>monitor-system-local</app.monitor.system.name>
+				<app.monitor.sms.name>monitor-sms-local</app.monitor.sms.name>
+				<app.wechat.name>wechat-local</app.wechat.name>
+				<app.monitor.platform.name>monitor-platform-local</app.monitor.platform.name>
+				
+				<app.phonenum-detect.name>phonenum-detect-local</app.phonenum-detect.name>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile> 			<!-- 测试环境 -->
+			<id>test</id>
+			<properties>
+				<app.active>test</app.active>
+				<app.3rdapi.name>api-3rd</app.3rdapi.name>
+				<app.h5pbccrc.name>pbccrc-h5</app.h5pbccrc.name>
+				<app.h5qq.name>qq-h5</app.h5qq.name>
+				<app.middle.name>middle</app.middle.name>
+				<app.xuexin.name>Xuexin</app.xuexin.name>
+				<app.mail.name>mail</app.mail.name>
+				<app.pbccrc.name>pbccrc</app.pbccrc.name>
+				<app.aws.api>api-aws</app.aws.api>
+				<app.common.url.name>Common-Url</app.common.url.name>
+				<app.social.web.name>social-web</app.social.web.name>
+				<app.timed.task.name>timed-task</app.timed.task.name>
+				<app.executor.name>executor</app.executor.name>
+				<app.standalonetask.name>standalone-task</app.standalonetask.name>
+				<app.ip.api>api-ip</app.ip.api>
+				<app.maimai.name>maimai</app.maimai.name>
+				
+
+				<app.opendata.name>opendata</app.opendata.name>
+				
+				<app.qq.name>qq</app.qq.name>
+				
+				<app.monitor.crawler.name>monitor-crawler</app.monitor.crawler.name>
+				<app.monitor.system.name>monitor-system</app.monitor.system.name>
+				<app.monitor.sms.name>monitor-sms</app.monitor.sms.name>
+				<app.wechat.name>wechat</app.wechat.name>
+				<app.monitor.platform.name>monitor-platform</app.monitor.platform.name>
+				
+				<app.phonenum-detect.name>phonenum-detect</app.phonenum-detect.name>
+			</properties>
+		</profile>
+		<profile> 			<!-- 测试环境 - v2 -->
+			<id>testv2</id>
+			<properties>
+				<app.active>testv2</app.active>
+				<app.h5pbccrc.name>pbccrc-h5-v2</app.h5pbccrc.name>
+				<app.h5qq.name>qq-h5-v2</app.h5qq.name>
+				<app.pbccrc.name>pbccrc-v2</app.pbccrc.name>
+			</properties>
+		</profile>
+
+		<profile> 			<!-- 生产环境 -->
+			<id>prod</id>
+			<properties>
+				<app.active>prod</app.active>
+				<app.3rdapi.name>api-3rd</app.3rdapi.name>
+				<app.h5pbccrc.name>pbccrc-h5</app.h5pbccrc.name>
+				<app.h5qq.name>qq-h5</app.h5qq.name>
+				<app.middle.name>middle</app.middle.name>
+				<app.xuexin.name>Xuexin</app.xuexin.name>
+				<app.mail.name>mail</app.mail.name>
+				<app.pbccrc.name>pbccrc</app.pbccrc.name>
+				<app.aws.api>api-aws</app.aws.api>
+				<app.common.url.name>Common-Url</app.common.url.name>
+				<app.social.web.name>social-web</app.social.web.name>
+				<app.timed.task.name>timed-task</app.timed.task.name>
+				<app.executor.name>executor</app.executor.name>
+				<app.standalonetask.name>standalone-task</app.standalonetask.name>
+				<app.ip.api>api-ip</app.ip.api>
+                <app.maimai.name>maimai</app.maimai.name>
+                
+				<app.opendata.name>opendata</app.opendata.name>
+				
+				<app.qq.name>qq</app.qq.name>
+				
+				<app.monitor.crawler.name>monitor-crawler</app.monitor.crawler.name>
+				<app.monitor.system.name>monitor-system</app.monitor.system.name>
+				<app.monitor.sms.name>monitor-sms</app.monitor.sms.name>
+				<app.wechat.name>wechat</app.wechat.name>
+				<app.monitor.platform.name>monitor-platform</app.monitor.platform.name>
+				
+				<app.phonenum-detect.name>phonenum-detect</app.phonenum-detect.name>
+			</properties>
+		</profile>
+		<profile> 			<!-- 生产环境 - v2 -->
+			<id>prodv2</id>
+			<properties>
+				<app.active>prodv2</app.active>
+				<app.h5pbccrc.name>pbccrc-h5-v2</app.h5pbccrc.name>
+				<app.h5qq.name>qq-h5-v2</app.h5qq.name>
+				<app.pbccrc.name>pbccrc-v2</app.pbccrc.name>
+			</properties>
+		</profile>
+		<profile>
+			<!-- mariadb5.5.56 生产环境 -->
+			<id>mariadb5.5.56</id>
+			<properties>
+				<app.active>mariadb5.5.56</app.active>
+				<app.standalonetask.name>standalone-task</app.standalonetask.name>
+			</properties>
+		</profile>
+	</profiles>
+</project>

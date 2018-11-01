@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				 <h1 class="page-header">平台说明</h1>
+				 <div class="panel panel-danger">
+					  <div class="panel-heading">（接口更新 2017-07-31）三大运营商（中国移动、中国联通、中国电信）接口开放内侧</div>
+					  <div class="panel-body">
+					    	本次接口提供三大运营商的H5页面+数据接口，接口文档见本系统的接口说明<br/>
+					    	H5页面测试地址：http://10.150.33.106/h5/auth#
+					    	注意事项：<br/>
+					    	1.获取三大运行商系统的通话详单需要用户提供"服务密码",通过H5页面找回服务密码目前仅支持中国联通.中国移动和中国电信找回服务密码可通过引导页提示完成<br/>
+					    	2.H5测试地址为内侧地址，测试联调完成后会通过正式域名发布<br/>
+					  </div>
+				</div>
+				<!-- <div class="panel panel-default">
+					  <div class="panel-heading">（接口更新 2017-08-09）增加中国电信接口</div>
+					  <div class="panel-body">
+					    	增加中国电信接口，该接口用于获取授权中国电信通话详单数据
+					  </div>
+				</div> -->
+				 
+			</div>
+		</div>
+	</div>
+
+	<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

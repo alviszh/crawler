@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">添加关键词Post</h2>
+				<h3 class="page-header">说明</h3>
+				<p>该接口通过传递的keys，taskid创建待爬取队列</p>
+				<h3 class="page-header">URL</h3>
+				<p>http://10.167.202.187:51829/honesty//shixin/task</p>
+				<h3 class="page-header">HTTP请求方式</h3>
+				<p>POST</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>实体名</th>
+							<th>字段名</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>HonestyJsonBean</td>
+							<td>keys</td>
+							<td>true</td>
+							<td>list&lt;Honestybean&gt;</td>
+							<td>传递的关键词</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>HonestyJsonBean</td>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>业务id，区分每一次的业务</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>HonestyJsonBean</td>
+							<td>pagenum</td>
+							<td>true</td>
+							<td>Integer</td>
+							<td>查询页码</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>HonestyJsonBean</td>
+							<td>pagesize</td>
+							<td>true</td>
+							<td>Integer</td>
+							<td>每页数量</td>
+						</tr>
+					<tbody>
+						<tr>
+							<td>Honestybean</td>
+							<td>pName</td>
+							<td>true</td>
+							<td>String</td>
+							<td>传递的关键词</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>Honestybean</td>
+							<td>pCardNum</td>
+							<td>true</td>
+							<td>String</td>
+							<td>Honestybean</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>Honestybean</td>
+							<td>pagenum</td>
+							<td>true</td>
+							<td>Integer</td>
+							<td>查询页码</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>Honestybean</td>
+							<td>pagesize</td>
+							<td>true</td>
+							<td>Integer</td>
+							<td>每页数量</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h3 class="page-header">例子</h3>
+				<p>说明：创建爬取队列</p>
+				<p>请求：http://10.167.202.187:51829/honesty/shixin/task
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border"
+					style="color: #3da33d;"> 
+{
+"taskid": null,
+"totalnum": 0,
+"unfinishednum": 0,
+"finishednum": 0,
+"crawleringnum": 0,
+"errornum": 0,
+"errormessage": "taskid存在 :0002,请创建新的taskid"
+}
+</pre>
+				<h3 class="page-header">返回说明</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>状态码</th>
+							<th>解释说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>taskid</td>
+							<td>唯一标示</td>
+						</tr>
+						<tr>
+							<td>totalnum</td>
+							<td>爬取任务数量</td>
+						</tr>
+						<tr>
+							<td>unfinishednum</td>
+							<td>未完成数量</td>
+						</tr>
+						<tr>
+							<td>finishednum</td>
+							<td>完成数量</td>
+						</tr>
+						<tr>
+							<td>crawleringnum</td>
+							<td>正在爬取中的数量</td>
+						</tr>
+						<tr>
+							<td>errornum</td>
+							<td>出错的数量</td>
+						</tr>
+						<tr>
+							<td>errormessage</td>
+							<td>出错提示</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+	<div th:include="components/footer :: footer"></div>
+</body>
+</html>

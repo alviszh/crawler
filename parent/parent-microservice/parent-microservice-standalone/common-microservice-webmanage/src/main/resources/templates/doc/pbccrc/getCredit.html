@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">获取征信报告</h2>
+            <h3 class="page-header">说明</h3>
+            <p>
+                调用该接口可以获取用户的征信报告。
+            </p>
+            <h3 class="page-header">URL</h3>
+            <p>
+                http://&lt;project&gt;/h5/v2/pbccrc/getCredit
+            </p>
+            <h3 class="page-header">格式</h3>
+            <p>
+                JSON
+            </p>
+            <h3 class="page-header">HTTP请求方式</h3>
+            <p>
+                POST
+            </p>
+            <h3 class="page-header">请求参数</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>#</th>
+                    <th>必选</th>
+                    <th>类型及范围</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>username</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>用户名</td>
+                </tr>
+                <tr>
+                    <td>password</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>登录密码</td>
+                </tr>
+                <tr>
+                    <td>verifycode</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>登录页图片验证码</td>
+                </tr>
+                <tr>
+                    <td>cookies</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>登陆页的cookie</td>
+                </tr>
+                <tr>
+                    <td>tradecode</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>手机验证码（身份验证码）</td>
+                </tr>
+                <tr>
+                    <td>key</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>业务唯一标识</td>
+                </tr>
+                <tr>
+                    <td>owner</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>所属人</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3 class="page-header">注意事项</h3>
+            <ol style="margin-left: 0px;">
+              1.登录页的cookies以及图片验证码可以从获取登陆页接口获得。<br/>
+              2.获取登录接口返回结果的cookies类型为Set&lt;Cookie&gt;而该接口cookies参数类型为String，故可利用JSON.stringify函数进行参数类型的转换。
+            </ol>
+            <h3 class="page-header">例子</h3>
+            <p>说明：非调试模式下调用本接口，获取人行征信登陆页的cookie，并进行人行征信系统登录页图片验证码的识别</p>
+            <p>请求：https://uatapitxboss.txtechnologies.com:9018/h5/v2/pbccrc/getCredit</p>
+            <p>返回：JSON</p>
+            <p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+  "creditBaseInfo" : {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "user_name" : "陈长国",
+    "idCard_type" : "身份证",
+    "idCard_no" : "**************0013",
+    "query_time" : "2017.12.19 18:29:27",
+    "report_time" : "2017.12.20 15:53:02",
+    "marital_status" : "已婚"
+  },
+  "creditRecordSummaries" : [ {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "credit_type" : "1",
+    "account_num" : "3",
+    "unSettle_unCancel" : "0",
+    "overdue_account" : "0",
+    "overdue_ninety" : "0",
+    "guarantee" : "0"
+  }, {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "credit_type" : "2",
+    "account_num" : "0",
+    "unSettle_unCancel" : "0",
+    "overdue_account" : "0",
+    "overdue_ninety" : "0",
+    "guarantee" : "0"
+  }, {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "credit_type" : "3",
+    "account_num" : "12",
+    "unSettle_unCancel" : "4",
+    "overdue_account" : "3",
+    "overdue_ninety" : "0",
+    "guarantee" : "2"
+  } ],
+  "creditRecordDetails" : [ {
+    "auto_id" : 1,
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "credit_type" : "1",
+    "account_type" : "3",
+    "content" : "2008年5月7日中国工商银行滁州分行发放的贷记卡（人民币账户），截至2008年12月已销户。"
+  }, {
+    "auto_id" : 2,
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "credit_type" : "1",
+    "account_type" : "3",
+    "content" : "2008年5月1日中国农业银行发放的贷记卡（美元账户），截至2017年5月已销户。"
+  }, {
+    "auto_id" : 3,
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "credit_type" : "2",
+    "account_type" : "3",
+    "content" : "2011年6月17日交通银行北京市分行发放的1,260,000元（人民币）个人商用房（包括商住两用）贷款，2015年5月已结清。最近5年内有1个月处于逾期状态，没有发生过90天以上逾期。"
+  }, {
+    "auto_id" : 4,
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "credit_type" : "3",
+    "account_type" : "1",
+    "content" : "2012年3月21日安徽天长农村商业银行发放的150,000元（人民币）其他贷款，2013年6月已结清。最近5年内有3个月处于逾期状态，没有发生过90天以上逾期。"
+  },{
+    "auto_id" : 5,
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "credit_type" : "3",
+    "account_type" : "2",
+    "content" : "2009年2月26日安徽天长农村商业银行发放的100,000元（人民币）其他贷款，2010年3月已结清。"
+  }, {
+    "auto_id" : 6,
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "credit_type" : "4",
+    "account_type" : "",
+    "content" : "2017年3月14日，为哈传杰（证件类型：身份证，证件号码：**************1033）在安徽天长农村商业银行办理的贷款提供担保，担保贷款合同金额98,000，担保金额98,000。截至2017年12月1日，担保贷款余额98,000。"
+  }, {
+    "auto_id" : 7,
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "credit_type" : "4",
+    "account_type" : "",
+    "content" : "2017年9月20日，为袁定军（证件类型：身份证，证件号码：**************023X）在安徽天长农村商业银行办理的贷款提供担保，担保贷款合同金额85,000，担保金额85,000。截至2017年11月30日，担保贷款余额85,000。"
+  }, {
+    "auto_id" : 8,
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "credit_type" : "5",
+    "account_type" : "",
+    "content" : "2016年4月5日华安财产保险股份有限公司进行最近一次代偿，累计代偿金额500,000。最近一次还款日期为2016年8月31日，余额0。"
+  } ],
+  "publicInformationDetails" : [ {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "type" : "1",
+    "content" : [ {
+      "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+      "report_no" : "2017122000004879924117",
+      "type" : "1",
+      "taxAuthorities" : "天长地税局城关分局",
+      "taxTimeStatistics" : "2013年7月",
+      "totalTaxes" : "0",
+      "taxpayerIdNum" : "342321197009210013"
+    } ]
+  }, {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "type" : "3",
+    "content" : [ {
+      "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+      "report_no" : "2017122000004879924117",
+      "type" : "3",
+      "court" : "慈溪市人民法院",
+      "caseNum" : "（2013）甬慈执民字第6021号",
+      "caseType" : "买卖合同纠纷",
+      "closedMode" : "和解履行完毕",
+      "filingTime" : "2013年11月",
+      "caseStatus" : "已结案",
+      "applyExecuteTarget" : "--",
+      "executedTarget" : "--",
+      "applyExecuteTargetMoney" : "36,650",
+      "executedTargetMoney" : "--",
+      "closedTime" : "2014年1月"
+    } ]
+  }, {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "type" : "4",
+    "content" : [ {
+      "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+      "report_no" : "2017122000004879924117",
+      "type" : "4",
+      "organization" : "安徽省马鞍山市公安局交通管理警察支队花山大队",
+      "docNo" : "340503290008466",
+      "content" : null,
+      "money" : "--",
+      "effectiveTime" : "2015年9月",
+      "isReview" : "--",
+      "reviewResult" : "--",
+      "deadline" : "--"
+    } ]
+  }, {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "type" : "5",
+    "content" : [ {
+      "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+      "report_no" : "2017122000004879924117",
+      "type" : "5",
+      "operator" : "--",
+      "businessType" : "后付费",
+      "accountingDate" : "2012年7月",
+      "businessOpeningDate" : "2011年7月",
+      "arrearsAmount" : "143"
+    } ]
+  } ],
+  "queryInformationDetails" : [ {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "query_dateTime" : "2017-2-21",
+    "query_operator" : "本人",
+    "query_reason" : "本人查询（互联网个人信用信息服务平台）"
+  }, {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "query_dateTime" : "2017-2-17",
+    "query_operator" : "中国人民银行天长市支行/PBC*41181_gr*xj",
+    "query_reason" : "本人查询（临柜）"
+  }, {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "query_dateTime" : "2016-12-26",
+    "query_operator" : "中国人民银行天长市支行/*BC34*181_grcxj",
+    "query_reason" : "本人查询（临柜）"
+  }, {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "query_dateTime" : "2016-8-12",
+    "query_operator" : "中国人民银行天长市支行/*BC341181_u*er004",
+    "query_reason" : "本人查询（临柜）"
+  } ],
+  "creditCardRecordDetailAnalyzes" : [ {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "recordDetail_autoId" : 1,
+    "grant_date" : "2008-5-7",
+    "bank_name" : "中国工商银行滁州分行",
+    "card_type" : "贷记卡",
+    "account_currency" : "人民币账户",
+    "cutoff_date" : "2008-12",
+    "credit_limit" : "0",
+    "used_credit_line" : "0",
+    "overdraft_balance" : "0",
+    "overdue_amount" : "0",
+    "is_actived" : "true",
+    "is_closed" : "true",
+    "is_overdue" : "false",
+    "overdue_month" : "0",
+    "is_sixtydays_overdraft" : "false",
+    "sixtydays_overdraft_month" : "0",
+    "is_nintydays_overdue" : "false",
+    "nintydays_overdue_month" : "0",
+    "bad_debts" : "false",
+    "remaining_sum" : "0"
+  }, {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "recordDetail_autoId" : 2,
+    "grant_date" : "2008-5-1",
+    "bank_name" : "中国农业银行",
+    "card_type" : "贷记卡",
+    "account_currency" : "美元账户",
+    "cutoff_date" : "2017-5",
+    "credit_limit" : "0",
+    "used_credit_line" : "0",
+    "overdraft_balance" : "0",
+    "overdue_amount" : "0",
+    "is_actived" : "true",
+    "is_closed" : "true",
+    "is_overdue" : "false",
+    "overdue_month" : "0",
+    "is_sixtydays_overdraft" : "false",
+    "sixtydays_overdraft_month" : "0",
+    "is_nintydays_overdue" : "false",
+    "nintydays_overdue_month" : "0",
+    "bad_debts" : "false",
+    "remaining_sum" : "0"
+  } ],
+  "housingLoanRecordDetailAnalyzes" : [ {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "recordDetail_autoId" : 3,
+    "grant_date" : "2011-6-17",
+    "bank_name" : "交通银行北京市分行",
+    "currency" : "人民币",
+    "loan_amount" : "1260000",
+    "loan_item" : "个人商用房（包括商住两用）贷款",
+    "expiration_date" : "",
+    "cutoff_date" : "",
+    "is_closeout" : "true",
+    "remain_balance" : "0",
+    "is_overdue" : "true",
+    "overdue_month" : "1",
+    "overdue_amount" : "0",
+    "is_nintydays_overdue" : "false",
+    "nintydays_oversue_month" : "0",
+    "transfer" : "false",
+    "transfer_date" : ""
+  } ],
+  "otherLoanRecordDetailAnalyzes" : [ {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "recordDetail_autoId" : 4,
+    "grant_date" : "2012-3-21",
+    "finance_corporation" : "安徽天长农村商业银行",
+    "currency" : "人民币",
+    "loan_amount" : "150000",
+    "loan_item" : "其他贷款",
+    "expiration_date" : "",
+    "cutoff_date" : "",
+    "is_closeout" : "true",
+    "remain_balance" : "0",
+    "is_overdue" : "true",
+    "overdue_amount" : "0",
+    "overdue_month" : "3",
+    "is_nintydays_overdue" : "false",
+    "nintydays_oversue_month" : "0",
+    "bad_debts" : "false",
+    "remaining_sum" : "0"
+  }, {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "recordDetail_autoId" : 5,
+    "grant_date" : "2014-6-26",
+    "finance_corporation" : "安徽天长农村商业银行",
+    "currency" : "人民币",
+    "loan_amount" : "150000",
+    "loan_item" : "其他贷款",
+    "expiration_date" : "",
+    "cutoff_date" : "",
+    "is_closeout" : "true",
+    "remain_balance" : "0",
+    "is_overdue" : "true",
+    "overdue_amount" : "0",
+    "overdue_month" : "2",
+    "is_nintydays_overdue" : "false",
+    "nintydays_oversue_month" : "0",
+    "bad_debts" : "false",
+    "remaining_sum" : "0"
+  } ],
+  "guaranteeInfoDetailAnalyzes" : [ {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "recordDetail_autoId" : 6,
+    "guaranteedPerson" : "哈传杰",
+    "guaranteedPersonIdNum" : "**************1033",
+    "otherGuaranteeAmount" : "98000",
+    "realPrincipal" : "98000",
+    "actualDay" : "2017-12-1"
+  }, {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "recordDetail_autoId" : 7,
+    "guaranteedPerson" : "袁定军",
+    "guaranteedPersonIdNum" : "",
+    "otherGuaranteeAmount" : "85000",
+    "realPrincipal" : "85000",
+    "actualDay" : "2017-11-30"
+  } ],
+  "guarantorCompensatoryDetailAnalyzes" : [ {
+    "mapping_id" : "c04a9b23-736d-4288-b48b-150885286960",
+    "report_no" : "2017122000004879924117",
+    "recordDetail_autoId" : 8,
+    "recentCompensatoryTime" : "2016-4-5",
+    "compensatoryAgency" : "华安财产保险股份有限公司",
+    "accumulativeCompensatoryAmount" : "500,000",
+    "balance" : "0",
+    "recentRepaymentDate" : "2016-8-31"
+  } ]
+}
+				</pre>
+            <h3 class="page-header">返回字段</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>字段名</th>
+                    <th>类型</th>
+                    <th>注释</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>statusCode</td>
+                    <td>String</td>
+                    <td>结果状态码</td>
+                </tr>
+                <tr>
+                    <td>message</td>
+                    <td>String</td>
+                    <td>状态消息</td>
+                </tr>
+                <tr>
+                  <td colspan="3" style="text-align:center;">征信报告数据（report）</td>
+                </tr>
+                <tr>
+                  <td>creditBaseInfo->mapping_id</td>
+                  <td>String</td>
+                  <td>映射ID</td>
+                </tr>
+                <tr>
+                  <td>creditBaseInfo->report_no</td>
+                  <td>String</td>
+                  <td>报告编号</td>
+                </tr>
+                <tr>
+                  <td>creditBaseInfo->user_name</td>
+                  <td>String</td>
+                  <td>用户姓名</td>
+                </tr>
+                <tr>
+                  <td>creditBaseInfo->idCard_type</td>
+                  <td>String</td>
+                  <td>用户的证件类型</td>
+                </tr>
+                <tr>
+                  <td>creditBaseInfo->idCard_no</td>
+                  <td>String</td>
+                  <td>证件号码</td>
+                </tr>
+                <tr>
+                  <td>creditBaseInfo->query_time</td>
+                  <td>String</td>
+                  <td>用户申请人行征信报告的时间</td>
+                </tr>
+                <tr>
+                  <td>creditBaseInfo->report_time</td>
+                  <td>String</td>
+                  <td>人行征信报告的生成时间</td>
+                </tr>
+                <tr>
+                  <td>creditBaseInfo->marital_status</td>
+                  <td>String</td>
+                  <td>婚姻状态</td>
+                </tr>
+                <tr>
+                  <td>creditRecordSummary->mapping_id</td>
+                  <td>String</td>
+                  <td>信息概要->映射ID</td>
+                </tr>
+                <tr>
+                  <td>creditRecordSummary->report_no</td>
+                  <td>String</td>
+                  <td>信息概要->人行征信报告编号</td>
+                </tr>
+                <tr>
+                  <td>creditRecordSummary->credit_type</td>
+                  <td>String</td>
+                  <td>信息概要->账户类型
+                    <br/>
+                    &nbsp;&nbsp;1:信用卡<br/>
+                    &nbsp;&nbsp;2:住房贷款<br/>
+                    &nbsp;&nbsp;3:其它贷款<br/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>creditRecordSummary->account_num</td>
+                  <td>String</td>
+                  <td>信息概要->账户数</td>
+                </tr>
+                <tr>
+                  <td>creditRecordSummary->unSettle_unCancel</td>
+                  <td>String</td>
+                  <td>信息概要->未结清、未销户账户数</td>
+                </tr>
+                <tr>
+                  <td>creditRecordSummary->overdue_account</td>
+                  <td>String</td>
+                  <td>信息概要->发生过逾期的账户数</td>
+                </tr>
+                <tr>
+                  <td>creditRecordSummary->overdue_ninety</td>
+                  <td>String</td>
+                  <td>信息概要->发生过90天以上逾期的账户数</td>
+                </tr>
+                <tr>
+                  <td>creditRecordSummary->guarantee</td>
+                  <td>String</td>
+                  <td>信息概要->为他人担保笔数</td>
+                </tr>
+                <tr>
+                  <td>creditRecordDetail->auto_id</td>
+                  <td>Long</td>
+                  <td>信贷记录详细信息->这条记录的唯一ID</td>
+                </tr>
+                <tr>
+                  <td>creditRecordDetail->mapping_id</td>
+                  <td>String</td>
+                  <td>信贷记录详细信息->映射ID</td>
+                </tr>
+                <tr>
+                  <td>creditRecordDetail->report_no</td>
+                  <td>String</td>
+                  <td>信贷记录详细信息->人行征信报告编号</td>
+                </tr>
+                <tr>
+                  <td>creditRecordDetail->credit_type</td>
+                  <td>String</td>
+                  <td>信贷记录详细信息->信贷类型
+                    <br/>
+                    &nbsp;&nbsp;1:信用卡<br/>
+                    &nbsp;&nbsp;2:住房贷款<br/>
+                    &nbsp;&nbsp;3:其它贷款<br/>
+                    &nbsp;&nbsp;4:为他人担保<br/>
+                    &nbsp;&nbsp;5:保证人代偿<br/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>creditRecordDetail->account_type</td>
+                  <td>String</td>
+                  <td>信贷记录详细信息->账户类型</td>
+                </tr>
+                <tr>
+                  <td>creditRecordDetail->content</td>
+                  <td>String</td>
+                  <td>信贷记录详细信息->账户明细</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->mapping_id</td>
+                  <td>String</td>
+                  <td>公共记录->映射ID</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->report_no</td>
+                  <td>String</td>
+                  <td>公共记录->人行征信报告编号</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->type</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录类型
+                    <br/>
+                    &nbsp;&nbsp;1:欠税记录<br/>
+                    &nbsp;&nbsp;2:民事判决记录<br/>
+                    &nbsp;&nbsp;3:强制执行记录<br/>
+                    &nbsp;&nbsp;4:行政处罚记录<br/>
+                    &nbsp;&nbsp;5:电信欠费记录<br/></td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content</td>
+                  <td>List&lt;T&gt;</td>
+                  <td>公共记录->公共记录明细</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicAdministrativePunishmen->mapping_id</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->行政处罚记录->映射ID</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicAdministrativePunishmen->report_no</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->行政处罚记录->人行征信报告编号</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicAdministrativePunishmen->type</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->行政处罚记录->公共记录类型
+                    <br/>
+                    &nbsp;&nbsp;4:行政处罚记录<br/></td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicAdministrativePunishmen->organization</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->行政处罚记录->处罚机构</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicAdministrativePunishmen->docNo</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->行政处罚记录->文书编号</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicAdministrativePunishmen->content</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->行政处罚记录->处罚内容</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicAdministrativePunishmen->money</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->行政处罚记录->处罚金额</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicAdministrativePunishmen->effectiveTime</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->行政处罚记录->生效时间</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicAdministrativePunishmen->isReview</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->行政处罚记录->是否行政复议</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicAdministrativePunishmen->reviewResult</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->行政处罚记录->复议结果</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicAdministrativePunishmen->deadline</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->行政处罚记录->处罚截止时间</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicTaxesOwed->mapping_id</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->欠税记录->映射ID</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicTaxesOwed->report_no</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->欠税记录->人行征信报告编号</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicTaxesOwed->type</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->欠税记录->公共记录类型
+                    <br/>
+                    &nbsp;&nbsp;1:欠税记录<br/></td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicTaxesOwed->taxAuthorities</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->欠税记录->主管税务机关</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicTaxesOwed->taxTimeStatistics</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->欠税记录->欠税统计时间</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicTaxesOwed->totalTaxes</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->欠税记录->欠税总额</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicTaxesOwed->taxpayerIdNum</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->欠税记录->纳税人识别号</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicEnforcedRecord->mapping_id</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->强制执行记录->映射ID</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicEnforcedRecord->report_no</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->强制执行记录->人行征信报告编号</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicEnforcedRecord->type</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->强制执行记录->公共记录类型
+                    <br/>
+                    &nbsp;&nbsp;3:强制执行记录<br/></td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicEnforcedRecord->court</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->强制执行记录->执行法院</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicEnforcedRecord->caseNum</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->强制执行记录->案号</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicEnforcedRecord->caseType</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->强制执行记录->执行案由</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicEnforcedRecord->closedMode</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->强制执行记录->结案方式</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicEnforcedRecord->filingTime</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->强制执行记录->立案时间</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicEnforcedRecord->caseStatus</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->强制执行记录->案件状态</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicEnforcedRecord->applyExecuteTarget</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->强制执行记录->申请执行标的</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicEnforcedRecord->executedTarget</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->强制执行记录->已执行标的</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicEnforcedRecord->applyExecuteTargetMoney</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->强制执行记录->申请执行标的金额</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicEnforcedRecord->executedTargetMoney</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->强制执行记录->已执行标的金额</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicEnforcedRecord->closedTime</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->强制执行记录->结案时间</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicTeleArrearsRecord->mapping_id</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->电信欠费信息->映射ID</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicTeleArrearsRecord->report_no</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->电信欠费信息->人行征信报告编号</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicTeleArrearsRecord->type</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->电信欠费信息->公共记录类型
+                    <br/>
+                    &nbsp;&nbsp;5:电信欠费记录<br/></td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicTeleArrearsRecord->operator</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->电信欠费信息->运营商</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicTeleArrearsRecord->businessType</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->电信欠费信息->业务类型</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicTeleArrearsRecord->accountingDate</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->电信欠费信息->记账年月</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicTeleArrearsRecord->businessOpeningDate</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->电信欠费信息->业务开通时间</td>
+                </tr>
+                <tr>
+                  <td>publicInformationDetail->content->publicTeleArrearsRecord->arrearsAmount</td>
+                  <td>String</td>
+                  <td>公共记录->公共记录明细->电信欠费信息->欠费金额</td>
+                </tr>
+                <tr>
+                  <td>queryInformationDetail->mapping_id</td>
+                  <td>String</td>
+                  <td>查询记录->映射ID</td>
+                </tr>
+                <tr>
+                  <td>queryInformationDetail->report_no</td>
+                  <td>String</td>
+                  <td>查询记录->人行征信报告编号</td>
+                </tr>
+                <tr>
+                  <td>queryInformationDetail->query_dateTime</td>
+                  <td>String</td>
+                  <td>查询记录->记录查询时间</td>
+                </tr>
+                <tr>
+                  <td>queryInformationDetail->query_operator</td>
+                  <td>String</td>
+                  <td>查询记录->查询操作员</td>
+                </tr>
+                <tr>
+                  <td>queryInformationDetail->query_reason</td>
+                  <td>String</td>
+                  <td>查询记录->查询原因</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->mapping_id</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->映射ID</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->report_no</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->人行征信报告编号</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->recordDetail_autoId</td>
+                  <td>Long</td>
+                  <td>信用卡记录详细信息解析记录->对应于creditRecordDetails中的auto_id</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->grant_date</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->信用卡发放的时间</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->bank_name</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->发放信用卡银行的名称</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->card_type</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->信用卡类型</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->account_currency</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->账户的币种</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->cutoff_date</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->本征信报告获取本信用卡信息的最后时间</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->credit_limit</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->信用额度</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->used_credit_line</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->已使用额度</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->overdraft_balance</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->透支余额</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->overdue_amount</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->逾期金额</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->is_actived</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->该账户是否激活过</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->is_closed</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->该账户是否已销户</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->is_overdue</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->该账户是否有逾期记录</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->overdue_month</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->有过逾期记录的月数</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->is_sixtydays_overdraft</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->准贷记卡账户是否有大于60天逾期记录</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->sixtydays_overdraft_month</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->准记卡账户有超过60天逾期记录月数</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->is_nintydays_overdue</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->该账户是否有超过90天</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->nintydays_overdue_month</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->该账户有超过90天逾期记录月数</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->bad_debts</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->是否已变成呆账</td>
+                </tr>
+                <tr>
+                  <td>creditCardRecordDetail->remaining_sum</td>
+                  <td>String</td>
+                  <td>信用卡记录详细信息解析记录->余额(人民币)</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->mapping_id</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->映射ID</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->report_no</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->人行征信报告编号</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->recordDetail_autoId</td>
+                  <td>Long</td>
+                  <td>购房贷款记录详细信息解析记录->对应于creditRecordDetails中的auto_id</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->grant_date</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->贷款发放的时间</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->bank_name</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->发放贷款银行的名称</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->currency</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->贷款币种</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->loan_amount</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->购房贷款总金额</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->loan_item</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->贷款对象</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->expiration_date</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->购房贷款到期日</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->cutoff_date</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->本征信报告获取本该购房贷款信息的最后时间</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->is_closeout</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->购房贷款是否已结清</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->remain_balance</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->购房贷款余额</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->is_overdue</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->购房贷款是否有逾期</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->overdue_month</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->购房贷款有逾期的月数</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->overdue_amount</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->逾期金额</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->is_nintydays_overdue</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->购房贷款是否有超过90天的逾期</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->nintydays_oversue_month</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->购房逾期超过90天的月数</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->transfer</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->是否已转出</td>
+                </tr>
+                <tr>
+                  <td>housingLoanRecordDetail->transfer_date</td>
+                  <td>String</td>
+                  <td>购房贷款记录详细信息解析记录->转出日期</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->mapping_id</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->映射ID</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->report_no</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->人行征信报告编号</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->recordDetail_autoId</td>
+                  <td>Long</td>
+                  <td>其他贷款记录详细信息解析记录->对应于creditRecordDetails中的auto_id</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->grant_date</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->贷款发放的时间</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->finance_corporation</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->发放贷款机构的名称</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->currency</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->贷款币种</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->loan_amount</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->贷款总金额</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->loan_item</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->贷款对象</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->expiration_date</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->贷款到期日</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->cutoff_date</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->本征信报告获取本该贷款信息的最后时间</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->is_closeout</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->贷款是否已结清</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->remain_balance</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->贷款余额</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->is_overdue</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->贷款是否有逾期</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->overdue_amount</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->逾期金额</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->overdue_month</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->贷款有逾期的月数</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->is_nintydays_overdue</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->贷款是否有超过90天的逾期</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->nintydays_oversue_month</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->逾期超过90天的月数</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->bad_debts</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->是否已变成呆账</td>
+                </tr>
+                <tr>
+                  <td>otherLoanRecordDetail->remaining_sum</td>
+                  <td>String</td>
+                  <td>其他贷款记录详细信息解析记录->余额(人民币)</td>
+                </tr>
+                <tr>
+                  <td>guaranteeInfoDetail->mapping_id</td>
+                  <td>String</td>
+                  <td>为他人担保信息解析记录->映射ID</td>
+                </tr>
+                <tr>
+                  <td>guaranteeInfoDetail->report_no</td>
+                  <td>String</td>
+                  <td>为他人担保信息解析记录->人行征信报告编号</td>
+                </tr>
+                <tr>
+                  <td>guaranteeInfoDetail->recordDetail_autoId</td>
+                  <td>Long</td>
+                  <td>为他人担保信息解析记录->对应于creditRecordDetails中的auto_id</td>
+                </tr>
+                <tr>
+                  <td>guaranteeInfoDetail->guaranteedPerson</td>
+                  <td>String</td>
+                  <td>为他人担保信息解析记录->被担保人姓名</td>
+                </tr>
+                <tr>
+                  <td>guaranteeInfoDetail->guaranteedPersonIdNum</td>
+                  <td>String</td>
+                  <td>为他人担保信息解析记录->被担保人身份证号</td>
+                </tr>
+                <tr>
+                  <td>guaranteeInfoDetail->otherGuaranteeAmount</td>
+                  <td>String</td>
+                  <td>为他人担保信息解析记录->为他人贷款合同担保金额</td>
+                </tr>
+                <tr>
+                  <td>guaranteeInfoDetail->realPrincipal</td>
+                  <td>String</td>
+                  <td>为他人担保信息解析记录->被担保贷款实际本金余额</td>
+                </tr>
+                <tr>
+                  <td>guaranteeInfoDetail->actualDay</td>
+                  <td>String</td>
+                  <td>为他人担保信息解析记录->截至年月</td>
+                </tr>
+                <tr>
+                  <td>guarantorCompensatoryDetail->mapping_id</td>
+                  <td>String</td>
+                  <td>保证人代偿信息解析记录->映射ID</td>
+                </tr>
+                <tr>
+                  <td>guarantorCompensatoryDetail->report_no</td>
+                  <td>String</td>
+                  <td>保证人代偿信息解析记录->人行征信报告编号</td>
+                </tr>
+                <tr>
+                  <td>guarantorCompensatoryDetail->recordDetail_autoId</td>
+                  <td>Long</td>
+                  <td>保证人代偿信息解析记录->对应于creditRecordDetails中的auto_id</td>
+                </tr>
+                <tr>
+                  <td>guarantorCompensatoryDetail->recentCompensatoryTime</td>
+                  <td>String</td>
+                  <td>保证人代偿信息解析记录->最近一次代偿时间</td>
+                </tr>
+                <tr>
+                  <td>guarantorCompensatoryDetail->compensatoryAgency</td>
+                  <td>String</td>
+                  <td>保证人代偿信息解析记录->代偿机构</td>
+                </tr>
+                <tr>
+                  <td>guarantorCompensatoryDetail->accumulativeCompensatoryAmount</td>
+                  <td>String</td>
+                  <td>保证人代偿信息解析记录->累计代偿金</td>
+                </tr>
+                <tr>
+                  <td>guarantorCompensatoryDetail->balance</td>
+                  <td>String</td>
+                  <td>保证人代偿信息解析记录->余额</td>
+                </tr>
+                <tr>
+                  <td>guarantorCompensatoryDetail->recentRepaymentDate</td>
+                  <td>String</td>
+                  <td>保证人代偿信息解析记录->最近一次还款日期</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <span>备注：</span><br>
+            <table class="table table-bordered table-hover"><caption>结果状态码（statusCode）说明：</caption>
+                <thead><tr><th>码值</th><th>说明</th></tr></thead>
+                <tbody><tr><td>0</td><td>成功</td></tr>
+                <tr><td>1</td><td>手机验证码错误</td></tr>
+                <tr><td>2</td><td>用户名或密码错误</td></tr>
+                <tr><td>3</td><td>系统繁忙</td></tr>
+                <tr><td>-1</td><td>失败</td></tr>
+                <tr><td>-2</td><td>网站被屏蔽</td></tr></tbody></table>
+            <p>以上 -&gt; 表示字段内容的层次关系</p>
+
+        </div>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

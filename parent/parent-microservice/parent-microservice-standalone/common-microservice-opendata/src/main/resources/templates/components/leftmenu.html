@@ -1,0 +1,421 @@
+<div class="panel-group" id="accordion" th:fragment="leftmenu">
+	<!--<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseCmcc">中国移动</h3>
+		</div>
+		<div id="collapseCmcc" th:class="${module} == 1 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseCmcc" href="#collapseCmccApi" class="list-group-item">接口说明 </a>
+				<div id="collapseCmccApi" th:class="${isApi} ? 'panel-collapse collapse in' : 'panel-collapse collapse'" style="margin-left: 20px; margin-top: 10px; margin-bottom: 10px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a th:href="@{/carrier/doc/cmcc/login}">登录</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/cmcc/sendSMS}">登录随机短信</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/cmcc/secondAttestation}">第二次验证</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/cmcc/sendVerifySMS}">第二次验证短信</a></li>
+						&lt;!&ndash; <li class="list-group-item"><a href="/carrier/doc/cmcc/getUserMessage">用户信息</a></li>
+						<li class="list-group-item"><a href="/carrier/doc/cmcc/getCallRecord">通话详单</a></li>
+						<li class="list-group-item"><a href="/carrier/doc/cmcc/getSMSMsg">短信信息</a></li>
+						<li class="list-group-item"><a href="/carrier/doc/cmcc/getCheckMsg">月账单（半年）</a></li> &ndash;&gt;
+						<li class="list-group-item"><a th:href="@{/carrier/doc/cmcc/getAllData}">爬取总接口</a></li>
+					</ul>
+				</div>
+				<a th:href="@{/carrier/cbconf/config?module=1}" class="list-group-item">回调配置</a> 
+				<a th:href="@{/carrier/cbtest/index?module=1}" class="list-group-item">回调测试</a>
+				<a th:href="@{/carrier/apitest/cmcc}" class="list-group-item">API测试</a>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseUnicom">中国联通</h3>
+		</div>
+		<div id="collapseUnicom" th:class="${module} == 2 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseUnicom" href="#collapseUnicomApi" class="list-group-item">接口说明 </a>
+				<div id="collapseUnicomApi" th:class="${isApi} ? 'panel-collapse collapse in' : 'panel-collapse collapse'" style="margin-left: 20px; margin-top: 10px; margin-bottom: 10px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a th:href="@{/carrier/doc/unicom/login}">登录</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/unicom/crawler}">爬取总接口</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/unicom/passwordlogin}">修改密码账号认证</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/unicom/passwordgetCode}">修改密码验证码获取</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/unicom/passwordsetCode}">修改密码验证码认证</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/unicom/passwordchange}">修改密码</a></li>
+					</ul>
+				</div>
+				<a th:href="@{/carrier/cbconf/config?module=2}" class="list-group-item">回调配置</a>
+				<a th:href="@{/carrier/cbtest/index?module=2}" class="list-group-item">回调测试</a>
+				<a th:href="@{/carrier/apitest/unicom}" class="list-group-item">API测试</a>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseTelcom">中国电信</h3>
+		</div>
+		<div id="collapseTelcom" th:class="${module} == 3 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseTelcom" href="#collapseTelcomApi" class="list-group-item">接口说明 </a>
+				<div id="collapseTelcomApi" th:class="${isApi} ? 'panel-collapse collapse in' : 'panel-collapse collapse'" style="margin-left: 20px; margin-top: 10px; margin-bottom: 10px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a th:href="@{/carrier/doc/telecom/login}">登录</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/telecom/telecomgetcode}">手机验证码发送</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/telecom/telecomsetcode}">手机验证码验证</a></li>
+						<li class="list-group-item"><a th:href="@{/carrier/doc/telecom/crawler}">爬取总接口</a></li>
+					</ul>
+				</div>
+				<a th:href="@{/carrier/cbconf/config?module=3}" class="list-group-item">回调配置</a>
+				<a th:href="@{/carrier/cbtest/index?module=3}" class="list-group-item">回调测试</a>
+				<a th:href="@{/carrier/apitest/telecom}" class="list-group-item">API测试</a>
+			</div>
+		</div>
+	</div>-->
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseInfo">开发指南 </h3>
+		</div>
+		<div id="collapseInfo"
+			th:class="${module} == 10 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseInfo"
+					href="#collapseInfoPrecedingRule" class="list-group-item">接口说明
+				</a>
+				<div id="collapseInfoPrecedingRule"
+					th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">							
+							<li th:class="list-group-item" ><a th:href="@{/}">平台简介</a> </li>
+						   <!--  <li th:class="list-group-item" ><a th:href="@{/docs/dev-guide/platform-enter}">平台入驻</a></li> 
+						    <li th:class="list-group-item" ><a th:href="@{/docs/dev-guide/create-app}">创建应用</a></li> 	 -->									
+					</ul>
+				</div>			
+			</div>
+		</div>
+	</div>	
+	
+
+ <div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseAccess">产品接入指南 </h3>
+		</div>
+		<div id="collapseAccess"
+			th:class="${module} == 10 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseAccess"
+					href="#collapseAccessPrecedingRule" class="list-group-item">接口说明
+				</a>
+				<div id="collapseAccessPrecedingRule"
+					th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">							
+			    	<li th:class="list-group-item" ><a th:href="@{/}">产品接入必读</a></li>  	
+				   <!--  <li th:class="list-group-item" ><a th:href="@{/docs/dev-guide/platform-accessios}">IOS快速接入</a></li> 
+				    <li th:class="list-group-item" ><a th:href="@{/docs/dev-guide/platform-accessandroid}">Android快速接入</a></li> 
+				    <li th:class="list-group-item" ><a th:href="@{/docs/dev-guide/platform-accessh5}">H5接入快速接入</a></li>    -->										
+					</ul>
+				</div>			
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapsePbccrc">人行征信 </h3>
+		</div>
+		<div id="collapsePbccrc"
+			 th:class="${module} == 10 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapsePbccrc"
+				   href="#collapsePbccrcPrecedingRule" class="list-group-item">接口说明
+				</a>
+				<div id="collapsePbccrcPrecedingRule"
+					 th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					 style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item"><a th:href="@{/docs/pbccrc/reportExplain}">人行征信数据报告（V2）</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseMobile">运营商</h3>
+		</div>
+		<div id="collapseMobile"
+			th:class="${module} == 10 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseMobile"
+					href="#collapseMobilePrecedingRule" class="list-group-item">接口说明
+				</a>
+				<div id="collapseMobilePrecedingRule"
+					th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">					
+						<li th:class="list-group-item"><a th:href="@{/}">接入指引</a></li>
+						<li th:class="list-group-item"><a th:href="@{/}">快速接入</a></li>
+						<li class="list-group-item"><a th:href="@{/docs/carrier/v2/reportexplain}">运营商数据报告（V2）</a></li>							                                   
+					    <li th:class="list-group-item" ><a th:href="@{/docs/carrier/v2/rawreportexplain}">原始数据说明（V2）</a></li> 
+					   <!-- <li th:class="list-group-item" ><a th:href="@{/docs/carrier/carrier-rawdataplus}">获取运营商原始数据(增强版)</a></li> 
+					    <li th:class="list-group-item" ><a th:href="@{/docs/carrier/carrier-rawdata}">获取运营商原始数据</a></li> 
+					    <li th:class="list-group-item" ><a th:href="@{/docs/carrier/carrier-rawdatacalldetails}">获取运营商原始数据(含通话详单采集结果)</a></li> 
+					    <li th:class="list-group-item" ><a th:href="@{/docs/carrier/carrier-rawdatasplit}">获取账号运营商数据(分拆)</a></li> 
+					    <li th:class="list-group-item" ><a  th:href="@{/docs/carrier/carrier-reportintro}">用户报告文档简介</a></li> 
+					    <li th:class="list-group-item" ><a th:href="@{/docs/carrier/carrier-reportstate}">查询报告状态接口</a></li> 
+					    <li th:class="list-group-item" ><a th:href="@{/docs/carrier/carrier-reportdoc}">用户报告API文档</a></li> 
+					    <li th:class="list-group-item" ><a th:href="@{/docs/carrier/carrier-reportonline}">用户报告在线展示文档</a></li> 
+					    <li th:class="list-group-item" ><a th:href="@{/docs/carrier/carrier-reportonlinecomp}">用户报告在线展示（兼容版本）文档</a></li> 					
+					    <li th:class="list-group-item"  ><a th:href="@{/docs/carrier/carrier-asyncallback}">服务器异步回调说明详解</a></li> 
+					    <li th:class="list-group-item"  ><a th:href="@{/docs/carrier/carrier-callbackinter}">查询回调信息接口</a></li> 
+					    <li th:class="list-group-item"  ><a th:href="@{/docs/carrier/carrier-trignoteinter}">主动触发回调通知接口</a></li>         				         
+						<li th:class="list-group-item" ><a th:href="@{/docs/carrier/carrier-questionfaq}">常见问题FAQ</a></li>
+						<li th:class="list-group-item" ><a th:href="@{/docs/carrier/carrier-exceptdoc}">异常处理文档</a></li>
+						<li th:class="list-group-item" ><a th:href="@{/docs/carrier/carrier-online}">在线认证文档</a></li>
+						<li th:class="list-group-item" ><a th:href="@{/docs/carrier/carrier-download}">文档资源下载</a></li> -->													
+					</ul>
+				</div>				
+			</div>
+		</div>
+	</div>
+ <div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseBank">网银</h3>
+		</div>
+		<div id="collapseBank"
+			th:class="${module} == 14 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseBank"
+					href="#collapseBankPrecedingRule" class="list-group-item">接口说明
+				</a>
+				<div id="collapseBankPrecedingRule"
+					th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+					     <li class="list-group-item"><a th:href="@{/}">快速接入 </a> </li>
+						<!--     <li class="list-group-item"><a th:href="@{/docs/bank/bank-bills}">网银账单  </a> </li>
+						    <li class="list-group-item"><a th:href="@{/docs/bank/bank-reports}">网银报告 </a> </li>
+						    <li class="list-group-item"><a th:href="@{/docs/bank/bank-stateinterface}">报告状态接口 </a> </li>
+						    <li class="list-group-item"><a th:href="@{/docs/bank/bank-asynccallback}">服务步回调说明 </a> </li>  
+						    <li class="list-group-item"><a th:href="@{/docs/bank/bank-exceptdoc}">异常处理文档 </a> </li>
+						    <li class="list-group-item"><a th:href="@{/docs/bank/bank-download}">网银档资源下载  </a> </li>
+						    <li class="list-group-item"><a th:href="@{/docs/bank/bank-questionfaq}">网银常见问题FAQ </a> </li>  -->
+					
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseAplpay">支付宝</h3>
+		</div>	
+		<div id="collapseAplpay"
+			th:class="${module} == 14 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseAplpay"
+					href="#collapseAplpayPrecedingRule" class="list-group-item">接口说明
+				</a>
+				<div id="collapseAplpayPrecedingRule"
+					th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						 <li th:class="list-group-item"><a th:href="@{/}">快速接入 </a> </li>
+					 <!--     <li th:class="list-group-item"><a th:href="@{/docs/alipay/alipay-alipayinfo}">支付宝信息  </a> </li>
+					     <li th:class="list-group-item"><a th:href="@{/docs/alipay/alipay-alipayinfov6}">支付宝信息(V6最新) </a> </li>
+					     <li th:class="list-group-item"><a th:href="@{/docs/alipay/alipay-reports}">支付宝报告 </a> </li>
+					     <li th:class="list-group-item"><a th:href="@{/docs/alipay/alipay-stateinterface}">报告状态接口 </a> </li>
+					     <li th:class="list-group-item"><a th:href="@{/docs/alipay/alipay-asynccallback}">服务器异步回调说明 </a> </li>  
+					     <li th:class="list-group-item"><a th:href="@{/docs/alipay/alipay-exceptdoc}">异常处理文档 </a> </li>
+					     <li th:class="list-group-item"><a th:href="@{/docs/alipay/alipay-download}">支付宝档资源下载 </a> </li>
+					     <li th:class="list-group-item"><a th:href="@{/docs/alipay/alipay-questionfaq}">支付宝常见问题FAQ</a></li> 		 -->			
+					</ul>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseTaobao">淘宝&天猫</h3>
+		</div>	
+		<div id="collapseTaobao"
+			th:class="${module} == 14 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseTaobao"
+					href="#collapseTaobaoPrecedingRule" class="list-group-item">接口说明
+				</a>
+				<div id="collapseTaobaoPrecedingRule"
+					th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li th:class="list-group-item"><a th:href="@{/}">快速接入 </a> </li>
+					    <!-- <li th:class="list-group-item"><a th:href="@{/docs/taobao/taobao-taobaoinfo}">淘宝信息  </a> </li>
+					    <li th:class="list-group-item"><a th:href="@{/docs/taobao/taobao-taobaoinfov6}">淘宝信息(V6最新) </a> </li>
+					    <li th:class="list-group-item"><a th:href="@{/docs/taobao/taobao-reports}">淘宝报告 </a> </li>
+					    <li th:class="list-group-item"><a th:href="@{/docs/taobao/taobao-reportsV4}">淘宝报告(V4最新) </a> </li>
+					    <li th:class="list-group-item"><a th:href="@{/docs/taobao/taobao-stateinterface}">报告状态接口 </a> </li>
+					    <li th:class="list-group-item"><a th:href="@{/docs/taobao/taobao-asynccallback}">服务器异步回调说明 </a> </li>  
+					    <li th:class="list-group-item"><a th:href="@{/docs/taobao/taobao-download}">淘宝文档资源下载  </a> </li>
+					    <li th:class="list-group-item"><a th:href="@{/docs/taobao/taobao-questionfaq}">淘宝常见问题FAQ </a> </li>  -->			
+					</ul>
+				</div>				
+			</div>
+		</div>
+	</div>	
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseJingdong">京东</h3>
+		</div>	
+		<div id="collapseJingdong"
+			th:class="${module} == 14 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseJingdong"
+					href="#collapseJingdongPrecedingRule" class="list-group-item">接口说明
+				</a>
+				<div id="collapseJingdongPrecedingRule"
+					th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li th:class="list-group-item"><a th:href="@{/}">快速接入 </a> </li>
+					    <!-- <li th:class="list-group-item"><a th:href="@{/docs/jd/jd-jdinfo}">京东信息  </a></li>
+					    <li th:class="list-group-item"><a th:href="@{/docs/jd/jd-jdinfov6}">京东信息(V6最新) </a> </li>
+					    <li th:class="list-group-item"><a th:href="@{/docs/jd/jd-reports}">京东报告 </a> </li>
+					    <li th:class="list-group-item"><a th:href="@{/docs/jd/jd-stateinterface}">报告状态接口 </a> </li>
+					    <li th:class="list-group-item"><a th:href="@{/docs/jd/jd-asynccallback}">服务器异步回调说明 </a> </li>  
+					    <li th:class="list-group-item"><a th:href="@{/docs/jd/jd-download}">京东文档资源下载  </a> </li>
+					    <li th:class="list-group-item"><a th:href="@{/docs/jd/jd-questionfaq}">京东常见问题FAQ </a> </li> 	 -->
+					</ul>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseSuning">苏宁</h3>
+		</div>	
+		<div id="collapseSuning"
+			th:class="${module} == 14 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseSuning"
+					href="#collapseSuningPrecedingRule" class="list-group-item">接口说明
+				</a>
+				<div id="collapseSuningPrecedingRule"
+					th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li th:class="list-group-item"><a th:href="@{/}">快速接入 </a> </li>					   
+					</ul>
+				</div>				
+			</div>
+		</div>
+	</div>	
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseHousing">社保</h3>
+		</div>	
+		<div id="collapseHousing"
+			th:class="${module} == 14 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseHousing"
+					href="#collapseHousingPrecedingRule" class="list-group-item">接口说明
+				</a>
+				<div id="collapseHousingPrecedingRule"
+					th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li th:class="list-group-item"><a th:href="@{/}">快速接入</a></li>
+					<!-- 	<li th:class="list-group-item"><a th:href="@{/docs/insurance/insurance-insuranceinfo}">社保信息</a></li>	
+						<li th:class="list-group-item"><a th:href="@{/docs/insurance/insurance-reportsapi}">用户报告API文档</a></li>
+						<li th:class="list-group-item"><a th:href="@{/docs/insurance/insurance-stateinterface}">查询报告状态接口</a></li>
+						<li th:class="list-group-item"><a th:href="@{/docs/insurance/insurance-asynccallback}">服务器异步回调说明 </a></li>
+						<li th:class="list-group-item"><a th:href="@{/docs/insurance/insurance-exceptdoc}">异常处理文档 </a></li>
+						<li th:class="list-group-item"><a th:href="@{/docs/insurance/insurance-download}">社保资源下载 </a></li>
+						<li th:class="list-group-item"><a th:href="@{/docs/insurance/insurance-questionfaq}">社保常见问题FAQ </a></li>	 -->			   
+					</ul>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseInsurance">公积金</h3>
+		</div>	
+			<div id="collapseInsurance"
+			th:class="${module} == 14 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseInsurance"
+					href="#collapseInsurancePrecedingRule" class="list-group-item">接口说明
+				</a>
+				<div id="collapseInsurancePrecedingRule"
+					th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+							<li th:class="list-group-item"><a th:href="@{/}">快速接入</a></li>
+							<!-- <li th:class="list-group-item"><a th:href="@{/docs/housingfund/housingfund-housingfundinfo}">公积金信息</a></li>		
+							<li th:class="list-group-item"><a th:href="@{/docs/housingfund/housingfund-reportsapi}">用户报告API文档</a></li>
+							<li th:class="list-group-item"><a th:href="@{/docs/housingfund/housingfund-stateinterface}">查询报告状态接口</a></li>					
+							<li th:class="list-group-item"><a th:href="@{/docs/housingfund/housingfund-asynccallback}">服务器异步回调说明 </a></li>
+							<li th:class="list-group-item"><a th:href="@{/docs/housingfund/housingfund-exceptdoc}">异常处理文档 </a>		
+							<li th:class="list-group-item"><a th:href="@{/docs/housingfund/housingfund-download}">公积金资源下载 </a></li>
+							<li th:class="list-group-item"><a th:href="@{/docs/housingfund/housingfund-questionfaq}">公积金常见问题FAQ </a></li>		    -->
+					</ul>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseQq">QQ</h3>
+		</div>	
+			<div id="collapseQq"
+			th:class="${module} == 14 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseQq"
+					href="#collapseQqPrecedingRule" class="list-group-item">接口说明
+				</a>
+				<div id="collapseQqPrecedingRule"
+					th:class="${isPrecedingRule} ? 'panel-collapse collapse in' : 'panel-collapse collapse'"
+					style="margin-left: 20px; margin-top: 10px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li th:class="list-group-item"><a th:href="@{/}">快速接入</a></li>
+					  <!--   <li th:class="list-group-item"><a th:href="@{/docs/qq/qq-qqinfo}">QQ信息</a></li> 
+					    <li th:class="list-group-item"><a th:href="@{/docsqq/qq-asynccallback}">服务器异步回调说明</a></li>
+					    <li th:class="list-group-item"><a th:href="@{/docs/qq/qq-exceptdoc}">异常处理处理文档</a></li> 		  -->  
+					</ul>
+				</div>				
+			</div>
+		</div>
+	</div>
+</div>

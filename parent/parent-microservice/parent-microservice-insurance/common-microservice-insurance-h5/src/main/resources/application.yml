@@ -1,0 +1,26 @@
+server: 
+  port: 1223
+logging:
+  file: common-microservice-insurance-h5-9001.log
+  level: 
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 60000
+#spring:
+#  cloud:
+#    loadbalancer:
+#      retry:
+#        enabled: true
+#ribbon:
+#  ReadTimeout: 60000
+#  ribbon.ConnectTimeout: 60000

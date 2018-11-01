@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- head -->
+<head th:include="components/header :: header">
+<!-- head -->
+<body>
+	<!-- nav -->
+<head th:include="components/nav :: nav">
+<!-- nav -->
+<div class="container-fluid">
+	<div class="row">
+		<!-- left menu -->
+		<head th:include="components/leftmenu_developer :: leftmenu">
+		<!-- left menu -->
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<h2 class="sub-header">API测试 - 人行征信(V2)</h2>
+			<div class="row">
+				<blockquote>
+					<p>H5页面测试</p>
+					<p><a href="https://apitxboss.txtechnologies.com/h5/pbccrc/v2?key=123&owner=tianxi" target="_blank"><button class="btn btn-success" type="button">打开H5页面</button></a></p> 
+				</blockquote> 
+				<blockquote>
+					<p>
+						<form class="form-inline">
+						  <div class="form-group" style="width:30%">
+						  	<label for="exampleInputEmail2">taskid</label>
+						    <input type="text" class="form-control" id="taskId" placeholder="请输入taskid" style="width:80%">
+						  </div>
+						  <a target="_blank" >
+					        	<button class="btn btn-primary" type="button" id="reportBtn">查询</button>
+					      </a>
+						</form> 
+				    </p>
+				</blockquote> 
+			</div>
+				<h3 class="page-header">说明</h3>
+				<p>
+					通过数据采集完成后的taskid，获取完整数据。 
+				</p>
+				<h3 class="page-header">URL</h3>
+				<p th:text="${prodDomain}+ '/h5/pbccrc/v2/report/{taskid}'">
+                  <!--https://apitxboss.txtechnologies.com/h5/pbccrc/v2/report/{taskid}-->
+				</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>#</th>
+							<th>必填</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+							<th>请求方法</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>任务号</td>
+							<td>GET</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="page-header">API调用路径</h3>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;" id="urlPre">
+<!--https://apitxboss.txtechnologies.com/opendata/pbccrc/v2/report/a6c67f0d-a70b-4944-acdf-867f639074e7-->
+				</pre>
+				<h3 class="page-header">API调用结果</h3>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;" id="reportPre">
+
+				</pre>
+				 </div>
+		<head th:include="components/footer :: footer">
+      </head>
+      </div>
+  </div>
+  <script th:src="@{/js/developer/apitestpbccrc.js}"></script>
+		</body>
+</html>

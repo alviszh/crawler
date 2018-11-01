@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu_datasearch :: leftmenu"></div>
+
+        </div>
+
+        <form action="" method="post" >
+            <input type="hidden" id="taskid" name="taskid" th:value="${taskid}"/>
+
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h2 class="page-header">运营商-详细信息</h2>
+                <p>任务编号(taskid)：<span th:text="${taskid}"></span></p>
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <b>用户信息</b>
+                    </div>
+                    <div class="panel-body view-table-container pre-scrollable">
+                        <table class="table table-bordered table-hover table-striped view-table">
+                            <thead>
+                            <tr>
+                                <th class="view-th">用户姓名</th>
+                                <th class="view-th">电话号码</th>
+                                <th class="view-th">运营商</th>
+                                <th class="view-th">所属省份</th>
+                                <th class="view-th">所属城市</th>
+                                <th class="view-th">用户性别</th>
+                                <th class="view-th">用户电子邮箱</th>
+                                <th class="view-th">账户余额</th>
+                                <th class="view-th">证件类型</th>
+                                <th class="view-th">证件号码</th>
+                                <th class="view-th">注册地址</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="obj : ${datas.mobileUserInfos}">
+                                    <td  th:text="${obj.userName}"></td>
+                                    <td  th:text="${obj.telephoneNumber}"></td>
+                                    <td  th:text="${obj.carrieroperator}"></td>
+                                    <td  th:text="${obj.ascriptionProvince}"></td>
+                                    <td  th:text="${obj.ascriptionCity}"></td>
+                                    <td  th:text="${obj.userSex}"></td>
+                                    <td  th:text="${obj.userEmail}"></td>
+                                    <td  th:text="${obj.accoutBalance}"></td>
+                                    <td  th:text="${obj.certificateType}"></td>
+                                    <td  th:text="${obj.certificateNumber}"></td>
+                                    <td  th:text="${obj.registerAddress}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="page" style="margin-left:15%">
+                    </div>
+                </div>
+
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <b>手机详细通话记录</b>
+                    </div>
+                    <div class="panel-body view-table-container pre-scrollable">
+                        <table class="table table-bordered table-hover table-striped view-table">
+                            <thead>
+                            <tr>
+                                <th class="view-th">通信类型</th>
+                                <th class="view-th">通话时长</th>
+                                <th class="view-th">通话时间</th>
+                                <th class="view-th">通话地点</th>
+                                <th class="view-th">对方号码</th>
+                                <th class="view-th">通话类型</th>
+                                <th class="view-th">通话费用</th>
+                                <th class="view-th">用户手机号</th>
+                                <th class="view-th">月份</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="obj : ${datas.mobileCallRecordDetails}">
+                                    <td  th:text="${obj.communicationType}"></td>
+                                    <td  th:text="${obj.callDuration}"></td>
+                                    <td  th:text="${obj.callTime}"></td>
+                                    <td  th:text="${obj.callLocation}"></td>
+                                    <td  th:text="${obj.oppositeNumber}"></td>
+                                    <td  th:text="${obj.callType}"></td>
+                                    <td  th:text="${obj.callFee}"></td>
+                                    <td  th:text="${obj.telephoneNumber}"></td>
+                                    <td  th:text="${obj.months}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <b>手机通话记录统计信息</b>
+                    </div>
+                    <div class="panel-body view-table-container pre-scrollable">
+                        <table class="table table-bordered table-hover table-striped view-table">
+                            <thead>
+                            <tr>
+                                <th class="view-th">通话周期</th>
+                                <th class="view-th">通话总花费</th>
+                                <th class="view-th">本地花费</th>
+                                <th class="view-th">漫游花费</th>
+                                <th class="view-th">长途费</th>
+                                <th class="view-th">非大陆地区长途费</th>
+                                <th class="view-th">非大陆地区漫游费</th>
+                                <th class="view-th">用户手机号</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="obj : ${datas.mobileCallRecordStatistics}">
+                                    <td  th:text="${obj.communicationPeriod}"></td>
+                                    <td  th:text="${obj.costSum}"></td>
+                                    <td  th:text="${obj.localCost}"></td>
+                                    <td  th:text="${obj.roamingCost}"></td>
+                                    <td  th:text="${obj.longDistanceCost}"></td>
+                                    <td  th:text="${obj.offMainlandLongDistanceCost}"></td>
+                                    <td  th:text="${obj.offMainlandRoamingCost}"></td>
+                                    <td  th:text="${obj.telephoneNumber}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <b>手机账户信息</b>
+                    </div>
+                    <div class="panel-body view-table-container pre-scrollable">
+                        <table class="table table-bordered table-hover table-striped view-table">
+                            <thead>
+                            <tr>
+                                <th class="view-th">账户状态</th>
+                                <th class="view-th">入网日期</th>
+                                <th class="view-th">入网时间</th>
+                                <th class="view-th">实名制信息</th>
+                                <th class="view-th">账户等级</th>
+                                <th class="view-th">等级到期日</th>
+                                <th class="view-th">账户积分</th>
+                                <th class="view-th">账户冻结余额</th>
+                                <th class="view-th">用户手机号</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="obj : ${datas.mobileAccountInfos}">
+                                    <td  th:text="${obj.accountStatus}"></td>
+                                    <td  th:text="${obj.netInDate}"></td>
+                                    <td  th:text="${obj.netInDuration}"></td>
+                                    <td  th:text="${obj.realameInfo}"></td>
+                                    <td  th:text="${obj.accountLevel}"></td>
+                                    <td  th:text="${obj.levelEnddate}"></td>
+                                    <td  th:text="${obj.points}"></td>
+                                    <td  th:text="${obj.accountFrozenBalance}"></td>
+                                    <td  th:text="${obj.telephoneNumber}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <b>手机月账单信息</b>
+                    </div>
+                    <div class="panel-body view-table-container pre-scrollable">
+                        <table class="table table-bordered table-hover table-striped view-table">
+                            <thead>
+                            <tr>
+                                <th class="view-th">账单月份</th>
+                                <th class="view-th">当月花费</th>
+                                <th class="view-th">语音通话花费</th>
+                                <th class="view-th">短信花费</th>
+                                <th class="view-th">流量花费</th>
+                                <th class="view-th">违约金</th>
+                                <th class="view-th">用户手机号</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="obj : ${datas.mobileBillInfoMonths}">
+                                    <td  th:text="${obj.communicationPeriod}"></td>
+                                    <td  th:text="${obj.monthCost}"></td>
+                                    <td  th:text="${obj.voiceCost}"></td>
+                                    <td  th:text="${obj.smsCost}"></td>
+                                    <td  th:text="${obj.flowCost}"></td>
+                                    <td  th:text="${obj.penalty}"></td>
+                                    <td  th:text="${obj.telephoneNumber}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <b>手机业务信息</b>
+                    </div>
+                    <div class="panel-body view-table-container pre-scrollable">
+                        <table class="table table-bordered table-hover table-striped view-table">
+                            <thead>
+                            <tr>
+                                <th class="view-th">品牌名称</th>
+                                <th class="view-th">业务名称</th>
+                                <th class="view-th">业务花费</th>
+                                <th class="view-th">费用周期</th>
+                                <th class="view-th">生效日期</th>
+                                <th class="view-th">用户手机号</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="obj : ${datas.mobileBusinessInfos}">
+                                    <td  th:text="${obj.brand}"></td>
+                                    <td  th:text="${obj.businessName}"></td>
+                                    <td  th:text="${obj.businessFee}"></td>
+                                    <td  th:text="${obj.feeDuration}"></td>
+                                    <td  th:text="${obj.effectTime}"></td>
+                                    <td  th:text="${obj.telephoneNumber}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <b>家庭网子电话号码</b>
+                    </div>
+                    <div class="panel-body view-table-container pre-scrollable">
+                        <table class="table table-bordered table-hover table-striped view-table">
+                            <thead>
+                            <tr>
+                                <th class="view-th">家庭子网名称</th>
+                                <th class="view-th">家庭子网号码</th>
+                                <th class="view-th">用户手机号</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="obj : ${datas.mobileFamilyNetInfos}">
+                                    <td  th:text="${obj.familyNetName}"></td>
+                                    <td  th:text="${obj.familyNetNumber}"></td>
+                                    <td  th:text="${obj.telephoneNumber}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <b>集团网名称及子电话号码</b>
+                    </div>
+                    <div class="panel-body view-table-container pre-scrollable">
+                        <table class="table table-bordered table-hover table-striped view-table">
+                            <thead>
+                            <tr>
+                                <th class="view-th">集团网名称</th>
+                                <th class="view-th">集团网号码</th>
+                                <th class="view-th">用户手机号</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="obj : ${datas.mobileGroupNetInfos}">
+                                <td  th:text="${obj.groupNetName}"></td>
+                                <td  th:text="${obj.groupNetNumber}"></td>
+                                <td  th:text="${obj.telephoneNumber}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <b>手机缴费信息</b>
+                    </div>
+                    <div class="panel-body view-table-container pre-scrollable">
+                        <table class="table table-bordered table-hover table-striped view-table">
+                            <thead>
+                            <tr>
+                                <th class="view-th">缴费日期</th>
+                                <th class="view-th">缴费金额</th>
+                                <th class="view-th">缴费渠道</th>
+                                <th class="view-th">缴费方式</th>
+                                <th class="view-th">用户手机号</th>
+                                <th class="view-th">月份</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="obj : ${datas.mobilePaymentInfos}">
+                                    <td  th:text="${obj.payDate}"></td>
+                                    <td  th:text="${obj.payFee}"></td>
+                                    <td  th:text="${obj.payMode}"></td>
+                                    <td  th:text="${obj.payWay}"></td>
+                                    <td  th:text="${obj.telephoneNumber}"></td>
+                                    <td  th:text="${obj.months}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <b>积分信息</b>
+                    </div>
+                    <div class="panel-body view-table-container pre-scrollable">
+                        <table class="table table-bordered table-hover table-striped view-table">
+                            <thead>
+                            <tr>
+                                <th class="view-th">获得积分时间</th>
+                                <th class="view-th">可硬积分</th>
+                                <th class="view-th">用户手机号</th>
+                                <th class="view-th">月份</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="obj : ${datas.mobilePointsInfos}">
+                                <td  th:text="${obj.pointsTime}"></td>
+                                <td  th:text="${obj.points}"></td>
+                                <td  th:text="${obj.telephoneNumber}"></td>
+                                <td  th:text="${obj.months}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <b>亲情号信息</b>
+                    </div>
+                    <div class="panel-body view-table-container pre-scrollable">
+                        <table class="table table-bordered table-hover table-striped view-table">
+                            <thead>
+                            <tr>
+                                <th class="view-th">成员号码</th>
+                                <th class="view-th">成员类型</th>
+                                <th class="view-th">短号码</th>
+                                <th class="view-th">用户手机号</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="obj : ${datas.mobileRelationshipInfos}">
+                                <td  th:text="${obj.memberNumber}"></td>
+                                <td  th:text="${obj.menberType}"></td>
+                                <td  th:text="${obj.menberShortnumber}"></td>
+                                <td  th:text="${obj.telephoneNumber}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <b>短信详细记录</b>
+                    </div>
+                    <div class="panel-body view-table-container pre-scrollable">
+                        <table class="table table-bordered table-hover table-striped view-table">
+                            <thead>
+                            <tr>
+                                <th class="view-th">发送时间</th>
+                                <th class="view-th">短信状态</th>
+                                <th class="view-th">对方号码</th>
+                                <th class="view-th">短信类型</th>
+                                <th class="view-th">短信地区</th>
+                                <th class="view-th">用户手机号</th>
+                                <th class="view-th">月份</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="obj : ${datas.mobileSmsRecordDetails}">
+                                <td  th:text="${obj.sendTime}"></td>
+                                <td  th:text="${obj.smsStatus}"></td>
+                                <td  th:text="${obj.oppositeNumber}"></td>
+                                <td  th:text="${obj.smsType}"></td>
+                                <td  th:text="${obj.smsArea}"></td>
+                                <td  th:text="${obj.telephoneNumber}"></td>
+                                <td  th:text="${obj.months}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+server: 
+  port: 8325
+info:
+  contact: 
+    email: dimei1@creditharmony.cn
+logging: 
+  file: common-microservice-monitor-crawler-8325.log
+  level:  
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: INFO
+# Spring boot UI 页面关闭该应用的权限限制
+management: 
+  security: 
+    enabled: true
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+
+#数据源：
+spring:
+  datasource:
+    hikari: 
+      minimum-idle: ${datasource.jdbc.minIdle}
+      maximum-pool-size: ${datasource.jdbc.maxPoolSize}
+    driver-class-name: ${datasource.jdbc.driver}
+    url: ${datasource.jdbc.url}
+    username: ${datasource.jdbc.username}
+    password: ${datasource.jdbc.password}
+    type: ${datasource.jdbc.type}
+  jpa: 
+    show-sql: false
+    hibernate: 
+        ddl-auto: update
+        naming: 
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl 
+    properties:  
+      hibernate:  
+#       dialect: com.microservice.persistence.SRDB10Dialect
+        #dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: ${datasource.jdbc.dialect}
+#       dialect: org.hibernate.dialect.MySQLDialect
+        temp: 
+          use_jdbc_metadata_defaults: false
+  mail:
+    protocol: smtp
+    host: mail.creditharmony.cn
+    port: 25
+    auth: true
+    username: XH\linansun
+    password: sunlinan66**
+#     protocol: smtp #smtp是邮件发送协议，pop3和imap是邮件接收协议。因为我们要发送邮件，因此是smtp
+#     host: smtp.163.com #邮件发送服务器的主机，这里采用的是126邮箱来发送邮件
+#     port: 25 #邮件发送服务器的端口
+#     auth: true #一般情况下，发送邮件都是要进行验证
+#     username: 15501151766@163.com #邮件发送服务器的用户名
+#     password: june66 #密码  
+#两个微服务之间通过feign调用时,后台抛出异常:feign.RetryableException: Read timed out executing POST,解决办法如下：
+#ribbon:  
+#  ReadTimeout: 60000  
+#  ConnectTimeout: 60000 
+
+#涉及接口调用的超时时间
+feign: 
+  hystrix:
+    enabled: false
+  client: 
+    config: 
+      default: 
+        connectTimeout: 20000
+        readTimeout: 20000
+  compression:
+    request: true
+    response: true    

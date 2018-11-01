@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">获取登录页</h2>
+            <h3 class="page-header">说明</h3>
+            <p>
+                获取人行征信登陆页的cookie（注意不是登录成功后的cookie），以及进行登陆页的图片验证码识别。
+            </p>
+            <h3 class="page-header">URL</h3>
+            <p>
+                http://&lt;project&gt;/h5/v2/pbccrc/getLoginPage
+            </p>
+            <h3 class="page-header">格式</h3>
+            <p>
+                JSON
+            </p>
+            <h3 class="page-header">HTTP请求方式</h3>
+            <p>
+                GET
+            </p>
+            <h3 class="page-header">请求参数</h3>
+            <p>
+                无
+            </p>
+            <h3 class="page-header">注意事项</h3>
+            <p>
+                无
+            </p>
+
+            <h3 class="page-header">例子</h3>
+            <p>说明：非调试模式下调用本接口，获取人行征信登陆页的cookie，并进行人行征信系统登录页图片验证码的识别</p>
+            <p>请求：https://uatapitxboss.txtechnologies.com:9018/h5/v2/pbccrc/getLoginPage</p>
+            <p>返回：JSON</p>
+            <p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+  "data": {
+    "statusCode": "0",
+    "message": "成功获取登陆页cookies及图片验证码",
+    "cookies": [
+      {
+        "name_": "JSESSIONID",
+        "value_": "S2pJhJxTgn11BbyYJ35sw2GQ0PSpdvZqNvX3n6l2K2LQdpRJ1mNn!-1065310635",
+        "domain_": "ipcrs.pbccrc.org.cn",
+        "path_": "/",
+        "secure_": false,
+        "httponly_": false
+      },
+      {
+        "name_": "BIGipServerpool_ipcrs_app",
+        "value_": "cI0unOAMwECT6jcF9TwayuIh5sFUdiyCW5PHutyXwiY42EyZ4V48K/NYI35HbY73yZbDDaHFQ9aUMmu6fHmE2B68Ql3Ev/LiuxAu3NxfEfKvIQAPRfR8DmBaamhbMM1qT4OcXQU3VmPv5AfKP42gA9izp7xtrw\u003d\u003d",
+        "domain_": "ipcrs.pbccrc.org.cn",
+        "path_": "/",
+        "secure_": true,
+        "httponly_": true
+      },
+      {
+        "name_": "BIGipServerpool_ipcrs_web",
+        "value_": "Df8qyLlsCnF1hu0F9TwayuIh5sFUdpSCDOmNSskg/koYT2K40EGCM4gNHsRfAe16L+eoPrwlnxxR",
+        "domain_": "ipcrs.pbccrc.org.cn",
+        "path_": "/",
+        "secure_": true,
+        "httponly_": true
+      },
+      {
+        "name_": "TSf75e5b",
+        "value_": "d27ff89295a2efaba5549dc9cc7a9d465e44f5ca7166c41f5a54710e",
+        "domain_": "ipcrs.pbccrc.org.cn",
+        "path_": "/",
+        "secure_": false,
+        "httponly_": false
+      }
+    ],
+    "codeImageUrl": "http://54.222.245.77/2d0798a9-9164-480c-837e-4d5f7448198c.jpg"
+  }
+}
+				</pre>
+            <h3 class="page-header">返回字段</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>字段名</th>
+                    <th>类型</th>
+                    <th>注释</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>statusCode</td>
+                    <td>String</td>
+                    <td>结果状态码</td>
+                </tr>
+                <tr>
+                    <td>message</td>
+                    <td>String</td>
+                    <td>结果状态说明</td>
+                </tr>
+                <tr>
+                    <td>cookies</td>
+                    <td>Set&lt;cookie&gt;</td>
+                    <td>登陆页cookie</td>
+                </tr>
+                <tr>
+                    <td>codeImageUrl</td>
+                    <td>String</td>
+                    <td>登陆页验证码图片URL</td>
+                </tr>
+                <tr>
+                    <td>codeValue</td>
+                    <td>String</td>
+                    <td>登陆页图片验证码识别结果</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h3 class="page-header">状态码映射</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>状态码</th>
+                    <th>解释说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>成功</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>图片验证码错误</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>cookie错误</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>手机验证码错误</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>查询频率限制</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>缓存中数据</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>用户名或密码错误</td>
+                </tr>
+                <tr>
+                    <td>-1</td>
+                    <td>失败</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

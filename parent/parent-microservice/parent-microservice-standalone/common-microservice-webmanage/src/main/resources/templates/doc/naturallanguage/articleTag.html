@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">文章标签</h2>
+            <h3 class="page-header">说明</h3>
+            <p>
+                文本标签服务对文章的标题和内容进行深度分析，输出能够反映文章关键信息的主题、话题、实体等多维度标签以及对应的置信度，该技术在个性化推荐、文章聚合、内容检索等场景具有广泛的应用价值。
+            </p>
+            <h3 class="page-header">URL</h3>
+            <p>
+                http://&lt;10.167.202.217:&gt;9357/nlp/articleTag
+            </p>
+            <h3 class="page-header">格式</h3>
+            <p>
+                JSON
+            </p>
+            <h3 class="page-header">HTTP请求方式</h3>
+            <p>
+                POST
+            </p>
+            <h3 class="page-header">请求参数</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>#</th>
+                    <th>必选</th>
+                    <th>类型及范围</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>title_tag</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>文章标题</td>
+                </tr>
+                <tr>
+                    <td>content_tag</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>文章内容</td>
+                </tr>
+                </tbody>
+            </table>
+            <p style="color: #3da33d;">JSON示例:</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+   
+        {
+            "score_tag": 0.797243,
+            "tag_tag": "数码"
+        }
+
+				</pre>
+            <h3 class="page-header">返回字段</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>字段名</th>
+                    <th>类型</th>
+                    <th>注释</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>score_tag</td>
+                    <td>String</td>
+                    <td>权重值，取值范围[0,1]</td>
+                </tr>
+                <tr>
+                    <td>tag_tag</td>
+                    <td>String</td>
+                    <td>内容标签</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

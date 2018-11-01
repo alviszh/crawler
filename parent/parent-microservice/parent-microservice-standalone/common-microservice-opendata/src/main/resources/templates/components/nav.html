@@ -1,0 +1,22 @@
+<header th:fragment="nav">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand"
+					th:href="@{/developer/app/app-manage}">曦点数据</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a th:href="@{/developer/app/app-manage}">应用管理</a></li> 
+					<li><a th:href="@{/docs/dev-guide/platform-intro}">文档中心</a></li>
+					<li><a th:href="@{/dataCenter/data-query}">数据中心</a></li>
+					<li><a th:href="@{/contact/contact-list}">联系人管理</a></li>
+					<li><a th:href="@{/logout}">退出</a></li>
+				</ul>
+				<!-- <form class="navbar-form navbar-right">
+					<input type="text" class="form-control" placeholder="Search...">
+				</form> -->
+			</div>
+		</div>
+	</nav>
+</header>

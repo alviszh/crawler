@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">获取运营商报告-贷乎</h2>
+            <h3 class="page-header">说明</h3>
+            <p>
+                调用该接口可以根据爬虫任务ID获取获取用户的运营商报告。
+            </p>
+            <h3 class="page-header">URL</h3>
+            <p>
+                http://&lt;project&gt;/h5/mobile/getReportDaihu
+            </p>
+            <h3 class="page-header">格式</h3>
+            <p>
+                JSON
+            </p>
+            <h3 class="page-header">HTTP请求方式</h3>
+            <p>
+                GET
+            </p>
+            <h3 class="page-header">请求参数</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>#</th>
+                    <th>必选</th>
+                    <th>类型及范围</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>yunyingshangTaskId</td>
+                    <td>false</td>
+                    <td>String</td>
+                    <td>运营商唯一标识</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3 class="page-header">注意事项</h3>
+            <ol style="margin-left: 0px;">
+            </ol>
+            <h3 class="page-header">例子</h3>
+            <p>说明：调用本接口，获取用户的运营商报告。</p>
+            <p>请求：https://uatapitxboss.txtechnologies.com:9018/h5/mobile/getReportDaihu</p>
+            <p>返回：JSON</p>
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+    phoneCallLog: [
+        {
+            id: 203,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            tradeTime: "",
+            callTime: "",
+            tradeAddr: "",
+            receivePhone: "",
+            callType: "",
+            callFee: "",
+            callAddressType: ""
+        },
+        {
+            id: 204,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            tradeTime: "",
+            callTime: "",
+            tradeAddr: "",
+            receivePhone: "",
+            callType: "",
+            callFee: "",
+            callAddressType: ""
+        },
+        {
+            id: 205,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            tradeTime: "",
+            callTime: "",
+            tradeAddr: "",
+            receivePhone: "",
+            callType: "",
+            callFee: "",
+            callAddressType: ""
+        },
+        {
+            id: 206,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+           tradeTime: "",
+            callTime: "",
+            tradeAddr: "",
+            receivePhone: "",
+            callType: "",
+            callFee: "",
+            callAddressType: ""
+        },
+        {
+            id: 207,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            tradeTime: "",
+            callTime: "",
+            tradeAddr: "",
+            receivePhone: "",
+            callType: "",
+            callFee: "",
+            callAddressType: ""
+        },
+        {
+            id: 208,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+           tradeTime: "",
+            callTime: "",
+            tradeAddr: "",
+            receivePhone: "",
+            callType: "",
+            callFee: "",
+            callAddressType: ""
+        }
+        
+    ],
+    phoneMonthBilling: [
+        {
+            id: 236,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2018-05",
+            callPay: "189.30",
+            associatePhone: "18545996409"，
+            totalCost:""
+            
+        },
+        {
+            id: 237,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2018-04",
+            callPay: "189.60",
+            associatePhone: "18545996409"，
+            totalCost:""
+        },
+        {
+            id: 239,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2018-03",
+            callPay: "189.60",
+            associatePhone: "18545996409"，
+            totalCost:""
+        },
+        {
+            id: 238,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2018-02",
+            callPay: "191.55",
+            associatePhone: "18545996409"，
+            totalCost:""
+        },
+        {
+            id: 240,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2018-01",
+            callPay: "189.45",
+            associatePhone: "18545996409"，
+            totalCost:""
+        },
+        {
+            id: 241,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            month: "2017-12",
+            callPay: "189.45",
+            associatePhone: "18545996409"，
+            totalCost:""
+        },
+        
+    ],
+    phoneSmsLog: [
+        {
+            id: 45,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            sendTime: "",
+            tradeWay: "",
+            receiverPhone: ""
+        },
+        {
+            id: 45,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            sendTime: "",
+            tradeWay: "",
+            receiverPhone: ""
+            
+        }
+    ],
+    phoneUserinfo: [
+        {
+            id: 81,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            userSource: "",
+            idCard: "420106198410028419",
+            addr: "",
+            realName: "梅荻",
+            phoneRemain: "77.35",
+            phone: "13520800817",
+            callsNumber: ""
+        }
+    ],
+    phoneTopten: [
+        {
+            id: 37,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            phone: "13520800817",
+            phoneOrder: "1"
+        },
+        {
+            id: 37,
+            createtime: null,
+            taskId: "b011e4f3-a2c2-4209-b1c5-b132946c6f19",
+            phone: "13520800811",
+            phoneOrder: "2"
+        }
+    ],
+    message: "success",
+    createtime: null,
+    errorCode: 800,
+    profile: "test",
+    
+}
+				</pre>
+				   
+				<h3 class="page-header">返回字段</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>对象名</th>
+							<th>字段名</th>
+							<th>类型</th>
+							<th>注释</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>phoneCallLog（手机运营商通话记录）</td>
+							<td>tradeTime</td>
+							<td>String</td>
+							<td>通话时长</td>
+						</tr>
+						<tr>
+							<td>phoneCallLog（手机运营商通话记录）</td>
+							<td>callTime</td>
+							<td>String</td>
+							<td>通话时间</td>
+						</tr>
+						<tr>
+							<td>phoneCallLog（手机运营商通话记录）</td>
+							<td>tradeAddr</td>
+							<td>String</td>
+							<td>通话地点</td>
+						</tr>
+						<tr>
+							<td>phoneCallLog（手机运营商通话记录）</td>
+							<td>receivePhone</td>
+							<td>String</td>
+							<td>对方号码</td>
+						</tr>
+						<tr>
+							<td>phoneCallLog（手机运营商通话记录）</td>
+							<td>callType</td>
+							<td>String</td>
+							<td>呼叫类型</td>
+						</tr>
+						<tr>
+							<td>phoneCallLog（手机运营商通话记录）</td>
+							<td>callFee</td>
+							<td>String</td>
+							<td>通话费</td>
+						</tr>
+						<tr>
+							<td>phoneCallLog（手机运营商通话记录）</td>
+							<td>callAddressType</td>
+							<td>String</td>
+							<td>通话地类型</td>
+						</tr>
+						<tr>
+							<td>phoneMonthBilling（月账单记录）</td>
+							<td>month</td>
+							<td>String</td>
+							<td>月份</td>
+						</tr>
+						<tr>
+							<td>phoneMonthBilling（月账单记录）</td>
+							<td>callPay</td>
+							<td>String</td>
+							<td>当月话费</td>
+						</tr>
+						<tr>
+							<td>phoneMonthBilling（月账单记录）</td>
+							<td>associatePhone</td>
+							<td>String</td>
+							<td>本手机关联号码, 多个手机号以逗号分隔</td>
+						</tr>
+						<tr>
+							<td>phoneMonthBilling（月账单记录）</td>
+							<td>totalCost</td>
+							<td>String</td>
+							<td>总费用</td>
+						</tr>
+						<tr>
+							<td>phoneSmsLog（短信记录）</td>
+							<td>sendTime</td>
+							<td>String</td>
+							<td>发送时间</td>
+						</tr>
+						<tr>
+							<td>phoneSmsLog（短信记录）</td>
+							<td>tradeWay</td>
+							<td>String</td>
+							<td>短信状态</td>
+						</tr>
+						<tr>
+							<td>phoneSmsLog（短信记录）</td>
+							<td>receiverPhone</td>
+							<td>String</td>
+							<td>对方号码</td>
+						</tr>
+						<tr>
+							<td>phoneUserinfo（手机的用户信息）</td>
+							<td>userSource</td>
+							<td>String</td>
+							<td>号码类型</td>
+						</tr>
+						<tr>
+							<td>phoneUserinfo（手机的用户信息）</td>
+							<td>idCard</td>
+							<td>String</td>
+							<td>身份证号</td>
+						</tr>
+						<tr>
+							<td>phoneUserinfo（手机的用户信息）</td>
+							<td>addr</td>
+							<td>String</td>
+							<td>注册该号码所填写的地址</td>
+						</tr>
+						<tr>
+							<td>phoneUserinfo（手机的用户信息）</td>
+							<td>realName</td>
+							<td>String</td>
+							<td>用户姓名</td>
+						</tr>
+						<tr>
+							<td>phoneUserinfo（手机的用户信息）</td>
+							<td>phoneRemain</td>
+							<td>String</td>
+							<td>当前账户余额</td>
+						</tr>
+						<tr>
+							<td>phoneUserinfo（手机的用户信息）</td>
+							<td>phone</td>
+							<td>String</td>
+							<td>电话号码</td>
+						</tr>
+						<tr>
+							<td>phoneUserinfo（手机的用户信息）</td>
+							<td>callsNumber</td>
+							<td>String</td>
+							<td>连续主叫通话月数</td>
+						</tr>
+						<tr>
+							<td>phoneTopten（手机通话TOP10）</td>
+							<td>phone</td>
+							<td>String</td>
+							<td>电话号码</td>
+						</tr>
+						<tr>
+							<td>phoneTopten（手机通话TOP10）</td>
+							<td>phoneOrder</td>
+							<td>String</td>
+							<td>序号</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

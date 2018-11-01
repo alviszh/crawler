@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">设置风格</h2>
+				<h3 class="page-header">说明</h3>
+				<p>
+					该接口通过themeColor,设置H5页面的风格颜色
+				</p>
+				<h3 class="page-header">URL</h3>
+				<p>
+					http://&lt;project&gt;/h5/auth?themeColor=eda79a
+				</p>
+				<h3 class="page-header">格式</h3>
+				<p>
+					JSON   
+				</p>
+				<h3 class="page-header">HTTP请求方式</h3>
+				<p>
+					GET   
+				</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>#</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>themeColor</td>
+							<td>false</td>
+							<td>String</td>
+							<td>风格颜色</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="page-header">注意事项</h3>
+				<ol style="margin-left: 0px;">
+					<li>themeColor默认值为5bc0de</li>
+					<li>themeColor的值不需要加 #</li>
+				</ol>
+				   
+				<h3 class="page-header">例子</h3>
+				<p>说明：设置H5页面风格颜色</p>
+				<p>请求：https://uatapitxboss.txtechnologies.com:9018/h5/auth?themeColor=eda79a</p>
+				
+			</div>
+		</div>
+		</div>
+		
+		 <div th:include="components/footer :: footer"></div>
+		
+</body>
+</html>

@@ -1,0 +1,13 @@
+.view-table-container{
+    overflow:auto;
+    display: block;
+}
+.view-table{
+    min-width: 100%;
+}
+.view-th{
+    min-width: 120px;
+}
+.view-td{
+	white-space: nowrap;
+}

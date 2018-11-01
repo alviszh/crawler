@@ -1,0 +1,9 @@
+.navbar a{
+    color:white;
+}
+.navbar li a:hover{
+    background-color: #185F7D;
+}
+.dishover a:hover{
+    cursor: default;
+}

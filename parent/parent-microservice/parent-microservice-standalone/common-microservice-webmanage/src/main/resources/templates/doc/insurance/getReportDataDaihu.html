@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">获取社保报告-贷乎</h2>
+            <h3 class="page-header">说明</h3>
+            <p>
+                调用该接口可以根据爬虫任务ID获取获取用户的社保报告。
+            </p>
+            <h3 class="page-header">URL</h3>
+            <p>
+                http://&lt;project&gt;/h5/insurance/getReportDaihu
+            </p>
+            <h3 class="page-header">格式</h3>
+            <p>
+                JSON
+            </p>
+            <h3 class="page-header">HTTP请求方式</h3>
+            <p>
+                GET
+            </p>
+            <h3 class="page-header">请求参数</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>#</th>
+                    <th>必选</th>
+                    <th>类型及范围</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>shebaoTaskId</td>
+                    <td>false</td>
+                    <td>String</td>
+                    <td>社保唯一标识</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3 class="page-header">注意事项</h3>
+            <ol style="margin-left: 0px;">
+            </ol>
+            <h3 class="page-header">例子</h3>
+            <p>说明：调用本接口，获取用户的社保报告。</p>
+            <p>请求：https://uatapitxboss.txtechnologies.com:9018/h5/insurance/getReportDaihu</p>
+            <p>返回成功：JSON</p>
+            <p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;">
+{
+	"insurePay": {
+	    "idCard": "金三胖",
+		"payDate": "2018-08-08",
+		"startDate": "2018-08-08",
+		"endDate": "2018-08-08",
+		"baseRmb": "2323",
+		"comRmb": "1212",
+		"perRmb": "1212",
+		"balanceRmb": "4321",
+		"comName": "北京市海淀区*******",
+		"payRype": "正常缴费",
+		"flowRype": "医疗保险";
+	},
+	{
+	    "idCard": "金三胖",
+		"payDate": "2018-08-08",
+		"startDate": "2018-08-08",
+		"endDate": "2018-08-08",
+		"baseRmb": "2323",
+		"comRmb": "1212",
+		"perRmb": "1212",
+		"balanceRmb": "4321",
+		"comName": "北京市海淀区*******",
+		"payRype": "正常缴费",
+		"flowRype": "失业保险";
+	},
+	{
+	    "idCard": "金三胖",
+		"payDate": "2018-08-08",
+		"startDate": "2018-08-08",
+		"endDate": "2018-08-08",
+		"baseRmb": "2323",
+		"comRmb": "1212",
+		"perRmb": "1212",
+		"balanceRmb": "4321",
+		"comName": "北京市海淀区*******",
+		"payRype": "正常缴费",
+		"flowRype": "生育保险";
+	},
+	{
+	    "idCard": "金三胖",
+		"payDate": "2018-08-08",
+		"startDate": "2018-08-08",
+		"endDate": "2018-08-08",
+		"baseRmb": "2323",
+		"comRmb": "1212",
+		"perRmb": "1212",
+		"balanceRmb": "4321",
+		"comName": "北京市海淀区*******",
+		"payRype": "正常缴费",
+		"flowRype": "养老保险";
+	},
+	{
+	    "idCard": "金三胖",
+		"payDate": "2018-08-08",
+		"startDate": "2018-08-08",
+		"endDate": "2018-08-08",
+		"baseRmb": "2323",
+		"comRmb": "1212",
+		"perRmb": "1212",
+		"balanceRmb": "4321",
+		"comName": "北京市海淀区*******",
+		"payRype": "正常缴费",
+		"flowRype": "工伤保险";
+	},
+	"insureUser": [{
+		"realName": "金三胖",
+		"idType": "证件类型(默认指身份证)",
+		"idCard": 身份证号码,
+		"sex": "性别",
+		"birthday": "出生日期",
+		"workStartDay": 参加工作日期（改中文名称为 开户日期,
+		"accProp": 户口性质,
+		"phoneNumber": 电话号码,
+		"insureCode": "社保编号",
+		"insureCity": "社保城市",
+		"insureStatus": "社保缴纳状态",
+		"comName": "缴纳单位名称",
+		"nation": "民族",
+		"contactAddress": 联系地址,
+		"startInsureDay": 参保缴费起始日期;
+	}
+}
+                </pre>
+            <h3 class="page-header">返回字段说明</h3>
+            <p style="color:#3da33d;"></p>
+            <div style="width:100%;">
+                <table class="table table-bordered table-hover" style="width:90%;">
+                    <caption>返回正确data结果的字段说明对照表：</caption>
+                    <thead>
+                    <tr>
+                        <th>字段</th>
+                        <th>字段类型</th>
+                        <th>字段说明</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="3" style="text-align:center;">社保数据（report）</td>
+                    </tr><tr>
+                        <td>insurePay-&gt;idCard</td>
+                        <td>String</td>
+                        <td>社保缴费记录表-&gt;姓名</td>
+                    </tr>
+                    <tr>
+                        <td>insurePay-&gt;payDate</td>
+                        <td>String</td>
+                        <td>社保缴费记录表-&gt;交易日期</td>
+                    </tr>
+                    <tr>
+                        <td>insurePay-&gt;startDate</td>
+                        <td>String</td>
+                        <td>社保缴费记录表-&gt;汇缴起始日期</td>
+                    </tr>
+                    <tr>
+                        <td>insurePay-&gt;endDate</td>
+                        <td>String</td>
+                        <td>社保缴费记录表-&gt;汇缴结束日期</td>
+                    </tr>
+                    <tr>
+                        <td>insurePay-&gt;baseRmb</td>
+                        <td>String</td>
+                        <td>社保缴费记录表-&gt;缴费基数</td>
+                    </tr>
+                    <tr>
+                        <td>insurePay-&gt;comRmb</td>
+                        <td>String</td>
+                        <td>社保缴费记录表-&gt;单位缴费</td>
+                    </tr>
+                    <tr>
+                        <td>insurePay-&gt;perRmb</td>
+                        <td>String</td>
+                        <td>社保缴费记录表-&gt;个人缴费</td>
+                    </tr>
+                    <tr>
+                        <td>insurePay-&gt;balanceRmb</td>
+                        <td>String</td>
+                        <td>社保缴费记录表-&gt;缴存总额</td>
+                    </tr>
+                    <tr>
+                        <td>insurePay-&gt;comName</td>
+                        <td>String</td>
+                        <td>社保缴费记录表-&gt;缴费单位</td>
+                    </tr>
+                    <tr>
+                        <td>insurePay-&gt;payRype</td>
+                        <td>String</td>
+                        <td>社保缴费记录表-&gt;缴费类型</td>
+                    </tr>
+                    <tr>
+                        <td>insurePay-&gt;flowRype</td>
+                        <td>String</td>
+                        <td>社保缴费记录表-&gt;险种</td>
+                    </tr>
+                    <tr>
+                        <td>insureUser-&gt;realName</td>
+                        <td>String</td>
+                        <td>社保用户信息表-&gt;姓名</td>
+                    </tr>
+                    <tr>
+                        <td>insureUser-&gt;idType</td>
+                        <td>String</td>
+                        <td>社保用户信息表-&gt;证件类型(默认指身份证)</td>
+                    </tr>
+                    <tr>
+                        <td>insureUser-&gt;idCard</td>
+                        <td>String</td>
+                        <td>社保用户信息表-&gt;身份证号码</td>
+                    </tr>
+                    <tr>
+                        <td>insureUser-&gt;sex</td>
+                        <td>String</td>
+                        <td>社保用户信息表-&gt;性别</td>
+                    </tr>
+                    <tr>
+                        <td>insureUser-&gt;birthday</td>
+                        <td>String</td>
+                        <td>社保用户信息表-&gt;出生日期</td>
+                    </tr>
+                    <tr>
+                        <td>insureUser-&gt;workStartDay</td>
+                        <td>String</td>
+                        <td>社保用户信息表-&gt;参加工作日期（改中文名称为 开户日期</td>
+                    </tr>
+                    <tr>
+                        <td>insureUser-&gt;accProp</td>
+                        <td>String</td>
+                        <td>社保用户信息表-&gt;户口性质</td>
+                    </tr>
+                    <tr>
+                        <td>insureUser-&gt;phoneNumber</td>
+                        <td>String</td>
+                        <td>社保用户信息表-&gt;电话号码</td>
+                    </tr>
+                    <tr>
+                        <td>insureUser-&gt;insureCode</td>
+                        <td>String</td>
+                        <td>社保用户信息表-&gt;社保编号</td>
+                    </tr>
+                    <tr>
+                        <td>insureUser-&gt;insureCity</td>
+                        <td>String</td>
+                        <td>社保用户信息表-&gt;社保城市</td>
+                    </tr>
+                    <tr>
+                        <td>insureUser-&gt;insureStatus</td>
+                        <td>String</td>
+                        <td>社保用户信息表-&gt;社保缴纳状态</td>
+                    </tr>
+                    <tr>
+                        <td>insureUser-&gt;comName</td>
+                        <td>String</td>
+                        <td>社保用户信息表-&gt;缴纳单位名称</td>
+                    </tr>
+                    <tr>
+                        <td>insureUser-&gt;nation</td>
+                        <td>String</td>
+                        <td>社保用户信息表-&gt;民族</td>
+                    </tr>
+                    <tr>
+                        <td>insureUser-&gt;contactAddress</td>
+                        <td>String</td>
+                        <td>社保用户信息表-&gt;联系地址</td>
+                    </tr>
+                    <tr>
+                        <td>insureUser-&gt;startInsureDay</td>
+                        <td>String</td>
+                        <td>社保用户信息表-&gt;参保缴费起始日期</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

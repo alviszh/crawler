@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+
+</head>
+
+<!--<script th:src="@{../js/xx.js}"></script>display: none;display: block-->
+<body>
+<nav class="navbar navbar-default alert-info" style="height: 50px;">
+    <div class="container-fluid">
+        <div class="navbar-header" style="height: 50px;">
+            <a href="javascript:history.go(-1);" class="navbar-brand"><span
+                    class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </a>
+            <p class="navbar-brand" ><span th:text="${city} + '社保'"></span></p>
+        </div>
+    </div>
+
+</nav>
+<div id="br"></div>
+<div class="container">
+    <form class="bs-example-form" data-example-id="simple-input-groups"  method="post"
+          id="authform">
+        <!--<input type="hidden" th:value="${themeColor}" id="themeColor" name="themeColor"/>
+        <input type="hidden" th:value="${topHide}" id="topHide" name="topHide"/>-->
+        <!--隐藏域-->
+        <input type="hidden" id="themeColor" name="themeColor" th:value="${themeColor}"/>
+        <input type="hidden" id="topHide" name="topHide" value="false" th:value="${topHide}"/>
+        <input type="hidden" id="taskId" name="taskId"  th:value="${taskId}"/>
+        <input type="hidden" id="city" name="city"  th:value="${city}"/>
+        <input type="hidden" id="loginType" name="loginType"  th:value="IDNUM"/>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="basic-addon0">姓<zw style="visibility: hidden">占位</zw>名：</span> <input
+                type="text" class="form-control" id="name" name="name"
+                aria-describedby="basic-addon1" th:placeholder="请输入姓名"
+                data-validation="required" />
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="basic-addon1">身份证号：</span> <input
+                type="text" class="form-control" id="username" name="username"
+                th:placeholder="请输入身份证号"
+                data-validation="required" />
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="basic-addon3">密<zw style="visibility: hidden">占位</zw>码：</span> <input
+                type="password" class="form-control" id="password" name="password"
+                th:placeholder="请输入密码"/>
+            <div class="tex_box"><span class="password closed"></span></div>
+        </div>
+        <!--<button type="submit" class="btn btn-lg btn-block btn-info">下一步</button>-->
+        <a href="#" class="btn btn-lg btn-block btn-info disabled" role="button" id="nextBtn">下一步</a>
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+             data-backdrop="static" data-keyboard="false" id="myModal" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class=" modal-content" style="text-align: center;">
+                    <div class="modal-body">
+                        <img th:src="@{/h5/insur/images/loading.gif}" height="auto" />&nbsp;<span id="message"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="prompt">
+            <small class="form-text text-muted">温馨提示：<br />
+                1、密码：只能是数字，长度6-10位。
+            </small>
+        </div>
+    </form>
+    <!--消息框-->
+    <div th:include="components/footer :: message"></div>
+    <!--爬取成功模块-->
+    <div th:include="components/footer :: modal"></div>
+
+</div>
+<div th:include="components/footer :: footer"></div>
+<script src="/h5/insur/js/auth_taiyuan.js"></script>
+<script src="/h5/insur/js/insurance_crawler.js"></script>
+</body>
+</html>

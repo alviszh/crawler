@@ -1,0 +1,11 @@
+server: 
+  port: 8400
+logging:
+  file: common-microservice-api-3rd-8400.log
+  level: 
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: INFO
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/

@@ -1,0 +1,69 @@
+server:
+  port: 20046
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaserver:8888/eureka/
+      logging: 
+logging:
+  file: common-microservice-eureka-client-20046.log
+  level: 
+    com.gargoylesoftware.htmlunit.javascript.StrictErrorReporter : OFF
+    com.gargoylesoftware.htmlunit.javascript.host.ActiveXObject : OFF
+    com.gargoylesoftware.htmlunit.host.html.HTMLDocument : OFF
+    com.gargoylesoftware.htmlunit.html.HtmlScript : OFF
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG
+
+#spring-boot-actuator 监控组件
+management: 
+  security: 
+    enabled: false
+   
+---
+#数据源：
+spring:
+  cloud:
+    stream:
+      bindings: 
+        output:                            # 频道名称（根据具体模块来命名）
+          destination: carrier-topic-01                
+          binder: kafka_binder
+      binders: 
+        kafka_binder: 
+          type: kafka 
+          environment:
+            spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
+            spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes} 
+
+  datasource:
+    separator: ;;
+    schema: classpath:/datasource/*.sql
+    initialization-mode: ${datasource.initialization-mode} 
+    continueOnError: false
+    hikari: 
+      minimum-idle: ${datasource.jdbc.minIdle}
+      maximum-pool-size: ${datasource.jdbc.maxPoolSize}
+    driver-class-name: ${datasource.jdbc.driver}
+    url: ${datasource.jdbc.url}
+    schema-username: ${datasource.jdbc.username} 
+    schema-password: ${datasource.jdbc.password}
+    username: ${datasource.jdbc.username}
+    password: ${datasource.jdbc.password}
+    type: ${datasource.jdbc.type}
+  jpa: 
+    show-sql: false
+    hibernate: 
+        #创建数据库使用
+        ddl-auto: update
+        naming:
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+    properties:  
+      hibernate:  
+#       dialect: com.microservice.persistence.SRDB10Dialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        temp: 
+          use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法为实现
+#       dialect: org.hibernate.dialect.MySQLDialect
+          

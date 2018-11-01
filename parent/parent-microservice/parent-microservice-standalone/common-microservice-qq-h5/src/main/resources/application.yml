@@ -1,0 +1,25 @@
+server:
+  connection-timeout: 100000
+  port: 1230
+logging:
+  file: common-microservice-qq-h5-9001.log
+  level:  
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: INFO
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+# --start-- Spring admin
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+      health:
+        show-details: ALWAYS
+# --end-- Spring admin
+feign:
+  hystrix:
+    enabled: false

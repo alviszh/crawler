@@ -1,0 +1,32 @@
+server: 
+  port: 1225
+logging:
+  file: common-microservice-housingfund-h5-9001.log
+  level: 
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG
+# Spring boot UI 页面关闭该应用的权限限制
+management: 
+  security: 
+    enabled: false
+eureka: 
+  instance: 
+    statusPageUrl: http://localhost:1225/admin
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+spring:
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+ribbon:
+  ReadTimeout: 60000
+  ribbon.ConnectTimeout: 60000

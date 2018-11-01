@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: '@app.h5pbccrc.name@'
+  profiles:
+    active: '@app.active@'
+  thymeleaf:
+    cache: false
+  cloud:
+    config:
+      uri: http://configserver:8000
+      label: master
+  zipkin: 
+    base-url: http://zipkinserver:9411
+  sleuth:
+    web: 
+      skip-pattern: /h5/pbccrc/v2/standalone/tasks/status|/h5/pbccrc/standalone/tasks/status|.*\.eot|.*\.svg|.*\.tff|.*\.woff|.*\.woff2|/api-docs.*|/autoconfig|/configprops|/dump|/health|/info|/metrics.*|/mappings|/trace|/swagger.*|.*\.png|.*\.css|.*\.map|.*\.js|.*\.html|.*\.gif|.*\.ttf|/hystrix.stream
+    sampler: 
+      probability: 1
+ #zipkin地址，Sleuth会将trace数据以http的方式发送，采样率percentage=1意味着100%发送
+ #sleuth也会产生性能消耗，因此percentage=1只是为了方便调试用例，生产环境下根据需要配置

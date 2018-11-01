@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h2 class="page-header">借么-前置规则</h2>
+        <h3 class="page-header">说明</h3>
+        <p>
+            该接口为推送前置规则
+        </p>
+        <h3 class="page-header">格式</h3>
+        <p>
+            JSON
+        </p>
+        <h3 class="page-header">HTTP请求方式</h3>
+        <p>
+            POST
+        </p>
+        <h3 class="page-header">注意事项</h3>
+        <ol style="margin-left: 0px;">
+            <li></li>
+        </ol>
+
+        <h3 class="page-header">例子</h3>
+            <p>说明：调用借么的接口，推送前置规则，返回推送结果状态</p>
+            <p>前置规则：JSON</p>
+            <p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;">
+{
+	"name_on_card": "张三",
+	"idnum": "**************0338",
+	"trans_date": "2018-1-1",
+	"amount_money": "100",
+	"category": "自动还款",
+	"cardNo": "************5729",
+	"cardId":"null"
+}
+                </pre>
+
+            <h3 class="page-header">前置规则字段说明</h3>
+            <p style="color:#3da33d;"></p>
+            <div style="width:100%;">
+                <table class="table table-bordered table-hover" style="width:90%;">
+                    <caption>前置规则字段说明对照表：</caption>
+                    <thead>
+                    <tr>
+                        <th>字段</th>
+                        <th>字段类型</th>
+                        <th>字段说明</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>name_on_card</td>
+                        <td>String</td>
+                        <td>持卡人姓名</td>
+                    </tr>
+                    <tr>
+                        <td>idnum</td>
+                        <td>String</td>
+                        <td>身份证号</td>
+                    </tr>
+                    <tr>
+                        <td>trans_date</td>
+                        <td>String</td>
+                        <td>交易时间</td>
+                    </tr>
+                    <tr>
+                        <td>amount_money</td>
+                        <td>String</td>
+                        <td>消费金额</td>
+                    </tr>
+                    <tr>
+                        <td>category</td>
+                        <td>String</td>
+                        <td>消费类型</td>
+                    </tr>
+                    <tr>
+                        <td>cardNo</td>
+                        <td>String</td>
+                        <td>卡号</td>
+                    </tr>
+                    <tr>
+                        <td>cardId</td>
+                        <td>String</td>
+                        <td>银行卡ID</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

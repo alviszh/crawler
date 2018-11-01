@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+	<meta charset="UTF-8">
+	<title>人行征信报告</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<!--<link rel="stylesheet" th:href="@{/css/jquery-ui-1.8.17.custom.css}" />-->
+
+	<!--<script type="text/javascript" th:src="@{/jquery/jquery-1.7.1.min.js}"></script>-->
+	<!--<script type="text/javascript"
+			th:src="@{/jquery/jquery-ui-1.8.17.custom.min.js}"></script>-->
+
+</head>
+<body>
+<div align="center" class="reportTitle" height="60"
+	 style="margin-top: 30px">人行征信报告</div>
+<div style="margin-top: 30px"></div>
+	<div>
+		<ul style="margin-top: 30px">
+			<li style="margin-top: 10px; color: #255e95">任务编号：<span
+					th:text="${taskId}"></span></li>
+		</ul>
+	</div>
+	<br />
+	<!-- 用户基本信息 -->
+	<table id="mobileReportBaseInfos" border="1px" width="100%"
+		   cellspacing="0" class="table">
+		<thead>
+		<tr>
+			<th colspan="3" class="smallTitle">1.1 基本信息</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr class="white">
+			<td>查询时间：<span th:text="${report==null}?'':(${report.creditReportSimple.queryTime})"></span></td>
+			<td>用户姓名：<span th:text="${report==null}?'':(${report.creditReportSimple.name})"></span></td>
+			<td>证件号码：<span th:text="${report==null}?'':(${report.creditReportSimple.idCard})"></span></td>
+		</tr>
+		<tr class="gray">
+			<td>婚姻状态：
+				<!--<span th:text="${report.creditReportSimple.marriage}"></span>-->
+			<span th:text="${report==null}?'':(${report.creditReportSimple.marriage=='0'}?'未婚':(${report.creditReportSimple.marriage=='1'}?'已婚'
+				:(${report.creditReportSimple.marriage=='2'}?'离异'
+				:(${report.creditReportSimple.marriage=='3'}?'丧偶'
+				:'未知'))))"/>
+			</td>
+			<td>人行征信报告的生成时间：<span
+					th:text="${report==null}?'':(${report.creditReportSimple.generatedTime})"></span></td>
+			<td>用户的证件类型：<span th:text="${report==null}?'':(${report.creditReportSimple.loginIp})"></span></td>
+		</tr>
+		</tbody>
+	</table>
+	<br />
+	<br />
+
+	<table border="1px" width="100%" cellspacing="0" class="table">
+		<thead>
+		<tr>
+			<th colspan="6" class="smallTitle">1.2 信贷记录信息</th>
+		</tr>
+		<!--<tr>
+			<td colspan="6" class="secondTitle">消费统计&#45;&#45;单月</td>
+		</tr>-->
+		</thead>
+		<tbody>
+		<tr>
+			<th class="th">账户类型</th>
+			<th class="th">账户数</th>
+			<th class="th">未结清、未销户账户数</th>
+			<th class="th">发生过逾期的账户数</th>
+			<th class="th">发生过90天以上逾期的账户数</th>
+			<th class="th">为他人担保笔数</th>
+		</tr>
+		<div
+				th:if="${report != null && report.creditRecordSummaries!=null && report.creditRecordSummaries.size()>0}">
+			<tr th:class="${index.odd}?'gray':'white'"
+				th:each="creditRecordSummary,index:${report.creditRecordSummaries}">
+				<!--<td th:text="${creditRecordSummary.creditType}"></td>-->
+				<td th:text="${creditRecordSummary.creditType=='1'}?'信用卡':(${creditRecordSummary.creditType=='2'}?'住房贷款'
+				:(${creditRecordSummary.creditType=='3'}?'其他贷款'
+				:${creditRecordSummary.creditType}))"></td>
+
+				<td th:text="${creditRecordSummary.accountNum}"></td>
+				<td th:text="${creditRecordSummary.unsettleUncancel}"></td>
+				<td th:text="${creditRecordSummary.overdueAccount}"></td>
+				<td th:text="${creditRecordSummary.overdueNinety}"></td>
+				<td th:text="${creditRecordSummary.guarantee}"></td>
+			</tr>
+		</div>
+		</tbody>
+	</table>
+	<br />
+	<br />
+
+	<table border="1px" width="100%" cellspacing="0" class="table">
+		<thead>
+		<tr>
+			<th colspan="19" class="smallTitle">1.3 信用卡明细</th>
+		</tr>
+		<!--<tr>
+			<td colspan="19" class="secondTitle">消费统计&#45;&#45;单月</td>
+		</tr>-->
+		</thead>
+		<tbody>
+		<tr>
+			<!--<th class="th">编号</th>-->
+			<th class="th">账户状态</th>
+			<th class="th">币种</th>
+			<th class="th">是否发生过逾期</th>
+			<th class="th">该账户是否已销户</th>
+			<th class="th">该账户是否激活过</th>
+			<th class="th">信用卡类型</th>
+			<th class="th">发放信用卡银行的名称</th>
+			<th class="th">是否已变成呆账</th>
+			<th class="th">发放日期</th>
+			<th class="th">截至年月</th>
+			<th class="th">额度(元)</th>
+			<th class="th">已使用额度(元)</th>
+			<th class="th">逾期金额(元)</th>
+			<th class="th">最近五年逾期次数</th>
+			<th class="th">准贷记卡账户是否有大于60天逾期记录</th>
+			<th class="th">准记卡账户有超过60天逾期记录月数</th>
+			<th class="th">最近五年90天以上逾期次数</th>
+			<th class="th">销户年月</th>
+		</tr>
+		<div
+				th:if="${report != null && report.creditCardInfo!=null && report.creditCardInfo.size()>0}">
+			<tr th:class="${index.odd}?'gray':'white'"
+				th:each="ccInfo,index:${report.creditCardInfo}">
+				<!--<td th:text="${ccInfo.queryId}"></td>-->
+				<!--<td th:text="${ccInfo.status}"></td>-->
+				<td th:text="${ccInfo.status=='1'}?'正常':(${ccInfo.status=='2'}?'销户'
+				:(${ccInfo.status=='3'}?'未激活'
+				:(${ccInfo.status=='4'}?'止付'
+				:(${ccInfo.status=='5'}?'冻结'
+				:(${ccInfo.status=='6'}?'呆账'
+				:(${ccInfo.status=='7'}?'逾期'
+				:${ccInfo.status}))))))"></td>
+
+				<!--<td th:text="${ccInfo.accountType}"></td>-->
+				<td th:text="${ccInfo.accountType=='1'}?'人民币':(${ccInfo.accountType=='2'}?'美元'
+				:(${ccInfo.accountType=='3'}?'日元'
+				:(${ccInfo.accountType=='4'}?'港元'
+				:(${ccInfo.accountType=='5'}?'欧元'
+				:(${ccInfo.accountType=='6'}?'英镑'
+				:(${ccInfo.accountType=='7'}?'澳大利亚元'
+				:(${ccInfo.accountType=='8'}?'加拿大元'
+				:(${ccInfo.accountType=='9'}?'其他'
+				:(${ccInfo.accountType=='10'}?'澳门元'
+				:(${ccInfo.accountType=='11'}?'瑞士法郎'
+				:${ccInfo.accountType}))))))))))"></td>
+
+				<!--<td th:text="${ccInfo.isDelq}"></td>-->
+				<td th:text="${ccInfo.isDelq=='0'}?'否':(${ccInfo.isDelq=='1'}?'是'
+				:'否')"></td>
+				<!--<td th:text="${ccInfo.isClosed}"></td>-->
+				<td th:text="${ccInfo.isClosed=='0'}?'否':(${ccInfo.isClosed=='1'}?'是'
+				:'否')"></td>
+				<!--<td th:text="${ccInfo.isActived}"></td>-->
+				<td th:text="${ccInfo.isActived=='0'}?'否':(${ccInfo.isActived=='1'}?'是'
+				:'否')"></td>
+				<!--<td th:text="${ccInfo.cardType}"></td>-->
+				<td th:text="${ccInfo.cardType=='1'}?'贷记卡':(${ccInfo.cardType=='2'}?'准贷记卡':${ccInfo.cardType})"></td>
+
+				<td th:text="${ccInfo.bankName}"></td>
+				<!--<td th:text="${ccInfo.badDebts}"></td>-->
+				<td th:text="${ccInfo.badDebts=='false'}?'否':(${ccInfo.badDebts=='true'}?'是'
+				:'否')"></td>
+				<td th:text="${ccInfo.releaseDate}"></td>
+				<td th:text="${ccInfo.dueDate}"></td>
+				<td th:text="${ccInfo.creditAmt}"></td>
+				<td th:text="${ccInfo.usedAmt}"></td>
+				<td th:text="${ccInfo.overDueAmount}"></td>
+				<td th:text="${ccInfo.delqL5yAmt}"></td>
+				<!--<td th:text="${ccInfo.isSixtydaysOverdraft}"></td>-->
+				<td th:text="${ccInfo.isSixtydaysOverdraft=='false'}?'无':(${ccInfo.isSixtydaysOverdraft=='true'}?'有'
+				:'无')"></td>
+				<td th:text="${ccInfo.sixtydaysOverdraftMonth}"></td>
+				<td th:text="${ccInfo.delqL5y90dayAmt}"></td>
+				<td th:text="${ccInfo.cancellDate}"></td>
+			</tr>
+		</div>
+		</tbody>
+	</table>
+	<br />
+	<br />
+
+	<table border="1px" width="100%" cellspacing="0" class="table">
+		<thead>
+		<tr>
+			<th colspan="17" class="smallTitle">1.4 贷款明细</th>
+		</tr>
+		<!--<tr>
+			<td colspan="17" class="secondTitle">消费统计&#45;&#45;单月</td>
+		</tr>-->
+		</thead>
+		<tbody>
+		<tr>
+			<!--<th class="th">编号</th>-->
+			<th class="th">账户状态</th>
+			<th class="th">贷款种类</th>
+			<th class="th">发放贷款机构名称</th>
+			<th class="th">是否发生过逾期</th>
+			<th class="th">贷款是否结清</th>
+			<th class="th">是否已转出</th>
+			<th class="th">是否已变成呆账</th>
+			<th class="th">发放日期</th>
+			<th class="th">到期日期</th>
+			<th class="th">截至年月</th>
+			<th class="th">贷款合同金额(元)</th>
+			<th class="th">贷款余额(元)</th>
+			<th class="th">逾期金额(元)</th>
+			<th class="th">最近五年逾期次数</th>
+			<th class="th">最近五年90天以上逾期次数</th>
+			<th class="th">结清年月</th>
+		</tr>
+		<div
+				th:if="${report != null && report.creditLoanInfo!=null && report.creditLoanInfo.size()>0}">
+			<tr th:class="${index.odd}?'gray':'white'"
+				th:each="clInfo,index:${report.creditLoanInfo}">
+				<!--<td th:text="${clInfo.queryID}"></td>-->
+				<!--<td th:text="${clInfo.status}"></td>-->
+				<td th:text="${clInfo.status=='1'}?'正常':(${clInfo.status=='2'}?'销户'
+				:(${clInfo.status=='3'}?'未激活'
+				:(${clInfo.status=='4'}?'止付'
+				:(${clInfo.status=='5'}?'冻结'
+				:(${clInfo.status=='6'}?'呆账'
+				:(${clInfo.status=='7'}?'逾期'
+				:${clInfo.status}))))))"></td>
+
+				<!--<td th:text="${clInfo.loanType}"></td>-->
+				<td th:text="${clInfo.loanType=='0'}?'个人住房贷款':(${clInfo.loanType=='1'}?'个人经营性贷款'
+				:(${clInfo.loanType=='2'}?'个人汽车贷款'
+				:(${clInfo.loanType=='3'}?'个人住房公积金贷款'
+				:(${clInfo.loanType=='4'}?'个人商住房（包括商住两用）贷款'
+				:(${clInfo.loanType=='5'}?'农户贷款'
+				:(${clInfo.loanType=='6'}?'个人助学贷款'
+				:(${clInfo.loanType=='7'}?'个人消费贷款'
+				:(${clInfo.loanType=='8'}?'其他贷款'
+				:${clInfo.loanType}))))))))"></td>
+
+				<td th:text="${clInfo.financeCorporationBankName}"></td>
+				<!--<td th:text="${clInfo.isDelq}"></td>-->
+				<td th:text="${clInfo.isDelq=='0'}?'否':(${clInfo.isDelq=='1'}?'是'
+				:'否')"></td>
+				<!--<td th:text="${clInfo.isCloseout}"></td>-->
+				<td th:text="${clInfo.isCloseout=='0'}?'否':(${clInfo.isCloseout=='1'}?'是'
+				:'否')"></td>
+				<!--<td th:text="${clInfo.transfer}"></td>-->
+				<td th:text="${clInfo.transfer=='false'}?'否':(${clInfo.transfer=='true'}?'是'
+				:'否')"></td>
+				<!--<td th:text="${clInfo.badDebts}"></td>-->
+				<td th:text="${clInfo.badDebts=='false'}?'否':(${clInfo.badDebts=='true'}?'是'
+				:'否')"></td>
+				<td th:text="${clInfo.releasedate}"></td>
+				<td th:text="${clInfo.deadline}"></td>
+				<td th:text="${clInfo.dueDate}"></td>
+				<td th:text="${clInfo.releaseCount}"></td>
+				<td th:text="${clInfo.balance}"></td>
+				<td th:text="${clInfo.overDueAmount}"></td>
+				<td th:text="${clInfo.delqL5yAmt}"></td>
+				<td th:text="${clInfo.delqL5y90dayAmt}"></td>
+				<td th:text="${clInfo.settleDate}"></td>
+			</tr>
+		</div>
+		</tbody>
+	</table>
+	<br />
+	<br />
+
+	<table border="1px" width="100%" cellspacing="0" class="table">
+		<thead>
+		<tr>
+			<th colspan="3" class="smallTitle">1.5 查询信息</th>
+		</tr>
+		<!--<tr>
+			<td colspan="6" class="secondTitle">消费统计&#45;&#45;单月</td>
+		</tr>-->
+		</thead>
+		<tbody>
+		<tr>
+			<!--<th class="th">编号</th>-->
+			<th class="th">查询日期</th>
+			<th class="th">查询原因</th>
+		</tr>
+		<div
+				th:if="${report != null && report.creditQueryRecord!=null && report.creditQueryRecord.size()>0}">
+			<tr th:class="${index.odd}?'gray':'white'"
+				th:each="cqr,index:${report.creditQueryRecord}">
+				<!--<td th:text="${cqr.queryId}"></td>-->
+				<td th:text="${cqr.queryTime}"></td>
+				<td th:text="${cqr.queryReason=='1'}?'信用卡审批':(${cqr.queryReason=='2'}?'贷后管理'
+				:(${cqr.queryReason=='3'}?'担保资格审批'
+				:(${cqr.queryReason=='4'}?'贷款审批'
+				:(${cqr.queryReason=='5'}?'异议核查'
+				:(${cqr.queryReason=='6'}?'特约商户实名审查'
+				:(${cqr.queryReason=='7'}?'本人查询'
+				:(${cqr.queryReason=='8'}?'公积金提取复核'
+				:(${cqr.queryReason=='9'}?'招商投标'
+				:(${cqr.queryReason=='10'}?'身份信息在线更新'
+				:(${cqr.queryReason=='11'}?'股指期货开户'
+				:(${cqr.queryReason=='12'}?'保前审查'
+				:(${cqr.queryReason=='13'}?'保后管理'
+				:(${cqr.queryReason=='14'}?'业务审批'
+				:(${cqr.queryReason=='15'}?'本人查询(临柜)'
+				:(${cqr.queryReason=='16'}?'本人查询(互联网个人信用信息服务平台)'
+				:(${cqr.queryReason=='17'}?'法人代表、负责人、高管等资信审查'
+				:(${cqr.queryReason=='18'}?'客户准入资格审查'
+				:(${cqr.queryReason=='19'}?'融资审批'
+				:(${cqr.queryReason=='20'}?'担保资格审查'
+				:${cqr.queryReason})))))))))))))))))))"></td>
+
+			</tr>
+		</div>
+		</tbody>
+	</table>
+	<br />
+	<br />
+</body>
+</html>

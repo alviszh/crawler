@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>	
+	<head th:include="components/nav :: nav">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">运营商数据报告</h2>
+				<h3 class="page-header">说明</h3>
+				<p>
+					调用该接口可以根据用户的taskid获取对应的运营商报告。 
+				</p>
+				<h3 class="page-header">URL</h3>
+				<p>				 
+                 http://&lt;project&gt;/opendata/developer/app/carrier/v2/report/{taskid}
+				</p>
+				<h3 class="page-header">格式</h3>
+				<p>
+					JSON   
+				</p>
+				<h3 class="page-header">HTTP请求方式</h3>
+				<p>
+					POST/GET   
+				</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>#</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>					
+						<tr>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>任务号</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="page-header">注意事项</h3>
+				<ol style="margin-left: 0px;">
+					<li>taskid不能为空</li>
+				</ol>
+				   
+				<h3 class="page-header">例子</h3>
+				<p>说明：利用taskid获取完成数据</p>
+				<p>请求：https://apitxboss.txtechnologies.com/opendata/developer/app/carrier/v2/report/79a28ecc-a073-4caf-b91d-7d85eef8582e</p>
+				<p>返回：JSON</p>
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;">
+{
+	"param": {
+		"mobileNum": null,
+		"taskid": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27"
+	},
+	"proMobileReportBaseinfos": [{
+		"id": 2,
+		"createtime": "2018-09-14 18:46:54",
+		"taskId": "79a28ecc-a073-4caf-b91d-7d85eef8582e",
+		"userName": "唐 *",
+		"idNum": "230************813",
+		"basicUserName": "慧斌",
+		"basicIdNum": "310109198504281021",
+		"address": "黑龙江省宝清县五九七农垦社区区大孤山小区十三*********",
+		"contactNum": "",
+		"phoneNum": "17712867723",
+		"curBalance": "56.7",
+		"packageName": "运营商未提供数据",
+		"email": "",
+		"netInDate": "运营商未提供数据",
+		"netInDuration": "运营商未提供数据",
+		"points": "0",
+		"postcode": "",
+		"birthday": "运营商未提供数据",
+		"province": "江苏",
+		"city": "南京",
+		"education": "运营商未提供数据",
+		"hobby": "运营商未提供数据",
+		"occupation": "运营商未提供数据",
+		"gender": "运营商未提供数据",
+		"carrier": "中国电信",
+		"qq": "运营商未提供数据",
+		"fax": "运营商未提供数据",
+		"weibo": "运营商未提供数据",
+		"nick_name": "运营商未提供数据",
+		"cusLevel": "运营商未提供数据",
+		"cusStatus": "运营商未提供数据",
+		"certificateType": "身份证",
+		"cusType": "运营商未提供数据",
+		"realName": null,
+		"sourceName": "运营商",
+		"dataType": "运营商分析报告",
+		"reportTime": "2018-09-14",
+		"idnumStatus": "有效",
+		"emailStatus": "有效",
+		"addressStatus": "有效",
+		"idnumCarrier": "未知",
+		"nameCarrier": "未知",
+		"callrecordStatus": "正常"
+	}],
+	"proMobileReportSocialAnalysisSummarys": [{
+		"id": 108,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"socialRange": "110",
+		"socialIntimacy": "1",
+		"socialCenter": "北京",
+		"isLocal": "是",
+		"interflowCount": "14",
+		"dataType": "三月"
+	}, {
+		"id": 109,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"socialRange": "210",
+		"socialIntimacy": "5",
+		"socialCenter": "北京",
+		"isLocal": "是",
+		"interflowCount": "14",
+		"dataType": "六月"
+	}],
+	"proMobileReportContactsTops": [{
+		"id": 345,
+		"createtime": null,
+		"taskId": "79a28ecc-a073-4caf-b91d-7d85eef8582e",
+		"phoneNum": "18612312170",
+		"city": "北京",
+		"communicateCounts": "1",
+		"communicateDuration": "10",
+		"dialCounts": "0",
+		"calledCounts": "1",
+		"dataType": "三月"
+    }, {
+		"id": 346,
+		"createtime": null,
+		"taskId": "79a28ecc-a073-4caf-b91d-7d85eef8582e",
+		"phoneNum": "18310453829",
+		"city": "北京",
+		"communicateCounts": "1",
+		"communicateDuration": "593",
+		"dialCounts": "0",
+		"calledCounts": "1",
+		"dataType": "六月"
+	}, {
+		"id": 347,
+		"createtime": null,
+		"taskId": "79a28ecc-a073-4caf-b91d-7d85eef8582e",
+		"phoneNum": "04695059058",
+		"city": "未知",
+		"communicateCounts": "1",
+		"communicateDuration": "57",
+		"dialCounts": "0",
+		"calledCounts": "1",
+		"dataType": "六月"
+	}, {
+		"id": 348,
+		"createtime": null,
+		"taskId": "79a28ecc-a073-4caf-b91d-7d85eef8582e",
+		"phoneNum": "15911135456",
+		"city": "北京",
+		"communicateCounts": "2",
+		"communicateDuration": "43",
+		"dialCounts": "1",
+		"calledCounts": "1",
+		"dataType": "六月"
+	}]
+	"proMobileReportLocationTops": [{
+		"id": 35,
+		"createtime": null,
+		"taskId": "79a28ecc-a073-4caf-b91d-7d85eef8582e",
+		"location": "北京",
+		"communicateCounts": "1",
+		"phonenumCounts": "1",
+		"communicateDuration": "10",
+		"dialCounts": "0",
+		"calledCounts": "1",
+		"dialDuration": "0",
+		"calledDuration": "10",
+		"avgDialDuration": "0",
+		"avgCalledDuration": "10.00",
+		"dialCountsProportion": "0.00",
+		"calledCountsProportion": "1.00",
+		"dialDurationProportion": "0.00",
+		"calledDurationProportion": "1.00",
+		"dataType": "三月"
+	}, {
+		"id": 36,
+		"createtime": null,
+		"taskId": "79a28ecc-a073-4caf-b91d-7d85eef8582e",
+		"location": "北京",
+		"communicateCounts": "5",
+		"phonenumCounts": "3",
+		"communicateDuration": "652",
+		"dialCounts": "2",
+		"calledCounts": "3",
+		"dialDuration": "19",
+		"calledDuration": "633",
+		"avgDialDuration": "9.50",
+		"avgCalledDuration": "211.00",
+		"dialCountsProportion": "0.40",
+		"calledCountsProportion": "0.60",
+		"dialDurationProportion": "0.03",
+		"calledDurationProportion": "0.97",
+		"dataType": "六月"
+	}, {
+		"id": 37,
+		"createtime": null,
+		"taskId": "79a28ecc-a073-4caf-b91d-7d85eef8582e",
+		"location": "未知",
+		"communicateCounts": "1",
+		"phonenumCounts": "1",
+		"communicateDuration": "57",
+		"dialCounts": "0",
+		"calledCounts": "1",
+		"dialDuration": "0",
+		"calledDuration": "57",
+		"avgDialDuration": "0",
+		"avgCalledDuration": "57.00",
+		"dialCountsProportion": "0.00",
+		"calledCountsProportion": "1.00",
+		"dialDurationProportion": "0.00",
+		"calledDurationProportion": "1.00",
+		"dataType": "六月"
+	}]
+	"proMobileReportVitalityAnalysisSummarys": [{
+		"id": 106,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"callDays": "69",
+		"dialCounts": "58",
+		"calledCounts": "185",
+		"dialDuration": "5821",
+		"called_duration": "13792",
+		"dataType": "三月"
+	}, {
+		"id": 107,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"callDays": "141",
+		"dialCounts": "145",
+		"calledCounts": "369",
+		"dialDuration": "20425",
+		"called_duration": "29379",
+		"dataType": "六月"
+	}],
+	"proMobileReportConsumeinfos": [{
+		"id": 247,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"sumFee": null,
+		"maxPay": "200.00",
+		"payCount": "1",
+		"newestBill": null,
+		"flowFee": null,
+		"voiceFee": null,
+		"messageFee": null,
+		"functionFee": null,
+		"otherFee": null,
+		"sumPay": "200.00",
+		"dataType": "一月"
+	}, {
+		"id": 248,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"sumFee": null,
+		"maxPay": "200.00",
+		"payCount": "3",
+		"newestBill": null,
+		"flowFee": null,
+		"voiceFee": null,
+		"messageFee": null,
+		"functionFee": null,
+		"otherFee": null,
+		"sumPay": "600.00",
+		"dataType": "三月"
+	}, {
+		"id": 249,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"sumFee": null,
+		"maxPay": "200.00",
+		"payCount": "11",
+		"newestBill": null,
+		"flowFee": null,
+		"voiceFee": null,
+		"messageFee": null,
+		"functionFee": null,
+		"otherFee": null,
+		"sumPay": "1220.00",
+		"dataType": "六月"
+	}, {
+		"id": 250,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"sumFee": null,
+		"maxPay": "66.67",
+		"payCount": "1.00",
+		"newestBill": null,
+		"flowFee": null,
+		"voiceFee": null,
+		"messageFee": null,
+		"functionFee": null,
+		"otherFee": null,
+		"sumPay": "200.00",
+		"dataType": "三月月均"
+	}, {
+		"id": 251,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"sumFee": null,
+		"maxPay": "33.33",
+		"payCount": "1.83",
+		"newestBill": null,
+		"flowFee": null,
+		"voiceFee": null,
+		"messageFee": null,
+		"functionFee": null,
+		"otherFee": null,
+		"sumPay": "203.33",
+		"dataType": "六月月均"
+	}],
+	"proMobileReportCarrierConsumes": [{
+		"id": 286,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"carrier": "中国移动",
+		"phonenum": "13520800817",
+		"city": "北京",
+		"callMonth": "2018-07",
+		"communicateCounts": "88",
+		"dialCounts": "29",
+		"dialDuration": "1766",
+		"calledCounts": "59",
+		"calledDuration": "5223",
+		"messageCounts": "6",
+		"voiceFee": "0.00"
+	}, {
+		"id": 287,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"carrier": "中国移动",
+		"phonenum": "13520800817",
+		"city": "北京",
+		"callMonth": "2018-05",
+		"communicateCounts": "56",
+		"dialCounts": "12",
+		"dialDuration": "1243",
+		"calledCounts": "44",
+		"calledDuration": "2860",
+		"messageCounts": "4",
+		"voiceFee": "0.00"
+	}, {
+		"id": 288,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"carrier": "中国移动",
+		"phonenum": "13520800817",
+		"city": "北京",
+		"callMonth": "2018-04",
+		"communicateCounts": "83",
+		"dialCounts": "19",
+		"dialDuration": "1802",
+		"calledCounts": "64",
+		"calledDuration": "3706",
+		"messageCounts": "4",
+		"voiceFee": "0.00"
+	}, {
+		"id": 289,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"carrier": "中国移动",
+		"phonenum": "13520800817",
+		"city": "北京",
+		"callMonth": "2018-06",
+		"communicateCounts": "137",
+		"dialCounts": "58",
+		"dialDuration": "11671",
+		"calledCounts": "79",
+		"calledDuration": "9238",
+		"messageCounts": "2",
+		"voiceFee": "0.00"
+	}, {
+		"id": 290,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"carrier": "中国移动",
+		"phonenum": "13520800817",
+		"city": "北京",
+		"callMonth": "2018-09",
+		"communicateCounts": "40",
+		"dialCounts": "4",
+		"dialDuration": "225",
+		"calledCounts": "36",
+		"calledDuration": "3785",
+		"messageCounts": "1",
+		"voiceFee": "0.00"
+	}, {
+		"id": 291,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"carrier": "中国移动",
+		"phonenum": "13520800817",
+		"city": "北京",
+		"callMonth": "2018-08",
+		"communicateCounts": "110",
+		"dialCounts": "23",
+		"dialDuration": "3718",
+		"calledCounts": "87",
+		"calledDuration": "4567",
+		"messageCounts": "7",
+		"voiceFee": "0.00"
+	}],
+	"proMobileReportCallSumStatisticss": [{
+		"id": 234,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"communicate_counts": "53",
+		"contactCounts": "37",
+		"cityCounts": "5",
+		"dialCounts": "6",
+		"calledCounts": "47",
+		"dialNums": "36",
+		"calledNums": "5",
+		"durationSum": "4444",
+		"dataType": "一月"
+	}, {
+		"id": 235,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"communicate_counts": "243",
+		"contactCounts": "110",
+		"cityCounts": "12",
+		"dialCounts": "58",
+		"calledCounts": "185",
+		"dialNums": "105",
+		"calledNums": "18",
+		"durationSum": "19613",
+		"dataType": "三月"
+	}, {
+		"id": 236,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"communicate_counts": "514",
+		"contactCounts": "210",
+		"cityCounts": "20",
+		"dialCounts": "145",
+		"calledCounts": "369",
+		"dialNums": "200",
+		"calledNums": "39",
+		"durationSum": "49804",
+		"dataType": "六月"
+	}, {
+		"id": 237,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"communicate_counts": "81.00",
+		"contactCounts": "36.67",
+		"cityCounts": "4.00",
+		"dialCounts": "19.33",
+		"calledCounts": "61.67",
+		"dialNums": "35.00",
+		"calledNums": "6.00",
+		"durationSum": "6537.67",
+		"dataType": "三月月均"
+	}, {
+		"id": 238,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"communicate_counts": "85.67",
+		"contactCounts": "35.00",
+		"cityCounts": "3.33",
+		"dialCounts": "24.17",
+		"calledCounts": "61.50",
+		"dialNums": "33.33",
+		"calledNums": "6.50",
+		"durationSum": "8300.67",
+		"dataType": "六月月均"
+	}],
+	"proMobileReportCallDetailStatistics3ms": [{
+		"id": 7616,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"phonenum": "18832279917",
+		"phonenumFlag": "",
+		"phonenumType": "",
+		"city": "保定",
+		"communicateCounts": "1",
+		"communicateDuration": "95",
+		"dialCounts": "1",
+		"calledCounts": "0",
+		"morningCounts": "1",
+		"noonCounts": "0",
+		"afternoonCounts": "0",
+		"nightCounts": "0",
+		"midnightCounts": "0",
+		"weekdaysCounts": "1",
+		"weekendsCounts": "0",
+		"holidayCounts": "0",
+		"dataType": "三月"
+	}, {
+		"id": 7562,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"phonenum": "13652041139",
+		"phonenumFlag": "",
+		"phonenumType": "",
+		"city": "天津",
+		"communicateCounts": "4",
+		"communicateDuration": "92",
+		"dialCounts": "3",
+		"calledCounts": "1",
+		"morningCounts": "4",
+		"noonCounts": "0",
+		"afternoonCounts": "0",
+		"nightCounts": "0",
+		"midnightCounts": "0",
+		"weekdaysCounts": "4",
+		"weekendsCounts": "0",
+		"holidayCounts": "0",
+		"dataType": "三月"
+	}, {
+		"id": 7607,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"phonenum": "18210997321",
+		"phonenumFlag": "",
+		"phonenumType": "",
+		"city": "北京",
+		"communicateCounts": "1",
+		"communicateDuration": "92",
+		"dialCounts": "0",
+		"calledCounts": "1",
+		"morningCounts": "0",
+		"noonCounts": "0",
+		"afternoonCounts": "0",
+		"nightCounts": "1",
+		"midnightCounts": "0",
+		"weekdaysCounts": "0",
+		"weekendsCounts": "1",
+		"holidayCounts": "1",
+		"dataType": "三月"	
+	}],
+	"proMobileReportCallDetailStatistics6ms": [{
+		"id": 7714,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"phonenum": "13652041139",
+		"phonenumFlag": "",
+		"phonenumType": "",
+		"city": "天津",
+		"communicateCounts": "4",
+		"communicateDuration": "92",
+		"dialCounts": "3",
+		"calledCounts": "1",
+		"morningCounts": "4",
+		"noonCounts": "0",
+		"afternoonCounts": "0",
+		"nightCounts": "0",
+		"midnightCounts": "0",
+		"weekdaysCounts": "4",
+		"weekendsCounts": "0",
+		"holidayCounts": "0",
+		"dataType": "六月"
+	}, {
+		"id": 7786,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"phonenum": "18210997321",
+		"phonenumFlag": "",
+		"phonenumType": "",
+		"city": "北京",
+		"communicateCounts": "1",
+		"communicateDuration": "92",
+		"dialCounts": "0",
+		"calledCounts": "1",
+		"morningCounts": "0",
+		"noonCounts": "0",
+		"afternoonCounts": "0",
+		"nightCounts": "1",
+		"midnightCounts": "0",
+		"weekdaysCounts": "0",
+		"weekendsCounts": "1",
+		"holidayCounts": "1",
+		"dataType": "六月"
+	}, {
+		"id": 7631,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"phonenum": "0018454381218",
+		"phonenumFlag": "",
+		"phonenumType": "",
+		"city": "未知",
+		"communicateCounts": "1",
+		"communicateDuration": "9",
+		"dialCounts": "1",
+		"calledCounts": "0",
+		"morningCounts": "0",
+		"noonCounts": "0",
+		"afternoonCounts": "1",
+		"nightCounts": "0",
+		"midnightCounts": "0",
+		"weekdaysCounts": "1",
+		"weekendsCounts": "0",
+		"holidayCounts": "0",
+		"dataType": "六月"
+	}],
+	"proMobileReportPeriodStatisticss": [{
+		"id": 392,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"communicatePeriod": "11:30-13:30",
+		"communicateCounts": "72",
+		"contactNums": "48",
+		"communicateDuration": "3676",
+		"dialCounts": "10",
+		"calledCounts": "62",
+		"lastCall": "2018-09-14 12:41:43",
+		"firstCall": "2018-06-29 13:12:08",
+		"dataType": "三月"
+	}, {
+		"id": 393,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"communicatePeriod": "13:30-17:30",
+		"communicateCounts": "44",
+		"contactNums": "34",
+		"communicateDuration": "3489",
+		"dialCounts": "6",
+		"calledCounts": "38",
+		"lastCall": "2018-09-12 17:03:52",
+		"firstCall": "2018-06-30 17:29:06",
+		"dataType": "三月"
+	}, {
+		"id": 397,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"communicatePeriod": "23:30-05:30",
+		"communicateCounts": "1",
+		"contactNums": "1",
+		"communicateDuration": "1370",
+		"dialCounts": "1",
+		"calledCounts": "0",
+		"lastCall": "2018-08-06 23:54:48",
+		"firstCall": "2018-08-06 23:54:48",
+		"dataType": "六月"
+	}, {
+		"id": 398,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"communicatePeriod": "5:30-11:30",
+		"communicateCounts": "108",
+		"contactNums": "57",
+		"communicateDuration": "8068",
+		"dialCounts": "25",
+		"calledCounts": "83",
+		"lastCall": "2018-09-14 10:35:53",
+		"firstCall": "2018-04-01 11:17:58",
+		"dataType": "六月"
+	}],
+	"proMobileReportCallTimeDetailStatisticss": [{
+		"id": 230,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"longgestCall": "1881",
+		"shortestCall": "3",
+		"callWithinOneminute": "42",
+		"callBetweenOneminuteFiveminutes": "9",
+		"callBetweenFiveminutesTenminutes": "0",
+		"callOverTenminutes": "2",
+		"daytimeCounts": "53",
+		"nightCounts": "0",
+		"daytimeDuration": "4444",
+		"nightDuration": "0",
+		"inLocalCounts": "53",
+		"outLocalCounts": "0",
+		"inLocalDuration": "4444",
+		"outLocalDuration": "0",
+		"dataType": "一月"
+	}, {
+		"id": 231,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"longgestCall": "1881",
+		"shortestCall": "1",
+		"callWithinOneminute": "171",
+		"callBetweenOneminuteFiveminutes": "59",
+		"callBetweenFiveminutesTenminutes": "9",
+		"callOverTenminutes": "4",
+		"daytimeCounts": "241",
+		"nightCounts": "2",
+		"daytimeDuration": "18992",
+		"nightDuration": "621",
+		"inLocalCounts": "243",
+		"outLocalCounts": "0",
+		"inLocalDuration": "19613",
+		"outLocalDuration": "0",
+		"dataType": "三月"
+	}, {
+		"id": 232,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"longgestCall": "1881",
+		"shortestCall": "1",
+		"callWithinOneminute": "354",
+		"callBetweenOneminuteFiveminutes": "115",
+		"callBetweenFiveminutesTenminutes": "31",
+		"callOverTenminutes": "14",
+		"daytimeCounts": "511",
+		"nightCounts": "3",
+		"daytimeDuration": "49153",
+		"nightDuration": "651",
+		"inLocalCounts": "514",
+		"outLocalCounts": "0",
+		"inLocalDuration": "49804",
+		"outLocalDuration": "0",
+		"dataType": "六月"
+	}, {
+		"id": 233,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"longgestCall": "1881",
+		"shortestCall": "1",
+		"callWithinOneminute": "57.00",
+		"callBetweenOneminuteFiveminutes": "19.67",
+		"callBetweenFiveminutesTenminutes": "3.00",
+		"callOverTenminutes": "1.33",
+		"daytimeCounts": "80.33",
+		"nightCounts": "0.67",
+		"daytimeDuration": "6330.67",
+		"nightDuration": "207.00",
+		"inLocalCounts": "81.00",
+		"outLocalCounts": "0.00",
+		"inLocalDuration": "6537.67",
+		"outLocalDuration": "0.00",
+		"dataType": "三月月均"
+	}, {
+		"id": 234,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"longgestCall": "1881",
+		"shortestCall": "1",
+		"callWithinOneminute": "59.00",
+		"callBetweenOneminuteFiveminutes": "19.17",
+		"callBetweenFiveminutesTenminutes": "5.17",
+		"callOverTenminutes": "2.33",
+		"daytimeCounts": "85.17",
+		"nightCounts": "0.50",
+		"daytimeDuration": "8192.17",
+		"nightDuration": "108.50",
+		"inLocalCounts": "85.67",
+		"outLocalCounts": "0.00",
+		"inLocalDuration": "8300.67",
+		"outLocalDuration": "0.00",
+		"dataType": "六月月均"
+	}],
+	"proMobileReportStabilitys": [{
+		"id": 93,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"isFamily": "否",
+		"isFamilyHost": "未知",
+		"payContinuityMonth": "1",
+		"isAddrEqualCity": "是",
+		"communicateCountsEqualMonth": "否",
+		"communicateCountsEqualMonths": "否",
+		"dataType": "一月"
+	}, {
+		"id": 94,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"isFamily": "否",
+		"isFamilyHost": "未知",
+		"payContinuityMonth": "3",
+		"isAddrEqualCity": "是",
+		"communicateCountsEqualMonth": "是",
+		"communicateCountsEqualMonths": "否",
+		"dataType": "三月"
+	}, {
+		"id": 95,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"isFamily": "否",
+		"isFamilyHost": "未知",
+		"payContinuityMonth": "6",
+		"isAddrEqualCity": "是",
+		"communicateCountsEqualMonth": "是",
+		"communicateCountsEqualMonths": "否",
+		"dataType": "六月"
+	}],
+	"proMobileReportVitalitys": [{
+		"id": 214,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"communicateDays": "15",
+		"messageDays": "1",
+		"payCounts": "1",
+		"communicateCounts": "53",
+		"contactNums": "37",
+		"locationCounts": "5",
+		"dialCounts": "6",
+		"calledCounts": "47",
+		"dialNums": "36",
+		"calledNums": "5",
+		"messageCounts": "1",
+		"communicateDuration": "4444",
+		"dialDuration": "296",
+		"calledDuration": "4148",
+		"avgDuration": "83.85",
+		"withoutDialCallDays": "27",
+		"withoutDialCallDaysProportion": "0.87",
+		"withoutCallDays": "16",
+		"withoutCallDaysProportion": "0.52",
+		"dataType": "一月"
+	}, {
+		"id": 215,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"communicateDays": "69",
+		"messageDays": "9",
+		"payCounts": "3",
+		"communicateCounts": "243",
+		"contactNums": "110",
+		"locationCounts": "12",
+		"dialCounts": "58",
+		"calledCounts": "185",
+		"dialNums": "105",
+		"calledNums": "18",
+		"messageCounts": "14",
+		"communicateDuration": "19613",
+		"dialDuration": "5821",
+		"calledDuration": "13792",
+		"avgDuration": "80.71",
+		"withoutDialCallDays": "60",
+		"withoutDialCallDaysProportion": "0.65",
+		"withoutCallDays": "23",
+		"withoutCallDaysProportion": "0.25",
+		"dataType": "三月"
+	}, {
+		"id": 216,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"communicateDays": "141",
+		"messageDays": "19",
+		"payCounts": "11",
+		"communicateCounts": "514",
+		"contactNums": "210",
+		"locationCounts": "20",
+		"dialCounts": "145",
+		"calledCounts": "369",
+		"dialNums": "200",
+		"calledNums": "39",
+		"messageCounts": "24",
+		"communicateDuration": "49804",
+		"dialDuration": "20425",
+		"calledDuration": "29379",
+		"avgDuration": "96.89",
+		"withoutDialCallDays": "111",
+		"withoutDialCallDaysProportion": "0.60",
+		"withoutCallDays": "43",
+		"withoutCallDaysProportion": "0.23",
+		"dataType": "六月"
+	}, {
+		"id": 217,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"communicateDays": "23.00",
+		"messageDays": "3.00",
+		"payCounts": "1.00",
+		"communicateCounts": "81.00",
+		"contactNums": "36.67",
+		"locationCounts": "4.00",
+		"dialCounts": "19.33",
+		"calledCounts": "61.67",
+		"dialNums": "35.00",
+		"calledNums": "6.00",
+		"messageCounts": "4.67",
+		"communicateDuration": "6537.67",
+		"dialDuration": "1940.33",
+		"calledDuration": "4597.33",
+		"avgDuration": "80.71",
+		"withoutDialCallDays": "20.00",
+		"withoutDialCallDaysProportion": "0.22",
+		"withoutCallDays": "7.67",
+		"withoutCallDaysProportion": "0.08",
+		"dataType": "三月月均"
+	}, {
+		"id": 218,
+		"createtime": null,
+		"taskId": "e0bd05dc-7887-4e09-8d6c-1afcfc082c27",
+		"communicateDays": "23.50",
+		"messageDays": "3.17",
+		"payCounts": "1.83",
+		"communicateCounts": "85.67",
+		"contactNums": "35.00",
+		"locationCounts": "3.33",
+		"dialCounts": "24.17",
+		"calledCounts": "61.50",
+		"dialNums": "33.33",
+		"calledNums": "6.50",
+		"messageCounts": "4.00",
+		"communicateDuration": "8300.67",
+		"dialDuration": "3404.17",
+		"calledDuration": "4896.50",
+		"avgDuration": "96.89",
+		"withoutDialCallDays": "18.50",
+		"withoutDialCallDaysProportion": "0.10",
+		"withoutCallDays": "7.17",
+		"withoutCallDaysProportion": "0.04",
+		"dataType": "六月月均"
+	}],
+	"message": "success",
+	"createtime": "2018-10-10T07:45:37.118+0000",
+	"errorCode": 800,
+	"profile": "dev"
+ }
+</pre>
+				   
+<h3 class="page-header">返回字段</h3>
+	<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>对象名</th>
+							<th>字段名</th>
+							<th>类型</th>
+							<th>注释</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>userName</td>
+							<td>String</td>
+							<td>姓名</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>idNum</td>
+							<td>String</td>
+							<td>身份证号</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>basicUserName</td>
+							<td>String</td>
+							<td>客户填写姓名</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>basicIdNum</td>
+							<td>String</td>
+							<td>客户填写身份证号</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>address</td>
+							<td>String</td>
+							<td>地址</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>contactNum</td>
+							<td>String</td>
+							<td>联系人号码</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>phoneNum</td>
+							<td>String</td>
+							<td>本机号码</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>curBalance</td>
+							<td>String</td>
+							<td>当前余额</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>packageName</td>
+							<td>String</td>
+							<td>套餐名称</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>email</td>
+							<td>String</td>
+							<td>电子邮箱</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>netInDate</td>
+							<td>String</td>
+							<td>入网日期</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>netInDuration</td>
+							<td>String</td>
+							<td>入网时长</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>points</td>
+							<td>String</td>
+							<td>积分</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>postcode</td>
+							<td>String</td>
+							<td>邮政编码</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>birthday</td>
+							<td>String</td>
+							<td>生日</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>province</td>
+							<td>String</td>
+							<td>号码归属省份</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>city</td>
+							<td>String</td>
+							<td>号码归属城市</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>education</td>
+							<td>String</td>
+							<td>学历</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>hobby</td>
+							<td>String</td>
+							<td>爱好</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>occupation</td>
+							<td>String</td>
+							<td>职业</td>
+						</tr>
+	
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>gender</td>
+							<td>String</td>
+							<td>性别</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>carrier</td>
+							<td>String</td>
+							<td>所属运营商</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>qq</td>
+							<td>String</td>
+							<td>qq号码</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>fax</td>
+							<td>String</td>
+							<td>传真</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>weibo</td>
+							<td>String</td>
+							<td>微博</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>nick_name</td>
+							<td>String</td>
+							<td>昵称</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>cusLevel</td>
+							<td>String</td>
+							<td>客户星级</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>cusStatus</td>
+							<td>String</td>
+							<td>用户状态</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>certificateType</td>
+							<td>String</td>
+							<td>证件类型</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>cusType</td>
+							<td>String</td>
+							<td>客户类型</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>sourceName</td>
+							<td>String</td>
+							<td>来源名称</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>dataType</td>
+							<td>String</td>
+							<td>数据类别</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>reportTime</td>
+							<td>String</td>
+							<td>获取时间</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>idnumStatus</td>
+							<td>String</td>
+							<td>身份证号码有效性</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>emailStatus</td>
+							<td>String</td>
+							<td>邮箱有效性</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>addressStatus</td>
+							<td>String</td>
+							<td>通讯地址有效性</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>idnumCarrier</td>
+							<td>String</td>
+							<td>身份证号码是否与运营商数据匹配</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>nameCarrier</td>
+							<td>String</td>
+							<td>姓名是否与运营商数据匹配</td>
+						</tr>
+						<tr>
+							<td>proMobileReportBaseinfo（基本信息）</td>
+							<td>callrecordStatus</td>
+							<td>String</td>
+							<td>通话记录完整性</td>
+						</tr>
+						
+						<tr>
+							<td>proMobileReportSocialAnalysisSummary（社交分析摘要--3月、6月）</td>
+							<td>socialRange</td>
+							<td>String</td>
+							<td>朋友圈大小</td>
+						</tr>
+						<tr>
+							<td>proMobileReportSocialAnalysisSummary（社交分析摘要--3月、6月）</td>
+							<td>socialIntimacy</td>
+							<td>String</td>
+							<td>朋友圈亲密度</td>
+						</tr>
+						<tr>
+							<td>proMobileReportSocialAnalysisSummary（社交分析摘要--3月、6月）</td>
+							<td>socialCenter</td>
+							<td>String</td>
+							<td>朋友圈中心地</td>
+						</tr>
+						<tr>
+							<td>proMobileReportSocialAnalysisSummary（社交分析摘要--3月、6月）</td>
+							<td>isLocal</td>
+							<td>String</td>
+							<td>朋友圈是否在本地</td>
+						</tr>
+						<tr>
+							<td>proMobileReportSocialAnalysisSummary（社交分析摘要--3月、6月）</td>
+							<td>interflowCount</td>
+							<td>String</td>
+							<td>互通电话的号码数目</td>
+						</tr>												
+						<tr>
+							<td>proMobileReportContactsTop（联系人Top--3月、6月）</td>
+							<td>phoneNum</td>
+							<td>String</td>
+							<td>号码</td>
+						</tr>
+						<tr>
+							<td>proMobileReportContactsTop（联系人Top--3月、6月）</td>
+							<td>city</td>
+							<td>String</td>
+							<td>归属地</td>
+						</tr>
+						<tr>
+							<td>proMobileReportContactsTop（联系人Top--3月、6月）</td>
+							<td>communicateCounts</td>
+							<td>String</td>
+							<td>通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportContactsTop（联系人Top--3月、6月）</td>
+							<td>communicateDuration</td>
+							<td>String</td>
+							<td>通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportContactsTop（联系人Top--3月、6月）</td>
+							<td>dialCounts</td>
+							<td>String</td>
+							<td>主叫次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportContactsTop（联系人Top--3月、6月）</td>
+							<td>calledCounts</td>
+							<td>String</td>
+							<td>被叫次数</td>
+						</tr>
+						
+						
+						<tr>
+							<td>proMobileReportLocationTop（联系人号码归属地Top--3月、6月）</td>
+							<td>location</td>
+							<td>String</td>
+							<td>地址</td>
+						</tr>
+						<tr>
+							<td>proMobileReportLocationTop（联系人号码归属地Top--3月、6月）</td>
+							<td>communicateCounts</td>
+							<td>String</td>
+							<td>通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportLocationTop（联系人号码归属地Top--3月、6月）</td>
+							<td>phonenumCounts</td>
+							<td>String</td>
+							<td>通话号码数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportLocationTop（联系人号码归属地Top--3月、6月）</td>
+							<td>communicateDuration</td>
+							<td>String</td>
+							<td>通话时长（秒））</td>
+						</tr>
+						<tr>
+							<td>proMobileReportLocationTop（联系人号码归属地Top--3月、6月）</td>
+							<td>dialCounts</td>
+							<td>String</td>
+							<td>主叫次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportLocationTop（联系人号码归属地Top--3月、6月）</td>
+							<td>calledCounts</td>
+							<td>String</td>
+							<td>被叫次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportLocationTop（联系人号码归属地Top--3月、6月）</td>
+							<td>dialDuration</td>
+							<td>String</td>
+							<td>主叫时长（秒）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportLocationTop（联系人号码归属地Top--3月、6月）</td>
+							<td>calledDuration</td>
+							<td>String</td>
+							<td>被叫时长（秒）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportLocationTop（联系人号码归属地Top--3月、6月）</td>
+							<td>avgDialDuration</td>
+							<td>String</td>
+							<td>平均主叫时长（秒）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportLocationTop（联系人号码归属地Top--3月、6月）</td>
+							<td>avgCalledDuration</td>
+							<td>String</td>
+							<td>平均被叫时长（秒）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportLocationTop（联系人号码归属地Top--3月、6月）</td>
+							<td>dialCountsProportion</td>
+							<td>String</td>
+							<td>主叫次数比重</td>
+						</tr>
+						<tr>
+							<td>proMobileReportLocationTop（联系人号码归属地Top--3月、6月）</td>
+							<td>calledCountsProportion</td>
+							<td>String</td>
+							<td>被叫次数比重</td>
+						</tr>
+						<tr>
+							<td>proMobileReportLocationTop（联系人号码归属地Top--3月、6月）</td>
+							<td>dialDurationProportion</td>
+							<td>String</td>
+							<td>主叫时长比重</td>
+						</tr>
+						<tr>
+							<td>proMobileReportLocationTop（联系人号码归属地Top--3月、6月）</td>
+							<td>calledDurationProportion</td>
+							<td>String</td>
+							<td>被叫时长比重</td>
+						</tr>
+						
+						
+						<tr>
+							<td>proMobileReportVitalityAnalysisSummary（活跃分析摘要--3月、6月）</td>
+							<td>callDays</td>
+							<td>String</td>
+							<td>通话活跃天数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitalityAnalysisSummary（活跃分析摘要--3月、6月）</td>
+							<td>dialCounts</td>
+							<td>String</td>
+							<td>主叫次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitalityAnalysisSummary（活跃分析摘要--3月、6月）</td>
+							<td>calledCounts</td>
+							<td>String</td>
+							<td>被叫次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitalityAnalysisSummary（活跃分析摘要--3月、6月）</td>
+							<td>dialDuration</td>
+							<td>String</td>
+							<td>主叫时长（秒）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitalityAnalysisSummary（活跃分析摘要--3月、6月）</td>
+							<td>called_duration</td>
+							<td>String</td>
+							<td>被叫时长（秒）</td>
+						</tr>									
+						<tr>
+							<td>proMobileReportConsumeinfo（消费--1月、3月、6月、3月月均、6月月均）</td>
+							<td>sumFee</td>
+							<td>String</td>
+							<td>消费总金额（分）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportConsumeinfo（消费--1月、3月、6月、3月月均、6月月均）</td>
+							<td>maxPay</td>
+							<td>String</td>
+							<td>单次充值最大金额（分） </td>
+						</tr>
+						<tr>
+							<td>proMobileReportConsumeinfo（消费--1月、3月、6月、3月月均、6月月均）</td>
+							<td>payCount</td>
+							<td>String</td>
+							<td>充值次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportConsumeinfo（消费--1月、3月、6月、3月月均、6月月均）</td>
+							<td>newestBill</td>
+							<td>String</td>
+							<td>账单最新认证时间</td>
+						</tr>
+						<tr>
+							<td>proMobileReportConsumeinfo（消费--1月、3月、6月、3月月均、6月月均）</td>
+							<td>flowFee</td>
+							<td>String</td>
+							<td>网络流量消费金额（分）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportConsumeinfo（消费--1月、3月、6月、3月月均、6月月均）</td>
+							<td>voiceFee</td>
+							<td>String</td>
+							<td>通话消费金额（分）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportConsumeinfo（消费--1月、3月、6月、3月月均、6月月均）</td>
+							<td>messageFee</td>
+							<td>String</td>
+							<td>短信消费金额（分）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportConsumeinfo（消费--1月、3月、6月、3月月均、6月月均）</td>
+							<td>functionFee</td>
+							<td>String</td>
+							<td>增值业务消费金额（分）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportConsumeinfo（消费--1月、3月、6月、3月月均、6月月均）</td>
+							<td>otherFee</td>
+							<td>String</td>
+							<td>其它消费金额（分）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportConsumeinfo（消费--1月、3月、6月、3月月均、6月月均）</td>
+							<td>sumPay</td>
+							<td>String</td>
+							<td>充值金额（分）</td>
+						</tr>					
+						<tr>
+							<td>proMobileReportCarrierConsume（运营商消费数据--每月统计）</td>
+							<td>carrier</td>
+							<td>String</td>
+							<td>运营商</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCarrierConsume（运营商消费数据--每月统计）</td>
+							<td>phonenum</td>
+							<td>String</td>
+							<td>号码 </td>
+						</tr>
+						<tr>
+							<td>proMobileReportCarrierConsume（运营商消费数据--每月统计）</td>
+							<td>city</td>
+							<td>String</td>
+							<td>归属地</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCarrierConsume（运营商消费数据--每月统计）</td>
+							<td>callMonth</td>
+							<td>String</td>
+							<td>月份</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCarrierConsume（运营商消费数据--每月统计）</td>
+							<td>communicateCounts</td>
+							<td>String</td>
+							<td>呼叫次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCarrierConsume（运营商消费数据--每月统计）</td>
+							<td>dialCounts</td>
+							<td>String</td>
+							<td>主叫次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCarrierConsume（运营商消费数据--每月统计）</td>
+							<td>dialDuration</td>
+							<td>String</td>
+							<td>主叫时间（分）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCarrierConsume（运营商消费数据--每月统计）</td>
+							<td>calledCounts</td>
+							<td>String</td>
+							<td>被叫次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCarrierConsume（运营商消费数据--每月统计）</td>
+							<td>calledDuration</td>
+							<td>String</td>
+							<td>被叫时间（分）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCarrierConsume（运营商消费数据--每月统计）</td>
+							<td>messageCounts</td>
+							<td>String</td>
+							<td>短信数量</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCarrierConsume（运营商消费数据--每月统计）</td>
+							<td>voiceFee</td>
+							<td>String</td>
+							<td>话费消费（元）</td>
+						</tr>
+						
+						<tr>
+							<td>proMobileReportCallSumStatistics（总体统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>communicate_counts</td>
+							<td>String</td>
+							<td>通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallSumStatistics（总体统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>contactCounts</td>
+							<td>String</td>
+							<td>通话号码数目</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallSumStatistics（总体统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>cityCounts</td>
+							<td>String</td>
+							<td>通话号码归属地总数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallSumStatistics（总体统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>dialCounts</td>
+							<td>String</td>
+							<td>主叫次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallSumStatistics（总体统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>calledCounts</td>
+							<td>String</td>
+							<td>被叫次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallSumStatistics（总体统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>dialNums</td>
+							<td>String</td>
+							<td>主叫号码数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallSumStatistics（总体统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>calledNums</td>
+							<td>String</td>
+							<td>被叫号码数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallSumStatistics（总体统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>durationSum</td>
+							<td>String</td>
+							<td>通话时长（秒）</td>
+						</tr>								
+						<tr>
+							<td>proMobileReportCallDetailStatistics（详细统计--3月、6月）</td>
+							<td>phonenum</td>
+							<td>String</td>
+							<td>号码</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallDetailStatistics（详细统计--3月、6月）</td>
+							<td>phonenumFlag</td>
+							<td>String</td>
+							<td>号码标识</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallDetailStatistics（详细统计--3月、6月）</td>
+							<td>phonenumType</td>
+							<td>String</td>
+							<td>号码类型</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallDetailStatistics（详细统计--3月、6月）</td>
+							<td>city</td>
+							<td>String</td>
+							<td>归属地</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallDetailStatistics（详细统计--3月、6月）</td>
+							<td>communicateCounts</td>
+							<td>String</td>
+							<td>近三月通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallDetailStatistics（详细统计--3月、6月）</td>
+							<td>communicateDuration</td>
+							<td>String</td>
+							<td>近三月通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallDetailStatistics（详细统计--3月、6月）</td>
+							<td>dialCounts</td>
+							<td>String</td>
+							<td>近三月主叫次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallDetailStatistics（详细统计--3月、6月）</td>
+							<td>calledCounts</td>
+							<td>String</td>
+							<td>近三月被叫次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallDetailStatistics（详细统计--3月、6月）</td>
+							<td>morningCounts</td>
+							<td>String</td>
+							<td>近三月早上（5:30-11:30）通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallDetailStatistics（详细统计--3月、6月）</td>
+							<td>noonCounts</td>
+							<td>String</td>
+							<td>近三月中午（11:30-13:30）通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallDetailStatistics（详细统计--3月、6月）</td>
+							<td>afternoonCounts</td>
+							<td>String</td>
+							<td>近三月下午（13:30-17:30）通话次数 </td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallDetailStatistics（详细统计--3月、6月）</td>
+							<td>nightCounts</td>
+							<td>String</td>
+							<td>近三月晚上（17:30-23:30）通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallDetailStatistics（详细统计--3月、6月）</td>
+							<td>midnightCounts</td>
+							<td>String</td>
+							<td>近三月凌晨（23:30-5:30）通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallDetailStatistics（详细统计--3月、6月）</td>
+							<td>weekdaysCounts</td>
+							<td>String</td>
+							<td>近三月工作日通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallDetailStatistics（详细统计--3月、6月）</td>
+							<td>weekendsCounts</td>
+							<td>String</td>
+							<td>近三月周末通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallDetailStatistics（详细统计--3月、6月）</td>
+							<td>holidayCounts</td>
+							<td>String</td>
+							<td>近三月节假日通话次数 </td>
+						</tr>
+						<tr>
+							<td>proMobileReportPeriodStatistics（通话时段--3月、6月）</td>
+							<td>communicatePeriod</td>
+							<td>String</td>
+							<td>通话时段</td>
+						</tr>
+						<tr>
+							<td>proMobileReportPeriodStatistics（通话时段--3月、6月）</td>
+							<td>communicateCounts</td>
+							<td>String</td>
+							<td>通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportPeriodStatistics（通话时段--3月、6月）</td>
+							<td>contactNums</td>
+							<td>String</td>
+							<td>通话号码数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportPeriodStatistics（通话时段--3月、6月）</td>
+							<td>communicateDuration</td>
+							<td>String</td>
+							<td>通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportPeriodStatistics（通话时段--3月、6月）</td>
+							<td>dialCounts</td>
+							<td>String</td>
+							<td>主叫次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportPeriodStatistics（通话时段--3月、6月）</td>
+							<td>calledCounts</td>
+							<td>String</td>
+							<td>被叫次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportPeriodStatistics（通话时段--3月、6月）</td>
+							<td>lastCall</td>
+							<td>String</td>
+							<td>最后一次通话时间</td>
+						</tr>
+						<tr>
+							<td>proMobileReportPeriodStatistics（通话时段--3月、6月）</td>
+							<td>firstCall</td>
+							<td>String</td>
+							<td>第一次通话时间</td>
+						</tr>						
+						<tr>
+							<td>proMobileReportCallTimeDetailStatistics（通话时间详细统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>longgestCall</td>
+							<td>String</td>
+							<td>单次通话最长时长（秒） </td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallTimeDetailStatistics（通话时间详细统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>shortestCall</td>
+							<td>String</td>
+							<td>单次通话最短时长（秒）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallTimeDetailStatistics（通话时间详细统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>callWithinOneminute</td>
+							<td>String</td>
+							<td>时长在1min内的通话次数 </td>
+						</tr>
+							<tr>
+							<td>proMobileReportCallTimeDetailStatistics（通话时间详细统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>callBetweenOneminuteFiveminutes</td>
+							<td>String</td>
+							<td>时长在1min-5min内的通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallTimeDetailStatistics（通话时间详细统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>callBetweenFiveminutesTenminutes</td>
+							<td>String</td>
+							<td>时长在5min-10min内的通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallTimeDetailStatistics（通话时间详细统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>callOverTenminutes</td>
+							<td>String</td>
+							<td>时长在10min以上的通话次数</td>
+						</tr>
+							<tr>
+							<td>proMobileReportCallTimeDetailStatistics（通话时间详细统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>daytimeCounts</td>
+							<td>String</td>
+							<td>白天(7:00-0:00)通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallTimeDetailStatistics（通话时间详细统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>nightCounts</td>
+							<td>String</td>
+							<td>夜晚(0:00-7:00)通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallTimeDetailStatistics（通话时间详细统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>daytimeDuration</td>
+							<td>String</td>
+							<td>白天(7:00-0:00)通话时长（秒）</td>
+						</tr>
+							<tr>
+							<td>proMobileReportCallTimeDetailStatistics（通话时间详细统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>nightDuration</td>
+							<td>String</td>
+							<td>夜晚(0:00-7:00)通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallTimeDetailStatistics（通话时间详细统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>inLocalCounts</td>
+							<td>String</td>
+							<td>本机号码归属地通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallTimeDetailStatistics（通话时间详细统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>outLocalCounts</td>
+							<td>String</td>
+							<td>本机号码归属地以外通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallTimeDetailStatistics（通话时间详细统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>inLocalDuration</td>
+							<td>String</td>
+							<td>本机号码归属地通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportCallTimeDetailStatistics（通话时间详细统计--1月、3月、6月、3月月均、6月月均）</td>
+							<td>outLocalDuration</td>
+							<td>String</td>
+							<td>本机号码归属地以外通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportStability（稳定性--1月、3月、6月）</td>
+							<td>isFamily</td>
+							<td>String</td>
+							<td>是否为亲情网用户</td>
+						</tr>
+						<tr>
+							<td>proMobileReportStability（稳定性--1月、3月、6月）</td>
+							<td>isFamilyHost</td>
+							<td>String</td>
+							<td>是否为亲情网户主</td>
+						</tr>
+						<tr>
+							<td>proMobileReportStability（稳定性--1月、3月、6月）</td>
+							<td>payContinuityMonth</td>
+							<td>String</td>
+							<td>连续充值月数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportStability（稳定性--1月、3月、6月）</td>
+							<td>isAddrEqualCity</td>
+							<td>String</td>
+							<td>常联系地址是否为手机归属地</td>
+						</tr>
+						<tr>
+							<td>proMobileReportStability（稳定性--1月、3月、6月）</td>
+							<td>communicateCountsEqualMonth</td>
+							<td>String</td>
+							<td>通话次数 小于 使用月数＊1次</td>
+						</tr>
+						<tr>
+							<td>proMobileReportStability（稳定性--1月、3月、6月）</td>
+							<td>communicateCountsEqualMonths</td>
+							<td>String</td>
+							<td>通话次数 大于 使用月数＊300次</td>
+						</tr>
+																	
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>communicateDays</td>
+							<td>String</td>
+							<td>通话活跃天数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>messageDays</td>
+							<td>String</td>
+							<td>短信活跃天数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>payCounts</td>
+							<td>String</td>
+							<td>充值次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>communicateCounts</td>
+							<td>String</td>
+							<td>通话次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>contactNums</td>
+							<td>String</td>
+							<td>通话号码数目</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>locationCounts</td>
+							<td>String</td>
+							<td>通话号码归属地总数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>dialCounts</td>
+							<td>String</td>
+							<td>主叫次数</td>
+						</tr>	
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>calledCounts</td>
+							<td>String</td>
+							<td>被叫次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>dialNums</td>
+							<td>String</td>
+							<td>主叫号码数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>calledNums</td>
+							<td>String</td>
+							<td>被叫号码数</td>
+						</tr>							
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>messageCounts</td>
+							<td>String</td>
+							<td>短信次数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>communicateDuration</td>
+							<td>String</td>
+							<td>通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>dialDuration</td>
+							<td>String</td>
+							<td>主叫时长（秒）</td>
+						</tr>			
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>calledDuration</td>
+							<td>String</td>
+							<td>被叫时长（秒）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>avgDuration</td>
+							<td>String</td>
+							<td>均次通话时长（秒）</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>withoutDialCallDays</td>
+							<td>String</td>
+							<td>无呼出天数</td>
+						</tr>			
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>withoutDialCallDaysProportion</td>
+							<td>String</td>
+							<td>无呼出天数占比</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>withoutCallDays</td>
+							<td>String</td>
+							<td>无通话天数</td>
+						</tr>
+						<tr>
+							<td>proMobileReportVitality（活跃程度--1月、3月、6月、3月月均、6月月均）</td>
+							<td>withoutCallDaysProportion</td>
+							<td>String</td>
+							<td>无通话天数占比</td>
+						</tr>																	
+					</tbody>
+				</table>
+			    
+<!--			<span>备注：</span>
+			    <div th:replace="components/remark :: remark"></div> -->
+			    
+			    <h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p>
+				
+				<h3 class="page-header">状态码映射</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>状态码</th>
+							<th>信息</th>
+							<th>解释说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>800</td>
+							<td>success</td>
+							<td>成功</td>
+						</tr>
+						<tr>
+							<td>801</td>
+							<td>taskid is null and mobilenum is null!</td>
+							<td>taskid为空或者手机号为空</td>
+						</tr>
+						<tr>
+							<td>802</td>
+							<td>no data was found by this taskid!</td>
+							<td>该任务号无数据</td>
+						</tr>
+						<tr>
+							<td>803</td>
+							<td>ETL is not excuted!</td>
+							<td>数据处理程序未执行</td>
+						</tr>
+						<tr>
+							<td>804</td>
+							<td>crawler have some problems!</td>
+							<td>该任务爬取程序出现问题</td>
+						</tr>
+						<tr>
+							<td>805</td>
+							<td>taskid not matches phonenum!</td>
+							<td>任务号与电话号不匹配</td>
+						</tr>	
+					</tbody>
+				</table>			    
+			</div>
+		</div>
+		</div>
+		
+		 <div th:include="components/footer :: footer"></div>
+		
+</body>
+</html>

@@ -1,0 +1,44 @@
+<div class="panel-group" id="accordion" th:fragment="leftmenu">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title"
+				data-parent="#accordion" data-toggle="collapse"
+				data-target="#collapseCarrier">运营商</h3>
+		</div>
+		<div id="collapseCarrier"  th:class="${module} == 1 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group" style="margin-bottom:0;">
+				<a th:href="@{/data/mobile/toMobileTask}" class="list-group-item">数据查询</a>
+				<a th:href="@{/data/mobile/toMobileTaskChart}" class="list-group-item">数据统计</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title"
+				data-parent="#accordion" data-toggle="collapse"
+				data-target="#collapseInsurance">社保</h3>
+		</div>
+		<div id="collapseInsurance" th:class="${module} == 2 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group" style="margin-bottom:0;">
+				<a th:href="@{/data/insurance/toInsuranceTask}" class="list-group-item">数据查询</a>
+				<a th:href="@{/data/insurance/toInsuranceTaskChart}" class="list-group-item">数据统计</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title"
+				data-parent="#accordion" data-toggle="collapse"
+				data-target="#collapseBank">网银</h3>
+		</div>
+		<div id="collapseBank" th:class="${module} == 3 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group" style="margin-bottom:0;">
+				<a th:href="@{/data/bank/toBankTask}" class="list-group-item">数据查询</a>
+				<a th:href="@{/data/bank/toBankTaskChart}" class="list-group-item">数据统计</a>
+			</div>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h2 class="page-header">借么-前置规则</h2>
+        <h3 class="page-header">说明</h3>
+        <p>
+            该接口为推送前置规则
+        </p>
+        <h3 class="page-header">格式</h3>
+        <p>
+            JSON
+        </p>
+        <h3 class="page-header">HTTP请求方式</h3>
+        <p>
+            POST
+        </p>
+        <h3 class="page-header">注意事项</h3>
+        <ol style="margin-left: 0px;">
+            <li></li>
+        </ol>
+
+        <h3 class="page-header">例子</h3>
+            <p>说明：调用借么的接口，推送前置规则，返回推送结果状态</p>
+            <p>前置规则：JSON</p>
+            <p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;">
+{
+	"key": "123",
+	"taskId": "f734cc88-5a5e-47da-b69a-4fb702814c46",
+	"name": "徐玉君",
+	"id_card": "**************0052",
+	"in_time": "28011",
+	"call_time": "[
+        {
+            interactMth: "2017-12",
+            dialTime: "1767"
+        },
+        {
+            interactMth: "2018-01",
+            dialTime: "2801"
+        },
+        {
+            interactMth: "2018-02",
+            dialTime: "4505"
+        },
+        {
+            interactMth: "2018-03",
+            dialTime: "1838"
+        },
+        {
+            interactMth: "2018-04",
+            dialTime: "1802"
+        },
+        {
+            interactMth: "2018-05",
+            dialTime: "98"
+        }
+        
+    ]",
+	"type": "运营商"
+}
+                </pre>
+
+            <h3 class="page-header">前置规则字段说明</h3>
+            <p style="color:#3da33d;"></p>
+            <div style="width:100%;">
+                <table class="table table-bordered table-hover" style="width:90%;">
+                    <caption>前置规则字段说明对照表：</caption>
+                    <thead>
+                    <tr>
+                        <th>字段</th>
+                        <th>字段类型</th>
+                        <th>字段说明</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>key</td>
+                        <td>String</td>
+                        <td>业务唯一标识</td>
+                    </tr>
+                    <tr>
+                        <td>taskId</td>
+                        <td>String</td>
+                        <td>爬虫任务ID</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>String</td>
+                        <td>姓名</td>
+                    </tr>
+                    <tr>
+                        <td>id_card</td>
+                        <td>String</td>
+                        <td>身份证号码</td>
+                    </tr>
+                    <tr>
+                        <td>in_time</td>
+                        <td>String</td>
+                        <td>开户时长（秒）</td>
+                    </tr>
+                    <tr>
+                        <td>call_time</td>
+                        <td>String</td>
+                        <td>按照每个月为单位，统计每个月的主叫时长（秒）</td>
+                    </tr>
+                    <tr>
+                        <td>interactMth</td>
+                        <td>String</td>
+                        <td>月份</td>
+                    </tr>
+                    <tr>
+                        <td>dialTime</td>
+                        <td>String</td>
+                        <td>主叫时长（秒）</td>
+                    </tr>
+                     <tr>
+                        <td>type</td>
+                        <td>String</td>
+                        <td>业务类型（运营商）</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

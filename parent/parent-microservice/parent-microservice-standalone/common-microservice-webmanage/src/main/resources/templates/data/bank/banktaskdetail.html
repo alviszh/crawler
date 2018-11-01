@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+	<div th:replace="components/topart :: topart"></div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<div th:replace="components/leftmenu_datasearch :: leftmenu"></div>
+			</div>
+			<form action="" method="post">
+				<input type="hidden" id="taskid" name="taskid" th:value="${taskid}" />
+				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+					<h2 class="page-header">网银-详细信息</h2>
+					<p>
+						任务编号(taskid)：<span th:text="${taskid}"></span>
+					</p>
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<b>基本信息</b>
+						</div>
+						<div class="panel-body view-table-container pre-scrollable">
+							<table
+								class="table table-bordered table-hover table-striped view-table">
+								<thead>
+									<tr>
+										<th class="view-th">银行卡ID</th>
+										<th class="view-th">卡片类型</th>
+										<th class="view-th">银行名称</th>
+										<th class="view-th">卡片号码</th>
+										<th class="view-th">卡号后四位</th>
+										<th class="view-th">卡片持有人</th>
+										<th class="view-th">开户行</th>
+										<th class="view-th">开户时间</th>
+										<th class="view-th">余额</th>
+										<th class="view-th">身份证号</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="obj : ${datas.debitCardBaseInfo}">
+										<td th:text="${obj.cardId}"></td>
+										<td th:text="${obj.cardType}"></td>
+										<td th:text="${obj.bankName}"></td>
+										<td th:text="${obj.cardNumber}"></td>
+										<td th:text="${obj.lastNumber}"></td>
+										<td th:text="${obj.cardHolder}"></td>
+										<td th:text="${obj.depositBank}"></td>
+										<td th:text="${obj.depositTime}"></td>
+										<td th:text="${obj.balance}"></td>
+										<td th:text="${obj.idNumber}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div id="page" style="margin-left: 15%"></div>
+					</div>
+
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<b>交易明细</b>
+						</div>
+						<div class="panel-body view-table-container pre-scrollable">
+							<table
+								class="table table-bordered table-hover table-striped view-table">
+								<thead>
+									<tr>
+										<th class="view-th">记录号</th>
+										<th class="view-th">卡号后四位</th>
+										<th class="view-th">交易日期</th>
+										<th class="view-th">消费类型</th>
+										<th class="view-th">记账日期</th>
+										<th class="view-th">币种</th>
+										<th class="view-th">消费金额</th>
+										<th class="view-th">余额</th>
+										<th class="view-th">交易地点</th>
+										<th class="view-th">交易方式</th>
+										<th class="view-th">交易通道</th>
+										<th class="view-th">交易描述</th>
+										<th class="view-th">备注</th>
+										<th class="view-th">对方卡号</th>
+										<th class="view-th">对方持卡人</th>
+										<th class="view-th">对方银行</th>
+										<th class="view-th">往来账类型</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="obj : ${datas.debiCardTransDetail}">
+										<td th:text="${obj.recordId}"></td>
+										<td th:text="${obj.lastNumber}"></td>
+										<td th:text="${obj.tranDate}"></td>
+										<td th:text="${obj.consumeType}"></td>
+										<td th:text="${obj.chargeDate}"></td>
+										<td th:text="${obj.currency}"></td>
+										<td th:text="${obj.fee}"></td>
+										<td th:text="${obj.balance}"></td>
+										<td th:text="${obj.transLocation}"></td>
+										<td th:text="${obj.transWay}"></td>
+										<td th:text="${obj.transMode}"></td>
+										<td th:text="${obj.transDecription}"></td>
+										<td th:text="${obj.comment}"></td>
+										<td th:text="${obj.oppositeCardNumber}"></td>
+										<td th:text="${obj.oppositeCardHolder}"></td>
+										<td th:text="${obj.oppositeBankName}"></td>
+										<td th:text="${obj.currentaccountType}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<b>定期存款信息</b>
+						</div>
+						<div class="panel-body view-table-container pre-scrollable">
+							<table
+								class="table table-bordered table-hover table-striped view-table">
+								<thead>
+									<tr>
+										<th class="view-th">卡号</th>
+										<th class="view-th">定期存款类型</th>
+										<th class="view-th">币种</th>
+										<th class="view-th">计息日期</th>
+										<th class="view-th">到期日期</th>
+										<th class="view-th">存期</th>
+										<th class="view-th">存期单位</th>
+										<th class="view-th">利率</th>
+										<th class="view-th">余额</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="obj : ${datas.debitCardDepositInfo}">
+										<td th:text="${obj.cardNumber}"></td>
+										<td th:text="${obj.depositType}"></td>
+										<td th:text="${obj.currency}"></td>
+										<td th:text="${obj.interestBegindate}"></td>
+										<td th:text="${obj.interestEnddate}"></td>
+										<td th:text="${obj.storgePeriod}"></td>
+										<td th:text="${obj.storgePeriodUnit}"></td>
+										<td th:text="${obj.interestRate}"></td>
+										<td th:text="${obj.balance}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+					
+				</div>
+			</form>
+		</div>
+	</div>
+	<div th:include="components/footer :: footer"></div>
+</body>
+</html>

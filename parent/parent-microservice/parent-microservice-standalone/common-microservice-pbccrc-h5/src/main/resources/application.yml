@@ -1,0 +1,51 @@
+server:
+  connection-timeout: 100000
+  port: 1221
+logging:
+  file: common-microservice-pbccrc-h5-9001.log
+  level:  
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: INFO
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+# --start-- Spring admin
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+      health:
+        show-details: ALWAYS
+# --end-- Spring admin
+feign:
+  hystrix:
+    enabled: false
+spring:
+#  boot:
+#    admin:
+#      client:
+#        url: http://springboot-admin-ui:9000
+  datasource:
+    hikari: 
+      minimum-idle: ${datasource.jdbc.minIdle}
+      maximum-pool-size: ${datasource.jdbc.maxPoolSize}
+    driver-class-name: ${datasource.jdbc.driver}
+    url: ${datasource.jdbc.url}
+    username: ${datasource.jdbc.username}
+    password: ${datasource.jdbc.password}
+    type: ${datasource.jdbc.type}
+  jpa:
+    show-sql: false
+    hibernate:
+        ddl-auto: update
+        naming:
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+    properties:
+      hibernate:
+        dialect: ${datasource.jdbc.dialect}
+        temp:
+          use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法为实现
+          

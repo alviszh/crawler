@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">网银信用卡统一数据接口</h2>
+				<h3 class="page-header">说明</h3>
+				<p>
+					该接口通过输入的身份证号或taskid来获取统一处理过的网银信用卡数据。
+				</p>
+				<h3 class="page-header">URL</h3>
+				<p>
+					http://10.167.202.203:8006/bank/tasks/creditcard/detail
+				</p>
+				<h3 class="page-header">格式</h3>
+				<p>
+					JSON   
+				</p>
+				<h3 class="page-header">HTTP请求方式</h3>
+				<p>
+					POST/GET   
+				</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>#</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>loginName</td>
+							<td>true</td>
+							<td>String</td>
+							<td>登录名</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>任务号</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="page-header">注意事项</h3>
+				<ol style="margin-left: 0px;">
+					<li>身份证号或taskid必须有一个，如果taskid不为空，则默认用taskid查询，如果taskid为空，则用登录名查询，获取该登录名最新的数据</li>
+				</ol>
+				   
+				<h3 class="page-header">例子</h3>
+				<p>说明：利用taskid和登录名来获取完成数据</p>
+				<p>请求：http://10.167.202.203:8006/bank/tasks/creditcard/detail?taskid=f69a7802-1c9b-46b4-858a-e100c4532395</p>
+				<p>返回：JSON</p>
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+	param: {
+		loginName: null,
+		taskid: "f69a7802-1c9b-46b4-858a-e100c4532395",
+	},
+	message: "success",
+	creditCardBaseInfo: [
+	{
+		id: 32,
+		createtime: "2017-12-22 23:03:12",
+		taskId: "f69a7802-1c9b-46b4-858a-e100c4532395",
+		bankName: "浦发银行",
+		cardNumber: null,
+		lastNumber: null,
+		cardHolder: "李世雄",
+		idNumber: "340223199602250010",
+		creditLimitDollar: null,
+		creditLimit: "10500.00",
+		availableLimitDollar: null,
+		availableLimit: "11550.67",
+		cashLimitDollar: null,
+		cashLimit: "5250.00",
+		creditLineDollar: null,
+		creditLine: null,
+		email: null,
+		billDate: null,
+	}
+	],
+	creditCardBillInfo: [
+	{
+		id: 72,
+		createtime: "2017-12-22 23:03:13",
+		taskId: "f69a7802-1c9b-46b4-858a-e100c4532395",
+		cardNumber: null,
+		lastNumber: null,
+		accountType: null,
+		lastBill: null,
+		lastBillPay: null,
+		billPeriodStart: "2017-12",
+		billPeriodEnd: null,
+		billDate: null,
+		billEndDate: "2018-01-07",
+		billShouldPayDollar: null,
+		billShouldPay: "1063.91",
+		billLeastPayDollar: null,
+		billLeastPay: "11576.13",
+		billPay: null,
+		trimAmount: null,
+		revolvingInterest: null,
+		points: null,
+		pointsAdd: null,
+		pointsExchange: null,
+		email: null,
+	},
+	{
+		id: 73,
+		createtime: "2017-12-22 23:03:21",
+		taskId: "f69a7802-1c9b-46b4-858a-e100c4532395",
+		cardNumber: null,
+		lastNumber: null,
+		accountType: null,
+		lastBill: null,
+		lastBillPay: null,
+		billPeriodStart: "2017-11",
+		billPeriodEnd: null,
+		billDate: null,
+		billEndDate: "2017-12-08",
+		billShouldPayDollar: null,
+		billShouldPay: "663.12",
+		billLeastPayDollar: null,
+		billLeastPay: "3560.42",
+		billPay: null,
+		trimAmount: null,
+		revolvingInterest: null,
+		points: null,
+		pointsAdd: null,
+		pointsExchange: null,
+		email: null,
+	},
+	],
+	creditCardInstallmentBill: [
+	{
+		id: 29,
+		createtime: "2017-12-22 23:03:12",
+		taskId: "f69a7802-1c9b-46b4-858a-e100c4532395",
+		cardNumber: null,
+		lastNumber: null,
+		totalMoney: "5192.65",
+		currency: null,
+		currentFee: "346.18",
+		installmentBillDesc: "账单分期",
+		installmentBillPoundageDesc: null,
+		installmentBillTransferPoundageDesc: null,
+		installmentType: null,
+		installmentSum: null,
+		installmentCurrent: null,
+		transferPoundage: "584.17",
+	},
+	{
+		id: 30,
+		createtime: "2017-12-22 23:03:12",
+		taskId: "f69a7802-1c9b-46b4-858a-e100c4532395",
+		cardNumber: null,
+		lastNumber: null,
+		totalMoney: "1882.78",
+		currency: null,
+		currentFee: "125.52",
+		installmentBillDesc: "账单分期",
+		installmentBillPoundageDesc: null,
+		installmentBillTransferPoundageDesc: null,
+		installmentType: null,
+		installmentSum: null,
+		installmentCurrent: null,
+		transferPoundage: "232.99",
+	},
+	],
+	creditCardTransDetail: [
+	{
+		id: 3274,
+		createtime: "2017-12-22 23:03:13",
+		taskId: "f69a7802-1c9b-46b4-858a-e100c4532395",
+		cardNumber: null,
+		lastNumber: "2295",
+		transLocation: null,
+		chargeDate: "2017-11-20",
+		tranDate: "2017-11-20",
+		balance: null,
+		fee: "27.00",
+		fee_dollar: null,
+		currency: null,
+		oppositeCardNumber: null,
+		oppositeCardHolder: null,
+		transDecription: "财付通-光大深圳",
+		comment: null,
+		transWay: null,
+		transMode: null,
+	},
+	{
+		id: 3275,
+		createtime: "2017-12-22 23:03:13",
+		taskId: "f69a7802-1c9b-46b4-858a-e100c4532395",
+		cardNumber: null,
+		lastNumber: "2295",
+		transLocation: null,
+		chargeDate: "2017-11-21",
+		tranDate: "2017-11-21",
+		balance: null,
+		fee: "4.99",
+		fee_dollar: null,
+		currency: null,
+		oppositeCardNumber: null,
+		oppositeCardHolder: null,
+		transDecription: "财付通-手机充值",
+		comment: null,
+		transWay: null,
+		transMode: null,
+	},
+	{
+		id: 3276,
+		createtime: "2017-12-22 23:03:13",
+		taskId: "f69a7802-1c9b-46b4-858a-e100c4532395",
+		cardNumber: null,
+		lastNumber: "2295",
+		transLocation: null,
+		chargeDate: "2017-11-21",
+		tranDate: "2017-11-21",
+		balance: null,
+		fee: "16.00",
+		fee_dollar: null,
+		currency: null,
+		oppositeCardNumber: null,
+		oppositeCardHolder: null,
+		transDecription: "财付通-上海浦东发展银行股份有…",
+		comment: null,
+		transWay: null,
+		transMode: null,
+	},
+	{
+		id: 3277,
+		createtime: "2017-12-22 23:03:13",
+		taskId: "f69a7802-1c9b-46b4-858a-e100c4532395",
+		cardNumber: null,
+		lastNumber: "2295",
+		transLocation: null,
+		chargeDate: "2017-11-23",
+		tranDate: "2017-11-23",
+		balance: null,
+		fee: "20.00",
+		fee_dollar: null,
+		currency: null,
+		oppositeCardNumber: null,
+		oppositeCardHolder: null,
+		transDecription: "财付通-光大深圳",
+		comment: null,
+		transWay: null,
+		transMode: null,
+	},
+	{
+		id: 3278,
+		createtime: "2017-12-22 23:03:13",
+		taskId: "f69a7802-1c9b-46b4-858a-e100c4532395",
+		cardNumber: null,
+		lastNumber: "2295",
+		transLocation: null,
+		chargeDate: "2017-11-24",
+		tranDate: "2017-11-24",
+		balance: null,
+		fee: "6.00",
+		fee_dollar: null,
+		currency: null,
+		oppositeCardNumber: null,
+		oppositeCardHolder: null,
+		transDecription: "财付通-中信银行股份有限公司深…",
+		comment: null,
+		transWay: null,
+		transMode: null,
+	},
+	],
+	createtime: 1516415486938,
+	errorCode: 800,
+}
+				</pre>
+				<h3 class="page-header">返回字段</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>对象名</th>
+							<th>字段名</th>
+							<th>类型</th>
+							<th>注释</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>creditCardBaseInfo</td>
+							<td>bankName</td>
+							<td>String</td>
+							<td>银行名称</td>
+						</tr>
+						<tr>
+							<td>creditCardBaseInfo</td>
+							<td>cardNumber</td>
+							<td>String</td>
+							<td>卡号</td>
+						</tr>
+						<tr>
+							<td>creditCardBaseInfo</td>
+							<td>lastNumber</td>
+							<td>String</td>
+							<td>卡号后四位</td>
+						</tr>
+						<tr>
+							<td>creditCardBaseInfo</td>
+							<td>cardHolder</td>
+							<td>String</td>
+							<td>持卡人姓名</td>
+						</tr>
+						<tr>
+							<td>creditCardBaseInfo</td>
+							<td>idNumber</td>
+							<td>String</td>
+							<td>身份证号</td>
+						</tr>
+						<tr>
+							<td>creditCardBaseInfo</td>
+							<td>creditLimitDollar</td>
+							<td>String</td>
+							<td>信用卡额度(美元)</td>
+						</tr>
+						<tr>
+							<td>creditCardBaseInfo</td>
+							<td>creditLimit</td>
+							<td>String</td>
+							<td>信用卡额度</td>
+						</tr>
+						<tr>
+							<td>creditCardBaseInfo</td>
+							<td>availableLimitDollar</td>
+							<td>String</td>
+							<td>可用余额(美元)</td>
+						</tr>
+						<tr>
+							<td>creditCardBaseInfo</td>
+							<td>availableLimit</td>
+							<td>String</td>
+							<td>可用余额</td>
+						</tr>
+						<tr>
+							<td>creditCardBaseInfo</td>
+							<td>cashLimitDollar</td>
+							<td>String</td>
+							<td>预借现金额度(美元)</td>
+						</tr>
+						<tr>
+							<td>creditCardBaseInfo</td>
+							<td>cashLimit</td>
+							<td>String</td>
+							<td>预借现金额度</td>
+						</tr>
+						<tr>
+							<td>creditCardBaseInfo</td>
+							<td>creditLineDollar</td>
+							<td>String</td>
+							<td>信用额度(美元)</td>
+						</tr>
+						<tr>
+							<td>creditCardBaseInfo</td>
+							<td>creditLine</td>
+							<td>String</td>
+							<td>信用额度</td>
+						</tr>
+						<tr>
+							<td>creditCardBaseInfo</td>
+							<td>email</td>
+							<td>String</td>
+							<td>邮箱</td>
+						</tr>
+						<tr>
+							<td>creditCardBaseInfo</td>
+							<td>billDate</td>
+							<td>String</td>
+							<td>还款日</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>cardNumber</td>
+							<td>String</td>
+							<td>卡号</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>lastNumber</td>
+							<td>String</td>
+							<td>卡号后四位</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>accountType</td>
+							<td>String</td>
+							<td>账户类型</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>lastBill</td>
+							<td>String</td>
+							<td>上期账单</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>lastBillPay</td>
+							<td>String</td>
+							<td>上期账单金额</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>billPeriodStart</td>
+							<td>String</td>
+							<td>账单周期起始日 </td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>billPeriodEnd</td>
+							<td>String</td>
+							<td>账单周期结束日</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>billDate</td>
+							<td>String</td>
+							<td>账单日期</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>billEndDate</td>
+							<td>String</td>
+							<td>账单到期日期</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>billShouldPayDollar</td>
+							<td>String</td>
+							<td>本期应还款金额（美元）</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>billShouldPay</td>
+							<td>String</td>
+							<td>本期应还金额</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>billLeastPayDollar</td>
+							<td>String</td>
+							<td>本期最低还款额（美元）</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>billLeastPay</td>
+							<td>String</td>
+							<td>本期最低还款额</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>billPay</td>
+							<td>String</td>
+							<td>本期账单金额</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>trimAmount</td>
+							<td>String</td>
+							<td>调整金额</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>revolvingInterest</td>
+							<td>String</td>
+							<td>循环利息</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>points</td>
+							<td>String</td>
+							<td>积分</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>pointsAdd</td>
+							<td>String</td>
+							<td>新增积分</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>pointsExchange</td>
+							<td>String</td>
+							<td>本期调整积分</td>
+						</tr>
+						<tr>
+							<td>creditCardBillInfo</td>
+							<td>email</td>
+							<td>String</td>
+							<td>邮箱</td>
+						</tr>
+						<tr>
+							<td>creditCardInstallmentBill</td>
+							<td>cardNumber</td>
+							<td>String</td>
+							<td>卡号</td>
+						</tr>
+						<tr>
+							<td>creditCardInstallmentBill</td>
+							<td>lastNumber</td>
+							<td>String</td>
+							<td>卡号后四位</td>
+						</tr>
+						<tr>
+							<td>creditCardInstallmentBill</td>
+							<td>totalMoney</td>
+							<td>String</td>
+							<td>分期总额</td>
+						</tr>
+						<tr>
+							<td>creditCardInstallmentBill</td>
+							<td>currency</td>
+							<td>String</td>
+							<td>币种</td>
+						</tr>
+						<tr>
+							<td>creditCardInstallmentBill</td>
+							<td>currentFee</td>
+							<td>String</td>
+							<td>本期金额</td>
+						</tr>
+						<tr>
+							<td>creditCardInstallmentBill</td>
+							<td>installmentBillDesc</td>
+							<td>String</td>
+							<td>分期账单描述</td>
+						</tr>
+						<tr>
+							<td>creditCardInstallmentBill</td>
+							<td>installmentBillPoundageDesc</td>
+							<td>String</td>
+							<td>分期账单手续费描述</td>
+						</tr>
+						<tr>
+							<td>creditCardInstallmentBill</td>
+							<td>installmentBillTransferPoundageDesc</td>
+							<td>String</td>
+							<td>分期账单转账手续费描述</td>
+						</tr>
+						<tr>
+							<td>creditCardInstallmentBill</td>
+							<td>installmentType</td>
+							<td>String</td>
+							<td>分期类型</td>
+						</tr>
+						<tr>
+							<td>creditCardInstallmentBill</td>
+							<td>installmentSum</td>
+							<td>String</td>
+							<td>总分期数</td>
+						</tr>
+						<tr>
+							<td>creditCardInstallmentBill</td>
+							<td>installmentCurrent</td>
+							<td>String</td>
+							<td>当前期数</td>
+						</tr>
+						<tr>
+							<td>creditCardInstallmentBill</td>
+							<td>transferPoundage</td>
+							<td>String</td>
+							<td>转账手续费</td>
+						</tr>
+						<tr>
+							<td>creditCardTransDetail</td>
+							<td>cardNumber</td>
+							<td>String</td>
+							<td>卡号</td>
+						</tr>
+						<tr>
+							<td>creditCardTransDetail</td>
+							<td>lastNumber</td>
+							<td>String</td>
+							<td>卡号后四位</td>
+						</tr>
+						<tr>
+							<td>creditCardTransDetail</td>
+							<td>transLocation</td>
+							<td>String</td>
+							<td>交易地点</td>
+						</tr>
+						<tr>
+							<td>creditCardTransDetail</td>
+							<td>chargeDate</td>
+							<td>String</td>
+							<td>记账日期</td>
+						</tr>
+						<tr>
+							<td>creditCardTransDetail</td>
+							<td>tranDate</td>
+							<td>String</td>
+							<td>交易日期</td>
+						</tr>
+						<tr>
+							<td>creditCardTransDetail</td>
+							<td>balance</td>
+							<td>String</td>
+							<td>余额</td>
+						</tr>
+						<tr>
+							<td>creditCardTransDetail</td>
+							<td>fee</td>
+							<td>String</td>
+							<td>花费</td>
+						</tr>
+						<tr>
+							<td>creditCardTransDetail</td>
+							<td>feeDollar</td>
+							<td>String</td>
+							<td>花费（美元）</td>
+						</tr>
+						<tr>
+							<td>creditCardTransDetail</td>
+							<td>currency</td>
+							<td>String</td>
+							<td>币种</td>
+						</tr>
+						<tr>
+							<td>creditCardTransDetail</td>
+							<td>oppositeCardNumber</td>
+							<td>String</td>
+							<td>对方卡号</td>
+						</tr>
+						<tr>
+							<td>creditCardTransDetail</td>
+							<td>oppositeCardHolder</td>
+							<td>String</td>
+							<td>对方持卡人</td>
+						</tr>
+						<tr>
+							<td>creditCardTransDetail</td>
+							<td>transDecription</td>
+							<td>String</td>
+							<td>交易描述</td>
+						</tr>
+						<tr>
+							<td>creditCardTransDetail</td>
+							<td>comment</td>
+							<td>String</td>
+							<td>备注</td>
+						</tr>
+						<tr>
+							<td>creditCardTransDetail</td>
+							<td>transWay</td>
+							<td>String</td>
+							<td>交易方式</td>
+						</tr>
+						<tr>
+							<td>creditCardTransDetail</td>
+							<td>transMode</td>
+							<td>String</td>
+							<td>交易通道</td>
+						</tr>																							
+					</tbody>
+				</table>
+				
+				<h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p>
+				
+				<h3 class="page-header">状态码映射</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>状态码</th>
+							<th>信息</th>
+							<th>解释说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>800</td>
+							<td>success</td>
+							<td>成功</td>
+						</tr>
+						<tr>
+							<td>601</td>
+							<td>taskid is null and idnum is null!</td>
+							<td>参数为空</td>
+						</tr>
+						<tr>
+							<td>602</td>
+							<td>no data was found!</td>
+							<td>查无数据</td>
+						</tr>
+						<tr>
+							<td>603</td>
+							<td>ETL is not excuted!</td>
+							<td>数据处理程序未执行</td>
+						</tr>
+						<tr>
+							<td>604</td>
+							<td>crawler have some problems!</td>
+							<td>该任务爬取程序出现问题</td>
+						</tr>
+						<tr>
+							<td>605</td>
+							<td>taskid not matches idnum!</td>
+							<td>任务号与身份证号不匹配</td>
+						</tr>
+						
+					</tbody>
+				</table>  
+<!--			<h3 class="page-header">返回字段说明</h3>  
+				<div th:replace="components/ETLbackfield :: ETLbackfield"></div> 
+			    
+				<span>备注：</span>
+			    <div th:replace="components/remark :: remark"></div> -->
+			    
+<!--			<h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p> -->
+			    
+			</div>
+		</div>
+		</div>
+		
+		 <div th:include="components/footer :: footer"></div>
+		
+</body>
+</html>

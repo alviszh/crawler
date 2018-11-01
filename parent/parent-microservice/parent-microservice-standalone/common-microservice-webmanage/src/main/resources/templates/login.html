@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<title>强授权数据管理平台</title>
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" th:href="@{/bookstrap/v3.3.7/css/bootstrap.min.css}"/>
+	<!-- login -->
+	<!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500" /> -->
+    <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/login/form-elements.css}" />
+    <link rel="stylesheet" th:href="@{/css/login/style.css}" />
+</head>
+<body>
+
+	<!-- Top content -->
+	<div class="top-content">
+
+		<div class="inner-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2 text">
+						<h1>
+							<strong>强授权管理平台</strong> 
+						</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6 col-sm-offset-3 form-box">
+						<div class="form-top">
+							<div class="form-top-left">
+								<h3>用户登录</h3>
+								<p>请输入用户名、密码登录系统:</p>
+							</div>
+							<div class="form-top-right">
+								<!-- <i class="fa fa-key"></i> -->
+							</div>
+						</div>
+						<div class="form-bottom">
+							<form role="form" th:action="@{/login}" method="post" class="login-form">
+								<div class="form-group">
+									<label class="sr-only" for="form-username">Username</label> 
+									<input type="text" name="username" placeholder="用户名..."
+										class="form-username form-control" id="form-username" />
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="form-password">Password</label> 
+									<input type="password" name="password" placeholder="密码..."
+										class="form-password form-control" id="form-password" />
+								</div>
+								<div th:if="${param.error}">
+									<div class="alert alert-danger alert-dismissable">
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+										×
+										</button>
+										<span th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></span>
+									</div>
+								</div>
+								<button type="submit" class="btn">登录</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<!-- Javascript -->
+	<script th:src="@{/js/jquery/1.11.3/jquery.min.js}"></script>
+	<script th:src="@{/bookstrap/v3.3.7/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/login/jquery.backstretch.min.js}"></script>
+	<script th:src="@{/js/login/scripts.js}"></script>
+
+	<!--[if lt IE 10]>
+            <script  th:src="@{assets/js/placeholder.js}"></script>
+        <![endif]-->
+
+
+</body>
+</html>

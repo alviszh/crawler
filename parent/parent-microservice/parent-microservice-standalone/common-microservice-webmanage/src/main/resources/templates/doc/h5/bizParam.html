@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">业务参数</h2>
+            <h3 class="page-header">说明</h3>
+            <p>
+                请求H5地址的业务参数
+            </p>
+            <h3 class="page-header">URL</h3>
+            <p>
+                http://&lt;project&gt;/h5/auth?owner=tianxi&key=testkey&redirectUrl=http%3a%2f%2ftest.harmonycredit.cn%2fhcweixin%2fcallback%2furlcallback.do%3fphoneNo%3dPHONENO%26item%3doperator
+            </p>
+            <h3 class="page-header">格式</h3>
+            <p>
+                无
+            </p>
+            <h3 class="page-header">HTTP请求方式</h3>
+            <p>
+                GET
+            </p>
+            <h3 class="page-header">请求参数</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>#</th>
+                    <th>必选</th>
+                    <th>类型及范围</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>key </td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>业务唯一标识</td>
+                </tr>
+                <tr>
+                    <td>owner</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>所属者</td>
+                </tr>
+                <tr>
+                    <td>redirectUrl</td>
+                    <td>false</td>
+                    <td>String</td>
+                    <td>回调地址</td>
+                </tr>
+                <tr>
+                    <td>username</td>
+                    <td>false</td>
+                    <td>String</td>
+                    <td>姓名</td>
+                </tr>
+                <tr>
+                    <td>mobilenum</td>
+                    <td>false</td>
+                    <td>String</td>
+                    <td>手机号码</td>
+                </tr>
+                <tr>
+                    <td>idnum</td>
+                    <td>false</td>
+                    <td>String</td>
+                    <td>身份证号码</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3 class="page-header">注意事项</h3>
+            <ol style="margin-left: 0px;">
+                <li>owner为固定值，比如：huicheng、xinhe、...</li>
+                <li>redirectUrl为用户完成授权之后需要跳转页面的url地址</li>
+            </ol>
+
+            <h3 class="page-header">例子</h3>
+            <p>说明：访问H5页面的业务参数</p>
+            <p>请求：https://uatapitxboss.txtechnologies.com:9018/h5/auth?key=test&owner=tianxi&redirectUrl=http%3a%2f%2ftest.harmonycredit.cn%2fhcweixin%2fcallback%2furlcallback.do%3fphoneNo%3dPHONENO%26item%3doperator</p>
+
+        </div>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

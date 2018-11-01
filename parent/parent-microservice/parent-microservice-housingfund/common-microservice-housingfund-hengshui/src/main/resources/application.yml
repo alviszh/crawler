@@ -1,0 +1,58 @@
+server: 
+  port: 30148
+info:
+  contact: 
+    email: dimei1@creditharmony.cn
+logging: 
+  file: common-microservice-housingfund-hengshui-30148.log
+  level:  
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: INFO
+# Spring boot UI 页面关闭该应用的权限限制
+management: 
+  security: 
+    enabled: false
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+
+
+#数据源：
+spring:
+  cloud:
+    stream:
+      bindings: 
+        output:                            # 频道名称（根据具体模块来命名）
+          destination: housingfund-topic-01                
+          binder: kafka_binder
+      binders: 
+        kafka_binder: 
+          type: kafka 
+          environment:
+            spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
+            spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes}
+  datasource:
+    hikari: 
+      minimum-idle: ${datasource.jdbc.minIdle}
+      maximum-pool-size: ${datasource.jdbc.maxPoolSize}
+    driver-class-name: ${datasource.jdbc.driver}
+    url: ${datasource.jdbc.url}
+    username: ${datasource.jdbc.username}
+    password: ${datasource.jdbc.password}
+    type: ${datasource.jdbc.type}
+  jpa: 
+    show-sql: false
+    hibernate: 
+        ddl-auto: update
+        naming: 
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+    properties:  
+      hibernate:  
+#       dialect: com.microservice.persistence.SRDB10Dialect
+        dialect: ${datasource.jdbc.dialect}
+#       dialect: org.hibernate.dialect.MySQLDialect
+        temp: 
+          use_jdbc_metadata_defaults: false
+          
+

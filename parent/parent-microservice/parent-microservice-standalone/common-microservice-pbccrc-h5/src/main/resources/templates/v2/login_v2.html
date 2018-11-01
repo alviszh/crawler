@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="v2/components/header :: header">
+
+</head>
+
+<!--<script th:src="@{../js/xx.js}"></script>display: none;display: block-->
+<body>
+<nav class="navbar navbar-default alert-info" style="height: 50px;">
+    <div class="container-fluid">
+        <div class="navbar-header" style="height: 50px;">
+            <a href="javascript:history.go(-1);" class="navbar-brand"><span
+                    class="glyphicon" aria-hidden="true"></span>
+            </a>
+            <p class="navbar-brand" ><span>身份验证</span></p>
+        </div>
+    </div>
+
+</nav>
+<div id="br"></div>
+<div class="container">
+    <div id="searchBox_big" class="col-md-6 col-md-offset-2">
+        <form id="auth_fo" class="form-horizontal" method="post">
+            <input type="hidden" th:value="${themeColor}" id="themeColor" name="themeColor"/>
+            <input type="hidden" th:value="${topHide}" id="topHide" name="topHide"/>
+            <input type="hidden" th:value="${owner}" id="owner" name="owner"/>
+            <input type="hidden" th:value="${key}" id="key" name="key"/>
+            <input type="hidden" th:value="${redirectUrl}" id="redirectUrl" name="redirectUrl"/>
+            <input type="hidden" id="reportCategory" name="reportCategory" value="json"/>
+            <input type="hidden" id="cookies" name="cookies"/>
+            <input type="hidden" id="isDebug" name="isDebug" value="true"/>
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-7" style="padding-left:5px;padding-bottom:15px;">
+                    <input onfocus="showLogin()" onblur = "checkLoginName();verifyForm()" type="text" class="form-control" id="username" name="username" placeholder="用户名" autocomplete="off"/>
+                </div>
+                <span id="tishi0" class="notice1">请输入登录名</span>
+                <span class="span-grey no" id="loginNameInfo"></span>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-7" style="padding-left:5px;padding-bottom:15px;">
+                    <input onfocus="showPw()" onblur = "checkPassword();verifyForm()" type="password" class="form-control"
+                           id="password" name="password" placeholder="密码" autocomplete="off"/>
+                    <div class="tex_box"><span class="password closed"></span></div>
+                </div>
+                <SPAN id="tishi" class="notice1 span-grey ocx_style_notice">请输入登录密码</SPAN>
+                <SPAN id=passwordInfo class="span-grey ocx_style_notice no"></SPAN>
+            </div>
+            <div class="form-group">
+                <label for="tradecode" class="col-sm-2 control-label">授权码</label>
+                <div class="col-sm-7" style="padding-left:5px;padding-bottom:6px;">
+                    <input maxlength="6" type="text" class="form-control" id="tradecode" name="tradecode" placeholder="手机授权码" autocomplete="off"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-7" style="padding: 9px 0px 15px 5px;">
+                    <!--<button id="excute_btn" type="button" class="btn btn-success">获取报告</button>-->
+                    <a href="#" class="btn btn-info" role="button" id="excute_btn">获取报告</a>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="prompt" style="margin: -20px 0 0 10px;">
+                    <span class="form-text text-muted" th:text="${appActive=='prod' || appActive=='prodv2'}? '' : '*'+ ${appActive}">
+                    </span>
+                </div>
+            </div>
+            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+                 data-backdrop="static" data-keyboard="false" id="modalReady" aria-hidden="true">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class=" modal-content" style="text-align: center;">
+                        <div class="modal-body">
+                            <img th:src="@{/h5/pbccrc/v2/images/loading.gif}" height="auto" />&nbsp;<span id="message"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--消息框-->
+    <div th:include="v2/components/footer :: message"></div>
+</div>
+<div th:include="v2/components/footer :: footer"></div>
+</body>
+<script th:src="@{/h5/pbccrc/v2/js/login_v2.js}"></script>
+</html>

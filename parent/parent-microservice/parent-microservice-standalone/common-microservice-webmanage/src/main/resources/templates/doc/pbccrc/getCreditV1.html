@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">获取征信报告</h2>
+            <h3 class="page-header">说明</h3>
+            <p>
+                调用该接口可以登录人行征信系统并获取用户的网页版征信报告。
+            </p>
+            <h3 class="page-header">URL</h3>
+            <p>
+                http://&lt;project&gt;/h5/pbccrc/v1/getCredit
+            </p>
+            <h3 class="page-header">格式</h3>
+            <p>
+                JSON
+            </p>
+            <h3 class="page-header">HTTP请求方式</h3>
+            <p>
+                POST
+            </p>
+            <h3 class="page-header">请求参数</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>#</th>
+                    <th>必选</th>
+                    <th>类型及范围</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>username</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>用户名</td>
+                </tr>
+                <tr>
+                    <td>password</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>登录密码</td>
+                </tr>
+                <tr>
+                    <td>tradecode</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>手机验证码</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3 class="page-header">注意事项</h3>
+            <ol style="margin-left: 0px;">
+                <!--1、以上参数以对象的形式传入如：@RequestBody CreditParam creditParam。-->
+            </ol>
+            <h3 class="page-header">例子</h3>
+            <p>说明：调用本接口，登录人行征信系统，并获取用户的网页版征信报告。</p>
+            <p>请求：https://uatapitxboss.txtechnologies.com:9018/h5/pbccrc/v1/getCredit</p>
+            <p>返回成功：JSON</p>
+            <p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+  "data": {
+    "statusCode": "0",
+    "message": "查询成功",
+    "report": {
+      "reportBase": {
+        "reportId": "2017062300004115714165",
+        "queryTime": "2017.06.23 09:46:31",
+        "reportTime": "2017.06.23 18:57:55",
+        "realname": "杨晓莉",
+        "certificateType": "身份证",
+        "certificateNum": "**************1225",
+        "marriageStatus": "未知"
+      },
+      "creditRecord": {
+        "creditSummary": {
+          "creditCards": {
+            "guaranteeNum": "0",
+            "overdue90Num": "0",
+            "accountNum": "20",
+            "overdueNum": "6",
+            "activeNum": "18"
+          },
+          "housingLoans": {
+            "guaranteeNum": "0",
+            "overdue90Num": "0",
+            "accountNum": "2",
+            "overdueNum": "2",
+            "activeNum": "1"
+          },
+          "otherLoans": {
+            "guaranteeNum": "0",
+            "overdue90Num": "0",
+            "accountNum": "10",
+            "overdueNum": "0",
+            "activeNum": "7"
+          }
+        },
+        "creditCardDetails": [
+          {
+            "type": "1",
+            "details": {
+              "1": "2013年3月18日江苏银行发放的贷记卡（人民币账户），截至2015年11月已销户。最近5年内有12个月处于逾期状态，没有发生过90天以上逾期。",
+              "2": "2014年8月4日中国建设银行江苏省分行发放的贷记卡（人民币账户）。截至2017年5月，信用额度21,000，已使用额度0。最近5年内有4个月处于逾期状态，没有发生过90天以上逾期。",
+              "3": "2010年7月15日中国工商银行苏州分行发放的贷记卡（人民币账户），截至2014年8月已销户。最近5年内有2个月处于逾期状态，没有发生过90天以上逾期。",
+              "4": "2016年9月8日交通银行发放的贷记卡（人民币账户）。截至2017年5月，信用额度2,000，已使用额度1,955。最近5年内有1个月处于逾期状态，没有发生过90天以上逾期。",
+              "5": "2016年9月6日中国建设银行江苏省分行发放的贷记卡（人民币账户）。截至2017年5月，信用额度21,000，已使用额度20,951。最近5年内有1个月处于逾期状态，没有发生过90天以上逾期。",
+              "6": "2016年8月30日中国建设银行江苏省分行发放的贷记卡（人民币账户）。截至2017年5月，信用额度21,000，已使用额度0。最近5年内有1个月处于逾期状态，没有发生过90天以上逾期。"
+            }
+          },
+          {
+            "type": "3",
+            "details": {
+              "7": "2017年3月9日中国工商银行南通分行发放的贷记卡（人民币账户）。截至2017年6月，信用额度3,000，已使用额度2,982。",
+              "8": "2017年3月9日中国工商银行南通分行发放的贷记卡（港元账户）。截至2017年6月,信用额度折合人民币3,114，已使用额度0。",
+              "9": "2017年3月9日中国工商银行南通分行发放的贷记卡（英镑账户）。截至2017年6月,信用额度折合人民币2,546，已使用额度0。",
+              "10": "2017年3月9日中国工商银行南通分行发放的贷记卡（欧元账户）。截至2017年6月,信用额度折合人民币2,876，已使用额度0。",
+              "11": "2017年3月9日中国工商银行南通分行发放的贷记卡（澳大利亚元账户）。截至2017年6月,信用额度折合人民币2,868，已使用额度0。",
+              "12": "2017年3月9日中国工商银行南通分行发放的贷记卡（加拿大元账户）。截至2017年6月,信用额度折合人民币2,683，已使用额度0。",
+              "13": "2017年3月9日中国工商银行南通分行发放的贷记卡（日元账户）。截至2017年6月,信用额度折合人民币3,688，已使用额度0。",
+              "14": "2017年3月9日中国工商银行南通分行发放的贷记卡（瑞士法郎账户）。截至2017年6月,信用额度折合人民币3,190，已使用额度0。",
+              "15": "2017年3月9日中国工商银行南通分行发放的贷记卡（美元账户）。截至2017年6月,信用额度折合人民币3,121，已使用额度0。",
+              "16": "2016年10月14日招商银行发放的贷记卡（人民币账户）。截至2017年5月，信用额度10,000，已使用额度9,946。",
+              "17": "2016年10月14日招商银行发放的贷记卡（美元账户）。截至2017年5月,信用额度折合人民币10,000，已使用额度0。",
+              "18": "2016年9月19日平安银行信用卡中心发放的贷记卡（人民币账户）。截至2017年5月，信用额度10,000，已使用额度1,325。",
+              "19": "2016年9月8日交通银行发放的贷记卡（美元账户）。截至2017年5月,信用额度折合人民币1,962，已使用额度0。",
+              "20": "2016年8月30日中国建设银行江苏省分行发放的贷记卡（美元账户）。截至2017年5月,信用额度折合人民币24,113，已使用额度0。"
+            }
+          }
+        ],
+        "parsedCreditCardDetails": [
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "销户",
+            "currency": "人民币",
+            "overdueNo": "12",
+            "isOverdue": "是",
+            "issueDay": "2013.3.18",
+            "abortDay": "2015.11",
+            "limit": "",
+            "usedLimit": "",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": "2015.11"
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "人民币",
+            "overdueNo": "4",
+            "isOverdue": "是",
+            "issueDay": "2014.8.4",
+            "abortDay": "2017.5",
+            "limit": "21000",
+            "usedLimit": "0",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "销户",
+            "currency": "人民币",
+            "overdueNo": "2",
+            "isOverdue": "是",
+            "issueDay": "2010.7.15",
+            "abortDay": "2014.8",
+            "limit": "",
+            "usedLimit": "",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": "2014.8"
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "人民币",
+            "overdueNo": "1",
+            "isOverdue": "是",
+            "issueDay": "2016.9.8",
+            "abortDay": "2017.5",
+            "limit": "2000",
+            "usedLimit": "1955",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "人民币",
+            "overdueNo": "1",
+            "isOverdue": "是",
+            "issueDay": "2016.9.6",
+            "abortDay": "2017.5",
+            "limit": "21000",
+            "usedLimit": "20951",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "人民币",
+            "overdueNo": "1",
+            "isOverdue": "是",
+            "issueDay": "2016.8.30",
+            "abortDay": "2017.5",
+            "limit": "21000",
+            "usedLimit": "0",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "人民币",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2017.3.9",
+            "abortDay": "2017.6",
+            "limit": "3000",
+            "usedLimit": "2982",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "港元",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2017.3.9",
+            "abortDay": "2017.6",
+            "limit": "3114",
+            "usedLimit": "0",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "英镑",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2017.3.9",
+            "abortDay": "2017.6",
+            "limit": "2546",
+            "usedLimit": "0",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "欧元",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2017.3.9",
+            "abortDay": "2017.6",
+            "limit": "2876",
+            "usedLimit": "0",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "澳大利亚元",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2017.3.9",
+            "abortDay": "2017.6",
+            "limit": "2868",
+            "usedLimit": "0",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "加拿大元",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2017.3.9",
+            "abortDay": "2017.6",
+            "limit": "2683",
+            "usedLimit": "0",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "日元",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2017.3.9",
+            "abortDay": "2017.6",
+            "limit": "3688",
+            "usedLimit": "0",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "瑞士法郎",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2017.3.9",
+            "abortDay": "2017.6",
+            "limit": "3190",
+            "usedLimit": "0",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "美元",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2017.3.9",
+            "abortDay": "2017.6",
+            "limit": "3121",
+            "usedLimit": "0",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "人民币",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2016.10.14",
+            "abortDay": "2017.5",
+            "limit": "10000",
+            "usedLimit": "9946",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "美元",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2016.10.14",
+            "abortDay": "2017.5",
+            "limit": "10000",
+            "usedLimit": "0",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "人民币",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2016.9.19",
+            "abortDay": "2017.5",
+            "limit": "10000",
+            "usedLimit": "1325",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "美元",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2016.9.8",
+            "abortDay": "2017.5",
+            "limit": "1962",
+            "usedLimit": "0",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          },
+          {
+            "isQuasiCreditCard": "否",
+            "accountStatus": "正常",
+            "currency": "美元",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2016.8.30",
+            "abortDay": "2017.5",
+            "limit": "24113",
+            "usedLimit": "0",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "cancellationDay": ""
+          }
+        ],
+        "housingLoanDetails": [
+          {
+            "type": "1",
+            "details": {
+              "1": "2010年3月24日中国银行苏州城中支行发放的960,000元（人民币）个人住房贷款，2015年4月已结清。最近5年内有12个月处于逾期状态，没有发生过90天以上逾期。",
+              "2": "2010年4月1日中国建设银行山东省分行发放的146,000元（人民币）个人住房贷款，2025年4月1日到期。截至2017年6月，余额87,796。最近5年内有7个月处于逾期状态，没有发生过90天以上逾期。"
+            }
+          }
+        ],
+        "otherLoanDetails": [
+          {
+            "type": "2",
+            "details": {
+              "1": "2017年3月27日江苏常熟农村商业银行股份有限公司发放的500,000元（人民币）个人经营性贷款，2018年3月15日到期。截至2017年5月，余额420,717。",
+              "2": "2017年2月27日江苏如东农村商业银行发放的790,000元（人民币）个人经营性贷款，2018年2月26日到期。截至2017年5月，余额790,000。",
+              "3": "2016年10月26日江苏常熟农村商业银行股份有限公司发放的630,000元（人民币）个人经营性贷款，2017年10月15日到期。截至2017年5月，余额630,000。",
+              "4": "2016年7月19日江苏如东农村商业银行发放的1,000,000元（人民币）个人经营性贷款，2017年7月18日到期。截至2017年5月，余额1,000,000。",
+              "5": "2016年7月19日江苏如东农村商业银行发放的500,000元（人民币）个人经营性贷款，2017年7月18日到期。截至2017年5月，余额500,000。",
+              "6": "2016年7月19日江苏如东农村商业银行发放的1,000,000元（人民币）个人经营性贷款，2017年7月18日到期。截至2017年5月，余额1,000,000。",
+              "7": "2016年2月19日深圳前海微众银行股份有限公司发放的13,000元（人民币）个人消费贷款，2017年10月19日到期。截至2017年5月，余额6,500。",
+              "8": "2016年3月31日江苏常熟农村商业银行股份有限公司发放的500,000元（人民币）个人经营性贷款，2017年3月已结清。",
+              "9": "2015年10月23日江苏如东农村商业银行发放的500,000元（人民币）个人经营性贷款，2016年10月已结清。",
+              "10": "2015年2月9日江苏如东农村商业银行发放的3,000,000元（人民币）个人经营性贷款，2016年7月已结清。"
+            }
+          }
+        ],
+        "parsedLoanDetails": [
+          {
+            "currency": "个人住房贷款",
+            "accountStatus": "逾期",
+            "overdueNo": "12",
+            "isOverdue": "是",
+            "issueDay": "2010.3.24",
+            "abortDay": "",
+            "actualDay": "",
+            "conteactAmount": "960000",
+            "loanBalance": "",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "settleDay": "2015.4"
+          },
+          {
+            "currency": "个人住房贷款",
+            "accountStatus": "逾期",
+            "overdueNo": "7",
+            "isOverdue": "是",
+            "issueDay": "2010.4.1",
+            "abortDay": "2025.4.1",
+            "actualDay": "2017.6",
+            "conteactAmount": "146000",
+            "loanBalance": "87796",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "settleDay": ""
+          },
+          {
+            "currency": "个人经营性贷款",
+            "accountStatus": "正常",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2017.3.27",
+            "abortDay": "2018.3.15",
+            "actualDay": "2017.5",
+            "conteactAmount": "500000",
+            "loanBalance": "420717",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "settleDay": ""
+          },
+          {
+            "currency": "个人经营性贷款",
+            "accountStatus": "正常",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2017.2.27",
+            "abortDay": "2018.2.26",
+            "actualDay": "2017.5",
+            "conteactAmount": "790000",
+            "loanBalance": "790000",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "settleDay": ""
+          },
+          {
+            "currency": "个人经营性贷款",
+            "accountStatus": "正常",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2016.10.26",
+            "abortDay": "2017.10.15",
+            "actualDay": "2017.5",
+            "conteactAmount": "630000",
+            "loanBalance": "630000",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "settleDay": ""
+          },
+          {
+            "currency": "个人经营性贷款",
+            "accountStatus": "正常",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2016.7.19",
+            "abortDay": "2017.7.18",
+            "actualDay": "2017.5",
+            "conteactAmount": "1000000",
+            "loanBalance": "1000000",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "settleDay": ""
+          },
+          {
+            "currency": "个人经营性贷款",
+            "accountStatus": "正常",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2016.7.19",
+            "abortDay": "2017.7.18",
+            "actualDay": "2017.5",
+            "conteactAmount": "500000",
+            "loanBalance": "500000",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "settleDay": ""
+          },
+          {
+            "currency": "个人经营性贷款",
+            "accountStatus": "正常",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2016.7.19",
+            "abortDay": "2017.7.18",
+            "actualDay": "2017.5",
+            "conteactAmount": "1000000",
+            "loanBalance": "1000000",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "settleDay": ""
+          },
+          {
+            "currency": "个人消费贷款",
+            "accountStatus": "正常",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2016.2.19",
+            "abortDay": "2017.10.19",
+            "actualDay": "2017.5",
+            "conteactAmount": "13000",
+            "loanBalance": "6500",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "settleDay": ""
+          },
+          {
+            "currency": "个人经营性贷款",
+            "accountStatus": "结清",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2016.3.31",
+            "abortDay": "",
+            "actualDay": "",
+            "conteactAmount": "500000",
+            "loanBalance": "",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "settleDay": "2017.3"
+          },
+          {
+            "currency": "个人经营性贷款",
+            "accountStatus": "结清",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2015.10.23",
+            "abortDay": "",
+            "actualDay": "",
+            "conteactAmount": "500000",
+            "loanBalance": "",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "settleDay": "2016.10"
+          },
+          {
+            "currency": "个人经营性贷款",
+            "accountStatus": "结清",
+            "overdueNo": "",
+            "isOverdue": "",
+            "issueDay": "2015.2.9",
+            "abortDay": "",
+            "actualDay": "",
+            "conteactAmount": "3000000",
+            "loanBalance": "",
+            "overdueAmount": "",
+            "overdueForNo": "0",
+            "settleDay": "2016.7"
+          }
+        ]
+      },
+      "queryRecords": [
+        {
+          "num": "1",
+          "queryType": "机构查询",
+          "queryDate": "2017年6月23日",
+          "operator": "广发银行/99*999*999",
+          "queryCause": "信用卡审批"
+        },
+        {
+          "num": "2",
+          "queryType": "机构查询",
+          "queryDate": "2017年6月2日",
+          "operator": "交通银行太平洋信用卡中心/du*njx",
+          "queryCause": "贷后管理"
+        },
+        {
+          "num": "3",
+          "queryType": "机构查询",
+          "queryDate": "2017年5月17日",
+          "operator": "中国人民财产保险股份有限公司/picccredi*inqui*y",
+          "queryCause": "保前审查"
+        },
+        {
+          "num": "4",
+          "queryType": "机构查询",
+          "queryDate": "2017年5月15日",
+          "operator": "四川天府银行股份有限公司成都分行/cdf*zt*y",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "5",
+          "queryType": "机构查询",
+          "queryDate": "2017年5月13日",
+          "operator": "中国民生银行/*srhc*1",
+          "queryCause": "信用卡审批"
+        },
+        {
+          "num": "6",
+          "queryType": "机构查询",
+          "queryDate": "2017年5月11日",
+          "operator": "招商银行/x*dzx1",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "7",
+          "queryType": "机构查询",
+          "queryDate": "2017年4月22日",
+          "operator": "深圳前海微众银行股份有限公司/*z*xcx_api_02",
+          "queryCause": "贷后管理"
+        },
+        {
+          "num": "8",
+          "queryType": "机构查询",
+          "queryDate": "2017年4月19日",
+          "operator": "深圳泛华小额贷款有限公司/lxx*01",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "9",
+          "queryType": "机构查询",
+          "queryDate": "2017年4月19日",
+          "operator": "中国平安财产保险股份有限公司/xinb*o",
+          "queryCause": "保后管理"
+        },
+        {
+          "num": "10",
+          "queryType": "机构查询",
+          "queryDate": "2017年4月18日",
+          "operator": "江苏常熟农村商业银行股份有限公司/*sch*nhong",
+          "queryCause": "担保资格审查"
+        },
+        {
+          "num": "11",
+          "queryType": "机构查询",
+          "queryDate": "2017年4月11日",
+          "operator": "浦发银行信用卡中心/ea*pf*d",
+          "queryCause": "信用卡审批"
+        },
+        {
+          "num": "12",
+          "queryType": "机构查询",
+          "queryDate": "2017年4月7日",
+          "operator": "江苏常熟农村商业银行股份有限公司/c*daili*i",
+          "queryCause": "担保资格审查"
+        },
+        {
+          "num": "13",
+          "queryType": "机构查询",
+          "queryDate": "2017年4月2日",
+          "operator": "招商银行/C*BUSER0*4",
+          "queryCause": "贷后管理"
+        },
+        {
+          "num": "14",
+          "queryType": "机构查询",
+          "queryDate": "2017年3月28日",
+          "operator": "阳光保险集团股份有限公司/*haojian*-phq",
+          "queryCause": "保前审查"
+        },
+        {
+          "num": "15",
+          "queryType": "机构查询",
+          "queryDate": "2017年3月28日",
+          "operator": "阳光保险集团股份有限公司/*uhua*phq",
+          "queryCause": "保前审查"
+        },
+        {
+          "num": "16",
+          "queryType": "机构查询",
+          "queryDate": "2017年3月21日",
+          "operator": "江苏常熟农村商业银行股份有限公司/c*huang*ei",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "17",
+          "queryType": "机构查询",
+          "queryDate": "2017年3月8日",
+          "operator": "中国工商银行南通分行/*11100*75",
+          "queryCause": "信用卡审批"
+        },
+        {
+          "num": "18",
+          "queryType": "机构查询",
+          "queryDate": "2017年3月7日",
+          "operator": "平安普惠融资担保有限公司/**denggr",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "19",
+          "queryType": "机构查询",
+          "queryDate": "2017年2月24日",
+          "operator": "深圳平安普惠小额贷款有限公司/*zxa*dcx",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "20",
+          "queryType": "机构查询",
+          "queryDate": "2017年2月24日",
+          "operator": "交通银行太平洋信用卡中心/*uanjx",
+          "queryCause": "贷后管理"
+        },
+        {
+          "num": "21",
+          "queryType": "机构查询",
+          "queryDate": "2017年2月22日",
+          "operator": "中国工商银行南通分行/*1*100875",
+          "queryCause": "信用卡审批"
+        },
+        {
+          "num": "22",
+          "queryType": "机构查询",
+          "queryDate": "2017年2月3日",
+          "operator": "平安普惠融资担保有限公司/f*deng*r",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "23",
+          "queryType": "机构查询",
+          "queryDate": "2017年1月27日",
+          "operator": "中国平安财产保险股份有限公司/*inbao",
+          "queryCause": "保后管理"
+        },
+        {
+          "num": "24",
+          "queryType": "机构查询",
+          "queryDate": "2017年1月20日",
+          "operator": "深圳前海微众银行股份有限公司/wzzx*x*api_02",
+          "queryCause": "贷后管理"
+        },
+        {
+          "num": "25",
+          "queryType": "机构查询",
+          "queryDate": "2016年12月15日",
+          "operator": "江苏如东农村商业银行/rdn*h*yy",
+          "queryCause": "担保资格审查"
+        },
+        {
+          "num": "26",
+          "queryType": "机构查询",
+          "queryDate": "2016年12月2日",
+          "operator": "交通银行太平洋信用卡中心/*uanjx",
+          "queryCause": "贷后管理"
+        },
+        {
+          "num": "27",
+          "queryType": "机构查询",
+          "queryDate": "2016年11月11日",
+          "operator": "中国建设银行/*5",
+          "queryCause": "贷后管理"
+        },
+        {
+          "num": "28",
+          "queryType": "机构查询",
+          "queryDate": "2016年11月8日",
+          "operator": "平安普惠融资担保有限公司/f*deng*r",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "29",
+          "queryType": "机构查询",
+          "queryDate": "2016年10月24日",
+          "operator": "交通银行太平洋信用卡中心/sh*obl",
+          "queryCause": "贷后管理"
+        },
+        {
+          "num": "30",
+          "queryType": "机构查询",
+          "queryDate": "2016年10月21日",
+          "operator": "江苏常熟农村商业银行股份有限公司/ch*ny*lan",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "31",
+          "queryType": "机构查询",
+          "queryDate": "2016年10月15日",
+          "operator": "江苏如东农村商业银行/r*ns*cc",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "32",
+          "queryType": "机构查询",
+          "queryDate": "2016年10月13日",
+          "operator": "江苏昆山农村商业银行股份有限公司/ks*r3*81",
+          "queryCause": "客户准入资格审查"
+        },
+        {
+          "num": "33",
+          "queryType": "机构查询",
+          "queryDate": "2016年9月29日",
+          "operator": "江苏小贷信息管理中心/*a*yang",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "34",
+          "queryType": "机构查询",
+          "queryDate": "2016年9月22日",
+          "operator": "中信银行信用卡中心/c*ti*ib_kzx",
+          "queryCause": "信用卡审批"
+        },
+        {
+          "num": "35",
+          "queryType": "机构查询",
+          "queryDate": "2016年9月14日",
+          "operator": "中国建设银行/*5",
+          "queryCause": "贷后管理"
+        },
+        {
+          "num": "36",
+          "queryType": "机构查询",
+          "queryDate": "2016年9月10日",
+          "operator": "平安银行信用卡中心/*PXT",
+          "queryCause": "信用卡审批"
+        },
+        {
+          "num": "37",
+          "queryType": "机构查询",
+          "queryDate": "2016年9月10日",
+          "operator": "广发银行/*99999*999",
+          "queryCause": "信用卡审批"
+        },
+        {
+          "num": "38",
+          "queryType": "机构查询",
+          "queryDate": "2016年9月10日",
+          "operator": "招商银行/C*BUS*R003",
+          "queryCause": "信用卡审批"
+        },
+        {
+          "num": "39",
+          "queryType": "机构查询",
+          "queryDate": "2016年9月8日",
+          "operator": "中国邮政储蓄银行股份有限公司/*4*0008",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "40",
+          "queryType": "机构查询",
+          "queryDate": "2016年9月8日",
+          "operator": "交通银行太平洋信用卡中心/*_lulu",
+          "queryCause": "信用卡审批"
+        },
+        {
+          "num": "41",
+          "queryType": "机构查询",
+          "queryDate": "2016年9月6日",
+          "operator": "深圳市中兴小额贷款有限公司/*ly_07",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "42",
+          "queryType": "机构查询",
+          "queryDate": "2016年8月28日",
+          "operator": "中国建设银行股份有限公司南通分行/8*1916*1",
+          "queryCause": "信用卡审批"
+        },
+        {
+          "num": "43",
+          "queryType": "机构查询",
+          "queryDate": "2016年8月24日",
+          "operator": "武汉农村商业银行江岸支行/*he*gcui",
+          "queryCause": "客户准入资格审查"
+        },
+        {
+          "num": "44",
+          "queryType": "机构查询",
+          "queryDate": "2016年8月8日",
+          "operator": "中国人民财产保险股份有限公司/*i*ccreditinquiry",
+          "queryCause": "保前审查"
+        },
+        {
+          "num": "45",
+          "queryType": "机构查询",
+          "queryDate": "2016年8月1日",
+          "operator": "深圳前海微众银行股份有限公司/wz*x*x_api_02",
+          "queryCause": "贷后管理"
+        },
+        {
+          "num": "46",
+          "queryType": "机构查询",
+          "queryDate": "2016年6月22日",
+          "operator": "江苏常熟农村商业银行股份有限公司/*shua*gwei",
+          "queryCause": "担保资格审查"
+        },
+        {
+          "num": "47",
+          "queryType": "机构查询",
+          "queryDate": "2016年6月20日",
+          "operator": "江苏银行/*bsj*jpt1_xwqywd",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "48",
+          "queryType": "机构查询",
+          "queryDate": "2016年5月26日",
+          "operator": "江苏常熟农村商业银行股份有限公司/qu*ia",
+          "queryCause": "担保资格审查"
+        },
+        {
+          "num": "49",
+          "queryType": "机构查询",
+          "queryDate": "2016年5月24日",
+          "operator": "江苏如东农村商业银行/r*nsh*c",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "50",
+          "queryType": "机构查询",
+          "queryDate": "2016年5月19日",
+          "operator": "中国平安财产保险股份有限公司/x*nbao",
+          "queryCause": "保前审查"
+        },
+        {
+          "num": "51",
+          "queryType": "机构查询",
+          "queryDate": "2016年3月28日",
+          "operator": "江苏省常熟农村商业银行/lujun*h*n",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "52",
+          "queryType": "机构查询",
+          "queryDate": "2016年3月16日",
+          "operator": "平安银行信用卡中心/S*XT",
+          "queryCause": "信用卡审批"
+        },
+        {
+          "num": "53",
+          "queryType": "机构查询",
+          "queryDate": "2016年2月1日",
+          "operator": "深圳前海微众银行股份有限公司/*zzxc*008",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "54",
+          "queryType": "机构查询",
+          "queryDate": "2016年2月1日",
+          "operator": "哈尔滨银行/r*rx-*sl",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "55",
+          "queryType": "机构查询",
+          "queryDate": "2016年1月29日",
+          "operator": "哈尔滨银行/r*r*-ysl",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "56",
+          "queryType": "机构查询",
+          "queryDate": "2015年10月28日",
+          "operator": "江苏省常熟农村商业银行/*ujun*hun",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "57",
+          "queryType": "机构查询",
+          "queryDate": "2015年10月14日",
+          "operator": "中国建设银行江苏省分行/*2000035*09",
+          "queryCause": "信用卡审批"
+        },
+        {
+          "num": "58",
+          "queryType": "机构查询",
+          "queryDate": "2015年9月30日",
+          "operator": "中国工商银行南通分行/00*83*056",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "59",
+          "queryType": "机构查询",
+          "queryDate": "2015年9月29日",
+          "operator": "江苏如东农村商业银行股份有限公司/**nshlxj",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "60",
+          "queryType": "机构查询",
+          "queryDate": "2015年9月28日",
+          "operator": "中国银行南通分行/2*001_069*8_8230558",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "61",
+          "queryType": "机构查询",
+          "queryDate": "2015年9月28日",
+          "operator": "江苏银行南通分行/*t*y5059",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "62",
+          "queryType": "机构查询",
+          "queryDate": "2015年9月22日",
+          "operator": "中国银行南通分行/20001_0691*_823*558",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "63",
+          "queryType": "机构查询",
+          "queryDate": "2015年9月17日",
+          "operator": "中国银行南通分行/20001_06918_82*05*8",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "64",
+          "queryType": "机构查询",
+          "queryDate": "2015年9月11日",
+          "operator": "中国银行南通分行/20*01_06*18_8230558",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "65",
+          "queryType": "机构查询",
+          "queryDate": "2015年7月17日",
+          "operator": "中国工商银行浙江省分行营业部/0007*06*3",
+          "queryCause": "担保资格审查"
+        },
+        {
+          "num": "66",
+          "queryType": "机构查询",
+          "queryDate": "2015年7月15日",
+          "operator": "江苏省常熟农村商业银行/zh*ng*uo",
+          "queryCause": "贷款审批"
+        },
+        {
+          "num": "67",
+          "queryType": "个人查询",
+          "queryDate": "2017年5月18日",
+          "operator": "中国人民银行如东县支行/ZZ*B*ntrd_001",
+          "queryCause": "本人查询（临柜）"
+        },
+        {
+          "num": "68",
+          "queryType": "个人查询",
+          "queryDate": "2017年4月18日",
+          "operator": "中国人民银行如东县支行/Z*PBCntrd_*01",
+          "queryCause": "本人查询（临柜）"
+        },
+        {
+          "num": "69",
+          "queryType": "个人查询",
+          "queryDate": "2017年2月23日",
+          "operator": "中国人民银行如东县支行/*ZPBCntrd_*01",
+          "queryCause": "本人查询（临柜）"
+        },
+        {
+          "num": "70",
+          "queryType": "个人查询",
+          "queryDate": "2017年2月7日",
+          "operator": "中国人民银行如东县支行/*ZPBCnt*d_001",
+          "queryCause": "本人查询（临柜）"
+        },
+        {
+          "num": "71",
+          "queryType": "个人查询",
+          "queryDate": "2017年1月24日",
+          "operator": "中国人民银行如东县支行/**PBCntrd_001",
+          "queryCause": "本人查询（临柜）"
+        },
+        {
+          "num": "72",
+          "queryType": "个人查询",
+          "queryDate": "2017年1月3日",
+          "operator": "中国人民银行如东县支行/Z*PB*ntrd_001",
+          "queryCause": "本人查询（临柜）"
+        },
+        {
+          "num": "73",
+          "queryType": "个人查询",
+          "queryDate": "2016年11月8日",
+          "operator": "中国人民银行如东县支行/Z*PBCntr*_001",
+          "queryCause": "本人查询（临柜）"
+        },
+        {
+          "num": "74",
+          "queryType": "个人查询",
+          "queryDate": "2016年10月20日",
+          "operator": "中国人民银行南通市中心支行/PBCnt*l_gh*zj1",
+          "queryCause": "本人查询（临柜）"
+        },
+        {
+          "num": "75",
+          "queryType": "个人查询",
+          "queryDate": "2016年9月26日",
+          "operator": "本人",
+          "queryCause": "本人查询（互联网个人信用信息服务平台）"
+        },
+        {
+          "num": "76",
+          "queryType": "个人查询",
+          "queryDate": "2016年9月7日",
+          "operator": "本人",
+          "queryCause": "本人查询（互联网个人信用信息服务平台）"
+        },
+        {
+          "num": "77",
+          "queryType": "个人查询",
+          "queryDate": "2016年9月6日",
+          "operator": "本人",
+          "queryCause": "本人查询（互联网个人信用信息服务平台）"
+        },
+        {
+          "num": "78",
+          "queryType": "个人查询",
+          "queryDate": "2016年9月5日",
+          "operator": "中国人民银行如东县支行/ZZPBCn*rd_*01",
+          "queryCause": "本人查询（临柜）"
+        },
+        {
+          "num": "79",
+          "queryType": "个人查询",
+          "queryDate": "2016年8月9日",
+          "operator": "本人",
+          "queryCause": "本人查询（互联网个人信用信息服务平台）"
+        },
+        {
+          "num": "80",
+          "queryType": "个人查询",
+          "queryDate": "2016年7月22日",
+          "operator": "本人",
+          "queryCause": "本人查询（互联网个人信用信息服务平台）"
+        },
+        {
+          "num": "81",
+          "queryType": "个人查询",
+          "queryDate": "2016年7月13日",
+          "operator": "本人",
+          "queryCause": "本人查询（互联网个人信用信息服务平台）"
+        },
+        {
+          "num": "82",
+          "queryType": "个人查询",
+          "queryDate": "2016年7月8日",
+          "operator": "中国人民银行南通市中心支行/PBCnt*l_jsuh*zj1",
+          "queryCause": "本人查询（临柜）"
+        },
+        {
+          "num": "83",
+          "queryType": "个人查询",
+          "queryDate": "2016年6月7日",
+          "operator": "本人",
+          "queryCause": "本人查询（互联网个人信用信息服务平台）"
+        },
+        {
+          "num": "84",
+          "queryType": "个人查询",
+          "queryDate": "2015年9月22日",
+          "operator": "中国人民银行如东县支行/P*Cnt*d_jm",
+          "queryCause": "本人查询（临柜）"
+        }
+      ]
+    }
+  }
+}
+				</pre>
+            <h3 class="page-header">返回字段说明</h3>
+            <p style="color:#3da33d;"></p>
+            <div style="width:100%;">
+                <table class="table table-bordered table-hover" style="width:90%;">
+                    <caption>返回正确data结果的字段说明对照表：</caption>
+                    <thead>
+                    <tr>
+                        <th>返回值字段</th>
+                        <th>字段类型</th>
+                        <th>字段说明</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="3" style="text-align:center;">结果状态</td>
+                    </tr>
+                    <tr>
+                        <td>statusCode</td>
+                        <td>String</td>
+                        <td>结果状态码</td>
+                    </tr>
+                    <tr>
+                        <td>message</td>
+                        <td>String</td>
+                        <td>结果状态说明</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" style="text-align:center;">征信报告数据（report）</td>
+                    </tr>
+                    <tr>
+                        <td>reportBase-&gt;reportId</td>
+                        <td>String</td>
+                        <td>报告编号</td>
+                    </tr>
+                    <tr>
+                        <td>reportBase-&gt;queryTime</td>
+                        <td>String</td>
+                        <td>查询时间</td>
+                    </tr>
+                    <tr>
+                        <td>reportBase-&gt;reportTime</td>
+                        <td>String</td>
+                        <td>报告时间</td>
+                    </tr>
+                    <tr>
+                        <td>reportBase-&gt;realname</td>
+                        <td>String</td>
+                        <td>姓名</td>
+                    </tr>
+                    <tr>
+                        <td>reportBase-&gt;certificateType</td>
+                        <td>String</td>
+                        <td>证件类型</td>
+                    </tr>
+                    <tr>
+                        <td>reportBase-&gt;certificateNum</td>
+                        <td>String</td>
+                        <td>证件号码</td>
+                    </tr>
+                    <tr>
+                        <td>reportBase-&gt;marriageStatus</td>
+                        <td>String</td>
+                        <td>婚姻状况</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;creditSummary-&gt;creditCards-&gt;accountNum</td>
+                        <td>String</td>
+                        <td>信贷记录-&gt;信息概要-&gt;信用卡的账户数</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;creditSummary-&gt;creditCards-&gt;activeNum</td>
+                        <td>String</td>
+                        <td>信贷记录-&gt;信息概要-&gt;信用卡的未结清或未销户数</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;creditSummary-&gt;creditCards-&gt;overdueNum</td>
+                        <td>String</td>
+                        <td>信贷记录-&gt;信息概要-&gt;信用卡的发生过逾期的账户数</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;creditSummary-&gt;creditCards-&gt;overdue90Num</td>
+                        <td>String</td>
+                        <td>信贷记录-&gt;信息概要-&gt;信用卡的发生过90天以上逾期的账户数</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;creditSummary-&gt;creditCards-&gt;guaranteeNum</td>
+                        <td>String</td>
+                        <td>信贷记录-&gt;信息概要-&gt;信用卡的为他人担保笔数</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;creditSummary-&gt;housingLoans</td>
+                        <td>Map&lt;String,String&gt;</td>
+                        <td>信贷记录-&gt;信息概要-&gt;购房贷款</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;creditSummary-&gt;otherLoans</td>
+                        <td>Map&lt;String,String&gt;</td>
+                        <td>信贷记录-&gt;信息概要-&gt;其他贷款</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;creditCardDetails-&gt;type</td>
+                        <td>String</td>
+                        <td>信贷记录-&gt;信用卡明细-&gt;明细类型<br>
+                            &nbsp;&nbsp;1：发生过逾期的贷记卡账户明细<br>
+                            &nbsp;&nbsp;2：透支超过60天的准贷记卡帐户明细<br>
+                            &nbsp;&nbsp;3：从未逾期过的贷记卡及透支未超过60天的准贷记卡账户明细<br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;creditCardDetails-&gt;details</td>
+                        <td>Map&lt;String,String&gt;</td>
+                        <td>信贷记录-&gt;信用卡明细-&gt;明细列表<br></td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedCreditCardDetails-&gt;isQuasiCreditCard<br></td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;信用卡明细-&gt;是否为准贷记卡<br></td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedCreditCardDetails-&gt;accountStatus<br></td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;信用卡明细-&gt;账户状态</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedCreditCardDetails-&gt;currency<br></td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;信用卡明细-&gt;币种</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedCreditCardDetails-&gt;isOverdue<br></td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;信用卡明细-&gt;是否发生过逾期</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedCreditCardDetails-&gt;issueDay<br></td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;信用卡明细-&gt;发放日期</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedCreditCardDetails-&gt;abortDay<br></td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;信用卡明细-&gt;截至年月</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedCreditCardDetails-&gt;limit<br></td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;信用卡明细-&gt;额度</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedCreditCardDetails-&gt;usedLimit<br></td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;信用卡明细-&gt;已使用额度</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedCreditCardDetails-&gt;overdueAmount<br></td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;信用卡明细-&gt;逾期金额</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedCreditCardDetails-&gt;overdueNo<br></td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;信用卡明细-&gt;最近5年内逾期次数</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedCreditCardDetails-&gt;overdueForNo<br></td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;信用卡明细-&gt;最近5年内90天以上的逾期次数</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedCreditCardDetails-&gt;cancellationDay<br></td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;信用卡明细-&gt;销户年月</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;housingLoanDetails-&gt;type</td>
+                        <td>String</td>
+                        <td>信贷记录-&gt;购房贷款明细-&gt;明细类型<br>
+                            &nbsp;&nbsp;1：发生过的逾期的帐户明细<br>
+                            &nbsp;&nbsp;2：从未逾期过的帐户明细<br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;housingLoanDetails-&gt;details</td>
+                        <td>Map&lt;String,String&gt;</td>
+                        <td>信贷记录-&gt;购房贷款明细-&gt;明细列表</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;otherLoanDetails-&gt;type</td>
+                        <td>String</td>
+                        <td>信贷记录-&gt;其他贷款明细-&gt;明细类型<br>
+                            &nbsp;&nbsp;1：发生过逾期的账户明细<br>
+                            &nbsp;&nbsp;2：从未逾期过的账户明细<br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;otherLoanDetails-&gt;details</td>
+                        <td>Map&lt;String,String&gt;</td>
+                        <td>信贷记录-&gt;其他贷款明细-&gt;明细列表</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedLoanDetails-&gt;accountStatus</td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;贷款明细-&gt;账户状态</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedLoanDetails-&gt;currency</td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;贷款明细-&gt;贷款种类</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedLoanDetails-&gt;isOverdue</td>
+                        <td>String</td><td>信贷记录-&gt;贷款明细-&gt;是否发生过逾期</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedLoanDetails-&gt;issueDay</td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;贷款明细-&gt;发放日期</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedLoanDetails-&gt;abortDay</td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;贷款明细-&gt;到期日期</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedLoanDetails-&gt;actualDay</td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;贷款明细-&gt;截至年月</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedLoanDetails-&gt;conteactAmount</td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;贷款明细-&gt;贷款合同金额</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedLoanDetails-&gt;loanBalance</td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;贷款明细-&gt;贷款余额</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedLoanDetails-&gt;overdueAmount</td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;贷款明细-&gt;逾期金额</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedLoanDetails-&gt;overdueNo</td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;贷款明细-&gt;最近5年内逾期次数</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedLoanDetails-&gt;overdueForNo</td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;贷款明细-&gt;最近5年内90天以上的逾期次数</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedLoanDetails-&gt;settleDay</td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;贷款明细-&gt;结清年月</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;guaranteeInfoDetails</td>
+                        <td>Map&lt;String,String&gt;</td>
+                        <td>信贷记录-&gt;为他人担保明细-&gt;明细列表</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedGuaranteeInfoDetails-&gt;guaranteedPerson</td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;为他人担保明细-&gt;被担保人姓名</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedGuaranteeInfoDetails-&gt;guaranteedPersonIdNum</td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;为他人担保明细-&gt;被担保人身份证号</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedGuaranteeInfoDetails-&gt;otherGuaranteeAmount</td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;为他人担保明细-&gt;为他人贷款合同担保金额</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedGuaranteeInfoDetails-&gt;realPrincipal</td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;为他人担保明细-&gt;被担保贷款实际本金余额</td>
+                    </tr>
+                    <tr>
+                        <td>creditRecord-&gt;parsedGuaranteeInfoDetails-&gt;actualDay</td>
+                        <td>String<br></td>
+                        <td>信贷记录-&gt;为他人担保明细-&gt;截至年月</td>
+                    </tr>
+                    <tr>
+                        <td>queryRecord-&gt;num</td>
+                        <td>String</td>
+                        <td>查询记录--&gt;编号</td>
+                    </tr>
+                    <tr>
+                        <td>queryRecord-&gt;queryDate</td>
+                        <td>String</td>
+                        <td>查询记录-&gt;查询日期</td>
+                    </tr>
+                    <tr>
+                        <td>queryRecord-&gt;operator</td>
+                        <td>String</td>
+                        <td>查询记录-&gt;查询操作员</td>
+                    </tr>
+                    <tr>
+                        <td>queryRecord-&gt;queryCause</td>
+                        <td>String</td>
+                        <td>查询记录-&gt;查询原因</td>
+                    </tr>
+                    <tr>
+                        <td>queryRecord-&gt;queryType</td>
+                        <td>String</td>
+                        <td>查询记录-&gt;查询类型<br>
+                            &nbsp;&nbsp;1：个人查询<br>
+                            &nbsp;&nbsp;2：机构查询
+                        </td>
+                    </tr>
+                   <!-- <tr>
+                        <td colspan="3" style="text-align:center;">原始的html数据</td>
+                    </tr>
+                    <tr>
+                        <td>html</td>
+                        <td>String</td>
+                        <td>结果状态信息和原始的html数据</td>
+                    </tr>-->
+                    </tbody>
+                </table>
+
+
+              <p>返回失败：JSON</p>
+              <p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;">
+{"data":{"statusCode":"1","message":"手机验证码错误"}}
+                </pre>
+				<!--<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;">
+{"data":{"statusCode":"2","message":"用户名或者密码错误"}}
+                </pre>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;">
+{"data":{"statusCode":"-1","message":"查询失败"}}
+                </pre>-->
+
+                <span>备注：</span><br>
+                <table class="table table-bordered table-hover"><caption>结果状态码（statusCode）说明：</caption>
+                    <thead><tr><th>码值</th><th>说明</th></tr></thead>
+                    <tbody><tr><td>0</td><td>成功</td></tr>
+                    <tr><td>1</td><td>手机验证码错误</td></tr>
+                    <tr><td>2</td><td>用户名或密码错误</td></tr>
+                    <tr><td>3</td><td>系统繁忙</td></tr>
+                    <tr><td>-1</td><td>失败</td></tr>
+                    <tr><td>-2</td><td>网站被屏蔽</td></tr></tbody></table>
+                <p>以上 -&gt; 表示字段内容的层次关系</p>
+
+            </div>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

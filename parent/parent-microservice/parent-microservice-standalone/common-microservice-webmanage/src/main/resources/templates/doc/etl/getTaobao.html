@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">淘宝统一数据接口</h2>
+				<h3 class="page-header">说明</h3>
+				<p>
+					该接口通过输入的登录名或taskid来获取统一处理过的淘宝爬取数据。
+				</p>
+				<h3 class="page-header">URL</h3>
+				<p>
+					http://10.167.202.203:8009/ecommerce/tasks/taobao/detail
+				</p>
+				<h3 class="page-header">格式</h3>
+				<p>
+					JSON   
+				</p>
+				<h3 class="page-header">HTTP请求方式</h3>
+				<p>
+					POST/GET   
+				</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>#</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>loginName</td>
+							<td>true</td>
+							<td>String</td>
+							<td>登录名</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>任务号</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="page-header">注意事项</h3>
+				<ol style="margin-left: 0px;">
+					<li>登录名或taskid必须有一个，如果taskid不为空，则默认用taskid查询，如果taskid为空，则用登录名查询，获取该登录名最新的数据</li>
+				</ol>
+				   
+				<h3 class="page-header">例子</h3>
+				<p>说明：利用taskid和登录名来获取完成数据</p>
+				<p>请求：http://10.167.202.203:8009/ecommerce/tasks/taobao/detail?taskid=9bcda159-31f2-4c57-a097-62f3778c03ad</p>
+				<p>返回：JSON</p>
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+    param: {
+        loginName: null,
+        taskid: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+        
+    },
+    userInfoTaoBao: [
+        {
+            id: 57,
+            createtime: "2018-06-05 09:45:55",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            accountName: null,
+            creditLimit: null,
+            buyerLevel: null,
+            evaluatePercent: null,
+            lastLoginTime: "2018.06.05 09:47:00",
+            birthday: "1984-10-02",
+            liveAddr: null,
+            hometown: null,
+            growth: null,
+            gold: null,
+            alipayName: "md19841002@126.com",
+            alipayType: null,
+            alipayStatus: null,
+            payStatus: null,
+            phone: null,
+            alipayBalance: null,
+            zipCode: null,
+            fixedNumber: null,
+            tmallAccout: null,
+            tmallPoints: null,
+            tmallAccountLevel: null,
+            tmallExperience: null,
+            rightsAmount: null,
+            tmallDuration: null,
+            usualReceiveAddr: "海户西里11号楼1单元603",
+            
+        },
+        {
+            id: 58,
+            createtime: "2018-06-05 09:45:55",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            accountName: null,
+            creditLimit: null,
+            buyerLevel: null,
+            evaluatePercent: null,
+            lastLoginTime: "2018.06.05 09:47:00",
+            birthday: "1984-10-02",
+            liveAddr: null,
+            hometown: null,
+            growth: null,
+            gold: null,
+            alipayName: "md19841002@126.com",
+            alipayType: null,
+            alipayStatus: null,
+            payStatus: null,
+            phone: null,
+            alipayBalance: null,
+            zipCode: null,
+            fixedNumber: null,
+            tmallAccout: null,
+            tmallPoints: null,
+            tmallAccountLevel: null,
+            tmallExperience: null,
+            rightsAmount: null,
+            tmallDuration: null,
+            usualReceiveAddr: "海户西里11号楼1单元603",
+            
+        },
+        
+    ],
+    billinfoTaoBao: [
+        
+    ],
+    alipayUserinfoTaoBao: [
+        {
+            id: 126,
+            createtime: "2018-06-05 09:47:02",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            alipayAccountName: "md19841002@126.com",
+            taobaoAccountName: null,
+            idnumberValidityTerm: null,
+            registerDate: null,
+            isRealnameAuth: "是",
+            isEmberGuarantee: "账户已受全面保障",
+            isPhone: null,
+            securityLevel: null,
+            accountBalance: null,
+            yuebaoIncome: "4340.39",
+            isIdnumber: null,
+            yuebaoBalance: null,
+            checklaterCreditlimit: null,
+            historySumIncome: null,
+            
+        }
+    ],
+    alipayPaymentTaoBao: [
+        {
+            id: 946,
+            createtime: "2018-06-05 09:47:36",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            payTime: "2018-06-05 04:38:00",
+            transType: null,
+            transAccountType: null,
+            transNumber: null,
+            oppsitePerson: "博时基金管理有限公司",
+            transAmount: "4.26",
+            transStatus: "交易成功",
+            alipayAccount: null,
+            
+        },
+        {
+            id: 947,
+            createtime: "2018-06-05 09:47:36",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            payTime: "2018-06-04 11:44:00",
+            transType: null,
+            transAccountType: null,
+            transNumber: null,
+            oppsitePerson: "饿了么",
+            transAmount: "-53.00",
+            transStatus: "交易成功",
+            alipayAccount: null,
+            
+        },
+        {
+            id: 948,
+            createtime: "2018-06-05 09:47:37",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            payTime: "2018-06-04 08:25:00",
+            transType: null,
+            transAccountType: null,
+            transNumber: null,
+            oppsitePerson: "博时基金管理有限公司",
+            transAmount: "4.24",
+            transStatus: "交易成功",
+            alipayAccount: null,
+            
+        },
+        {
+            id: 949,
+            createtime: "2018-06-05 09:47:37",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            payTime: "2018-06-03 20:50:00",
+            transType: null,
+            transAccountType: null,
+            transNumber: null,
+            oppsitePerson: "中国移动官方旗舰店",
+            transAmount: "-199.80",
+            transStatus: "交易成功",
+            alipayAccount: null,
+            
+        },
+        {
+            id: 950,
+            createtime: "2018-06-05 09:47:38",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            payTime: "2018-06-03 08:26:00",
+            transType: null,
+            transAccountType: null,
+            transNumber: null,
+            oppsitePerson: "博时基金管理有限公司",
+            transAmount: "4.24",
+            transStatus: "交易成功",
+            alipayAccount: null,
+            
+        },
+        {
+            id: 975,
+            createtime: "2018-06-05 09:48:01",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            payTime: "2018-05-22 08:12:00",
+            transType: null,
+            transAccountType: null,
+            transNumber: null,
+            oppsitePerson: "博时基金管理有限公司",
+            transAmount: "3.98",
+            transStatus: "交易成功",
+            alipayAccount: null,
+            
+        },
+        
+    ],
+    cardinfoTaoBao: [
+        {
+            id: 218,
+            createtime: "2018-06-05 09:47:21",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            bankName: "浦发银行",
+            lastNumber: "2951",
+            cardType: "储蓄卡",
+            cardHolder: "梅荻",
+            phone: "135****0817",
+            
+        },
+        {
+            id: 219,
+            createtime: "2018-06-05 09:47:23",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            bankName: "中国工商银行",
+            lastNumber: "5674",
+            cardType: "储蓄卡",
+            cardHolder: "梅荻",
+            phone: "135****0817",
+            
+        },
+        {
+            id: 220,
+            createtime: "2018-06-05 09:47:24",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            bankName: "中信银行",
+            lastNumber: "5783",
+            cardType: "信用卡",
+            cardHolder: "梅荻",
+            phone: "135****0817",
+            
+        },
+        {
+            id: 221,
+            createtime: "2018-06-05 09:47:25",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            bankName: "交通银行",
+            lastNumber: "7302",
+            cardType: "储蓄卡",
+            cardHolder: "梅荻",
+            phone: "135****0817",
+            
+        },
+        {
+            id: 222,
+            createtime: "2018-06-05 09:47:26",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            bankName: "北京银行",
+            lastNumber: "1518",
+            cardType: "储蓄卡",
+            cardHolder: "梅荻",
+            phone: "135****0817",
+            
+        },
+        
+    ],
+    addrinfoTaoBao: [
+        {
+            id: 444,
+            createtime: "2018-06-05 09:46:45",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            consignee: "梅荻",
+            area: "北京",
+            address: "海户西里11号楼1单元603",
+            phone: "13520800817",
+            fixedPhone: null,
+            email: null,
+            isDefaultAddr: "是",
+            
+        },
+        {
+            id: 445,
+            createtime: "2018-06-05 09:46:47",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            consignee: "梅荻",
+            area: "北京",
+            address: "北京市海淀区王庄路1号 清华同方科技大厦D座9楼",
+            phone: "13520800817",
+            fixedPhone: null,
+            email: null,
+            isDefaultAddr: "否",
+            
+        },
+        {
+            id: 446,
+            createtime: "2018-06-05 09:46:50",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            consignee: "吴静",
+            area: "北京",
+            address: "北京市海淀区花园路6号院2号楼3层（应物会议中心）",
+            phone: "13051790129",
+            fixedPhone: null,
+            email: null,
+            isDefaultAddr: "否",
+            
+        },
+        {
+            id: 447,
+            createtime: "2018-06-05 09:46:57",
+            taskId: "9bcda159-31f2-4c57-a097-62f3778c03ad",
+            consignee: "梅荻",
+            area: "北京",
+            address: "王庄路1号清华同方科技广场D座西楼9层",
+            phone: "13520800817",
+            fixedPhone: null,
+            email: null,
+            isDefaultAddr: "否",
+            
+        },       
+    ],
+    createtime: 1528269464966,
+    message: "success",
+    errorCode: 500,
+    profile: "test",
+    
+}
+				</pre>
+				<h3 class="page-header">返回字段</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>对象名</th>
+							<th>字段名</th>
+							<th>类型</th>
+							<th>注释</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>accountName</td>
+							<td>String</td>
+							<td>淘宝帐户名</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>creditLimit</td>
+							<td>String</td>
+							<td>淘宝淘宝信用度</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>buyerLevel</td>
+							<td>String</td>
+							<td>淘宝买家级别</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>evaluatePercent</td>
+							<td>String</td>
+							<td>淘宝好评率</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>lastPoginTime</td>
+							<td>String</td>
+							<td>淘宝上次登陆时间</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>birthday</td>
+							<td>String</td>
+							<td>生日</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>liveAddr</td>
+							<td>String</td>
+							<td>居住地</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>hometown</td>
+							<td>String</td>
+							<td>家乡</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>growth</td>
+							<td>String</td>
+							<td>淘宝成长值</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>gold</td>
+							<td>String</td>
+							<td>淘金币</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>alipayName</td>
+							<td>String</td>
+							<td>淘宝绑定的支付宝账户名</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>alipayType</td>
+							<td>String</td>
+							<td>淘宝绑定的支付宝账户类型</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>alipayStatus</td>
+							<td>String</td>
+							<td>淘宝绑定的支付宝账户状态</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>phone</td>
+							<td>String</td>
+							<td>手机号码</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>alipayBalance</td>
+							<td>String</td>
+							<td>淘宝绑定的支付宝可用余额</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>zipCode</td>
+							<td>String</td>
+							<td>邮编</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>fixedNumber</td>
+							<td>String</td>
+							<td>固定电话</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>tmallAccount</td>
+							<td>String</td>
+							<td>天猫账户</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>tmallPoints</td>
+							<td>String</td>
+							<td>天猫积分</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>tmallAccountLevel</td>
+							<td>String</td>
+							<td>天猫等级</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>tmallExperience</td>
+							<td>String</td>
+							<td>天猫经验</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>rightsAmount</td>
+							<td>String</td>
+							<td>权益消费额度</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>tmallDuration</td>
+							<td>String</td>
+							<td>天猫购买天数</td>
+						</tr>
+						<tr>
+							<td>userInfoTaoBao</td>
+							<td>usualReceiveAddr</td>
+							<td>String</td>
+							<td>淘宝常用收货地址</td>
+						</tr>
+						<tr>
+							<td>alipayUserinfoTaoBao</td>
+							<td>alipayAccountName</td>
+							<td>String</td>
+							<td>支付宝帐户名</td>
+						</tr>
+						<tr>
+							<td>alipayUserinfoTaoBao</td>
+							<td>taobaoAccountName</td>
+							<td>String</td>
+							<td>淘宝帐户名</td>
+						</tr>
+						<tr>
+							<td>alipayUserinfoTaoBao</td>
+							<td>idnumberValidityTerm</td>
+							<td>String</td>
+							<td>身份证有效期</td>
+						</tr>
+						<tr>
+							<td>alipayUserinfoTaoBao</td>
+							<td>registerDate</td>
+							<td>String</td>
+							<td>注册日期</td>
+						</tr>
+						<tr>
+							<td>alipayUserinfoTaoBao</td>
+							<td>isRealnameAuth</td>
+							<td>String</td>
+							<td>是否实名认证</td>
+						</tr>
+						<tr>
+							<td>alipayUserinfoTaoBao</td>
+							<td>isEmberGuarantee</td>
+							<td>String</td>
+							<td>是否会员保障</td>
+						</tr>
+						<tr>
+							<td>alipayUserinfoTaoBao</td>
+							<td>isPhone</td>
+							<td>String</td>
+							<td>是否绑定手机</td>
+						</tr>
+						<tr>
+							<td>alipayUserinfoTaoBao</td>
+							<td>securityLevel</td>
+							<td>String</td>
+							<td>安全等级</td>
+						</tr>
+						<tr>
+							<td>alipayUserinfoTaoBao</td>
+							<td>accountBalance</td>
+							<td>String</td>
+							<td>账户余额</td>
+						</tr>
+						<tr>
+							<td>alipayUserinfoTaoBao</td>
+							<td>yuebaoIncome</td>
+							<td>String</td>
+							<td>余额宝总收入</td>
+						</tr>
+						<tr>
+							<td>alipayUserinfoTaoBao</td>
+							<td>isIdnumber</td>
+							<td>String</td>
+							<td>是否身份证认证</td>
+						</tr>
+						<tr>
+							<td>alipayUserinfoTaoBao</td>
+							<td>yuebaoBalance</td>
+							<td>String</td>
+							<td>余额宝总金额</td>
+						</tr>
+						<tr>
+							<td>alipayUserinfoTaoBao</td>
+							<td>checklaterCreditlimit</td>
+							<td>String</td>
+							<td>花呗可用额度</td>
+						</tr>
+						<tr>
+							<td>alipayUserinfoTaoBao</td>
+							<td>historySumIncome</td>
+							<td>String</td>
+							<td>月报历史累计收益</td>
+						</tr>
+						<tr>
+							<td>billinfoTaoBao</td>
+							<td>consignee</td>
+							<td>String</td>
+							<td>收货人</td>
+						</tr>
+						<tr>
+							<td>billinfoTaoBao</td>
+							<td>billAmount</td>
+							<td>String</td>
+							<td>订单金额</td>
+						</tr>
+						<tr>
+							<td>billinfoTaoBao</td>
+							<td>payWay</td>
+							<td>String</td>
+							<td>支付方式</td>
+						</tr>
+						<tr>
+							<td>billinfoTaoBao</td>
+							<td>buyTime</td>
+							<td>String</td>
+							<td>购买时间</td>
+						</tr>
+						<tr>
+							<td>billinfoTaoBao</td>
+							<td>billStatus</td>
+							<td>String</td>
+							<td>订单状态</td>
+						</tr>
+						<tr>
+							<td>billinfoTaoBao</td>
+							<td>loginAccount</td>
+							<td>String</td>
+							<td>登录账户</td>
+						</tr>
+						<tr>
+							<td>billinfoTaoBao</td>
+							<td>receiveAddr</td>
+							<td>String</td>
+							<td>收货地址</td>
+						</tr>
+						<tr>
+							<td>billinfoTaoBao</td>
+							<td>zipCode</td>
+							<td>String</td>
+							<td>邮编</td>
+						</tr>
+						<tr>
+							<td>billinfoTaoBao</td>
+							<td>fixedPhone</td>
+							<td>String</td>
+							<td>固定电话</td>
+						</tr>
+						<tr>
+							<td>billinfoTaoBao</td>
+							<td>phone</td>
+							<td>String</td>
+							<td>手机号</td>
+						</tr>
+						<tr>
+							<td>billinfoTaoBao</td>
+							<td>email</td>
+							<td>String</td>
+							<td>email</td>
+						</tr>
+						<tr>
+							<td>billinfoTaoBao</td>
+							<td>goodsName</td>
+							<td>String</td>
+							<td>商品名称</td>
+						</tr>
+						<tr>
+							<td>alipayPaymentTaoBao</td>
+							<td>payTime</td>
+							<td>String</td>
+							<td>支付时间</td>
+						</tr>
+						<tr>
+							<td>alipayPaymentTaoBao</td>
+							<td>transType</td>
+							<td>String</td>
+							<td>交易类型</td>
+						</tr>
+						<tr>
+							<td>alipayPaymentTaoBao</td>
+							<td>transAccountType</td>
+							<td>String</td>
+							<td>交易账户类型</td>
+						</tr>
+						<tr>
+							<td>alipayPaymentTaoBao</td>
+							<td>transNumber</td>
+							<td>String</td>
+							<td>交易号</td>
+						</tr>
+						<tr>
+							<td>alipayPaymentTaoBao</td>
+							<td>oppsitePerson</td>
+							<td>String</td>
+							<td>接收人</td>
+						</tr>
+						<tr>
+							<td>alipayPaymentTaoBao</td>
+							<td>transAmount</td>
+							<td>String</td>
+							<td>交易金额</td>
+						</tr>
+						<tr>
+							<td>alipayPaymentTaoBao</td>
+							<td>transStatus</td>
+							<td>String</td>
+							<td>交易状态</td>
+						</tr>
+						<tr>
+							<td>alipayPaymentTaoBao</td>
+							<td>alipayAccount</td>
+							<td>String</td>
+							<td>支付宝账户</td>
+						</tr>
+						<tr>
+							<td>addrinfoTaoBao</td>
+							<td>consignee</td>
+							<td>String</td>
+							<td>收货人</td>
+						</tr>
+						<tr>
+							<td>addrinfoTaoBao</td>
+							<td>area</td>
+							<td>String</td>
+							<td>所在地区</td>
+						</tr>
+						<tr>
+							<td>addrinfoTaoBao</td>
+							<td>address</td>
+							<td>String</td>
+							<td>地址</td>
+						</tr>
+						<tr>
+							<td>addrinfoTaoBao</td>
+							<td>phone</td>
+							<td>String</td>
+							<td>手机</td>
+						</tr>
+						<tr>
+							<td>addrinfoTaoBao</td>
+							<td>fixedPhone</td>
+							<td>String</td>
+							<td>固定电话</td>
+						</tr>
+						<tr>
+							<td>addrinfoTaoBao</td>
+							<td>email</td>
+							<td>String</td>
+							<td>email</td>
+						</tr>
+						<tr>
+							<td>addrinfoTaoBao</td>
+							<td>isDefaultAddr</td>
+							<td>String</td>
+							<td>地址信息是否默认地址</td>
+						</tr>
+						<tr>
+							<td>cardinfoTaoBao</td>
+							<td>bankName</td>
+							<td>String</td>
+							<td>银行名称</td>
+						</tr>
+						<tr>
+							<td>cardinfoTaoBao</td>
+							<td>lastNumber</td>
+							<td>String</td>
+							<td>尾号</td>
+						</tr>
+						<tr>
+							<td>cardinfoTaoBao</td>
+							<td>cardType</td>
+							<td>String</td>
+							<td>银行卡类型</td>
+						</tr>
+						<tr>
+							<td>cardinfoTaoBao</td>
+							<td>cardHolder</td>
+							<td>String</td>
+							<td>持卡人姓名</td>
+						</tr>
+						<tr>
+							<td>cardinfoTaoBao</td>
+							<td>phone</td>
+							<td>String</td>
+							<td>手机号</td>
+						</tr>																							
+					</tbody>
+				</table>
+				
+				<h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p>
+				
+				<h3 class="page-header">状态码映射</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>状态码</th>
+							<th>信息</th>
+							<th>解释说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>500</td>
+							<td>success</td>
+							<td>成功</td>
+						</tr>
+						<tr>
+							<td>501</td>
+							<td>taskid is null and idnum is null!</td>
+							<td>参数为空</td>
+						</tr>
+						<tr>
+							<td>502</td>
+							<td>no data was found!</td>
+							<td>查无数据</td>
+						</tr>
+						<tr>
+							<td>503</td>
+							<td>ETL is not excuted!</td>
+							<td>数据处理程序未执行</td>
+						</tr>
+						<tr>
+							<td>504</td>
+							<td>crawler have some problems!</td>
+							<td>该任务爬取程序出现问题</td>
+						</tr>
+						<tr>
+							<td>505</td>
+							<td>taskid not matches idnum!</td>
+							<td>任务号与身份证号不匹配</td>
+						</tr>
+						
+					</tbody>
+				</table>  
+<!--			<h3 class="page-header">返回字段说明</h3>  
+				<div th:replace="components/ETLbackfield :: ETLbackfield"></div> 
+			    
+				<span>备注：</span>
+			    <div th:replace="components/remark :: remark"></div> -->
+			    
+<!--			<h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p> -->
+			    
+			</div>
+		</div>
+		</div>
+		
+		 <div th:include="components/footer :: footer"></div>
+		
+</body>
+</html>

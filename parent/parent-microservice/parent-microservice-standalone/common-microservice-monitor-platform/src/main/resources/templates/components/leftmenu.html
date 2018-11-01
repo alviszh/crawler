@@ -1,0 +1,137 @@
+<div class="panel-group" id="accordion" th:fragment="leftmenu">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseMicroService">微服务</h3>
+		</div>
+		<div id="collapseMicroService"
+			th:class="${isMicroService} == 10 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group" style="margin-bottom:0;">
+				<a class="list-group-item" th:href="@{/tasker/eureka-info}">监控项维护	</a>
+				<a class="list-group-item" th:href="@{/tasker/eureka-info}">服务变动信息</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapse">主机信息</h3>
+		</div>
+		<div id="collapse"
+			th:class="${isRancher} == 10 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a class="list-group-item" th:href="@{/}">监控项维护</a>
+				<a class="list-group-item" th:href="@{/}">超标主机信息</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseMobile">运营商定时任务</h3>
+		</div>
+		<div id="collapseMobile"
+			th:class="${isMobile} == 10 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a class="list-group-item" th:href="@{/}">任务项维护</a>
+				<a class="list-group-item" th:href="@{/}">任务状态跟踪</a>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseBank">网银定时任务</h3>
+		</div>
+		<div id="collapseBank"
+			th:class="${isBank} == 10 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseBank"
+					href="#collapseBankPrecedingRule" class="list-group-item">任务项维护
+				</a>
+				<a data-toggle="collapse" data-parent="#collapseBank"
+					href="#collapseBankPrecedingRule" class="list-group-item">任务状态跟踪
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseDianshang">电商定时任务</h3>
+		</div>
+		<div id="collapseDianshang"
+			th:class="${isDianshang} == 10 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseDianshang"
+					href="#collapseDianshangPrecedingRule" class="list-group-item">任务项维护
+				</a>
+				<a data-toggle="collapse" data-parent="#collapseDianshang"
+					href="#collapseDianshangPrecedingRule" class="list-group-item">任务状态跟踪
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseHousing">公积金定时任务</h3>
+		</div>
+		<div id="collapseHousing"
+			th:class="${isHousing} == 10 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseHousing"
+					href="#collapseHousingPrecedingRule" class="list-group-item">任务项维护
+				</a>
+				<a data-toggle="collapse" data-parent="#collapseHousing"
+					href="#collapseHousingPrecedingRule" class="list-group-item">任务状态跟踪
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseInsurance">社保定时任务</h3>
+		</div>
+		<div id="collapseInsurance"
+			th:class="${isInsurance} == 10 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseInsurance"
+					href="#collapseInsurancePrecedingRule" class="list-group-item">任务项维护
+				</a>
+				<a data-toggle="collapse" data-parent="#collapseInsurance"
+					href="#collapseInsurancePrecedingRule" class="list-group-item">任务状态跟踪
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title" style="cursor: pointer;"
+				data-toggle="collapse" data-parent="#accordion"
+				data-target="#collapseWeb">网站监控</h3>
+		</div>
+		<div id="collapseWeb"
+			th:class="${isWeb} == 10 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+			<div class="list-group">
+				<a data-toggle="collapse" data-parent="#collapseWeb"
+					href="#collapseWebPrecedingRule" class="list-group-item">网站可用性监控
+			    </a>
+				<a data-toggle="collapse" data-parent="#collapseWeb"
+					href="#collapseWebPrecedingRule" class="list-group-item">网站改版情况监控
+			    </a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: '@app.sz.xinjiang.name@'
+  profiles: 
+    active: '@app.mobilecrawlertask.active@'
+  cloud: 
+    config:
+      uri: http://configserver:8000
+      label: master
+  zipkin: 
+    base-url: http://zipkinserver:9411
+  sleuth: 
+    sampler: 
+      probability: 1

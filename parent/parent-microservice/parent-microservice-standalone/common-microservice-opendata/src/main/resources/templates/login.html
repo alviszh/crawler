@@ -1,0 +1,63 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>曦点科技-登录</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/login/login.css}" />
+</head>
+<body style="height: 100%;">
+<div class="g-login-box">
+    <div class="g-login-inner">
+        <form method="post" id="myLoginForm" class="logfr"  th:action="@{/login}">
+            <div class="g-login-block">
+                <div class="login-logo">
+                    <img  th:src="@{/images/login/logo.png?1458581625819}">
+                </div>
+                <div class="company-login-title">
+                    <img  th:src="@{/images/login/login-tit.png?1458581625819}">
+                </div>
+                <div class="personLoginPanel">
+                    <div class="g-field_a">
+                        <input type="text" id="username" name="username" placeholder="输入用户名" AUTOCOMPLETE="off"  class="g-input-tx3">
+                    </div>
+                    <div class="g-field_a">
+                        <input type="password" id="password" name="password" placeholder="输入密码" AUTOCOMPLETE="off"  class="g-input-tx3">
+                        <div class="tex_box"><span class="password closed"></span></div>
+                    </div>
+                   <!--  <div class="g-field_a">
+                        <input type="text" id="vericode" placeholder="输入验证码" class="g-input-tx3">
+                        <img src="" id="captchaImage" onclick="refreshCaptcha();" class="codeimg right" alt="" title="换一张"/>
+                    </div> -->
+                    <div th:if="${param.error}">
+									<div class="alert alert-danger alert-dismissable">
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+										×
+										</button>
+										<span th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></span>
+									</div>
+								</div>
+                    <div class="g-field_a for_pass">
+                        <a>忘记密码,请联系客服!</a>
+                    </div>
+                    <input type=submit id="nextBtn" class="g-btn-login" value="登录">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="ad-pos" id="ad-pos">
+        <!-- <a target="_blank" href="#"> --><img width="1920" height="849" style="border:0px;" th:src="@{/images/login/bg_login.jpg?1458581625819}"><!-- </a> -->
+    </div>
+    <p class="info">© 2018 曦点科技 京 ICP 证 110745 号京公网安备 110108020100x5 号出版物经营许可证</p>
+</div>
+<script th:src="@{/js/login/jquery.min.js}"></script>
+<script th:src="@{/js/login/bootstrap.min.js}"></script>
+<script th:src="@{/js/login/login.js}"></script>
+</body>
+</html>

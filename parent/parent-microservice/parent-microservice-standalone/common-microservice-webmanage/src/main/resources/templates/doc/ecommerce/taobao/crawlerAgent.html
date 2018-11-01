@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">苏宁短信发送接口</h2>
+            <h3 class="page-header">说明</h3>
+            <p>
+                该接口通过输入的手机号，将短信登录验证码发送到手机号中，返回是否成功信息，数据格式为JSON 
+            </p>
+            <h3 class="page-header">URL</h3>
+            <p>
+                http://&lt;project&gt;/suning/login
+            </p>
+            <h3 class="page-header">格式</h3>
+            <p>
+                JSON
+            </p>
+            <h3 class="page-header">HTTP请求方式</h3>
+            <p>
+                POST
+            </p>
+            <h3 class="page-header">请求参数</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>#</th>
+                    <th>必选</th>
+                    <th>类型及范围</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>username</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>接收短信的号码</td>
+                </tr>
+                <tr>
+                    <td>taskid</td>
+                    <td>true</td>
+                    <td>Integer</td>
+                    <td>任务id</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3 class="page-header">注意事项</h3>
+            <ol style="margin-left: 0px;">
+              1.手机号必须为11位手机号。<br/>
+            </ol>
+            <h3 class="page-header">例子</h3>
+            <p>说明：发送登录短信验证码</p>
+            <p>请求：http://10.167.202.217:10008/ds/suning/sendSMS</p>
+            <p>返回：JSON</p>
+            <p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+	"id": 855,
+	"createtime": null,
+	"taskid": "suning006",
+	"phase": "WAIT_CODE",
+	"phase_status": "SUCCESS",
+	"description": "短信验证码已发送，请注意查收",
+	"finished": false,
+	"error_code": 0,
+	"error_message": null,
+}
+				</pre>
+            <h3 class="page-header">返回字段</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>字段名</th>
+                    <th>类型</th>
+                    <th>注释</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>id</td>
+                    <td>String</td>
+                    <td>唯一标识</td>
+                </tr>
+                <tr>
+                    <td>createtime</td>
+                    <td>datetime</td>
+                    <td>创建时间</td>
+                </tr>
+                <tr>
+                    <td>taskid</td>
+                    <td>String</td>
+                    <td>任务id</td>
+                </tr>
+                <tr>
+			         <td>phase</td>
+			         <td>String</td>
+			         <td>当前步骤</td>
+			     </tr>
+			     <tr>
+			         <td>phase_status</td>
+			         <td>String</td>
+			         <td>步骤状态</td>
+			     </tr>
+			     <tr>
+			         <td>description</td>
+			         <td>String</td>
+			         <td>描述</td>
+			     </tr>
+			     <tr>
+			         <td>finished</td>
+			         <td>Boolean</td>
+			         <td>爬虫任务是否全部完成</td>
+			     </tr>
+			     <tr>
+			         <td>error_code</td>
+			         <td>String</td>
+			         <td>错误代码</td>
+			     </tr>
+			     <tr>
+			         <td>error_message</td>
+			         <td>String</td>
+			         <td>错误信息</td>
+			     </tr>
+                </tbody>
+            </table>
+
+            <h3 class="page-header">状态码映射</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>状态码</th>
+                    <th>解释说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>成功</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>失败</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

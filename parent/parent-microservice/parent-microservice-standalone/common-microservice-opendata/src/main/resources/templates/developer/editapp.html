@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- head -->
+<head th:include="components/header :: header">
+<!-- head -->
+<body>
+	<!-- nav -->
+<head th:include="components/nav :: nav">
+<!-- nav -->
+<div class="container-fluid">
+	<div class="row">
+		<!-- left menu -->
+		<head th:include="components/leftmenu_developer :: leftmenu">
+<!-- left menu -->
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<h2 class="sub-header">编辑应用</h2>
+	<div class="row">
+	 	 	<form th:action="@{/developer/app/saveapp}" method="post" id="appform" >
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">应用名称</label>
+			    <input type="text" class="form-control" id="appName" placeholder="请填写应用的名称" name="appName">
+			  </div>
+			  <div class="form-group upload-wrap">
+			    <label for="exampleInputFile">应用图标</label>
+			    <div class="cropped"></div>
+				<input type="file" class="" name="upload-file" id="upload-file" />
+			    <p class="upload-rule">仅支持JPG、GIF、PNG、JPEG、BPM格式，文件小于2M</p>
+			  </div>
+			  <div class="form-group"> 
+			 	<label for="exampleInputFile">选择产品</label>
+			 	<table class="table">
+			 		<caption>请勾选所需产品</caption>
+					<thead>
+						<tr>
+							<th>-</th>
+							<th>产品名称</th>
+							<th>产品简介</th>
+							<th>产品状态</th>
+							<th>版本</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="obj : ${listproduct}"
+							th:classappend="${obj.productStatus.name=='已上线'}?'success':(${obj.productStatus.name=='开发中'}?'info')">
+							<th scope="row"><input type="checkbox" name="position[]"
+								th:value="${obj.id}"
+								th:disabled="${obj.productStatus.name != '已上线'}?'disabled'"></th>
+							<td th:text="${obj.name}"></td>
+							<td th:text="${obj.introduce}"></td>
+							<td th:text="${obj.productStatus.name}"></td>
+							<td th:text="${obj.version}"></td>
+						</tr>
+					</tbody> 
+			 	</table> 
+			  </div> 
+			  <button type="submit" class="btn btn-primary">保存</button>
+			</form>
+	<div class="table-responsive">
+</div>
+	</div>
+</div>
+<head th:include="components/footer :: footer">
+</body>
+<script th:src="@{/js/developer/app.js}"></script>
+</html>

@@ -1,0 +1,47 @@
+server: 
+  port: 1234
+  servlet:
+    context-path: /webmanage
+logging: 
+  file: common-microservice-webmanage-1234.log
+  level: 
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG 
+eureka: 
+  instance: 
+    statusPageUrl: http://localhost:1222/admin
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+      
+#数据源：
+spring:
+  thymeleaf: 
+    cache : false
+  datasource:
+    schema: classpath:/datasource/*.sql
+    initialization-mode: ${datasource.initialization-mode} 
+    continueOnError: true
+    hikari: 
+      minimum-idle: ${datasource.jdbc.minIdle}
+      maximum-pool-size: ${datasource.jdbc.maxPoolSize}
+    driver-class-name: ${datasource.jdbc.driver}
+    url: ${datasource.jdbc.url}
+    username: ${datasource.jdbc.username}
+    password: ${datasource.jdbc.password}
+    type: ${datasource.jdbc.type}
+  jpa: 
+    show-sql: false
+    hibernate: 
+        ddl-auto: update 
+        naming: 
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+    properties:  
+      hibernate:  
+#       dialect: com.microservice.persistence.SRDB10Dialect
+        dialect: ${datasource.jdbc.dialect}
+#       dialect: org.hibernate.dialect.MySQLDialect
+        temp:
+          use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法为实现
+          
+

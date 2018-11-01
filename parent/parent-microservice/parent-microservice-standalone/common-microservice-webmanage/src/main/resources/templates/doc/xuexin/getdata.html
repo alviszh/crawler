@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">学信网账号获取数据接口</h2>
+            <h3 class="page-header">说明</h3>
+            <p>
+                该接口通过输入传入taskid及账号密码，返回是否成功信息，数据格式为JSON 
+            </p>
+            <h3 class="page-header">URL</h3>
+            <p>
+                http://&lt;project&gt;/xuexin/login
+            </p>
+            <h3 class="page-header">格式</h3>
+            <p>
+                JSON
+            </p>
+            <h3 class="page-header">HTTP请求方式</h3>
+            <p>
+                POST
+            </p>
+            <h3 class="page-header">请求参数</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>#</th>
+                    <th>必选</th>
+                    <th>类型及范围</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>username</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>用户名</td>
+                </tr>
+                <tr>
+                    <td>password</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>登录密码</td>
+                </tr>
+                <tr>
+                    <td>taskid</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>任务id</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3 class="page-header">例子</h3>
+            <p>说明：获取学信网数据</p>
+            <p>请求：http://10.167.202.231:9150/xuexin/getAllData</p>
+            <p>返回：JSON</p>
+            <p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+    "id": 8,
+    "createtime": null,
+    "taskid": "xuexin123",
+    "cookies": null,
+    "phase": "CRAWLER",
+    "phase_status": "DOING",
+    "description": "正在采集数据。。。",
+    "finished": null,
+    "error_code": null,
+    "error_message": null,
+    "etltime": null,
+    "param": null,
+    "loginName": null,
+    "crawlerHost": null,
+    "crawlerPort": null,
+    "webdriverHandle": null,
+    "loginInfo": null,
+    "education_status": null,
+    "school_status": null
+}
+				</pre>
+            <h3 class="page-header">返回字段</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>字段名</th>
+                    <th>类型</th>
+                    <th>注释</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>id</td>
+                    <td>String</td>
+                    <td>唯一标识</td>
+                </tr>
+                <tr>
+                    <td>createtime</td>
+                    <td>datetime</td>
+                    <td>创建时间</td>
+                </tr>
+                <tr>
+                    <td>taskid</td>
+                    <td>String</td>
+                    <td>任务id</td>
+                </tr>
+                <tr>
+			         <td>cookies</td>
+			         <td>String</td>
+			         <td>cookies</td>
+			     </tr>
+			     <tr>
+			         <td>phase</td>
+			         <td>String</td>
+			         <td>当前步骤</td>
+			     </tr>
+			     <tr>
+			         <td>phase_status</td>
+			         <td>String</td>
+			         <td>步骤状态</td>
+			     </tr>
+			     <tr>
+			         <td>description</td>
+			         <td>String</td>
+			         <td>描述</td>
+			     </tr>
+			     <tr>
+			         <td>finished</td>
+			         <td>Boolean</td>
+			         <td>爬虫任务是否全部完成</td>
+			     </tr>
+			     <tr>
+			         <td>error_code</td>
+			         <td>Integer</td>
+			         <td>错误代码</td>
+			     </tr>
+			     <tr>
+			         <td>error_message</td>
+			         <td>String</td>
+			         <td>错误信息</td>
+			     </tr>
+			     <tr>
+			         <td>etltime</td>
+			         <td>Date</td>
+			         <td>统一数据时间</td>
+			     </tr>
+			     <tr>
+			         <td>param</td>
+			         <td>String</td>
+			         <td>爬取中需要的参数</td>
+			     </tr>
+			     <tr>
+			         <td>param</td>
+			         <td>String</td>
+			         <td>爬取中需要的参数</td>
+			     </tr>
+			     <tr>
+			         <td>loginName</td>
+			         <td>String</td>
+			         <td>登录名</td>
+			     </tr>
+			     <tr>
+			         <td>crawlerHost</td>
+			         <td>String</td>
+			         <td>爬虫节点的IP或hostname</td>
+			     </tr>
+			     <tr>
+			         <td>crawlerPort</td>
+			         <td>String</td>
+			         <td>爬虫节点的端口</td>
+			     </tr>
+			     <tr>
+			         <td>webdriverHandle</td>
+			         <td>String</td>
+			         <td></td>
+			     </tr>
+			     <tr>
+			         <td>loginInfo</td>
+			         <td>String</td>
+			         <td>登录信息</td>
+			     </tr>
+			     <tr>
+			         <td>education_status</td>
+			         <td>Integer</td>
+			         <td>学历信息状态</td>
+			     </tr>
+			     <tr>
+			         <td>school_status</td>
+			         <td>Integer</td>
+			         <td>学籍信息状态</td>
+			     </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

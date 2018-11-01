@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">电话号码查询接口</h2>
+				<h3 class="page-header">说明</h3>
+				<p>
+					该接口通过输入身份证号码，来获取该身份证所属的所有电话号码。 
+				</p>
+				<h3 class="page-header">URL</h3>
+				<p>
+					http://uat.admin.txboss.txtechnologies.com/data/carrier/tasks/getphonenum 
+				</p>
+				<h3 class="page-header">格式</h3>
+				<p>
+					JSON   
+				</p>
+				<h3 class="page-header">HTTP请求方式</h3>
+				<p>
+					GET   
+				</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>#</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>idnum</td>
+							<td>true</td>
+							<td>String</td>
+							<td>身份证号</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="page-header">注意事项</h3>
+				<ol style="margin-left: 0px;">
+					<li>身份证号必须合法，并不能为空</li>
+				</ol>
+				   
+				<h3 class="page-header">例子</h3>
+				<p>说明：查询所属该身份证的所有电话号码</p>
+				<p>请求：http://uat.admin.txboss.txtechnologies.com/data/carrier/tasks/getphonenum?idnum=130984199210023312</p>
+				<p>返回：JSON</p>
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+  "idnum": "130984199210023312",
+  "phoneNumbers": [
+    "18618135874",
+    "18618135875"
+  ],
+  "message": "success",
+  "createtime": 1503048363734,
+  "errorCode": 800
+}
+				</pre>
+				<h3 class="page-header">返回字段</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>字段名</th>
+							<th>类型</th>
+							<th>注释</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>idnum</td>
+							<td>String</td>
+							<td>身份证号</td>
+						</tr>
+						<tr>
+							<td>phoneNumbers</td>
+							<td>String</td>
+							<td>电话号</td>
+						</tr>
+						<tr>
+							<td>message</td>
+							<td>String</td>
+							<td>状态消息</td>
+						</tr>
+						<tr>
+							<td>errorCode</td>
+							<td>String</td>
+							<td>状态码</td>
+						</tr>
+						<tr>
+							<td>createtime</td>
+							<td>timestamp</td>
+							<td>当前时间戳</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<h3 class="page-header">状态码映射</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>状态码</th>
+							<th>信息</th>
+							<th>解释说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>800</td>
+							<td>success</td>
+							<td>成功</td>
+						</tr>
+						<tr>
+							<td>807</td>
+							<td>ID is null,please check!</td>
+							<td>身份证号为空</td>
+						</tr>
+						<tr>
+							<td>808</td>
+							<td>there is no phonenumber according to this ID !</td>
+							<td>该身份证号无对应电话号</td>
+						</tr>
+						<tr>
+							<td>809</td>
+							<td>this ID is not in database !</td>
+							<td>该身份证在数据库中不存在</td>
+						</tr>	
+					</tbody>
+				</table>  
+<!--			<h3 class="page-header">返回字段说明</h3>  
+				<div th:replace="components/ETLbackfield :: ETLbackfield"></div> 
+			    
+				<span>备注：</span>
+			    <div th:replace="components/remark :: remark"></div> -->
+			    
+<!--			<h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p> -->
+			    
+			</div>
+		</div>
+		</div>
+		
+		 <div th:include="components/footer :: footer"></div>
+		
+</body>
+</html>

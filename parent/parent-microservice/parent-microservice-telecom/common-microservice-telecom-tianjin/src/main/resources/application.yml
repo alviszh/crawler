@@ -1,0 +1,65 @@
+server:
+  port: 30148
+logging:
+  file: common-microservice-telecom-tianjin-30148.log
+  level: 
+    com.gargoylesoftware.htmlunit.javascript.StrictErrorReporter : OFF
+    com.gargoylesoftware.htmlunit.javascript.host.ActiveXObject : OFF
+    com.gargoylesoftware.htmlunit.host.html.HTMLDocument : OFF
+    com.gargoylesoftware.htmlunit.html.HtmlScript : OFF
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG
+management: 
+  security: 
+    enabled: false
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaserver:8888/eureka/
+#      defaultZone: ${defaultZone}
+
+---
+#数据源：
+spring:
+  cloud:
+    stream:
+      bindings: 
+        output:                            # 频道名称（根据具体模块来命名）
+          destination: carrier-topic-01                
+          binder: kafka_binder
+      binders: 
+        kafka_binder: 
+          type: kafka 
+          environment:
+            spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
+            spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes} 
+  datasource:
+    separator: ;;
+    schema: classpath:/datasource/*.sql
+    initialization-mode: ${datasource.initialization-mode}  
+    continueOnError: false
+    hikari: 
+      minimum-idle: ${datasource.jdbc.minIdle}
+      maximum-pool-size: ${datasource.jdbc.maxPoolSize}
+    driver-class-name: ${datasource.jdbc.driver}
+    url: ${datasource.jdbc.url}
+    schema-username: ${datasource.jdbc.username}
+    schema-password: ${datasource.jdbc.password}
+    username: ${datasource.jdbc.username}
+    password: ${datasource.jdbc.password}
+    type: ${datasource.jdbc.type}
+  jpa: 
+    show-sql: false
+    hibernate: 
+        #创建数据库使用
+        ddl-auto: update
+        naming:
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl 
+    properties:  
+      hibernate:  
+#       dialect: com.microservice.persistence.SRDB10Dialect
+        dialect: ${datasource.jdbc.dialect}
+#       dialect: org.hibernate.dialect.MySQLDialect
+        temp: 
+          use_jdbc_metadata_defaults: false
+          

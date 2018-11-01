@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- head -->
+<head th:include="components/header :: header">
+<!-- head -->
+<body>
+	<!-- nav -->
+<head th:include="components/nav :: nav">
+<!-- nav -->
+<div class="container-fluid">
+	<div class="row">
+		<!-- left menu -->
+		<head th:include="components/leftmenu_developer :: leftmenu">
+<!-- left menu -->
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<h2 class="sub-header" th:text="${title}" ></h2>
+	<div class="row">
+		<blockquote>
+			<p>App Key</p>
+			<footer th:text="${client_id}"></footer>
+		</blockquote>
+		<blockquote>
+			<p>App Secret</p>
+			<footer th:text="${client_secret}"></footer>
+		</blockquote>
+		<blockquote>
+			<p>Token</p>
+			<footer th:text="${token}"></footer>
+		</blockquote>
+		<div class="form-group">
+			<label for="exampleInputFile">回调配置</label>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>产品名称</th>
+						<th>状态</th>
+						<th>开通时间</th>
+						<th>回调配置</th>
+						<th>API测试</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="obj : ${app.productlist}">
+						<td th:text="${obj.product.name}"></td>
+						<td th:text="${obj.productStatus.name}"></td>
+						<td th:text="${#strings.substring(obj.createtime,0,10)}" ></td>
+						<td><button type="button" class="btn btn-primary"
+								data-toggle="modal" data-target=".bs-example-modal-lg"
+								data-whatever="@mdo" th:id = "showconfigure+${obj.id}"  th:data-appProductListId="${obj.id}">回调配置</button></td>
+						<td><a th:href="@{/developer/app/apitest/pbccrc}"><button type="button" class="btn btn-default">API测试</button></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div> 
+
+	<!-- model start-->
+	
+<div id="appProductListModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+     <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">回调配置</h4>
+      </div>
+      <div class="modal-body">
+
+      		<div class="panel panel-info">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">温馨提示</h3>
+			  </div>
+			  <div class="panel-body">
+			    <ul>
+				  <li>如果您的服务器需要配置白名单，请查看沙箱/生产环境的“白名单配置”，并将给出的ip添加至您的服务器.</li>
+				  <li>如果您的回调地址是https的，且需要签名认证，请联系开发人员.</li>
+				  <li>回调的response status＝201，才认为是回调成功了.</li>
+				  <li>如何设置response status？</li>
+				  	<ul> 
+					  <li>1、java方式： response.setStatus(201);</li>
+					  <li>2、PHP方式：header("HTTP/1.1 201 Created");</li>
+					</ul>
+				  <li><mark>回调requestbody内参数仅供样例结构展示，请勿直接使用样例参数测试"获取数据接口"能否调通， 须使用真实授权创建的任务测试其他数据接口.</mark></li>
+				</ul>
+			  </div>
+			</div>
+			 <input type="hidden" id="appProductListId" name="appProductListId" >
+			<blockquote>
+			  <p>通知回调配置</p> 
+			</blockquote>
+
+			<form class="form-inline">
+			  <div class="form-group"  style="width:90%">
+			    <label class="sr-only" for="exampleInputAmount">任务创建通知接口</label>
+			    <div class="input-group" style="width:100%">
+			      <div class="input-group-addon" style="width:10%">任务创建通知接口</div>
+			      <input type="text" class="form-control" id="task_notice_url"  name = "task_notice_url" placeholder="https://uatapitxboss.txtechnologies.com:9018/h5/auth">  
+			    </div>  
+			  </div>
+			  <button type="submit" class="btn btn-primary">测试</button> 
+			</form>
+			<span id="helpBlock" class="help-block">(URL必须以http://或https://开头。在客户提交任务后发出的通知，以便服务器端可以把状态变为认证中)</span>
+			<div class="panel panel-success"> 
+				<div class="panel-heading"> 
+					<h3 class="panel-title">Success！ HTTP status code 201</h3> 
+				</div> 
+				<div class="panel-body">
+					<div class="form-group">
+			            <label for="message-text" class="control-label">Response Body:</label>
+			            <textarea class="form-control" id="message-text" rows="7" style=>
+<html>
+  <body>
+    <h1>503 Service Unavailable</h1>
+    No server is available to handle this request.
+  </body>
+</html>
+			            </textarea>
+			        </div>
+			        <label for="message-text" class="control-label">&nbsp;Request Headers:</label>
+			        <dl class="dl-horizontal">
+					  <dt>Connection:</dt><dd>keep-alive</dd>
+					  <dt>Content-Type:</dt><dd>application/json;charset=utf-8</dd>
+					  <dt>X-Xidian-Profile:</dt><dd>test</dd>
+					  <dt>X-Xidian-Event:</dt><dd>task</dd>
+					  <dt>X-Xidian-Type:</dt><dd>carrier</dd>
+					  <dt>X-Xidian-Signature:</dt><dd>IKBAfrRQnb7CMpsbQnFJVgN1LGzPgXdzYjU2uUGqRxw=</dd>
+					  <dt>X-Xidian-Uid:</dt><dd>52590a85-bdfd-4cf7-9f62-6ef846871547</dd>
+					</dl>
+			        <div class="form-group">
+			            <label for="message-text" class="control-label">Request Body:</label>
+			            <textarea class="form-control" id="message-text" rows="7" style=>
+{
+  "user_id": "1378877432",
+  "task_id": "e0af20b2-9183-4499-bd35-76f084a61ebe",
+  "email": "562582986@qq.com",
+  "timestamp": 1476243311084
+}
+			            </textarea>
+			        </div>
+				</div> 
+			</div>
+			<!--  -->
+			<form class="form-inline">
+			  <div class="form-group"  style="width:90%">
+			    <label class="sr-only" for="exampleInputAmount">授权结果通知接口</label>
+			    <div class="input-group" style="width:100%">
+			      <div class="input-group-addon" style="width:10%">授权结果通知接口</div>
+			      <input type="text" class="form-control" id="login_notice_url" name = "login_notice_url"  placeholder="https://uatapitxboss.txtechnologies.com:9018/h5/auth">  
+			    </div>  
+			  </div>
+			  <button type="submit" class="btn btn-primary">测试</button>
+			</form>
+			<span id="helpBlock" class="help-block">(URL必须以http://或https://开头。登录完成后通知录成功或者失败（失败会有失败原因）。对应文档中描述的任务通知或任务创建通知)</span>
+<div class="panel panel-danger"> 
+				<div class="panel-heading"> 
+					<h3 class="panel-title">ERROR！ HTTP status code 503</h3> 
+				</div> 
+				<div class="panel-body">
+					<div class="form-group">
+			            <label for="message-text" class="control-label">Response Body:</label>
+			            <textarea class="form-control" id="message-text" rows="7" style=>
+<html>
+  <body>
+    <h1>503 Service Unavailable</h1>
+    No server is available to handle this request.
+  </body>
+</html>
+			            </textarea>
+			        </div>
+			        <label for="message-text" class="control-label">&nbsp;Request Headers:</label>
+			        <dl class="dl-horizontal">
+					  <dt>Connection:</dt><dd>keep-alive</dd>
+					  <dt>Content-Type:</dt><dd>application/json;charset=utf-8</dd>
+					  <dt>X-Xidian-Event:</dt><dd>task.submit</dd>
+					  <dt>X-Xidian-Type:</dt><dd>email</dd>
+					  <dt>X-Xidian-Signature:</dt><dd>IKBAfrRQnb7CMpsbQnFJVgN1LGzPgXdzYjU2uUGqRxw=</dd>
+					  <dt>X-Xidian-Uid:</dt><dd>52590a85-bdfd-4cf7-9f62-6ef846871547</dd>
+					</dl>
+			        <div class="form-group">
+			            <label for="message-text" class="control-label">Request Body:</label>
+			            <textarea class="form-control" id="message-text" rows="7" style=>
+{
+  "user_id": "1378877432",
+  "task_id": "e0af20b2-9183-4499-bd35-76f084a61ebe",
+  "email": "562582986@qq.com",
+  "timestamp": 1476243311084
+}
+			            </textarea>
+			        </div>
+				</div> 
+			</div>
+			<!--  -->
+			<form class="form-inline">
+			  <div class="form-group"  style="width:90%">
+			    <label class="sr-only" for="exampleInputAmount">采集结果通知接口</label>
+			    <div class="input-group" style="width:100%">
+			      <div class="input-group-addon" style="width:10%">采集结果通知接口</div>
+			      <input type="text" class="form-control" id="crawler_notice_url" name = "crawler_notice_url" placeholder="https://uatapitxboss.txtechnologies.com:9018/h5/auth">  
+			    </div>  
+			  </div>
+			  <button type="submit" class="btn btn-primary">测试</button>
+			</form>
+			<span id="helpBlock" class="help-block">(URL必须以http://或https://开头。采集完成以后的通知，收到此通知，表示任务成功完成了)</span>
+			
+			<form class="form-inline">
+			  <div class="form-group"  style="width:90%">
+			    <label class="sr-only" for="exampleInputAmount">报告生成通知接口</label>
+			    <div class="input-group" style="width:100%">
+			      <div class="input-group-addon" style="width:10%">报告生成通知接口</div>
+			      <input type="text" class="form-control" id="report_notice_url" name = "report_notice_url" placeholder="https://uatapitxboss.txtechnologies.com:9018/h5/auth">  
+			    </div>  
+			  </div>
+			  <button type="submit" class="btn btn-primary">测试</button>
+			</form>
+			<span id="helpBlock" class="help-block">(URL必须以http://或https://开头),采集完成后，对客户的数据进行分析后的一个报告</span>
+
+			<blockquote>
+			  <p>回调参数配置</p> 
+			</blockquote>
+			<form class="form-inline">
+			  <input type="hidden" id="callbackParamsId1" name="callbackParamsId1" >
+			  <label>
+			      	回调参数1
+			  </label>
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputEmail3">Key</label>
+			    <input type="text" class="form-control" id="callbackParamsKey1" placeholder="Key">
+			  </div>
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputPassword3">Value</label>
+			    <input type="text" class="form-control" id="callbackParamsValue1" placeholder="Value">
+			  </div>  
+			</form>
+			</br>
+			<form class="form-inline">
+			  <input type="hidden" id="callbackParamsId2" name="callbackParamsId2" >
+			  <label>
+			      	回调参数2
+			  </label>
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputEmail3">Key</label>
+			    <input type="text" class="form-control" id="callbackParamsKey2" placeholder="Key">
+			  </div>
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputPassword3">Value</label>
+			    <input type="text" class="form-control" id="callbackParamsValue2" placeholder="Value">
+			  </div>  
+			</form>
+			</br>
+			<form class="form-inline">
+			  <input type="hidden" id="callbackParamsId3" name="callbackParamsId3" >
+			  <label>
+			      	 回调参数3
+			  </label>
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputEmail3">Key</label>
+			    <input type="text" class="form-control" id="callbackParamsKey3" placeholder="Key">
+			  </div>
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputPassword3">Value</label>
+			    <input type="text" class="form-control" id="callbackParamsValue3" placeholder="Value">
+			  </div>  
+			</form>
+			<br></br>
+			<form class="form-inline">
+			 <input type="hidden" id="callbackParamsId4" name="callbackParamsId4" >
+			  <label>
+			      	回调参数4
+			  </label>
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputEmail3">Key</label>
+			    <input type="text" class="form-control" id="callbackParamsKey4" placeholder="Key">
+			  </div>
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputPassword3">Value</label>
+			    <input type="text" class="form-control" id="callbackParamsValue4" placeholder="Value">
+			  </div>  
+			</form>
+			<br></br>
+			<form class="form-inline">
+			   <input type="hidden" id="callbackParamsId5" name="callbackParamsId5" >
+			  <label>
+			     	回调参数5
+			  </label>
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputEmail3">Key</label>
+			    <input type="text" class="form-control" id="callbackParamsKey5" placeholder="Key">
+			  </div>
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputPassword3">Value</label>
+			    <input type="text" class="form-control" id="callbackParamsValue5" placeholder="Value">
+			  </div>  
+			</form>
+			<br></br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" id=modifyApp class="btn btn-primary">保存</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+		<!-- model end-->
+		<!-- <button type="submit" class="btn btn-primary">添加产品</button> -->
+
+		<div class="table-responsive"></div>
+	</div>
+</div>
+<!-- <form  id="appProductListform"></form> -->
+   			
+		<head th:include="components/footer :: footer">
+		</body>
+<script th:src="@{/js/developer/appdetails.js}"></script>
+</html>

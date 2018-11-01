@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+
+</head>
+<body onload="asyncLoading();">
+<nav class="navbar navbar-default alert-info  navbar-fixed-top" style="height: 50px;"  role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header" style="height: 50px">
+            <a href="javascript:history.go(-1);" class="navbar-brand"><span
+                    class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </a>
+            <p class="navbar-brand" ><span>选择社保城市</span></p>
+        </div>
+        <!--<div class="navbar-text" style="padding-top: 1px;">
+            <div class="input-group input-group-sm " style="width: 80%;">
+                <span class="input-group-addon" id="sizing-addon3" ><i class="glyphicon glyphicon-search"></i></span>
+                <input type="text" class="form-control" placeholder="搜索" aria-describedby="sizing-addon3"/>
+            </div>
+        </div>-->
+    </div>
+</nav>
+<div id="br"></div>
+
+<div class="container">
+    <div id="letter" ></div><!--显示字母-->
+    <!--<div role="navigation">-->
+    <input type="hidden" id="themeColor" name="themeColor"  th:value="${themeColor}"/>
+    <input type="hidden" id="topHide" name="topHide" th:value="${topHide}"/>
+    <!--<input type="hidden" id="themeColor" name="themeColor" value="5bc0de"/>-->
+    <!--<input type="hidden" id="topHide" name="topHide" value="false"/>-->
+    <input type="hidden" id="taskId" name="taskId" th:value="${taskInsurance.taskid}"/>
+    <input type="hidden" id="name"   name="name" th:value="${insuranceJsonBean.username}"/>
+    <input type="hidden" id="idnum" name="idnum" th:value="${insuranceJsonBean.idnum}"/>
+    <div class="d-search">
+        <span class="search_img"></span>
+        <input id="search_text"  autocomplete="off"  type="text" placeholder="输入城市名，拼音或首字母查询"/>
+    </div>
+    <div class="cur_city">
+        <div>
+            <a href="#"  class="list-group-item" name="num_name" id="c_city">
+                当前城市<img src="data:image/png;base64,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" class="city_location_img"><span style="float: right"></span>
+            </a>
+        </div>
+    </div>
+    <div class="list-group" id="sort_box">
+        <!--<div class="sort_list">
+            <a href="#" class="list-group-item" name="num_name" id="1">北京市</a>
+        </div>
+        <div class="sort_list">
+            <a href="#" class="list-group-item disabled" name="num_name" style="background-color:#f5f5f5">成都</a>
+        </div>-->
+        <!--<div class="sort_list">
+            <a href="#" class="list-group-item" name="num_name">上海市</a>
+        </div>-->
+        <!--<div class="sort_list">
+            <a href="#" class="list-group-item" name="num_name">深圳市</a>
+        </div>-->
+    </div>
+    <!--</div>-->
+    <div class="initials" id="initials" style="position:absolute;">
+        <ul>
+            <!--<li><img src="/h5/images/068.png"/></li>-->
+        </ul>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+<script src="/h5/insur/js/citys.js"></script>
+<script>
+    /**
+     * 异步加载
+     */
+    function asyncLoading()
+    {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://api.map.baidu.com/location/ip?ak=mQ22PMVGHGuUQU48BVYhv5ut&callback=initMap&callback=locate";
+        document.body.appendChild(script);
+    }
+
+    /**
+     * 初始化地图
+     */
+    function locate(data) {
+        // 定位的地址信息 根据需要写入对象属性
+        var locationInfo = {
+            // 省份
+            province: data.content.address_detail.province,
+            // 城市
+            city: data.content.address_detail.city
+        }
+        $('#c_city span').text(locationInfo.city);
+        console.log("检查到您的城市为"+ locationInfo.city);
+    }
+
+//    var geolocation = new BMap.Geolocation();
+//    var gc = new BMap.Geocoder();
+//
+//    geolocation.getCurrentPosition( function(r) {   //定位结果对象会传递给r变量
+//
+//                if(this.getStatus() == BMAP_STATUS_SUCCESS)
+//                {  //通过Geolocation类的getStatus()可以判断是否成功定位。
+//                    var pt = r.point;
+//                    gc.getLocation(pt, function(rs){
+//                        var addComp = rs.addressComponents;
+//                        alert(addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber);
+//                    });
+//                }
+//                else
+//                {
+//                    //关于状态码
+//                    //BMAP_STATUS_SUCCESS   检索成功。对应数值“0”。
+//                    //BMAP_STATUS_CITY_LIST 城市列表。对应数值“1”。
+//                    //BMAP_STATUS_UNKNOWN_LOCATION  位置结果未知。对应数值“2”。
+//                    //BMAP_STATUS_UNKNOWN_ROUTE 导航结果未知。对应数值“3”。
+//                    //BMAP_STATUS_INVALID_KEY   非法密钥。对应数值“4”。
+//                    //BMAP_STATUS_INVALID_REQUEST   非法请求。对应数值“5”。
+//                    //BMAP_STATUS_PERMISSION_DENIED 没有权限。对应数值“6”。(自 1.1 新增)
+//                    //BMAP_STATUS_SERVICE_UNAVAILABLE   服务不可用。对应数值“7”。(自 1.1 新增)
+//                    //BMAP_STATUS_TIMEOUT   超时。对应数值“8”。(自 1.1 新增)
+//                    switch( this.getStatus() )
+//                    {
+//                        case 2:
+//                            alert( '位置结果未知 获取位置失败.' );
+//                            break;
+//                        case 3:
+//                            alert( '导航结果未知 获取位置失败..' );
+//                            break;
+//                        case 4:
+//                            alert( '非法密钥 获取位置失败.' );
+//                            break;
+//                        case 5:
+//                            alert( '对不起,非法请求位置  获取位置失败.' );
+//                            break;
+//                        case 6:
+//                            alert( '对不起,当前 没有权限 获取位置失败.' );
+//                            break;
+//                        case 7:
+//                            alert( '对不起,服务不可用 获取位置失败.' );
+//                            break;
+//                        case 8:
+//                            alert( '对不起,请求超时 获取位置失败.' );
+//                            break;
+//
+//                    }
+//                }
+//
+//            },
+//            {enableHighAccuracy: true}
+//    )
+</script>
+</body>
+</html>

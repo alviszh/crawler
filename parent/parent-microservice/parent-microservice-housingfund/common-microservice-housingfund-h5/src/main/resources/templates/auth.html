@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<!--<script th:src="@{../js/xx.js}"></script>display: none;display: block-->
+<body>
+<nav class="navbar navbar-default alert-info" style="height: 50px;">
+    <div class="container-fluid">
+        <div class="navbar-header" style="height: 50px;">
+            <a href="javascript:history.go(-1);" class="navbar-brand"><span
+                    class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </a>
+            <p class="navbar-brand" ><span>公积金管理</span></p>
+        </div>
+    </div>
+</nav>
+<div id="br"></div>
+<div class="container">
+    <form class="bs-example-form" data-example-id="simple-input-groups" action="/h5/fund/citys" method="get"
+            id="authform">
+        <input type="hidden" th:value="${themeColor}" id="themeColor" name="themeColor"/>
+        <input type="hidden" th:value="${topHide}" id="topHide" name="topHide"/>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="basic-addon1">姓<zw style="visibility: hidden">占位</zw>名：</span> <input
+                type="text" class="form-control" id="username" name="username"
+                aria-describedby="basic-addon1" th:placeholder="请输入姓名"
+                data-validation="required" data-validation-error-msg=" "/>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="basic-addon3">身份证号：</span> <input
+                type="text" class="form-control" th:value="${idnum}" id="idnum" name="idnum"
+                aria-describedby="basic-addon3" maxlength="20" th:placeholder="请输入身份证号"/>
+        </div>
+        <!--<button type="submit" class="btn btn-lg btn-block btn-info">下一步</button>-->
+        <a href="#" class="btn btn-lg btn-block btn-info disabled" role="button" id="nextBtn">下一步</a>
+
+        <div class="prompt">
+            <!--<small class="form-text text-muted">温馨提示：<br />
+            </small>-->
+        </div>
+    </form>
+    <!--消息框-->
+    <div th:include="components/footer :: message"></div>
+</div>
+<div th:include="components/footer :: footer"></div>
+</body>
+<script src="/h5/fund/js/auth.js"></script>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- head -->
+<head th:include="components/header :: header">
+<!-- head -->
+<body>
+	<!-- nav -->
+<head th:include="components/nav :: nav">
+<!-- nav -->
+<div class="container-fluid">
+	<div class="row">
+		<!-- left menu -->
+		<head th:include="components/leftmenu_developer :: leftmenu">
+<!-- left menu -->
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<h2 class="sub-header">应用详情</h2> 
+	<div class="row">
+			<blockquote>
+			  <p>应用名称</p>
+			  <footer th:text="${app.appName}"></footer>
+			</blockquote>
+			<blockquote>
+			  <p>应用ID（App ID）</p>
+			  <footer th:text="${app.appId}"></footer>
+			</blockquote>
+			<blockquote>
+			  <p>应用图标</p>
+			  <footer><img class="img-thumbnail"
+						th:src="${app.icon}"
+						data-holder-rendered="true" style="width: 100px; height: 100px;"></footer>
+			</blockquote>
+			<blockquote>
+			  <p>创建时间</p>
+			  <footer th:text="${#strings.substring(app.createtime,0,10)}"></footer>
+			</blockquote>
+			<form th:action="@{/developer/app/applyonline}" method="post" id="addproduct">
+			<input type="hidden" name="appId"  th:value="${app.appId}">
+			  <div class="form-group"> 
+			 	<label for="exampleInputFile">选择产品</label>
+			 	<table class="table">
+			 		<caption>请勾选所需产品</caption>
+			 		<thead>
+						<tr>
+							<th>-</th>
+							<th>产品名称</th>
+							<th>产品简介</th>
+							<th>产品状态</th>
+							<th>版本</th>
+						</tr>
+					</thead>
+			 		<tbody>
+					<tr th:each="obj : ${app.productlist}">
+						<th scope="row"><input type="checkbox" name="position[]"
+							th:value="${obj.id}"></th>
+						<td th:text="${obj.product.name}"></td>
+						<td th:text="${obj.product.introduce}"></td>
+						<td th:text="${obj.productStatus.name}"></td>
+						<td th:text="${obj.product.version}"></td>
+					</tr>
+				</tbody> 
+			 	</table> 
+			  </div> 
+			  <button type="button" class="btn btn-primary" data-toggle="modal"
+						data-target="#myModal">添加产品</button> 
+			  <button type="submit" class="btn btn-default">申请上线</button>
+		 	</form>
+	<div class="table-responsive">
+</div>
+	</div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+		<form th:action="@{/developer/app/addproduct}" method="post" id="addproduct">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">添加产品</h4>
+                <input type="hidden" name="appId"  th:value="${app.appId}">
+            </div>
+            <div class="modal-body">
+			 	<table class="table">
+			 		<thead>
+						<tr>
+							<th>-</th>
+							<th>产品名称</th>
+							<th>产品简介</th>
+							<th>产品状态</th>
+							<th>版本</th>
+						</tr>
+					</thead>
+			 		<tbody>
+					<tr th:each="obj : ${differenceSet}">
+						<th scope="row"><input type="checkbox" name="addposition[]"
+							th:value="${obj.id}" th:disabled="${obj.productStatus.name != '已上线'}?'disabled'"></th>
+						<td th:text="${obj.name}"></td>
+						<td th:text="${obj.introduce}"></td>
+						<td th:text="${obj.productStatus.name}"></td>
+						<td th:text="${obj.version}"></td>
+					</tr>
+				</tbody> 
+			 	</table> 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="submit" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div> 
+
+<head th:include="components/footer :: footer">
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">获取网银报告-贷乎</h2>
+            <h3 class="page-header">说明</h3>
+            <p>
+                调用该接口可以根据爬虫任务ID获取获取用户的网银报告。
+            </p>
+            <h3 class="page-header">URL</h3>
+            <p>
+                http://&lt;project&gt;/h5/bank/getReportDaihu
+            </p>
+            <h3 class="page-header">格式</h3>
+            <p>
+                JSON
+            </p>
+            <h3 class="page-header">HTTP请求方式</h3>
+            <p>
+                GET
+            </p>
+            <h3 class="page-header">请求参数</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>#</th>
+                    <th>必选</th>
+                    <th>类型及范围</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>wangyinTaskId</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>网银唯一标识</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3 class="page-header">注意事项</h3>
+            <ol style="margin-left: 0px;">
+            </ol>
+            <h3 class="page-header">例子</h3>
+            <p>说明：调用本接口，获取用户的网银报告。</p>
+            <p>请求：https://uatapitxboss.txtechnologies.com:9018/h5/bank/getReportDaihu</p>
+            <p>返回：JSON</p>
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+    
+    "onlineBankDetail": {
+					    "tradeTime":"2018-01-01 23:22:00",
+					    "payment":"100",
+					    "deposit":"100",
+					    "abstracts":"自动还款",
+					    "balance":"100",
+					    "tradeType":"支付宝转账",
+					    "tradePlace":"网上银行",
+					    "otherAccount":"***********",
+					    "otherAccountName":"张三",
+					    "otherAccountBank":"工商银行",
+					    "bankCard":"************1564",
+					    "orderIndex":"100"
+    },
+    "onlineBankParent": {
+					     "bankName":"工商银行",
+					     "bankCard":"************1564",
+					     "userName":"张三",
+					     "reportResult":"",
+					     "reportUrl":"",
+    }
+    
+}
+				</pre>
+
+				<h3 class="page-header">返回字段</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>对象名</th>
+							<th>字段名</th>
+							<th>类型</th>
+							<th>注释</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>onlineBankDetail（网银数据信息）</td>
+							<td>tradeTime</td>
+							<td>String</td>
+							<td>交易时间</td>
+						</tr>
+						<tr>
+							<td>onlineBankDetail（网银数据信息）</td>
+							<td>payment</td>
+							<td>String</td>
+							<td>支出</td>
+						</tr>
+						<tr>
+							<td>onlineBankDetail（网银数据信息）</td>
+							<td>deposit</td>
+							<td>String</td>
+							<td>收入</td>
+						</tr>
+						<tr>
+							<td>onlineBankDetail（网银数据信息）</td>
+							<td>abstracts</td>
+							<td>String</td>
+							<td>摘要</td>
+						</tr>
+						<tr>
+							<td>onlineBankDetail（网银数据信息）</td>
+							<td>balance</td>
+							<td>String</td>
+							<td>余额</td>
+						</tr>
+						<tr>
+							<td>onlineBankDetail（网银数据信息）</td>
+							<td>tradeType</td>
+							<td>String</td>
+							<td>交易类型</td>
+						</tr>
+						<tr>
+							<td>onlineBankDetail（网银数据信息）</td>
+							<td>tradePlace</td>
+							<td>String</td>
+							<td>交易地点</td>
+						</tr>
+						<tr>
+							<td>onlineBankDetail（网银数据信息）</td>
+							<td>otherAccount</td>
+							<td>String</td>
+							<td>对方账号</td>
+						</tr>
+						<tr>
+							<td>onlineBankDetail（网银数据信息）</td>
+							<td>otherAccountName</td>
+							<td>String</td>
+							<td>对方账号名称</td>
+						</tr>
+						<tr>
+							<td>onlineBankDetail（网银数据信息）</td>
+							<td>otherAccountBank</td>
+							<td>String</td>
+							<td>对方开户行</td>
+						</tr>
+						<tr>
+							<td>onlineBankDetail（网银数据信息）</td>
+							<td>bankCard</td>
+							<td>String</td>
+							<td>当前卡所属人银行卡号</td>
+						</tr>
+						<tr>
+							<td>onlineBankDetail（网银数据信息）</td>
+							<td>orderIndex</td>
+							<td>String</td>
+							<td>排序</td>
+						</tr>
+
+
+						<tr>
+							<td>onlineBankParent（网银父级数据信息）</td>
+							<td>bankName</td>
+							<td>String</td>
+							<td>银行名称</td>
+						</tr>
+						<tr>
+							<td>onlineBankParent（网银父级数据信息）</td>
+							<td>bankCard</td>
+							<td>String</td>
+							<td>当前卡所属人银行卡号</td>
+						</tr>
+						<tr>
+							<td>onlineBankParent（网银父级数据信息）</td>
+							<td>userName</td>
+							<td>String</td>
+							<td>当前所属人名称</td>
+						</tr>
+						<tr>
+							<td>onlineBankParent（网银父级数据信息）</td>
+							<td>reportResult</td>
+							<td>String</td>
+							<td>报告结果</td>
+						</tr>
+						<tr>
+							<td>onlineBankParent（网银父级数据信息）</td>
+							<td>reportUrl</td>
+							<td>String</td>
+							<td>报告地址</td>
+						</tr>
+
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+
+	<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

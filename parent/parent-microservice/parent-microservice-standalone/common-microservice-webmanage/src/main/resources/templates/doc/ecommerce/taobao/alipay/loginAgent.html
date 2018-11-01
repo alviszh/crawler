@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">淘宝账号登录接口</h2>
+            <h3 class="page-header">说明</h3>
+            <p>
+                该接口通过输入的会员名、邮箱、手机号登录淘宝官网，返回是否成功信息，数据格式为JSON 
+            </p>
+            <h3 class="page-header">URL</h3>
+            <p>
+                http://&lt;project&gt;/e_commerce/taobao/alipay/loginAgent
+            </p>
+            <h3 class="page-header">格式</h3>
+            <p>
+                JSON
+            </p>
+            <h3 class="page-header">HTTP请求方式</h3>
+            <p>
+                GET
+            </p>
+            <h3 class="page-header">请求参数</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>#</th>
+                    <th>必选</th>
+                    <th>类型及范围</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>idnum</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>用户身份证号</td>
+                </tr>
+                <tr>
+                    <td>username</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>用户名</td>
+                </tr>
+                <tr>
+                    <td>passwd</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>登录密码</td>
+                </tr>
+                <tr>
+                    <td>logintype</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>登录类型</td>
+                </tr>
+                <tr>
+                    <td>verfiySMS</td>
+                    <td>false</td>
+                    <td>Integer</td>
+                    <td>手机短信验证码</td>
+                </tr>
+                <tr>
+                    <td>taskid</td>
+                    <td>true</td>
+                    <td>Integer</td>
+                    <td>任务id</td>
+                </tr>
+                </tbody>
+            </table>
+            <h3 class="page-header">注意事项</h3>
+            <ol style="margin-left: 0px;">
+              1.手机号必须为11位手机号。<br/>
+              2.登录类型只有"sn_num"（账号登录）和"sn_phone"（短信登录）两种。<br/>
+            </ol>
+            <h3 class="page-header">例子</h3>
+            <p>说明：账号登录苏宁官网</p>
+            <p>请求：http://10.167.202.217:10008/ds/suning/login</p>
+            <p>返回：JSON</p>
+            <p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+	"id": 855,
+	"createtime": null,
+	"taskid": "suning006",
+	"phase": "CRAWLER",
+	"phase_status": "SUCCESS",
+	"description": "数据采集成功！",
+	"finished": true,
+	"error_code": 200,
+	"error_message": null,
+	"etltime": null,
+	"param": null,
+	"loginName": "13520800817",
+	"verificationPhone": null,
+	"websiteType": "sn",
+	"crawlerHost": null,
+	"crawlerPort": null,
+	"testhtml": "{"taskid":"suning006","logintype":"sn_num"}",
+	"userinfoStatus": 200,
+	"orderInfoStatus": 200,
+	"addressInfoStatus": 200,
+	"bankCardInfoStatus": 200,
+	"renzhengInfoStatus": 200
+}
+				</pre>
+            <h3 class="page-header">返回字段</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>字段名</th>
+                    <th>类型</th>
+                    <th>注释</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>id</td>
+                    <td>String</td>
+                    <td>唯一标识</td>
+                </tr>
+                <tr>
+                    <td>createtime</td>
+                    <td>datetime</td>
+                    <td>创建时间</td>
+                </tr>
+                <tr>
+                    <td>taskid</td>
+                    <td>String</td>
+                    <td>任务id</td>
+                </tr>
+                <tr>
+			         <td>phase</td>
+			         <td>String</td>
+			         <td>当前步骤</td>
+			     </tr>
+			     <tr>
+			         <td>phase_status</td>
+			         <td>String</td>
+			         <td>步骤状态</td>
+			     </tr>
+			     <tr>
+			         <td>description</td>
+			         <td>String</td>
+			         <td>描述</td>
+			     </tr>
+			     <tr>
+			         <td>finished</td>
+			         <td>Boolean</td>
+			         <td>爬虫任务是否全部完成</td>
+			     </tr>
+			     <tr>
+			         <td>error_code</td>
+			         <td>String</td>
+			         <td>错误代码</td>
+			     </tr>
+			     <tr>
+			         <td>error_message</td>
+			         <td>String</td>
+			         <td>错误信息</td>
+			     </tr>
+			     <tr>
+			         <td>etltime</td>
+			         <td>Date</td>
+			         <td>统一数据时间</td>
+			     </tr>
+			     <tr>
+			         <td>param</td>
+			         <td>String</td>
+			         <td>爬取中需要的参数</td>
+			     </tr>
+			     <tr>
+			         <td>param</td>
+			         <td>String</td>
+			         <td>爬取中需要的参数</td>
+			     </tr>
+			     <tr>
+			         <td>loginName</td>
+			         <td>String</td>
+			         <td>登录名</td>
+			     </tr>
+			     <tr>
+			         <td>verificationPhone</td>
+			         <td>String</td>
+			         <td>短信验证手机</td>
+			     </tr>
+			     <tr>
+			         <td>websiteType</td>
+			         <td>String</td>
+			         <td>电商网站类型类型</td>
+			     </tr>
+			     <tr>
+			         <td>crawlerHost</td>
+			         <td>String</td>
+			         <td>爬虫节点的IP或hostname</td>
+			     </tr>
+			     <tr>
+			         <td>crawlerPort</td>
+			         <td>String</td>
+			         <td>爬虫节点的端口</td>
+			     </tr>
+			     <tr>
+			         <td>testhtml</td>
+			         <td>String</td>
+			         <td></td>
+			     </tr>
+			     <tr>
+			         <td>userinfoStatus</td>
+			         <td>Integer</td>
+			         <td>用户信息状态</td>
+			     </tr>
+			     <tr>
+			         <td>orderInfoStatus</td>
+			         <td>Integer</td>
+			         <td>订单信息状态</td>
+			     </tr>
+			     <tr>
+			         <td>addressInfoStatus</td>
+			         <td>Integer</td>
+			         <td>地址信息状态</td>
+			     </tr>
+			     <tr>
+			         <td>bankCardInfoStatus</td>
+			         <td>Integer</td>
+			         <td>银行卡信息状态</td>
+			     </tr>
+			     <tr>
+			         <td>renzhengInfoStatus</td>
+			         <td>Integer</td>
+			         <td>认证信息状态</td>
+			     </tr>
+                </tbody>
+            </table>
+
+            <h3 class="page-header">状态码映射</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>状态码</th>
+                    <th>解释说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>初始</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>成功</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>失败</td>
+                </tr>
+                <tr>
+                    <td>200</td>
+                    <td>成功</td>
+                </tr>
+                <tr>
+                    <td>404</td>
+                    <td>失败</td>
+                </tr>
+                <tr>
+                    <td>201</td>
+                    <td>完成抓取，但没有新数据入库</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h2 class="page-header">借么-前置规则</h2>
+        <h3 class="page-header">说明</h3>
+        <p>
+            该接口为推送前置规则
+        </p>
+        <h3 class="page-header">格式</h3>
+        <p>
+            JSON
+        </p>
+        <h3 class="page-header">HTTP请求方式</h3>
+        <p>
+            POST
+        </p>
+        <h3 class="page-header">注意事项</h3>
+        <ol style="margin-left: 0px;">
+            <li></li>
+        </ol>
+
+        <h3 class="page-header">例子</h3>
+            <p>说明：调用借么的接口，推送前置规则，返回推送结果状态</p>
+            <p>前置规则：JSON</p>
+            <p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;">
+{
+	"key": "123",
+	"taskId": "f734cc88-5a5e-47da-b69a-4fb702814c46",
+	"userName": "徐玉君",
+	"idCardType": "身份证",
+	"idCardNo": "**************0052",
+	"reportTime": "2018.06.19 19:35:02",
+	"type": "征信"
+}
+                </pre>
+
+            <h3 class="page-header">前置规则字段说明</h3>
+            <p style="color:#3da33d;"></p>
+            <div style="width:100%;">
+                <table class="table table-bordered table-hover" style="width:90%;">
+                    <caption>前置规则字段说明对照表：</caption>
+                    <thead>
+                    <tr>
+                        <th>字段</th>
+                        <th>字段类型</th>
+                        <th>字段说明</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>key</td>
+                        <td>String</td>
+                        <td>业务唯一标识</td>
+                    </tr>
+                    <tr>
+                        <td>taskId</td>
+                        <td>String</td>
+                        <td>爬虫任务ID</td>
+                    </tr>
+                    <tr>
+                        <td>userName</td>
+                        <td>String</td>
+                        <td>征信认证姓名</td>
+                    </tr>
+                    <tr>
+                        <td>idCardType</td>
+                        <td>String</td>
+                        <td>用户的证件类型</td>
+                    </tr>
+                    <tr>
+                        <td>idCardNo</td>
+                        <td>String</td>
+                        <td>征信认证身份证号</td>
+                    </tr>
+                    <tr>
+                        <td>reportTime</td>
+                        <td>String</td>
+                        <td>人行征信报告的生成时间</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>String</td>
+                        <td>业务类型（征信，运营商、社保...）</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

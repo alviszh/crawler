@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu :: leftmenu"></div>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">正文摘要</h2>
+            <h3 class="page-header">说明</h3>
+            <p>
+            提取一篇文章正文的摘要
+            </p>
+            <h3 class="page-header">URL</h3>
+            <p>
+                http://&lt;10.167.202.217:&gt;9357/nlp/summary
+            </p>
+            <h3 class="page-header">格式</h3>
+            <p>
+                JSON
+            </p>
+            <h3 class="page-header">HTTP请求方式</h3>
+            <p>
+                POST
+            </p>
+            <h3 class="page-header">请求参数</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>#</th>
+                    <th>必选</th>
+                    <th>类型及范围</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>content_in</td>
+                    <td>true</td>
+                    <td>String</td>
+                    <td>文章内容</td>
+                </tr>
+                </tbody>
+            </table>
+            <p style="color: #3da33d;">JSON示例:</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+   
+       { "content_summary_return": [
+								  "其余钱款均被其用于打赏网络直播平台主播",
+								  "等直播平台给喜欢的主播打赏",
+								  "海女出纳违法挪用巨额公司钱款打赏网络主播 　　中新网上海4月11日电 (李姝徵 姚彦静)网络直播平台很多粉丝会通过给喜爱的主播打赏虚拟礼物来表达对主播的喜爱"
+                                  ]
+       }
+				</pre>
+            <h3 class="page-header">返回字段</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>字段名</th>
+                    <th>类型</th>
+                    <th>注释</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>content_summary_return</td>
+                    <td>String</td>
+                    <td>正文摘要</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

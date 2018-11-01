@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+			
+			<form action="/apitest/unicom" method="post">
+				<input type="hidden" name="module" th:value="${module}" />
+				
+				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+					<h2 class="page-header">API测试</h2>
+					
+					<div class="well">
+						<h3>获取中国电信数据爬取结果</h3>
+						<table class="table table-bordered table-hover">
+							<tbody>
+								<tr>
+									<td>接口描述</td>
+									<td>根据TaskId获取账单</td>
+								</tr>
+								<tr>
+									<td>接口类型</td>
+									<td>GET</td>
+								</tr>
+								<tr>
+									<td>URL</td>
+									<td>http://10.167.202.192:1234/carrier/apitest/telecom/result/{taskId}</td>
+								</tr>
+								<tr>
+									<td>备注</td>
+									<td>根据TaskId获取爬取结果</td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<p>
+							<input type="text" id="taskId" class="form-control" placeholder="请输入TaskId" />
+						</p>
+						
+						<button type="button" class="btn btn-primary" onclick="invokeTelecomApiTest();">接口调用</button> 
+					</div>
+					
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<b>用户信息</b>
+						</div>
+						<div class="panel-body view-table-container pre-scrollable">
+							<table class="table table-bordered table-hover table-striped view-table">
+							<thead>
+								<tr>
+									<th class="view-th">序号</th>
+									<th class="view-th">客户名称</th>
+									<th class="view-th">计费账期</th>
+									<!-- <th class="view-th">本期费用合计</th> -->
+									<th class="view-th">业务可选包</th>
+									<th class="view-th">基本月租费</th>
+									<th class="view-th">通信费</th>
+									<th class="view-th">手机国内上网费</th>
+									<th class="view-th">本期末可用积分</th>
+									<th class="view-th">上期末可用积分</th>
+									<th class="view-th">当前使用积分</th>
+									<th class="view-th">本期新增积分</th>
+								</tr>
+							</thead>
+							<tbody id="tbody_userinfo"></tbody>
+						</table>
+						</div>
+					</div>
+					
+					
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<b>通话详单</b>
+						</div>
+						<div class="panel-body view-table-container pre-scrollable">
+							<table class="table table-bordered table-hover table-striped view-table">
+							<thead>
+								<tr>
+									<th class="view-th">序号</th>
+									<!-- <th class="view-th">usernumber</th> -->
+									<th class="view-th">计费区号</th>
+									<th class="view-th">其他号码</th>
+									<th class="view-th">日期</th>
+									<th class="view-th">时间</th>
+									<th class="view-th">费用</th>
+									<th class="view-th">主叫/被叫</th>
+									<th class="view-th">附件费用</th>
+									<th class="view-th">归属地</th>
+									<th class="view-th">通话类型</th>
+								</tr>
+							</thead>
+							<tbody id="tbody_usercall"></tbody>
+						</table>
+						</div>
+					</div>
+					
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<b>缴费记录</b>
+						</div>
+						<div class="panel-body view-table-container pre-scrollable">
+							<table class="table table-bordered table-hover table-striped view-table">
+							<thead>
+								<tr>
+									<th class="view-th">序号</th>
+									<!-- <th class="view-th">telenumid</th> -->
+									<th class="view-th">缴费类型</th>
+									<th class="view-th">缴费日期</th>
+									<th class="view-th">金额</th>
+								</tr>
+							</thead>
+							<tbody id="tbody_userpay"></tbody>
+						</table>
+						</div>
+					</div>
+					
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- 模态弹出窗内容 -->
+	<div class="modal" id="infoModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">提示</h4>
+				</div>
+				<div class="modal-body">
+					<p id="infoText"></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	
+	<div th:include="components/footer :: footer"></div>
+
+</body>
+<script src="/js/apitest_telecom.js"></script>
+</html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">社保统一数据接口</h2>
+				<h3 class="page-header">说明</h3>
+				<p>
+					该接口通过输入的身份证号或taskid来获取统一处理过的社保数据。
+				</p>
+				<h3 class="page-header">URL</h3>
+				<p>
+					http://uat.admin.txboss.txtechnologies.com/data/insurance/detail
+				</p>
+				<h3 class="page-header">格式</h3>
+				<p>
+					JSON   
+				</p>
+				<h3 class="page-header">HTTP请求方式</h3>
+				<p>
+					POST/GET   
+				</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>#</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>idnum</td>
+							<td>true</td>
+							<td>String</td>
+							<td>身份证号</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>任务号</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="page-header">注意事项</h3>
+				<ol style="margin-left: 0px;">
+					<li>身份证号或taskid必须有一个，如果taskid不为空，则默认用taskid查询，如果taskid为空，则用身份证号查询，获取该身份证号最新的数据</li>
+				</ol>
+				   
+				<h3 class="page-header">例子</h3>
+				<p>说明：利用taskid和身份证号来获取完成数据</p>
+				<p>请求：http://uat.admin.txboss.txtechnologies.com/data/insurance/detail?taskid=8651be9f-d32f-478d-851e-25c46a283ab1</p>
+				<p>返回：JSON</p>
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border" style="color: #3da33d;"> 
+{
+	param: {
+		idnum: null,
+		taskid: "8651be9f-d32f-478d-851e-25c46a283ab1"
+	},
+	etlInsuranceDetail: [
+	{
+		id: 108925,
+		createtime: "2017-09-15 15:17:26",
+		taskId: "8651be9f-d32f-478d-851e-25c46a283ab1",
+		idNumber: "130181198812163921",
+		tranDate: null,
+		paymentCurrentMonth: "2009",
+		paymentBegindate: null,
+		paymentEnddate: null,
+		paymentBaseMoney: null,
+		companyPaymentMoney: null,
+		personalPaymentMoney: null,
+		balance: null,
+		monthTotalMoney: "0.00",
+		companyName: "河北智联易才人力资源顾问有限公司",
+		paymentType: null,
+		insuranceType: "养老保险",
+		companyPaymentPercent: null,
+		personalPaymentPercent: null,
+		changeMoney: null,
+		basic_idnumber: "510109198504281021"
+	},
+	{
+		id: 108939,
+		createtime: "2017-09-15 15:17:26",
+		taskId: "8651be9f-d32f-478d-851e-25c46a283ab1",
+		idNumber: "130181198812163921",
+		tranDate: null,
+		paymentCurrentMonth: "2017-02",
+		paymentBegindate: null,
+		paymentEnddate: null,
+		paymentBaseMoney: "4333.33",
+		companyPaymentMoney: "346.67",
+		personalPaymentMoney: "86.67",
+		balance: null,
+		monthTotalMoney: "433.34",
+		companyName: "河北智联易才人力资源顾问有限公司",
+		paymentType: null,
+		insuranceType: "医疗保险",
+		companyPaymentPercent: "8%",
+		personalPaymentPercent: "2%",
+		changeMoney: null,
+		basic_idnumber: "510109198504281021"
+	},
+	{
+		id: 108941,
+		createtime: "2017-09-15 15:17:26",
+		taskId: "8651be9f-d32f-478d-851e-25c46a283ab1",
+		idNumber: "130181198812163921",
+		tranDate: null,
+		paymentCurrentMonth: "2016-12",
+		paymentBegindate: null,
+		paymentEnddate: null,
+		paymentBaseMoney: "2722.05",
+		companyPaymentMoney: "544.41",
+		personalPaymentMoney: "13.61",
+		balance: null,
+		monthTotalMoney: "558.02",
+		companyName: "河北智联易才人力资源顾问有限公司",
+		paymentType: null,
+		insuranceType: "失业保险",
+		companyPaymentPercent: "20%",
+		personalPaymentPercent: "0.5%",
+		changeMoney: null,
+		basic_idnumber: "510109198504281021"
+	},
+	{
+		id: 108942,
+		createtime: "2017-09-15 15:17:26",
+		taskId: "8651be9f-d32f-478d-851e-25c46a283ab1",
+		idNumber: "130181198812163921",
+		tranDate: null,
+		paymentCurrentMonth: "2017-03",
+		paymentBegindate: null,
+		paymentEnddate: null,
+		paymentBaseMoney: "4333.33",
+		companyPaymentMoney: "21.66",
+		personalPaymentMoney: "0",
+		balance: null,
+		monthTotalMoney: "21.66",
+		companyName: "河北智联易才人力资源顾问有限公司",
+		paymentType: null,
+		insuranceType: "生育保险",
+		companyPaymentPercent: "0.5%",
+		personalPaymentPercent: "0%",
+		changeMoney: null,
+		basic_idnumber: "510109198504281021"
+	}
+],
+	etlInsuranceUserinfo: [
+	{
+		id: 568,
+		createtime: "2017-09-15 15:17:26",
+		taskId: "8651be9f-d32f-478d-851e-25c46a283ab1",
+		userName: "赵佳",
+		idNumber: "130181198812163921",
+		userSex: "女",
+		birthDate: null,
+		joinWorkDate: "2014-08-01",
+		residenceProperty: null,
+		residenceLocation: null,
+		qualifications: null,
+		mobilephoneNumber: "18633883409",
+		phoneNumber: null,
+		email: null,
+		personalIdentifier: "130181198812163921",
+		socialSecurityCity: "石家庄市",
+		socialSecurityStatus: "正常参保",
+		socialSecurityDeclareMoney: null,
+		companyName: "河北智联易才人力资源顾问有限公司",
+		companyOrganizationNumber: "482151",
+		nationality: "汉族",
+		liveAddress: "辛集市新垒头镇新垒头村",
+		livePostcode: null,
+		marriageStatus: null,
+		workersProperty: null,
+		socialSecurityBegindate: null,
+		areaCode: "130100",
+		cityName: "石家庄市",
+		socialSecurityLastdate: null,
+		companyType: null,
+		personStatus: "在职",
+		insuredCompanyName: "河北智联易才人力资源顾问有限公司",
+		paymentMonths: null,
+		personNumberSum: "企业养老保险:1372180;职工医疗保险:20140904000000001084;失业保险:1301991485311;生育保险:20140904000000001084",
+		basic_idnumber: "510109198504281021"
+	}
+],
+	message: "success",
+	createtime: 1508813804904,
+	errorCode: 800
+}
+				</pre>
+				<h3 class="page-header">返回字段</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>对象名</th>
+							<th>字段名</th>
+							<th>类型</th>
+							<th>注释</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>etlInsuranceDetail</td>
+							<td>idNumber</td>
+							<td>String</td>
+							<td>身份证号</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceDetail</td>
+							<td>tranDate</td>
+							<td>String</td>
+							<td>交易日期</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceDetail</td>
+							<td>paymentBegindate</td>
+							<td>String</td>
+							<td>汇缴起始日期</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceDetail</td>
+							<td>paymentEnddate</td>
+							<td>String</td>
+							<td>汇缴结束日期</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceDetail</td>
+							<td>paymentBaseMoney</td>
+							<td>String</td>
+							<td>缴纳基数</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceDetail</td>
+							<td>companyPaymentMoney</td>
+							<td>String</td>
+							<td>单位缴费金额</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceDetail</td>
+							<td>personalPaymentMoney</td>
+							<td>String</td>
+							<td>个人缴费金额</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceDetail</td>
+							<td>balance</td>
+							<td>String</td>
+							<td>余额</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceDetail</td>
+							<td>monthTotalMoney</td>
+							<td>String</td>
+							<td>月总缴额</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceDetail</td>
+							<td>companyName</td>
+							<td>String</td>
+							<td>公司名称</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceDetail</td>
+							<td>paymentType</td>
+							<td>String</td>
+							<td>缴费类型</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceDetail</td>
+							<td>insuranceType</td>
+							<td>String</td>
+							<td>保险类型</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceDetail</td>
+							<td>companyPaymentPercent</td>
+							<td>String</td>
+							<td>公司交付比例</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceDetail</td>
+							<td>personalPaymentPercent</td>
+							<td>String</td>
+							<td>个人交付比例</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceDetail</td>
+							<td>paymentCurrentMonth</td>
+							<td>String</td>
+							<td>缴存月份</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceDetail</td>
+							<td>changeMoney</td>
+							<td>String</td>
+							<td>变动金额（入账金额）</td>
+						</tr>						
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>userName</td>
+							<td>String</td>
+							<td>姓名</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>idNumber</td>
+							<td>String</td>
+							<td>身份证号</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>userSex</td>
+							<td>String</td>
+							<td>性别</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>birthDate</td>
+							<td>String</td>
+							<td>出生日期</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>joinWorkDate</td>
+							<td>String</td>
+							<td>参加工作日期</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>residenceProperty</td>
+							<td>String</td>
+							<td>户口性质</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>residenceLocation</td>
+							<td>String</td>
+							<td>户口所在地</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>qualifications</td>
+							<td>String</td>
+							<td>学历</td>
+						</tr>
+						
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>mobilephoneNumber</td>
+							<td>String</td>
+							<td>手机号</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>phoneNumber</td>
+							<td>String</td>
+							<td>座机号</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>email</td>
+							<td>String</td>
+							<td>邮箱</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>personalIdentifier</td>
+							<td>String</td>
+							<td>社保个人编号</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>socialSecurityCity</td>
+							<td>String</td>
+							<td>社保缴纳城市</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>socialSecurityStatus</td>
+							<td>String</td>
+							<td>社保状态</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>socialSecurityDeclareMoney</td>
+							<td>String</td>
+							<td>社保月申报人民币</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>companyName</td>
+							<td>String</td>
+							<td>公司名称</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>companyOrganizationNumber</td>
+							<td>String</td>
+							<td>公司编号/组织机构代码</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>nationality</td>
+							<td>String</td>
+							<td>民族</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>liveAddress</td>
+							<td>String</td>
+							<td>居住地址</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>livePostcode</td>
+							<td>String</td>
+							<td>居住地址邮编</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>marriageStatus</td>
+							<td>String</td>
+							<td>婚姻状况</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>workersProperty</td>
+							<td>String</td>
+							<td>职工性质</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>socialSecurityBegindate</td>
+							<td>String</td>
+							<td>参保缴费起始日期</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>areaCode</td>
+							<td>String</td>
+							<td>地区编码</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>cityName</td>
+							<td>String</td>
+							<td>所属城市名称</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>socialSecurityLastdate</td>
+							<td>String</td>
+							<td>最后缴纳记录时间</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>companyType</td>
+							<td>String</td>
+							<td>单位类型</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>personStatus</td>
+							<td>String</td>
+							<td>人员状态</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>insuredCompanyName</td>
+							<td>String</td>
+							<td>参保单位</td>
+						</tr>
+						<tr>
+							<td>etlInsuranceUserinfo</td>
+							<td>paymentMonths</td>
+							<td>String</td>
+							<td>缴存月数</td>
+						</tr>
+												
+					</tbody>
+				</table>
+				
+				<h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p>
+				
+				<h3 class="page-header">状态码映射</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>状态码</th>
+							<th>信息</th>
+							<th>解释说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>800</td>
+							<td>success</td>
+							<td>成功</td>
+						</tr>
+						<tr>
+							<td>801</td>
+							<td>taskid is null and idnum is null!</td>
+							<td>参数为空</td>
+						</tr>
+						<tr>
+							<td>802</td>
+							<td>no data was found!</td>
+							<td>查无数据</td>
+						</tr>
+						<tr>
+							<td>803</td>
+							<td>ETL is not excuted!</td>
+							<td>数据处理程序未执行</td>
+						</tr>
+						<tr>
+							<td>804</td>
+							<td>crawler have some problems!</td>
+							<td>该任务爬取程序出现问题</td>
+						</tr>
+						<tr>
+							<td>805</td>
+							<td>taskid not matches idnum!</td>
+							<td>任务号与身份证号不匹配</td>
+						</tr>
+						<tr>
+							<td>806</td>
+							<td>this idnum is not in the system,please check!</td>
+							<td>该身份证号数据库中不存在</td>
+						</tr>
+						
+					</tbody>
+				</table>  
+<!--			<h3 class="page-header">返回字段说明</h3>  
+				<div th:replace="components/ETLbackfield :: ETLbackfield"></div> 
+			    
+				<span>备注：</span>
+			    <div th:replace="components/remark :: remark"></div> -->
+			    
+<!--			<h3 class="page-header">备注：</h3>
+				<p>
+					每一个对象中，都有id（主键），task_id(任务号)，createtime（数据创建时间）  
+				</p> -->
+			    
+			</div>
+		</div>
+		</div>
+		
+		 <div th:include="components/footer :: footer"></div>
+		
+</body>
+</html>

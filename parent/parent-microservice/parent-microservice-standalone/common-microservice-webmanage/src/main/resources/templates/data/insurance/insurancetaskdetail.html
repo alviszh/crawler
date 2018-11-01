@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+<div th:replace="components/topart :: topart"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <div th:replace="components/leftmenu_datasearch :: leftmenu"></div>
+
+        </div>
+
+        <form action="" method="post" >
+            <input type="hidden" id="taskid" name="taskid" th:value="${taskid}"/>
+
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h2 class="page-header">社保-详细信息</h2>
+                <p>任务编号(taskid)：<span th:text="${taskid}"></span></p>
+                
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <b>社保用户信息</b>
+                    </div>
+                    <div class="panel-body view-table-container pre-scrollable">
+                        <table class="table table-bordered table-hover table-striped view-table">
+                            <thead>
+                            <tr>
+                                <th class="view-th">姓名</th>
+                                <th class="view-th">身份证号</th>
+                                <th class="view-th">性别</th>
+                                <th class="view-th">出生日期</th>
+                                <th class="view-th">参加工作日期</th>
+                                <th class="view-th">户口性质</th>
+                                <th class="view-th">户口所在地</th>
+                                <th class="view-th">学历</th>
+                                <th class="view-th">手机号</th>
+                                <th class="view-th">座机号</th>
+                                <th class="view-th">邮箱</th>
+                                <th class="view-th">社保个人编号</th>
+                                <th class="view-th">社保缴纳城市</th>
+                                <th class="view-th">社保状态</th>
+                                <th class="view-th">社保月申报人民币</th>
+                                <th class="view-th">公司名称</th>
+                                <th class="view-th">公司编号/组织机构代码</th>
+                                <th class="view-th">民族</th>
+                                <th class="view-th">居住地址</th>
+                                <th class="view-th">居住地址邮编</th>
+                                <th class="view-th">婚姻状况</th>
+                                <th class="view-th">职工性质</th>
+                                <th class="view-th">参保缴费起始日期</th>
+                                <th class="view-th">地区编码</th>
+                                <th class="view-th">所属城市名称</th>
+                                <th class="view-th">最后缴纳记录时间</th>
+                                <th class="view-th">单位类型</th>
+                                <th class="view-th">人员状态</th>
+                                <th class="view-th">参保单位</th>
+                                <th class="view-th">缴存月数</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="obj : ${datas.etlInsuranceUserinfo}">
+                                    <td  th:text="${obj.userName}"></td>
+                                    <td  th:text="${obj.idNumber}"></td>
+                                    <td  th:text="${obj.userSex}"></td>
+                                    <td  th:text="${obj.birthDate}"></td>
+                                    <td  th:text="${obj.joinWorkDate}"></td>
+                                    <td  th:text="${obj.residenceProperty}"></td>
+                                    <td  th:text="${obj.residenceLocation}"></td>
+                                    <td  th:text="${obj.qualifications}"></td>
+                                    <td  th:text="${obj.mobilephoneNumber}"></td>
+                                    <td  th:text="${obj.phoneNumber}"></td>
+                                    <td  th:text="${obj.email}"></td>
+                                    <td  th:text="${obj.personalIdentifier}"></td>
+                                    <td  th:text="${obj.socialSecurityCity}"></td>
+                                    <td  th:text="${obj.socialSecurityStatus}"></td>
+                                    <td  th:text="${obj.socialSecurityDeclareMoney}"></td>
+                                    <td  th:text="${obj.companyName}"></td>
+                                    <td  th:text="${obj.companyOrganizationNumber}"></td>
+                                    <td  th:text="${obj.nationality}"></td>
+                                    <td  th:text="${obj.liveAddress}"></td>
+                                    <td  th:text="${obj.livePostcode}"></td>
+                                    <td  th:text="${obj.marriageStatus}"></td>
+                                    <td  th:text="${obj.workersProperty}"></td>
+                                    <td  th:text="${obj.socialSecurityBegindate}"></td>
+                                    <td  th:text="${obj.areaCode}"></td>
+                                    <td  th:text="${obj.cityName}"></td>
+                                    <td  th:text="${obj.socialSecurityLastdate}"></td>
+                                    <td  th:text="${obj.companyType}"></td>
+                                    <td  th:text="${obj.personStatus}"></td>
+                                    <td  th:text="${obj.insuredCompanyName}"></td>
+                                    <td  th:text="${obj.paymentMonths}"></td>                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="page" style="margin-left:15%">
+                    </div>
+                </div>
+			
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <b>社保缴费明细</b>
+                    </div>
+                    <div class="panel-body view-table-container pre-scrollable">
+                        <table class="table table-bordered table-hover table-striped view-table">
+                            <thead>
+                            <tr>
+                                <th class="view-th">身份证号</th>
+                                <th class="view-th">交易日期</th>
+                                <th class="view-th">汇缴起始日期</th>
+                                <th class="view-th">汇缴结束日期</th>
+                                <th class="view-th">缴纳基数</th>
+                                <th class="view-th">单位缴费金额</th>
+                                <th class="view-th">个人缴费金额</th>
+                                <th class="view-th">余额</th>
+                                <th class="view-th">月总缴额</th>
+                                <th class="view-th">公司名称</th>
+                                <th class="view-th">缴费类型</th>
+                                <th class="view-th">保险类型</th>
+                                <th class="view-th">公司交付比例</th>
+                                <th class="view-th">个人交付比例</th>
+                                <th class="view-th">缴存月份</th>
+                                <th class="view-th">变动金额（入账金额）</th>
+                            </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <tr th:each="obj : ${datas.etlInsuranceDetail}">
+                                    <td  th:text="${obj.idNumber}"></td>
+                                    <td  th:text="${obj.tranDate}"></td>
+                                    <td  th:text="${obj.paymentBegindate}"></td>
+                                    <td  th:text="${obj.paymentEnddate}"></td>
+                                    <td  th:text="${obj.paymentBaseMoney}"></td>
+                                    <td  th:text="${obj.companyPaymentMoney}"></td>
+                                    <td  th:text="${obj.personalPaymentMoney}"></td>
+                                    <td  th:text="${obj.balance}"></td>
+                                    <td  th:text="${obj.monthTotalMoney}"></td>
+                                    <td  th:text="${obj.companyName}"></td>
+                                    <td  th:text="${obj.paymentType}"></td>
+                                    <td  th:text="${obj.insuranceType}"></td>
+                                    <td  th:text="${obj.companyPaymentPercent}"></td>
+                                    <td  th:text="${obj.personalPaymentPercent}"></td>
+                                    <td  th:text="${obj.paymentCurrentMonth}"></td>
+                                    <td  th:text="${obj.changeMoney}"></td>                                  
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="page" style="margin-left:15%">
+                    </div>
+                </div>				
+		
+            </div>
+        </form>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

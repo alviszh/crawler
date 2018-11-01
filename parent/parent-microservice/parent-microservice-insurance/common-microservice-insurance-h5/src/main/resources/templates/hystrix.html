@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+
+</head>
+
+<body>
+<nav class="navbar navbar-default alert-info" style="height: 50px;">
+    <div class="container-fluid">
+        <div class="navbar-header" style="height: 50px;">
+            <a href="javascript:history.go(-1);" class="navbar-brand"><span
+                    class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </a>
+            <p class="navbar-brand" ><span th:text="${city} + '社保'"></span></p>
+        </div>
+    </div>
+
+</nav>
+
+<div id="br"></div>
+<div class="container">
+    <input type="hidden" name="themeColor" id="themeColor" th:value="${themeColor}"/>
+    <input type="hidden" th:value="${topHide}" id="topHide" name="topHide"/>
+    <div style="text-align: center">
+        <h2>在此期间系统暂停服务！</h2>
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+</body>
+</html>

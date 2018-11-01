@@ -1,0 +1,34 @@
+server: 
+  port: 8323
+info:
+  contact: 
+    email: dimei1@creditharmony.cn
+logging: 
+  file: common-microservice-mail-8323.log
+# Spring boot UI 页面关闭该应用的权限限制
+management: 
+  security: 
+    enabled: true
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+spring:
+  mail:
+    protocol: smtp
+    host: mail.creditharmony.cn
+    port: 25
+    auth: true
+    username: XH\linansun
+    password: sunlinan66**
+  thymeleaf:
+     cache: false
+     content-type: text/html
+     enabled: true 
+     encoding: utf-8
+     mode: html
+     prefix: classpath:/templates/ 
+     suffix: .html  
+feign: 
+  hystrix:
+    enabled: false     

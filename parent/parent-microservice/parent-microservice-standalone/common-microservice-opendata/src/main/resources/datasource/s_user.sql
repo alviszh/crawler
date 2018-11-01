@@ -1,0 +1,1 @@
+INSERT INTO "public"."s_user" ("id", "createtime", "email", "login_name", "name", "password", "phone") VALUES ('1', '2017-07-28 00:00:00', '789789789@163.com', 'admin', '管理员', '$2a$04$eT9.rd.twOuKhGaHDTbN9eKMY/JX.l5Lo//EmJZhmoh6YaRRd8MkG', '13888888888');

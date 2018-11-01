@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+			
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+				
+			</div>
+
+			<input type="hidden" name="module" th:value="${module}" />
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">回调测试</h2>
+				<div class="well" th:each="item,itemStat : ${list}">
+					<input type="hidden" th:name="'cModule'+${itemStat.index}"
+						th:value="${module}" /> <input type="hidden"
+						th:name="'cType'+${itemStat.index}" th:value="${item.cType}" /> <span
+						th:text="${item.typeName}" /> : <span
+						th:name="'cValue'+${itemStat.index}" th:text="${item.cValue}" />
+					<button type="button" th:name="${itemStat.index}"
+						class="btn btn-primary" onclick="testAsk(this);">测试</button>
+
+					<div th:id="'test_detail_div'+${itemStat.index}" style="display: none;">
+						<div class="panel panel-success">
+							<div class="panel-heading">
+								<b>Response</b>
+							</div>
+							<div class="panel-body">
+								<p>
+									<span style="color:#3c763d;">Response Status:</span> <span th:id="'detail_response_status'+${itemStat.index}"></span>
+								</p>
+								<p th:id="'detail_response_result'+${itemStat.index}" style="color: red;font-weight:bold;"></p>
+								<p><span style="color:#3c763d;">Response Body:</span></p>
+								<div class="well" th:id="'detail_response_body'+${itemStat.index}">
+									
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-success">
+							<div class="panel-heading">
+								<b>Request</b>
+							</div>
+							<div class="panel-body">
+								<p>
+									<span style="color:#3c763d;">Request Headers:</span>
+								</p>
+								<div class="well" th:id="'detail_request_headers'+${itemStat.index}"></div>
+								
+								<p th:id="'detail_response_result'+${itemStat.index}"></p>
+								<p><span style="color:#3c763d;">Request Body:</span></p>
+								<div class="well" th:id="'detail_request_body'+${itemStat.index}"></div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 模态弹出窗内容 -->
+	<div class="modal" id="infoModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">提示</h4>
+				</div>
+				<div class="modal-body">
+					<p id="infoText"></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+
+	<div th:include="components/footer :: footer"></div>
+
+</body>
+<script src="/js/callback_test.js"></script>
+</html>

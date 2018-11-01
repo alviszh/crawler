@@ -1,0 +1,54 @@
+server:
+  port: 20015
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaserver:8888/eureka/
+#      defaultZone: ${defaultZone}
+
+---
+#数据源：
+spring:
+  cloud:
+    stream:
+      bindings:
+        carrier_channel:
+          binder: carrier_binder
+      binders:
+        carrier_binder: 
+          type: kafka 
+          environment:
+            spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
+            spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes} 
+            
+  datasource:
+    separator: ;;
+    schema: classpath:/datasource/*.sql
+    initialization-mode: ${datasource.initialization-mode} 
+    continueOnError: false
+    hikari: 
+      minimum-idle: ${datasource.jdbc.minIdle}
+      maximum-pool-size: ${datasource.jdbc.maxPoolSize}
+    driver-class-name: ${datasource.jdbc.driver}
+    url: ${datasource.jdbc.url}
+    schema-username: ${datasource.jdbc.username} 
+    schema-password: ${datasource.jdbc.password}
+    username: ${datasource.jdbc.username}
+    password: ${datasource.jdbc.password}
+    type: ${datasource.jdbc.type}
+  jpa: 
+    show-sql: true
+    hibernate: 
+        #创建数据库使用
+        ddl-auto: update
+        naming:
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl 
+    properties:  
+      hibernate:  
+#       dialect: com.microservice.persistence.SRDB10Dialect
+        dialect: ${datasource.jdbc.dialect}
+        temp: 
+          use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法为实现
+#       dialect: org.hibernate.dialect.MySQLDialect
+          
