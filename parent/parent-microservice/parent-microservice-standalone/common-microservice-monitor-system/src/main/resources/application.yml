@@ -47,7 +47,7 @@ spring:
     port: 25
     auth: true
     username: XH\linansun
-    password: sunlinan66**      
+    password: sunlinan66** 
 #涉及接口调用的超时时间
 feign: 
   hystrix:
