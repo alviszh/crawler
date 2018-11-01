@@ -1,0 +1,56 @@
+<header th:fragment="footer">
+	<script th:src="@{/h5/sn/js/1.11.3/jquery.min.js}"></script>
+	<script th:src="@{/h5/sn/bookstrap/v3.3.7/js/bootstrap.min.js}"></script>
+	<script th:src="@{/h5/sn/js/common.js}"></script>
+
+	<script th:src="@{/h5/sn/js/jquery.charfirst.pinyin.js}"></script>
+	<script th:src="@{/h5/sn/js/sort.js}"></script>
+	<link rel="stylesheet" th:href="@{/h5/sn/css/style.css}"/>
+</header>
+
+<!-- 爬取成功模块 -->
+<div th:fragment="modal">
+	<div style="text-align: center">
+		<div class="modal fade" id="success_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+			 data-backdrop="static" data-keyboard="false" >
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body" style="height: auto;width: auto;">
+						<!--<div style="text-align: center">-->
+						<h4>数据采集成功</h4>
+						<div id="successMsg">
+						</div>
+						<!--</div>-->
+					</div>
+					<div class="modal-footer">
+						<div style="text-align: center">
+							<button type="button" class="btn btn-info" id="modal_btn">确定</button>
+						</div>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal -->
+		</div>
+	</div>
+</div>
+
+<!--消息框-->
+<div th:fragment="message">
+	<div style="text-align: center">
+		<div class="modal fade bs-example-modal-sm" id="msg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+			 data-backdrop="static" data-keyboard="false" >
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+					</div>
+					<div class="modal-body" style="height: auto"><span id="alertMsg"></span></div>
+					<div class="modal-footer">
+						<div style="text-align: center">
+							<button type="button" class="btn btn-info" data-dismiss="modal">知道了</button>
+						</div>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal -->
+		</div>
+	</div>
+</div>

@@ -1,0 +1,107 @@
+<header th:fragment="footer">
+	<script th:src="@{/h5/tb/js/1.11.3/jquery.min.js}"></script>
+	<script th:src="@{/h5/tb/bookstrap/v3.3.7/js/bootstrap.min.js}"></script>
+	<script th:src="@{/h5/tb/js/common.js}"></script>
+
+	<script th:src="@{/h5/tb/js/jquery.charfirst.pinyin.js}"></script>
+	<script th:src="@{/h5/tb/js/sort.js}"></script>
+</header>
+
+<!-- 爬取成功模块 -->
+<div th:fragment="modal">
+	<div style="text-align: center">
+		<div class="modal fade" id="success_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+			 data-backdrop="static" data-keyboard="false" >
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body" style="height: auto;width: auto;">
+						<!--<div style="text-align: center">-->
+						<h4>数据采集成功</h4>
+						<div id="successMsg">
+						</div>
+						<!--</div>-->
+					</div>
+					<div class="modal-footer">
+						<div style="text-align: center">
+							<button type="button" class="btn btn-info" id="modal_btn">确定</button>
+						</div>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal -->
+		</div>
+	</div>
+</div>
+
+<!--消息框-->
+<div th:fragment="message">
+	<div style="text-align: center">
+		<div class="modal fade bs-example-modal-sm" id="msg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+			 data-backdrop="static" data-keyboard="false" >
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+					</div>
+					<div class="modal-body" style="height: auto"><span id="alertMsg"></span></div>
+					<div class="modal-footer">
+						<div style="text-align: center">
+							<button type="button" class="btn btn-info" data-dismiss="modal">知道了</button>
+						</div>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal -->
+		</div>
+	</div>
+</div>
+
+
+<!--短信验证码框-->
+<div th:fragment="smsCode">
+	<div class="modal fade" id="smsCode" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
+					</button>
+					<h4 class="modal-title">
+						请输入短信验证码
+					</h4>
+				</div>
+				<div class="modal-body">
+					<input type="text" class="form-control" id="verfiySMS" name="verfiySMS" placeholder="请输入短信验证码" data-validation="required">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消
+					</button>
+					<button id="smsCodeBtn" type="button" class="btn btn-primary">
+						确认
+					</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+	</div>
+</div>
+
+<!--正在采集中-->
+<div th:fragment="waitinView">
+	<div class="waiting-view" id="waitinView">
+		<h3>获取结果中...</h3>
+		<h4>正在采集</h4>
+		<div id="preloader_4">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+</div>
+<!--<script>-->
+	<!--if(location.href.indexOf("alipay") != -1){-->
+		<!--Array.prototype.slice.call(document.querySelectorAll('.navbar-brand'))[1].children[0].innerHTML="支付宝登录"-->
+	<!--}-->
+	<!--else{-->
+		<!--Array.prototype.slice.call(document.querySelectorAll('.navbar-brand'))[1].children[0].innerHTML="淘宝登录"-->
+	<!--}-->
+<!--</script>-->

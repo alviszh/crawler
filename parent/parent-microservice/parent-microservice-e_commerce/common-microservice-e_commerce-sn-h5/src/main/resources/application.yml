@@ -1,0 +1,22 @@
+server:
+  port: 1228
+info:
+  contact:
+    email: dimei1@creditharmony.cn
+logging:
+  file: common-microservice-e_commerce-sn-h5-9001.log
+  level:
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: INFO
+# Spring boot UI 页面关闭该应用的权限限制
+management:
+  security:
+    enabled: false
+eureka:
+  instance:
+      statusPageUrl: http://localhost:1222/admin
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaserver:8888/eureka/
+
+

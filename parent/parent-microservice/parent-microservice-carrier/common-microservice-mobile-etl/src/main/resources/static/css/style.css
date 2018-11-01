@@ -1,0 +1,55 @@
+.white {
+	background-color: #FFFFFF;
+	height: 48px;
+}
+
+.gray {
+	background-color: #E8E8E8;
+	height: 48px;
+}
+
+.reportTitle {
+	font-family: 宋体;
+	font-size: 25px;
+	font-weight: bold;
+	border-bottom: 1px;
+}
+
+.smallTitle {
+	background-color: #448eb3;
+	text-align:left;
+}
+
+.secondTitle {
+	font-family: 宋体;
+	font-size: 13px;
+	color: #A0A0A0;
+	margin-top: 10px;
+	font-weight: bold;
+	text-align:left;
+}
+
+.table {
+	/* 将边框设置为单线 */
+	border-collapse: collapse;
+	border: #A8A8A8;
+}
+
+.th {
+	height: 48px;
+	text-align: left;
+}
+
+.middle {
+	text-align: center;
+}
+
+.btn {
+	width: 90px;
+	height: 30px;
+	background: #ff9700;
+	border: 1px solid #eee;
+	border-radius: 15px;
+	font-weight: bold;
+	outline: none;
+}

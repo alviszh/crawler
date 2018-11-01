@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sr.microservice</groupId>
+		<artifactId>parent-microservice</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>parent-microservice-bank</artifactId>
+	<packaging>pom</packaging>
+
+	<properties>
+		<!-- 文件拷贝时的编码 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- 编译时的编码 -->
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+		<!-- 编译时的版本 -->
+		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zipkin</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sr.microservice</groupId>
+			<artifactId>common-microservice-ocr</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.netflix.hystrix</groupId>
+			<artifactId>hystrix-javanica</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>com.google.guava</groupId>
+					<artifactId>guava</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.sr.storm</groupId>
+			<artifactId>common-module-dao</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sr.storm</groupId>
+			<artifactId>common-module-crawler</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sr.storm</groupId>
+			<artifactId>common-module-dao</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
+	<modules>
+		<module>common-microservice-bank-abcchina</module>
+		<module>common-microservice-bank-cmbchina-debitcard</module>
+		<module>common-microservice-bank-service</module>
+		<module>common-microservice-bank-task</module>
+		<module>common-microservice-bank-ccbchina</module>
+		<module>common-microservice-bank-boc</module>
+		<module>common-microservice-bank-h5</module>
+
+		<module>common-microservice-bank-icbcchina</module>
+		<module>common-microservice-bank-citicchina</module>
+		<module>common-microservice-bank-cmbcchina</module>
+		<module>common-microservice-bank-bocom</module>
+		<module>common-microservice-bank-spdb</module>
+		<module>common-microservice-bank-cgbchina</module>
+		<module>common-microservice-bank-hxbchina</module>
+		<module>common-microservice-bank-pabchina</module>
+		<module>common-microservice-bank-cebchina</module>
+		<module>common-microservice-bank-cibchina</module>
+		<module>common-microservice-bank-cmbchina-creditcard</module>
+
+		<!-- hyx -->
+		<module>common-microservice-bank-bocom-creditcard</module>
+		<!-- hyx -->
+
+		<module>common-microservice-bank-cebchina-creditcard</module>
+		<module>common-microservice-bank-etl</module>
+		<module>common-microservice-bank-bohcchina</module>
+		<module>common-microservice-bank-hfbchina</module>
+		<module>common-microservice-bank-czbchina</module>
+		<module>common-microservice-winio4test</module>
+		<module>common-microservice-bank-beijing</module>
+		<module>common-microservice-bank-psbcchina</module>
+		<module>common-microservice-bank-citicchina-creditcard</module>
+		<module>common-microservice-bank-spdb-creditcard</module>
+	</modules>
+
+	<profiles>
+		<profile>
+			<!-- 本机开发环境 -->
+			<id>dev</id>
+			<properties>
+				<app.bank.active>dev</app.bank.active>
+				<app.bankh5.name>bank-h5-local</app.bankh5.name>
+				<app.bank.ccbchina.name>bank-ccbchina-local</app.bank.ccbchina.name>
+				<app.bankcrawlertask.name>bank-task-local</app.bankcrawlertask.name>
+				<app.bank.cmbchina.debitcard.name>bank-cmbchina-debitcard-local</app.bank.cmbchina.debitcard.name>
+				<app.bank.boc.debitcard.name>bank-boc-debitcard-local</app.bank.boc.debitcard.name>
+				<app.bank.icbcchina.name>bank-icbcchina-local</app.bank.icbcchina.name>
+				<app.bank.citicchina.name>bank-citicchina-debitcard-local</app.bank.citicchina.name>
+				<app.bank.abcchina.name>bank-abcchina-local</app.bank.abcchina.name>
+				<app.bank.cgbchina.name>bank-cgbchina-local</app.bank.cgbchina.name>
+				<app.bank.pabchina.name>bank-pabchina-local</app.bank.pabchina.name>
+				<app.bank.bohcchina.name>bank-bohcchina-local</app.bank.bohcchina.name>
+				<app.bank.cmbcchina.name>bank-cmbcchina-local</app.bank.cmbcchina.name>
+				<app.bank.bocom.name>bank-bocom-debitcard-local</app.bank.bocom.name>
+				<app.bank.spdb.name>bank-spdb-local</app.bank.spdb.name>
+				<app.bank.hxbchina.name>bank-hxbchina-local</app.bank.hxbchina.name>
+				<app.bank.cebchina.name>bank-cebchina-local</app.bank.cebchina.name>
+				<app.bank.cibchina.name>bank-cibchina-local</app.bank.cibchina.name>
+				<app.bank.cmbchina.creditcard.name>bank-cmbchina-creditcard-local</app.bank.cmbchina.creditcard.name>
+				<app.bank.etl.name>bank-etl-local</app.bank.etl.name>
+				<!-- hyx -->
+				<app.bank.bocom.creditcard.name>bank-bocom-creditcard-local</app.bank.bocom.creditcard.name>
+
+				<!-- hyx -->
+
+				<app.bank.cebchina.creditcard.name>bank-cebchina-creditcard-local</app.bank.cebchina.creditcard.name>
+				<app.bank.hfbchina.debitcard.name>bank-hfbchina-debitcard-local</app.bank.hfbchina.debitcard.name>
+				<app.bank.czbchina.debitcard.name>bank-czbchina-debitcard-local</app.bank.czbchina.debitcard.name>
+				<app.bank.psbcchina.debitcard.name>bank-psbcchina-debitcard-local</app.bank.psbcchina.debitcard.name>
+				<app.bank.beijing.name>bank-beijing-local</app.bank.beijing.name>
+				<app.bank.citicchina.creditcard.name>bank-citicchina-creditcard-local</app.bank.citicchina.creditcard.name>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<!-- 测试环境 -->
+			<id>test</id>
+			<properties>
+				<app.bank.active>test</app.bank.active>
+				<app.bankh5.name>bank-h5</app.bankh5.name>
+				<app.bank.ccbchina.name>bank-ccbchina</app.bank.ccbchina.name>
+				<app.bankcrawlertask.name>bank-task</app.bankcrawlertask.name>
+				<app.bank.cmbchina.debitcard.name>bank-cmbchina-debitcard</app.bank.cmbchina.debitcard.name>
+				<app.bank.boc.debitcard.name>bank-boc-debitcard</app.bank.boc.debitcard.name>
+				<app.bank.icbcchina.name>bank-icbcchina</app.bank.icbcchina.name>
+				<app.bank.citicchina.name>bank-citicchina-debitcard</app.bank.citicchina.name>
+				<app.bank.abcchina.name>bank-abcchina</app.bank.abcchina.name>
+				<app.bank.cgbchina.name>bank-cgbchina</app.bank.cgbchina.name>
+				<app.bank.pabchina.name>bank-pabchina</app.bank.pabchina.name>
+				<app.bank.bohcchina.name>bank-bohcchina</app.bank.bohcchina.name>
+				<app.bank.cmbcchina.name>bank-cmbcchina</app.bank.cmbcchina.name>
+				<app.bank.bocom.name>bank-bocom-debitcard</app.bank.bocom.name>
+				<app.bank.spdb.name>bank-spdb</app.bank.spdb.name>
+				<app.bank.hxbchina.name>bank-hxbchina</app.bank.hxbchina.name>
+				<app.bank.cebchina.name>bank-cebchina</app.bank.cebchina.name>
+				<app.bank.cibchina.name>bank-cibchina</app.bank.cibchina.name>
+				<app.bank.cmbchina.creditcard.name>bank-cmbchina-creditcard</app.bank.cmbchina.creditcard.name>
+				<app.bank.etl.name>bank-etl</app.bank.etl.name>
+				<!-- hyx -->
+				<app.bank.bocom.creditcard.name>bank-bocom-creditcard</app.bank.bocom.creditcard.name>
+
+				<!-- hyx -->
+
+				<app.bank.cebchina.creditcard.name>bank-cebchina-creditcard</app.bank.cebchina.creditcard.name>
+				<app.bank.hfbchina.debitcard.name>bank-hfbchina-debitcard</app.bank.hfbchina.debitcard.name>
+				<app.bank.czbchina.debitcard.name>bank-czbchina-debitcard</app.bank.czbchina.debitcard.name>
+				<app.bank.beijing.name>bank-beijing</app.bank.beijing.name>
+				<app.bank.psbcchina.debitcard.name>bank-psbcchina-debitcard</app.bank.psbcchina.debitcard.name>
+				<app.bank.citicchina.creditcard.name>bank-citicchina-creditcard</app.bank.citicchina.creditcard.name>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 生产环境 -->
+			<id>prod</id>
+			<properties>
+				<app.bank.active>prod</app.bank.active>
+				<app.bankh5.name>bank-h5</app.bankh5.name>
+				<app.bankcrawlertask.name>bank-task</app.bankcrawlertask.name>
+				<app.bank.cmbchina.debitcard.name>bank-cmbchina-debitcard</app.bank.cmbchina.debitcard.name>
+				<app.bank.boc.debitcard.name>bank-boc-debitcard</app.bank.boc.debitcard.name>
+				<app.bank.icbcchina.name>bank-icbcchina</app.bank.icbcchina.name>
+				<app.bank.citicchina.name>bank-citicchina-debitcard</app.bank.citicchina.name>
+				<app.bank.abcchina.name>bank-abcchina</app.bank.abcchina.name>
+				<app.bank.cgbchina.name>bank-cgbchina</app.bank.cgbchina.name>
+				<app.bank.pabchina.name>bank-pabchina</app.bank.pabchina.name>
+				<app.bank.bohcchina.name>bank-bohcchina</app.bank.bohcchina.name>
+				<app.bank.cmbcchina.name>bank-cmbcchina</app.bank.cmbcchina.name>
+				<app.bank.bocom.name>bank-bocom-debitcard</app.bank.bocom.name>
+				<app.bank.spdb.name>bank-spdb</app.bank.spdb.name>
+				<app.bank.hxbchina.name>bank-hxbchina</app.bank.hxbchina.name>
+				<app.bank.cebchina.name>bank-cebchina</app.bank.cebchina.name>
+				<app.bank.cibchina.name>bank-cibchina</app.bank.cibchina.name>
+				<app.bank.cmbchina.creditcard.name>bank-cmbchina-creditcard</app.bank.cmbchina.creditcard.name>
+				<!-- hyx -->
+				<app.bank.bocom.creditcard.name>bank-bocom-creditcard</app.bank.bocom.creditcard.name>
+				<!-- hyx -->
+				<app.bank.cebchina.creditcard.name>bank-cebchina-creditcard</app.bank.cebchina.creditcard.name>
+				<app.bank.etl.name>bank-etl</app.bank.etl.name>
+				<app.bank.hfbchina.debitcard.name>bank-hfbchina-debitcard</app.bank.hfbchina.debitcard.name>
+				<app.bank.czbchina.debitcard.name>bank-czbchina-debitcard</app.bank.czbchina.debitcard.name>
+				<app.bank.beijing.name>bank-beijing</app.bank.beijing.name>
+				<app.bank.psbcchina.debitcard.name>bank-psbcchina-debitcard</app.bank.psbcchina.debitcard.name>
+				<app.bank.citicchina.creditcard.name>bank-citicchina-creditcard</app.bank.citicchina.creditcard.name>
+			</properties>
+		</profile>
+		<profile>
+			<!-- mariadb5.5.56 -->
+			<id>mariadb5.5.56</id>
+			<properties>
+				<app.bank.active>mariadb5.5.56</app.bank.active>
+				<app.bankcrawlertask.name>bank-task</app.bankcrawlertask.name>
+			</properties>
+		</profile>
+	</profiles>
+</project>

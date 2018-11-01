@@ -1,0 +1,28 @@
+server: 
+  port: 9026
+info: 
+  contact: 
+    email: dimei1@creditharmony.cn
+logging: 
+  file: common-microservice-pbccrc-8001.log
+  level:  
+    org.springframework.boot.env.PropertySourcesLoader: TRACE 
+    org.springframework.web: DEBUG
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+#数据源：
+spring:
+  cloud:
+    stream:
+      bindings: 
+        output:                            # 频道名称（根据具体模块来命名）
+          destination: source-channel               
+          binder: kafka_binder
+      binders: 
+        kafka_binder: 
+          type: kafka 
+          environment:
+            spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
+            spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes} 

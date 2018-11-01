@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+
+<body>
+<nav class="navbar navbar-default alert-info" style="height: 50px;">
+	<div class="container-fluid">
+		<div class="navbar-header" style="height: 50px;">
+			<a href="javascript:history.go(-1);" class="navbar-brand">
+                <span aria-hidden="true" style="color: white;font-weight:900">
+                   <
+                </span>
+			</a>
+			<p class="navbar-brand" ><span>运营商认证</span></p>
+		</div>
+	</div>
+	<!--忘记密码页-移动-->
+</nav>
+<div id="br"></div>
+	<div class="container">
+		<input type="hidden" name="themeColor" id="themeColor" th:value="${mobileJsonBean.themeColor}"/>
+		<input type="hidden" th:value="${topHide}" id="topHide" name="topHide"/>
+		<input type="hidden" th:value="${key}" id="key" name="key"/>
+		<input type="hidden" th:value="${redirectUrl}" id="redirectUrl" name="redirectUrl"/>
+		<input type="hidden" name="owner" id="owner" th:value="${mobileJsonBean.owner}"/>
+		<input type="hidden" th:value="${appActive}" id="appActive">
+		<div class="panel panel-info">
+		  <div class="panel-heading">方法一</div>
+		  <div class="panel-body">
+		    请发送“MMCZ空格证件号码空格新密码空格新密码”至10086（推荐）
+		  </div>
+		</div> 
+		<div class="panel panel-info">
+		  <div class="panel-heading">方法二</div>
+		  <div class="panel-body">
+		    请拨打10086，通过人工语言找回服务密码
+		  </div>
+		</div> 
+		<div class="panel panel-info">
+		  <div class="panel-heading">方法三</div>
+		  <div class="panel-body">
+		   可通过如下途径重置：1.网上营业厅 2.掌上营业厅 3.当地移动营业厅
+		  </div>
+		</div> 
+		<div class="panel panel-info">
+		  <div class="panel-heading">方法四</div>
+		  <div class="panel-body">
+		    进入移动官网找回密码，登录地址 https://login.10086.cn/
+		  </div>
+		</div>  
+	</div>
+
+	<div th:include="components/footer :: footer"></div>
+</body>
+</html>

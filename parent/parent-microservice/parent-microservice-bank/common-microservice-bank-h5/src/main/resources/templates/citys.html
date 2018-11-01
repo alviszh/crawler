@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+
+</head>
+<body>
+<nav class="navbar navbar-default alert-info"  role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="javascript:history.go(-1);" class="navbar-brand"><span
+                    class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </a>
+            <p class="navbar-brand" ><span>选择网银</span></p>
+        </div>
+        <!--<div class="navbar-text" style="padding-top: 1px;">
+            <div class="input-group input-group-sm " style="width: 80%;">
+                <span class="input-group-addon" id="sizing-addon3" ><i class="glyphicon glyphicon-search"></i></span>
+                <input type="text" class="form-control" placeholder="搜索" aria-describedby="sizing-addon3"/>
+            </div>
+        </div>-->
+    </div>
+</nav>
+<div id="br"></div>
+
+<div class="container">
+    <div id="letter" ></div><!--显示字母-->
+    <!--<div role="navigation">-->
+    <input type="hidden" id="themeColor" name="themeColor"  th:value="${themeColor}"/>
+    <input type="hidden" id="topHide" name="topHide" th:value="${topHide}"/>
+    <input type="hidden" id="username"   name="username" th:value="${bankJsonBean.username}"/>
+    <input type="hidden" id="idNum" name="idNum" th:value="${bankJsonBean.idNum}"/>
+    <input type="hidden" id="cardType" name="cardType" th:value="CREDIT_CARD"/>
+    <ul id="myTab" class="nav nav-tabs">
+        <li class="active">
+            <a href="#visa" data-toggle="tab">
+                信用卡
+            </a>
+        </li>
+        <li><a href="#deposits" data-toggle="tab">
+            储蓄卡</a>
+        </li>
+    </ul>
+    <div class="list-group active" id="visa">
+        <!--<div class="sort_list">
+            <a href="#" class="list-group-item" name="num_name" id="1">北京市</a>
+        </div>
+        <div class="sort_list">
+            <a href="#" class="list-group-item disabled" name="num_name" style="background-color:#f5f5f5">成都</a>
+        </div>-->
+        <!--<div class="sort_list">
+            <a href="#" class="list-group-item" name="num_name">上海市</a>
+        </div>-->
+        <!--<div class="sort_list">
+            <a href="#" class="list-group-item" name="num_name">深圳市</a>
+        </div>-->
+    </div>
+    <div class="list-group" id="deposits">
+
+    </div>
+</div>
+
+<div th:include="components/footer :: footer"></div>
+<script src="/h5/bank/js/citys.js"></script>
+</body>
+</html>

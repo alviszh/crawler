@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+
+<body>
+<nav class="navbar navbar-default alert-info" style="height: 50px;">
+	<div class="container-fluid">
+		<div class="navbar-header" style="height: 50px;">
+			<a href="javascript:history.go(-1);" class="navbar-brand">
+                <span aria-hidden="true" style="color: white;font-weight:900">
+                   <
+                </span>
+			</a>
+			<p class="navbar-brand" ><span>运营商认证</span></p>
+		</div>
+	</div>
+<!--忘记密码页-电信-->
+</nav>
+<div id="br"></div>
+	<div class="container">
+		<input type="hidden" name="themeColor" id="themeColor" th:value="${mobileJsonBean.themeColor}"/>
+		<input type="hidden" th:value="${topHide}" id="topHide" name="topHide"/>
+		<input type="hidden" th:value="${key}" id="key" name="key"/>
+		<input type="hidden" th:value="${redirectUrl}" id="redirectUrl" name="redirectUrl"/>
+		<input type="hidden" name="owner" id="owner" th:value="${mobileJsonBean.owner}"/>
+		<input type="hidden" th:value="${appActive}" id="appActive">
+		<div class="panel panel-info">
+		  <div class="panel-heading">方法一</div>
+		  <div class="panel-body">
+		    请发送502#原密码#新密码（6位数字）至10001办理密码修改，发送503至10001办理密码重置
+		  </div>
+		</div> 
+		<div class="panel panel-info">
+		  <div class="panel-heading">方法二</div>
+		  <div class="panel-body">
+		    请拨打10001
+		  </div>
+		</div> 
+		<div class="panel panel-info">
+		  <div class="panel-heading">方法三</div>
+		  <div class="panel-body">
+		    进入电信官网找回密码
+		  </div>
+		</div>
+	</div>
+
+	<div th:include="components/footer :: footer"></div>
+</body>
+</html>

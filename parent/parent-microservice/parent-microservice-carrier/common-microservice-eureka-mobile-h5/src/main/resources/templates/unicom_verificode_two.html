@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+
+</head>
+
+<body>
+<nav class="navbar navbar-default alert-info" style="height: 50px;">
+    <div class="container-fluid">
+        <div class="navbar-header" style="height: 50px;">
+            <a href="javascript:history.go(-1);" class="navbar-brand">
+                <span aria-hidden="true" style="color: white;font-weight:900">
+                   <
+                </span>
+            </a>
+            <p class="navbar-brand" ><span>运营商认证</span></p>
+        </div>
+    </div>
+
+</nav>
+
+<div id="br"></div>
+<div class="container">
+    <form class="bs-example-form" data-example-id="simple-input-groups" method="post" id="authform" >
+        <div class="input-group input-group-lg">
+            <input type="hidden" name="themeColor" id="themeColor" th:value="${themeColor}"/>
+            <input type="hidden" th:value="${topHide}" id="topHide" name="topHide"/>
+            <input type="hidden" th:value="${key}" id="key" name="key"/>
+            <input type="hidden" th:value="${redirectUrl}" id="redirectUrl" name="redirectUrl"/>
+            <input type="hidden" name="user_id" id="user_id" th:value="${user_id}"/>
+            <input type="hidden" name="task_id" id="task_id" th:value="${task_id}" />
+            <input type="hidden" name="password" id="password" th:value="${password}" />
+            <input type="hidden" name="owner" id="owner" th:value="${owner}"/>
+            <input type="hidden" th:value="${appActive}" id="appActive">
+            <span class="input-group-addon" id="basic-addon2">手&emsp;机&emsp;号：</span> <!--<input
+                type="text" class="form-control" id="name" name="name"
+                aria-describedby="basic-addon2"  readonly="readonly" th:value="${phoneNum}"/>-->
+            <span  class="form-control"
+                   aria-describedby="basic-addon2" th:text="${phoneNum}"></span>
+            <input type="hidden" name="name" id="name" th:value="${phoneNum}"/>
+        </div>
+        <div class="input-group input-group-lg" id="codeDiv">
+        </div>
+        <a href="#" class="btn btn-lg btn-block btn-info disabled" role="button" id="nextBtn">下一步</a>
+        <div class="prompt" id="prompt">
+            <!--<small class="form-text text-muted">温馨提示：<br />
+                *电信短信验证码可能存在延迟或未发送情况，可以通过再次发送短信验证码重新获取<br />
+            </small>-->
+        </div>
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+             data-backdrop="static" data-keyboard="false" id="myModal" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class=" modal-content" style="text-align: center;">
+                    <div class="modal-body">
+                        <img th:src="@{/h5/carrier/images/loading.gif}" height="auto" />&nbsp;<span id="message"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--消息框-->
+    <div th:include="components/footer :: message"></div>
+    <!--爬取成功模块-->
+    <div th:include="components/footer :: modal"></div>
+</div>
+<div th:include="components/footer :: footer"></div>
+</body>
+<!--<script src="/h5/js/unicom_auth.js"></script>-->
+<script th:src="@{/h5/carrier/js/unicom_verificode_two.js}"></script>
+
+</html>

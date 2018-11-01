@@ -1,0 +1,17 @@
+server:
+  port: 1227
+logging:
+  file: common-microservice-e_commerce-taobao-8886.log
+  level:
+    com.gargoylesoftware.htmlunit.javascript.StrictErrorReporter : OFF
+    com.gargoylesoftware.htmlunit.javascript.host.ActiveXObject : OFF
+    com.gargoylesoftware.htmlunit.host.html.HTMLDocument : OFF
+    com.gargoylesoftware.htmlunit.html.HtmlScript : OFF
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaserver:8888/eureka/
+  instance:
+        statusPageUrl: http://localhost:1222/admin

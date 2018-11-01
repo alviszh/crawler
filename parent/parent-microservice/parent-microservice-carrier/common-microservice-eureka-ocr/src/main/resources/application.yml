@@ -1,0 +1,38 @@
+server: 
+  port: 1002
+logging: 
+  file: common-microservice-eureka-ocr-9001.log
+  levels: 
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG
+#微服务说明
+eureka: 
+#  instance: 
+#    statusPageUrl: http://localhost:1111/admin
+  client: 
+    healthcheck: 
+      enabled: true
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+#      defaultZone: ${defaultZone}
+
+---
+#数据源：
+spring:
+  datasource:
+    url: jdbc:postgresql://${postgresql.server}:${port}/crawler
+    username: ${username}
+    password: ${password}
+    driver-class-name: org.postgresql.Driver
+  jpa: 
+    show-sql: false
+    hibernate: 
+        ddl-auto: update
+        naming-strategy : org.hibernate.cfg.ImprovedNamingStrategy  
+    properties:  
+      hibernate:  
+#       dialect: com.microservice.persistence.SRDB10Dialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+#       dialect: org.hibernate.dialect.MySQLDialect
+          
+

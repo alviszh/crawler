@@ -1,0 +1,62 @@
+server: 
+  port: 10010
+info:
+  contact: 
+    email: dimei1@creditharmony.cn
+logging: 
+  file: common-microservice-e_commerce-jd-10010.log
+  level:  
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: INFO
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+  instance:
+#   prefer-ip-address: true
+#    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    metadata-map:
+      winio: false
+
+
+---
+#数据源：
+spring:
+  cloud:
+    stream:
+      bindings: 
+        carrier_channel:
+          binder: carrier_binder
+      binders: 
+        carrier_binder: 
+          type: kafka 
+          environment:
+            spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
+            spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes} 
+  datasource:
+    hikari: 
+      minimum-idle: ${datasource.jdbc.minIdle}
+      maximum-pool-size: ${datasource.jdbc.maxPoolSize}
+    driver-class-name: ${datasource.jdbc.driver}
+    url: ${datasource.jdbc.url}
+    username: ${datasource.jdbc.username}
+    password: ${datasource.jdbc.password}
+    type: ${datasource.jdbc.type}
+  jpa: 
+    show-sql: false
+    hibernate: 
+        ddl-auto: update 
+        naming: 
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl 
+    properties:  
+      hibernate:   
+        dialect: ${datasource.hibernate.dialect}
+        temp: 
+          use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法为实现
+  mvc:
+    static-path-pattern: /snapshot/**
+  resources:
+#    static-locations: file:G:\workspace\2018-4-2\strong-auth-crawler/snapshot,file:G:\workspace\2018-4-2\strong-auth-crawler\file
+    static-locations: file:./home/seluser/snapshot/
+          
+

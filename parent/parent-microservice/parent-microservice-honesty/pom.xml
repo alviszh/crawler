@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sr.microservice</groupId>
+		<artifactId>parent-microservice</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>parent-microservice-honesty</artifactId>
+	<name>parent-microservice-honesty</name>
+	<packaging>pom</packaging>
+
+	<properties>
+		<!-- 文件拷贝时的编码 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- 编译时的编码 -->
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+		<!-- 编译时的版本 -->
+		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.sr.storm</groupId>
+			<artifactId>common-module-crawler</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zipkin</artifactId>
+		</dependency>
+<!-- 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-stream-kafka</artifactId>
+		</dependency> -->
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netflix.hystrix</groupId>
+			<artifactId>hystrix-javanica</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>com.google.guava</groupId>
+					<artifactId>guava</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.sr.storm</groupId>
+			<artifactId>common-module-dao</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sr.storm</groupId>
+			<artifactId>common-module-htmlunit</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
+	<modules>
+		<module>common-microservice-honesty-shixin</module>
+		<module>common-microservice-honesty-service</module>
+		<module>common-microservice-honesty-search</module>
+		<module>common-microservice-honesty-search-task</module>
+		<module>common-microservice-honesty-caipanwenshu</module>
+		<module>common-microservice-honesty-shixin-task</module>
+        <module>common-microservice-honesty-caipanwenshu-task</module>
+  </modules>
+
+
+	<profiles>
+		<profile>
+			<!-- 本机开发环境 -->
+			<id>dev</id>
+			<properties>
+				<app.honesty.active>dev</app.honesty.active>
+				<app.honesty.shixin.task.name>honesty-shixin-task-local</app.honesty.shixin.task.name>
+
+				<app.shixin.name>honesty-shixin-local</app.shixin.name>
+				<app.search.name>search-local</app.search.name>
+				<app.search.task.name>search-task-local</app.search.task.name>
+				<app.caipanwenshu.name>honesty-caipanwenshu-local</app.caipanwenshu.name>
+				<app.caipanwenshu.task.name>honesty-caipanwenshu-task-local</app.caipanwenshu.task.name>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<!-- 测试环境 -->
+			<id>test</id>
+			<properties>
+				<app.honesty.active>test</app.honesty.active>
+				<app.shixin.name>honesty-shixin</app.shixin.name>
+				<app.honesty.shixin.task.name>honesty-shixin-task</app.honesty.shixin.task.name>
+
+				<app.search.name>search</app.search.name>
+				<app.search.task.name>search-task</app.search.task.name>
+				<app.caipanwenshu.name>honesty-caipanwenshu</app.caipanwenshu.name>
+				<app.caipanwenshu.task.name>honesty-caipanwenshu-task</app.caipanwenshu.task.name>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 生产环境 -->
+			<id>prod</id>
+			<properties>
+				<app.honesty.active>prod</app.honesty.active>
+				<app.shixin.name>honesty-shixin</app.shixin.name>
+				<app.honesty.shixin.task.name>honesty-shixin-task</app.honesty.shixin.task.name>
+				<app.search.name>search</app.search.name>
+				<app.search.task.name>search-task</app.search.task.name>
+				<app.caipanwenshu.name>honesty-caipanwenshu</app.caipanwenshu.name>
+				<app.caipanwenshu.task.name>honesty-caipanwenshu-task</app.caipanwenshu.task.name>
+			</properties>
+		</profile>
+	</profiles>
+</project>

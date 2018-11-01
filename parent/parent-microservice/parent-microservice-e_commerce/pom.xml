@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sr.microservice</groupId>
+		<artifactId>parent-microservice</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>parent-microservice-e_commerce</artifactId>
+	<packaging>pom</packaging>
+
+	<properties>
+		<!-- 文件拷贝时的编码 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- 编译时的编码 -->
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+		<!-- 编译时的版本 -->
+		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zipkin</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sr.microservice</groupId>
+			<artifactId>common-microservice-ocr</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.netflix.hystrix</groupId>
+			<artifactId>hystrix-javanica</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>com.google.guava</groupId>
+					<artifactId>guava</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.sr.storm</groupId>
+			<artifactId>common-module-log</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zipkin</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.netflix.hystrix</groupId>
+			<artifactId>hystrix-javanica</artifactId>
+			<exclusions>
+				<exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+            </exclusions>
+		</dependency>
+       
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		
+	</dependencies>
+
+
+    <modules>
+        <module>common-microservice-e_commerce-taobao-h5</module>
+        <module>common-microservice-e_commerce-jd-h5</module>
+        <module>common-microservice-e_commerce-task</module>
+        <module>common-microservice-e_commerce-jd</module>
+        <module>common-microservice-e_commerce-taobao</module>
+        <module>common-microservice-e_commerce-service</module>
+        <module>common-microservice-e_commerce-etl</module>
+   <!--  <module>common-microservice-e_commerce-zhifubao</module> -->
+    <module>common-microservice-e_commerce-suning</module>
+    <module>common-microservice-e_commerce-elemo</module>
+  </modules>
+
+	<profiles>
+		<profile>
+			<!-- 本机开发环境 -->
+			<id>dev</id>
+			<properties>
+				<app.e_commerce.active>dev</app.e_commerce.active>
+				<app.e_commerce.jingdong.name>Ecommerce-JingDong-local</app.e_commerce.jingdong.name>
+				<app.e_commercetask.name>Ecommerce-Task-local</app.e_commercetask.name>
+				<app.e_commerce.taobao.name>Ecommerce-Taobao-local</app.e_commerce.taobao.name>
+				<app.e_commerce.zhifubao.name>Ecommerce-Zhifubao-local</app.e_commerce.zhifubao.name>
+				<app.e_commerce.suning.name>Ecommerce-SuNing-local</app.e_commerce.suning.name>
+				<app.e_commerce.etl.name>Ecommerce-etl-local</app.e_commerce.etl.name>
+				<app.elemo.name>elema-local</app.elemo.name>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<!-- 测试环境 -->
+			<id>test</id>
+			<properties>
+				<app.e_commerce.active>test</app.e_commerce.active>
+				<app.e_commerce.jingdong.name>Ecommerce-JingDong</app.e_commerce.jingdong.name>
+				<app.e_commercetask.name>Ecommerce-Task</app.e_commercetask.name>
+				<app.e_commerce.taobao.name>Ecommerce-Taobao</app.e_commerce.taobao.name>
+				<app.e_commerce.zhifubao.name>Ecommerce-Zhifubao</app.e_commerce.zhifubao.name>
+				<app.e_commerce.suning.name>Ecommerce-SuNing</app.e_commerce.suning.name>
+				<app.e_commerce.etl.name>Ecommerce-etl</app.e_commerce.etl.name>
+				<app.elemo.name>elema</app.elemo.name>
+			</properties>
+			<!-- <activation> <activeByDefault>true</activeByDefault> </activation> -->
+		</profile>
+		<profile>
+			<!-- 生产环境 -->
+			<id>prod</id>
+			<properties>
+				<app.e_commerce.active>prod</app.e_commerce.active>
+				<app.e_commercetask.name>Ecommerce-Task</app.e_commercetask.name>
+				<app.e_commerce.jingdong.name>Ecommerce-JingDong</app.e_commerce.jingdong.name>
+				<app.e_commerce.taobao.name>Ecommerce-Taobao</app.e_commerce.taobao.name>
+				<app.e_commerce.zhifubao.name>Ecommerce-Zhifubao</app.e_commerce.zhifubao.name>
+				<app.e_commerce.suning.name>Ecommerce-SuNing</app.e_commerce.suning.name>
+				<app.e_commerce.etl.name>Ecommerce-etl</app.e_commerce.etl.name>
+				<app.elemo.name>elema</app.elemo.name>
+			</properties>
+		</profile>
+		<profile>
+			<!--mariadb5.5.56 生产环境 -->
+			<id>mariadb5.5.56</id>
+			<properties>
+				<app.e_commerce.active>mariadb5.5.56</app.e_commerce.active>
+				<app.e_commercetask.name>Ecommerce-Task</app.e_commercetask.name>
+				<app.e_commerce.jingdong.name>Ecommerce-JingDong</app.e_commerce.jingdong.name>
+				<app.e_commerce.taobao.name>Ecommerce-Taobao</app.e_commerce.taobao.name>
+				<app.e_commerce.zhifubao.name>Ecommerce-Zhifubao</app.e_commerce.zhifubao.name>
+				<app.e_commerce.suning.name>Ecommerce-SuNing</app.e_commerce.suning.name>
+				<app.e_commerce.etl.name>Ecommerce-etl</app.e_commerce.etl.name>
+				<app.elemo.name>elema</app.elemo.name>
+			</properties>
+		</profile>
+	</profiles>
+</project>

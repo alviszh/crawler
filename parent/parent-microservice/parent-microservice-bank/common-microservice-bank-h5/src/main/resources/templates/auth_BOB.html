@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+
+</head>
+<body>
+<style>
+    .bs-example-form .input-group {
+        margin-bottom: 0px;
+    }
+</style>
+<nav class="navbar navbar-default navbar-page">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="javascript:history.go(-1);" class="navbar-brand"><span
+                    class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </a>
+            <p class="navbar-brand" ><span th:text="${cardType}=='DEBIT_CARD'? ${city}+'储蓄卡' : ${city}+'信用卡'"></span></p>
+        </div>
+    </div>
+
+</nav>
+<div id="br"></div>
+<div class="container">
+    <form class="bs-example-form" data-example-id="simple-input-groups"  method="post"
+          id="authform">
+        <!--<input type="hidden" th:value="${themeColor}" id="themeColor" name="themeColor"/>
+        <input type="hidden" th:value="${topHide}" id="topHide" name="topHide"/>-->
+        <!--隐藏域-->
+        <input type="hidden" id="themeColor" name="themeColor" th:value="${themeColor}"/>
+        <input type="hidden" id="topHide" name="topHide" value="false" th:value="${topHide}"/>
+        <input type="hidden" id="taskid" name="taskid"  th:value="${taskId}"/>
+        <input type="hidden" id="bankType" name="bankType"  th:value="${city}"/>
+        <input type="hidden" id="cardType" name="cardType"  th:value="${cardType}"/>
+        <input type="hidden" id="loginType" name="loginType"  value="ACCOUNT_NUM"/>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">账<zw style="visibility: hidden">位</zw>号：</span> <input
+                type="text" class="form-control" id="loginName" name="loginName"
+                th:placeholder="${cardType}=='DEBIT_CARD'? '请输入储蓄卡卡号' : '请输入信用卡卡号'"/>
+            <span class="ion-ios-help-outline"></span>
+        </div>
+        <div class="log-div">12-21位完整卡号</div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">密<zw style="visibility: hidden">位</zw>码：</span> <input
+                type="password" class="form-control" id="password" name="password"
+                placeholder="请输入密码"/>
+            <span class="ion-ios-help-outline"></span>
+            <div class="tex_box"><span class="password closed"></span></div>
+        </div>
+        <div class="log-div">一般为6位数字</div>
+        <!--<button type="submit" class="btn btn-lg btn-block btn-info">下一步</button>-->
+        <a href="#" class="btn btn-lg btn-block btn-info disabled" role="button" id="nextBtn">下一步</a>
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+             data-backdrop="static" data-keyboard="false" id="myModal" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class=" modal-content" style="text-align: center;">
+                    <div class="modal-body">
+                        <img th:src="@{/h5/bank/images/loading.gif}" height="auto" />&nbsp;<span id="message"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--消息框-->
+    <div th:include="components/footer :: message"></div>
+    <!--爬取成功模块-->
+    <div th:include="components/footer :: modal"></div>
+    <!--跳转银行-->
+    <div th:include="components/footer :: cofModal"></div>
+
+</div>
+<div th:include="components/footer :: footer"></div>
+<script src="/h5/bank/js/auth_BOB.js"></script>
+<script src="/h5/bank/js/bank_crawler.js"></script>
+</body>
+</html>

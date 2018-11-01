@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8">
+<title>运营商报告</title>
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<link rel="stylesheet" th:href="@{/css/jquery-ui-1.8.17.custom.css}" />
+
+<script type="text/javascript" th:src="@{/jquery/jquery-1.7.1.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/jquery/jquery-ui-1.8.17.custom.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/jspdf.debug.js}"></script>
+<script type="text/javascript" th:src="@{/js/html2canvas.js}"></script>
+<script type="text/javascript" th:src="@{/js/basic.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/jspdf.min.js}"></script>
+</head>
+<body>
+	<div align="center" class="reportTitle" height="60"
+		style="margin-top: 30px">运营商报告</div>
+	<div style="margin-top: 30px"></div>
+	<!-- 	<div style="float: right;">
+		<input id="btn-html2canvas" onclick="javascript:demoFromHTML();" type="button" value="导出PDF" class="btn"/>
+	</div> -->
+	<div
+		th:each="mobileReportBaseInfos:${reportModel.mobileReportBaseInfos}">
+		<div>
+			<ul style="margin-top: 30px">
+				<li style="margin-top: 10px; color: #255e95">任务编号：<span
+					th:text="${mobileReportBaseInfos.taskId}"></span></li>
+				<li style="margin-top: 10px; color: #255e95">任务时间：<span
+					th:text="${mobileReportBaseInfos.dataGainTime}"></span></li>
+				<li style="margin-top: 10px; color: #255e95">报告时间：<span
+					th:text="${mobileReportBaseInfos.updateTime}"></span></li>
+			</ul>
+		</div>
+		<br />
+		<!-- 用户基本信息 -->
+		<table id="mobileReportBaseInfos" border="1px" width="100%"
+			cellspacing="0" class="table">
+			<thead>
+				<tr>
+					<th colspan="3" class="smallTitle">1.1 基本信息</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="white">
+					<td>姓名：<span th:text="${mobileReportBaseInfos.name}"></span></td>
+					<td>身份证号码：<span th:text="${mobileReportBaseInfos.idcardNum}"></span></td>
+					<td>通讯地址：<span th:text="${mobileReportBaseInfos.addr}"></span></td>
+				</tr>
+				<tr class="gray">
+					<td>用户手机号码：<span
+						th:text="${mobileReportBaseInfos.commonUseTelephone}"></span></td>
+					<td>入网时间：<span
+						th:text="${mobileReportBaseInfos.cellPhoneRegTime}"></span></td>
+					<td>手机号码归属地：<span th:text="${mobileReportBaseInfos.city}"></span></td>
+				</tr>
+				<tr class="white">
+					<td>所属运营商：<span th:text="${mobileReportBaseInfos.userSource}"></span></td>
+					<td>账户余额：<span
+						th:text="${mobileReportBaseInfos.cellPhoneAvailableBalance}"></span></td>
+					<td>套餐名称：<span th:text="${mobileReportBaseInfos.businessName}"></span></td>
+				</tr>
+				<tr class="gray">
+					<td>是否实名认证：<span
+						th:text="${mobileReportBaseInfos.cellPhoneReliability==0} ? '否' : '是'"></span></td>
+					<td>账户状态：<span th:text="${mobileReportBaseInfos.userStatus}"></span></td>
+					<td>联系电话：<span th:text="${mobileReportBaseInfos.contractNum}"></span></td>
+				</tr>
+				<tr class="white">
+					<td colspan="3">通话记录月份采集结果集合：<span
+						th:text="${mobileReportBaseInfos.crawlerMonthsShould}"></span></td>
+				</tr>
+				<tr class="gray">
+					<td colspan="3">有通话记录月份数集合：<span
+						th:text="${mobileReportBaseInfos.crawlerMonthsWithRecord}"></span></td>
+				</tr>
+				<tr class="white">
+					<td colspan="3">无通话记录月份数集合：<span
+						th:text="${mobileReportBaseInfos.crawlerMonthsWithoutRecord}"></span></td>
+				</tr>
+				<tr class="gray">
+					<td colspan="3">通话记录获取失败月份集合：<span
+						th:text="${mobileReportBaseInfos.crawlerMonthsFail}"></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br />
+	<br />
+	<table id="mobileReportCallStatisticssEachMonth" border="1px"
+		width="100%" cellspacing="0" class="table">
+		<thead>
+			<tr>
+				<th colspan="9" class="smallTitle">1.2 通话统计</th>
+			</tr>
+			<tr>
+				<td colspan="9" class="secondTitle">通话统计--单月</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th class="th" width="8%">统计月份</th>
+				<th class="th" width="9%">通话次数</th>
+				<th class="th" width="9%">通话时长(秒)</th>
+				<th class="th" width="13%">通话号码数量(个)</th>
+				<th class="th" width="13%">互通号码数量(个)</th>
+				<th class="th" width="9%">主叫次数</th>
+				<th class="th" width="13%">主叫通话时长(秒)</th>
+				<th class="th" width="13%">被叫通话时长(秒)</th>
+				<th class="th" width="13%">通话费用总计(元)</th>
+			</tr>
+			<div
+				th:if="${reportModel.mobileReportCallStatisticss!=null && reportModel.mobileReportCallStatisticss.size()>0}">
+				<tr th:class="${index.odd}?'gray':'white'"
+					th:each="callRecordEachMonth,index:${reportModel.mobileReportCallStatisticss}">
+					<td th:text="${callRecordEachMonth.interactMth}"></td>
+					<td th:text="${callRecordEachMonth.interactCnt}"></td>
+					<td th:text="${callRecordEachMonth.interactTime}"></td>
+					<td th:text="${callRecordEachMonth.contractsCnt}"></td>
+					<td th:text="${callRecordEachMonth.mutualnumberCnt}"></td>
+					<td th:text="${callRecordEachMonth.dialCnt}"></td>
+					<td th:text="${callRecordEachMonth.dialTime}"></td>
+					<td th:text="${callRecordEachMonth.dialedCnt}"></td>
+					<td th:text="${callRecordEachMonth.callFee}"></td>
+				</tr>
+			</div>
+		</tbody>
+	</table>
+	<br />
+		<br />
+	<table border="1px" width="100%" cellspacing="0" class="table">
+		<thead>
+			<tr>
+				<td colspan="9" class="secondTitle">通话统计--多月</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th class="th" width="8%">统计月数</th>
+				<th class="th" width="9%">通话次数</th>
+				<th class="th" width="9%">通话时长(秒)</th>
+				<th class="th" width="13%">通话号码数量(个)</th>
+				<th class="th" width="13%">互通号码数量(个)</th>
+				<th class="th" width="9%">主叫次数</th>
+				<th class="th" width="13%">主叫通话时长(秒)</th>
+				<th class="th" width="13%">被叫通话时长(秒)</th>
+				<th class="th" width="13%">通话费用总计(元)</th>
+			</tr>
+			<div
+				th:if="${reportModel.mobileReportCallStatisticsThreeMonths!=null && reportModel.mobileReportCallStatisticsThreeMonths.size()>0}">
+				<tr class="white"
+					th:each="callRecordThreeMonth:${reportModel.mobileReportCallStatisticsThreeMonths}">
+					<td>近3月</td>
+					<td th:text="${callRecordThreeMonth.interactCnt}"></td>
+					<td th:text="${callRecordThreeMonth.interactTime}"></td>
+					<td th:text="${callRecordThreeMonth.contractsCnt}"></td>
+					<td th:text="${callRecordThreeMonth.mutualnumberCnt}"></td>
+					<td th:text="${callRecordThreeMonth.dialCnt}"></td>
+					<td th:text="${callRecordThreeMonth.dialTime}"></td>
+					<td th:text="${callRecordThreeMonth.dialedCnt}"></td>
+					<td th:text="${callRecordThreeMonth.callFee}"></td>
+				</tr>
+			</div>
+			<div
+				th:if="${reportModel.mobileReportCallStatisticsSixMonths!=null && reportModel.mobileReportCallStatisticsSixMonths.size()>0}">
+				<tr class="gray"
+					th:each="callRecordSixMonth:${reportModel.mobileReportCallStatisticsSixMonths}">
+					<td>近6月</td>
+					<td th:text="${callRecordSixMonth.interactCnt}"></td>
+					<td th:text="${callRecordSixMonth.interactTime}"></td>
+					<td th:text="${callRecordSixMonth.contractsCnt}"></td>
+					<td th:text="${callRecordSixMonth.mutualnumberCnt}"></td>
+					<td th:text="${callRecordSixMonth.dialCnt}"></td>
+					<td th:text="${callRecordSixMonth.dialTime}"></td>
+					<td th:text="${callRecordSixMonth.dialedCnt}"></td>
+					<td th:text="${callRecordSixMonth.callFee}"></td>
+				</tr>
+			</div>
+		</tbody>
+	</table>
+	<br />
+	<br />
+	<table border="1px" width="100%" cellspacing="0" class="table">
+		<thead>
+			<tr>
+				<th colspan="5" class="smallTitle">1.3 消费统计</th>
+			</tr>
+			<tr>
+				<td colspan="5" class="secondTitle">消费统计--单月</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th class="th" width="20%">统计月份</th>
+				<th class="th" width="20%">月消费金额(元)</th>
+				<th class="th" width="20%">月流量套餐(GB)</th>
+				<th class="th" width="20%">月流量使用量(GB)</th>
+				<th class="th" width="20%">月充值金额(元)</th>
+			</tr>
+			<div
+				th:if="${reportModel.mobileReportConsumptions!=null && reportModel.mobileReportConsumptions.size()>0}">
+				<tr th:class="${index.odd}?'gray':'white'"
+					th:each="consumEachMonth,index:${reportModel.mobileReportConsumptions}">
+					<td th:text="${consumEachMonth.month}"></td>
+					<td th:text="${consumEachMonth.callPay}"></td>
+					<td th:text="${consumEachMonth.monthFlow}"></td>
+					<td th:text="${consumEachMonth.netFlow}"></td>
+					<td th:text="${consumEachMonth.rechangeAmount}"></td>
+				</tr>
+			</div>
+		</tbody>
+	</table>
+	<br />
+	<br/>
+	<table border="1px" width="100%" cellspacing="0" class="table">
+		<thead>
+			<tr>
+				<td colspan="5" class="secondTitle">消费统计--多月</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th class="th" width="20%">统计月数</th>
+				<th class="th" width="20%">消费总金额(元)</th>
+				<th class="th" width="20%">流量套餐总量(GB)</th>
+				<th class="th" width="20%">总流量使用量(GB)</th>
+				<th class="th" width="20%">充值总金额(元)</th>
+			</tr>
+			<div
+				th:if="${reportModel.mobileReportConsumptionThreeMonths!=null && reportModel.mobileReportConsumptionThreeMonths.size()>0}">
+				<tr class="white"
+					th:each="consumeThreeMonth:${reportModel.mobileReportConsumptionThreeMonths}">
+					<td>近3月</td>
+					<td th:text="${consumeThreeMonth.callPay}"></td>
+					<td th:text="${consumeThreeMonth.monthFlow}"></td>
+					<td th:text="${consumeThreeMonth.netFlow}"></td>
+					<td th:text="${consumeThreeMonth.rechangeAmount}"></td>
+				</tr>
+			</div>
+			<div
+				th:if="${reportModel.mobileReportConsumptionSixMonths!=null && reportModel.mobileReportConsumptionSixMonths.size()>0}">
+				<tr class="gray"
+					th:each="consumeSixMonth:${reportModel.mobileReportConsumptionSixMonths}">
+					<td>近6月</td>
+					<td th:text="${consumeSixMonth.callPay}"></td>
+					<td th:text="${consumeSixMonth.monthFlow}"></td>
+					<td th:text="${consumeSixMonth.netFlow}"></td>
+					<td th:text="${consumeSixMonth.rechangeAmount}"></td>
+				</tr>
+			</div>
+		</tbody>
+	</table>
+	<br />
+	<br />
+	<table border="1px" width="100%" cellspacing="0" class="table">
+		<thead>
+			<tr>
+				<th colspan="4" class="smallTitle">1.4 缴费信息</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th class="th" width="25%">缴费日期</th>
+				<th class="th" width="25%">套餐名称</th>
+				<th class="th" width="25%">缴费渠道</th>
+				<th class="th" width="25%">缴费方式</th>
+			</tr>
+			<div
+				th:if="${reportModel.mobileReportPayments!=null && reportModel.mobileReportPayments.size()>0}">
+				<tr th:class="${index.odd}?'gray':'white'"
+					th:each="mobileReportPayments,index:${reportModel.mobileReportPayments}">
+					<td th:text="${mobileReportPayments.payDate}"></td>
+					<td th:text="${mobileReportPayments.businessName}"></td>
+					<td th:text="${mobileReportPayments.payMode}"></td>
+					<td th:text="${mobileReportPayments.payWay}"></td>
+				</tr>
+			</div>
+		</tbody>
+	</table>
+	<br />
+	<br />
+	<table border="1px" width="100%" cellspacing="0" class="table">
+		<thead>
+			<tr>
+				<th colspan="3" class="smallTitle">1.5 短信</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th class="th" width="40%">对方号码</th>
+				<th class="th" width="30%">近3月短信数量</th>
+				<th class="th" width="30%">近6月短信数量</th>
+			</tr>
+			<div
+				th:if="${reportModel.mobileReportSMSs!=null && reportModel.mobileReportSMSs.size()>0}">
+				<tr th:class="${index.odd}?'gray':'white'"
+					th:each="mobileReportSMSs,index:${reportModel.mobileReportSMSs}">
+					<td th:text="${mobileReportSMSs.peerNum}"></td>
+					<td th:text="${mobileReportSMSs.smsCntThreeMonth}"></td>
+					<td th:text="${mobileReportSMSs.smsCntSixMonth}"></td>
+				</tr>
+			</div>
+		</tbody>
+	</table>
+	<br />
+	<br />
+	<table border="1px" width="100%" cellspacing="0" class="table">
+		<thead>
+			<tr>
+				<th colspan="10" class="smallTitle">1.6 通话地分析</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th class="th" width="10%">通话地</th>
+				<th class="th" width="10%">通话次数</th>
+				<th class="th" width="10%">通话时长</th>
+				<th class="th" width="10%">主叫通话次数</th>
+				<th class="th" width="10%">主叫通话时长</th>
+				<th class="th" width="10%">近3月通话次数</th>
+				<th class="th" width="10%">近6月通话次数</th>
+				<th class="th" width="10%">近3月最大连续通话天数</th>
+				<th class="th" width="10%">近6月最大连续通话天数</th>
+				<th class="th" width="10%">最近一次通话时间</th>
+			</tr>
+			<div
+				th:if="${reportModel.mobileReportLocationStatisticss!=null && reportModel.mobileReportLocationStatisticss.size()>0}">
+				<tr th:class="${index.odd}?'gray':'white'"
+					th:each="mobileReportLocation,index:${reportModel.mobileReportLocationStatisticss}">
+					<td th:text="${mobileReportLocation.tradeAddr}"></td>
+					<td th:text="${mobileReportLocation.callCnt}"></td>
+					<td th:text="${mobileReportLocation.callDuration}"></td>
+					<td th:text="${mobileReportLocation.interactDuration}"></td>
+					<td th:text="${mobileReportLocation.interactCnt}"></td>
+					<td th:text="${mobileReportLocation.callCntThreeMonth}"></td>
+					<td th:text="${mobileReportLocation.callCntSixMonth}"></td>
+					<td th:text="${mobileReportLocation.continuityCntThreeMonth}"></td>
+					<td th:text="${mobileReportLocation.continuityCntSixMonth}"></td>
+					<td th:text="${mobileReportLocation.lastCallTime}"></td>
+				</tr>
+			</div>
+		</tbody>
+	</table>
+	<br />
+	<br />
+	<table border="1px" width="100%" cellspacing="0" class="table">
+		<thead>
+			<tr>
+				<th colspan="12" class="smallTitle">1.7 联系人统计</th>
+			</tr>
+			<tr>
+				<td colspan="12" class="secondTitle">联系人统计--近三月</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th class="th" width="3%">排名</th>
+				<th class="th" width="9%">对方号码</th>
+				<th class="th" width="8%">通话时长(秒)</th>
+				<th class="th" width="6%">通话次数</th>
+				<th class="th" width="8%">深夜通话次数</th>
+				<th class="th" width="10%">深夜通话时长(秒)</th>
+				<th class="th" width="10%">工作时间通话次数</th>
+				<th class="th" width="9%">工作时间通话时长(秒)</th>
+				<th class="th" width="10%">闲暇时间通话次数</th>
+				<th class="th" width="9%">闲暇时间通话时长(秒)</th>
+				<th class="th" width="9%">工作日通话时长(秒)</th>
+				<th class="th" width="9%">休息日通话时长(秒)</th>
+			</tr>
+			<div
+				th:if="${reportModel.mobileReportContractsStatisticsThreeMonths!=null && reportModel.mobileReportContractsStatisticsThreeMonths.size()>0}">
+				<tr th:class="${index.odd}?'gray':'white'"
+					th:each="mobileContractsThreeMonths,index:${reportModel.mobileReportContractsStatisticsThreeMonths}">
+					<td th:text="${mobileContractsThreeMonths.rankNum}"></td>
+					<td th:text="${mobileContractsThreeMonths.peerNumber}"></td>
+					<td th:text="${mobileContractsThreeMonths.callDuration}"></td>
+					<td th:text="${mobileContractsThreeMonths.callCnt}"></td>
+					<td th:text="${mobileContractsThreeMonths.callCntNight}"></td>
+					<td th:text="${mobileContractsThreeMonths.callDurationNight}"></td>
+					<td th:text="${mobileContractsThreeMonths.callCntWorktime}"></td>
+					<td th:text="${mobileContractsThreeMonths.callDurationWorktime}"></td>
+					<td th:text="${mobileContractsThreeMonths.callCntWorkResttime}"></td>
+					<td th:text="${mobileContractsThreeMonths.callDurationResttime}"></td>
+					<td th:text="${mobileContractsThreeMonths.callDurationWorkday}"></td>
+					<td th:text="${mobileContractsThreeMonths.callDurationPlayday}"></td>
+				</tr>
+			</div>
+		</tbody>
+	</table>
+	<br />
+		<br />
+	<table border="1px" width="100%" cellspacing="0" class="table">
+		<thead>
+			<tr>
+				<td colspan="12" class="secondTitle">联系人统计--近六月</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th class="th" width="3%">排名</th>
+				<th class="th" width="9%">对方号码</th>
+				<th class="th" width="8%">通话时长(秒)</th>
+				<th class="th" width="6%">通话次数</th>
+				<th class="th" width="8%">深夜通话次数</th>
+				<th class="th" width="10%">深夜通话时长(秒)</th>
+				<th class="th" width="10%">工作时间通话次数</th>
+				<th class="th" width="9%">工作时间通话时长(秒)</th>
+				<th class="th" width="10%">闲暇时间通话次数</th>
+				<th class="th" width="9%">闲暇时间通话时长(秒)</th>
+				<th class="th" width="9%">工作日通话时长(秒)</th>
+				<th class="th" width="9%">休息日通话时长(秒)</th>
+			</tr>
+			<div
+				th:if="${reportModel.mobileReportContractsStatisticsSixMonths!=null && reportModel.mobileReportContractsStatisticsSixMonths.size()>0}">
+				<tr th:class="${index.odd}?'gray':'white'"
+					th:each="mobileContractsSixMonths,index:${reportModel.mobileReportContractsStatisticsSixMonths}">
+					<td th:text="${mobileContractsSixMonths.rankNum}"></td>
+					<td th:text="${mobileContractsSixMonths.peerNumber}"></td>
+					<td th:text="${mobileContractsSixMonths.callDuration}"></td>
+					<td th:text="${mobileContractsSixMonths.callCnt}"></td>
+					<td th:text="${mobileContractsSixMonths.callCntNight}"></td>
+					<td th:text="${mobileContractsSixMonths.callDurationNight}"></td>
+					<td th:text="${mobileContractsSixMonths.callCntWorktime}"></td>
+					<td th:text="${mobileContractsSixMonths.callDurationWorktime}"></td>
+					<td th:text="${mobileContractsSixMonths.callCntWorkResttime}"></td>
+					<td th:text="${mobileContractsSixMonths.callDurationResttime}"></td>
+					<td th:text="${mobileContractsSixMonths.callDurationWorkday}"></td>
+					<td th:text="${mobileContractsSixMonths.callDurationPlayday}"></td>
+				</tr>
+			</div>
+		</tbody>
+	</table>
+	<br />
+	<br />
+
+
+	<table border="1px" width="100%" cellspacing="0" class="table">
+		<thead>
+			<tr>
+				<th colspan="3" class="smallTitle">1.8 亲情网</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th class="th" width="30%">亲情网编号</th>
+				<th class="th" width="20%">亲情网状态码</th>
+				<th class="th" width="50%">状态描述</th>
+
+			</tr>
+			<div
+				th:if="${reportModel.mobileReportFamilyInfos!=null && reportModel.mobileReportFamilyInfos.size()>0}">
+				<tr th:class="${index.odd}?'gray':'white'"
+					th:each="mobileReportFamilyInfos,index:${reportModel.mobileReportFamilyInfos}">
+					<td th:text="${mobileReportFamilyInfos.familyNetworkNum}"></td>
+					<td th:text="${mobileReportFamilyInfos.code}"></td>
+					<td th:text="${mobileReportFamilyInfos.message}"></td>
+				</tr>
+			</div>
+		</tbody>
+	</table>
+	<br />
+		<br />
+	<table border="1px" width="100%" cellspacing="0" class="table">
+		<thead>
+			<tr>
+				<th colspan="6" class="secondTitle">亲情网明细</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th class="th" width="18%">亲情网编号</th>
+				<th class="th" width="18%">长号</th>
+				<th class="th" width="10%">短号</th>
+				<th class="th" width="18%">成员类型</th>
+				<th class="th" width="18%">加入日期</th>
+				<th class="th" width="18%">失效日期</th>
+			</tr>
+			<div
+				th:if="${reportModel.mobileReportFamilyDetails!=null && reportModel.mobileReportFamilyDetails.size()>0}">
+				<tr th:class="${index.odd}?'gray':'white'"
+					th:each="mobileReportFamilyDetails,index:${reportModel.mobileReportFamilyDetails}">
+					<td th:text="${mobileReportFamilyDetails.familyNetworkNum}"></td>
+					<td th:text="${mobileReportFamilyDetails.trombone}"></td>
+					<td th:text="${mobileReportFamilyDetails.cornet}"></td>
+					<td th:text="${mobileReportFamilyDetails.memberType}"></td>
+					<td th:text="${mobileReportFamilyDetails.joinDate}"></td>
+					<td th:text="${mobileReportFamilyDetails.expiryDate}"></td>
+				</tr>
+			</div>
+		</tbody>
+		<script type="text/javascript">	
+		/* var pdf = new jsPDF('p','pt','a3');
+		pdf.internal.scaleFactor = 1;
+		var options = {
+		  pagesplit: true
+		};
+		function htmlToPdf(){		
+			pdf.addHTML(document.body,options,function() {
+				pdf.save('web.pdf');
+				window.close();
+			});
+		} */
+	</script>
+</body>
+</html>

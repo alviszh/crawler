@@ -1,0 +1,27 @@
+server: 
+  port: 1222
+#  servlet: 
+#    context-path: /mobile-h5
+logging:
+  file: common-microservice-eureka-mobile-h5-9001.log
+  level: 
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG 
+eureka: 
+  instance: 
+    statusPageUrl: http://localhost:1222/admin
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+spring: 
+  redis: 
+    host: ${redis.host}
+# To disable Hystrix in Feign  解决重启后第一次请求必然出现timeout   100秒timeout
+feign: 
+  hystrix:
+    enabled: false
+  client: 
+    config: 
+      default: 
+        connectTimeout: 100000
+        readTimeout: 100000

@@ -1,0 +1,10 @@
+server: 
+  port: 10010
+info: 
+  contact: 
+    email: dimei1@creditharmony.cn
+logging: 
+  file: common-microservice-winio4test-10010.log
+  level:  
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: INFO

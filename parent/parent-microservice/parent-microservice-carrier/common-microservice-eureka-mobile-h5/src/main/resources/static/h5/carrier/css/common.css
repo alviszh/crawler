@@ -1,0 +1,36 @@
+#msg
+{
+    top:40%;
+    width: 50%;
+    left: 25%;
+}
+
+#myModal
+{
+    top:40%;
+    width: 60%;
+    left: 20%;
+}
+#success_modal
+{
+    top:20%;
+}
+/*#nextBtn{
+    background-color: #9783b9;
+    border-color: #9783b9;
+}
+.theme-top{
+    background-color: #9783b9;
+    border-color: #9783b9;
+}
+.theme-top span{
+    color: white;
+}
+
+.theme input:focus {
+    outline: none;
+    border-color: #9783b9;
+    box-shadow: 0 0 5px #9783b9;
+    /!*box-shadow: 0 0 5px rgba(207, 220, 0, 0.4);*!/
+    border-radius: 5px;
+}*/

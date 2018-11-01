@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.sr.microservice</groupId>
+    <artifactId>parent-microservice</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>parent-microservice-car-insurance</artifactId>
+  <packaging>pom</packaging>
+  
+  <modules>
+    
+    <module>common-microservice-car-insurance-task</module>
+    <module>common-microservice-car-insurance-service</module>
+    <module>common-microservice-car-insurance-ygbx</module>
+    <module>common-microservice-car-insurance-pingan</module>
+  </modules>
+  
+  <profiles>
+		<profile>
+			<!-- 本机开发环境 -->
+			<id>dev</id>
+			<properties>
+				<app.carInsurance.active>dev</app.carInsurance.active>
+				<app.carInsurance.task.name>car-insurance-task</app.carInsurance.task.name>
+				<app.carInsurance.ygbx.name>car-insurance-ygbx-local</app.carInsurance.ygbx.name>
+				<app.carInsurance.pingan.name>car-insurance-pingan-local</app.carInsurance.pingan.name>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<!-- 测试环境 -->
+			<id>test</id>
+			<properties>
+				<app.carInsurance.active>test</app.carInsurance.active>
+				<app.carInsurance.task.name>car-insurance-task</app.carInsurance.task.name>
+				<app.carInsurance.ygbx.name>car-insurance-ygbx</app.carInsurance.ygbx.name>
+				<app.carInsurance.pingan.name>car-insurance-pingan</app.carInsurance.pingan.name>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 生产环境 -->
+			<id>prod</id>
+			<properties>
+				<app.carInsurance.active>prod</app.carInsurance.active>
+				<app.carInsurance.task.name>car-insurance-task</app.carInsurance.task.name>
+				<app.carInsurance.ygbx.name>car-insurance-ygbx</app.carInsurance.ygbx.name>
+				<app.carInsurance.pingan.name>car-insurance-pingan</app.carInsurance.pingan.name>
+			</properties>
+		</profile>
+	</profiles>
+</project>

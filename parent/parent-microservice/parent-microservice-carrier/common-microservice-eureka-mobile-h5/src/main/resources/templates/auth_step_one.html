@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+
+</head>
+
+<!--<script th:src="@{../js/xx.js}"></script>display: none;display: block-->
+<body>
+<nav class="navbar navbar-default alert-info" style="height: 50px;">
+    <div class="container-fluid">
+        <div class="navbar-header" style="height: 50px;">
+            <a href="javascript:history.go(-1);" class="navbar-brand">
+                <span aria-hidden="true" style="color: white;font-weight:900">
+                   <
+                </span>
+            </a>
+            <p class="navbar-brand" ><span>运营商认证</span></p>
+        </div>
+    </div>
+
+</nav>
+<div id="br"></div>
+<div class="container">
+    <form class="bs-example-form" data-example-id="simple-input-groups" th:action="@{/h5/carrier/check}" method="GET"
+            id="auth_form">
+        <input type="hidden" th:value="${themeColor}" id="themeColor" name="themeColor"/>
+        <input type="hidden" th:value="${topHide}" id="topHide" name="topHide"/>
+        <input type="hidden" th:value="${owner}" id="owner" name="owner"/>
+        <input type="hidden" th:value="${key}" id="key" name="key"/>
+        <input type="hidden" th:value="${redirectUrl}" id="redirectUrl" name="redirectUrl"/>
+        <input type="hidden" th:value="${appActive}" id="appActive">
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="basic-addon1">姓<zw style="visibility: hidden">占位</zw>名：</span> <input
+                type="text" class="form-control" id="username" name="username" th:value="${username}"
+                aria-describedby="basic-addon1" th:placeholder="请输入姓名"
+                data-validation="required" data-validation-error-msg=" "/>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="basic-addon2">手<zw style="visibility: hidden">z</zw>机<zw style="visibility: hidden">y</zw>号：</span><input
+                type="text" class="form-control" id="mobileNum" name="mobileNum" th:value="${mobilenum}"
+                aria-describedby="basic-addon2" maxlength="11" th:placeholder="请输入手机号"/>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="basic-addon3">身份证号：</span> <input
+                type="text" class="form-control" id="idnum" name="idnum" th:value="${idnum}"
+                aria-describedby="basic-addon3" maxlength="20" th:placeholder="请输入身份证号"/>
+        </div>
+        <div class="input-group input-group-lg" style="display:none" id="catnameMsgDiv">
+            <span style='color: #777;font-size:12px' id="catnameMsg"></span>
+        </div><!--运营商-->
+        <div class="btn-group" data-toggle="buttons" id="catnameDiv" style="margin-bottom: 8px;display:none;">
+            <label class="btn btn-default" title="中国联通" id="catnameLab1" style="flex: 1;">
+                <input type="radio" name="mobileOperator" id="catname1" autocomplete="off" value="UNICOM">中国联通
+            </label>
+            <label class="btn btn-default" title="中国电信" id="catnameLab2" style="flex: 1;">
+                <input type="radio" name="mobileOperator" id="catname2" autocomplete="off" value="CHINA_TELECOM">中国电信
+            </label>
+            <label class="btn btn-default"  title="中国移动" id="catnameLab3" style="flex: 1;">
+                <input type="radio" name="mobileOperator" id="catname3" autocomplete="off" value="CMCC">中国移动
+            </label>
+        </div>
+        <!--<button type="submit" class="btn btn-lg btn-block btn-info">下一步</button>-->
+        <a href="#" class="btn btn-lg btn-block btn-info disabled" role="button" id="nextBtn">下一步</a>
+
+        <div class="prompt">
+            <small class="form-text text-muted">温馨提示：<br />
+                *姓名为该手机号码的实名<br />
+                *授权期间请不要登录运营商网站<br />
+                *携号转网用户或虚拟运营商请自行选择当前手机号所属运营商<br />
+                <span class="form-text text-muted" th:text="${appActive}=='prod'?'' : '*'+ ${appActive}"></span>
+
+            </small>
+        </div>
+    </form>
+    <!--消息框-->
+    <div th:include="components/footer :: message"></div>
+</div>
+<div th:include="components/footer :: footer"></div>
+</body>
+<script th:src="@{/h5/carrier/js/auth_step_one.js}"></script>
+</html>

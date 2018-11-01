@@ -1,0 +1,29 @@
+server:
+  port: 1224
+logging:
+  file: common-microservice-bank-h5-9001.log
+  level: 
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG
+eureka: 
+  instance: 
+    statusPageUrl: http://localhost:1222/admin
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+#以下配置无效，先注释
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 80000
+#spring:
+#  cloud:
+#    loadbalancer:
+#      retry:
+#        enabled: true
+#ribbon:
+#  ReadTimeout: 80000
+#  ribbon.ConnectTimeout: 80000

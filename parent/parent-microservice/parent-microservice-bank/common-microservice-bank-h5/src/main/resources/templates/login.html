@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+
+</head>
+
+<!--<script th:src="@{../js/xx.js}"></script>display: none;display: block-->
+<body>
+<nav class="navbar navbar-default alert-info" style="height: 50px;">
+    <div class="container-fluid">
+        <div class="navbar-header" style="height: 50px;">
+            <a href="javascript:history.go(-1);" class="navbar-brand"><span
+                    class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </a>
+            <p class="navbar-brand" ><span>身份验证</span></p>
+        </div>
+    </div>
+
+</nav>
+<div id="br"></div>
+<div class="container">
+    <input type="hidden" th:value="${themeColor}" id="themeColor" name="themeColor"/>
+    <input type="hidden" th:value="${topHide}" id="topHide" name="topHide"/>
+    <input type="hidden" id="cookies" name="cookies"/>
+    <form id="auth_fo" class="form-horizontal">
+        <div class="form-group">
+            <label for="username" class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-7" style="padding-left:5px;">
+                <input type="text" class="form-control" id="username" name="username" placeholder="用户名"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-7" style="padding-left:5px;">
+                <input type="password" class="form-control" id="password" name="password" placeholder="密码"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="verifycode" class="col-sm-2 control-label">验证码</label>
+            <div class="col-sm-7" style="padding-left:5px;">
+                <input type="text" class="form-control" id="verifycode" name="verifycode" placeholder="图片验证码" style="display:inline; width:110px;"/>
+                <img id="codeImage" alt=" 验证码识别中..."/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tradecode" class="col-sm-2 control-label">授权码</label>
+            <div class="col-sm-7" style="padding-left:5px;">
+                <input type="text" class="form-control" id="tradecode" name="tradecode" placeholder="手机授权码"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-7" style="padding-left:5px;">
+                <button id="excute_btn" type="button" class="btn btn-success">执行&nbsp;&gt;&gt;</button>
+							      <span style="margin-left:20px;">
+							      	<input type="radio" name="reportCategory" id="reportCategory" value="json" checked="checked"/> 获取报告&nbsp;
+							      	<input type="radio" name="reportCategory" id="reportCategory" value="pdf"/> 生成PDF
+							      </span>
+            </div>
+        </div>
+    </form>
+    <!--消息框-->
+    <div th:include="components/footer :: message"></div>
+</div>
+<div th:include="components/footer :: footer"></div>
+</body>
+<script src="/h5/js/login.js"></script>
+</html>

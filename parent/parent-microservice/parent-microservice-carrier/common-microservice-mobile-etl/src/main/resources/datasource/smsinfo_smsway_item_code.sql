@@ -1,0 +1,28 @@
+DELETE FROM smsinfo_smsway_item_code;
+
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (1, '070001', '发送', '[0]发送', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (3, '070001', '发送', '[4]发送', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (4, '070002', '接收', '收', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (5, '070001', '发送', '发', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (6, '070002', '接收', '[1]接收', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (7, '070002', '接收', '[3]接收', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (8, '070002', '接收', '接受', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (9, '070003', '终止', '[13]终止', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (12, '070001', '发送', '[2]SP信息发送', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (13, '070001', '发送', '短信发', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (19, '070001', '发送', '彩信发', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (23, '070002', '接收', '国际及港澳台收', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (29, '070001', '发送', '国内发', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (31, '070001', '发送', '短信发送', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (33, '070002', '接收', '收信', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (35, '070001', '发送', '发信', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (36, '070002', '接收', '国内收', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (38, '070002', '接收', '国际及台港澳收', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (39, '070001', '发送', '主叫', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (40, '070002', '接收', '接收', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (41, '070001', '发送', '发送', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (43, '070002', '接收', '短信接收', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (46, '070001', '发送', '2', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (48, '070009', '其他', '9', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (49, '070009', '其他', '3', '发送方式', NULL);
+INSERT INTO "smsinfo_smsway_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (50, '070002', '接收', '1', '发送方式', NULL);

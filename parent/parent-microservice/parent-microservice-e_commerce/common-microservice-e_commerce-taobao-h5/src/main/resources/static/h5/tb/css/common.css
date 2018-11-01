@@ -1,0 +1,33 @@
+#msg
+{
+    top: 50%;
+    width: 70%;
+    left: 15%;
+    transform: translateY(-50%)
+}
+
+#myModal
+{
+    top:40%;
+    width: 60%;
+    left: 20%;
+}
+
+#success_modal .modal-dialog
+{
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/*城市显示*/
+/*.sort_list a:hover{
+    cursor: not-allowed;
+    background-color: white;
+    color:#03F
+}
+.sort_list a:visited{
+     background-color: white;
+ }*/
+.prompt{
+    margin-top: 10px;
+}

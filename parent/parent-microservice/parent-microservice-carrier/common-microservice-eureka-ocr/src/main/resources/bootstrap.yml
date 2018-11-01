@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: ocr-service
+  profiles:
+    active: datasource
+  cloud:
+    config:
+      uri: http://configserver:8000
+      label: master
+#      uri: http://common-microservice-config:8888
+#      label: master
+  zipkin: 
+    base-url: http://zipkinserver:9411
+  sleuth: 
+    sampler: 
+      percentage: 1

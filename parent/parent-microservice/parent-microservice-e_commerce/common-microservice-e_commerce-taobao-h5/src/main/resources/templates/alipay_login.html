@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<!--<script th:src="@{../js/xx.js}"></script>display: none;display: block-->
+<body style="background: #f6f8fc">
+<nav class="navbar navbar-default alert-info" style="height: 44px;margin-bottom: 0">
+    <div class="container-fluid">
+        <div class="navbar-header" style="height: 44px;">
+            <a href="javascript:history.go(-1);" class="navbar-brand"><span
+                    class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </a>
+            <p class="navbar-brand"><span>支付宝登录</span></p>
+        </div>
+    </div>
+</nav>
+<div id="br"></div>
+<div class="container">
+    <form class="bs-example-form" data-example-id="simple-input-groups" action="" method="get"
+            id="authform">
+        <input type="hidden" th:value="${themeColor}" id="themeColor" name="themeColor"/>
+        <input type="hidden" th:value="${topHide}" id="topHide" name="topHide"/>
+        <input type="hidden" th:value="${e_CommerceTask.taskid}" id="taskid" name="taskid"/>
+        <input type="hidden" value="alipay_name" id="logintype" name="logintype"/>
+        <span  th:text="${appActive}"  id="appActive"/>
+        <span id="countdown">150</span>
+        <span id="qr_state">1</span>
+        <span id="NoIdleInstance">0</span>
+        <span id="is_qr">no</span>
+        <ul id="myTab" class="nav nav-tabs  nav-page">
+            <li>
+                <a href="#idnum" data-toggle="tab" aria-expanded="false">支付宝二维码</a>
+            </li>
+            <li class="active"><a href="#tabname" data-toggle="tab" aria-expanded="true">
+                支付宝账号</a>
+            </li>
+        </ul>
+        <div id="idnum" class="fade">
+            <div class="qrcode-login">
+                <div class="qrcode-title">正在获取二维码</div>
+                <div class="qrcode-content">
+                    <div class="loader loader-1">
+                        <div class="loader-outter"></div>
+                        <div class="loader-inner">
+                        </div>
+                    </div>
+                    <img class="qrcode-image">
+                    <div class="qrcode-again">
+                        <img class="qrcode-center" src="https://api.51datakey.com/h5/importV3/assets/a44566d4.invalid.png">
+                        <div class="qrcode-retry-button">点击重新获取</div>
+                    </div>
+                </div>
+                <div class="qrcode-login-btn">手机淘宝一键授权</div>
+                <!--<div class="qrcode-instruction">请打开手机支付宝APP扫一扫二维码</div>-->
+                <div class="qrcode-link-tips"><p class="qrcode-link-tips"><span>如授权失败可以使用</span><span id="jump_a" style="color:#58B5EB;">支付宝授权</span><span>完成验证</span></p></div>
+            </div>
+        </div>
+        <div id="tabname"  class="active fade in">
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">账户名：</span> <input
+                    type="text" class="form-control" id="username" name="username"
+                    placeholder="邮箱/手机号"
+                    data-validation="required" autocomplete="off"/>
+                <div class="tex_box"><span class="textt"></span></div>
+            </div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">密码：</span> <input
+                    type="password" class="form-control"  id="passwd" name="passwd"
+                    placeholder="请输入密码" autocomplete="off"/>
+                <div class="tex_box"><span class="password closed"></span></div>
+            </div>
+            <a href="#" class="btn btn-lg btn-block btn-info disabled" role="button" id="nextBtn">下一步</a>
+        </div>
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+             data-backdrop="static" data-keyboard="false" id="myModal" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class=" modal-content" style="text-align: center;">
+                    <div class="modal-body">
+                        <img th:src="@{/h5/tb/images/loading.gif}" height="auto" />&nbsp;<span id="message"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="prompt">
+            <!--<small class="form-text text-muted">温馨提示：<br />
+            </small>-->
+        </div>
+
+    <!--消息框-->
+    <div th:include="components/footer :: message"></div>
+    <!--爬取成功模块-->
+    <div th:include="components/footer :: modal"></div>
+    <!--短信模块-->
+    <div th:include="components/footer :: smsCode"></div>
+    <!--waitinView模块-->
+    <div th:include="components/footer :: waitinView"></div>
+
+    </form>
+
+</div>
+<div th:include="components/footer :: footer"></div>
+</body>
+<script src="/h5/tb/js/alipay_login.js"></script>
+</html>

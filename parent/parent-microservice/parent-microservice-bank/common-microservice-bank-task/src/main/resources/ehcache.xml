@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+         xsi:noNamespaceSchemaLocation="ehcache.xsd">  
+        <!--  maxEntriesLocalHeap:设置缓存的大小。   timeToLiveSeconds：设置多长时间清楚一次缓存-->
+    <cache name="bankcodes" maxEntriesLocalHeap="100" timeToLiveSeconds="10">  
+    </cache>  
+</ehcache>  

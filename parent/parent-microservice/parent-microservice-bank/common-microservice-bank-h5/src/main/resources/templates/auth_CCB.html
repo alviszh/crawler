@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+
+</head>
+<body>
+<style>
+    .bs-example-form .input-group {
+        margin-bottom: 0px;
+    }
+    .log-wrong,.log-right,.log-div{
+        padding-left: 123px!important;
+    }
+    .nav>li{
+        width: 33.33%!important;
+    }
+</style>
+<nav class="navbar navbar-default navbar-page"   role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="javascript:history.go(-1);" class="navbar-brand"><span
+                    class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </a>
+            <p class="navbar-brand" ><span th:text="${cardType}=='DEBIT_CARD'? ${city}+'储蓄卡' : ${city}+'信用卡'"></span></p>
+        </div>
+        <!--<div class="navbar-text" style="padding-top: 1px;">
+            <div class="input-group input-group-sm " style="width: 80%;">
+                <span class="input-group-addon" id="sizing-addon3" ><i class="glyphicon glyphicon-search"></i></span>
+                <input type="text" class="form-control" placeholder="搜索" aria-describedby="sizing-addon3"/>
+            </div>
+        </div>-->
+    </div>
+</nav>
+<div id="br"></div>
+<div class="container">
+    <form class="bs-example-form" data-example-id="simple-input-groups"  method="post"
+          id="authform">
+    <input type="hidden" id="themeColor" name="themeColor" th:value="${themeColor}"/>
+    <input type="hidden" id="topHide" name="topHide" value="false" th:value="${topHide}"/>
+    <input type="hidden" id="taskid" name="taskid"  th:value="${taskId}"/>
+    <input type="hidden" id="bankType" name="bankType"  th:value="${city}"/>
+    <input type="hidden" id="cardType" name="cardType"  th:value="${cardType}"/>
+    <input type="hidden" id="loginType" name="loginType"  value="CARD_NUM"/>
+
+    <ul id="myTab" class="nav nav-tabs  nav-page">
+        <li class="active">
+            <a href="#card_num" data-toggle="tab">
+                银行卡
+            </a>
+        </li>
+        <li><a href="#username" data-toggle="tab">
+            用户名</a>
+        </li>
+        <li><a href="#idnum" data-toggle="tab">
+            身份证</a>
+        </li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="card_num">
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon" >银行卡号：</span> <input
+                    type="text" class="form-control"  name="loginName"
+                    th:placeholder="${cardType}=='DEBIT_CARD'? '请输入储蓄卡卡号' : '请输入信用卡卡号'"/>
+                <span class="ion-ios-help-outline"></span>
+            </div>
+            <div class="log-div">12-21位完整卡号</div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">密<zw style="visibility: hidden">占</zw><zw style="visibility: hidden">占</zw>码：</span> <input
+                    type="password" class="form-control" name="password"
+                     th:placeholder="请输入查询密码"/>
+                <div class="tex_box"><span class="password closed"></span></div>
+            </div>
+            <div class="log-div">6-12位字符</div>
+        </div>
+        <div class="tab-pane fade" id="username">
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon" >用户名：</span> <input
+                    type="text" class="form-control" disabled id="username1" name="loginName" th:placeholder="请输入用户名"
+                    data-validation="required" />
+                <span class="ion-ios-help-outline"></span>
+            </div>
+            <div class="log-div">不少于三位字符</div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">密&#12288;码：</span> <input
+                    type="password" class="form-control" disabled id="password1" name="password"
+                   placeholder="请输入查询密码"/>
+                <div class="tex_box"><span class="password closed"></span></div>
+            </div>
+            <div class="log-div">6-12位字符</div>
+        </div>
+        <div class="tab-pane fade" id="idnum">
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">证件号码：</span> <input
+                    type="text" class="form-control" name="loginName" disabled
+                    th:placeholder="请输入身份证号"
+                    data-validation="required" />
+            </div>
+            <div class="log-div">15位或18位身份证号</div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon" >密<zw style="visibility: hidden">占</zw><zw style="visibility: hidden">占</zw>码：</span> <input
+                    type="password" class="form-control" name="password" disabled
+                    placeholder="请输入查询密码"/>
+                <div class="tex_box"><span class="password closed"></span></div>
+            </div>
+            <div class="log-div">6-12位字符</div>
+        </div>
+    </div>
+    <div class="get-pw"><span class="back-pw">找回密码</span> / <span class="back-user">找回用户名</span></div>
+    <a href="#" class="btn btn-lg btn-block btn-info disabled" role="button" id="nextBtn">下一步</a>
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+         data-backdrop="static" data-keyboard="false" id="myModal" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class=" modal-content" style="text-align: center;">
+                <div class="modal-body">
+                    <img th:src="@{/h5/bank/images/loading.gif}" height="auto" />&nbsp;<span id="message"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    <!--消息框-->
+    <div th:include="components/footer :: message"></div>
+    <!--爬取成功模块-->
+    <div th:include="components/footer :: modal"></div>
+    <!--跳转银行-->
+    <div th:include="components/footer :: cofModal"></div>
+    <!--短信验证码-->
+    <div th:include="components/footer :: smsCode"></div>
+
+</div>
+<div th:include="components/footer :: footer"></div>
+<script src="/h5/bank/js/auth_CCB.js"></script>
+<script src="/h5/bank/js/bank_crawler.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+DELETE FROM userinfo_cuslevel_item_code;
+
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (1, '010005', '五星用户', '5', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (2, '010002', '二星用户', '2', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (4, '010004', '四星用户', '4', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (5, '010003', '三星用户', '3', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (7, '010001', '一星用户', '1', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (17, '010001', '一星用户', '11', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (18, '010002', '二星用户', '12', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (19, '010004', '四星用户', '14', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (20, '010006', '六星用户', '16', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (21, '010005', '五星用户', '15', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (22, '010008', '普通用户', '0', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (23, '010003', '三星用户', '13', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (24, '010007', '七星用户', '17', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (49, '010003', '三星用户', '三星用户', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (50, '010005', '五星用户', '五星用户', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (51, '010008', '普通用户', '普通用户', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (52, '010004', '四星用户', '四星忠诚用户', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (53, '010001', '一星用户', '一星忠诚用户', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (55, '010004', '四星用户', '四星用户', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (56, '010001', '一星用户', '一星用户', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (57, '010002', '二星用户', '二星用户', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (58, '010002', '二星用户', '二星忠诚用户', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (59, '010003', '三星用户', '三星忠诚用户', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (61, '010008', '普通用户', '无等级', '客户星级', NULL);
+INSERT INTO "userinfo_cuslevel_item_code" (id,item_code,item_name,source_name,item_type,createtime) VALUES (62, '010005', '五星用户', '五星忠诚用户', '客户星级', NULL);

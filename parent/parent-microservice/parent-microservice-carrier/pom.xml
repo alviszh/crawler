@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sr.microservice</groupId>
+		<artifactId>parent-microservice</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>parent-microservice-carrier</artifactId>
+	<packaging>pom</packaging>
+
+
+	<modules>
+		<module>common-microservice-eureka-mobile-h5</module>
+		<!-- <module>common-microservice-eureka-china-telecom</module> -->
+		<module>common-microservice-eureka-china-unicom</module>
+		<module>common-microservice-eureka-cmcc</module>
+		<module>common-microservice-eureka-ocr</module>
+		<module>common-microservice-task</module>
+		<module>common-microservice-service</module>
+		<module>common-microservice-mobile-etl</module>
+  </modules>
+
+	<profiles>
+		<profile>
+			<!-- 本机开发环境 -->
+			<id>dev</id>
+			<properties>
+				<app.mobilecrawlertask.active>dev</app.mobilecrawlertask.active>
+				<app.mobilecrawlertask.name>MobileCrawlerTask-local</app.mobilecrawlertask.name>
+				<app.cmcc.name>crawler-cmcc-local</app.cmcc.name>
+				<app.unicom.name>crawler-unicom-local</app.unicom.name>
+				<app.etl.name>mobile-etl-local</app.etl.name>
+				<app.mobileh5.name>mobile-h5-local</app.mobileh5.name>
+
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<!-- 测试环境 -->
+			<id>test</id>
+			<properties>
+				<app.mobilecrawlertask.active>test</app.mobilecrawlertask.active>
+				<app.mobilecrawlertask.name>MobileCrawlerTask</app.mobilecrawlertask.name>
+				<app.cmcc.name>crawler-cmcc</app.cmcc.name>
+				<app.unicom.name>crawler-unicom</app.unicom.name>
+				<app.etl.name>mobile-etl</app.etl.name>
+				<app.mobileh5.name>mobile-h5</app.mobileh5.name>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 生产环境 -->
+			<id>prod</id>
+			<properties>
+				<app.mobilecrawlertask.active>prod</app.mobilecrawlertask.active>
+				<app.mobilecrawlertask.name>MobileCrawlerTask</app.mobilecrawlertask.name>
+				<app.cmcc.name>crawler-cmcc</app.cmcc.name>
+				<app.unicom.name>crawler-unicom</app.unicom.name>
+				<app.etl.name>mobile-etl</app.etl.name>
+				<app.mobileh5.name>mobile-h5</app.mobileh5.name>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 生产环境 -->
+			<id>mariadb5.5.56</id>
+			<properties>
+				<app.mobilecrawlertask.active>mariadb5.5.56</app.mobilecrawlertask.active>
+				<app.mobilecrawlertask.name>MobileCrawlerTask</app.mobilecrawlertask.name>
+				<app.cmcc.name>crawler-cmcc</app.cmcc.name>
+				<app.unicom.name>crawler-unicom</app.unicom.name>
+				<app.etl.name>mobile-etl</app.etl.name>
+				<app.mobileh5.name>mobile-h5</app.mobileh5.name>
+			</properties>
+		</profile>
+	</profiles>
+</project>

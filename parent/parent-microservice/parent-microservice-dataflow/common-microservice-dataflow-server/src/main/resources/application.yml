@@ -1,0 +1,53 @@
+server:
+  port: 9393
+spring: 
+  redis:
+    host: ${redis.host}
+    port: ${redis.port}
+  datasource:
+    hikari:
+      minimum-idle: ${datasource.jdbc.minIdle}
+      maximum-pool-size: ${datasource.jdbc.maxPoolSize}
+    driver-class-name: ${datasource.jdbc.driver}
+    url: ${datasource.jdbc.url}
+    username: ${datasource.jdbc.username}
+    password: ${datasource.jdbc.password}
+    type: ${datasource.jdbc.type}
+  jpa:
+    show-sql: false
+    hibernate:
+        ddl-auto: update
+        naming:
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        temp:
+          use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法为实现
+  cloud: 
+    dataflow: 
+      security:
+        authentication:
+          file:
+            enabled: true
+            users:                                                        
+              bob: bobspassword, ROLE_MANAGE                              
+              alice: alicepwd, ROLE_VIEW, ROLE_CREATE  
+      applicationProperties:
+        stream: 
+          spring: 
+            cloud: 
+              stream: 
+                kafka: 
+                  binder: 
+                    brokers: kafka:9092
+                    zkNodes: zookeeper:2181
+         
+#eureka: 
+#  client: 
+#    serviceUrl: 
+#      defaultZone: http://eurekaserver:8888/eureka/               
+                     
+                    
+                    
+           

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+<nav class="navbar navbar-default alert-info" style="height: 50px;">
+    <div class="container-fluid">
+        <div class="navbar-header" style="height: 50px;">
+            <a href="javascript:history.go(-1);" class="navbar-brand">
+                <span aria-hidden="true" style="color: white;font-weight:900">
+                   <
+                </span>
+            </a>
+            <p class="navbar-brand" ><span>运营商认证</span></p>
+        </div>
+    </div>
+
+</nav>
+<div id="br"></div>
+<!--忘记密码页-联通-->
+<div class="container">
+    <form class="bs-example-form" data-example-id="simple-input-groups" action="" method="post"
+          id="resetPwdForm">
+        <input type="hidden" name="themeColor" id="themeColor" th:value="${mobileJsonBean.themeColor}"/>
+        <input type="hidden" th:value="${topHide}" id="topHide" name="topHide"/>
+        <input type="hidden" th:value="${key}" id="key" name="key"/>
+        <input type="hidden" th:value="${redirectUrl}" id="redirectUrl" name="redirectUrl"/>
+        <input type="hidden" name="user_id" th:value="${mobileJsonBean.id}"/>
+        <input type="hidden" name="task_id" id="task_id" th:value="${mobileJsonBean.task_id}" />
+        <input type="hidden" name="mobileNum" id="mobileNum" th:value="${mobileJsonBean.mobileNum}"/>
+        <input type="hidden" name="username" id="username" th:value="${mobileJsonBean.username}"/>
+        <input type="hidden" name="idnum" id="idnum" th:value="${mobileJsonBean.idnum}"/>
+        <input type="hidden" name="owner" id="owner" th:value="${mobileJsonBean.owner}"/>
+        <input type="hidden" th:value="${appActive}" id="appActive">
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="basic-addon1">手机号：</span> <!--<input
+                type="text" class="form-control" id="usrnum" name="usrnum"
+                aria-describedby="basic-addon1" th:value="${mobileJsonBean.mobileNum}"  readonly="readonly"/>-->
+            <span  class="form-control"
+                   aria-describedby="basic-addon1" th:text="${mobileJsonBean.mobileNum}"></span>
+            <input type="hidden" name="usrnum" id="usrnum" th:value="${mobileJsonBean.mobileNum}"/>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="basic-addon2">证件后六位：</span> <input
+                type="text" class="form-control" id="certNum" name="certNum" th:placeholder="输入身份证后六位"
+                aria-describedby="basic-addon2" maxlength="6" />
+        </div>
+        <div class="input-group input-group-lg">
+            <!--<span class="input-group-addon" id="basic-addon3">动态验证码：</span>--> <input
+                type="text" class="form-control" id="mobileMsg" name="mobileMsg"
+                aria-describedby="basic-addon3" th:placeholder="输入短信随机码" maxlength="6" />
+            <span class="input-group-btn">
+                <button class="btn btn-lg btn-block btn-info" id="sendCodeBtn" type="button">发送短信随机码</button>
+            </span>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="basic-addon3">新密码：</span> <input
+                type="password" class="form-control" id="newpassword" name="newpassword" th:placeholder="请输入6位数字的新密码"
+                aria-describedby="basic-addon3" maxlength="6"/>
+        </div>
+        <a href="#" class="btn btn-lg btn-block btn-info disabled" role="button" id="nextBtn">下一步</a>
+
+        <div class="prompt" style="padding-top: 5px;">
+            <small class="form-text text-muted">
+                温馨提示：<br/>
+                1、随机短信密码每日最多发送5次；<br/>
+                2、以下规则密码,请勿使用<br/>
+                &nbsp;&nbsp;a.连续的升序或降序，如123456或者654321<br/>
+                &nbsp;&nbsp;b.重复的数字顺序，如235235或者575757<br/>
+                &nbsp;&nbsp;c.连续相同的数字，如999999<br/>
+                &nbsp;&nbsp;d.手机号码后6位<br/>
+            </small>
+        </div>
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+             data-backdrop="static" data-keyboard="false" id="myModal" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class=" modal-content" style="text-align: center;">
+                    <div class="modal-body">
+                        <img th:src="@{/h5/carrier/images/loading.gif}" height="auto" />&nbsp;<span id="message"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--消息框-->
+    <div th:include="components/footer :: message"></div>
+</div>
+<div th:include="components/footer :: footer"></div>
+</body>
+<script th:src="@{/h5/carrier/js/forgetpasswd_one.js}"></script>
+</html>

@@ -1,0 +1,16 @@
+server: 
+  port: 1226
+#  servlet: 
+#    context-path: /mobile-h5
+logging:
+  file: common-microservice-e_commerce-jd-h5-9001.log
+  level: 
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG 
+eureka: 
+  instance: 
+    statusPageUrl: http://localhost:1222/admin
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+
