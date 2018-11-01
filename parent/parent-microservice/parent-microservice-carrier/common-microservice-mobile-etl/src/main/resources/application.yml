@@ -56,9 +56,7 @@ spring:
           
     properties:  
       hibernate:  
-#       dialect: com.microservice.persistence.SRDB10Dialect
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-#       dialect: org.hibernate.dialect.MySQLDialect
+        dialect: ${datasource.jdbc.dialect}
         temp: 
           use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法为实现
 
