@@ -29,7 +29,7 @@
 		
 		<module>common-module-dao</module>
 		<module>parent-common</module>
-		<!--<module>parent-microservice</module>-->
+		<module>parent-microservice</module>
 		<!--暂时不需要-->		
 		
 		<!--<module>parent-social</module>-->
