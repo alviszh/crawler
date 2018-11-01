@@ -59,4 +59,4 @@ feign:
         readTimeout: 20000
   compression:
     request: true
-    response: true   
+    response: true    
