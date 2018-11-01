@@ -12,8 +12,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * 新疆电信
  * @author zcx
  **
- *
- *
  */
 @EnableEurekaClient
 @SpringBootApplication
