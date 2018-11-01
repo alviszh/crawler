@@ -45,6 +45,7 @@ public class TelecomBeiJingCrawlerService {
 	}
 
 	// 获取通话详单
+	@Async
 	public TaskMobile getCallThrem(WebClient webClient,MessageLogin messageLogin, TaskMobile taskMobile,String smsCode) {
 
 		taskMobile = taskMobileRepository.findByTaskid(taskMobile.getTaskid());
