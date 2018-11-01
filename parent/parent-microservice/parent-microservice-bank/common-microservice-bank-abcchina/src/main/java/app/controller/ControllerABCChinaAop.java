@@ -17,7 +17,6 @@ import app.commontracerlog.TracerLog;
 import app.service.AgentService;
 import app.service.ServiceABCChinaAop;
 import app.service.TaskBankStatusService;
-
 @RestController
 @Configuration
 @RequestMapping("/bank/abcchina/credit")
