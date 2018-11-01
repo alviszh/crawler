@@ -242,9 +242,9 @@
 				<app.h5fund.name>housingfund-h5</app.h5fund.name>
 				<app.oauth2server.name>oauth2server</app.oauth2server.name>
 				<app.router.name>api-router</app.router.name>
-				<docker.registry>index.docker.io</docker.registry><!-- docker.registry的IP和端口 -->
-				<docker.registry.name>meidi</docker.registry.name><!-- docker.registry的repo名字 -->
-				<serverId>docker-hub</serverId><!-- setting.xml 中对应dockerhub的账号密码，在push docker images 需要认证-->
+				<!-- <docker.registry>index.docker.io</docker.registry> --><!-- docker.registry的IP和端口 -->
+				<!-- <docker.registry.name>meidi</docker.registry.name> --><!-- docker.registry的repo名字 -->
+				<!-- <serverId>docker-hub</serverId> --><!-- setting.xml 中对应dockerhub的账号密码，在push docker images 需要认证-->
 			</properties>
 		</profile>
 	</profiles>
