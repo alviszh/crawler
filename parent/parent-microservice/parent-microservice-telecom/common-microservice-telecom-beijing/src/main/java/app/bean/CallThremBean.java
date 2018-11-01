@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.microservice.dao.entity.crawler.telecom.beijing.TelecomBeijingCallThremResult;
 
+
+
 public class CallThremBean {
 
 	
