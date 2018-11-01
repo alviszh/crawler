@@ -27,6 +27,11 @@
 			<scope>test</scope>
 			<version>3.16</version>
 		</dependency>
+		<dependency>
+			<groupId>com.sr.microservice</groupId>
+			<artifactId>common-microservice-service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		
 
 	</dependencies>

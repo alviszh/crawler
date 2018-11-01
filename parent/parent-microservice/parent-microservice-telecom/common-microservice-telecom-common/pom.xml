@@ -28,5 +28,10 @@
           <artifactId>jettison</artifactId> 
           <version>1.3.7</version>
         </dependency>
+        <dependency>
+			<groupId>com.sr.microservice</groupId>
+			<artifactId>common-microservice-service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
     </dependencies>
 </project>
