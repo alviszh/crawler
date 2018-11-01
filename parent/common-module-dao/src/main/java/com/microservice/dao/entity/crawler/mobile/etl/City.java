@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import com.microservice.dao.entity.IdEntity;
 
 @Entity
-@Table(name="city")
+@Table(name="calendar_table")
 public class City extends IdEntity implements Serializable {
 
 	private static final long serialVersionUID = 5133365472766002696L;
