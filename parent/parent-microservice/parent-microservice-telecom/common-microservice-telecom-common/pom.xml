@@ -31,6 +31,9 @@
         <dependency>
 			<groupId>com.sr.microservice</groupId>
 			<artifactId>common-microservice-service</artifactId>
+        		<dependency>
+			<groupId>com.sr.storm</groupId>
+			<artifactId>common-module-dao</artifactId>
 			<version>${project.version}</version>
 		</dependency>
     </dependencies>
