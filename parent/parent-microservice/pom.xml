@@ -188,7 +188,6 @@
 				<app.h5fund.name>housingfund-h5-local</app.h5fund.name>
 				<app.oauth2server.name>oauth2server-local</app.oauth2server.name>
 				<app.router.name>api-router-local</app.router.name>
-				<configserver.git.url>http://zhenzhang6@10.167.200.10/dimei1/micro-service.git</configserver.git.url>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -209,7 +208,6 @@
 				<app.h5fund.name>housingfund-h5</app.h5fund.name>
 				<app.oauth2server.name>oauth2server</app.oauth2server.name>
 				<app.router.name>api-router</app.router.name>
-				<configserver.git.url>http://zhenzhang6@10.167.200.10/dimei1/micro-service.git</configserver.git.url>
 			</properties>
 		</profile>
 		<profile> 			<!-- 生产环境 -->
@@ -227,7 +225,6 @@
 				<app.h5fund.name>housingfund-h5</app.h5fund.name>
 				<app.oauth2server.name>oauth2server</app.oauth2server.name>
 				<app.router.name>api-router</app.router.name>
-				<configserver.git.url>http://zhenzhang6@10.167.200.10/dimei1/micro-service.git</configserver.git.url>
 			</properties>
 		</profile>
 		<profile> 			<!-- 生产环境 -->
@@ -245,7 +242,9 @@
 				<app.h5fund.name>housingfund-h5</app.h5fund.name>
 				<app.oauth2server.name>oauth2server</app.oauth2server.name>
 				<app.router.name>api-router</app.router.name>
-				<configserver.git.url>https://github.com/meidi/configserver.git</configserver.git.url>
+				<docker.registry>index.docker.io</docker.registry><!-- docker.registry的IP和端口 -->
+				<docker.registry.name>meidi</docker.registry.name><!-- docker.registry的repo名字 -->
+				<serverId>docker-hub</serverId><!-- setting.xml 中对应dockerhub的账号密码，在push docker images 需要认证-->
 			</properties>
 		</profile>
 	</profiles>
