@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: '@app.zipkines.name@' 
+  profiles:
+    active: '@app.active@' 
+  cloud:
+    config:
+      uri: http://configserver:8000
+      label: master

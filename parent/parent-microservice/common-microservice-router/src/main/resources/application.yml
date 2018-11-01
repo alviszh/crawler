@@ -1,0 +1,88 @@
+server:
+  port: 8090
+  servlet: 
+    context-path: /api-service/apirouter
+logging:
+  file: common-microservice-router-8090.log
+  level: 
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: TRACE
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaserver:8888/eureka/
+spring: 
+#  redis: 
+#    host: ${redis.host}
+  datasource: 
+    schema: classpath:/datasource/oauth_*.sql
+    initialization-mode: always # ${datasource.initialization-mode} #这里如果初始化数据源会造成循环依赖的问题
+    continueOnError: false
+    schema-username: ${datasource.jdbc.username}
+    schema-password: ${datasource.jdbc.password}
+    hikari: 
+      minimum-idle: ${datasource.jdbc.minIdle}
+      maximum-pool-size: ${datasource.jdbc.maxPoolSize}
+    driver-class-name: ${datasource.jdbc.driver}
+    url: ${datasource.jdbc.url}
+    username: ${datasource.jdbc.username}
+    password: ${datasource.jdbc.password}
+    type: ${datasource.jdbc.type}
+  jpa: 
+    show-sql: false
+    hibernate:
+        ddl-auto: update
+        naming:
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+    properties: 
+      hibernate:
+        dialect: ${datasource.hibernate.dialect}
+        temp:
+          use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法未实现  
+zuul: 
+#  ignored-headers:
+#  - Content-Type
+#  add-host-header: true
+#  sensitive-headers: 
+#  - Content-Type
+#  stripPrefix: true          #若为true，则会省略/mobile-h5 
+#  ignoredServices: insurance-h5        #除了routes定义的服务外，其他都不允许路由
+  routes: 
+     mobile: 
+      path: /mobile/**
+      service-id: mobile-h5
+     pbccrc:   
+      path: /pbccrc/**
+      service-id: pbccrc-h5
+#    webmanage:  
+#      service-id: webmanage
+#      path: /**
+#    uat: 
+#      path: /uat/**
+#      service-id: oauth2server
+#  add-proxy-headers: true
+#    carrier:  
+#      service-id: mobile-h5
+#      path: /**
+#    bank: 
+#      sensitive-headers:  
+#      - Content-Type
+#      service-id: bank-h5
+#      path: /**
+#    insurance: 
+#      service-id: insurance-h5
+#      path: /**
+#    housingfund: 
+#      service-id: housingfund-h5
+#      path: /**
+#      url: http://10.167.202.187:10001
+#      url: http://10.167.202.192:1234/doc/check          #通过http来获取服务
+#      sensitive-headers:  
+#      - Content-Type
+#      service-id: housingfund-h5
+#      path: /**
+
+
+
+
+

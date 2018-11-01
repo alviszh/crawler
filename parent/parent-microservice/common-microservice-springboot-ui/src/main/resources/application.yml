@@ -1,0 +1,38 @@
+server:
+  port: 9000
+spring: 
+  security:
+    user:
+      name: admin
+      password: 12qwaszx
+  application:
+    name: springboot-ui
+  boot: 
+    admin: 
+      notify:
+        mail:
+          to:
+          - dimei1@txtechnologies.com
+          - linansun@txtechnologies.com
+  mail:
+    host: mail.creditharmony.cn
+    password: sunlinan66**
+    username: XH\linansun
+    port: 25
+    protocol: smtp
+logging: 
+  file: common-microservice-springboot-ui.log
+  level: 
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG
+eureka:  
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+    metadata-map: 
+       user.name: admin 
+       user.password: 12qwaszx
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://eurekaserver:8888/eureka/

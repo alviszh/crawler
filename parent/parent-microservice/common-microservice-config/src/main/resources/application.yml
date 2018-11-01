@@ -1,0 +1,26 @@
+server:
+  port: 8000
+logging:
+  file: common-microservice-config.log
+  level: 
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: INFO
+eureka: 
+  client: 
+      registerWithEureka: false
+      fetchRegistry: false
+spring:
+  application:
+    name: configserver
+#  cloud:
+#    config:
+#      server:
+#        git: 
+#          uri: '@configserver.git.url@'
+          # uri: https://github.com/meidi/configserver.git
+          # username: meidi
+          # password: md87315450
+          # searchPaths: '{application}'
+          # force-pull: true
+          
+

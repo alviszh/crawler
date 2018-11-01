@@ -1,0 +1,7 @@
+server:
+  port: 7000
+logging:
+  file: common-microservice-hystrix-client.log
+  levels:
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG

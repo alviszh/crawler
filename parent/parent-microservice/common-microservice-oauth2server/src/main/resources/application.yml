@@ -1,0 +1,23 @@
+server:
+  port: 8090
+logging:
+  file: common-microservice-oauth2server-2348.log
+  level: 
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: DEBUG
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: http://eurekaserver:8888/eureka/
+spring: 
+  redis: 
+    host: ${redis.host}
+#  security:
+#    oauth2: 
+#      client:
+#        provider:            
+#oauth: #oauth2-server认证授权服务器的url配置，在获取AccessToken以及检测AccessToken中会用到
+#  token: http://10.167.202.192:8090/oauth/token
+#  check_token: http://10.167.202.192:8090/oauth/check_token #检查AccessToken有效性的url(认证授权服务器的url地址),获取 AccessToken 对象   
+          
+          

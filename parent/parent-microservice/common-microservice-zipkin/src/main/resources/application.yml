@@ -1,0 +1,24 @@
+server:
+  port: 9411
+logging:
+  file: common-microservice-zipkin-9411.log
+  level: 
+    org.springframework.boot.env.PropertySourcesLoader: TRACE
+    org.springframework.web: INFO  
+# default is mem (in-memory)  
+management:
+  metrics:
+    web: 
+      server:
+        auto-time-requests: false
+eureka: 
+  client: 
+    serviceUrl:
+      defaultZone: http://eurekaserver:8888/eureka/
+zipkin: 
+  collector:
+    kafka: 
+      bootstrap-servers: ${kafka.brokers}
+  storage: 
+    type: elasticsearch
+    hosts: ${zipkin.storage.elasticsearch.hosts} 

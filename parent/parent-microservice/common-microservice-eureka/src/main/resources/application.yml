@@ -1,0 +1,26 @@
+server:
+  port: 8888
+eureka: 
+  server:
+    enable-self-preservation: false # 关闭自我保护模式（缺省为打开）
+    eviction-interval-timer-in-ms: 3000       # 续期时间，即扫描失效服务的间隔时间（缺省为60*1000ms）
+  instance:
+    hostname: eurekaserver
+  client: 
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl: 
+      defaultZone: http://localhost:8888/eureka/
+spring:
+  cloud:
+    stream: 
+      bindings: 
+        output:                            # 频道名称（根据具体模块来命名）
+          destination: eureka-topic-01                
+          binder: kafka_binder
+      binders: 
+        kafka_binder: 
+          type: kafka 
+          environment: 
+            spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
+            spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes} 
