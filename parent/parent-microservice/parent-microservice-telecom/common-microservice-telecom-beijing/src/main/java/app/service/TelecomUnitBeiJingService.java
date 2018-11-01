@@ -42,7 +42,6 @@ import app.bean.CallThremBean;
 import app.bean.SMSThremBean;
 import app.commontracerlog.TracerLog;
 import app.service.crawler.telecom.htmlparse.TelecomParseBeijingService;
-import app.service.crawler.telecom.htmlunit.LognAndGetBeijingUnitService;
 
 @Component
 @EnableAsync
@@ -89,8 +88,6 @@ public class TelecomUnitBeiJingService {
 	@Autowired
 	private TelecomHtmlService telecomHtmlService;
 	
-	@Autowired
-	private LognAndGetBeijingUnitService lognAndGetBeijingUnitService;
 	
 	
 
@@ -475,13 +472,14 @@ public class TelecomUnitBeiJingService {
 	}
 
 	// 获取北京用户 通话详单
+	@Async
 	public Future<String> getCallThremByAsync(WebClient webClientCookies, MessageLogin messageLogin, TaskMobile taskMobile,
 			String stardate,String enddate,String month, int pagenum,String smsCode) {
 		tracerLog.output("中国电信抓取客户北京用户"+month+"通话详单", messageLogin.getTask_id());
 	
 		
 //		http://bj.189.cn/iframe/feequery/detailValidCode.action
-		webClientCookies = lognAndGetBeijingUnitService.smsForCall(webClientCookies, 0, messageLogin, smsCode);
+//		webClientCookies = lognAndGetBeijingUnitService.smsForCall(webClientCookies, 0, messageLogin, smsCode);
 
 		String html = null;
 		try{
@@ -559,7 +557,13 @@ public class TelecomUnitBeiJingService {
 		}
 		tracerLog.output("中国电信抓取客户北京用户   短信详单", messageLogin.getTask_id());
 
-		String html = telecomHtmlService.getSMSThrem(webClientCookies, messageLogin, taskMobile, i, pagenum);
+		String html = null;
+		try {
+			html = telecomHtmlService.getSMSThrem(webClientCookies, messageLogin, taskMobile, i, pagenum);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		tracerLog.output2("中国电信抓取客户北京用户 短信详单", "<xmp>" + html + "</xmp>");
 

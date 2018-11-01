@@ -1,6 +1,7 @@
 package app.service.crawler.telecom.htmlunit;
 
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -99,12 +100,12 @@ public class LognAndGetBeijingService {
 	// 获取北京用户通话详单 带分页信息
 	@Retryable(value = ErrorException.class, maxAttempts = 3)
 	public  String getCallThrem(WebClient webClient, MessageLogin messageLogin, TaskMobile taskMobile,
-			String stardate, String enddate, String month, String pagnum) {
+			String stardate, String enddate, String month, String pagnum) throws Exception {
 
 		System.out.println(stardate + ":" + enddate + ":" + month + ":" + pagnum);
 
 		String url = "http://bj.189.cn/iframe/feequery/billDetailQuery.action?requestFlag=synchronization"
-				+ "&billDetailType=1" + "&qryMonth=" + month.trim() + "&startTime=" + stardate.trim() + "&accNum="
+				+ "&billDetailType=1" + "&qryMonth=" + URLEncoder.encode(month.trim(),"utf-8") + "&startTime=" + stardate.trim() + "&accNum="
 				+ messageLogin.getName().trim() + "&endTime=" + enddate.trim() + "&billPage=" + pagnum.trim();
 
 		tracerLog.output("请求的url::::::"+month, url);
@@ -138,12 +139,12 @@ public class LognAndGetBeijingService {
 
 	// 获取北京用户短信详单 带分页信息
 	public  String getSMSThrem(WebClient webClient, MessageLogin messageLogin, TaskMobile taskMobile,
-			String stardate, String enddate, String month, String pagnum) {
+			String stardate, String enddate, String month, String pagnum) throws Exception {
 
 		System.out.println(stardate + ":" + enddate + ":" + month + ":" + pagnum);
 
 		String url = "http://bj.189.cn/iframe/feequery/billDetailQuery.action?requestFlag=synchronization"
-				+ "&billDetailType=2" + "&qryMonth=" + month + "&startTime=" + stardate.trim() + "&accNum="
+				+ "&billDetailType=2" + "&qryMonth=" + URLEncoder.encode(month.trim(),"utf-8") + "&startTime=" + stardate.trim() + "&accNum="
 				+ messageLogin.getName().trim() + "&endTime=" + enddate.trim() + "&billPage=" + pagnum.trim();
 
 		try {

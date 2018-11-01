@@ -50,10 +50,10 @@ public class TelecomBeiJingPageService {
 		List<Future<String>> listfuture = new ArrayList<Future<String>>();
 
 		for (int pagenum = 0; pagenum <= pagenums ; pagenum++) {
+			
 			tracerLog.output("循环页码"+pagenums,"第"+pagenum+"页");
 			
 			tracerLog.output("循环页码月份"+i,"第"+pagenum+"页");
-
 
 			LocalDate today = LocalDate.now();
 			// 本月的第一天
@@ -85,6 +85,8 @@ public class TelecomBeiJingPageService {
 
 					}
 				} else {
+					
+					
 					Future<String> future = telecomUnitBeiJingService.getCallThremByAsync(webClientCookies, messageLogin, taskMobile, stardate.getDayOfMonth()+"", enddate.getDayOfMonth()+"", month, pagenum,smsCode);
 				
 					listfuture.add(future);
