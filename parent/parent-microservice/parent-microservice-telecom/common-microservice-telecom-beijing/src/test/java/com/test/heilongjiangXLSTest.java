@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import javax.swing.JOptionPane;
-
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -19,16 +17,12 @@ import com.gargoylesoftware.htmlunit.HttpMethod;
 import com.gargoylesoftware.htmlunit.Page;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebRequest;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.util.Cookie;
 import com.gargoylesoftware.htmlunit.util.NameValuePair;
 import com.google.gson.Gson;
-import com.microservice.dao.entity.crawler.mobile.TaskMobile;
 import com.module.htmlunit.WebCrawler;
 
 import app.bean.WebParamTelecom;
-import app.bean.error.ErrorException;
-import app.service.SMSCodejson;
 
 public class heilongjiangXLSTest {
 
@@ -87,9 +81,9 @@ public class heilongjiangXLSTest {
 //		getCallThemHtml(webClient);
 	}
 
-	public static WebParamTelecom getphonecode(WebClient webClient) {
+	public static WebParamTelecom<?> getphonecode(WebClient webClient) {
 
-		WebParamTelecom webParamTelecom = new WebParamTelecom<>();
+		WebParamTelecom<?> webParamTelecom = new WebParamTelecom<>();
 		try {
 
 			// String errorurl =
@@ -155,8 +149,8 @@ public class heilongjiangXLSTest {
 
 	}
 
-	public static WebParamTelecom setphonecode(MessageLogin messageLogin, WebClient webClient) {
-		WebParamTelecom webParamTelecom = new WebParamTelecom();
+	public static WebParamTelecom<?> setphonecode(MessageLogin messageLogin, WebClient webClient) {
+		WebParamTelecom<?> webParamTelecom = new WebParamTelecom<>();
 
 		String url = "http://hl.189.cn/service/zzfw.do";
 

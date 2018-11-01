@@ -31,6 +31,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -51,6 +52,7 @@ import com.gargoylesoftware.htmlunit.WebRequest;
 import com.gargoylesoftware.htmlunit.util.Cookie;
 import com.gargoylesoftware.htmlunit.util.NameValuePair;
 import com.microservice.dao.entity.crawler.housing.basic.TaskHousing;
+import com.module.ddxoft.VK;
 import com.module.htmlunit.WebCrawler;
 import com.module.jna.winio.User32;
 import com.module.jna.winio.VKMapping;
@@ -67,7 +69,7 @@ public class CMBChinaTest {
 
 	public static void main(String[] args) {
 		try {
-			// login();
+			 login();
 //			 getUser();
 //			getZD();
 			// getmingxi("201711");
@@ -80,12 +82,12 @@ public class CMBChinaTest {
 			// getJF();
 			// getjifen();
 //			String CardsInfoForType = "{A:true,H:false,B:false,C:true,D:true}";
-			String CardsInfoForType = "{A:true}";
-			JSONObject jsonObj = JSONObject.fromObject(CardsInfoForType);
-			String type = jsonObj.getString("C");
-			if (jsonObj.has("C") && "true".equals(type)) {
-				System.out.println("11111");
-			}
+//			String CardsInfoForType = "{A:true}";
+//			JSONObject jsonObj = JSONObject.fromObject(CardsInfoForType);
+//			String type = jsonObj.getString("C");
+//			if (jsonObj.has("C") && "true".equals(type)) {
+//				System.out.println("11111");
+//			}
 			
 			 
 
@@ -493,23 +495,31 @@ public class CMBChinaTest {
 		// String baseUrl =
 		// "https://pbsz.ebank.cmbchina.com/CmbBank_GenShell/UI/GenShellPC/Login/GenLoginVerifyM2.aspx";
 		driver.get(baseUrl);
-		String currentUrl = driver.getCurrentUrl();
+//		String currentUrl = driver.getCurrentUrl();
 		// System.out.println("currentUrl--11--"+currentUrl);
-		String htmlsource = driver.getPageSource();
+//		String htmlsource = driver.getPageSource();
 		// System.out.println("htmlsource--11--"+htmlsource);
 
-		String[] accountNum = { "6", "2", "2", "5", "7", "6", "8", "7", "8", "9", "8", "8", "5", "6", "0", "3" };
+		String accountNum = "123456";
 
-		String[] password = { "1", "4", "7", "8", "5", "2" };
+		String password = "123456";
 
 		Thread.sleep(1000L);
+		
+		driver.findElement(By.id("goPassWordLogin")).click();
 
-		Input(accountNum);
-
-		InputTab();
-
-		Input(password);
-
+		// 键盘输入卡号
+		Thread.sleep(500L);
+		VK.KeyPress(accountNum);
+		Thread.sleep(500L);
+		VK.Tab();
+//		driver.findElement(By.id("ExtraPwd")).sendKeys(Keys.DOWN);
+		// 键盘输入查询密码
+		Thread.sleep(500L);
+		VK.KeyPress(password);
+//		Input(accountNum);
+//		InputTab();
+//		Input(password);
 		driver.findElement(By.id("LoginBtn")).click();
 
 		Thread.sleep(3000L);
@@ -518,7 +528,8 @@ public class CMBChinaTest {
 
 		// 如果当前页面还是登陆页面，说明登陆不成功，从页面中获取登陆不成功的原因（密码错误、密码简单、。。。等等）
 		if (LoginPage.equals(currentPageURL)) {
-			String errorfinfo = driver.findElement(By.className("page-form-item-controls")).getText();
+			String errorfinfo = driver.findElement(By.id("errMsgSpan")).getText();
+//			String errorfinfo = driver.findElement(By.className("page-form-item-controls")).getText();
 			if (errorfinfo != null && errorfinfo.length() > 0) {
 				throw new RuntimeException(errorfinfo);
 			}

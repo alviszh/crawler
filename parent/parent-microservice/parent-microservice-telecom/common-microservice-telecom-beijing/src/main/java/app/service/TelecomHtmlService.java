@@ -93,7 +93,7 @@ public class TelecomHtmlService {
 	
 	// 获取北京用户 通话详单
 		public  String getCallThrem(WebClient webClient, MessageLogin messageLogin, TaskMobile taskMobile,
-				String stardate, String enddate, String month, int pagenum) {
+				String stardate, String enddate, String month, int pagenum) throws Exception {
 		
 			// 本月的最后一天
 				return  lognAndGetBeijingService.getCallThrem(webClient, messageLogin, taskMobile, stardate + "",
@@ -104,7 +104,7 @@ public class TelecomHtmlService {
 
 	// 获取北京用户 短信详单
 	public  String getSMSThrem(WebClient webClientCookies, MessageLogin messageLogin, TaskMobile taskMobile,
-			int i, int pagnum) {
+			int i, int pagnum) throws Exception {
 		LocalDate today = LocalDate.now();
 		// 本月的第一天
 		LocalDate stardate = LocalDate.of(today.getYear(), today.getMonth(), 1).plusMonths(-i);
