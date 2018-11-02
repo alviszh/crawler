@@ -5,8 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
 
-import org.eclipse.jetty.util.security.Credential.MD5;
-
 public class TestStr {
 	
 	public static void main(String[] args) {

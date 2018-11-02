@@ -1,5 +1,6 @@
 package com.microservice.dao.entity.crawler.telecom.shanghai;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -30,7 +31,10 @@ public class TelecomShanghaiMsg extends IdEntity{
 	private String chargedParty;			//发送人号码
 	private String fee1;
 	private String flowConversion;
+	
+	@Column(name="index_number")
 	private String index;
+	
 	private String prodId;
 	private String productLineName;	
 	private String targetParty;				//被叫号码
