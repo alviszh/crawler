@@ -29,7 +29,6 @@ public class TelecomHunanTaocanMsg  extends IdEntity{
 	private String businessname;
 	
 	/**说明*/   
-	@Column(name="explain")
 	private String explain;
 	
 	
