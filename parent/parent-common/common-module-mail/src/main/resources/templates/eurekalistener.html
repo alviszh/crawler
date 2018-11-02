@@ -74,43 +74,44 @@
 		bgcolor="#cccccc" class="tabtop13" align="center">
 		<tr>
 			<td  class="btbg font-center titfont"
-				style="white-space: nowrap">appName</td>
+				style="white-space: nowrap">微服务名称</td>
 			<td  class="btbg font-center titfont"
-				style="white-space: nowrap">eventType</td>
+				style="white-space: nowrap">事件类型</td>
 			<td  class="btbg font-center titfont"
-				style="white-space: nowrap">timestamp</td>
+				style="white-space: nowrap">变动时间</td>
 			<td  class="btbg font-center titfont"
-				style="white-space: nowrap">serverId</td>
-			<td  class="btbg font-center titfont"
-				style="white-space: nowrap">instanceId</td>
+				style="white-space: nowrap">容器IP</td>
 			<td  class="btbg font-center titfont"
 				style="white-space: nowrap">hostName</td>
 			<td  class="btbg font-center titfont"
-				style="white-space: nowrap">ipAddr</td>
+				style="white-space: nowrap">instanceId</td>
 			<td  class="btbg font-center titfont"
 				style="white-space: nowrap">homePageUrl</td>
 			<td  class="btbg font-center titfont"
 				style="white-space: nowrap">vipAddress</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">serverId</td>
 		</tr>
 		<tr>
 			<td style="white-space: nowrap"
 				th:text="${eurekaInstanceBean.appName}"></td>
 			<td style="white-space: nowrap"
-				th:text="${eurekaInstanceBean.eventType}"></td>
+				th:text="${microEventType}"></td>
 			<td style="white-space: nowrap"
-				th:text="${eurekaInstanceBean.timestamp}"></td>
+				th:text="${eventTime}"></td>
+				<!-- th:text="${#dates.format(eurekaInstanceBean.timestamp,'yyyy-MM-dd HH:mm:ss')}"></td> -->
 			<td style="white-space: nowrap"
-				th:text="${eurekaInstanceBean.serverId}"></td>
-			<td style="white-space: nowrap"
-				th:text="${eurekaInstanceBean.instanceId}"></td>
+				th:text="${eurekaInstanceBean.ipAddr}"></td>
 			<td style="white-space: nowrap"
 				th:text="${eurekaInstanceBean.hostName}"></td>
 			<td style="white-space: nowrap"
-				th:text="${eurekaInstanceBean.ipAddr}"></td>
+				th:text="${eurekaInstanceBean.instanceId}"></td>
 			<td style="white-space: nowrap"
 				th:text="${eurekaInstanceBean.homePageUrl}"></td>
 			<td style="white-space: nowrap"
 				th:text="${eurekaInstanceBean.vipAddress}"></td>
+			<td style="white-space: nowrap"
+				th:text="${eurekaInstanceBean.serverId}"></td>
 		</tr>
 	</table>
 </body>
