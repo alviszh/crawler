@@ -76,12 +76,15 @@ public class TelecomUnitCommomService extends TelecomBasicService  {
 					 webParamTelecom = TelecomParseCommon.loginerror_Parser(htmlpage.asXml());
 					 webParamTelecom.setStatusCodeEnum(StatusCodeEnum.MESSAGE_LOGIN_ERROR_FOURE);
 					 webParamTelecom.setStatusCodeRec(StatusCodeRec.MESSAGE_LOGIN_ERROR_FOURE);
+					 webClient.close();
 					return webParamTelecom;
 				}
 			} else {
 				 webParamTelecom = TelecomParseCommon.loginerror_Parser(htmlpage.asXml());
 				 webParamTelecom.setStatusCodeEnum(StatusCodeEnum.MESSAGE_LOGIN_ERROR_FOURE);
 				 webParamTelecom.setStatusCodeRec(StatusCodeRec.MESSAGE_LOGIN_ERROR_FOURE);
+				 webClient.close();
+
 				return webParamTelecom;
 			}
 		}
