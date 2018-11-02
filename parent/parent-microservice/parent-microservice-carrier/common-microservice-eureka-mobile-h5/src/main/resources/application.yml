@@ -13,9 +13,10 @@ eureka:
   client: 
     serviceUrl: 
       defaultZone: http://eurekaserver:8888/eureka/
-spring: 
-  redis: 
-    host: ${redis.host}
+#Oauth2.0时作为资源,需要用redis 存储token
+#spring: 
+#  redis: 
+#    host: ${redis.host}
 # To disable Hystrix in Feign  解决重启后第一次请求必然出现timeout   100秒timeout
 feign: 
   hystrix:

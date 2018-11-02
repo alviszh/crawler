@@ -39,8 +39,8 @@
 			<artifactId>HikariCP</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.sr.storm</groupId>
-			<artifactId>common-module-ocr</artifactId>
+			<groupId>com.sr.microservice</groupId>
+			<artifactId>common-microservice-ocr</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>

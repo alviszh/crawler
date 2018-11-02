@@ -17,7 +17,11 @@
 		<start-class>app.EurekaTelecomLoginApplication</start-class>
 	</properties>
 	<dependencies>
-		
+		<dependency>
+			<groupId>com.sr.microservice</groupId>
+			<artifactId>common-microservice-service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>

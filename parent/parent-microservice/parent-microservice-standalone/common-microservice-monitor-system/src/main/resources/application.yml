@@ -19,6 +19,18 @@ eureka:
 
 #数据源：
 spring:
+  cloud:
+    stream:
+      bindings: 
+        output:                            # 频道名称（根据具体模块来命名）
+          destination: eureka-topic-01  
+          binder: kafka_binder
+      binders: 
+        carrier_binder: 
+          type: kafka 
+          environment:
+            spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
+            spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes} 
   datasource:
     hikari: 
       minimum-idle: ${datasource.jdbc.minIdle}

@@ -1,6 +1,6 @@
 package app.controller;
 
-import app.client.MobileResultClient;
+
 import app.client.carrier.TaskClient;
 import app.commontracerlog.TracerLog;
 
@@ -33,8 +33,8 @@ public class AuthenticationController {
 
 	@Autowired
 	private TaskClient taskClient;
-	@Autowired
-	private MobileResultClient mobileResultClient;
+	//@Autowired
+	//private MobileResultClient mobileResultClient;
 	@Autowired
 	private TracerLog tracer;
 
