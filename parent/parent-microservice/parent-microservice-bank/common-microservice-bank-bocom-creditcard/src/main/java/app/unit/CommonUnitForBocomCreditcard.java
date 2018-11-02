@@ -6,7 +6,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,7 +19,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.crawler.bank.json.BankJsonBean;
 import com.module.jna.webdriver.WebDriverUnit;
 import com.module.ocr.utils.ImageHandler;
 

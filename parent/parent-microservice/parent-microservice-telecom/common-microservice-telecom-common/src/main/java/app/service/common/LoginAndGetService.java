@@ -118,7 +118,7 @@ public class LoginAndGetService {
 				tracerLog.addTag("sign---ERROR:", taskMobile.getTaskid() + "---ERROR:" + e);
 			}
 
-			String prvince = URLEncoder.encode(URLEncoder.encode(taskMobile.getProvince().trim()));
+			String prvince = URLEncoder.encode(URLEncoder.encode(taskMobile.getProvince().trim(),"utf8"),"utf8");
 			String urlStarlevel = "http://xjfw.189.cn/tykf-itr-services/services/dispatch.jsp?&dispatchUrl=ClientUni/clientuni/services/starLevel/custStarLevelQuery?reqParam={\"transactionId\":\""
 					+ transactionId + "\",\"clientNbr\":\"" + mobile
 					+ "\",\"channelCode\":\"H5002018\",\"deviceType\":\"1\",\"prvince\":\"+"+prvince+"\",\"sign\":\""

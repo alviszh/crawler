@@ -1,5 +1,6 @@
 package com.microservice.dao.entity.crawler.bank.bocom.creditcard;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Index;
 import javax.persistence.Table;
@@ -21,6 +22,8 @@ public class BocomCreditcardTransFlow extends IdEntity{
 
 	private String tradeDate; //交易日期
 	private String accountDate;//记账日期
+	
+	@Column(name="tranExplain")
 	private String explain;//交易说明
 	private String tradeCurrencyAmount;//交易币种/金额
 	private String clearingCurrencyAmount;//清算币种/金额
