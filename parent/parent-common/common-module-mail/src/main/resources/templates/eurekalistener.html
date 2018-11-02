@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+.tabtop13 {
+	margin-top: 13px;
+}
+
+.tabtop13 td {
+	background-color: #ffffff;
+	height: 13px;
+	line-height: 100%;
+}
+
+.font-center {
+	text-align: center
+}
+
+.btbg {
+	background: #e9faff !important;
+}
+
+.btbg1 {
+	background: #f2fbfe !important;
+}
+
+.btbg2 {
+	background: #f3f3f3 !important;
+}
+
+.biaoti {
+	font-family: 微软雅黑;
+	font-size: 20px;
+	font-weight: bold;
+	border-bottom: 1px dashed #CCCCCC;
+	color: #255e95;
+}
+
+.titfont {
+	font-family: 微软雅黑;
+	font-size: 13px;
+	font-weight: bold;
+	color: #255e95;
+	background: url(../images/ico3.gif) no-repeat 13px center;
+	background-color: #e9faff;
+}
+
+.tabtxt2 {
+	font-family: 微软雅黑;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: right;
+	padding-right: 10px;
+	color: #327cd1;
+}
+
+.tdfont {
+	font-family: 微软雅黑;
+	font-size: 13px;
+	color: #000000;
+	background-color: #ffffff;
+}
+</style>
+</head>
+<body>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0"
+		align="center">
+		<tr>
+			<td align="center" class="biaoti" height="60"><span th:text="${envirtype}"></span>Eureka上微服务<span th:text="${microEventType}"></span>详情</td>
+		</tr>
+	</table>
+	<table width="100%" border="0" cellspacing="1" cellpadding="4"
+		bgcolor="#cccccc" class="tabtop13" align="center">
+		<tr>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">appName</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">eventType</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">timestamp</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">serverId</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">instanceId</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">hostName</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">ipAddr</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">homePageUrl</td>
+			<td  class="btbg font-center titfont"
+				style="white-space: nowrap">vipAddress</td>
+		</tr>
+		<tr>
+			<td style="white-space: nowrap"
+				th:text="${eurekaInstanceBean.appName}"></td>
+			<td style="white-space: nowrap"
+				th:text="${eurekaInstanceBean.eventType}"></td>
+			<td style="white-space: nowrap"
+				th:text="${eurekaInstanceBean.timestamp}"></td>
+			<td style="white-space: nowrap"
+				th:text="${eurekaInstanceBean.serverId}"></td>
+			<td style="white-space: nowrap"
+				th:text="${eurekaInstanceBean.instanceId}"></td>
+			<td style="white-space: nowrap"
+				th:text="${eurekaInstanceBean.hostName}"></td>
+			<td style="white-space: nowrap"
+				th:text="${eurekaInstanceBean.ipAddr}"></td>
+			<td style="white-space: nowrap"
+				th:text="${eurekaInstanceBean.homePageUrl}"></td>
+			<td style="white-space: nowrap"
+				th:text="${eurekaInstanceBean.vipAddress}"></td>
+		</tr>
+	</table>
+</body>
+</html>
