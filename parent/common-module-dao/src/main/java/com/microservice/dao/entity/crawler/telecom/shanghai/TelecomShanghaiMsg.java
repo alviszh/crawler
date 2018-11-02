@@ -75,6 +75,7 @@ public class TelecomShanghaiMsg extends IdEntity{
 	public void setFlowConversion(String flowConversion) {
 		this.flowConversion = flowConversion;
 	}
+	@Column(name="index_number")
 	public String getIndex() {
 		return index;
 	}

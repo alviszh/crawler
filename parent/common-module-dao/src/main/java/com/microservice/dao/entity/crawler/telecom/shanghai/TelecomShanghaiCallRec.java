@@ -117,6 +117,7 @@ public class TelecomShanghaiCallRec extends IdEntity{
 	public void setFowardingNumber(String fowardingNumber) {
 		this.fowardingNumber = fowardingNumber;
 	}
+	@Column(name="index_number")
 	public String getIndex() {
 		return index;
 	}
