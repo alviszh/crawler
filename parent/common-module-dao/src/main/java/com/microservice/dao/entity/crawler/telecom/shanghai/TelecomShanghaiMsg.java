@@ -34,7 +34,6 @@ public class TelecomShanghaiMsg extends IdEntity{
 	
 	@Column(name="index_number")
 	private String index;
-	
 	private String prodId;
 	private String productLineName;	
 	private String targetParty;				//被叫号码
