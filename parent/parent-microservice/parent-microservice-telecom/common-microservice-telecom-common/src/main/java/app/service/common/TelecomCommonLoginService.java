@@ -67,7 +67,7 @@ public class TelecomCommonLoginService extends TelecomBasicService implements IC
 			taskMobile.setError_code(StatusCodeEnum.TASKMOBILE_LOGIN_SUCCESS.getError_code());
 			String cookieString = CommonUnit.transcookieToJson(webParamTelecom.getWebClient());
 			taskMobile.setCookies(cookieString);
-
+			webParamTelecom.getWebClient().close();
 			// 登录成功状态更新
 			save(taskMobile);
 
@@ -95,6 +95,7 @@ public class TelecomCommonLoginService extends TelecomBasicService implements IC
 			// 登录失败状态更新
 			save(taskMobile);
 		}
+		
 		return taskMobile;
 	}
 

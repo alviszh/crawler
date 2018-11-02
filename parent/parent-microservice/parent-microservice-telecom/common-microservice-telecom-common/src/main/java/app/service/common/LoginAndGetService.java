@@ -43,7 +43,7 @@ public class LoginAndGetService {
 		webClient = LoginAndGetCommon.addcookie(webClient, taskMobile);
 
 		Page page = LoginAndGetCommon.gethtmlPost(webClient, null, url);
-
+		webClient.close();
 		return page.getWebResponse().getContentAsString();
 	}
 
@@ -142,12 +142,18 @@ public class LoginAndGetService {
 				webParam.setHtml(html);
 				webParam.setUrl(page.getUrl().toString());
 				webParam.setCode(page.getWebResponse().getStatusCode());
+				webClient.close();
+
 				return webParam;
 			}
+			webClient.close();
+
 		} catch (Exception e) {
 			tracerLog.addTag("TelecomShanxiParser.getStarlevel---ERROR:", taskMobile.getTaskid() + "---ERROR:" + e);
 			e.printStackTrace();
+			
 		}
+		
 		return null;
 	}
 	
