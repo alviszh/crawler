@@ -133,11 +133,12 @@ public class MailContentBuilder {
 		return mailContent;
 	}
 	//微服务注册和下线时间的具体信息通知邮件
-	public String buildEurekaInstanceChangeEmailContent(EurekaInstanceBean eurekaInstanceBean, String mailEnvirType, String microEventType) {
+	public String buildEurekaInstanceChangeEmailContent(EurekaInstanceBean eurekaInstanceBean, String mailEnvirType, String microEventType, String eventTime) {
 		Context context = new Context();
 		context.setVariable("eurekaInstanceBean", eurekaInstanceBean);
 		context.setVariable("envirtype", mailEnvirType);
 		context.setVariable("microEventType", microEventType);
+		context.setVariable("eventTime", eventTime);
 		String mailContent = templateEngine.process("eurekalistener", context);
 		return mailContent;
 	}
