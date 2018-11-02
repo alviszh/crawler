@@ -1,5 +1,6 @@
 package com.microservice.dao.entity.crawler.telecom.guangdong;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Index;
 import javax.persistence.Table;
@@ -81,7 +82,7 @@ public class TelecomGuangDongBusinessmessage extends IdEntity{
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
-
+	@Column(name = "describeinfo")
 	public String getDescribe() {
 		return describe;
 	}
