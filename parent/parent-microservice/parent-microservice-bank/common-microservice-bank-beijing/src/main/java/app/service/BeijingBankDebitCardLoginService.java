@@ -34,8 +34,6 @@ public class BeijingBankDebitCardLoginService {
     @Autowired
     private WebDriverIEService webDriverIEService;
     @Autowired
-    private ChaoJiYingOcrService chaoJiYingOcrService;
-    @Autowired
     private TaskBankStatusService taskBankStatusService;
     @Autowired
     private AgentService agentService;
