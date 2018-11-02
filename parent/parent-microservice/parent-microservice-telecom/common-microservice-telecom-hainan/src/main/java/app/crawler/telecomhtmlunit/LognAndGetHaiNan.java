@@ -252,15 +252,13 @@ public class LognAndGetHaiNan {
 			System.out.println(html4.getWebResponse().getContentAsString());
 			System.out.println("=========================================");
 
-			url = "http://www.hi.189.cn/BUFFALO/buffalo/CommonAjaxService";
+			url = "http://hi.189.cn/BUFFALO/buffalo/CommonAjaxService";
 
 			WebRequest webRequest = new WebRequest(new URL(url), HttpMethod.POST);
-			webRequest.setAdditionalHeader("Referer", "http://www.hi.189.cn/service/jf/integralHistory.jsp");
 			webRequest.setAdditionalHeader("Referer",
-					"http://www.hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi");
-			webRequest.setAdditionalHeader("Host", "www.hi.189.cn");
-			webRequest.setAdditionalHeader("Pragma", "no-cache");
-			webRequest.setAdditionalHeader("Origin", "http://www.hi.189.cn");
+					"http://hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi");
+			webRequest.setAdditionalHeader("Host", "hi.189.cn");
+			webRequest.setAdditionalHeader("Origin", "http://hi.189.cn");
 			webRequest.setAdditionalHeader("Accept", "*/*");
 			webRequest.setAdditionalHeader("Accept-Encoding", "gzip, deflate");
 			webRequest.setAdditionalHeader("Accept-Language", "zh-CN,zh;q=0.8");
@@ -309,16 +307,14 @@ public class LognAndGetHaiNan {
 		WebClient webClient = WebCrawler.getInstance().getNewWebClient();
 		webClient = TeleComCommonUnit.addcookie(webClient, taskMobile);
 
-		String url = "http://www.hi.189.cn/BUFFALO/buffalo/FeeQueryAjaxV4Service";
+		String url = "http://hi.189.cn/BUFFALO/buffalo/FeeQueryAjaxV4Service";
 		// http://hi.189.cn/BUFFALO/buffalo/FeeQueryAjaxV4Service
 
 		WebRequest webRequest = new WebRequest(new URL(url), HttpMethod.POST);
-		webRequest.setAdditionalHeader("Referer", "http://www.hi.189.cn/service/jf/integralHistory.jsp");
 		webRequest.setAdditionalHeader("Referer",
-				"http://www.hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi");
-		webRequest.setAdditionalHeader("Host", "www.hi.189.cn");
-		webRequest.setAdditionalHeader("Pragma", "no-cache");
-		webRequest.setAdditionalHeader("Origin", "http://www.hi.189.cn");
+				"http://hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi");
+		webRequest.setAdditionalHeader("Host", "hi.189.cn");
+		webRequest.setAdditionalHeader("Origin", "http://hi.189.cn");
 		webRequest.setAdditionalHeader("Accept", "*/*");
 		webRequest.setAdditionalHeader("Accept-Encoding", "gzip, deflate");
 		webRequest.setAdditionalHeader("Accept-Language", "zh-CN,zh;q=0.8");
@@ -326,6 +322,7 @@ public class LognAndGetHaiNan {
 		webRequest.setAdditionalHeader("Connection", "keep-alive");
 		// webRequest.setAdditionalHeader("Content-Length", "160");
 		webRequest.setAdditionalHeader("Content-Type", "text/xml;charset=UTF-8");
+	
 
 		String canshuString = "<buffalo-call>" + "<method>queryDetailBill</method>" + "<map>"
 				+ "<type>java.util.HashMap</type>" + "<string>PRODNUM</string>" + "<string>"
