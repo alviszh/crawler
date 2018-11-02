@@ -2,6 +2,7 @@ package com.microservice.dao.entity.crawler.housing.fuzhou;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Index;
 import javax.persistence.Table;
@@ -66,7 +67,7 @@ public class HousingFuZhouPay extends IdEntity implements Serializable{
 	public void setBalance(String balance) {
 		this.balance = balance;
 	}
-
+	@Column(name = "describe_info")
 	public String getDescribe() {
 		return describe;
 	}

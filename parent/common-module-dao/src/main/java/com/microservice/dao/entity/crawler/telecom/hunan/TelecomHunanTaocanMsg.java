@@ -74,7 +74,7 @@ public class TelecomHunanTaocanMsg  extends IdEntity{
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
+	@Column(name = "taocan_explains")
 	public String getExplain() {
 		return explain;
 	}
