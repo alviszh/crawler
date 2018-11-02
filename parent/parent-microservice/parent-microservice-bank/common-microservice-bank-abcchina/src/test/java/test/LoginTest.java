@@ -20,8 +20,6 @@ import com.module.ddxoft.VK;
  * @date 2018年8月14日上午11:36:24
  * @Description: 
  * 
- * 
- * 
  * 正确的账号和密码
  * 
  * _华夏信用卡：

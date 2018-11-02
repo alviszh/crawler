@@ -13,10 +13,7 @@ public interface UnicomCallThemResultRepository extends JpaRepository<UnicomCall
 	
 	
 	List<UnicomCallResult> findByUsernumber(String usernumber);
-	
-//	@Query(value = "select  *  from unicom_result where usernumber=?1 and calldate between ?2 and ?3", nativeQuery = true)
-//	List<UnicomCallResult> findByUsernumberAndDate(String usernumber,String stardate,String enddate);
-	
+
 	List<UnicomCallResult> findByUsernumberAndCalldateBetween(String usernumber,String stardate,String enddate);
 	
 	List<UnicomCallResult> findByTaskid(String taskId);

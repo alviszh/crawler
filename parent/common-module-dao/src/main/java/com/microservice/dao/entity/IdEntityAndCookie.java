@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 import org.apache.commons.lang3.StringUtils;
+
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
 import com.gargoylesoftware.htmlunit.ThreadedRefreshHandler;
@@ -57,6 +58,48 @@ public class IdEntityAndCookie extends IdEntity{
 			}
 			return webClient;
 		}
+		
+	}
+	
+	
+	
+	/**   
+	 * @Title: getCookie   
+	 * @Description: 将webclient里的cookie 转为String 
+	 * @param: @param webClient
+	 * @param: @return      
+	 * @return: String      
+	 * @throws   
+	 */ 
+	public String getCookie(WebClient webClient){
+		
+		Set<Cookie> cookie_webClient = webClient.getCookieManager().getCookies(); 
+
+		Set<CookieJson> cookiesSet= new HashSet<>();
+		
+		for(Cookie cookie:cookie_webClient){ 
+			CookieJson cookiejson = new CookieJson();
+			cookiejson.setDomain(cookie.getDomain());
+			cookiejson.setKey(cookie.getName());
+			cookiejson.setValue(cookie.getValue());
+			cookiesSet.add(cookiejson); 
+		} 
+
+		String cookieJson = new Gson().toJson(cookiesSet);
+		return cookieJson;
+		
+	}
+	
+	/**   
+	 * @Title: setCookies   
+	 * @Description:  直接将webClient转换为taskmobie里的cookies
+	 * @param: @param webClient      
+	 * @return: void      
+	 * @throws   
+	 */ 
+	public void setCookies(WebClient webClient){
+		
+		this.cookies = getCookie(webClient);
 		
 	}
 	

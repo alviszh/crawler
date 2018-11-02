@@ -1,5 +1,6 @@
 package com.microservice.dao.entity.crawler.telecom.shanghai;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -27,7 +28,10 @@ public class TelecomShanghaiCallRec extends IdEntity{
 	private String flowConversion;
 	private String forwardingFlag;
 	private String fowardingNumber;
+	
+	@Column(name="index_number")
 	private String index;
+	
 	private String longDistanceType;		//长途类型
 	private String prodId;
 	private String productLineName;			
