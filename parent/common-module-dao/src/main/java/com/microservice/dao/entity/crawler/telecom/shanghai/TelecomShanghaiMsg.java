@@ -31,8 +31,10 @@ public class TelecomShanghaiMsg extends IdEntity{
 	private String chargedParty;			//发送人号码
 	private String fee1;
 	private String flowConversion;
+	
 	@Column(name="index_number")
 	private String index;
+	
 	private String prodId;
 	private String productLineName;	
 	private String targetParty;				//被叫号码

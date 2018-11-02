@@ -31,6 +31,7 @@ public class TelecomShanghaiCallRec extends IdEntity{
 	
 	@Column(name="index_number")
 	private String index;
+	
 	private String longDistanceType;		//长途类型
 	private String prodId;
 	private String productLineName;			
