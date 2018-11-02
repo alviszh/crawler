@@ -217,17 +217,12 @@ public class LognAndGetHaiNan {
 	public static String readyGetUserId(MessageLogin messageLogin, TaskMobile taskMobile)
 			throws Exception {
 		WebClient webClient = taskMobile.getClient(taskMobile.getCookies());
-		// http://hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi
-		webClient.getOptions().setJavaScriptEnabled(false);
-
-		webClient.getOptions().setJavaScriptEnabled(false);
-
-		String url = "http://www.189.cn/login/index.do";
-
-		LoginAndGetCommon.getHtml(url, webClient);
-		url = "http://www.189.cn/dqmh/my189/initMy189home.do?fastcode=02091577";
-		getHtml(url, webClient);
-		url = "http://hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi";
+//		String url = "http://www.189.cn/login/index.do";
+//
+//		LoginAndGetCommon.getHtml(url, webClient);
+//		url = "http://www.189.cn/dqmh/my189/initMy189home.do?fastcode=02091577";
+//		getHtml(url, webClient);
+		String url = "http://hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi";
 		Page page = getHtml(url, webClient);
 
 //		url = "http://www.hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi";
