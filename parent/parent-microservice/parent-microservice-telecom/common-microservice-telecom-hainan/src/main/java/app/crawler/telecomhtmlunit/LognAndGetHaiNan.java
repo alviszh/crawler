@@ -214,7 +214,7 @@ public class LognAndGetHaiNan {
 	 * @return
 	 * @throws Exception
 	 */
-	public static String readyGetUserId(MessageLogin messageLogin, TaskMobile taskMobile)
+	public static String readyGetUserId(TaskMobile taskMobile)
 			throws Exception {
 		WebClient webClient = taskMobile.getClient(taskMobile.getCookies());
 //		String url = "http://www.189.cn/login/index.do";
