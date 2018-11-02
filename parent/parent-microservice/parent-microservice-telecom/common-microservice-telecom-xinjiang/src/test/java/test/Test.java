@@ -29,7 +29,7 @@ public class Test {
 //		JSONArray jsonArray = JSONArray.fromObject(json);  
 //		JSONObject list1ArrayObjs = JSONObject.fromObject(jsonArray.get(0));
 //		System.out.println(list1ArrayObjs.getString("PageIndex"));
-//		System.out.println(list1ArrayObjs.getString("maxPage"));
+//		System.out.println(list1ArrayObjs.getString("maxPage"));######
 		//JSONArray listInfoArray = JSONArray.fromObject(listInfoStr);  
 
 		for(int i=0;i<1;i++){
