@@ -236,6 +236,7 @@ public abstract class AbstractParser {
             return loanType;
         }
     }
+
     /** 查询信息 查询原因 */
     public String getQueryReason(String queryReason){
         if (queryReason == null)
