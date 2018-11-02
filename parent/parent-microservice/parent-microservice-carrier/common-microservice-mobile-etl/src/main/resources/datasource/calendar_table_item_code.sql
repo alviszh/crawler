@@ -6,7 +6,7 @@
 -- 	week_status varchar(50),
 -- 	is_work varchar(50)
 -- );
-
+truncate table calendar_table;
 -- ----------------------------
 -- Records of calendar_table
 -- ----------------------------
