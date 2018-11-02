@@ -29,7 +29,7 @@ public class EurekaInstanceChangeMailService {
 	@Value("${envirtype}")     //根据环境类型改变邮件展示时候的标题说明
 	public String envirtype;
 	//发送通知邮件
-	public void sendResultMail(EurekaInstanceBean eurekaInstanceBean,String microEventType) {
+	public void sendResultMail(EurekaInstanceBean eurekaInstanceBean,String microEventType, String eventTime) {
 		String mailEnvirType = null;
 		//==========================
 		if(envirtype.trim().equals("dev")){
@@ -40,7 +40,7 @@ public class EurekaInstanceChangeMailService {
 			mailEnvirType="生产环境";
 		}
 		//==========================
-		String content = mailContentBuilder.buildEurekaInstanceChangeEmailContent(eurekaInstanceBean,mailEnvirType,microEventType);
+		String content = mailContentBuilder.buildEurekaInstanceChangeEmailContent(eurekaInstanceBean,mailEnvirType,microEventType,eventTime);
 		MailBean mailBean=new MailBean();
 		mailBean.setMailcontent(content);
 		mailBean.setReceiver(receivers);
