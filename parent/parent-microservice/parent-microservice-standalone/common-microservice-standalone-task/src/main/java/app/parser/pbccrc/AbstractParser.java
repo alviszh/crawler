@@ -244,7 +244,7 @@ public abstract class AbstractParser {
             return "1";
         } else if (queryReason.equals("贷后管理")) {
             return "2";
-        } else if (queryReason.equals("担保资格审批")) {
+        } else if (queryReason.equals("担保资格审批") || queryReason.equals("担保资格审查")) { //新增的“担保资格审查”合并至“担保资格审批”
             return "3";
         } else if (queryReason.equals("贷款审批")) {
             return "4";
@@ -283,8 +283,6 @@ public abstract class AbstractParser {
             return "18";
         } else if (queryReason.equals("融资审批")) {
             return "19";
-        } else if (queryReason.equals("担保资格审查")) {
-            return "20";
         } else {
             return queryReason;
         }
