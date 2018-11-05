@@ -68,9 +68,9 @@
 		</profile>
 		<profile>
 			<!-- 生产环境 -->
-			<id>mariadb5.5.56</id>
+			<id>preview1.1.2</id>
 			<properties>
-				<app.mobilecrawlertask.active>mariadb5.5.56</app.mobilecrawlertask.active>
+				<app.mobilecrawlertask.active>preview1.1.2</app.mobilecrawlertask.active>
 				<app.mobilecrawlertask.name>MobileCrawlerTask</app.mobilecrawlertask.name>
 				<app.cmcc.name>crawler-cmcc</app.cmcc.name>
 				<app.unicom.name>crawler-unicom</app.unicom.name>
