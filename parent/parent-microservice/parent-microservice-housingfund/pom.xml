@@ -919,6 +919,7 @@
 			<properties>
 				<app.housingcrawlertask.active>preview1.1.2</app.housingcrawlertask.active>
 				<app.housingcrawlertask.name>HousingFund-Task</app.housingcrawlertask.name>
+				<app.housing.etl.name>HousingFund-etl</app.housing.etl.name>
 			</properties>
 		</profile>
 	</profiles>
