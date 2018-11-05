@@ -1,36 +1,9 @@
 package com.test;
 
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import com.crawler.microservice.unit.CommonUnit;
-import com.crawler.mobile.json.CookieJson;
-import com.gargoylesoftware.htmlunit.HttpMethod;
-import com.gargoylesoftware.htmlunit.Page;
 import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.WebRequest;
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
-import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 import com.gargoylesoftware.htmlunit.util.Cookie;
-import com.gargoylesoftware.htmlunit.util.NameValuePair;
-import com.google.gson.reflect.TypeToken;
-import com.microservice.dao.entity.crawler.mobile.TaskMobile;
 import com.module.htmlunit.WebCrawler;
-
-import app.unit.TeleComCommonUnit;
 
 public class FanWenTest2 {
 	static String cookiefile1 = "C:\\Users\\Administrator\\Desktop\\tel.xls";

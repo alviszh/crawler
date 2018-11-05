@@ -1,9 +1,5 @@
-import java.awt.Dimension;
 import java.awt.Robot;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +13,6 @@ import javax.swing.JOptionPane;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -35,9 +30,6 @@ import com.gargoylesoftware.htmlunit.util.NameValuePair;
 import com.google.gson.Gson;
 import com.module.htmlunit.WebCrawler;
 
-import app.bean.ValidationLoginDataObject;
-import app.bean.ValidationLoginRoot;
-import app.crawler.telecom.htmlparse.TelecomParseCommon;
 
 /**
  * 
@@ -157,27 +149,6 @@ public class Telecomloginhubei2 {
             robot.delay(500);
        
     }
-	private static ValidationLoginDataObject ValidationLogin(WebClient webClient) {
-
-		try {
-			String url = "http://www.189.cn/login/index.do";
-			Page page = getHtml(url, webClient);
-
-			System.out.println("*************************************** index.do");
-			System.out.println(page.getWebResponse().getContentAsString());
-
-			ValidationLoginRoot jsonObject = gs.fromJson(page.getWebResponse().getContentAsString(),
-					ValidationLoginRoot.class);
-
-			return jsonObject.getDataObject();
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 	public static Page getHtml(String url, WebClient webClient) throws Exception {
 		WebRequest webRequest = new WebRequest(new URL(url), HttpMethod.GET);
 		webRequest.setAdditionalHeader("Accept", "*");

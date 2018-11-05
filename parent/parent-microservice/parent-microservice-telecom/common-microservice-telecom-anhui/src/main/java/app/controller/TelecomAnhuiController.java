@@ -15,7 +15,7 @@ import app.service.TelecomCommonAnhuiService;
 import app.service.aop.ICrawlerLogin;
 import app.service.aop.ISms;
     
-@RestController  
+@RestController     
 @RequestMapping("/carrier")
 public class TelecomAnhuiController {
 	@Autowired  
