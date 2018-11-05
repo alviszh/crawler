@@ -19,10 +19,7 @@ eureka:
 spring:
   thymeleaf: 
     cache : ${spring.thymeleaf.cache}
-  cloud:
-    refresh:
-      extra-refreshable:
-      - none 
+  cloud: 
     stream:
       bindings: 
         input:                             # 频道名称（根据具体模块来命名）
