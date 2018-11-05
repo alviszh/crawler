@@ -95,18 +95,18 @@ public class ApiTestService {
 	 * @param taskId
 	 * @return
 	 */
-	public ApiTestUnicomVo loadUnicomResultByTaskId(String taskId){
-		ApiTestUnicomVo vo = new ApiTestUnicomVo();
-		vo.setListofUnicomUserInfo(unicomUserInfoRepository.findByTask(taskId));
-		vo.setListOfUnicomCallResult(unicomCallThemResultRepository.findByTaskid(taskId));
-		vo.setListOfUnicomNoteResult(unicomNoteThemResultRepository.findByTaskid(taskId));
-		vo.setListOfUnicomDetailList(unicomUnicomDetailListRepository.findByTaskid(taskId));
-		vo.setListOfUnicomIntegraThemlResult(unicomIntegraThemlResultRepository.findByTaskid(taskId));
-/*		vo.setListOfUnicomIntegralTegralThemResult(unicomIntegralTegralThemResultRepository.findByTaskid(taskId));
-*/		vo.setListOfUnicomPayMsgStatusResult(unicomPayMsgStatusResultRepository.findByTaskid(taskId));
-		vo.setListOfUnicomUserActivityInfo(unicomUserActivityInfoRepository.findByTaskid(taskId));
-		return vo;
-	}
+//	public ApiTestUnicomVo loadUnicomResultByTaskId(String taskId){
+//		ApiTestUnicomVo vo = new ApiTestUnicomVo();
+//		vo.setListofUnicomUserInfo(unicomUserInfoRepository.findByTask(taskId));
+//		vo.setListOfUnicomCallResult(unicomCallThemResultRepository.findByTaskid(taskId));
+//		vo.setListOfUnicomNoteResult(unicomNoteThemResultRepository.findByTaskid(taskId));
+//		vo.setListOfUnicomDetailList(unicomUnicomDetailListRepository.findByTaskid(taskId));
+//		vo.setListOfUnicomIntegraThemlResult(unicomIntegraThemlResultRepository.findByTaskid(taskId));
+///*		vo.setListOfUnicomIntegralTegralThemResult(unicomIntegralTegralThemResultRepository.findByTaskid(taskId));
+//*/		vo.setListOfUnicomPayMsgStatusResult(unicomPayMsgStatusResultRepository.findByTaskid(taskId));
+//		vo.setListOfUnicomUserActivityInfo(unicomUserActivityInfoRepository.findByTaskid(taskId));
+//		return vo;
+//	}
 	
 	/**
 	 * 根据TaskId,获取中国联通爬取信息

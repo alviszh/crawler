@@ -107,15 +107,15 @@ public class ApiTestController {
 	 * @param taskId
 	 * @return
 	 */
-	@RequestMapping("/unicom/result/{taskId}")
-	@ResponseBody
-	public ResultData<ApiTestUnicomVo> unicomResult(Model model, HttpServletRequest request,
-			HttpServletResponse response,@PathVariable String taskId) {
-		ApiTestUnicomVo vo = apiTestService.loadUnicomResultByTaskId(taskId);
-		ResultData<ApiTestUnicomVo> rd = new ResultData<ApiTestUnicomVo>();
-		rd.setData(vo);
-		return rd;
-	}
+//	@RequestMapping("/unicom/result/{taskId}")
+//	@ResponseBody
+//	public ResultData<ApiTestUnicomVo> unicomResult(Model model, HttpServletRequest request,
+//			HttpServletResponse response,@PathVariable String taskId) {
+//		ApiTestUnicomVo vo = apiTestService.loadUnicomResultByTaskId(taskId);
+//		ResultData<ApiTestUnicomVo> rd = new ResultData<ApiTestUnicomVo>();
+//		rd.setData(vo);
+//		return rd;
+//	}
 	
 	/**
 	 * 中国联通爬取数据结果展示-前台
