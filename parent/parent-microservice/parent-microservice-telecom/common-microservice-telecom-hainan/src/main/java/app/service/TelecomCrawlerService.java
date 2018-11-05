@@ -44,7 +44,7 @@ public class TelecomCrawlerService extends TelecomBasicService implements ISms, 
 
 		try {
 
-			html_UserId = LognAndGetHaiNan.readyGetUserId(messageLogin, taskMobile);
+			html_UserId = LognAndGetHaiNan.readyGetUserId(taskMobile);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -234,7 +234,7 @@ public class TelecomCrawlerService extends TelecomBasicService implements ISms, 
 		String html_UserId = null;
 
 		try {
-			html_UserId = LognAndGetHaiNan.readyGetUserId(messageLogin, taskMobile);
+			html_UserId = LognAndGetHaiNan.readyGetUserId(taskMobile);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

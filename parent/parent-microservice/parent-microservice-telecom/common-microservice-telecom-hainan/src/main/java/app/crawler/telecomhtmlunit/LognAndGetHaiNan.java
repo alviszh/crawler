@@ -31,7 +31,7 @@ public class LognAndGetHaiNan {
 	public static String getBill(MessageLogin messageLogin, TaskMobile taskMobile, String stardate) throws Exception {
 		WebClient webClient = WebCrawler.getInstance().getNewWebClient();
 		webClient = TeleComCommonUnit.addcookie(webClient, taskMobile);
-		String url = "http://www.hi.189.cn/webgo/thesame/billing?objectNum=" + messageLogin.getName().trim()
+		String url = "http://hi.189.cn/webgo/thesame/billing?objectNum=" + messageLogin.getName().trim()
 				+ "&queryMonth=" + stardate.trim();
 		WebRequest webRequest = new WebRequest(new URL(url), HttpMethod.GET);
 
@@ -47,7 +47,7 @@ public class LognAndGetHaiNan {
 		WebClient webClient = WebCrawler.getInstance().getNewWebClient();
 		webClient = TeleComCommonUnit.addcookie(webClient, taskMobile);
 
-		String url = "http://www.hi.189.cn/webgo/thesame/rechargeRecord?" + "objectNum=" + messageLogin.getName().trim()
+		String url = "http://hi.189.cn/webgo/thesame/rechargeRecord?" + "objectNum=" + messageLogin.getName().trim()
 				+ "&queryMonth=" + stardate.trim();
 		WebRequest webRequest = new WebRequest(new URL(url), HttpMethod.GET);
 		Page page = TeleComCommonUnit.gethtmlWebRequest(webClient, webRequest);
@@ -59,12 +59,12 @@ public class LognAndGetHaiNan {
 			throws Exception, IOException {
 		WebClient webClient = WebCrawler.getInstance().getNewWebClient();
 		webClient = TeleComCommonUnit.addcookie(webClient, taskMobile);
-		String url = "http://www.hi.189.cn/BUFFALO/buffalo/IntegralQueryAjax";
+		String url = "http://hi.189.cn/BUFFALO/buffalo/IntegralQueryAjax";
 		WebRequest webRequest = new WebRequest(new URL(url), HttpMethod.POST);
-		webRequest.setAdditionalHeader("Referer", "http://www.hi.189.cn/service/jf/integralHistory.jsp");
-		webRequest.setAdditionalHeader("Host", "www.hi.189.cn");
+		webRequest.setAdditionalHeader("Referer", "http://hi.189.cn/service/jf/integralHistory.jsp");
+		webRequest.setAdditionalHeader("Host", "hi.189.cn");
 		webRequest.setAdditionalHeader("Pragma", "no-cache");
-		webRequest.setAdditionalHeader("Origin", "http://www.hi.189.cn");
+		webRequest.setAdditionalHeader("Origin", "http://hi.189.cn");
 		webRequest.setAdditionalHeader("Accept", "*/*");
 		webRequest.setAdditionalHeader("Accept-Encoding", "gzip, deflate");
 		webRequest.setAdditionalHeader("Accept-Language", "zh-CN,zh;q=0.8");
@@ -88,15 +88,15 @@ public class LognAndGetHaiNan {
 		WebClient webClient = WebCrawler.getInstance().getNewWebClient();
 		webClient = TeleComCommonUnit.addcookie(webClient, taskMobile);
 
-		String url = "http://www.hi.189.cn/BUFFALO/buffalo/FeeQueryAjaxV4Service";
+		String url = "http://hi.189.cn/BUFFALO/buffalo/FeeQueryAjaxV4Service";
 
 		WebRequest webRequest = new WebRequest(new URL(url), HttpMethod.POST);
-		webRequest.setAdditionalHeader("Referer", "http://www.hi.189.cn/service/jf/integralHistory.jsp");
+		webRequest.setAdditionalHeader("Referer", "http://hi.189.cn/service/jf/integralHistory.jsp");
 		webRequest.setAdditionalHeader("Referer",
-				"http://www.hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi");
-		webRequest.setAdditionalHeader("Host", "www.hi.189.cn");
+				"http://hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi");
+		webRequest.setAdditionalHeader("Host", "hi.189.cn");
 		webRequest.setAdditionalHeader("Pragma", "no-cache");
-		webRequest.setAdditionalHeader("Origin", "http://www.hi.189.cn");
+		webRequest.setAdditionalHeader("Origin", "http://hi.189.cn");
 		webRequest.setAdditionalHeader("Accept", "*/*");
 		webRequest.setAdditionalHeader("Accept-Encoding", "gzip, deflate");
 		webRequest.setAdditionalHeader("Accept-Language", "zh-CN,zh;q=0.8");
@@ -122,15 +122,15 @@ public class LognAndGetHaiNan {
 			TaskMobile taskMobile, String stardate) throws Exception {
 		WebClient webClient = WebCrawler.getInstance().getNewWebClient();
 		webClient = TeleComCommonUnit.addcookie(webClient, taskMobile);
-		String url = "http://www.hi.189.cn/BUFFALO/buffalo/FeeQueryAjaxV4Service";
+		String url = "http://hi.189.cn/BUFFALO/buffalo/FeeQueryAjaxV4Service";
 
 		WebRequest webRequest = new WebRequest(new URL(url), HttpMethod.POST);
-		webRequest.setAdditionalHeader("Referer", "http://www.hi.189.cn/service/jf/integralHistory.jsp");
+		webRequest.setAdditionalHeader("Referer", "http://hi.189.cn/service/jf/integralHistory.jsp");
 		webRequest.setAdditionalHeader("Referer",
-				"http://www.hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi");
-		webRequest.setAdditionalHeader("Host", "www.hi.189.cn");
+				"http://hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi");
+		webRequest.setAdditionalHeader("Host", "hi.189.cn");
 		webRequest.setAdditionalHeader("Pragma", "no-cache");
-		webRequest.setAdditionalHeader("Origin", "http://www.hi.189.cn");
+		webRequest.setAdditionalHeader("Origin", "http://hi.189.cn");
 		webRequest.setAdditionalHeader("Accept", "*/*");
 		webRequest.setAdditionalHeader("Accept-Encoding", "gzip, deflate");
 		webRequest.setAdditionalHeader("Accept-Language", "zh-CN,zh;q=0.8");
@@ -161,7 +161,7 @@ public class LognAndGetHaiNan {
 	public static String getUserInfo(MessageLogin messageLogin, TaskMobile taskMobile) throws Exception {
 		WebClient webClient = taskMobile.getClient(taskMobile.getCookies());
 
-		String url = "http://www.hi.189.cn/service/account/service_kh_xx.jsp?fastcode=0212&cityCode=hi";
+		String url = "http://hi.189.cn/service/account/service_kh_xx.jsp?fastcode=0212&cityCode=hi";
 		WebRequest webRequest = new WebRequest(new URL(url), HttpMethod.GET);
 		Page page = TeleComCommonUnit.gethtmlWebRequest(webClient, webRequest);
 
@@ -180,7 +180,7 @@ public class LognAndGetHaiNan {
 	public static String getBalance(MessageLogin messageLogin, TaskMobile taskMobile, String stardate)
 			throws Exception {
 		WebClient webClient = taskMobile.getClient(taskMobile.getCookies());
-		String url = "http://www.hi.189.cn/webgo/thesame/balanceChanges?objectNum=" + messageLogin.getName().trim()
+		String url = "http://hi.189.cn/webgo/thesame/balanceChanges?objectNum=" + messageLogin.getName().trim()
 				+ "&queryMonth=" + stardate.trim();
 		WebRequest webRequest = new WebRequest(new URL(url), HttpMethod.GET);
 		Page page = TeleComCommonUnit.gethtmlWebRequest(webClient, webRequest);
@@ -200,7 +200,7 @@ public class LognAndGetHaiNan {
 	public static String getBussiness(TelecomHaiNanUserIdBean telecomHaiNanUserIdBean, MessageLogin messageLogin,
 			TaskMobile taskMobile) throws Exception {
 		WebClient webClient = taskMobile.getClient(taskMobile.getCookies());
-		String url = "http://www.hi.189.cn/ServiceOrderAjax.do?method=setEsuringIn&number="
+		String url = "http://hi.189.cn/ServiceOrderAjax.do?method=setEsuringIn&number="
 				+ telecomHaiNanUserIdBean.getCanshu() + "&phonetype=" + telecomHaiNanUserIdBean.getWeizhiphonetype();
 		WebRequest webRequest = new WebRequest(new URL(url), HttpMethod.GET);
 		Page page = TeleComCommonUnit.gethtmlWebRequest(webClient, webRequest);
@@ -214,7 +214,7 @@ public class LognAndGetHaiNan {
 	 * @return
 	 * @throws Exception
 	 */
-	public static String readyGetUserId(MessageLogin messageLogin, TaskMobile taskMobile)
+	public static String readyGetUserId(TaskMobile taskMobile)
 			throws Exception {
 		WebClient webClient = taskMobile.getClient(taskMobile.getCookies());
 //		String url = "http://www.189.cn/login/index.do";
@@ -225,7 +225,7 @@ public class LognAndGetHaiNan {
 		String url = "http://hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi";
 		Page page = getHtml(url, webClient);
 
-//		url = "http://www.hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi";
+//		url = "http://hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi";
 //		// webClient.getOptions().setJavaScriptEnabled(false);
 //		WebRequest webRequest = new WebRequest(new URL(url), HttpMethod.GET);
 //		Page page = TeleComCommonUnit.gethtmlWebRequest(webClient, webRequest);
@@ -252,15 +252,13 @@ public class LognAndGetHaiNan {
 			System.out.println(html4.getWebResponse().getContentAsString());
 			System.out.println("=========================================");
 
-			url = "http://www.hi.189.cn/BUFFALO/buffalo/CommonAjaxService";
+			url = "http://hi.189.cn/BUFFALO/buffalo/CommonAjaxService";
 
 			WebRequest webRequest = new WebRequest(new URL(url), HttpMethod.POST);
-			webRequest.setAdditionalHeader("Referer", "http://www.hi.189.cn/service/jf/integralHistory.jsp");
 			webRequest.setAdditionalHeader("Referer",
-					"http://www.hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi");
-			webRequest.setAdditionalHeader("Host", "www.hi.189.cn");
-			webRequest.setAdditionalHeader("Pragma", "no-cache");
-			webRequest.setAdditionalHeader("Origin", "http://www.hi.189.cn");
+					"http://hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi");
+			webRequest.setAdditionalHeader("Host", "hi.189.cn");
+			webRequest.setAdditionalHeader("Origin", "http://hi.189.cn");
 			webRequest.setAdditionalHeader("Accept", "*/*");
 			webRequest.setAdditionalHeader("Accept-Encoding", "gzip, deflate");
 			webRequest.setAdditionalHeader("Accept-Language", "zh-CN,zh;q=0.8");
@@ -309,16 +307,14 @@ public class LognAndGetHaiNan {
 		WebClient webClient = WebCrawler.getInstance().getNewWebClient();
 		webClient = TeleComCommonUnit.addcookie(webClient, taskMobile);
 
-		String url = "http://www.hi.189.cn/BUFFALO/buffalo/FeeQueryAjaxV4Service";
+		String url = "http://hi.189.cn/BUFFALO/buffalo/FeeQueryAjaxV4Service";
 		// http://hi.189.cn/BUFFALO/buffalo/FeeQueryAjaxV4Service
 
 		WebRequest webRequest = new WebRequest(new URL(url), HttpMethod.POST);
-		webRequest.setAdditionalHeader("Referer", "http://www.hi.189.cn/service/jf/integralHistory.jsp");
 		webRequest.setAdditionalHeader("Referer",
-				"http://www.hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi");
-		webRequest.setAdditionalHeader("Host", "www.hi.189.cn");
-		webRequest.setAdditionalHeader("Pragma", "no-cache");
-		webRequest.setAdditionalHeader("Origin", "http://www.hi.189.cn");
+				"http://hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi");
+		webRequest.setAdditionalHeader("Host", "hi.189.cn");
+		webRequest.setAdditionalHeader("Origin", "http://hi.189.cn");
 		webRequest.setAdditionalHeader("Accept", "*/*");
 		webRequest.setAdditionalHeader("Accept-Encoding", "gzip, deflate");
 		webRequest.setAdditionalHeader("Accept-Language", "zh-CN,zh;q=0.8");
@@ -326,6 +322,7 @@ public class LognAndGetHaiNan {
 		webRequest.setAdditionalHeader("Connection", "keep-alive");
 		// webRequest.setAdditionalHeader("Content-Length", "160");
 		webRequest.setAdditionalHeader("Content-Type", "text/xml;charset=UTF-8");
+	
 
 		String canshuString = "<buffalo-call>" + "<method>queryDetailBill</method>" + "<map>"
 				+ "<type>java.util.HashMap</type>" + "<string>PRODNUM</string>" + "<string>"
