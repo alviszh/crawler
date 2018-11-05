@@ -6,9 +6,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
 import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 import com.gargoylesoftware.htmlunit.util.Cookie;
 import com.gargoylesoftware.htmlunit.util.NameValuePair;
-import com.microservice.dao.entity.crawler.mobile.TaskMobile;
 import com.microservice.dao.entity.crawler.telecom.yunnan.TelecomYunNanBusinessResult;
-import com.module.htmlunit.WebCrawler;
 import app.bean.TelecomYunNanCanShuAccidBean;
 import app.bean.TelecomYunNanCanUserIdShuBean;
 import app.bean.WebParamTelecom;
@@ -19,14 +17,11 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Level;
 import javax.swing.JOptionPane;
-import org.apache.commons.logging.LogFactory;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import com.crawler.mobile.json.MessageLogin;
 import com.gargoylesoftware.htmlunit.Page;
 public class yunnantest {
 	static String cookiefile = "C:\\Users\\Administrator\\Desktop\\tel2.xls";
@@ -44,7 +39,7 @@ public class yunnantest {
 			// webClientadd = POIUnit.addCookie(webClientadd, cookiefile, "yn.189.cn");
 			if (webClient != null) {
 				String url = "http://www.189.cn/dqmh/my189/initMy189home.do?fastcode=01941226";
-				Page page = TelecomLogin.getHtml2(url, webClient);
+				TelecomLogin.getHtml2(url, webClient);
 				//taocantest(webClient);
 				//Set<Cookie> cookies4 = webClient2.getCookieManager().getCookies();
 				/*for (Cookie cookie4 : cookies4) {
@@ -281,9 +276,9 @@ public class yunnantest {
 		//http://yn.189.cn/public/custValid.jsp?_FUNC_ID_=WB_PAGE_PRODPASSWDQRY&NAME=%E9%9F%A9%E8%AF%91%E5%85%B4&CUSTCARDNO=130984199210023312&PROD_PASS=211314&MOBILE_CODE=106167&NAME=%E9%9F%A9%E8%AF%91%E5%85%B4&CUSTCARDNO=130984199210023312
 
 		String url = "http://yn.189.cn/public/custValid.jsp?_FUNC_ID_=WB_PAGE_PRODPASSWDQRY" + "&NAME="
-				+ URLEncoder.encode("韩译兴") + "&CUSTCARDNO=" +"130984199210023312"
+				+ URLEncoder.encode("韩译兴","utf8") + "&CUSTCARDNO=" +"130984199210023312"
 				+ "&PROD_PASS=" +"211314" + "&MOBILE_CODE="
-				+ "235508" + "&NAME=" +  URLEncoder.encode("韩译兴")
+				+ "235508" + "&NAME=" +  URLEncoder.encode("韩译兴","utf8")
 				+ "&CUSTCARDNO=" + "130984199210023312";
 		Page page = TelecomLogin.getHtml(url, webClient);
 		System.out.println("=========" + page.getWebResponse().getContentAsString());
