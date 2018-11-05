@@ -915,10 +915,9 @@
 			</properties>
 		</profile>
 		<profile>
-			<!-- 生产环境 -->
-			<id>mariadb5.5.56</id>
+			<id>preview1.1.2</id>
 			<properties>
-				<app.housingcrawlertask.active>mariadb5.5.56</app.housingcrawlertask.active>
+				<app.housingcrawlertask.active>preview1.1.2</app.housingcrawlertask.active>
 				<app.housingcrawlertask.name>HousingFund-Task</app.housingcrawlertask.name>
 			</properties>
 		</profile>
