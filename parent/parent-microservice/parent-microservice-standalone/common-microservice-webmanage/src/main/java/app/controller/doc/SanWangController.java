@@ -35,4 +35,10 @@ public class SanWangController {
 		model.addAttribute("isApi", true);
 		return "doc/sanwang/statueGet";
 	}
+	@RequestMapping("/elasticsearchGet")
+	public String elasticsearchGet(Model model) {
+		model.addAttribute("module", CbConfModule.SANWANG.getCode());
+		model.addAttribute("isApi", true);
+		return "doc/sanwang/elasticsearchGet";
+	}
 }

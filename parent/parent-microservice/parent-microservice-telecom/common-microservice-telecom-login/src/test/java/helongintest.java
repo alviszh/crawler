@@ -10,11 +10,7 @@
 
 import java.net.URL;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,8 +39,6 @@ import com.gargoylesoftware.htmlunit.util.NameValuePair;
 import com.gargoylesoftware.htmlunit.xml.XmlPage;
 import com.google.gson.Gson;
 import com.module.htmlunit.WebCrawler;
-import app.bean.ValidationLoginDataObject;
-import app.bean.ValidationLoginRoot;
 import app.crawler.telecom.htmlparse.TelecomParseCommon;
 import app.service.common.LoginAndGetCommon;
 
@@ -115,14 +109,14 @@ public class helongintest {
 		driver.findElement(By.id("loginbtn")).click();
 		Thread.sleep(5000);
 		System.out.println("sucess");
-		String htmlsource3 = driver.getPageSource();
+		driver.getPageSource();
 		System.out.println("============" + driver.getCurrentUrl());
 		System.out.println("====================clieck===================");
 		
 		driver.get("http://www.189.cn/dqmh/my189/initMy189home.do?fastcode=00380407"); 
 		 wait = new FluentWait<WebDriver>(driver).withTimeout(60, TimeUnit.SECONDS)
 				.pollingEvery(2, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
-		WebElement senbutton2 = wait.until(new Function<WebDriver, WebElement>() {
+		wait.until(new Function<WebDriver, WebElement>() {
 			public WebElement apply(WebDriver driver) {
 				return driver.findElement(By.id("bodyIframe"));
 			}
@@ -149,34 +143,6 @@ public class helongintest {
 		sendsms(webClient);
 		return null;
 	}
-	private static void getCallRec(WebClient webClient,String sms) throws Exception {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Calendar calendar = new GregorianCalendar();  
-		calendar.add(Calendar.MONTH, -1);  
-		calendar.set(Calendar.DAY_OF_MONTH, 1);		
-		String BEGIN_DATE = sdf.format(calendar.getTime());
-		
-		calendar.add(Calendar.MONTH, 1);  
-		calendar.set(Calendar.DAY_OF_MONTH, 0);  
-		System.out.println(sdf.format(calendar.getTime()));
-		String END_DATE = sdf.format(calendar.getTime());
-		
-		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyMM");
-		Calendar c1 = Calendar.getInstance();
-		c1.setTime(new Date());
-		c1.add(Calendar.MONTH, -1);
-		Date date1 = c1.getTime();
-		String currentmon = sdf2.format(date1);
-		
-		String callUrl = "http://he.189.cn/service/bill/action/ifr_bill_detailslist_em_new.jsp";
-		System.out.println("通话记录的url："+callUrl);
-		Page page = getPage(callUrl, webClient,sms);
-		
-		System.out.println("通话记录page："+page.getWebResponse().getContentAsString());
-	}
-
-
-
 	private static void sendsms(WebClient webClient) throws Exception {
 		String smsUrl = "http://he.189.cn/service/transaction/postValidCode.jsp?"
 				+ "reDo=Tue+Feb+27+2018+14%3A39%3A53+GMT%2B0800+(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)"
@@ -186,27 +152,6 @@ public class helongintest {
 		System.out.println("发送短信后返送的内容："+page.getWebResponse().getContentAsString());
 		
 		
-	}
-
-	private static ValidationLoginDataObject ValidationLogin(WebClient webClient) {
-
-		try {
-			String url = "http://www.189.cn/login/index.do";
-			Page page = getHtml(url, webClient);
-
-			System.out.println("*************************************** index.do");
-			System.out.println(page.getWebResponse().getContentAsString());
-
-			ValidationLoginRoot jsonObject = gs.fromJson(page.getWebResponse().getContentAsString(),
-					ValidationLoginRoot.class);
-
-			return jsonObject.getDataObject();
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	public static Page getHtml(String url, WebClient webClient) throws Exception {
