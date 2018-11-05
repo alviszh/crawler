@@ -10,5 +10,5 @@ RUN chmod a+x /run.sh
 RUN sh -c 'touch /app.jar'
 USER seluser
 ENV JAVA_OPTS=""
-ENTRYPOINT ["/run.sh","$SPRING_PROFILES_ACTIVE"]
+ENTRYPOINT ["/run.sh",$SPRING_PROFILES_ACTIVE]
 #ENTRYPOINT ["/run.sh  $SPRING_PROFILES_ACTIVE"]
