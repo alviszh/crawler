@@ -29,7 +29,7 @@ public class TelecomHunanTaocanMsg  extends IdEntity{
 	private String businessname;
 	
 	/**说明*/   
-	@Column(name="explain")
+	@Column(name = "taocan_explains")
 	private String explain;
 	
 	
@@ -74,7 +74,7 @@ public class TelecomHunanTaocanMsg  extends IdEntity{
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
+	@Column(name = "taocan_explains")
 	public String getExplain() {
 		return explain;
 	}

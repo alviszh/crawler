@@ -2,6 +2,7 @@ package com.microservice.dao.entity.crawler.bank.cebchina;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -54,7 +55,7 @@ public class CebChinaCreditCardConsumptionMonth extends IdEntity implements Seri
 	public void setCard(String card) {
 		this.card = card;
 	}
-
+	@Column(name = "month_explain")
 	public String getExplain() {
 		return explain;
 	}

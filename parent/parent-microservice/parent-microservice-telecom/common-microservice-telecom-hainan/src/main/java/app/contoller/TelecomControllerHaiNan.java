@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crawler.microservice.unit.CommonUnit;
 import com.crawler.mobile.json.MessageLogin;
 import com.crawler.mobile.json.ResultData;
 import com.crawler.mobile.json.StatusCodeEnum;

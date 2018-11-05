@@ -34,6 +34,19 @@ public class TracerLog {
 		
     }
     
+    public void outputNotTime(String key, String value) {
+        log.info("[KEY]:{},[VALUE]{}", key, value);
+        long currentTimeMillis = System.currentTimeMillis();
+		//将long型数据转换为String
+		String timeStamp = String.valueOf(currentTimeMillis);
+		//获取时间戳的后六位
+		timeStamp = timeStamp.substring(timeStamp.length()-7, timeStamp.length());
+		if(null!=value){
+			this.tracer.currentSpan().tag(key, value);
+		}
+		
+    }
+    
     public void output(String key, String value) {
         log.info("[KEY]:{},[VALUE]{}", key, value);
         long currentTimeMillis = System.currentTimeMillis();

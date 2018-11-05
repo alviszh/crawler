@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+import com.crawler.monitor.json.EurekaInstanceBean;
 import com.crawler.monitor.json.MonitorEurekaChange;
 import com.crawler.monitor.json.MonitorLoginPageHtmlMailBean;
 import com.crawler.monitor.json.MonitorLoginPageJsMailBean;
@@ -129,6 +130,16 @@ public class MailContentBuilder {
 		context.setVariable("insurUrl", insurUrl);
 		context.setVariable("housingUrl", housingUrl);
 		String mailContent = templateEngine.process("webchange", context);
+		return mailContent;
+	}
+	//微服务注册和下线时间的具体信息通知邮件
+	public String buildEurekaInstanceChangeEmailContent(EurekaInstanceBean eurekaInstanceBean, String mailEnvirType, String microEventType, String eventTime) {
+		Context context = new Context();
+		context.setVariable("eurekaInstanceBean", eurekaInstanceBean);
+		context.setVariable("envirtype", mailEnvirType);
+		context.setVariable("microEventType", microEventType);
+		context.setVariable("eventTime", eventTime);
+		String mailContent = templateEngine.process("eurekalistener", context);
 		return mailContent;
 	}
 }

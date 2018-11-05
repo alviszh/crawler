@@ -33,7 +33,7 @@ spring:
             spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
             spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes} 
   datasource:
-    schema: classpath:/datasource/*.sql
+    schema: classpath:/datasource/*_item_code.sql
     initialization-mode: ${datasource.initialization-mode} 
     continueOnError: false
     separator: ;;
@@ -56,9 +56,7 @@ spring:
           
     properties:  
       hibernate:  
-#       dialect: com.microservice.persistence.SRDB10Dialect
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-#       dialect: org.hibernate.dialect.MySQLDialect
+        dialect: ${datasource.jdbc.dialect}
         temp: 
           use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法为实现
 

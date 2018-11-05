@@ -183,7 +183,6 @@ public class UnicomChangePassWordService {
 			taskMobile.setDescription(StatusCodeEnum.TASKMOBILE_PASSWORD_ERROR3.getDescription());
 			taskMobile.setError_code(StatusCodeEnum.TASKMOBILE_PASSWORD_ERROR3.getError_code());
 			taskMobile.setError_message(null);
-			taskMobile.setCookies(null);
 			return taskMobile;
 
 		} catch (Exception e) {

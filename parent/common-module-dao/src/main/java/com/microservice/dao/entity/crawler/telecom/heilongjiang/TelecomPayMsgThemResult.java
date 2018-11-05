@@ -1,11 +1,6 @@
 package com.microservice.dao.entity.crawler.telecom.heilongjiang;
 
-import java.util.Date;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.microservice.dao.entity.IdEntity;

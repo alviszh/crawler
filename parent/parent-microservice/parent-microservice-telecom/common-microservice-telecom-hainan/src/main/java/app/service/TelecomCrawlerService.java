@@ -11,7 +11,6 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 
-import com.crawler.microservice.unit.CommonUnit;
 import com.crawler.mobile.json.MessageLogin;
 import com.crawler.mobile.json.StatusCodeEnum;
 import com.crawler.mobile.json.StatusCodeRec;
@@ -35,9 +34,6 @@ public class TelecomCrawlerService extends TelecomBasicService implements ISms, 
 	@Autowired
 	private TelecomHaiNanService telecomHaiNanService;
 
-	@Autowired
-	private TelecomLoginService telecomLoginService;
-
 	@Async
 	@Override
 	public TaskMobile getAllData(MessageLogin messageLogin) {
@@ -48,7 +44,7 @@ public class TelecomCrawlerService extends TelecomBasicService implements ISms, 
 
 		try {
 
-			html_UserId = LognAndGetHaiNan.readyGetUserId(messageLogin, taskMobile);
+			html_UserId = LognAndGetHaiNan.readyGetUserId(taskMobile);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -137,54 +133,54 @@ public class TelecomCrawlerService extends TelecomBasicService implements ISms, 
 	@Override
 	public TaskMobile login(MessageLogin messageLogin) {
 
-		tracerLog.addTag("taskid", messageLogin.getTask_id());
-		tracerLog.addTag("parser.login.auth", messageLogin.getName());
-		TaskMobile taskMobile = taskMobileRepository.findByTaskid(messageLogin.getTask_id());
-
-		taskMobile.setCookies(null);
-		save(taskMobile);
-
-		try {
-			WebParamTelecom<?> webParamTelecom = telecomLoginService.loginHaiNan(messageLogin, taskMobile, 0);
-			if (webParamTelecom.getWebClient() == null) {
-
-				taskMobile.setPhase(StatusCodeEnum.TASKMOBILE_LOGINTWO_ERROR.getPhase());
-				taskMobile.setPhase_status(StatusCodeEnum.TASKMOBILE_LOGINTWO_ERROR.getPhasestatus());
-				taskMobile.setDescription(StatusCodeEnum.TASKMOBILE_LOGINTWO_ERROR.getDescription());
-
-				taskMobile.setError_code(StatusCodeRec.MESSAGE_LOGIN_ERROR_FOURE.getCode());
-				taskMobile.setError_message(StatusCodeRec.MESSAGE_LOGIN_ERROR_FOURE.getMessage());
-				taskMobile.setTesthtml(messageLogin.getPassword().trim());
-				tracerLog.addTag("parser.login.auth", webParamTelecom.getStatusCodeRec().toString());
-
-				// 登录失败状态存储
-				save(taskMobile);
-				return null;
-			}
-			taskMobile.setPhase(StatusCodeEnum.TASKMOBILE_LOGINTWO_SUCCESS.getPhase());
-			taskMobile.setPhase_status(StatusCodeEnum.TASKMOBILE_LOGINTWO_SUCCESS.getPhasestatus());
-			taskMobile.setDescription(StatusCodeEnum.TASKMOBILE_LOGINTWO_SUCCESS.getDescription());
-			taskMobile.setError_code(StatusCodeEnum.TASKMOBILE_LOGINTWO_SUCCESS.getError_code());
-			String cookieString = CommonUnit.transcookieToJson(webParamTelecom.getWebClient());
-			taskMobile.setCookies(cookieString);
-			taskMobile.setTesthtml(messageLogin.getPassword().trim());
-
-			// 登录成功状态更新
-			save(taskMobile);
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			taskMobile.setPhase(StatusCodeEnum.TASKMOBILE_LOGINTWO_ERROR.getPhase());
-			taskMobile.setPhase_status(StatusCodeEnum.TASKMOBILE_LOGINTWO_ERROR.getPhasestatus());
-			taskMobile.setDescription(StatusCodeEnum.TASKMOBILE_LOGINTWO_ERROR.getDescription());
-			taskMobile.setError_code(StatusCodeRec.MESSAGE_LOGIN_ERROR_Nine.getCode());
-			taskMobile.setError_message(StatusCodeRec.MESSAGE_LOGIN_ERROR_Nine.getMessage());
-			taskMobile.setTesthtml(messageLogin.getPassword().trim());
-			tracerLog.addTag("parser.login.auth", e.getMessage());
-			// 登录失败状态更新
-			save(taskMobile);
-		}
+//		tracerLog.addTag("taskid", messageLogin.getTask_id());
+//		tracerLog.addTag("parser.login.auth", messageLogin.getName());
+//		TaskMobile taskMobile = taskMobileRepository.findByTaskid(messageLogin.getTask_id());
+//
+//		taskMobile.setCookies(null);
+//		save(taskMobile);
+//
+//		try {
+//			WebParamTelecom<?> webParamTelecom = telecomLoginService.loginHaiNan(messageLogin, taskMobile, 0);
+//			if (webParamTelecom.getWebClient() == null) {
+//
+//				taskMobile.setPhase(StatusCodeEnum.TASKMOBILE_LOGINTWO_ERROR.getPhase());
+//				taskMobile.setPhase_status(StatusCodeEnum.TASKMOBILE_LOGINTWO_ERROR.getPhasestatus());
+//				taskMobile.setDescription(StatusCodeEnum.TASKMOBILE_LOGINTWO_ERROR.getDescription());
+//
+//				taskMobile.setError_code(StatusCodeRec.MESSAGE_LOGIN_ERROR_FOURE.getCode());
+//				taskMobile.setError_message(StatusCodeRec.MESSAGE_LOGIN_ERROR_FOURE.getMessage());
+//				taskMobile.setTesthtml(messageLogin.getPassword().trim());
+//				tracerLog.addTag("parser.login.auth", webParamTelecom.getStatusCodeRec().toString());
+//
+//				// 登录失败状态存储
+//				save(taskMobile);
+//				return null;
+//			}
+//			taskMobile.setPhase(StatusCodeEnum.TASKMOBILE_LOGINTWO_SUCCESS.getPhase());
+//			taskMobile.setPhase_status(StatusCodeEnum.TASKMOBILE_LOGINTWO_SUCCESS.getPhasestatus());
+//			taskMobile.setDescription(StatusCodeEnum.TASKMOBILE_LOGINTWO_SUCCESS.getDescription());
+//			taskMobile.setError_code(StatusCodeEnum.TASKMOBILE_LOGINTWO_SUCCESS.getError_code());
+//			String cookieString = CommonUnit.transcookieToJson(webParamTelecom.getWebClient());
+//			taskMobile.setCookies(cookieString);
+//			taskMobile.setTesthtml(messageLogin.getPassword().trim());
+//
+//			// 登录成功状态更新
+//			save(taskMobile);
+//
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			taskMobile.setPhase(StatusCodeEnum.TASKMOBILE_LOGINTWO_ERROR.getPhase());
+//			taskMobile.setPhase_status(StatusCodeEnum.TASKMOBILE_LOGINTWO_ERROR.getPhasestatus());
+//			taskMobile.setDescription(StatusCodeEnum.TASKMOBILE_LOGINTWO_ERROR.getDescription());
+//			taskMobile.setError_code(StatusCodeRec.MESSAGE_LOGIN_ERROR_Nine.getCode());
+//			taskMobile.setError_message(StatusCodeRec.MESSAGE_LOGIN_ERROR_Nine.getMessage());
+//			taskMobile.setTesthtml(messageLogin.getPassword().trim());
+//			tracerLog.addTag("parser.login.auth", e.getMessage());
+//			// 登录失败状态更新
+//			save(taskMobile);
+//		}
 		return null;
 	}
 
@@ -216,6 +212,8 @@ public class TelecomCrawlerService extends TelecomBasicService implements ISms, 
 		taskMobile.setDescription(StatusCodeEnum.TASKMOBILE_WAIT_CODE_SUCCESS.getDescription());
 		taskMobile.setError_code(StatusCodeRec.MESSAGE_CODE_SUCESS.getCode());
 		taskMobile.setError_message(StatusCodeRec.MESSAGE_CODE_SUCESS.getMessage());
+		taskMobile.setCookies(webParamTelecom.getWebClient());
+		
 		// 发送验证码状态更新
 		save(taskMobile);
 
@@ -236,7 +234,7 @@ public class TelecomCrawlerService extends TelecomBasicService implements ISms, 
 		String html_UserId = null;
 
 		try {
-			html_UserId = LognAndGetHaiNan.readyGetUserId(messageLogin, taskMobile);
+			html_UserId = LognAndGetHaiNan.readyGetUserId(taskMobile);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
