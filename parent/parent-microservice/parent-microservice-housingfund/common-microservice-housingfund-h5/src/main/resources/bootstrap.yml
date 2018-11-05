@@ -3,8 +3,8 @@ spring:
     name: '@app.h5fund.name@'
   thymeleaf:
     cache: false
-  profiles:
-    active: '@app.active@'
+#  profiles:
+#    active: '@app.active@'
 #    active: '@app.mobilecrawlertask.active@'
   cloud:
     config:
