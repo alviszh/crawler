@@ -20,6 +20,9 @@ spring:
   thymeleaf: 
     cache : ${spring.thymeleaf.cache}
   cloud:
+    refresh:
+      extra-refreshable:
+      - none 
     stream:
       bindings: 
         input:                             # 频道名称（根据具体模块来命名）
@@ -47,7 +50,7 @@ spring:
     url: ${datasource.jdbc.url}
     username: ${datasource.jdbc.username}
     password: ${datasource.jdbc.password}
-    type: ${datasource.jdbc.type}
+#    type: ${datasource.jdbc.type}
   jpa: 
     show-sql: false
     hibernate: 
