@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="components/header :: header">
+</head>
+<body>
+
+	<div th:replace="components/topart :: topart"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+
+				<div th:replace="components/leftmenu :: leftmenu"></div>
+
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h2 class="page-header">elasticsearch</h2>
+				<h3 class="page-header">说明</h3>
+				<h3 class="page-header">URL</h3>
+				<p>http://10.167.202.218:9100/index.html?base_uri=http://54.222.245.77:9200/
+				</p>
+				<h3 class="page-header">请求参数</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>实体类</th>
+							<th>字段名</th>
+							<th>必选</th>
+							<th>类型及范围</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr>
+							<td>newscontent</td>
+							<td>id</td>
+							<td>true</td>
+							<td>String</td>
+							<td>业务id，区分详情页数据id</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>newscontent</td>
+							<td>createtime</td>
+							<td>true</td>
+							<td>String</td>
+							<td>数据创建创建时间</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>newscontent</td>
+							<td>content</td>
+							<td>true</td>
+							<td>String</td>
+							<td>详情页文本信息</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>newscontent</td>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>业务id，区分每一次的业务</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>newscontent</td>
+							<td>title</td>
+							<td>true</td>
+							<td>String</td>
+							<td>标题</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>newscontent</td>
+							<td>url</td>
+							<td>true</td>
+							<td>String</td>
+							<td>来源链接</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>newscontent</td>
+							<td>news_list_json_id</td>
+							<td>true</td>
+							<td>String</td>
+							<td>关联列表页id</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>newscontent</td>
+							<td>sensitivekey</td>
+							<td>true</td>
+							<td>String</td>
+							<td>详情页触发的敏感词，以“，”分隔</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>newsListJsonEs</td>
+							<td>id</td>
+							<td>true</td>
+							<td>String</td>
+							<td>列表页id</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>newsListJsonEs</td>
+							<td>abstract_txt</td>
+							<td>true</td>
+							<td>String</td>
+							<td>文本摘要</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>newsListJsonEs</td>
+							<td>createtime</td>
+							<td>true</td>
+							<td>String</td>
+							<td>数据创建创建时间</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>newsListJsonEs</td>
+							<td>key</td>
+							<td>true</td>
+							<td>String</td>
+							<td>搜索的关键字</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>newsListJsonEs</td>
+							<td>link_url</td>
+							<td>true</td>
+							<td>String</td>
+							<td>原始链接</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>newsListJsonEs</td>
+							<td>taskid</td>
+							<td>true</td>
+							<td>String</td>
+							<td>业务id，区分每一次的业务</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>newsListJsonEs</td>
+							<td>title</td>
+							<td>true</td>
+							<td>String</td>
+							<td>文本标题</td>
+						</tr>
+
+					</tbody>
+					<tbody>
+						<tr>
+							<td>newsListJsonEs</td>
+							<td>type</td>
+							<td>true</td>
+							<td>String</td>
+							<td>文本来源</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>newsListJsonEs</td>
+							<td>sensitivekey</td>
+							<td>true</td>
+							<td>String</td>
+							<td>列表页触发的敏感词，以“，”分隔</td>
+						</tr>
+					</tbody>
+				</table>
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border"
+					style="color: #3da33d;"> 
+"_source": {
+"id": 465555,
+"createtime": "2018-11-02T08:06:25.738+08:00",
+"content": "核雕大师吴建东：方寸之间，大千世界(图)_网易新闻 网易首页 应用 网易新闻 网易公开课 薄荷直播 网易红彩 网易严选 邮箱大师 网易云课堂 网易考拉海购 快速导航 新闻 国内 国际 哒哒 图片 评论 探索 军事 本地新闻 体育 NBA CBA 综合 中超 国际足球 英超 西甲 意甲 娱乐 明星 图片 电影 电视 音乐     财经 股票 行情 产经 新股 金融 基金 商业 理财 汽车 购车 行情 选车 车型库 论坛 行业 用车 汽车图片 科技 通信 IT 互联网 移动互联网 特别策划 五道口沙龙 易语中的 专题 女人 亲子 艺术 时尚 收藏 情感 星座 美容 免费试用 手机/数码 移动 电脑 手机库 家电 手机论坛 智能硬件 相机 手机视频 房产/家居 北京房产 上海房产 广州房产 全部分站 楼盘库 家具 卫浴 衣柜 旅游 户外 贵州 美食 四川 景点 新疆 专题 西藏 教育 移民 考研 留学 公务员 外语 中小学 高考 校园 查看网易地图 登录 注册免费邮箱 注册VIP邮箱（特权邮箱，付费） 免费下载网易官方手机邮箱应用 欢迎您， 安全退出 移动端 网易公开课 付费精品 TED 国际名校公开课 中国大学视频公开课 赏课 可汗学院 下载公开课 薄荷直播 薄荷直播大厅 下载薄荷直播app 网易考拉 1000元现金礼包 进口好货9.9元包邮 今日限时抢购 母婴专区 美容彩妆 家居日用 进口美食 营养保健 海外直邮 网易严选 888元现金券 品牌制造商爆款 999+人气好评品 限时特惠 丁磊推荐 居家床品 精致餐厨 箱包鞋类 经典服饰 健康美食 支付 一卡通充值 一卡通购买 网易白金卡 我的网易支付 网易智造 网易来钱-借现金 立马理财送8888 电商 彩票 易龙智投 车险 严选 电影票 火车票 我要借钱 青果商城 考拉海购 邮箱 免费邮箱 VIP邮箱 企业邮箱 免费注册 快速注册 客户端下载 网易首页 > 新闻中心 > 滚动新闻 > 正文 核雕大师吴建东：方寸之间，大千世界(图) 2014-10-21 14:06:00　来源: 舜网-济南时报(济南) 0 分享到： 易信 微信 QQ空间 微博 更多 用微信扫码二维码 分享至好友和朋友圈 T + - 　　吴建东核雕作品《九龙戏珠》 　　吴建东，江苏苏州人，核雕领域卓有建树的青年才俊之一，苏州核雕国家级非物质文化遗产代表性传承人宋水官高徒，中国工艺美术协会会员，苏州工艺美术师，苏州高新区非物质文化遗产代表性传承人，现任苏州市核雕艺术家协会副会长。 　　作品以观音像、各类浮雕等传统吉祥图案见长，艺术表现丰富、生动、自然、逼真，作品曾多次荣获国内外艺术奖项。代表作有：《满载而归》、《观音》、《威风八面》、《良禽兽面》、《花开满蓝》、《四象万物》、《五鬼纳福》、《暗香》等。 　　本届展会汇聚苏州核雕大师吴建东、李桃等多位名家的优秀核雕作品，有作为颈项、衣带、折扇或绣袋的挂坠件，也有可作为手腕、颈项饰物的珠串。构思缜密，设计精巧，工艺细 　　我市第一届苏工大师作品联展18日在鹊华秋色艺术馆成功开展，本着让消费者直面手工艺术品名家，零距离传递手工艺术品价值的宗旨，本届展会荟萃了苏工各行业数十位翘楚人物如核雕名家吴建东、玉雕名家张小洋、紫砂陶艺名家李霞、紫砂名家陆奕、香炉名家徐红军、苏绣名家张琳等上千件臻品。活动现场，核雕名家吴建东、玉雕名家张小洋、紫砂名家陆奕、苏绣名家张琳还和消费者面对面进行了沟通互动。在荟萃手工艺术精品的基础上，确保最低价格回馈，为我市市民和各地传统手工艺术品爱好者呈现了一场璀璨的艺术盛宴。让收藏者能放心、安心购买、鉴赏。密，以小见大，是不可多得的兼具实用性与观赏性的收藏品。 　　吴建东的核雕作品，雕工更为细腻、生动，加上每枚果核都形态不一，其核雕作品也不会有重复，每件都是独一无二的孤品，把玩收藏两相宜。 本文来源：舜网-济南时报 责任编辑：王晓易_NE0011 分享到： 易信 微信 QQ空间 微博 更多 用微信扫码二维码 分享至好友和朋友圈 跟贴0 参与0 发贴 跟贴已关闭去跟贴广场看看 > 网易新闻客户端下载 为您推荐 推荐 娱乐 体育 财经 时尚 科技 军事 汽车 房产 + 加载更多新闻 × 大家都爱看 进入新闻频道 清华讲师：多少机会毁在你不会说话 课程 | 4个月赚1.52亿 有钱人不说的赚钱秘密 人间 | 沦为赌狗的大学生：不怕输光，就怕断赌 财经 | 特朗普拟废除出生公民权 谁是最大赢家|财经新逻辑 科技 | 几千年后才安全，他们却为何搬到切尔诺贝利附近 体育 | 足球梦真的挺难!澳超队官方宣布博尔特试训结束 娱乐 | 章子怡替身：范冰冰曾插足陆毅婚姻 险引鲍蕾自杀 时尚 | 【吐槽姬】放开你的手 父女也不行！ 新闻推荐 进入新闻频道 4名年轻女子相继被奸杀 凶手因变形指纹24年后落网 科技 | 几千年后才安全，他们却为何搬到切尔诺贝利附近 手机 | 双屏全面屏旗舰nubia X体验：副屏有趣好玩 旅游 | 大胆露骨！大英博物馆展出日本春宫图（组图） 热点新闻 进入新闻首页 党报谈公交坠江:无谓纷争拉人"陪葬" 内蒙古公安厅副厅长斌缢亡 遗书称抑郁严重 重庆公交坠江致13人遇难 家属怎么索赔？ 李志斌自杀身亡:1天前原同事被查 热点新闻 日本综艺探中国最富农村 400㎡别墅拥10卧竟能免费住 迪拜花3亿造了个世界最大“相框” 网友：壕无人性 建材老板50万建装配式别墅 800元/㎡同村人羡慕惨 40岁夫妇为养老辞职 建9000㎡庄园种菜快活似神仙 态度原创 网易公开课 查看全部 记忆女神的5大记忆法 逆袭学霸的思维工具 9步避开无效健身坑 会说话的人如今最抢手 热点推荐 海淘品牌 船上爬满这货吓坏渔民 男子发现怪物震惊全球 人参果竟藏着血腥秘密 一工地挖到神秘怪物！ 母婴 彩妆 家居 保健 美食 服饰 数码 Fisher-Price 费雪喂奶衣 Derma 德玛护臀膏 earth friendly baby 地球宝贝宝宝沐浴乳 Finn+Emma防踢被 familiar 华蜜丽宝宝餐具套装 > 查看更多 我的心机面膜 SNP面膜 RMK粉底液 DU'IT身体霜 我的美丽日记面膜 > 查看更多 Dimension头发护理 大岛椿头发护理 Dove 多芬洗发水 Derma 德玛头发护理 DOORI 康绮墨丽洗发水 > 查看更多 Dot free 多富丽维生素C DHC 蝶翠诗左旋肉碱 Doppelherz 双心大豆异黄酮 DHC 蝶翠诗茶族 DEWYTREE 自然晨露维生素C > 查看更多 MAE PLOY 泰娘果酱 TABASCO 辣椒仔糖果 NONIQUE 诺丽萝莉面粉 COLIMAN牛油果 weichuan 味全果酱 > 查看更多 esiposs男士钱包 gucci男装钱包 古驰小钱包 dissona手拿包 芬迪新款钱包 > 查看更多 KOBAYASHI 小林制药血压计 mokii 么奇音箱 AOZORA笔 EC Technology 艾能可音响 KOIZUMI 小泉个护电器 > 查看更多 精彩推荐 更多 哈佛女神公开学习方法 如何夸人又不显矫情？ 告别焦虑的25个方法 剁手族必知的理财方法 彩票 贵金属 保险 话费 点卡 电影票 彩票:双色球 3D 大乐透 七乐彩 时时彩 足彩 彩票开奖:双色球 3D 大乐透 快3 11选5 七星彩 走势图:双色球 3D 大乐透 时时彩 七星彩 11选5 车险怎么买 违章查询 车险计算器 车险: 平安车险　人保车险　太平洋车险 阳光车险　大地车险 旅游险: 国内游　境外游　申根保险　航空意外 热门产品: 综合意外险　资金账户安全险 保险中老年意外险　驴友险　健康人寿险 网易商城，您身边24小时的联通电信移动营业厅 随时随地为您提供手机话费充值服务。 热门点卡: 问道　Q币　穿越火线　征途　龙之谷　56卡 天龙八部2　5914卡　跑跑卡丁车　更多 热门公司: 腾讯　巨人　盛大　金山　完美　搜狐 九城　光宇　久游　世纪天成　更多 热门搜索: 热血传奇　武林外传　赤壁 热门游戏: 网易游戏 游戏充值:三分钟内到账，点卡充值最低7折起 热门影院： 北京：嘉华国际影城UME国际影城双井店 上海：五角万达影城博纳银兴国际影城 广州：保利国际影城华影星美国际影城 深圳：宝安环星影城中影今典国际影城 杭州：新远国际影城奥斯卡电影大世界 成都：上影国际影城橙天嘉禾影城凯丹店 特价影票4折起在线选座 iphone客户端安卓客户端 跟贴排行 点击排行 1220972坠江公交监控:女子坐过站打司机 司机还击猛打方向 2116266重庆公交坠江原因:司机乘客激烈争执互殴车辆失控 377118人民日报谈公交坠江悲剧:无谓纷争拉十几人"陪葬" 474482大叔斥万圣节惊悚妆女孩:人不人鬼不鬼 国人的耻辱 553677俞敏洪：没美芯片专利技术 中国手机一台也造不出 641222重庆公交坠江13人遇难2人失联 家属怎么索赔? 732016高铁疑似父亲猥亵女儿事件再起争议 律师们这样看 828436男子坐过站强行抢夺方向盘 被另一名乘客一脚踹飞 127676航母甲板砸出20平米窟窿也没事?俄官员 222979广东一检察院举报箱没投信口:广告公司 321945坠江公交监控:女子坐过站打司机 司机还 419172重庆公交坠江原因:司机乘客激烈争执互 518641媒体:重庆公交失控坠江 起因是司乘互殴 617026撞限高杆死亡的13岁男孩，藏着家庭教育 716867重庆公交坠江96小时:从急转弯到坠落全 816625湖南衡东发生一起杀人案：一家4死1伤 美女直播 约会所 APP下载 PC客户端下载 90后语音交友小时代 云阅读 进入频道 | 原创 | 读书 阅读下一篇 返回网易首页返回新闻首页 © 1997-2018 网易公司版权所有 About NetEase | 公司简介 | 联系方法 | 招聘信息 | 客户服务 | 隐私政策 | 广告服务 | 网站地图 | 意见反馈 | 不良信息举报 用微信扫描二维码 分享至好友和朋友圈 x",
+"linkurl": null,
+"taskid": "201811021606171286664",
+"time": null,
+"title": "核雕大师吴建东:方寸之间,大千世界(图)_网易新闻",
+"url": "http://news.163.com/14/1021/14/A939D8HQ00014Q4P.html",
+"news_list_json_id": 412825,
+"sensitivekey": "理财, 杀人, 保险, 联系, 失联, 借钱, 赌, 违, 金融, K粉, 现金",
+"newsListJsonEs": {
+"id": 412825,
+"abstract_txt": "",
+"createtime": "2018-11-02T08:06:25.724+08:00",
+"key": "吴建东",
+"link_url": "http://news.163.com/14/1021/14/A939D8HQ00014Q4P.html",
+"taskid": "201811021606171286664",
+"title": "核雕大师吴建东:方寸之间,大千世界(图)_网易新闻",
+"type": "haosou",
+"sensitivekey": ""
+}
+}
+</pre>
+			</div>
+		</div>
+	</div>
+	<div th:include="components/footer :: footer"></div>
+
+</body>
+</html>

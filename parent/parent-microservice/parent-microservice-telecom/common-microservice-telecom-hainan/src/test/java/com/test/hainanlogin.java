@@ -24,18 +24,14 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
 import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 import com.google.gson.Gson;
-import com.microservice.dao.entity.crawler.mobile.TaskMobile;
 import com.module.htmlunit.WebCrawler;
 
 import app.bean.TelecomHaiNanUserIdBean;
 import app.bean.ValidationLoginDataObject;
 import app.bean.ValidationLoginRoot;
 import app.bean.WebParamTelecom;
-import app.bean.error.ErrorException;
 import app.crawler.telecom.htmlparse.TelecomParseCommon;
 import app.crawler.telecom.htmlparse.TelecomParseHaiNan;
-import app.crawler.telecomhtmlunit.LognAndGetHaiNan;
-import app.service.common.LoginAndGetCommon;
 import app.unit.TeleComCommonUnit;
 
 /**
@@ -127,7 +123,7 @@ public class hainanlogin {
 		webParamTelecom.setPage(htmlpage);
 		webClient.getOptions().setJavaScriptEnabled(false);
 		url = "http://www.189.cn/dqmh/my189/initMy189home.do?fastcode=02091577";
-		Page html3 = getHtml(url, webClient);
+		getHtml(url, webClient);
 		url = "http://hi.189.cn/service/bill/feequery.jsp?TABNAME=xdcx&fastcode=02091577&cityCode=hi";
 		Page html4 = getHtml(url, webClient);
 		webClient.getOptions().setJavaScriptEnabled(true);
