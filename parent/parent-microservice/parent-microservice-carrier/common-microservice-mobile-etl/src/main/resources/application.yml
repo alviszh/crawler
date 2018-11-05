@@ -36,8 +36,10 @@ spring:
             spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
             spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes} 
   datasource:
-    data: ${datasource.data}  # spring.datasource.data 执行晚于jpa ， 适用于字典表数据的初始化
-    schema: ${datasource.schema} 
+#    data: ${datasource.data}  # spring.datasource.data 执行晚于jpa ， 适用于字典表数据的初始化
+    schema: 
+      - ${datasource.schema} 
+      - ${datasource.data}
     initialization-mode: ${datasource.initialization-mode} 
     continueOnError: false
     separator: ;;
@@ -50,7 +52,7 @@ spring:
     url: ${datasource.jdbc.url}
     username: ${datasource.jdbc.username}
     password: ${datasource.jdbc.password}
-#    type: ${datasource.jdbc.type}
+    type: ${datasource.jdbc.type}
   jpa: 
     show-sql: false
     hibernate: 
