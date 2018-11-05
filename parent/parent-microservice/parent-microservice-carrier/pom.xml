@@ -76,6 +76,7 @@
 				<app.unicom.name>crawler-unicom</app.unicom.name>
 				<app.etl.name>mobile-etl</app.etl.name>
 				<app.mobileh5.name>mobile-h5</app.mobileh5.name>
+				<app.carrier.pushserver.name>carrier-pushserver</app.carrier.pushserver.name>
 			</properties>
 		</profile>
 	</profiles>
