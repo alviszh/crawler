@@ -131,7 +131,7 @@
 			<!-- 生产环境 -->
 			<id>preview1.1.2</id>
 			<properties>
-				<app.honesty.active>prod</app.honesty.active>
+				<app.honesty.active>preview1.1.2</app.honesty.active>
 				<app.shixin.name>honesty-shixin</app.shixin.name>
 				<app.honesty.shixin.task.name>honesty-shixin-task</app.honesty.shixin.task.name>
 				<app.search.name>search</app.search.name>
