@@ -1,8 +1,9 @@
 spring:
   application:
-    name: '@app.cmcc.name@'
-#  profiles: 
-#    active: '@app.mobilecrawlertask.active@'
+    name: '@app.carrier.pushserver.name@'
+  profiles: 
+    active: '@app.mobilecrawlertask.active@'
+#    active: dev
   cloud: 
     config:
       uri: http://configserver:8000
@@ -10,5 +11,5 @@ spring:
   zipkin: 
     base-url: http://zipkinserver:9411
   sleuth: 
-    sampler: 
-      probability: 1
+    sampler:
+      probability:  1 

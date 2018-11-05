@@ -35,16 +35,18 @@ import com.microservice.dao.entity.crawler.bank.cebchina.CebChinaDebitCardUserIn
 import com.microservice.dao.repository.crawler.bank.cebchina.CebChinaDebitcardDeadlineRepository;
 import com.microservice.dao.repository.crawler.bank.cebchina.CebChinaDebitcardTransFlowRepository;
 import com.microservice.dao.repository.crawler.bank.cebchina.CebChinaDebitcardUserinfoRepository;
+import com.module.ddxoft.VK;
 import com.module.jna.webdriver.WebDriverUnit;
 import com.module.jna.winio.VirtualKeyBoard;
 
 import app.commontracerlog.TracerLog;
+import app.service.aop.ICrawlerLogin;
 
 
 @Component
 @EntityScan(basePackages={"com.microservice.dao.entity.crawler.bank.cebchina"})
 @EnableJpaRepositories(basePackages={"com.microservice.dao.repository.crawler.bank.cebchina"})
-public class CebChinaService {
+public class CebChinaService implements ICrawlerLogin{
 
 	@Autowired
 	private WebDriverIEService webDriverIEService;
@@ -54,8 +56,8 @@ public class CebChinaService {
 
 	private WebDriver driver;
 
-	@Autowired
-	private JNativeService jNativeService;
+//	@Autowired
+//	private JNativeService jNativeService;
 
 	@Autowired
 	private TaskBankStatusService taskBankStatusService;
@@ -82,8 +84,9 @@ public class CebChinaService {
 	static String ZyeIndex ="https://www.cebbank.com/per/perlogin4.do";//专业版首页
 
 	public static String khjgdh = null;
+	@Override
 	@Async
-	public TaskBank loginCombo(BankJsonBean bankJsonBean) throws Exception{ 
+	public TaskBank login(BankJsonBean bankJsonBean){ 
 		tracerLog.output("loginCombo","开始登陆光大银行"+bankJsonBean.getLoginName());
 		TaskBank taskBank = null;
 		try {
@@ -105,14 +108,14 @@ public class CebChinaService {
 			tracerLog.output("开始输入Tab","Tab"); 
 			//键盘输入Tab，让游览器焦点切换到密码框
 			Thread.sleep(2000L);
-			jNativeService.InputTab();
+			VK.Tab();
 
 			tracerLog.output("开始输入密码",bankJsonBean.getPassword()); 
 			//键盘输入查询密码15322868959
 			//Thread.sleep(500L);
-			VirtualKeyBoard.KeyPressEx(bankJsonBean.getPassword(),50);//   
-			String path2 = WebDriverUnit.saveScreenshotByPath(driver,this.getClass());
-			tracerLog.output("键盘输入密码", path2);
+			VK.KeyPress(bankJsonBean.getPassword());  
+		//	String path2 = WebDriverUnit.saveScreenshotByPath(driver,this.getClass());
+			tracerLog.output("键盘输入密码", bankJsonBean.getPassword());
 
 			tracerLog.output("开始点击登陆按钮","#LoginBtn"); 
 			System.out.println("开始点击登陆按钮"+"#LoginBtn");
@@ -353,7 +356,14 @@ public class CebChinaService {
 					BankStatusCode.BANK_LOGIN_TIMEOUT_ERROR.getDescription(), 
 					BankStatusCode.BANK_LOGIN_TIMEOUT_ERROR.getError_code(),false,bankJsonBean.getTaskid(),windowHandle);
 			agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
-			String path = WebDriverUnit.saveScreenshotByPath(driver,this.getClass());
+			String path = null;
+			try {
+				path = WebDriverUnit.saveScreenshotByPath(driver,this.getClass());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				tracerLog.addTag("信用卡信息错误信息", path);
+				e1.printStackTrace();
+			}
 			tracerLog.output("信用卡信息错误信息", path);
 			return taskBank;
 		}
@@ -557,8 +567,8 @@ public class CebChinaService {
 	public String getCurrentUrl(WebDriver driver){
 		return  driver.getCurrentUrl();
 	}
-
-	public void setSMSCode(BankJsonBean bankJsonBean) throws Exception {
+	@Override
+	public TaskBank getAllData(BankJsonBean bankJsonBean) {
 		TaskBank taskBank = null;
 		try {
 			Thread.sleep(5000L);
@@ -676,13 +686,20 @@ public class CebChinaService {
 						BankStatusCode.BANK_VALIDATE_CODE_ERROR1.getPhasestatus(), 
 						errorfinfo+"，请重新登录!", 
 						BankStatusCode.BANK_VALIDATE_CODE_ERROR1.getError_code(),false,bankJsonBean.getTaskid());
-				String path = WebDriverUnit.saveScreenshotByPath(driver,this.getClass());
+				String path = null;
+				try {
+					path = WebDriverUnit.saveScreenshotByPath(driver,this.getClass());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				tracerLog.output("短信错误", "短信失败:" + driver.getCurrentUrl());
 				tracerLog.output("短信错误", path);
 			}
 			//退出
 			agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
 		}
+		return taskBank;
 	}
 
 	/**
@@ -700,6 +717,12 @@ public class CebChinaService {
 			tracerLog.output("quit taskBank is null",""); 
 		}
 		return taskBank;
+	}
+
+	@Override
+	public TaskBank getAllDataDone(String taskId) {
+		// TODO Auto-generated method stub
+		return null;
 	} 
 
 }

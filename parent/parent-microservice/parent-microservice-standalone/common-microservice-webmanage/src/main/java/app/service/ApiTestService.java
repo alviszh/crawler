@@ -1,5 +1,6 @@
 package app.service;
 
+import com.microservice.dao.entity.crawler.unicom.UnicomUserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -25,6 +26,9 @@ import com.microservice.dao.repository.crawler.unicom.UnicomUserInfoRepository;
 import app.vo.ApiTestCmccVo;
 import app.vo.ApiTestTelcomVo;
 import app.vo.ApiTestUnicomVo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Api测试 Service
@@ -107,6 +111,22 @@ public class ApiTestService {
 //		vo.setListOfUnicomUserActivityInfo(unicomUserActivityInfoRepository.findByTaskid(taskId));
 //		return vo;
 //	}
+	public ApiTestUnicomVo loadUnicomResultByTaskId(String taskId){
+		ApiTestUnicomVo vo = new ApiTestUnicomVo();
+//		vo.setListofUnicomUserInfo(unicomUserInfoRepository.findByTask(taskId));
+		UnicomUserInfo unicomUserInfo = unicomUserInfoRepository.findByTaskid(taskId);
+		List<UnicomUserInfo> listofUnicomUserInfo = new ArrayList<>();
+		listofUnicomUserInfo.add(unicomUserInfo);
+		vo.setListofUnicomUserInfo(listofUnicomUserInfo);
+		vo.setListOfUnicomCallResult(unicomCallThemResultRepository.findByTaskid(taskId));
+		vo.setListOfUnicomNoteResult(unicomNoteThemResultRepository.findByTaskid(taskId));
+		vo.setListOfUnicomDetailList(unicomUnicomDetailListRepository.findByTaskid(taskId));
+		vo.setListOfUnicomIntegraThemlResult(unicomIntegraThemlResultRepository.findByTaskid(taskId));
+/*		vo.setListOfUnicomIntegralTegralThemResult(unicomIntegralTegralThemResultRepository.findByTaskid(taskId));
+*/		vo.setListOfUnicomPayMsgStatusResult(unicomPayMsgStatusResultRepository.findByTaskid(taskId));
+		vo.setListOfUnicomUserActivityInfo(unicomUserActivityInfoRepository.findByTaskid(taskId));
+		return vo;
+	}
 	
 	/**
 	 * 根据TaskId,获取中国联通爬取信息

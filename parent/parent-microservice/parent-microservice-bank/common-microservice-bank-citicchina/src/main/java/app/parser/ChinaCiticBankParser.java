@@ -18,8 +18,10 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -79,6 +81,9 @@ public class ChinaCiticBankParser {
 	
 	public WebParam login(BankJsonBean bankJsonBean, TaskBank taskBank) throws Exception {
 		DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
+		System.setProperty("webdriver.ie.driver", driverPath);
+		WebDriver driver = new InternetExplorerDriver();
+		driver = new InternetExplorerDriver(ieCapabilities);
 		// 设置超时时间界面加载和js加载
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
@@ -105,12 +110,13 @@ public class ChinaCiticBankParser {
 		username.sendKeys(bankJsonBean.getLoginName());
 		Thread.sleep(1000);
 //		InputTab();
-		VK.Tab();
-   
+//		VK.Tab();
+//		VK.Tab();
 		
 		
 		String password = bankJsonBean.getPassword();
 //		VirtualKeyBoard.KeyPressEx(password, 800);
+		driver.findElement(By.id("ocxEdit")).sendKeys(Keys.ENTER);
 		VK.KeyPress(password);
 		
 		String string = driver.findElement(By.id("pinImg")).getAttribute("src");
