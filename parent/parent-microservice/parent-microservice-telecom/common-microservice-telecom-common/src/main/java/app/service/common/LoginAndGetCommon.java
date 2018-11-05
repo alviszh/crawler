@@ -35,7 +35,7 @@ public class LoginAndGetCommon {
 			webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
 
 			// webClient.get
-			webClient.getOptions().setJavaScriptEnabled(false);
+//			webClient.getOptions().setJavaScriptEnabled(false);
 			webRequest = new WebRequest(new URL(url), HttpMethod.GET);
 			Page searchPage = webClient.getPage(webRequest);
 			return searchPage;

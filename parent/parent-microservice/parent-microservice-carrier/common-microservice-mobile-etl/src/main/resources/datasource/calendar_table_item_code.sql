@@ -1,12 +1,12 @@
-DROP TABLE IF EXISTS calendar_table;
-CREATE TABLE calendar_table(
-	id SERIAL PRIMARY KEY,
-	cal_date varchar(50),
-	day_of_week varchar(50),
-	week_status varchar(50),
-	is_work varchar(50)
-);
-
+-- DROP TABLE IF EXISTS calendar_table;
+-- CREATE TABLE calendar_table(
+-- 	id SERIAL PRIMARY KEY,
+-- 	cal_date varchar(50),
+-- 	day_of_week varchar(50),
+-- 	week_status varchar(50),
+-- 	is_work varchar(50)
+-- );
+truncate table calendar_table;
 -- ----------------------------
 -- Records of calendar_table
 -- ----------------------------

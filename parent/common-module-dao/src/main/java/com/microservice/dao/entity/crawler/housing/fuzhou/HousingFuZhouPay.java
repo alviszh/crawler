@@ -17,6 +17,7 @@ public class HousingFuZhouPay extends IdEntity implements Serializable{
 	private String type;                    //业务类型
 	private String amouOccurrence;          //发生金额
 	private String balance;                 //实时余额
+	@Column(name = "describe_info")
 	private String describe;                //业务描述
 	
 	private String taskid;
