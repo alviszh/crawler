@@ -65,7 +65,7 @@ public class CebChinaController {
 		TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);
 		tracer.output("crawler.bank.login", bankJsonBean.getTaskid());
 		try {
-			cebChinaService.loginCombo(bankJsonBean);
+			cebChinaService.login(bankJsonBean);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -106,7 +106,7 @@ public class CebChinaController {
 			taskBank.setCardType(bankJsonBean.getCardType());
 			taskBankRepository.save(taskBank);
 			try {
-				cebChinaService.setSMSCode(bankJsonBean);
+				cebChinaService.getAllData(bankJsonBean);
 			} catch (Exception e) {
 				tracer.output("短信验证失败", e.toString());
 				taskBank = taskBankStatusService.changeStatus(BankStatusCode.BANK_VALIDATE_CODE_ERROR.getPhase(),
