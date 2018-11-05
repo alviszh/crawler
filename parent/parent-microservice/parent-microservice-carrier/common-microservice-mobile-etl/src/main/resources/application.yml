@@ -39,9 +39,6 @@ spring:
     data: 
       - ${datasource.data}  # spring.datasource.data 执行晚于jpa ， 适用于字典表数据的初始化
       - ${datasource.schema} 
-#    schema: 
-#      - ${datasource.schema} 
-#      - ${datasource.data}
     initialization-mode: ${datasource.initialization-mode} 
     continueOnError: false
     separator: ;;
