@@ -87,7 +87,7 @@
 			<!-- 本机开发环境 -->
 			<id>dev</id>
 			<properties>
-				<app.honesty.active>dev</app.honesty.active>
+				<app.active>dev</app.active>
 				<app.honesty.shixin.task.name>honesty-shixin-task-local</app.honesty.shixin.task.name>
 
 				<app.shixin.name>honesty-shixin-local</app.shixin.name>
@@ -104,7 +104,7 @@
 			<!-- 测试环境 -->
 			<id>test</id>
 			<properties>
-				<app.honesty.active>test</app.honesty.active>
+				<app.active>test</app.active>
 				<app.shixin.name>honesty-shixin</app.shixin.name>
 				<app.honesty.shixin.task.name>honesty-shixin-task</app.honesty.shixin.task.name>
 
@@ -118,7 +118,7 @@
 			<!-- 生产环境 -->
 			<id>prod</id>
 			<properties>
-				<app.honesty.active>prod</app.honesty.active>
+				<app.active>prod</app.active>
 				<app.shixin.name>honesty-shixin</app.shixin.name>
 				<app.honesty.shixin.task.name>honesty-shixin-task</app.honesty.shixin.task.name>
 				<app.search.name>search</app.search.name>
@@ -129,9 +129,9 @@
 		</profile>
 		<profile>
 			<!-- 生产环境 -->
-			<id>preview1.1.2</id>
+		<id>preview1.1.2</id>
 			<properties>
-				<app.honesty.active>preview1.1.2</app.honesty.active>
+				<app.active>preview1.1.2</app.active>
 				<app.shixin.name>honesty-shixin</app.shixin.name>
 				<app.honesty.shixin.task.name>honesty-shixin-task</app.honesty.shixin.task.name>
 				<app.search.name>search</app.search.name>
