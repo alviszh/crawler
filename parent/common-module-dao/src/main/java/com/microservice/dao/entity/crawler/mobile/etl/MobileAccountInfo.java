@@ -10,12 +10,13 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.microservice.dao.entity.IdEntity;
 
+@Entity
+@Table(name="mobile_account_info",indexes = {@Index(name = "index_mobile_account_info_taskid", columnList = "taskId")})
+
 
 /*
  * 手机账户信息 
  */
-@Entity
-@Table(name="mobile_account_info",indexes = {@Index(name = "index_mobile_account_info_taskid", columnList = "task_id")})
 public class MobileAccountInfo extends IdEntity implements Serializable {
 	
 	private static final long serialVersionUID = 5133365472766002696L;

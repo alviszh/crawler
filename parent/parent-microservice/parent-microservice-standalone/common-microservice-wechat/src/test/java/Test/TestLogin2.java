@@ -60,12 +60,12 @@ public class TestLogin2 {
 		System.out.println(string);
 
 		
-		String a2 ="https://login.wx.qq.com/cgi-bin/mmwebwx-bin/login?loginicon=true&uuid="+substring+"&tip=0&r=1539670736426&=1539670736424";
+		String a2 ="https://login.wx.qq.com/cgi-bin/mmwebwx-bin/login?loginicon=true&uuid="+substring+"&tip=1&r=1539670736426&=1539670736424";
 		webClient = WebCrawler.getInstance().getWebClient();
 		webRequest = new WebRequest(new URL(a2), HttpMethod.POST);
 		try {
 			Page page3 = webClient.getPage(webRequest);
-			System.out.println("ylyl"+page3.getWebResponse().getContentAsString());
+			System.out.println(page3.getWebResponse().getContentAsString());
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}

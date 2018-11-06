@@ -119,22 +119,4 @@ public class WeChatService {
 		return taskWeChat;
 	}
 
-
-	public TaskWeChat crawlerUserInfo(WeChatRequestParameters weChatRequestParameters) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public TaskWeChat crawlerWechatGroup(WeChatRequestParameters weChatRequestParameters) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public TaskWeChat crawlerOfficialAccount(WeChatRequestParameters weChatRequestParameters) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
