@@ -19,7 +19,7 @@ eureka:
 spring:
   thymeleaf: 
     cache : ${spring.thymeleaf.cache}
-  cloud:
+  cloud: 
     stream:
       bindings: 
         input:                             # 频道名称（根据具体模块来命名）
@@ -33,8 +33,9 @@ spring:
             spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
             spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes} 
   datasource:
-    data: ${datasource.data}  # spring.datasource.data 执行晚于jpa ， 适用于字典表数据的初始化
-    schema: ${datasource.schema} 
+    data: 
+      - ${datasource.data}  # spring.datasource.data 执行晚于jpa ， 适用于字典表数据的初始化
+      - ${datasource.schema} 
     initialization-mode: ${datasource.initialization-mode} 
     continueOnError: false
     separator: ;;
