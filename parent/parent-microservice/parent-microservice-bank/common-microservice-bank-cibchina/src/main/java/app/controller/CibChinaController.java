@@ -16,6 +16,7 @@ import com.crawler.bank.json.BankStatusCode;
 import com.crawler.bank.json.IdleInstance;
 import com.crawler.mobile.json.StatusCodeLogin;
 import com.microservice.dao.entity.crawler.bank.basic.TaskBank;
+import com.microservice.dao.repository.crawler.bank.basic.TaskBankRepository;
 
 import app.commontracerlog.TracerLog;
 import app.service.AgentService;
@@ -37,6 +38,9 @@ public class CibChinaController {
 	
 	@Autowired
 	private TracerLog tracerLog;
+	
+	@Autowired
+	private TaskBankRepository taskBankRepository;
 	// 登录中间层
 	@PostMapping(path = "/loginAgent")
 	public TaskBank loginAgent(@RequestBody BankJsonBean bankJsonBean) throws  Exception { 
@@ -59,7 +63,7 @@ public class CibChinaController {
 	// 登录业务
 	@PostMapping(path = "/login")
 	public TaskBank login(@RequestBody BankJsonBean bankJsonBean){
-		TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);	
+		TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 		tracerLog.qryKeyValue("兴业银行（储蓄卡）业务登录的调用...", bankJsonBean.getTaskid());
 		try {
 			taskBank = cibChinaService.login(bankJsonBean);
@@ -76,7 +80,7 @@ public class CibChinaController {
 	public TaskBank sendSmsAgent(@RequestBody BankJsonBean bankJsonBean) throws  Exception { 
 		System.out.println("crawlerAgent发送短信验证");
 		tracerLog.qryKeyValue("兴业银行（储蓄卡）发送验证码集群的调用...", bankJsonBean.getTaskid());
-		TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);	
+		TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 		
 		bankJsonBean.setIp(taskBank.getCrawlerHost());
 		bankJsonBean.setPort(taskBank.getCrawlerPort());
@@ -97,7 +101,7 @@ public class CibChinaController {
 	@PostMapping(path = "/sendSms")
 	public TaskBank sendSms(@RequestBody BankJsonBean bankJsonBean) {
 		tracerLog.qryKeyValue("兴业银行（信用卡）发送验证码的业务调用...", bankJsonBean.getTaskid());
-		TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);
+		TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 		try {
 			taskBank = cibChinaService.sendSms(bankJsonBean);
 		} catch (Exception e) {
@@ -114,7 +118,7 @@ public class CibChinaController {
 	public TaskBank verifySmsAgent(@RequestBody BankJsonBean bankJsonBean){
 		System.out.println("crawlerAgent短信验证");
 		tracerLog.qryKeyValue("兴业银行（储蓄卡）验证验证码集群的调用...", bankJsonBean.getTaskid());
-		TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);	
+		TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 		
 		bankJsonBean.setIp(taskBank.getCrawlerHost());
 		bankJsonBean.setPort(taskBank.getCrawlerPort());
@@ -136,7 +140,7 @@ public class CibChinaController {
 
 		tracerLog.qryKeyValue("农业银行（信用卡）验证验证码的业务调用...", bankJsonBean.getTaskid());
 
-		TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);
+		TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 		try {
 			taskBank = cibChinaService.verifySms(bankJsonBean);
 		} catch (Exception e) {
@@ -153,7 +157,7 @@ public class CibChinaController {
 	public TaskBank getAllDataAgent(@RequestBody BankJsonBean bankJsonBean)
 			throws IllegalAccessException, NativeException, Exception {
 		tracerLog.qryKeyValue("兴业银行（储蓄卡）爬取和解析集群的调用...", bankJsonBean.getTaskid());
-		TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);	
+		TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 		
 		bankJsonBean.setIp(taskBank.getCrawlerHost());
 		bankJsonBean.setPort(taskBank.getCrawlerPort());
@@ -173,7 +177,7 @@ public class CibChinaController {
 	@PostMapping(path = "/getAllData")
 	public TaskBank getAllData(@RequestBody BankJsonBean bankJsonBean) {
 		tracerLog.qryKeyValue("兴业银行（储蓄卡）爬取和解析的业务调用...", bankJsonBean.getTaskid());
-		TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);
+		TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 		try {
 			taskBank = cibChinaService.getAllData(bankJsonBean);
 		} catch (Exception e) {

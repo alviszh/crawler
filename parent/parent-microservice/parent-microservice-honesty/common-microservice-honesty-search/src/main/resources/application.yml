@@ -14,19 +14,16 @@ eureka:
       defaultZone: http://eurekaserver:8888/eureka/
 
 #数据源：
-spring:
-#  cloud:
-#    stream:
-#      bindings: 
-#        carrier_channel:
-#          binder: carrier_binder
-#      binders: 
-#        carrier_binder: 
-#          type: kafka 
-#          environment:
-#            spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
-#            spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes} 
+spring: 
   datasource:
+    data: 
+      - ${datasource.data}  # spring.datasource.data 执行晚于jpa ， 适用于字典表数据的初始化
+      - ${datasource.schema} 
+    initialization-mode: ${datasource.initialization-mode} 
+    continueOnError: false
+    separator: ;;
+    schema-username: ${datasource.jdbc.username}
+    schema-password: ${datasource.jdbc.password}
     hikari: 
       minimum-idle: ${datasource.jdbc.minIdle}
       maximum-pool-size: ${datasource.jdbc.maxPoolSize}
@@ -41,9 +38,10 @@ spring:
         ddl-auto: update 
         naming: 
           implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl 
+          
     properties:  
-      hibernate:   
-        dialect: ${datasource.hibernate.dialect}
+      hibernate:  
+        dialect: ${datasource.jdbc.dialect}
         temp: 
           use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法为实现
 
