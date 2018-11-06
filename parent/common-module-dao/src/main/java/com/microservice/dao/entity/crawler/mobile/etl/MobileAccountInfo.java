@@ -15,7 +15,8 @@ import com.microservice.dao.entity.IdEntity;
  * 手机账户信息 
  */
 @Entity
-@Table(name="mobile_account_info",indexes = {@Index(name = "index_mobile_account_info_taskid", columnList = "task_id")})
+@Table(name="mobile_account_info")
+//@Table(name="mobile_account_info",indexes = {@Index(name = "index_mobile_account_info_taskid", columnList = "taskId")})
 public class MobileAccountInfo extends IdEntity implements Serializable {
 	
 	private static final long serialVersionUID = 5133365472766002696L;
