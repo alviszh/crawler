@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import com.crawler.e_commerce.json.E_ComerceStatusCode;
 import com.crawler.e_commerce.json.E_CommerceJsonBean;
 import com.microservice.dao.entity.crawler.e_commerce.basic.E_CommerceTask;
-import com.microservice.dao.repository.crawler.e_commerce.basic.E_CommerceTaskRepository;
 
 /**
  * 
@@ -23,9 +22,6 @@ public class JDService {
 
 	@Autowired
 	private JDCrawlerService jDCrawlerService;
-
-	@Autowired
-	private E_CommerceTaskStatusService e_CommerceTaskStatusService;
 
 	@Async
 	public void loginCrawler(E_CommerceJsonBean e_CommerceJsonBean) {
