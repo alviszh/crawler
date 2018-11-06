@@ -33,8 +33,11 @@ public class WeChatCommonService {
 	}
 
 	public TaskWeChat getAllData(WeChatRequestParameters weChatRequestParameters) {
-		// TODO Auto-generated method stub
-		return null;
+		TaskWeChat taskWeChat = taskWeChatRepository.findByTaskid(weChatRequestParameters.getTaskid());
+		taskWeChat = weChatServcie.crawlerUserInfo(weChatRequestParameters);
+		taskWeChat = weChatServcie.crawlerWechatGroup(weChatRequestParameters);
+		taskWeChat = weChatServcie.crawlerOfficialAccount(weChatRequestParameters);
+		return taskWeChat;
 	}
 
 }
