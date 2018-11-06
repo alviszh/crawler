@@ -24,7 +24,7 @@ spring:
     password: ${datasource.jdbc.password}
     type: ${datasource.jdbc.type}
   jpa: 
-    show-sql: false
+    show-sql: true
     hibernate: 
         ddl-auto: update 
         naming: 
