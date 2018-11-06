@@ -58,6 +58,7 @@ import com.microservice.dao.entity.crawler.bank.basic.TaskBank;
 import com.microservice.dao.entity.crawler.bank.cibchina.CibChinaRegular;
 import com.microservice.dao.entity.crawler.bank.cibchina.CibChinaTransFlow;
 import com.microservice.dao.entity.crawler.bank.cibchina.CibChinaUserInfo;
+import com.microservice.dao.repository.crawler.bank.basic.TaskBankRepository;
 import com.microservice.dao.repository.crawler.bank.cibchina.CibChinaRegularRepository;
 import com.microservice.dao.repository.crawler.bank.cibchina.CibChinaTransFlowRepository;
 import com.microservice.dao.repository.crawler.bank.cibchina.CibChinaUserInfoRepository;
@@ -97,6 +98,8 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 	private AgentService agentService;
 	@Autowired
 	private CibChinaserviceLogin cibChinaserviceLogin;
+	@Autowired
+	private TaskBankRepository taskBankRepository;
 	private WebDriver driver;
 	
 	static String LoginPage = "https://personalbank.cib.com.cn/pers/main/login.do";
@@ -108,7 +111,7 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 	//登陆
 	@Override
 	public TaskBank login(BankJsonBean bankJsonBean){
-		TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);
+		TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 		try {
 			//手机号登陆
 			if (bankJsonBean.getLoginType().equals(StatusCodeLogin.PHONE_NUM)) {
@@ -161,6 +164,7 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 							tracerLog.addTag("您的账户没有开通网银，请您到兴业银行官网补全个人信息后重试.,截图路径：",path);
 							System.out.println("为开通网银");
 							tracerLog.addTag("您的账户没有开通网银，请您到兴业银行官网补全个人信息后重试.",bankJsonBean.getTaskid());
+							agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
 						}else if (htmlsource2.contains("银行账号不能少于10位！")){
 							taskBank=taskBankStatusService.changeStatus(BankStatusCode.BANK_LOGIN_LOGINNAME_ERROR.getPhase(), 
 									BankStatusCode.BANK_LOGIN_LOGINNAME_ERROR.getPhasestatus(),
@@ -169,6 +173,7 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 							String path = WebDriverUnit.saveScreenshotByPath(webDriver,this.getClass());
 							tracerLog.addTag("银行账号不能少于10位,截图路径：",path);
 							tracerLog.addTag("银行账号不能少于10位！",bankJsonBean.getTaskid());
+							agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
 						}else if(htmlsource2.contains("登录密码")){
 							Thread.sleep(1000);
 							webDriver.findElement(By.id("iloginPwd")).sendKeys(bankJsonBean.getPassword());
@@ -178,6 +183,10 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 							//System.out.println(html);
 							if (html.contains("您登录网上银行")){
 								String path = WebDriverUnit.saveScreenshotByPath(webDriver,this.getClass());
+//								taskBank=taskBankStatusService.changeStatus(BankStatusCode.BANK_LOGIN_SUCCESS_NEXTSTEP.getPhase(), 
+//										BankStatusCode.BANK_LOGIN_SUCCESS_NEXTSTEP.getPhasestatus(),
+//										BankStatusCode.BANK_LOGIN_SUCCESS_NEXTSTEP.getDescription(), 
+//										BankStatusCode.BANK_LOGIN_SUCCESS_NEXTSTEP.getError_code(),true, bankJsonBean.getTaskid());
 								tracerLog.addTag("登陆成功,截图路径：",path);
 								tracerLog.addTag("登陆成功",bankJsonBean.getTaskid());
 //								getDateCombo(bankJsonBean);
@@ -197,7 +206,7 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 									String path = WebDriverUnit.saveScreenshotByPath(webDriver,this.getClass());
 									tracerLog.addTag("您输入的登录名或密码错误,截图路径：",path);
 									tracerLog.addTag("您输入的登录名或密码错误!",bankJsonBean.getTaskid());
-									
+									agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
 								}else if(eles.contains("您的登录密码连续输错6次")){
 									tracerLog.addTag("页面弹框",eles);
 									eles = eles.substring(0,eles.indexOf("。"));
@@ -209,6 +218,7 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 									String path = WebDriverUnit.saveScreenshotByPath(webDriver,this.getClass());
 									tracerLog.addTag("您输入的登录名或密码错误,截图路径：",path);
 									tracerLog.addTag("您输入的登录名或密码错误!",bankJsonBean.getTaskid());
+									agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
 								}else{
 									tracerLog.addTag("页面弹框",eles);
 									taskBank=taskBankStatusService.changeStatus(BankStatusCode.BANK_LOGIN_LOGINNAME_PWD_ERROR.getPhase(), 
@@ -218,6 +228,7 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 									String path = WebDriverUnit.saveScreenshotByPath(webDriver,this.getClass());
 									tracerLog.addTag("您输入的登录名或密码错误,截图路径：",path);
 									tracerLog.addTag("您输入的登录名或密码错误!",bankJsonBean.getTaskid());
+									agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
 								}
 								
 							}
@@ -231,9 +242,9 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 							String path = WebDriverUnit.saveScreenshotByPath(webDriver,this.getClass());
 							tracerLog.addTag("银行账号未遇到过的情况,截图路径：",path);
 							tracerLog.addTag("银行账号未遇到过的情况",bankJsonBean.getTaskid());
-
+							agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
 						}
-						agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
+						
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -288,6 +299,10 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 						Thread.sleep(1000);
 						if (webDriver.getPageSource().contains("您登录网上银行")){
 							String path = WebDriverUnit.saveScreenshotByPath(webDriver,this.getClass());
+//							taskBank=taskBankStatusService.changeStatus(BankStatusCode.BANK_LOGIN_SUCCESS_NEXTSTEP.getPhase(), 
+//									BankStatusCode.BANK_LOGIN_SUCCESS_NEXTSTEP.getPhasestatus(),
+//									BankStatusCode.BANK_LOGIN_SUCCESS_NEXTSTEP.getDescription(), 
+//									BankStatusCode.BANK_LOGIN_SUCCESS_NEXTSTEP.getError_code(),true, bankJsonBean.getTaskid());
 							tracerLog.addTag("登陆成功,截图路径：",path);
 							tracerLog.addTag("登陆成功",bankJsonBean.getTaskid());
 //							getDateCombo(bankJsonBean);
@@ -330,8 +345,9 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 								tracerLog.addTag("您输入的登录名或密码错误,截图路径：",path);
 								tracerLog.addTag("您输入的登录名或密码错误!",bankJsonBean.getTaskid());
 							}
+							agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
 						}
-						agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
+						
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -430,8 +446,9 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 								tracerLog.addTag("您输入的登录名或密码错误,截图路径：",path);
 								tracerLog.addTag("您输入的登录名或密码错误!",bankJsonBean.getTaskid());
 							}
+							agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
 						}
-						agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
+						
 					} catch (Exception e) {
 						e.printStackTrace();
 //						//截图 
@@ -476,7 +493,7 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 	@Override
 	public TaskBank sendSms(BankJsonBean bankJsonBean) {
 		// TODO Auto-generated method stub
-		TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);
+		TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 		try {
 			driver = cibChinaserviceLogin.login(bankJsonBean);
 		     if (driver!=null){
@@ -599,7 +616,7 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 	//手机号登陆输入验证码验证
 	@Override
 	public TaskBank verifySms(BankJsonBean bankJsonBean) { 
-		TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);
+		TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 		try {
 			
 			driver.findElement(By.id("mobLogin_sendsms")).clear();
@@ -618,6 +635,7 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 				tracerLog.addTag("短信验证码正确,但为开通网银,截图路径：",path);
 				tracerLog.addTag("短信验证码正确,但为开通网银",bankJsonBean.getTaskid());
 				System.out.println("短信验证码正确,但为开通网银");
+				agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
 			}else if(htmlsource2.contains("手机号码")) {
 				taskBank = taskBankStatusService.changeStatus(BankStatusCode.BANK_VALIDATE_CODE_SUCCESS.getPhase(), 
 						BankStatusCode.BANK_VALIDATE_CODE_SUCCESS.getPhasestatus(),
@@ -669,7 +687,7 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 						tracerLog.addTag("您输入的登录名或密码错误,截图路径：",path);
 						tracerLog.addTag("您输入的登录名或密码错误!",bankJsonBean.getTaskid());
 					}
-					
+					agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
 				}
 //				System.out.println("短信验证码正确");
 			}else if(htmlsource2.contains("短信认证码错误")){
@@ -682,6 +700,7 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 				tracerLog.addTag("短信验证码失败",bankJsonBean.getTaskid());
 				System.out.println("短信验证码失败");
 				System.out.println(htmlsource2);
+				agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
 				//driver.quit();
 			}else if(htmlsource2.contains("对不起，该手机号未在网银登记或无对应银行卡，建议使用“卡号”方式登录。")){
 				taskBank = taskBankStatusService.changeStatus(BankStatusCode.BANK_LOGIN_LOGINNAME_ERROR.getPhase(), 
@@ -694,6 +713,7 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 				System.out.println("对不起，该手机号未在网银登记或无对应银行卡，建议使用“卡号”方式登录。");
 				System.out.println(htmlsource2);
 				//driver.quit();
+				agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
 			}else{
 				taskBank = taskBankStatusService.changeStatus(BankStatusCode.BANK_VALIDATE_CODE_ERROR.getPhase(), 
 						BankStatusCode.BANK_VALIDATE_CODE_ERROR.getPhasestatus(),
@@ -705,8 +725,9 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 				System.out.println("短信验证码失败");
 				System.out.println(htmlsource2);
 				//driver.quit();
+				agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
 			}
-			agentService.releaseInstance(taskBank.getCrawlerHost(), driver);
+			
 			//driver.quit();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -736,7 +757,7 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 	//爬取
 	@Override
 	public TaskBank getAllData(BankJsonBean bankJsonBean){
-		TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);
+		TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 		// 获取cookies
 		Set<org.openqa.selenium.Cookie> cookies = driver.manage().getCookies();
 		Set<CookieJson> cookiesSet = new HashSet<CookieJson>();
@@ -879,6 +900,7 @@ public class CibChinaService implements ICrawlerLogin, ISms{
 			
 		}else{
 			String html2=pages.getWebResponse().getContentAsString();
+			System.out.println("html2"+html2);
 			String endDate = Jsoup.parse(html2).select("#endDate").val();
 			String str = Jsoup.parse(html2).select("#page_content > div:nth-child(3) > span:nth-child(2)").text();
 			String accNumber = str.substring(str.indexOf("：")+1);

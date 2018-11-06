@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 
 @EnableEurekaClient
 @SpringBootApplication
-//@EnableCircuitBreaker
+@EnableCircuitBreaker
 @EnableFeignClients
 @EnableRetry
 public class Application {
