@@ -60,6 +60,7 @@ public class NewsListJson  extends IdEntity implements Serializable {
      */
     private String type;
     
+    @Column(name="keyword")
     private String key;
     @JsonManagedReference
     private List<NewsContent> list;
@@ -84,14 +85,13 @@ public class NewsListJson  extends IdEntity implements Serializable {
 		this.list = list;
 	}
 
+	
 	public String getKey() {
 		return key;
 	}
-
 	public void setKey(String key) {
 		this.key = key;
 	}
-
 	public String getType() {
 		return type;
 	}

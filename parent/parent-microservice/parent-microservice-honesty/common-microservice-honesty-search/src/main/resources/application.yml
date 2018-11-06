@@ -12,7 +12,6 @@ eureka:
   client: 
     serviceUrl: 
       defaultZone: http://eurekaserver:8888/eureka/
-
 #数据源：
 spring: 
   datasource:
@@ -30,10 +29,8 @@ spring:
         ddl-auto: update 
         naming: 
           implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl 
-          
     properties:  
       hibernate:  
         dialect: ${datasource.jdbc.dialect}
         temp: 
           use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法为实现
-
