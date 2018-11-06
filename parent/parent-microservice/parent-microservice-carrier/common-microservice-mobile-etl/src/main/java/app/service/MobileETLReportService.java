@@ -117,7 +117,14 @@ public class MobileETLReportService {
 		if(StringUtils.isNotBlank(requestParam.getTaskid()) && StringUtils.isBlank(requestParam.getMobileNum())){
 			TaskMobile taskMobile = taskMobileRepository.findByTaskid(requestParam.getTaskid());
 			if(null != taskMobile){
-				if(taskMobile.getFinished() && taskMobile.getDescription().equals("数据采集成功！")){
+				if (null==taskMobile.getFinished() || null==taskMobile.getReportTime()){
+					webDataReport.setParam(requestParam);
+//					webDataReport.setMobileUserInfos(getUserInfos(taskMobile));
+					webDataReport.setMessage(MobileEtlEnum.MOBILE_ETL_CRAWLER_ERROR.getMessage());
+					webDataReport.setErrorCode(MobileEtlEnum.MOBILE_ETL_CRAWLER_ERROR.getErrorCode());
+					webDataReport.setProfile(profile);
+					return webDataReport;
+				}else if(taskMobile.getFinished() && taskMobile.getDescription().equals("数据采集成功！")){
 					return getData(taskMobile,webDataReport,requestParam);
 				}else{
 					webDataReport.setParam(requestParam);
@@ -141,7 +148,14 @@ public class MobileETLReportService {
 			TaskMobile taskMobile = taskMobileRepository.findByTaskid(requestParam.getTaskid());
 			if(null != taskMobile){
 				if(taskMobile.getPhonenum().equals(requestParam.getMobileNum())){
-					if(taskMobile.getFinished() && taskMobile.getDescription().equals("数据采集成功！")){
+					if (null==taskMobile.getFinished() || null==taskMobile.getReportTime()){
+						webDataReport.setParam(requestParam);
+//						webData.setMobileUserInfos(getUserInfos(taskMobile));
+						webDataReport.setMessage(MobileEtlEnum.MOBILE_ETL_CRAWLER_ERROR.getMessage());
+						webDataReport.setErrorCode(MobileEtlEnum.MOBILE_ETL_CRAWLER_ERROR.getErrorCode());
+						webDataReport.setProfile(profile);
+						return webDataReport;
+					}else if(taskMobile.getFinished() && taskMobile.getDescription().equals("数据采集成功！")){
 						return getData(taskMobile,webDataReport,requestParam);
 					}else{
 						webDataReport.setParam(requestParam);
@@ -175,7 +189,7 @@ public class MobileETLReportService {
 	public WebDataReport getData(TaskMobile taskMobile,WebDataReport webDataReport,RequestParam requestParam){
 		
 		if(null != taskMobile){
-			if(null == taskMobile.getEtltime()){
+			if(null == taskMobile.getReportTime()){
 				webDataReport.setParam(requestParam);
 				webDataReport.setMessage(MobileEtlEnum.MOBILE_ETL_NOT_EXCUTE.getMessage());
 				webDataReport.setErrorCode(MobileEtlEnum.MOBILE_ETL_NOT_EXCUTE.getErrorCode());
