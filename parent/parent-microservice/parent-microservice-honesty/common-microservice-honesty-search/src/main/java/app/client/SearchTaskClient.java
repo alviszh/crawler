@@ -16,11 +16,10 @@ import com.crawler.search.bean.SearchTaskBean;
  * 
  * @version
  */
-//@FeignClient(name = "search-task")
+@FeignClient(name = "search-task")
 //@FeignClient(name = "search-task", url = "http://10.167.202.187:51318")
 //@FeignClient(name = "search-task", url = "http://10.167.211.152:10010")
-@FeignClient(name = "search-task", url = "${jobs.url}")
-
+//@FeignClient(name = "search-task", url = "${jobs.url}")
 public interface SearchTaskClient {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/sanwang/search/gettask")
