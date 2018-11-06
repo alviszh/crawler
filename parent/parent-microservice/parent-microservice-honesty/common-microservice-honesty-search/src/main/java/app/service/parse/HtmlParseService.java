@@ -111,7 +111,7 @@ public class HtmlParseService extends AbstractParser {
 			
 			if (searchTask.getKeyword() != null) {
 
-				newsListJson.setKeyword(searchTask.getKeyword());
+				newsListJson.setKey(searchTask.getKeyword());
 			}
 			if (searchTask.getTaskid() != null) {
 
@@ -187,7 +187,7 @@ public class HtmlParseService extends AbstractParser {
 
 			if (searchTask.getKeyword() != null) {
 
-				newsListJson.setKeyword(searchTask.getKeyword());
+				newsListJson.setKey(searchTask.getKeyword());
 			}
 			if (searchTask.getTaskid() != null) {
 
@@ -268,7 +268,7 @@ public class HtmlParseService extends AbstractParser {
 
 			if (searchTask.getKeyword() != null) {
 
-				newsListJson.setKeyword(searchTask.getKeyword());
+				newsListJson.setKey(searchTask.getKeyword());
 			}
 			if (searchTask.getTaskid() != null) {
 
