@@ -64,10 +64,9 @@
 				<h3 class="page-header">例子</h3>
 				<p>说明：创建爬取队列</p>
 				<p>请求：http:/10.167.202.192:51317/sanwang/search/task
-				
-					<p style="color: #3da33d;">JSON示例</p>
-	<pre class="prettyprint sr-zql-pre-without-border"
-		style="color: #3da33d;"> 
+				<p style="color: #3da33d;">JSON示例</p>
+				<pre class="prettyprint sr-zql-pre-without-border"
+					style="color: #3da33d;"> 
 {
 taskid: "posttest23",
 totalnum: 39,
@@ -78,48 +77,47 @@ errornum: 1,
 errormessage: null
 }
 </pre>
-	<h3 class="page-header">返回说明</h3>
-	<table class="table table-bordered table-hover">
-		<thead>
-			<tr class="active">
-				<th>状态码</th>
-				<th>解释说明</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>taskid</td>
-				<td>唯一标示</td>
-			</tr>
-			<tr>
-				<td>totalnum</td>
-				<td>爬取任务数量</td>
-			</tr>
-			<tr>
-				<td>unfinishednum</td>
-				<td>未完成数量</td>
-			</tr>
-			<tr>
-				<td>finishednum</td>
-				<td>完成数量</td>
-			</tr>
-			<tr>
-				<td>crawleringnum</td>
-				<td>正在爬取中的数量</td>
-			</tr>
-			<tr>
-				<td>errornum</td>
-				<td>出错的数量</td>
-			</tr>
-			<tr>
-				<td>errormessage</td>
-				<td>出错提示</td>
-			</tr>
-		</tbody>
-	</table>
+				<h3 class="page-header">返回说明</h3>
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr class="active">
+							<th>状态码</th>
+							<th>解释说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>taskid</td>
+							<td>唯一标示</td>
+						</tr>
+						<tr>
+							<td>totalnum</td>
+							<td>爬取任务数量</td>
+						</tr>
+						<tr>
+							<td>unfinishednum</td>
+							<td>未完成数量</td>
+						</tr>
+						<tr>
+							<td>finishednum</td>
+							<td>完成数量</td>
+						</tr>
+						<tr>
+							<td>crawleringnum</td>
+							<td>正在爬取中的数量</td>
+						</tr>
+						<tr>
+							<td>errornum</td>
+							<td>出错的数量</td>
+						</tr>
+						<tr>
+							<td>errormessage</td>
+							<td>出错提示</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
-	
 	</div>
 	
 	<div th:include="components/footer :: footer"></div>

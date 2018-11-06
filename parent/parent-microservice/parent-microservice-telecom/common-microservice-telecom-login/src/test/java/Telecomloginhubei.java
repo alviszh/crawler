@@ -1,9 +1,6 @@
-import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
+
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -28,10 +25,6 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.util.Cookie;
 import com.google.gson.Gson;
 import com.module.htmlunit.WebCrawler;
-
-import app.bean.ValidationLoginDataObject;
-import app.bean.ValidationLoginRoot;
-import app.crawler.telecom.htmlparse.TelecomParseCommon;
 
 /**
  * 
@@ -103,7 +96,7 @@ public class Telecomloginhubei {
 		driver.findElement(By.id("loginbtn")).click();
 		Thread.sleep(5000);
 		System.out.println("sucess");
-		String htmlsource3 = driver.getPageSource();
+		driver.getPageSource();
 		System.out.println("============" + driver.getCurrentUrl());
 		System.out.println("====================clieck===================");
 		/* driver.findElement(By.id("hqyzm")).click(); */
@@ -129,7 +122,7 @@ public class Telecomloginhubei {
 
 				wait2 = new FluentWait<WebDriver>(driver).withTimeout(60, TimeUnit.SECONDS).pollingEvery(2, TimeUnit.SECONDS)
 						.ignoring(NoSuchElementException.class);
-				WebElement loginname2 = wait2.until(new Function<WebDriver, WebElement>() {
+				wait2.until(new Function<WebDriver, WebElement>() {
 					public WebElement apply(WebDriver driver) {
 						return driver.findElement(By.id("txtAccount"));
 					}
@@ -221,27 +214,6 @@ public class Telecomloginhubei {
 		// getYzm(webClient);
 		return null;
 		//
-	}
-
-	private static ValidationLoginDataObject ValidationLogin(WebClient webClient) {
-
-		try {
-			String url = "http://www.189.cn/login/index.do";
-			Page page = getHtml(url, webClient);
-
-			System.out.println("*************************************** index.do");
-			System.out.println(page.getWebResponse().getContentAsString());
-
-			ValidationLoginRoot jsonObject = gs.fromJson(page.getWebResponse().getContentAsString(),
-					ValidationLoginRoot.class);
-
-			return jsonObject.getDataObject();
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	public static Page getHtml(String url, WebClient webClient) throws Exception {

@@ -9,7 +9,6 @@ import java.util.Map;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
@@ -132,7 +131,14 @@ public class MobileETLService {
 		if (StringUtils.isNotBlank(requestParam.getTaskid()) && StringUtils.isBlank(requestParam.getMobileNum())) {
 			TaskMobile taskMobile = taskMobileRepository.findByTaskid(requestParam.getTaskid());
 			if (null != taskMobile) {
-				if (taskMobile.getFinished() && taskMobile.getDescription().equals("数据采集成功！")) {
+				if (null==taskMobile.getFinished() || null==taskMobile.getReportTime()){
+					webData.setParam(requestParam);
+					webData.setMobileUserInfos(getUserInfos(taskMobile));
+					webData.setMessage(MobileEtlEnum.MOBILE_ETL_CRAWLER_ERROR.getMessage());
+					webData.setErrorCode(MobileEtlEnum.MOBILE_ETL_CRAWLER_ERROR.getErrorCode());
+					webData.setProfile(profile);
+					return webData;
+				}else if (taskMobile.getFinished() && taskMobile.getDescription().equals("数据采集成功！")) {
 					return getData(taskMobile, webData, requestParam);
 				} else {
 					webData.setParam(requestParam);
@@ -156,7 +162,14 @@ public class MobileETLService {
 			TaskMobile taskMobile = taskMobileRepository.findByTaskid(requestParam.getTaskid());
 			if (null != taskMobile) {
 				if (taskMobile.getPhonenum().equals(requestParam.getMobileNum())) {
-					if (taskMobile.getFinished() && taskMobile.getDescription().equals("数据采集成功！")) {
+					if (null==taskMobile.getFinished() || null==taskMobile.getReportTime()){
+						webData.setParam(requestParam);
+						webData.setMobileUserInfos(getUserInfos(taskMobile));
+						webData.setMessage(MobileEtlEnum.MOBILE_ETL_CRAWLER_ERROR.getMessage());
+						webData.setErrorCode(MobileEtlEnum.MOBILE_ETL_CRAWLER_ERROR.getErrorCode());
+						webData.setProfile(profile);
+						return webData;
+					}else if (taskMobile.getFinished() && taskMobile.getDescription().equals("数据采集成功！")) {
 						return getData(taskMobile, webData, requestParam);
 					} else {
 						webData.setParam(requestParam);
@@ -188,7 +201,7 @@ public class MobileETLService {
 	// 获取数据的方法
 	public WebData getData(TaskMobile taskMobile, WebData webData, RequestParam requestParam) {
 		if (null != taskMobile) {
-			if (null == taskMobile.getEtltime()) {
+			if (null == taskMobile.getReportTime()) {
 				webData.setParam(requestParam);
 				webData.setMessage(MobileEtlEnum.MOBILE_ETL_NOT_EXCUTE.getMessage());
 				webData.setErrorCode(MobileEtlEnum.MOBILE_ETL_NOT_EXCUTE.getErrorCode());

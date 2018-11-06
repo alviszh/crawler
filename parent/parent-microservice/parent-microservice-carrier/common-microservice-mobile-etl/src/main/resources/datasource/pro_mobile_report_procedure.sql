@@ -2892,18 +2892,20 @@ BEGIN
 
 --更新task表状态
 
-	UPDATE task_mobile a set a.report_status = d_report_result where a.taskid = this_id;
-	
+--	UPDATE task_mobile a set a.report_status = d_report_result where a.taskid = this_id;
+	UPDATE task_mobile a set report_status = d_report_result where a.taskid = this_id;
 	RETURN d_report_result;
 
 	EXCEPTION
 		WHEN QUERY_CANCELED THEN 
 			d_report_result = 'fail';
-			UPDATE task_mobile a set a.report_status = d_report_result where a.taskid = this_id;
+--			UPDATE task_mobile a set a.report_status = d_report_result where a.taskid = this_id;
+			UPDATE task_mobile a set report_status = d_report_result where a.taskid = this_id;
 			RETURN d_report_result;
 		WHEN OTHERS THEN 
 			d_report_result = 'fail';
-			UPDATE task_mobile a set a.report_status = d_report_result where a.taskid = this_id;
+--			UPDATE task_mobile a set a.report_status = d_report_result where a.taskid = this_id;
+			UPDATE task_mobile a set report_status = d_report_result where a.taskid = this_id;
 			RETURN d_report_result;
 		
 END;   

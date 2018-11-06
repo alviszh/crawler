@@ -2,13 +2,11 @@ package com.test;
 
 import java.io.FileReader;
 
-import javax.script.Compilable;
 import javax.script.Invocable;
 
 import javax.script.ScriptEngine;
 
 import javax.script.ScriptEngineManager;
-import javax.script.SimpleBindings;
 
 /** * Java调用并执行js文件，传递参数，并活动返回值 * * @author manjushri */
 
