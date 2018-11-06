@@ -32,8 +32,11 @@ import com.microservice.dao.entity.IdEntity;
 @Table(name="search_newslist",
 indexes = {@Index(name = "list_taskid", columnList = "taskid")})
 public class NewsListJson  extends IdEntity implements Serializable {
-    private static final long serialVersionUID = -1L;
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * taskid 保存的流水号
      */
 	private String taskid;
@@ -140,9 +143,6 @@ public class NewsListJson  extends IdEntity implements Serializable {
 		this.linkUrl = linkUrl;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
 	@Override
 	public String toString() {
