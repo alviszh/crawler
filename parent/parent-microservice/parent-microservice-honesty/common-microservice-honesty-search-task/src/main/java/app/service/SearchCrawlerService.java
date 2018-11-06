@@ -55,7 +55,7 @@ public class SearchCrawlerService {
 
 	public Queue<SearchTask> getSearchTask(Queue<SearchTask> queue) {
 
-		List<SearchTask> list2 = searchTaskRepository.findTopNumByTaskidAndTypeAndPhase("0", 40);
+		List<SearchTask> list2 = searchTaskRepository.findTop40ByPhase("0");
 
 		for (SearchTask searchTask : list2) {
 			searchTask.setPhase("1");
