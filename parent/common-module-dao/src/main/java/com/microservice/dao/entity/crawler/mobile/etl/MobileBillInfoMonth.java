@@ -11,10 +11,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.microservice.dao.entity.IdEntity;
 
 @Entity
-@Table(name="mobile_bill_info_month",indexes = {@Index(name = "index_mobile_bill_info_month_taskid", columnList = "taskId")})
+//@Table(name="mobile_bill_info_month",indexes = {@Index(name = "index_mobile_bill_info_month_taskid", columnList = "taskId")})
 /*
  * 手机月账单信息
  */
+@Table(name="mobile_bill_info_month")
 public class MobileBillInfoMonth extends IdEntity implements Serializable{
 	
 	private static final long serialVersionUID = 5133365472766002696L;

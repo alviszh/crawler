@@ -11,8 +11,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.microservice.dao.entity.IdEntity;
 
 @Entity
-@Table(name="mobile_call_record_statistics",indexes = {@Index(name = "index_mobile_call_record_statistics_taskid", columnList = "taskId")})
-
+//@Table(name="mobile_call_record_statistics",indexes = {@Index(name = "index_mobile_call_record_statistics_taskid", columnList = "taskId")})
+@Table(name="mobile_call_record_statistics")
 
 /*
  * 手机通话记录统计信息
