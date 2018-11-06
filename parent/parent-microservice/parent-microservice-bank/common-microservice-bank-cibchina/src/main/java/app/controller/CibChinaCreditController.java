@@ -12,6 +12,7 @@ import com.crawler.bank.json.BankJsonBean;
 import com.crawler.bank.json.BankStatusCode;
 import com.crawler.mobile.json.StatusCodeLogin;
 import com.microservice.dao.entity.crawler.bank.basic.TaskBank;
+import com.microservice.dao.repository.crawler.bank.basic.TaskBankRepository;
 
 import app.commontracerlog.TracerLog;
 import app.service.AgentService;
@@ -34,6 +35,8 @@ public class CibChinaCreditController {
 	@Autowired
 	private TracerLog tracerLog;
 	
+	@Autowired
+	private TaskBankRepository taskBankRepository;
 	// 登录中间层
 		@PostMapping(path = "/loginAgent")
 		public TaskBank loginAgent(@RequestBody BankJsonBean bankJsonBean) throws  Exception { 
@@ -60,7 +63,7 @@ public class CibChinaCreditController {
 		// 登录业务
 		@PostMapping(path = "/login")
 		public TaskBank login(@RequestBody BankJsonBean bankJsonBean){
-			TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);	
+			TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 			tracerLog.qryKeyValue("兴业银行（信用卡）业务登录的调用...", bankJsonBean.getTaskid());
 			try {
 				taskBank = cibChinaCreditService.login(bankJsonBean);
@@ -80,7 +83,7 @@ public class CibChinaCreditController {
 		public TaskBank sendSmsAgent(@RequestBody BankJsonBean bankJsonBean) throws  Exception { 
 			System.out.println("crawlerAgent发送短信验证");
 			tracerLog.qryKeyValue("兴业银行（信用卡）发送验证码集群的调用...", bankJsonBean.getTaskid());
-			TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);	
+			TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 			
 			bankJsonBean.setIp(taskBank.getCrawlerHost());
 			bankJsonBean.setPort(taskBank.getCrawlerPort());
@@ -104,7 +107,7 @@ public class CibChinaCreditController {
 		@PostMapping(path = "/sendSms")
 		public TaskBank sendSms(@RequestBody BankJsonBean bankJsonBean) {
 			tracerLog.qryKeyValue("兴业银行（信用卡）发送验证码的业务调用...", bankJsonBean.getTaskid());
-			TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);
+			TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 			try {
 				taskBank = cibChinaCreditService.sendSms(bankJsonBean);
 			} catch (Exception e) {
@@ -124,7 +127,7 @@ public class CibChinaCreditController {
 		public TaskBank verifySmsAgent(@RequestBody BankJsonBean bankJsonBean){
 			System.out.println("crawlerAgent短信验证");
 			tracerLog.qryKeyValue("兴业银行（信用卡）验证验证码集群的调用...", bankJsonBean.getTaskid());
-			TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);	
+			TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 			
 			bankJsonBean.setIp(taskBank.getCrawlerHost());
 			bankJsonBean.setPort(taskBank.getCrawlerPort());
@@ -149,7 +152,7 @@ public class CibChinaCreditController {
 
 			tracerLog.qryKeyValue("兴业银行（信用卡）验证验证码的业务调用...", bankJsonBean.getTaskid());
 
-			TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);
+			TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 			try {
 				taskBank = cibChinaCreditService.verifySms(bankJsonBean);
 			} catch (Exception e) {
@@ -169,7 +172,7 @@ public class CibChinaCreditController {
 		public TaskBank getAllDataAgent(@RequestBody BankJsonBean bankJsonBean)
 				throws IllegalAccessException, NativeException, Exception {
 			tracerLog.qryKeyValue("兴业银行（信用卡）爬取和解析集群的调用...", bankJsonBean.getTaskid());
-			TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);	
+			TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 			
 			bankJsonBean.setIp(taskBank.getCrawlerHost());
 			bankJsonBean.setPort(taskBank.getCrawlerPort());
@@ -192,7 +195,7 @@ public class CibChinaCreditController {
 		@PostMapping(path = "/getAllData")
 		public TaskBank getAllData(@RequestBody BankJsonBean bankJsonBean) {
 			tracerLog.qryKeyValue("兴业银行（信用卡）爬取和解析的业务调用...", bankJsonBean.getTaskid());
-			TaskBank taskBank = taskBankStatusService.changeStatusLoginDoing(bankJsonBean);
+			TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
 			try {
 				taskBank = cibChinaCreditService.getAllData(bankJsonBean);
 			} catch (Exception e) {
