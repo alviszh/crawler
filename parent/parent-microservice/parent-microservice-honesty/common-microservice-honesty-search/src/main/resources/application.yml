@@ -16,14 +16,6 @@ eureka:
 #数据源：
 spring: 
   datasource:
-    data: 
-      - ${datasource.data}  # spring.datasource.data 执行晚于jpa ， 适用于字典表数据的初始化
-      - ${datasource.schema} 
-    initialization-mode: ${datasource.initialization-mode} 
-    continueOnError: false
-    separator: ;;
-    schema-username: ${datasource.jdbc.username}
-    schema-password: ${datasource.jdbc.password}
     hikari: 
       minimum-idle: ${datasource.jdbc.minIdle}
       maximum-pool-size: ${datasource.jdbc.maxPoolSize}
