@@ -2,11 +2,12 @@ package com.microservice.dao.entity.crawler.cmcc;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.Table;
 import com.microservice.dao.entity.IdEntity;
 
 @Entity
-@Table(name="cmcc_user_call")
+@Table(name="cmcc_user_call",indexes = {@Index(name = "index_cmcc_user_call_taskId", columnList = "taskId")})
 public class CmccUserCallResult extends IdEntity{
 	
 	private String startTime;			//开始时间

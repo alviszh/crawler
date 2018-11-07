@@ -1,11 +1,12 @@
 package app.controller.developer;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,12 +57,11 @@ public class AppRestController {
 	
 	
 	@RequestMapping(value = "/requestnoticeurl", method = RequestMethod.POST)
-	public Map<String, Object> requestnoticeurl(String url,String appId,Long appProductListId,String request_body_param,String param) {
-		Map<String, Object> result = new HashMap<String, Object>();
-		
-		appService.requestnoticeurl(url, appId, appProductListId, request_body_param, param);
-		
-		
+	public Map<String, Object> requestnoticeurl(String url, Long appProductListId, String request_body_param,
+			String param) {
+
+		Map<String, Object> result = appService.requestnoticeurl(url, appProductListId, request_body_param, param);
+
 		return result;
 	}
 	

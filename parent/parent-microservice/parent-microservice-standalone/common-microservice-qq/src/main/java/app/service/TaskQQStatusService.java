@@ -41,6 +41,10 @@ public class TaskQQStatusService {
 	public TaskQQ changeStatusLoginDoing(PbccrcJsonBean pbccrcJsonBean){
 		TaskQQ taskQQ = new TaskQQ();
 		taskQQ.setTaskid(pbccrcJsonBean.getMapping_id());
+		TaskQQ taskQQ = taskQQRepository.findByTaskid(pbccrcJsonBean.getMapping_id());
+		if(null == taskQQ){
+			throw new RuntimeException("Entity bean TaskBank is null ! taskid>>"+pbccrcJsonBean.getMapping_id()+"<<");
+		}
 		taskQQ.setServicename("QQ");
 		taskQQ.setDescription(QQStatusCode.QQ_LOGIN_LOADING.getDescription());
 		taskQQ.setPhase(QQStatusCode.QQ_LOGIN_LOADING.getPhase());

@@ -84,11 +84,16 @@
 			<groupId>com.netflix.hystrix</groupId> 
 			<artifactId>hystrix-javanica</artifactId> 
 			<exclusions> 
-			<exclusion> 
-			<groupId>com.google.guava</groupId> 
-			<artifactId>guava</artifactId> 
-			</exclusion> 
+				<exclusion> 
+					<groupId>com.google.guava</groupId> 
+					<artifactId>guava</artifactId> 
+				</exclusion> 
 			</exclusions> 
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>23.0</version>
 		</dependency>
      	<dependency>
 	    	<groupId>net.sf.json-lib</groupId>
@@ -96,12 +101,13 @@
 		    <version>2.4</version>
 			<classifier>jdk15</classifier>
 		</dependency>
+
 		<!-- 如下内容需要单独加，不然jenkins打包不过去 -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>23.0</version>
-		</dependency>
+		<!--<dependency>
+		  <groupId>com.google.collections</groupId>
+		  <artifactId>google-collections</artifactId>
+		  <version>1.0</version>
+		</dependency>-->
 	</dependencies>
 
 	<build>
