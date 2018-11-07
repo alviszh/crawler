@@ -45,7 +45,7 @@ public class EurekaInstanceChangeMailService {
 		mailBean.setMailcontent(content);
 		mailBean.setReceiver(receivers);
 		mailBean.setSender(mailsender);
-		mailBean.setSubject(mailEnvirType+"Eureka上微服务"+microEventType);
+		mailBean.setSubject("Eureka"+mailEnvirType+"-"+microEventType+"-"+eurekaInstanceBean.getAppName().trim());
 		//调用邮件发送接口
 		mailClient.sendMail(mailBean);
 		System.out.println(mailEnvirType+"Eureka上微服务-变动监听情况-通知邮件发送成功");

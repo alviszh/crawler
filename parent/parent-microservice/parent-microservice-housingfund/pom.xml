@@ -924,7 +924,8 @@
 				<app.housing.bengbu.name>HousingFund-BengBu</app.housing.bengbu.name>
 				<app.housing.enshi.name>HousingFund-EnShi</app.housing.enshi.name>
 				<app.housing.wenshan.name>HousingFund-WenShan</app.housing.wenshan.name>
-				
+				<app.housing.baoshan.name>HousingFund-BaoShan</app.housing.baoshan.name>
+				<app.housing.liaocheng.name>HousingFund-LiaoCheng</app.housing.liaocheng.name>
 			</properties>
 		</profile>
 	</profiles>

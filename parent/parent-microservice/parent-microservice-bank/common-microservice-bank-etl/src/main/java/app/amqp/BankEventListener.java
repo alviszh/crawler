@@ -19,7 +19,6 @@ public class BankEventListener {
 	private TracerLog tracer;
 	@Autowired
 	private BankReportService bankReportService;
-	
 	@StreamListener(Sink.INPUT)
 	public void messageSink(TaskBank taskBank) {
 		System.out.println("银行-ETL-----接收到消息队列的信息："+taskBank.toString());
