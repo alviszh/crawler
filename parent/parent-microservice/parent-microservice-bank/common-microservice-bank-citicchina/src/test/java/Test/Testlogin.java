@@ -71,14 +71,22 @@ public class Testlogin {
 		username.sendKeys("6217680704617328");
 		Thread.sleep(1000);
 //		InputTab();
-		VK.Tab();
-		
-		
+//		VK.Tab();
 //		WebElement password1 = driver.findElement(By.id("logonPwdId"));
-//		password1.sendKeys("yl405232");
+//		System.out.println(password1);
+//		password1.click();
+//		VK.Tab();
 		String password = "yl4052320";
 //		VirtualKeyBoard.KeyPressEx(password,500);
+		
+//		WebElement password1 =driver.findElement(By.id("logonPwdId"));
+		driver.findElement(By.id("ocxEdit")).sendKeys(Keys.ENTER); 
+//		password1.click();
+//		driver.findElement(By.id("logonPwdId_soft")).sendKeys(Keys.ENTER); 
+//		driver.findElement(By.id("logonPwdId_soft_input")).sendKeys(Keys.ENTER); 
 		VK.KeyPress(password);
+		
+		
 
 		driver.findElement(By.id("logonButton")).click();
 		Thread.sleep(1000);

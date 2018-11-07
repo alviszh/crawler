@@ -915,11 +915,17 @@
 			</properties>
 		</profile>
 		<profile>
-			<!-- 生产环境 -->
-			<id>mariadb5.5.56</id>
+			<id>preview1.1.2</id>
 			<properties>
-				<app.housingcrawlertask.active>mariadb5.5.56</app.housingcrawlertask.active>
+				<app.housingcrawlertask.active>preview1.1.2</app.housingcrawlertask.active>
 				<app.housingcrawlertask.name>HousingFund-Task</app.housingcrawlertask.name>
+				<app.housing.etl.name>HousingFund-etl</app.housing.etl.name>
+				<app.housing.jinan.name>HousingFund-JiNan</app.housing.jinan.name>
+				<app.housing.bengbu.name>HousingFund-BengBu</app.housing.bengbu.name>
+				<app.housing.enshi.name>HousingFund-EnShi</app.housing.enshi.name>
+				<app.housing.wenshan.name>HousingFund-WenShan</app.housing.wenshan.name>
+				<app.housing.baoshan.name>HousingFund-BaoShan</app.housing.baoshan.name>
+				<app.housing.liaocheng.name>HousingFund-LiaoCheng</app.housing.liaocheng.name>
 			</properties>
 		</profile>
 	</profiles>

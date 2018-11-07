@@ -1,4 +1,4 @@
-truncate table city; 
+truncate table city_item_code; 
 
 INSERT INTO city_item_code (id,createtime,city,number,province) VALUES ('1', '2018-10-18 03:57:03.318804', '北京', '010', '北京');
 INSERT INTO city_item_code (id,createtime,city,number,province) VALUES ('2', '2018-10-18 03:57:03.32021', '天津', '022', '天津');

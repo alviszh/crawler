@@ -1,4 +1,4 @@
-package app.entity.crawler;
+package app.entity.system;
 
 import java.io.Serializable;
 

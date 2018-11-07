@@ -167,7 +167,7 @@ public class NewsRestController {
 		}
 		Timestamp time = Timestamp.valueOf(LocalDateTime.now().plusMinutes(-1));
 
-		List<SearchTask> list = searchTaskRepository.findTopNumByPhaseAndUpdatetime("1", time);
+		List<SearchTask> list = searchTaskRepository.findByPhaseAndUpdateTimeOrderByIdDescPrioritynumDesc("1", time);
 		List<SearchTask> list2 = new ArrayList<>();
 		for (SearchTask searchTask : list) {
 			searchTask.setPhase("404");

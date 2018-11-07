@@ -233,9 +233,9 @@ public class LognAndGetYunNan {
 			BasicUser basicUser = taskMobile.getBasicUser();
 			List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
 			String url = "http://yn.189.cn/public/custValid.jsp?_FUNC_ID_=WB_PAGE_PRODPASSWDQRY" + "&NAME="
-					+ URLEncoder.encode(basicUser.getName().trim()) + "&CUSTCARDNO=" + basicUser.getIdnum().trim()
+					+ URLEncoder.encode(basicUser.getName().trim(),"utf8") + "&CUSTCARDNO=" + basicUser.getIdnum().trim()
 					+ "&PROD_PASS=" + messageLogin.getPassword().trim() + "&MOBILE_CODE="
-					+ messageLogin.getSms_code().trim() + "&NAME=" + URLEncoder.encode(basicUser.getName().trim())
+					+ messageLogin.getSms_code().trim() + "&NAME=" + URLEncoder.encode(basicUser.getName().trim(),"utf8")
 					+ "&CUSTCARDNO=" + basicUser.getIdnum().trim();
 			Page page = TeleComCommonUnit.getHtml(url, webClient);
 			// <rsFlag>1</rsFlag>

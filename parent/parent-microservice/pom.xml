@@ -228,9 +228,9 @@
 			</properties>
 		</profile>
 		<profile> 			<!-- 生产环境 -->
-			<id>mariadb5.5.56</id>
+			<id>preview1.1.2</id>
 			<properties>
-				<app.active>mariadb5.5.56</app.active>
+				<app.active>preview1.1.2</app.active>
 				<app.eureka.name>eurekaserver</app.eureka.name>
 				<app.sleuth.name>zipkinserver</app.sleuth.name>
 				<app.zipkines.name>zipkinserver</app.zipkines.name>
