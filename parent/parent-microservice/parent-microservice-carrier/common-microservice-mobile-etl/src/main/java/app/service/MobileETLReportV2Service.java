@@ -101,7 +101,7 @@ public class MobileETLReportV2Service {
 		if(StringUtils.isNotBlank(requestParam.getTaskid()) && StringUtils.isBlank(requestParam.getMobileNum())){
 			TaskMobile taskMobile = taskMobileRepository.findByTaskid(requestParam.getTaskid());
 			if(null != taskMobile){				
-				if (null==taskMobile.getFinished() || null==taskMobile.getDescription()) {
+				if (null==taskMobile.getFinished() || null==taskMobile.getReportTime()) {
 					webDataReport.setParam(requestParam);
 //					webDataReport.setMobileUserInfos(getUserInfos(taskMobile));
 					webDataReport.setMessage(MobileEtlEnum.MOBILE_ETL_CRAWLER_ERROR.getMessage());
@@ -131,9 +131,8 @@ public class MobileETLReportV2Service {
 		if(StringUtils.isNotBlank(requestParam.getTaskid()) && StringUtils.isNotBlank(requestParam.getMobileNum())){
 			TaskMobile taskMobile = taskMobileRepository.findByTaskid(requestParam.getTaskid());
 			if(null != taskMobile){
-				if(taskMobile.getPhonenum().equals(requestParam.getMobileNum())){
-					
-					if (null==taskMobile.getFinished() || null==taskMobile.getDescription()) {
+				if(taskMobile.getPhonenum().equals(requestParam.getMobileNum())){					
+					if (null==taskMobile.getFinished() || null==taskMobile.getReportTime()) {
 						webDataReport.setParam(requestParam);
 //						webDataReport.setMobileUserInfos(getUserInfos(taskMobile));
 						webDataReport.setMessage(MobileEtlEnum.MOBILE_ETL_CRAWLER_ERROR.getMessage());
@@ -173,7 +172,7 @@ public class MobileETLReportV2Service {
 	public WebDataReportV2 getData(TaskMobile taskMobile,WebDataReportV2 webDataReport,RequestParam requestParam){
 		
 		if(null != taskMobile){
-			if(null == taskMobile.getEtltime()){
+			if(null == taskMobile.getReportTime()){
 				webDataReport.setParam(requestParam);
 				webDataReport.setMessage(MobileEtlEnum.MOBILE_ETL_NOT_EXCUTE.getMessage());
 				webDataReport.setErrorCode(MobileEtlEnum.MOBILE_ETL_NOT_EXCUTE.getErrorCode());

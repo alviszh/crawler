@@ -107,7 +107,6 @@
 				<app.active>test</app.active>
 				<app.shixin.name>honesty-shixin</app.shixin.name>
 				<app.honesty.shixin.task.name>honesty-shixin-task</app.honesty.shixin.task.name>
-
 				<app.search.name>search</app.search.name>
 				<app.search.task.name>search-task</app.search.task.name>
 				<app.caipanwenshu.name>honesty-caipanwenshu</app.caipanwenshu.name>

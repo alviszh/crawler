@@ -12,20 +12,8 @@ eureka:
   client: 
     serviceUrl: 
       defaultZone: http://eurekaserver:8888/eureka/
-
 #数据源：
-spring:
-#  cloud:
-#    stream:
-#      bindings: 
-#        carrier_channel:
-#          binder: carrier_binder
-#      binders: 
-#        carrier_binder: 
-#          type: kafka 
-#          environment:
-#            spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
-#            spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes} 
+spring: 
   datasource:
     hikari: 
       minimum-idle: ${datasource.jdbc.minIdle}
@@ -42,8 +30,7 @@ spring:
         naming: 
           implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl 
     properties:  
-      hibernate:   
-        dialect: org.hibernate.dialect.PostgreSQLDialect 
+      hibernate:  
+        dialect: ${datasource.jdbc.dialect}
         temp: 
           use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法为实现
-
