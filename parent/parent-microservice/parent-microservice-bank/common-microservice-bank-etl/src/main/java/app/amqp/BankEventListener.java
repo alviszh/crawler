@@ -27,6 +27,7 @@ public class BankEventListener {
 		
 		if (taskBank.getFinished() !=null && taskBank.getFinished() && taskBank.getPhase().equals(BankStatusCode.BANK_CRAWLER_SUCCESS.getPhase())
                 && taskBank.getPhase_status().equals(BankStatusCode.BANK_CRAWLER_SUCCESS.getPhasestatus())) {
+			System.out.println("Bank数据采集完成触发存储过程");
 			tracer.qryKeyValue("Bank数据采集完成触发存储过程",taskBank.getTaskid());
 			bankReportService.bankReport(taskBank.getTaskid());
             tracer.qryKeyValue("Bank数据采集完成触发存储过程end",taskBank.getTaskid());

@@ -265,6 +265,7 @@ public class BankReportService {
 
 	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED)
 	public void bankReport(String taskid) {
+		System.out.println("ETL bankReport进来了......");
 		tracer.addTag("ETL bankReport", taskid);
 		TaskBank taskBank = taskBankRepository.findByTaskid(taskid);
 		if (taskBank != null && null != taskBank.getBankType() && null != taskBank.getCardType()) {
@@ -274,10 +275,8 @@ public class BankReportService {
 				etlStatus = bankReportRepository.pro_czb_debit_etl(taskid);
 			} else if (taskBank.getBankType().equals("恒丰银行")) {
 				etlStatus = bankReportRepository.pro_hfb_debit_etl(taskid);
-
 			} else if (taskBank.getBankType().equals("渤海银行")) {
 				etlStatus = bankReportRepository.pro_bohc_debit_etl(taskid);
-
 			} else if (taskBank.getBankType().equals("广发银行")) {
 				if(taskBank.getCardType().equals("CREDIT_CARD")){
 					etlStatus = bankReportRepository.pro_cgb_credit_etl(taskid);
