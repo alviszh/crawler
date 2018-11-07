@@ -52,7 +52,7 @@
 						th:src="${obj.icon}"
 						data-holder-rendered="true" style="width: 60px; height: 60px;"></td>
 					<td style="vertical-align: middle" th:text="${obj.appName}"></td>
-					<td style="vertical-align: middle" th:text="${#strings.substring(obj.createtime,0,10)}"></td>
+					<td style="vertical-align: middle" th:text="${#dates.format(obj.createtime,'yyyy-MM-dd')}"></td>
 					<td style="vertical-align: middle" th:text="${obj.state.name}"></td>
 					<td style="vertical-align: middle">
 						<a  th:href="@{/developer/app/sandbox/}+${obj.appId}+'/prod'"><button type="button" class="btn btn-danger btn-sm">生产环境</button></a>
