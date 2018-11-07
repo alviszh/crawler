@@ -53,7 +53,6 @@ public class MobileSendService{
                     taskMobile.getTaskid(),taskMobile.getPhase() , taskMobile.getDescription(), timeStamp);
             tracer.addTag("发送状态",gson.toJson(messageResult));
             System.out.println("发送状态:" + taskMobile.getDescription());
-//            pbccrcClientService.sendMessageResultJiemo(gson.toJson(messageResult));
         }
     }
 }
