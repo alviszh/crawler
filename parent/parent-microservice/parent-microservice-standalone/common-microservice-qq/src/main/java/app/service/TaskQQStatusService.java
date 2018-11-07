@@ -43,6 +43,7 @@ public class TaskQQStatusService {
 		if(null == taskQQ){
 			throw new RuntimeException("Entity bean TaskBank is null ! taskid>>"+pbccrcJsonBean.getMapping_id()+"<<");
 		}
+		taskQQ.setServicename("QQ");
 		taskQQ.setDescription(QQStatusCode.QQ_LOGIN_LOADING.getDescription());
 		taskQQ.setPhase(QQStatusCode.QQ_LOGIN_LOADING.getPhase());
 		taskQQ.setPhasestatus(QQStatusCode.QQ_LOGIN_LOADING.getPhasestatus());
