@@ -1,4 +1,4 @@
-﻿CREATE OR REPLACE FUNCTION "public"."pro_bohc_debit_etl"("taskid" text)
+CREATE OR REPLACE FUNCTION "public"."pro_bohc_debit_etl"("taskid" text)
   RETURNS "pg_catalog"."text" AS $BODY$BEGIN  
   
   DECLARE
@@ -101,5 +101,5 @@ END;
 $BODY$
   LANGUAGE 'plpgsql' VOLATILE COST 100
 ;
-
+;;
 --ALTER FUNCTION "public"."pro_bohc_debit_etl"("taskid" text) OWNER TO "lvyuxin";
