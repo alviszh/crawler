@@ -1,6 +1,7 @@
+package app;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
@@ -9,10 +10,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @author zmy
  * @date 2018年11月2日
  */
+
 @EnableEurekaClient
-@SpringBootApplication
-@EnableCircuitBreaker
 @EnableFeignClients
+@SpringBootApplication
 public class CarrierPushServerApplication {
 
 	public static void main(String[] args) {
