@@ -644,8 +644,9 @@
 			</properties>
 		</profile>
 		<profile>
+
 			<!-- 生产环境 -->
-			<id>preview1.1.2</id>
+			<id>mariadb5.5.56</id>
 			<properties>
 				<app.mobilecrawlertask.active>mariadb5.5.56</app.mobilecrawlertask.active>
 				<app.insuranceTask.name>InsuranceTask</app.insuranceTask.name>

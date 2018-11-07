@@ -31,7 +31,7 @@
  */
 function commonSelf_pageStyle(onePageShowNum,showPageNum,objectNum,totalPageNum,pageID,callBack){
 
-    var page='',mod='',lis='';
+    var page='',mod='',lis='',options='';
 
 
     if(!/^\d*/.test(onePageShowNum) || !/^\d*/.test(showPageNum)){
@@ -51,12 +51,13 @@ function commonSelf_pageStyle(onePageShowNum,showPageNum,objectNum,totalPageNum,
     }
 
     if(totalPageNum=="isNull"){
+
         mod=parseInt(objectNum)%parseInt(onePageShowNum);
 
         if(mod==0){
             totalPageNum=parseInt(objectNum)/parseInt(onePageShowNum);
         }else{
-            totalPageNum=Math.ceil(parseInt(objectNum)/parseInt(onePageShowNum));
+            totalPageNum=parseInt(parseInt(objectNum)/parseInt(onePageShowNum))+1;
         }
 
     }
@@ -80,6 +81,12 @@ function commonSelf_pageStyle(onePageShowNum,showPageNum,objectNum,totalPageNum,
 
     }
 
+
+    for(var i=0;i<totalPageNum;i++){
+        options +="<option value='page_"+(i+1)+"'>"+(i+1)+"</option>";
+    }
+
+
     page="<nav>"
         +"<ul data-name='showPage_1' class='pagination'>"
         +"<li id='firstPage' style='cursor:pointer'><a>首页</a></li>"
@@ -90,6 +97,14 @@ function commonSelf_pageStyle(onePageShowNum,showPageNum,objectNum,totalPageNum,
         +"</ul>"
         +"<ul data-name='showPage_2' class='pagination' style='padding-left:5px'>"
         +"<li class='active'><a href='javascript:void(0)'><span id='currentPage'></span>/<span id='totalPagNum'>"+totalPageNum+"</span>页</a></li>"
+        +"</ul>"
+        +"<ul data-name='showPage_3' class='pagination'>"
+        +"<div class='col-md-9'>"
+        +"<select id='currentPageSelect' class='form-control' style='margin-top:33%;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5p'>"
+        +options
+        +"</select>"
+        +"</div>"
+        +"<div class='col-md-1' style='margin-top:20%;font-size:16px;padding-left:0px;color:#337ab7;font-weight:bold'>页</div>"
         +"</ul>"
         +"</nav>";
 

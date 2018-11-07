@@ -13,7 +13,6 @@ import com.microservice.dao.entity.IdEntity;
 @Entity
 @Table(name="mobile_call_record_statistics",indexes = {@Index(name = "index_mobile_call_record_statistics_taskid", columnList = "taskId")})
 
-
 /*
  * 手机通话记录统计信息
  */
