@@ -64,6 +64,7 @@ public class HousingWenShanFutureService extends HousingBasicService implements 
 			save(taskHousing);
 			return taskHousing;
 		}
+		
 		if(htmlpage!=null){
 			tracer.addTag("登陆html", htmlpage.getWebResponse().getContentAsString());
 			if(htmlpage.getWebResponse().getContentAsString().contains("查询业务")){
@@ -77,7 +78,7 @@ public class HousingWenShanFutureService extends HousingBasicService implements 
 				taskHousing.setPassword(messageLoginForHousing.getPassword().trim());
 				taskHousing.setCookies(cookies);
 				save(taskHousing);
-				
+				webClient.close();
 				tracer.addTag("登陆成功", messageLoginForHousing.getTask_id());
 				
 //				HtmlElement button = htmlpage.getFirstByXPath("//*[@id='wrapper']/nav/div[1]/ul/li[2]/a");
@@ -96,6 +97,7 @@ public class HousingWenShanFutureService extends HousingBasicService implements 
 				taskHousing.setDescription(HousingfundStatusCodeEnum.HOUSING_LOGIN_ERROR_FOURE.getDescription());
 				taskHousing.setError_message(HousingfundStatusCodeEnum.HOUSING_CRAWLER_ID_VERIFIC_ERROR.getDescription());
 				save(taskHousing);
+				webClient.close();
 				tracer.addTag("登陆失败", messageLoginForHousing.getTask_id());
 				return taskHousing;
 			}
@@ -106,6 +108,7 @@ public class HousingWenShanFutureService extends HousingBasicService implements 
 			taskHousing.setPassword(messageLoginForHousing.getPassword().trim());
 //			tracer.addTag("e", "baotougangjijin");
 			tracer.addTag("登陆html", null);
+			webClient.close();
 			return taskHousing;
 		}
 		
@@ -134,6 +137,7 @@ public class HousingWenShanFutureService extends HousingBasicService implements 
 			tracer.addTag("爬取异常", e.getMessage());
 			save(taskHousing);
 		}
+		webClient.close();
 		return taskHousing;
 	}
 	@Override

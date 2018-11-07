@@ -652,6 +652,8 @@
 				<app.insuranceTask.name>Insurance-Task</app.insuranceTask.name>
 				<app.etl.name>Insurance-ETL</app.etl.name>
 				<app.bengbu.name>Insurance-BengBu</app.bengbu.name>
+				<app.wuzhou.name>Insurance-WuZhou</app.wuzhou.name>
+				<app.guilin.name>Insurance-GuiLin</app.guilin.name>
 			</properties>
 		</profile>
 	</profiles>

@@ -58,7 +58,7 @@ public class QQServiceUnit extends QQunit{
 	
 	private WebDriver driver = null;
 //	@Value("${webdriver.ie.driver.path}")
-	static String driverPath="F:\\IEDriverServer_Win32\\chromedriver.exe";
+	static String driverPath="C:\\IEDriverServer_Win32\\chromedriver.exe";
 	static Boolean headless = false;
 	static String skey = "";
 	@Autowired

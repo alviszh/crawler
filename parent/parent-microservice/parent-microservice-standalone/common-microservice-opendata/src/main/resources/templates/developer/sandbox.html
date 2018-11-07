@@ -43,11 +43,11 @@
 					<tr th:each="obj : ${app.productlist}">
 						<td th:text="${obj.product.name}"></td>
 						<td th:text="${obj.productStatus.name}"></td>
-						<td th:text="${#strings.substring(obj.createtime,0,10)}" ></td>
+						<td th:text="${#dates.format(obj.createtime,'yyyy-MM-dd')}" ></td>
 						<td><button type="button" class="btn btn-primary"
 								data-toggle="modal" data-target=".bs-example-modal-lg"
 								data-whatever="@mdo" th:id = "showconfigure+${obj.id}"  th:data-appProductListId="${obj.id}">回调配置</button></td>
-						<td><a th:href="@{/developer/app/apitest/pbccrc}"><button type="button" class="btn btn-default">API测试</button></a></td>
+						<td><a th:href="@{/developer/app/apitest/}+${obj.product.flag}"><button type="button" class="btn btn-default">API测试</button></a></td>
 					</tr>
 				</tbody>
 			</table>
@@ -95,17 +95,17 @@
 			      <input type="text" class="form-control" id="task_notice_url"  name = "task_notice_url" placeholder="https://uatapitxboss.txtechnologies.com:9018/h5/auth">  
 			    </div>  
 			  </div>
-			  <button type="submit" class="btn btn-primary">测试</button> 
+			  <button type="button" class="btn btn-primary" onclick="requestnoticeurl('task_notice_url')">测试</button> 
 			</form>
 			<span id="helpBlock" class="help-block">(URL必须以http://或https://开头。在客户提交任务后发出的通知，以便服务器端可以把状态变为认证中)</span>
-			<div class="panel panel-success"> 
-				<div class="panel-heading"> 
-					<h3 class="panel-title">Success！ HTTP status code 201</h3> 
+			<div class="panel "  id = "div_task_notice_url">
+				<div class="panel-heading" style="display:none;" id = "divstate_task_notice_url"> 
+					<h3 class="panel-title" id = "state_task_notice_url"></h3> 
 				</div> 
 				<div class="panel-body">
 					<div class="form-group">
 			            <label for="message-text" class="control-label">Response Body:</label>
-			            <textarea class="form-control" id="message-text" rows="7" style=>
+			            <textarea class="form-control" id="Responsemessage_task_notice_url" rows="7" style=>
 <html>
   <body>
     <h1>503 Service Unavailable</h1>
@@ -126,17 +126,19 @@
 					</dl>
 			        <div class="form-group">
 			            <label for="message-text" class="control-label">Request Body:</label>
-			            <textarea class="form-control" id="message-text" rows="7" style=>
+			            <textarea class="form-control" id="Requestmessage_task_notice_url" rows="7" style=>
 {
-  "user_id": "1378877432",
-  "task_id": "e0af20b2-9183-4499-bd35-76f084a61ebe",
-  "email": "562582986@qq.com",
-  "timestamp": 1476243311084
+    "taskId": "1378877432",
+    "createTime": "e0af20b2-9183-4499-bd35-76f084a61ebe",
+    "key": "562582986@qq.com",
+    "statusCode": 1476243311084,
+    "message": "message"
 }
 			            </textarea>
 			        </div>
 				</div> 
 			</div>
+			<!-- 111111111111111111111111 -->
 			<!--  -->
 			<form class="form-inline">
 			  <div class="form-group"  style="width:90%">
@@ -146,17 +148,17 @@
 			      <input type="text" class="form-control" id="login_notice_url" name = "login_notice_url"  placeholder="https://uatapitxboss.txtechnologies.com:9018/h5/auth">  
 			    </div>  
 			  </div>
-			  <button type="submit" class="btn btn-primary">测试</button>
+			  <button type="button" class="btn btn-primary" onclick="requestnoticeurl('login_notice_url')">测试</button>
 			</form>
 			<span id="helpBlock" class="help-block">(URL必须以http://或https://开头。登录完成后通知录成功或者失败（失败会有失败原因）。对应文档中描述的任务通知或任务创建通知)</span>
-<div class="panel panel-danger"> 
-				<div class="panel-heading"> 
-					<h3 class="panel-title">ERROR！ HTTP status code 503</h3> 
+			<div class="panel "  id = "div_login_notice_url">
+				<div class="panel-heading" style="display:none;" id = "divstate_login_notice_url"> 
+					<h3 class="panel-title" id = "state_login_notice_url"></h3> 
 				</div> 
 				<div class="panel-body">
 					<div class="form-group">
 			            <label for="message-text" class="control-label">Response Body:</label>
-			            <textarea class="form-control" id="message-text" rows="7" style=>
+			            <textarea class="form-control" id="Responsemessage_login_notice_url" rows="7" style=>
 <html>
   <body>
     <h1>503 Service Unavailable</h1>
@@ -169,24 +171,27 @@
 			        <dl class="dl-horizontal">
 					  <dt>Connection:</dt><dd>keep-alive</dd>
 					  <dt>Content-Type:</dt><dd>application/json;charset=utf-8</dd>
-					  <dt>X-Xidian-Event:</dt><dd>task.submit</dd>
-					  <dt>X-Xidian-Type:</dt><dd>email</dd>
+					  <dt>X-Xidian-Profile:</dt><dd>test</dd>
+					  <dt>X-Xidian-Event:</dt><dd>task</dd>
+					  <dt>X-Xidian-Type:</dt><dd>carrier</dd>
 					  <dt>X-Xidian-Signature:</dt><dd>IKBAfrRQnb7CMpsbQnFJVgN1LGzPgXdzYjU2uUGqRxw=</dd>
 					  <dt>X-Xidian-Uid:</dt><dd>52590a85-bdfd-4cf7-9f62-6ef846871547</dd>
 					</dl>
 			        <div class="form-group">
 			            <label for="message-text" class="control-label">Request Body:</label>
-			            <textarea class="form-control" id="message-text" rows="7" style=>
+			            <textarea class="form-control" id="Requestmessage_login_notice_url" rows="7" style=>
 {
-  "user_id": "1378877432",
-  "task_id": "e0af20b2-9183-4499-bd35-76f084a61ebe",
-  "email": "562582986@qq.com",
-  "timestamp": 1476243311084
+    "taskId": "1378877432",
+    "createTime": "e0af20b2-9183-4499-bd35-76f084a61ebe",
+    "key": "562582986@qq.com",
+    "statusCode": 1476243311084,
+    "message": "message"
 }
 			            </textarea>
 			        </div>
 				</div> 
 			</div>
+			<!-- 22222222222222222222222 -->
 			<!--  -->
 			<form class="form-inline">
 			  <div class="form-group"  style="width:90%">
@@ -196,9 +201,49 @@
 			      <input type="text" class="form-control" id="crawler_notice_url" name = "crawler_notice_url" placeholder="https://uatapitxboss.txtechnologies.com:9018/h5/auth">  
 			    </div>  
 			  </div>
-			  <button type="submit" class="btn btn-primary">测试</button>
+			  <button type="button" class="btn btn-primary" onclick="requestnoticeurl('crawler_notice_url')">测试</button>
 			</form>
 			<span id="helpBlock" class="help-block">(URL必须以http://或https://开头。采集完成以后的通知，收到此通知，表示任务成功完成了)</span>
+			<div class="panel "  id = "div_crawler_notice_url">
+				<div class="panel-heading" style="display:none;" id = "divstate_crawler_notice_url"> 
+					<h3 class="panel-title" id = "state_crawler_notice_url"></h3> 
+				</div> 
+				<div class="panel-body">
+					<div class="form-group">
+			            <label for="message-text" class="control-label">Response Body:</label>
+			            <textarea class="form-control" id="Responsemessage_crawler_notice_url" rows="7" style=>
+<html>
+  <body>
+    <h1>503 Service Unavailable</h1>
+    No server is available to handle this request.
+  </body>
+</html>
+			            </textarea>
+			        </div>
+			        <label for="message-text" class="control-label">&nbsp;Request Headers:</label>
+			        <dl class="dl-horizontal">
+					  <dt>Connection:</dt><dd>keep-alive</dd>
+					  <dt>Content-Type:</dt><dd>application/json;charset=utf-8</dd>
+					  <dt>X-Xidian-Profile:</dt><dd>test</dd>
+					  <dt>X-Xidian-Event:</dt><dd>task</dd>
+					  <dt>X-Xidian-Type:</dt><dd>carrier</dd>
+					  <dt>X-Xidian-Signature:</dt><dd>IKBAfrRQnb7CMpsbQnFJVgN1LGzPgXdzYjU2uUGqRxw=</dd>
+					  <dt>X-Xidian-Uid:</dt><dd>52590a85-bdfd-4cf7-9f62-6ef846871547</dd>
+					</dl>
+			        <div class="form-group">
+			            <label for="message-text" class="control-label">Request Body:</label>
+			            <textarea class="form-control" id="Requestmessage_crawler_notice_url" rows="7" style=>
+{
+    "taskId": "1378877432",
+    "createTime": "e0af20b2-9183-4499-bd35-76f084a61ebe",
+    "key": "562582986@qq.com",
+    "statusCode": 1476243311084,
+    "message": "message"
+}
+			            </textarea>
+			        </div>
+				</div> 
+			</div>
 			
 			<form class="form-inline">
 			  <div class="form-group"  style="width:90%">
@@ -208,9 +253,50 @@
 			      <input type="text" class="form-control" id="report_notice_url" name = "report_notice_url" placeholder="https://uatapitxboss.txtechnologies.com:9018/h5/auth">  
 			    </div>  
 			  </div>
-			  <button type="submit" class="btn btn-primary">测试</button>
+			  <button type="button" class="btn btn-primary" onclick="requestnoticeurl('report_notice_url')">测试</button>
 			</form>
 			<span id="helpBlock" class="help-block">(URL必须以http://或https://开头),采集完成后，对客户的数据进行分析后的一个报告</span>
+<div class="panel "  id = "div_report_notice_url">
+				<div class="panel-heading" style="display:none;" id = "divstate_report_notice_url"> 
+					<h3 class="panel-title" id = "state_report_notice_url"></h3> 
+				</div> 
+				<div class="panel-body">
+					<div class="form-group">
+			            <label for="message-text" class="control-label">Response Body:</label>
+			            <textarea class="form-control" id="Responsemessage_report_notice_url" rows="7" style=>
+<html>
+  <body>
+    <h1>503 Service Unavailable</h1>
+    No server is available to handle this request.
+  </body>
+</html>
+			            </textarea>
+			        </div>
+			        <label for="message-text" class="control-label">&nbsp;Request Headers:</label>
+			        <dl class="dl-horizontal">
+					  <dt>Connection:</dt><dd>keep-alive</dd>
+					  <dt>Content-Type:</dt><dd>application/json;charset=utf-8</dd>
+					  <dt>X-Xidian-Profile:</dt><dd>test</dd>
+					  <dt>X-Xidian-Event:</dt><dd>task</dd>
+					  <dt>X-Xidian-Type:</dt><dd>carrier</dd>
+					  <dt>X-Xidian-Signature:</dt><dd>IKBAfrRQnb7CMpsbQnFJVgN1LGzPgXdzYjU2uUGqRxw=</dd>
+					  <dt>X-Xidian-Uid:</dt><dd>52590a85-bdfd-4cf7-9f62-6ef846871547</dd>
+					</dl>
+			        <div class="form-group">
+			            <label for="message-text" class="control-label">Request Body:</label>
+			            <textarea class="form-control" id="Requestmessage_report_notice_url" rows="7" style=>
+{
+    "taskId": "1378877432",
+    "createTime": "e0af20b2-9183-4499-bd35-76f084a61ebe",
+    "key": "562582986@qq.com",
+    "statusCode": 1476243311084,
+    "message": "message"
+}
+			            </textarea>
+			        </div>
+				</div> 
+			</div>
+
 
 			<blockquote>
 			  <p>回调参数配置</p> 
