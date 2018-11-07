@@ -650,6 +650,8 @@
 			<properties>
 				<app.mobilecrawlertask.active>mariadb5.5.56</app.mobilecrawlertask.active>
 				<app.insuranceTask.name>InsuranceTask</app.insuranceTask.name>
+				<app.wuzhou.name>Insurance-WuZhou</app.wuzhou.name>
+				<app.guilin.name>Insurance-GuiLin</app.guilin.name>
 			</properties>
 		</profile>
 	</profiles>
