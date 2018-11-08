@@ -1,16 +1,12 @@
 package org.common.microservice.eureka.china.unicom;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -20,8 +16,6 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -29,37 +23,21 @@ import org.jsoup.Connection;
 import org.jsoup.Connection.Method;
 import org.jsoup.Connection.Response;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.springframework.util.StringUtils;
-
 import com.crawler.microservice.unit.CommonUnit;
-import com.crawler.mobile.json.CookieJson;
-import com.crawler.mobile.json.MessageLogin;
-import com.crawler.mobile.json.StatusCodeEnum;
-import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.HttpMethod;
 import com.gargoylesoftware.htmlunit.Page;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebRequest;
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
-import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 import com.gargoylesoftware.htmlunit.util.Cookie;
 import com.gargoylesoftware.htmlunit.util.NameValuePair;
 import com.google.gson.Gson;
-import com.microservice.dao.entity.crawler.mobile.TaskMobile;
 import com.module.htmlunit.WebCrawler;
 
-import app.bean.WebParamUnicom;
 import app.bean2.SucessResultBean;
 
 public class liantongtest {
 
-	private static Set<Cookie> cookies;
 	private static Workbook wb;
 	private static Sheet sheet;
 	private static Row row;
@@ -629,17 +607,6 @@ public class liantongtest {
 			return null;
 		}
 
-	}
-
-	private static WebClient addCookies(WebClient webClient, Set<Cookie> cookies) {
-		for (Cookie cookie : cookies) {
-			if (StringUtils.isEmpty(cookie.getName())) {
-				System.out.println("详情：" + cookie.getName() + ":" + cookie.getValue());
-				continue;
-			}
-			webClient.getCookieManager().addCookie(cookie);
-		}
-		return webClient;
 	}
 
 	public static Page getHtml3(String url, WebClient webClient, int i) throws Exception, IOException {

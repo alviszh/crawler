@@ -1,6 +1,5 @@
 package org.common.microservice.eureka.china.unicom;
 
-import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -8,8 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,14 +16,6 @@ import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.Connection.Method;
 import org.jsoup.Connection.Response;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 
 import com.crawler.microservice.unit.CommonUnit;
 import com.gargoylesoftware.htmlunit.HttpMethod;
@@ -39,13 +28,8 @@ import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
 import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 import com.gargoylesoftware.htmlunit.util.Cookie;
 import com.gargoylesoftware.htmlunit.util.NameValuePair;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.microservice.dao.entity.crawler.unicom.UnicomNoteResult;
 import com.module.htmlunit.WebCrawler;
 
-import app.bean.UnicomRoot;
-import app.bean.UnicomUserResultRoot;
 import app.bean2.SucessResultBean;
 
 public class liantongtestByHtmlunit {
