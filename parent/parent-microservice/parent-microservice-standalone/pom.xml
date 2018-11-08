@@ -178,6 +178,7 @@
 				<app.active>preview1.1.2</app.active>
 				<app.standalonetask.name>standalone-task</app.standalonetask.name>
 				<app.monitor.platform.name>monitor-platform</app.monitor.platform.name>
+				<app.ip.api>api-ip</app.ip.api>
 			</properties>
 		</profile>
 	</profiles>

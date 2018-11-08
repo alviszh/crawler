@@ -654,6 +654,8 @@
 				<app.bengbu.name>Insurance-BengBu</app.bengbu.name>
 				<app.wuzhou.name>Insurance-WuZhou</app.wuzhou.name>
 				<app.guilin.name>Insurance-GuiLin</app.guilin.name>
+				<app.chongqing.name>Insurance-Chongqing</app.chongqing.name>
+				<app.huzhou.name>Insurance-HuZhou</app.huzhou.name>
 			</properties>
 		</profile>
 	</profiles>
