@@ -1,7 +1,7 @@
 spring: 
   application:
     name: '@app.search.task.name@'
-#  profiles:
+#  profiles: 
 #    active: '@app.active@'
   cloud:
     config:

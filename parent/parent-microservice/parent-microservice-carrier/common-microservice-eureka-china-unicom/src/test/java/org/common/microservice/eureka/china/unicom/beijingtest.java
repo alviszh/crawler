@@ -3,9 +3,7 @@ package org.common.microservice.eureka.china.unicom;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
@@ -66,6 +64,7 @@ public class beijingtest {
 
 			Set<Cookie> cookies = webClient.getCookieManager().getCookies();
 
+			System.out.println(cookies);
 //			Map<String, String> map = new HashMap<>();
 //			for (Cookie cookie : cookies) {
 //				System.out.println(cookie.toString());
