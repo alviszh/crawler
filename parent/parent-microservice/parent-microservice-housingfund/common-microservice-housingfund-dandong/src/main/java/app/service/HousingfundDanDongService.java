@@ -279,11 +279,13 @@ public class HousingfundDanDongService extends HousingBasicService implements IC
 	
 	public String getPay(WebClient webClient)throws Exception{
 		String date = new Date().toLocaleString().substring(0,10);
-		String url1="https://223.100.185.98/wt-web/person/jcmx?"
-				+ "yhkh=2000-01-01,"
-				+ date
-				+ ",%E5%BD%93%E5%89%8D%E5%B9%B4%E5%BA%A6";
-		Page page = LoginAndGetCommon.getHtml(url1, webClient);
+		String url = "https://223.100.185.98/wt-web/person/jcmx?"
+		+ "yhkh=2000-01-01,2100-01-01,%E5%BD%93%E5%89%8D%E5%B9%B4%E5%BA%A6";
+//		String url1="https://223.100.185.98/wt-web/person/jcmx?"
+//				+ "yhkh=2000-01-01,"
+//				+ date
+//				+ ",%E5%BD%93%E5%89%8D%E5%B9%B4%E5%BA%A6";
+		Page page = LoginAndGetCommon.getHtml(url, webClient);
 		InputStream contentAsStream5 = page.getWebResponse().getContentAsStream();
 		String path5 = getImageCustomPath(driverPath);
 		save(contentAsStream5, path5);
