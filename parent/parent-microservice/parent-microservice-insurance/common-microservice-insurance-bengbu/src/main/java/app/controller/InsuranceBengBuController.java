@@ -18,7 +18,7 @@ import app.service.aop.InsuranceLogin;
 @Configuration         
 @RequestMapping("/insurance/bengbu")  
 public class InsuranceBengBuController {
-        
+           
 //	@Autowired
 //	private InsuranceBengBuCommonService insuranceBengBuCommonService;    
 	@Autowired
