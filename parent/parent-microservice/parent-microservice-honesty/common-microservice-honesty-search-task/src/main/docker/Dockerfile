@@ -18,4 +18,5 @@ ADD entry_point_prod_mariadb5.5.sh /run.sh
 RUN chmod a+x /run.sh
 RUN sh -c ' touch /app.jar'
 ENV JAVA_OPTS=""
-ENTRYPOINT ["/run.sh"]
+#ENTRYPOINT ["/run.sh"]
+ENTRYPOINT ["sh","-c","/run.sh $SPRING_PROFILES_ACTIVE"]
