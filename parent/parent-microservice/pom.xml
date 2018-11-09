@@ -111,8 +111,8 @@
 	    <module>common-microservice-oauth2server</module>
 		<module>common-microservice-router</module>
 		<module>parent-microservice-carrier</module>
-<!-- 		<module>parent-microservice-telecom</module>
-	    <module>parent-microservice-car-insurance</module>
+		<module>parent-microservice-telecom</module>
+<!-- 	    <module>parent-microservice-car-insurance</module>
 		<module>parent-microservice-taxation</module>
 		<module>parent-microservice-honesty</module>
 		<module>parent-microservice-standalone</module>
