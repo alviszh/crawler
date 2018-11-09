@@ -41,6 +41,8 @@ public class SearchCrawlerService {
 	@Autowired
 	private SysLog sysLog;
 	
+	
+	
 	@Autowired
 	private AwsApiClient awsApiClient;
 	
@@ -61,10 +63,17 @@ public class SearchCrawlerService {
 			searchTask.setPhase("1");
 			searchTask.setRenum(searchTask.getRenum() + 1);
 			if (istrueip) {
-				HttpProxyBean httpProxyBean = awsApiClient.getProxy();
-				System.out.println(httpProxyBean.getIp()+"=========="+httpProxyBean.getPort());
-				searchTask.setIpaddress(httpProxyBean.getIp());
-				searchTask.setIpport(httpProxyBean.getPort());
+				try{
+					HttpProxyBean httpProxyBean = awsApiClient.getProxy();
+					System.out.println(httpProxyBean.getIp()+"=========="+httpProxyBean.getPort());
+					searchTask.setIpaddress(httpProxyBean.getIp());
+					searchTask.setIpport(httpProxyBean.getPort());
+				}catch(Exception e){
+					sysLog.output("istrueip searchTask error", e.getMessage());
+				}
+				
+				
+				
 				searchTask = searchTaskRepository.save(searchTask);
 				sysLog.output("istrueip searchTask", searchTask.toString());
 			}
