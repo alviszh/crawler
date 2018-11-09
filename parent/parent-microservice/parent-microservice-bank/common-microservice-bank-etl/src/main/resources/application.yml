@@ -60,4 +60,3 @@ spring:
         temp: 
           use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法为实现          
           
-
