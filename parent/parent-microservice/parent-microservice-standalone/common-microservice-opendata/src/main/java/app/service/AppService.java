@@ -81,8 +81,8 @@ public class AppService {
 	@Value("${xdsj.auth.authAccessTokenUrl}")
 	private String authAccessTokenUrl;
 	
-	@Value("${opendata.appproductlist.taskurlparams}")
-	private String taskurlparams;
+	/*@Value("${opendata.appproductlist.taskurlparams}")
+	private String taskurlparams;*/
 	
 	@Autowired
 	private TracerLog tracer;

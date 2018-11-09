@@ -140,5 +140,14 @@
 				<app.caipanwenshu.task.name>honesty-caipanwenshu-task</app.caipanwenshu.task.name>
 			</properties>
 		</profile>
+		
+		<profile>
+			<!-- 生产环境 -->
+		<id>v2.4.3</id>
+			<properties>
+				<app.active>v2.4.3</app.active>
+				<app.search.task.name>docket-es-jdbc</app.search.task.name>
+			</properties>
+		</profile>
 	</profiles>
 </project>

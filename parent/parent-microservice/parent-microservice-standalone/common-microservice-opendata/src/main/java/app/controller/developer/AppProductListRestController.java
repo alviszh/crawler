@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/developer/app")
+@RequestMapping(value = "/api/developer/app")
 public class AppProductListRestController {
 
     @Autowired
     private AppProductListService appProductListService;
 
-    @RequestMapping(value = "/appproduct", method = RequestMethod.GET)
-    public AppProductList queryAppProductList(String prodClientId, String flag, String appmode) {
-        AppProductList appProductList = appProductListService.queryAppProductList(prodClientId, flag, appmode);
+    @RequestMapping(value = "/findAppProductList", method = RequestMethod.GET)
+    public AppProductList findAppProductList(String prodClientId, String flag, String appmode) {
+        AppProductList appProductList = appProductListService.findAppProductList(prodClientId, flag, appmode);
         System.out.println(""+appProductList);
         return appProductList;
     }

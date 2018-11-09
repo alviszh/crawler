@@ -41,7 +41,7 @@ public class ExecutorGetHtmlService {
     @Retryable(value = Exception.class, maxAttempts = 3)
 	public Page getByHtmlUnit(String url,HttpProxyBean httpProxyBean) throws Exception {
 
-    	WebClient webClient = new WebClient(BrowserVersion.CHROME);
+		WebClient webClient = new WebClient(BrowserVersion.CHROME);
 		webClient.setRefreshHandler(new ThreadedRefreshHandler());
 		webClient.getOptions().setCssEnabled(false);
 		webClient.getOptions().setJavaScriptEnabled(true);
