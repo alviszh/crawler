@@ -14,7 +14,7 @@ ADD common-microservice-honesty-search-task-0.0.1-SNAPSHOT.jar app.jar
 ADD pg_search_newscontent_prod_mariadb5.5.sh /elasticsearch-jdbc-2.3.4.0/pg_search_newscontent_prod.sh
 
 RUN sh -c ' chmod -R a+x /elasticsearch-jdbc-2.3.4.0/pg_search_newscontent_prod.sh'
-ADD entry_point_prod_pg.sh /run.sh
+ADD entry_point_prod_mariadb5.5.sh.sh /run.sh
 RUN chmod a+x /run.sh
 RUN sh -c ' touch /app.jar'
 ENV JAVA_OPTS=""
