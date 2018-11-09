@@ -67,7 +67,6 @@ public class MobileSendService{
                     System.out.println("sendResul=" + result);
                 }
             }
-
         }
     }
 }
