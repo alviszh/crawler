@@ -41,6 +41,8 @@ public class SearchCrawlerService {
 	@Autowired
 	private SysLog sysLog;
 	
+	
+	
 	@Autowired
 	private AwsApiClient awsApiClient;
 	
