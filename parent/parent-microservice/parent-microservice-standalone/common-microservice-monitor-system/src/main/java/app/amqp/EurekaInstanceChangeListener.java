@@ -9,6 +9,8 @@ import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 
 import com.crawler.monitor.json.EurekaInstanceBean;
+import com.microservice.dao.entity.crawler.monitor.MonitorEurekaEvent;
+import com.microservice.dao.repository.crawler.monitor.MonitorEurekaEventRepository;
 
 import app.commontracerlog.TracerLog;
  
@@ -18,6 +20,8 @@ public class EurekaInstanceChangeListener {
 	private TracerLog tracer;
 	@Autowired
 	private EurekaInstanceChangeMailService eurekaInstanceChangeMailService;
+	@Autowired
+	private MonitorEurekaEventRepository eurekaEventRepository;
 	
 	@StreamListener(Sink.INPUT)
 	public void messageSink(EurekaInstanceBean eurekaInstanceBean) {
@@ -37,5 +41,10 @@ public class EurekaInstanceChangeListener {
 			microEventType="注册事件";
 			eurekaInstanceChangeMailService.sendResultMail(eurekaInstanceBean, microEventType,eventTime);
 		}
+		//将注册事件和断线事件进行数据存储，便于以后图形化统计
+	    MonitorEurekaEvent eurekaChange=new MonitorEurekaEvent(eurekaInstanceBean.getAppName().trim(),
+	    		eventTime,
+	    		microEventType);
+	    eurekaEventRepository.save(eurekaChange);
 	}
 }

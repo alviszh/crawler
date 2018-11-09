@@ -49,12 +49,14 @@ $(function(){
     
     //点击删除
     $("#removeItem").on("click",function(){
-    	var tr=$(this).parent();
+    	/*var tr=$(this).parent();
     	var h=tr.prev();
-    	var c = h.children();
-    	var id1 = c.eq(1).text();
-	    console.log("==id1" + id1);
-	    removeBusinessItem(id1);
+    	var c = tr.children();
+    	var id = c.eq(1).text();
+    	alert("删除项对应的id==" + id);*/
+    	var id = $("#id").val();
+	    //调用删除监控项代码的具体方法
+	    removeItem(id);  
     	$('#removeModalDiv').modal('hide');
     	location.reload();
     });
@@ -70,8 +72,8 @@ function show_firstPage_task(){
     var totalElements = ''; //总记录
     var appname='',developer='';
 
-    appname = $("#appname").val();
-    developer = $("#developer").val();
+    appname = $("#appname_search").val();
+    developer = $("#developer_search").val();
 
     taskPage=searchTask(false,pageSize,currentPage,appname,developer);
     taskList = taskPage["content"];
@@ -132,6 +134,7 @@ function query_taskList(eurekaList){
         monitorflag=(eureka.isneedmonitor == 1) ? '正常监控' : '暂停监控';
         
         trs +="<tr>"
+            +"<td style=\"display:none\">"+eureka.id+"</td>"
             +"<td>"+lineIndex+"</td>"
             +"<td>"+eureka.appname+"</td>"
             +"<td>"+eureka.developer+"</td>"
@@ -157,12 +160,14 @@ function query_taskList(eurekaList){
 		    document.getElementById("developer").value=dataItem.eq(2).text(); 
 		    document.getElementById("instancecount").value=dataItem.eq(3).text(); 
 	　　});
-	
-		$("a[id^='delete']").click(function(){
+	   //将要删除的记录的id放在隐藏域中，传给弹出页面，在确认删除的时候根据id删除
+	   $("a[id^='delete']").click(function(){
 			 console.log("delete delete delete");
 			 var tr=$(this).parent().parent();
 		     var dataItem = tr.children();
-		     deleteData ="<h5>确定删除监控项 "+dataItem.eq(1).text()+" 吗？</h5>"
+		     deleteData ="<h5>确定删除监控项 "+dataItem.eq(2).text()+" 吗？</h5>" 
+		     + "<input type='hidden' id='id' value='"+ dataItem.eq(0).text() +"'>"
+		     console.log(dataItem.eq(0).text());
 		     $("#delete").html(deleteData);
 		     $('#removeModalDiv').modal('show');
 	　　});
@@ -241,7 +246,7 @@ function addItem(){
 function removeItem(id,async){
 	console.log("coming please"+id);
 	$.ajax({
-        url: "/opendata/contactData/removeItem",
+        url: "/monitor/platform/system/removeItem",
         type:"POST",
         async:true,
         dataType:"json",

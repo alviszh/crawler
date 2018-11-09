@@ -6,11 +6,4 @@ spring:
      encoding: utf-8
      mode: html
      prefix: classpath:/templates/ 
-     suffix: .html   
-    mail:
-     protocol: smtp
-     host: mail.creditharmony.cn
-     port: 25
-     auth: true
-     username: XH\linansun
-     password: sunlinan66**
+     suffix: .html  
