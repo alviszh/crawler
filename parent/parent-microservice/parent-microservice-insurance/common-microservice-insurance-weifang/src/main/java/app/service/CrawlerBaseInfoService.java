@@ -206,7 +206,7 @@ public class CrawlerBaseInfoService {
 		}
 		
 		try {
-			String loginurl = "https://www.sdwfhrss.gov.cn/hsp/siAd.do?method=queryAgedPayHis&year="+year+"&_random=0.015180274914302627&__usersession_uuid="+sessionid+"&_laneID=73faa9ef-5707-47d2-b76f-43365ddefe55";
+			String loginurl = "https://www.sdwfhrss.gov.cn/hsp/siAd.do?method=queryAgedPayHis&nd="+year+"&_random=0.015180274914302627&__usersession_uuid="+sessionid+"&_laneID=73faa9ef-5707-47d2-b76f-43365ddefe55";
 			WebRequest webRequestlogin;
 			webRequestlogin = new WebRequest(new URL(loginurl), HttpMethod.GET);
 			Page pagelogin = webClient.getPage(webRequestlogin);
@@ -222,7 +222,7 @@ public class CrawlerBaseInfoService {
 				insuranceWeiFangHtml.setHtml(contentAsString);
 				insuranceWeiFangHtml.setPageCount(1);
 				insuranceWeiFangHtml.setTaskid(parameter.getTaskId());
-				insuranceWeiFangHtml.setType("养老保险");
+				insuranceWeiFangHtml.setType("养老保险"+year);
 				insuranceWeiFangHtml.setUrl(loginurl);
 				insuranceWeiFangHtmlRepository.save(insuranceWeiFangHtml);
 
@@ -290,7 +290,7 @@ public class CrawlerBaseInfoService {
 			webClient.getCookieManager().addCookie(cookie);
 		}
 		try {
-			String loginurl = "https://www.sdwfhrss.gov.cn/hsp/siMedi.do?method=queryMediPayHis&year="+year+"&_random=0.42587617123193966&__usersession_uuid="+sessionid+"&_laneID=73faa9ef-5707-47d2-b76f-43365ddefe55";
+			String loginurl = "https://www.sdwfhrss.gov.cn/hsp/siMedi.do?method=queryMediPayHis&nd="+year+"&_random=0.42587617123193966&__usersession_uuid="+sessionid+"&_laneID=73faa9ef-5707-47d2-b76f-43365ddefe55";
 			WebRequest webRequestlogin;
 			webRequestlogin = new WebRequest(new URL(loginurl), HttpMethod.GET);
 			Page pagelogin = webClient.getPage(webRequestlogin);
@@ -306,7 +306,7 @@ public class CrawlerBaseInfoService {
 				insuranceWeiFangHtml.setHtml(contentAsString);
 				insuranceWeiFangHtml.setPageCount(1);
 				insuranceWeiFangHtml.setTaskid(parameter.getTaskId());
-				insuranceWeiFangHtml.setType("医疗保险");
+				insuranceWeiFangHtml.setType("医疗保险"+year);
 				insuranceWeiFangHtml.setUrl(loginurl);
 				insuranceWeiFangHtmlRepository.save(insuranceWeiFangHtml);
 
@@ -375,7 +375,7 @@ public class CrawlerBaseInfoService {
 		}
 
 		try {
-			String loginurl = "https://www.sdwfhrss.gov.cn/hsp/siLost.do?method=queryLostPayHis&year="+year+"&_random=0.6522879063686793&__usersession_uuid="+sessionid+"&_laneID=73faa9ef-5707-47d2-b76f-43365ddefe55";
+			String loginurl = "https://www.sdwfhrss.gov.cn/hsp/siLost.do?method=queryLostPayHis&nd="+year+"&_random=0.6522879063686793&__usersession_uuid="+sessionid+"&_laneID=73faa9ef-5707-47d2-b76f-43365ddefe55";
 			WebRequest webRequestlogin;
 			webRequestlogin = new WebRequest(new URL(loginurl), HttpMethod.GET);
 			Page pagelogin = webClient.getPage(webRequestlogin);
@@ -391,7 +391,7 @@ public class CrawlerBaseInfoService {
 				insuranceWeiFangHtml.setHtml(contentAsString);
 				insuranceWeiFangHtml.setPageCount(1);
 				insuranceWeiFangHtml.setTaskid(parameter.getTaskId());
-				insuranceWeiFangHtml.setType("失业保险");
+				insuranceWeiFangHtml.setType("失业保险"+year);
 				insuranceWeiFangHtml.setUrl(loginurl);
 				insuranceWeiFangHtmlRepository.save(insuranceWeiFangHtml);
 
@@ -458,7 +458,7 @@ public class CrawlerBaseInfoService {
 		}
 
 		try {
-			String loginurl = "https://www.sdwfhrss.gov.cn/hsp/siBirth.do?method=queryBirthPayHis&year="+year+"&_random=0.15540882555200253&__usersession_uuid="+sessionid+"&_laneID=73faa9ef-5707-47d2-b76f-43365ddefe55";
+			String loginurl = "https://www.sdwfhrss.gov.cn/hsp/siBirth.do?method=queryBirthPayHis&nd="+year+"&_random=0.15540882555200253&__usersession_uuid="+sessionid+"&_laneID=73faa9ef-5707-47d2-b76f-43365ddefe55";
 			WebRequest webRequestlogin;
 			webRequestlogin = new WebRequest(new URL(loginurl), HttpMethod.GET);
 			Page pagelogin = webClient.getPage(webRequestlogin);
@@ -474,7 +474,7 @@ public class CrawlerBaseInfoService {
 				insuranceWeiFangHtml.setHtml(contentAsString);
 				insuranceWeiFangHtml.setPageCount(1);
 				insuranceWeiFangHtml.setTaskid(parameter.getTaskId());
-				insuranceWeiFangHtml.setType("生育保险");
+				insuranceWeiFangHtml.setType("生育保险"+year);
 				insuranceWeiFangHtml.setUrl(loginurl);
 				insuranceWeiFangHtmlRepository.save(insuranceWeiFangHtml);
 
@@ -536,7 +536,7 @@ public class CrawlerBaseInfoService {
 		}
 	
 		try {
-			String loginurl = "https://www.sdwfhrss.gov.cn/hsp/siHarm.do?method=queryHarmPayHis&year="+year+"&_random=0.593444099359282&__usersession_uuid="+sessionid+"&_laneID=73faa9ef-5707-47d2-b76f-43365ddefe55";
+			String loginurl = "https://www.sdwfhrss.gov.cn/hsp/siHarm.do?method=queryHarmPayHis&nd="+year+"&_random=0.593444099359282&__usersession_uuid="+sessionid+"&_laneID=73faa9ef-5707-47d2-b76f-43365ddefe55";
 			WebRequest webRequestlogin;
 			webRequestlogin = new WebRequest(new URL(loginurl), HttpMethod.GET);
 			Page pagelogin = webClient.getPage(webRequestlogin);
@@ -552,7 +552,7 @@ public class CrawlerBaseInfoService {
 				insuranceWeiFangHtml.setHtml(contentAsString);
 				insuranceWeiFangHtml.setPageCount(1);
 				insuranceWeiFangHtml.setTaskid(parameter.getTaskId());
-				insuranceWeiFangHtml.setType("工伤保险");
+				insuranceWeiFangHtml.setType("工伤保险"+year);
 				insuranceWeiFangHtml.setUrl(loginurl);
 				insuranceWeiFangHtmlRepository.save(insuranceWeiFangHtml);
 
