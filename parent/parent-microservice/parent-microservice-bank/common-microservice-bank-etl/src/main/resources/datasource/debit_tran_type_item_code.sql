@@ -1,3 +1,5 @@
+truncate table debit_tran_type_item_code;
+
 INSERT INTO debit_tran_type_item_code(id,createtime,item_code,item_name,item_type,source_name,item_category) VALUES (105, NULL, '010002', '收入', '交易类别', '转入', '收入');
 INSERT INTO debit_tran_type_item_code (id,createtime,item_code,item_name,item_type,source_name,item_category) VALUES (107, NULL, '010001', '支出', '交易类别', '支取', '支出');
 INSERT INTO debit_tran_type_item_code (id,createtime,item_code,item_name,item_type,source_name,item_category) VALUES (108, NULL, '010002', '收入', '交易类别', '收入', '收入');
