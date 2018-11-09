@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "opendata")
 public interface OpendataClient {
 
-
     @RequestMapping(value = "/opendata/api/developer/app/findAppProductList", method = RequestMethod.GET)
     public AppProductList findAppProductList(@RequestParam(name = "prodClientId") String prodClientId ,
                                               @RequestParam(name = "flag") String flag ,
