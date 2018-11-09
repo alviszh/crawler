@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "opendata", url = "http://10.167.202.216:4322")
+@FeignClient(name = "opendata")
 public interface OpendataClient {
 
 
