@@ -39,4 +39,18 @@ public class MailService {
 			tracer.addTag(mailBean.getSender().trim()+"邮件发送"+mailBean.getSubject().trim()+"主题邮件过程中出现异常：", e.toString());
 		}
 	}
+	//======================================
+	public void testSendMail(){
+		try {
+			MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+			MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+			messageHelper.setText("测试邮件", true);   //邮件内容
+			messageHelper.setFrom("linansun@txtechnologies.com");// 发送者
+			messageHelper.setTo("linansun@txtechnologies.com"); // 群发
+			messageHelper.setSubject("测试邮件发送功能");// 邮件主题
+			javaMailSender.send(mimeMessage);// 发送邮件
+		} catch (Exception e) {
+			System.out.println("测试发送邮件过程中出现异常："+e.toString());
+		}
+	}
 }

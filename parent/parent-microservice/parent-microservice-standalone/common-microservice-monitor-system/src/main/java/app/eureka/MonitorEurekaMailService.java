@@ -54,6 +54,6 @@ public class MonitorEurekaMailService {
 		mailBean.setSubject(mailEnvirType+"Eureka上微服务变动情况");
 		//调用邮件发送接口
 		mailClient.sendMail(mailBean);
-		System.out.println(mailEnvirType+"Eureka上微服务变动情况通知邮件发送成功");
+		System.out.println(mailEnvirType+"Eureka上微服务变动情况通知邮件接口已经调用");
 	}
 }

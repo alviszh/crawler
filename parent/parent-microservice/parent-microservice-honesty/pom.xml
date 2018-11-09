@@ -79,7 +79,8 @@
 		<module>common-microservice-honesty-caipanwenshu</module>
 		<module>common-microservice-honesty-shixin-task</module>
         <module>common-microservice-honesty-caipanwenshu-task</module>
-  </modules>
+        <module>common-microservice-honesty-es-search</module>
+	</modules>
 
 
 	<profiles>

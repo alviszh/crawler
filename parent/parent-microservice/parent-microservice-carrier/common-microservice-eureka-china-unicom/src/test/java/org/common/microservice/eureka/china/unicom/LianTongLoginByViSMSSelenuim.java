@@ -26,7 +26,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
-import org.springframework.util.StringUtils;
 
 import com.crawler.microservice.unit.CommonUnit;
 import com.gargoylesoftware.htmlunit.HttpMethod;

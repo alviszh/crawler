@@ -54,7 +54,7 @@ spring:
           implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl 
     properties:  
       hibernate:   
-        dialect: ${datasource.hibernate.dialect}
+        dialect: ${datasource.jdbc.dialect}
         temp: 
           use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法未实现
   mvc: 

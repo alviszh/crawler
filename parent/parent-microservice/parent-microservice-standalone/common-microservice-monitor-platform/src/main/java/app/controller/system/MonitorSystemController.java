@@ -8,11 +8,11 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.crawler.PageInfo;
 
@@ -23,7 +23,7 @@ import app.service.system.MonitorSystemService;
  * @author sln
  * @Description: 系统层面-数据库操作接口
  */
-@Controller
+@RestController
 @RequestMapping(value="/system")
 public class MonitorSystemController {
 	@Autowired 
@@ -62,5 +62,9 @@ public class MonitorSystemController {
      * @param pageSize
      * @return
      */
-	
+    @RequestMapping(value = "/removeItem", method = { RequestMethod.POST})
+	public void removeItem(Long id) {
+    	System.out.println("要删除的监控项的id是："+id);
+		monitorSystemService.deleteItemById(id);
+	}
 }
