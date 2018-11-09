@@ -48,6 +48,6 @@ public class EurekaInstanceChangeMailService {
 		mailBean.setSubject("Eureka"+mailEnvirType+"-"+microEventType+"-"+eurekaInstanceBean.getAppName().trim());
 		//调用邮件发送接口
 		mailClient.sendMail(mailBean);
-		System.out.println(mailEnvirType+"Eureka上微服务-变动监听情况-通知邮件发送成功");
+		System.out.println(mailEnvirType+"Eureka上微服务-变动监听情况-通知邮件发送接口已经调用");
 	}
 }
