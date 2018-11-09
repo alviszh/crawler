@@ -43,6 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         		.antMatchers("/**/*.png").permitAll()
         		.antMatchers("/**/*.jpg").permitAll()
         		.antMatchers("/favicon.ico").permitAll()
+                .antMatchers("/api/**").permitAll()
         		//其他地址的访问均需验证权限
                 .anyRequest().authenticated()
                 .and()
