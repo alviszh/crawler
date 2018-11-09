@@ -1,73 +1,89 @@
 package com.microservice.dao.entity.crawler.insurance.weifang;
 
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Index;
 import javax.persistence.Table;
 
 import com.microservice.dao.entity.IdEntity;
 
 /**
- * 潍坊社保信息html
- * @author zcx
+ * 济南社保 页面 
+ * @author qizhongbin
  *
  */
 @Entity
-@Table(name="insurance_weifang_html",indexes = {@Index(name = "index_insurance_weifang_html_taskid", columnList = "taskid")})
-public class InsuranceWeiFangHtml extends IdEntity{
-	private String taskid;//uuid 前端通过uuid访问状态结果
-	private String type;
-	private Integer pageCount;	
-	private String url;	
-	private String html;
+@Table(name="insurance_weifang_html")
+public class InsuranceWeiFangHtml extends IdEntity implements Serializable{
+
+	private static final long serialVersionUID = -1646403919031277347L;
 	
+	/** 爬取批次号 */
+	@Column(name="task_id")
+	private String taskid;
+	
+	/** 爬取网页类别  */
+	@Column(name="type")
+	private String type;
+	
+	/** 爬取页码  */
+	@Column(name="page_count")
+	private Integer pageCount;
+	
+	/** 爬取网址  */
+	@Column(name="url")
+	private String url;	
+	
+	/** 爬取网页  */
+	private String html;
+
+
 	public String getTaskid() {
 		return taskid;
 	}
+
 	public void setTaskid(String taskid) {
 		this.taskid = taskid;
 	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public String getType() {
 		return type;
 	}
+
 	public void setType(String type) {
 		this.type = type;
 	}
+
 	public Integer getPageCount() {
 		return pageCount;
 	}
+
 	public void setPageCount(Integer pageCount) {
 		this.pageCount = pageCount;
 	}
+
 	public String getUrl() {
 		return url;
 	}
+
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	@Column(columnDefinition="text")
+
+	@Column(name="html",columnDefinition="text")
 	public String getHtml() {
 		return html;
 	}
+
 	public void setHtml(String html) {
 		this.html = html;
 	}
-	@Override
-	public String toString() {
-		return "InsuranceWeiFangHtml [taskid=" + taskid + ", type=" + type + ", pageCount=" + pageCount + ", url=" + url
-				+ ", html=" + html + "]";
-	}
-	public InsuranceWeiFangHtml(String taskid, String type, Integer pageCount, String url, String html) {
-		super();
-		this.taskid = taskid;
-		this.type = type;
-		this.pageCount = pageCount;
-		this.url = url;
-		this.html = html;
-	}
-	public InsuranceWeiFangHtml() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
+	
+	
 }
