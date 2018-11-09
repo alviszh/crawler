@@ -38,7 +38,6 @@ public interface MobileTaskClient {
     public @ResponseBody
     List lineData();
 
-
     /**
      * 统计每个运营商的调用量（饼图）
      * @return
