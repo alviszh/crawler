@@ -40,10 +40,8 @@ import app.bean.RequestParam;
 import app.bean.WebDataDebitcard;
 
 @Component
-@EntityScan(basePackages = { "com.microservice.dao.entity.crawler.bank.etl",
-		"com.microservice.dao.entity.crawler.bank" })
-@EnableJpaRepositories(basePackages = { "com.microservice.dao.repository.crawler.bank.etl",
-		"com.microservice.dao.repository.crawler.bank" })
+@EntityScan(basePackages = { "com.microservice.dao.entity.crawler.bank.etl"})
+@EnableJpaRepositories(basePackages = { "com.microservice.dao.repository.crawler.bank.etl"})
 
 public class BankETLService {
 
