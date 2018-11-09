@@ -70,6 +70,8 @@ public class SearchCrawlerService {
 					sysLog.output("istrueip searchTask error", e.getMessage());
 				}
 				
+				
+				
 				searchTask = searchTaskRepository.save(searchTask);
 				sysLog.output("istrueip searchTask", searchTask.toString());
 			}
