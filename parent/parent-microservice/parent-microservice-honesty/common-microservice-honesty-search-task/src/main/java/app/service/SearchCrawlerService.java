@@ -63,7 +63,8 @@ public class SearchCrawlerService {
 			if (istrueip) {
 				try{
 					HttpProxyBean httpProxyBean = awsApiClient.getProxy();
-					System.out.println(httpProxyBean.getIp()+"=========="+httpProxyBean.getPort());
+					sysLog.output("httpProxyBean", httpProxyBean.toString());
+//					System.out.println(httpProxyBean.getIp()+"=========="+httpProxyBean.getPort());
 					searchTask.setIpaddress(httpProxyBean.getIp());
 					searchTask.setIpport(httpProxyBean.getPort());
 				}catch(Exception e){
