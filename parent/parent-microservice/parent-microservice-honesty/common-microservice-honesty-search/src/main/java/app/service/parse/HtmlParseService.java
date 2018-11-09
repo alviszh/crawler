@@ -109,9 +109,12 @@ public class HtmlParseService extends AbstractParser {
 			newsListJson.setType("baidu");
 			
 			
+			
+			
+			
 			if (searchTask.getKeyword() != null) {
 
-				newsListJson.setKey(searchTask.getKeyword());
+				newsListJson.setKeyword(searchTask.getKeyword());
 			}
 			if (searchTask.getTaskid() != null) {
 
@@ -187,7 +190,7 @@ public class HtmlParseService extends AbstractParser {
 
 			if (searchTask.getKeyword() != null) {
 
-				newsListJson.setKey(searchTask.getKeyword());
+				newsListJson.setKeyword(searchTask.getKeyword());
 			}
 			if (searchTask.getTaskid() != null) {
 
@@ -268,7 +271,7 @@ public class HtmlParseService extends AbstractParser {
 
 			if (searchTask.getKeyword() != null) {
 
-				newsListJson.setKey(searchTask.getKeyword());
+				newsListJson.setKeyword(searchTask.getKeyword());
 			}
 			if (searchTask.getTaskid() != null) {
 
