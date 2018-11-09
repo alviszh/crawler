@@ -233,6 +233,7 @@
 			<properties>
 				<app.bank.active>mariadb5.5.56</app.bank.active>
 				<app.bankcrawlertask.name>bank-task</app.bankcrawlertask.name>
+				<app.bank.citicchina.creditcard.name>bank-citicchina-creditcard</app.bank.citicchina.creditcard.name>
 			</properties>
 		</profile>
 	</profiles>
