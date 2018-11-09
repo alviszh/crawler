@@ -108,10 +108,6 @@ public class HtmlParseService extends AbstractParser {
 
 			newsListJson.setType("baidu");
 			
-			
-			
-			
-			
 			if (searchTask.getKeyword() != null) {
 
 				newsListJson.setKeyword(searchTask.getKeyword());
