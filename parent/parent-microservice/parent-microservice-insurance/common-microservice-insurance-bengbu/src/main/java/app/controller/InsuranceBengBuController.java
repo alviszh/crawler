@@ -15,7 +15,7 @@ import app.commontracerlog.TracerLog;
 import app.service.aop.InsuranceLogin;
    
 @RestController       
-@Configuration         
+@Configuration           
 @RequestMapping("/insurance/bengbu")  
 public class InsuranceBengBuController {
            
