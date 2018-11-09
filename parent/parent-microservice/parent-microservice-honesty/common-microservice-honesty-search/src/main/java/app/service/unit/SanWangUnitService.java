@@ -92,7 +92,7 @@ public class SanWangUnitService {
 		Proxy proxy = null;
 		Document doc = null;
 		try {
-			if (searchTask.getIpaddress() != null || searchTask.getIpaddress().length() > 0) {
+			if (searchTask!=null && searchTask.getIpaddress() != null && searchTask.getIpaddress().length() > 0) {
 				proxy = new Proxy(Proxy.Type.HTTP,
 						new InetSocketAddress(searchTask.getIpaddress(), Integer.parseInt(searchTask.getIpport())));
 				doc = Jsoup.connect(url).proxy(proxy)
