@@ -67,7 +67,6 @@ public class SearchCrawlerService {
 					searchTask.setIpaddress(httpProxyBean.getIp());
 					searchTask.setIpport(httpProxyBean.getPort());
 				}catch(Exception e){
-					e.printStackTrace();
 					sysLog.output("istrueip searchTask error", e.getMessage());
 				}
 				
