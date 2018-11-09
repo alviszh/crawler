@@ -228,11 +228,11 @@
 			</properties>
 		</profile>
 		<profile>
-			<!-- mariadb5.5.56 -->
-			<id>mariadb5.5.56</id>
+			<!-- 生产环境 -->
+			<id>preview1.1.2</id>
 			<properties>
-				<app.bank.active>mariadb5.5.56</app.bank.active>
-				<app.bankcrawlertask.name>bank-task</app.bankcrawlertask.name>
+				<app.mobilecrawlertask.active>preview1.1.2</app.mobilecrawlertask.active>
+				<app.bank.etl.name>bank-etl</app.bank.etl.name>
 			</properties>
 		</profile>
 	</profiles>
