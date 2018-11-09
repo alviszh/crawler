@@ -111,15 +111,15 @@
 	    <module>common-microservice-oauth2server</module>
 		<module>common-microservice-router</module>
 		<module>parent-microservice-carrier</module>
-		<module>parent-microservice-telecom</module>
-<!-- 	    <module>parent-microservice-car-insurance</module>
+<!-- 		<module>parent-microservice-telecom</module>
+	    <module>parent-microservice-car-insurance</module>
 		<module>parent-microservice-taxation</module>
 		<module>parent-microservice-honesty</module>
 		<module>parent-microservice-standalone</module>
-		<module>parent-microservice-insurance</module>
+		<module>parent-microservice-insurance</module> -->
 		<module>parent-microservice-bank</module>
 		<module>parent-microservice-e_commerce</module>
-	    <module>parent-microservice-housingfund</module> -->
+	    <module>parent-microservice-housingfund</module>
 		
 		<!--暂不需要 -->
 		
