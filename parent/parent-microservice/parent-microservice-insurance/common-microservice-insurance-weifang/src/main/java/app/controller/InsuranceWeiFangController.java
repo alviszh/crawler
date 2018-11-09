@@ -11,6 +11,7 @@ import com.microservice.dao.entity.crawler.insurance.basic.TaskInsurance;
 import com.microservice.dao.repository.crawler.insurance.basic.TaskInsuranceRepository;
 
 import app.commontracerlog.TracerLog;
+import app.service.AgentService;
 import app.service.InsuranceWeiFangService;
 
 /**
@@ -28,7 +29,20 @@ public class InsuranceWeiFangController {
 	private InsuranceWeiFangService insuranceWeiFangService;
 	@Autowired
 	private TaskInsuranceRepository taskInsuranceRepository;
+	@Autowired
+	private AgentService agentService;
 	
+	@PostMapping(path = "/loginAgent")
+	public TaskInsurance loginAgent(@RequestBody InsuranceRequestParameters insuranceRequestParameters){
+		tracer.addTag("crawler.insurance.login", insuranceRequestParameters.getTaskId());   
+		TaskInsurance taskInsurance = taskInsuranceRepository.findByTaskid(insuranceRequestParameters.getTaskId());
+		try {
+			taskInsurance =  agentService.postAgent(insuranceRequestParameters, "/insurance/huizhou/crawler"); 
+		} catch (RuntimeException e) {
+			tracer.qryKeyValue("RuntimeException", e.toString());
+		}
+		return taskInsurance;
+	}
 	 /**
 	 * 登录 接口
 	 * 
@@ -62,7 +76,13 @@ public class InsuranceWeiFangController {
 		insuranceWeiFangService.getAllData(parameter);
 		return taskInsurance;
 	}
-
+	
+	
+	@PostMapping(path = "/quit")
+	public TaskInsurance quit(@RequestBody InsuranceRequestParameters insuranceRequestParameters){
+		TaskInsurance taskInsurance = insuranceWeiFangService.quitDriver(insuranceRequestParameters);
+		return taskInsurance;
+	}
 	
 
 }

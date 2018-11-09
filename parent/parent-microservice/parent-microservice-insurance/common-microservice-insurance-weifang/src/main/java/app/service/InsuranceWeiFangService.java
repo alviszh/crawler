@@ -59,6 +59,8 @@ public class InsuranceWeiFangService extends AbstractChaoJiYingHandler implement
 	public String driverPath;
 	private WebDriver driver;
 	public String sessionid;
+	@Autowired
+	private AgentService agentService;
 	/**
 	 * 登录业务方法
 	 * 
@@ -146,7 +148,8 @@ public class InsuranceWeiFangService extends AbstractChaoJiYingHandler implement
 				c.add(Calendar.YEAR, -k);
 				String beforeMonth = df.format(c.getTime());
 				System.out.println(beforeMonth);
-				crawlerBaseInfoService.crawlerAgedInsurance(parameter, taskInsurance, beforeMonth,sessionid);			
+				crawlerBaseInfoService.crawlerAgedInsurance(parameter, taskInsurance, beforeMonth,sessionid);		
+				Thread.sleep(2500);
 			}
 			// 爬取解析医疗保险
 				for (int k = 0; k < 3; k++) {
@@ -157,6 +160,7 @@ public class InsuranceWeiFangService extends AbstractChaoJiYingHandler implement
 				String beforeMonth = df.format(c.getTime());
 				System.out.println(beforeMonth);
 				crawlerBaseInfoService.crawlerMedicalInsurance(parameter, taskInsurance, beforeMonth,sessionid);
+				Thread.sleep(2500);
 			}
 		
 			// 爬取解析失业保险()
@@ -168,6 +172,7 @@ public class InsuranceWeiFangService extends AbstractChaoJiYingHandler implement
 				String beforeMonth = df.format(c.getTime());
 				System.out.println(beforeMonth);
 				crawlerBaseInfoService.crawlerUnemploymentInsurance(parameter, taskInsurance, beforeMonth,sessionid);
+				Thread.sleep(2500);
 			}
 		
 			// 爬取解析生育保险()
@@ -179,6 +184,7 @@ public class InsuranceWeiFangService extends AbstractChaoJiYingHandler implement
 				String beforeMonth = df.format(c.getTime());
 				System.out.println(beforeMonth);
 				crawlerBaseInfoService.crawlerShengyuInsurance(parameter, taskInsurance, beforeMonth,sessionid);
+				Thread.sleep(2500);
 			}
 			
 			// 爬取解析工伤保险()
@@ -191,6 +197,7 @@ public class InsuranceWeiFangService extends AbstractChaoJiYingHandler implement
 				String beforeMonth = df.format(c.getTime());
 				System.out.println(beforeMonth);
 				crawlerBaseInfoService.crawlerGongshangInsurance(parameter, taskInsurance, beforeMonth,sessionid);
+				Thread.sleep(2500);
 			}
 			
 			// 更新最终的状态
@@ -281,5 +288,17 @@ public class InsuranceWeiFangService extends AbstractChaoJiYingHandler implement
 	public TaskInsurance getAllDataDone(String taskId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public TaskInsurance quitDriver(InsuranceRequestParameters insuranceRequestParameters) {
+		tracer.addTag("quit", insuranceRequestParameters.toString()); 
+		//关闭task (只是 finish = true 、 error_code=-1 、error_message = 系统超时请重试  , description、Phases、PhasesStatus 都不改变，以便查看当时的状态 )
+		TaskInsurance taskInsurance = insuranceService.systemClose(true, insuranceRequestParameters.getTaskId());  
+		//调用公用释放资源方法
+		if(taskInsurance != null){
+			agentService.releaseInstance(taskInsurance.getCrawlerHost(), driver);
+		} else{
+			tracer.addTag("quit taskInsurance is null",""); 
+		}
+		return taskInsurance;
 	}
 }
