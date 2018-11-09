@@ -80,6 +80,7 @@ public class InsuranceWuZhouParser {
     	WebRequest webRequest1 = new WebRequest(new URL(u), HttpMethod.GET);	
     	HtmlPage page2 = webClient.getPage(webRequest1);
     	//System.out.println(page2.getWebResponse().getContentAsString());
+    	webClient.close();
 		return page2;
 
 	}

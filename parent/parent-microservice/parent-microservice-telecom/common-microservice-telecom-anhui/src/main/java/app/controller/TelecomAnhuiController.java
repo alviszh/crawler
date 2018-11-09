@@ -17,7 +17,7 @@ import app.service.aop.ISms;
     
 @RestController     
 @RequestMapping("/carrier")
-public class TelecomAnhuiController {
+public class TelecomAnhuiController {    
 	@Autowired  
 	private TelecomCommonAnhuiService telecomCommonAnhuiService;
 	@Autowired

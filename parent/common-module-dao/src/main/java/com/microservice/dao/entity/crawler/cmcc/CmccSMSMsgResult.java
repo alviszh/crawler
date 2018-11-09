@@ -2,6 +2,7 @@ package com.microservice.dao.entity.crawler.cmcc;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.Table;
 import com.microservice.dao.entity.IdEntity;
 
@@ -10,7 +11,7 @@ import com.microservice.dao.entity.IdEntity;
  *	移动短信信息表
  */
 @Entity
-@Table(name="cmcc_smsmsg_result")
+@Table(name="cmcc_smsmsg_result",indexes = {@Index(name = "index_cmcc_smsmsg_result_taskId", columnList = "taskId")})
 public class CmccSMSMsgResult extends IdEntity{
 	
 	@Column(name="task_id")

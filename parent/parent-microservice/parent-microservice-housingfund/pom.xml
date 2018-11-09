@@ -926,6 +926,9 @@
 				<app.housing.wenshan.name>HousingFund-WenShan</app.housing.wenshan.name>
 				<app.housing.baoshan.name>HousingFund-BaoShan</app.housing.baoshan.name>
 				<app.housing.liaocheng.name>HousingFund-LiaoCheng</app.housing.liaocheng.name>
+				<app.housing.sz.anhui.name>HousingFund-sz-Anhui</app.housing.sz.anhui.name>
+				<app.housing.dandong.name>HousingFund-DanDong</app.housing.dandong.name>
+				<app.housing.nanjing.name>HousingFund-NanJing</app.housing.nanjing.name>
 			</properties>
 		</profile>
 	</profiles>

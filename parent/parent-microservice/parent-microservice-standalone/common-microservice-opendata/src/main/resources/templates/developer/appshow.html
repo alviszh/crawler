@@ -31,7 +31,7 @@
 			</blockquote>
 			<blockquote>
 			  <p>创建时间</p>
-			  <footer th:text="${#strings.substring(app.createtime,0,10)}"></footer>
+			  <footer th:text="${#dates.format(app.createtime,'yyyy-MM-dd')}"></footer>
 			</blockquote>
 			<form th:action="@{/developer/app/applyonline}" method="post" id="addproduct">
 			<input type="hidden" name="appId"  th:value="${app.appId}">

@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.crawler.monitor.json.MailBean;
 import com.crawler.pbccrc.json.PbccrcJsonBean;
 
-import app.commontracerlog.TracerLog;
 import app.mailservice.MailContentBuilder;
 import app.service.MailService;
 
@@ -30,8 +30,6 @@ import app.service.MailService;
 public class MailController {
 	public static final Logger log = LoggerFactory.getLogger(MailController.class);
 	@Autowired
-	private TracerLog tracer; 
-	@Autowired
 	private MailService mailService;
 	@Autowired
 	private MailContentBuilder mailContentBuilder;
@@ -43,7 +41,6 @@ public class MailController {
 	@PostMapping("/sendmail")
 	public void sendMail(@RequestBody MailBean mailBean) { 
 		//判断用户是否在基本表中已经存在
-		tracer.addTag("sendmail接口已经被调用", "-----MailBean----"+mailBean.toString());
 		mailService.sendMail(mailBean);
 	}
 	
@@ -68,5 +65,9 @@ public class MailController {
 		mailBean.setSender(mailsender);
 		mailBean.setSubject(subject);
 		mailService.sendMail(mailBean);
+	}
+	@GetMapping("/testmail")
+	public void testMail(){
+		mailService.testSendMail();
 	}
 }
