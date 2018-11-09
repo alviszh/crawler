@@ -26,8 +26,6 @@ import com.module.htmlunit.WebCrawler;
  */
 public class dianxintest {
 
-	private static Set<Cookie> cookies;
-
 	public static void main(String[] args) throws Exception {
 
 		WebClient webClient = WebCrawler.getInstance().getNewWebClient();
@@ -45,7 +43,7 @@ public class dianxintest {
 		}
 
 		url = "http://www.189.cn/dqmh/my189/initMy189home.do";
-		HtmlPage html3 = getHtml(url, webClient);
+		 getHtml(url, webClient);
 
 		url = "http://bj.189.cn/service/account/lastLoginTime.parser";
 
@@ -86,7 +84,7 @@ public class dianxintest {
 		//pay(webClient);
 		//integra(webClient);
 		String code = getSMSCode(webClient);
-		setSMSCoide( webClient,"code");
+		setSMSCoide( webClient,code);
 		calltherm(webClient);
 		/*
 		 * url = "http://bj.189.cn/iframe/feequery/billDetailQuery.action"; //

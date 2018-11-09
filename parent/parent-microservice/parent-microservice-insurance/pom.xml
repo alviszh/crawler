@@ -646,10 +646,16 @@
 		<profile>
 
 			<!-- 生产环境 -->
-			<id>mariadb5.5.56</id>
+			<id>preview1.1.2</id>
 			<properties>
-				<app.mobilecrawlertask.active>mariadb5.5.56</app.mobilecrawlertask.active>
-				<app.insuranceTask.name>InsuranceTask</app.insuranceTask.name>
+				<app.mobilecrawlertask.active>preview1.1.2</app.mobilecrawlertask.active>
+				<app.insuranceTask.name>Insurance-Task</app.insuranceTask.name>
+				<app.etl.name>Insurance-ETL</app.etl.name>
+				<app.bengbu.name>Insurance-BengBu</app.bengbu.name>
+				<app.wuzhou.name>Insurance-WuZhou</app.wuzhou.name>
+				<app.guilin.name>Insurance-GuiLin</app.guilin.name>
+				<app.chongqing.name>Insurance-Chongqing</app.chongqing.name>
+				<app.huzhou.name>Insurance-HuZhou</app.huzhou.name>
 			</properties>
 		</profile>
 	</profiles>

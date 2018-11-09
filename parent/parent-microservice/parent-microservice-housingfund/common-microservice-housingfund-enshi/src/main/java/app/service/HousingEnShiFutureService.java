@@ -67,6 +67,7 @@ public class HousingEnShiFutureService extends HousingBasicService implements IC
 			save(taskHousing);
 			return taskHousing;
 		}
+		webClient.close();
 		if(htmlpage!=null){
 			tracer.addTag("登陆html", htmlpage.getWebResponse().getContentAsString());
 			if(htmlpage.getWebResponse().getContentAsString().contains("ZGXM")){

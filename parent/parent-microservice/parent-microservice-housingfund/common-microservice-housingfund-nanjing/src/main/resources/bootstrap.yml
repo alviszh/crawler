@@ -1,6 +1,8 @@
 spring: 
   application:
     name:  '@app.housing.nanjing.name@' 
+#  profiles:
+#    active: '@app.housingcrawlertask.active@'   
   profiles:
     active: '@app.housingcrawlertask.active@'   
   cloud:

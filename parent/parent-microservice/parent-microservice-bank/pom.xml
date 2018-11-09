@@ -228,11 +228,14 @@
 			</properties>
 		</profile>
 		<profile>
-			<!-- mariadb5.5.56 -->
-			<id>mariadb5.5.56</id>
+			<!-- 生产环境 -->
+			<id>preview1.1.2</id>
 			<properties>
-				<app.bank.active>mariadb5.5.56</app.bank.active>
+				<app.mobilecrawlertask.active>preview1.1.2</app.mobilecrawlertask.active>
+				<app.bank.etl.name>bank-etl</app.bank.etl.name>
 				<app.bankcrawlertask.name>bank-task</app.bankcrawlertask.name>
+				<app.bank.cibchina.name>bank-cibchina</app.bank.cibchina.name>
+				<app.bank.spdb.creditcard.name>bank-spdb-creditcard</app.bank.spdb.creditcard.name>
 			</properties>
 		</profile>
 	</profiles>

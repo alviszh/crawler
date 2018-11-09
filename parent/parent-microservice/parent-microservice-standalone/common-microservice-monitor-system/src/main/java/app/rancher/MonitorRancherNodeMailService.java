@@ -36,6 +36,6 @@ public class MonitorRancherNodeMailService {
 		mailBean.setSubject("rancher各主机指标监测结果不达标情况通知");
 		//调用邮件发送接口
 		mailClient.sendMail(mailBean);
-		System.out.println("rancher各主机指标监测结果不达标情况通知邮件发送成功");
+		System.out.println("rancher各主机指标监测结果不达标情况通知邮件接口已经调用");
 	}
 }

@@ -87,6 +87,7 @@ public class InsuranceWuZhouService implements InsuranceLogin,InsuranceCrawler{
 			taskInsurance.setPhase_status(InsuranceStatusCode.INSURANCE_AGENT_ERROR.getPhasestatus());
 			taskInsurance = taskInsuranceRepository.save(taskInsurance);
 		}
+		webClient.close();
 		return taskInsurance;
 	}
 	@Override

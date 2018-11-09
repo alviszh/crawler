@@ -75,12 +75,12 @@ public interface TaskInsuranceRepository extends JpaRepository<TaskInsurance, Lo
 	
 	@Transactional
 	@Modifying
-	@Query(value = "select count(*) as num, to_char(createtime,'yyyy-mm-dd') as createtime from TaskInsurance  GROUP BY to_char(createtime,'yyyy-mm-dd') ORDER BY to_char(createtime,'yyyy-mm-dd')")
+	@Query(value = "select count(*) as num, to_char(createtime,'yyyy-mm-dd') as createtime from TaskInsurance  GROUP BY to_char(createtime,'yyyy-mm-dd') ORDER BY to_char(createtime,'yyyy-mm-dd')", nativeQuery = true)
 	List findGroupByCreatetimeOrderByCreatetimeDesc();
 
 	@Transactional
 	@Modifying
-	@Query(value = "select count(*), city from TaskInsurance WHERE city is not null GROUP BY city")
+	@Query(value = "select count(*), city from TaskInsurance WHERE city is not null GROUP BY city", nativeQuery = true)
 	List findGroupByInsurance();
 
 	/**
@@ -90,6 +90,6 @@ public interface TaskInsuranceRepository extends JpaRepository<TaskInsurance, Lo
 	 */
 	@Transactional
 	@Modifying	
-	@Query(value="select t from TaskInsurance t where t.createtime > ?1 order by t.createtime desc")
+	@Query(value="select t from TaskInsurance t where t.createtime > ?1 order by t.createtime desc", nativeQuery = true)
 	List<TaskInsurance> findTaskResultForEtlByData(Date date);
 }
