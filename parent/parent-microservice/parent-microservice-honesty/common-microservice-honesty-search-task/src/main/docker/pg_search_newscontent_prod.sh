@@ -3,13 +3,25 @@ bin=/elasticsearch-jdbc-2.3.4.0/bin
 lib=/elasticsearch-jdbc-2.3.4.0/lib
 sqlname=$1  
 index=$2
+<<<<<<< HEAD
 esip=$3
+=======
+indextype=$2
+#sqlname=$1  
+#index=$2
+#indextype=$3
+>>>>>>> refs/remotes/origin/master
 
 echo '
 {
     "type" : "jdbc",
      "jdbc" : {
+<<<<<<< HEAD
         "url" : "jdbc:mysql://mysql-mysql-lb-1:3306/'$sqlname'",
+=======
+        "url" : "jdbc:mysql://mysql-mysql-lb-1:3306/${sqlname}",
+        "url" : "jdbc:mysql://mysql-mysql-lb-1:3306/$1",
+>>>>>>> refs/remotes/origin/master
        "user" : "root",
         "password" : "12qwaszx",
         "schedule" : "0/10 * 0-23 ? * *",
@@ -24,8 +36,15 @@ echo '
         ],
         "elasticsearch.autodiscover":true,
         "elasticsearch.cluster":"es-sanwang-prod",
+<<<<<<< HEAD
         "index" : "'$index'",
         "type" :  "'$index'",
+=======
+        "index" : "${index}",
+        "type" : "${indextype}" ,
+        "index" : "$2",
+        "type" : "$3",
+>>>>>>> refs/remotes/origin/master
         "elasticsearch" : {
            "host" : "'$esip'",
            "port" : 9300

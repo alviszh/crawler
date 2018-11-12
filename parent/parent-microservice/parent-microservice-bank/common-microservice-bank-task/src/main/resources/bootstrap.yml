@@ -1,6 +1,6 @@
 spring: 
   application:
-    name: '@app.bankcrawlertask.name@'
+    name: '@app.bank.task.name@'
 #   profiles:
 #     active: '@app.bank.active@'
   cloud:
