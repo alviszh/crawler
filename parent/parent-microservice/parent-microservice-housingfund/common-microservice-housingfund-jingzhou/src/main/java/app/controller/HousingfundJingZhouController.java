@@ -50,7 +50,7 @@ public class HousingfundJingZhouController extends HousingBasicController{
 		save(taskHousing);
 		housingfundJingZhouService.login(messageLoginForHousing,taskHousing);*/
 		
-		TaskHousing taskHousing = iCrawlerLogin.login(messageLoginForHousing);
+		TaskHousing taskHousing = housingfundJingZhouService.login(messageLoginForHousing);
 		return taskHousing;
 		
 	}
@@ -86,7 +86,7 @@ public class HousingfundJingZhouController extends HousingBasicController{
 		ResultData<TaskHousing> result = new ResultData<TaskHousing>();
 		result.setData(taskHousing);*/
 		
-		iCrawler.getAllData(messageLogin);
+		housingfundJingZhouService.getAllData(messageLogin);
 		return "SUCCESS";
 	}
 }
