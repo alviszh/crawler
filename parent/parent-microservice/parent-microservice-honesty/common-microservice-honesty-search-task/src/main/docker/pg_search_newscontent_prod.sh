@@ -9,7 +9,7 @@ echo '
 {
     "type" : "jdbc",
      "jdbc" : {
-        "url" : "jdbc:mysql://mysql-mysql-lb-1:3306/"'$sqlname'",
+        "url" : "jdbc:mysql://mysql-mysql-lb-1:3306/'$sqlname'",
        "user" : "root",
         "password" : "12qwaszx",
         "schedule" : "0/10 * 0-23 ? * *",
