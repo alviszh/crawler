@@ -3,6 +3,7 @@ package app.client.aws;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.crawler.aws.json.HttpProxyBean;
 import com.crawler.aws.json.HttpProxyRes;
@@ -16,15 +17,6 @@ public interface AwsApiClient {
 	@RequestMapping(value = "/api-service/proxy/get",method = RequestMethod.GET)
 	public HttpProxyBean getProxy() ;
 	
-	/**   
-	 * @Title: getResProxy   
-	 * @Description:  获取代理ip ，不穿参数默认为1
-	 * @param: @return      
-	 * @return: HttpProxyRes      
-	 * @throws   
-	 */ 
-	@RequestMapping(value = "/api-service/proxy/get",method = RequestMethod.GET)
-	public HttpProxyRes getResProxy() ;
 	
 	/**   
 	 * @Title: getResProxy   
@@ -34,6 +26,6 @@ public interface AwsApiClient {
 	 * @throws   
 	 */ 
 	@RequestMapping(value = "/api-service/proxy/get",method = RequestMethod.GET)
-	public HttpProxyRes getResProxy(int num) ;
+	public HttpProxyRes getProxy(@RequestParam("num")int num) ;
 
 }
