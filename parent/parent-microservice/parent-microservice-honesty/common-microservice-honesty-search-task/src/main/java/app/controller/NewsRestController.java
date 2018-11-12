@@ -49,7 +49,7 @@ import app.service.log.SysLog;
  */
 @RestController
 @Configuration
-@RequestMapping("/sanwang")
+@RequestMapping("/api-service/sanwang/search")
 @EnableJpaAuditing
 public class NewsRestController {
 
@@ -73,7 +73,7 @@ public class NewsRestController {
 	
 	private Gson gs = new Gson();
 
-	@PostMapping(path = "/search/task")
+	@PostMapping(path = "/task")
 	public IsDoneBean creatTask(@RequestBody SanWangJsonBean sanWangJsonBean) {
 		tracerLog.qryKeyValue("taskid", sanWangJsonBean.getTaskid());
 		tracerLog.output("sanWangJsonBean", gs.toJson(sanWangJsonBean));
@@ -94,7 +94,7 @@ public class NewsRestController {
 
 	private static Queue<SearchTask> queue = new ConcurrentLinkedQueue<SearchTask>();
 
-	@RequestMapping(value = "/search/gettask", method = RequestMethod.POST)
+	@RequestMapping(value = "/gettask", method = RequestMethod.POST)
 	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.SERIALIZABLE)
 	public List<SearchTask> getTask() {
 		System.out.println("======进入serchtask 查询====");
@@ -122,7 +122,7 @@ public class NewsRestController {
 		return listreturn;
 	}
 
-	@GetMapping(path = "/search/statue/taskid")
+	@GetMapping(path = "/statue/taskid")
 	public IsDoneBean isdone(@RequestParam(value = "taskid") String taskid) {
 
 		sysLog.output("taskid", taskid);

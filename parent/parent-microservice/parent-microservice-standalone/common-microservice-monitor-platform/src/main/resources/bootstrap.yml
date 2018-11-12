@@ -1,8 +1,8 @@
 spring: 
   application:
     name: '@app.monitor.platform.name@'
-  profiles:
-    active: '@app.active@'
+#  profiles:
+#    active: '@app.standalonetask.name@' 
   cloud:
     config:
       uri: http://configserver:8000

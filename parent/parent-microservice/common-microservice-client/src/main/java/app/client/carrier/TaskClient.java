@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient("MobileCrawlerTask")
+@FeignClient("mobile-task")
 //@FeignClient(name = "mobileTask", url = "http://10.167.202.203:8000")
 public interface TaskClient {
 

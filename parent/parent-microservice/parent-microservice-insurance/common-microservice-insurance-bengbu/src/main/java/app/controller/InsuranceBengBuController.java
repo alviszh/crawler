@@ -13,11 +13,11 @@ import com.microservice.dao.repository.crawler.insurance.basic.TaskInsuranceRepo
 
 import app.commontracerlog.TracerLog;
 import app.service.aop.InsuranceLogin;
-   
-@RestController       
+     
+@RestController          
 @Configuration           
 @RequestMapping("/insurance/bengbu")  
-public class InsuranceBengBuController {
+public class InsuranceBengBuController {  
            
 //	@Autowired
 //	private InsuranceBengBuCommonService insuranceBengBuCommonService;    
