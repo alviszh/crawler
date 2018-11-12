@@ -3,6 +3,7 @@ package app.client.aws;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.crawler.aws.json.HttpProxyBean;
 import com.crawler.aws.json.HttpProxyRes;
@@ -35,5 +36,6 @@ public interface AwsApiClient {
 	 */ 
 	@RequestMapping(value = "/api-service/proxy/get",method = RequestMethod.GET)
 	public HttpProxyRes getResProxy(int num) ;
+	public HttpProxyRes getProxy(@RequestParam("num")int num) ;
 
 }

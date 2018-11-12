@@ -4,3 +4,4 @@ java -Djava.security.egd=file:/dev/./urandom -jar /app.jar --spring.profiles.act
 echo "*******start es jdbc*******"
 #./pg_search_newscontent_prod.sh &
 ./elasticsearch-jdbc-2.3.4.0/pg_search_newscontent_prod.sh $2 $3 $4& 
+./elasticsearch-jdbc-2.3.4.0/pg_search_newscontent_prod.sh $2 $3 $4

@@ -4,12 +4,16 @@ lib=/elasticsearch-jdbc-2.3.4.0/lib
 sqlname=$1  
 index=$2
 indextype=$2
+#sqlname=$1  
+#index=$2
+#indextype=$3
 
 echo '
 {
     "type" : "jdbc",
      "jdbc" : {
         "url" : "jdbc:mysql://mysql-mysql-lb-1:3306/${sqlname}",
+        "url" : "jdbc:mysql://mysql-mysql-lb-1:3306/$1",
        "user" : "root",
         "password" : "12qwaszx",
         "schedule" : "0/10 * 0-23 ? * *",
@@ -22,6 +26,8 @@ echo '
         "elasticsearch.cluster":"es-sanwang-prod",
         "index" : "${index}",
         "type" : "${indextype}" ,
+        "index" : "$2",
+        "type" : "$3",
         "elasticsearch" : {
            "host" : "172.31.17.29",
            "port" : 9300
