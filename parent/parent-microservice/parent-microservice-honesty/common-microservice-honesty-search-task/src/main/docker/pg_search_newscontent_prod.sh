@@ -20,8 +20,8 @@ echo '
         ],
         "elasticsearch.autodiscover":true,
         "elasticsearch.cluster":"es-sanwang-prod",
-        "index" : "newscontenttests",
-        "type" : "newscontenttests",
+        "index" : "$2",
+        "type" : "$3",
         "elasticsearch" : {
            "host" : "172.31.17.29",
            "port" : 9300
