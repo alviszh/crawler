@@ -15,7 +15,11 @@ echo '
         "schedule" : "0/10 * 0-23 ? * *",
         "sql" : [
            {
-                "statement" : "select a.id as _id ,a.*,b.id as \"newsListJsonEs.id\",b.abstract_txt as  \"newsListJsonEs.abstract_txt\",b.createtime as  \"newsListJsonEs.createtime\",b.keyword as  \"newsListJsonEs.key\",b.link_url as  \"newsListJsonEs.link_url\",b.taskid as  \"newsListJsonEs.taskid\",b.title as  \"newsListJsonEs.title\",b.type as  \"newsListJsonEs.type\"  from search_content a  join search_newslist b on a.news_list_json_id=b.id order by b.createtime desc limit 100"
+                "statement" : "select a.id as _id ,a.*,b.id as \"newsListJsonEs.id\",b.abstract_txt as 
+                 \"newsListJsonEs.abstract_txt\",b.createtime as  \"newsListJsonEs.createtime\",b.keyword as  
+                 \"newsListJsonEs.key\",b.link_url as  \"newsListJsonEs.link_url\",b.taskid as  
+                 \"newsListJsonEs.taskid\",b.title as  \"newsListJsonEs.title\",b.type as  \"newsListJsonEs.type\ b.sensitivekey as  \"newsListJsonEs.sensitivekey\"  
+                 from search_content a  join search_newslist b on a.news_list_json_id=b.id order by b.createtime desc limit 100"
           }
         ],
         "elasticsearch.autodiscover":true,
