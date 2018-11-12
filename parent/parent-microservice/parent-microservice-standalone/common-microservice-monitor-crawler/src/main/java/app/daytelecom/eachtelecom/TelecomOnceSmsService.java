@@ -55,6 +55,9 @@ public class TelecomOnceSmsService extends MonitorTelecomBasicService{
     			tracer.addTag(province+"~电信网站数据爬取所需短信验证码内容是: ", sms);
     			if(province.contains("重庆") || province.contains("黑龙江")){
     				sms = executeTelecomHelper.getFourSms(sms).trim();
+    			}else if(province.contains("海南")){  //返回的短信中带有两个连续数字的串:欢迎您使用中国电信网上营业厅查询话费清单。短信随机码编号：QD[1002611090]，短信随机码是：334221
+    				//截取最后6位
+    				sms=sms.substring(sms.length()-6, sms.length());
     			}else{
     				sms = executeTelecomHelper.getSixSms(sms).trim();
     			}

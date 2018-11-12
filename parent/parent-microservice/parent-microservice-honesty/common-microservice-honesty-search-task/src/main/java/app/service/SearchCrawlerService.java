@@ -58,7 +58,7 @@ public class SearchCrawlerService {
 		HttpProxyRes httpProxyRes = null;
 		List<HttpProxyBean> httpProxyBeanSet = null;
 		if (istrueip) {
-			httpProxyRes = awsApiClient.getResProxy(40);
+			httpProxyRes = awsApiClient.getProxy(40);
 			sysLog.output("httpProxyBean", httpProxyRes.toString());
 
 			// System.out.println(httpProxyBean.getIp()+"=========="+httpProxyBean.getPort());

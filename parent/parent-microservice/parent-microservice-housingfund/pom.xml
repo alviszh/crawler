@@ -930,6 +930,7 @@
 				<app.housing.dandong.name>HousingFund-DanDong</app.housing.dandong.name>
 				<app.housing.jingzhou.name>HousingFund-JingZhou</app.housing.jingzhou.name>
 				<app.housing.nanjing.name>HousingFund-NanJing</app.housing.nanjing.name>
+				<app.housing.chongqing.name>HousingFund-ChongQing</app.housing.chongqing.name>
 			</properties>
 		</profile>
 	</profiles>
