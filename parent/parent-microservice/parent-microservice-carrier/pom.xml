@@ -28,7 +28,7 @@
 			<id>dev</id>
 			<properties>
 				<app.mobilecrawlertask.active>dev</app.mobilecrawlertask.active>
-				<app.mobilecrawlertask.name>MobileCrawlerTask-local</app.mobilecrawlertask.name>
+				<app.mobiletask.name>mobile-task-local</app.mobiletask.name>
 				<app.cmcc.name>crawler-cmcc-local</app.cmcc.name>
 				<app.unicom.name>crawler-unicom-local</app.unicom.name>
 				<app.etl.name>mobile-etl-local</app.etl.name>
@@ -45,7 +45,7 @@
 			<id>test</id>
 			<properties>
 				<app.mobilecrawlertask.active>test</app.mobilecrawlertask.active>
-				<app.mobilecrawlertask.name>MobileCrawlerTask</app.mobilecrawlertask.name>
+				<app.mobiletask.name>mobile-task</app.mobiletask.name>
 				<app.cmcc.name>crawler-cmcc</app.cmcc.name>
 				<app.unicom.name>crawler-unicom</app.unicom.name>
 				<app.etl.name>mobile-etl</app.etl.name>
@@ -58,7 +58,7 @@
 			<id>prod</id>
 			<properties>
 				<app.mobilecrawlertask.active>prod</app.mobilecrawlertask.active>
-				<app.mobilecrawlertask.name>MobileCrawlerTask</app.mobilecrawlertask.name>
+				<app.mobiletask.name>mobile-task</app.mobiletask.name>
 				<app.cmcc.name>crawler-cmcc</app.cmcc.name>
 				<app.unicom.name>crawler-unicom</app.unicom.name>
 				<app.etl.name>mobile-etl</app.etl.name>
@@ -71,7 +71,7 @@
 			<id>preview1.1.2</id>
 			<properties>
 				<app.mobilecrawlertask.active>preview1.1.2</app.mobilecrawlertask.active>
-				<app.mobilecrawlertask.name>MobileCrawlerTask</app.mobilecrawlertask.name>
+				<app.mobiletask.name>mobile-task</app.mobiletask.name>
 				<app.cmcc.name>crawler-cmcc</app.cmcc.name>
 				<app.unicom.name>crawler-unicom</app.unicom.name>
 				<app.etl.name>mobile-etl</app.etl.name>
