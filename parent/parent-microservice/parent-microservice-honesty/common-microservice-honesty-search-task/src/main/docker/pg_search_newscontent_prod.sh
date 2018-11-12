@@ -3,25 +3,14 @@ bin=/elasticsearch-jdbc-2.3.4.0/bin
 lib=/elasticsearch-jdbc-2.3.4.0/lib
 sqlname=$1  
 index=$2
-<<<<<<< HEAD
 esip=$3
-=======
-indextype=$2
-#sqlname=$1  
-#index=$2
-#indextype=$3
->>>>>>> refs/remotes/origin/master
+
 
 echo '
 {
     "type" : "jdbc",
      "jdbc" : {
-<<<<<<< HEAD
         "url" : "jdbc:mysql://mysql-mysql-lb-1:3306/'$sqlname'",
-=======
-        "url" : "jdbc:mysql://mysql-mysql-lb-1:3306/${sqlname}",
-        "url" : "jdbc:mysql://mysql-mysql-lb-1:3306/$1",
->>>>>>> refs/remotes/origin/master
        "user" : "root",
         "password" : "12qwaszx",
         "schedule" : "0/10 * 0-23 ? * *",
@@ -30,25 +19,14 @@ echo '
                 "statement" : "select a.id as _id ,a.*,b.id as \"newsListJsonEs.id\",b.abstract_txt as 
                  \"newsListJsonEs.abstract_txt\",b.createtime as  \"newsListJsonEs.createtime\",b.keyword as  
                  \"newsListJsonEs.key\",b.link_url as  \"newsListJsonEs.link_url\",b.taskid as  
-<<<<<<< HEAD
                  \"newsListJsonEs.taskid\",b.title as  \"newsListJsonEs.title\",b.type as  \"newsListJsonEs.type\,b.sensitivekey as  \"newsListJsonEs.sensitivekey\"  
-=======
-                 \"newsListJsonEs.taskid\",b.title as  \"newsListJsonEs.title\",b.type as  \"newsListJsonEs.type\ b.sensitivekey as  \"newsListJsonEs.sensitivekey\"  
->>>>>>> refs/remotes/origin/hyx
                  from search_content a  join search_newslist b on a.news_list_json_id=b.id order by b.createtime desc limit 100"
           }
         ],
         "elasticsearch.autodiscover":true,
         "elasticsearch.cluster":"es-sanwang-prod",
-<<<<<<< HEAD
         "index" : "'$index'",
         "type" :  "'$index'",
-=======
-        "index" : "${index}",
-        "type" : "${indextype}" ,
-        "index" : "$2",
-        "type" : "$3",
->>>>>>> refs/remotes/origin/master
         "elasticsearch" : {
            "host" : "'$esip'",
            "port" : 9300
