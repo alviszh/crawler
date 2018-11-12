@@ -9,7 +9,7 @@ echo '
 {
     "type" : "jdbc",
      "jdbc" : {
-        "url" : "jdbc:mysql://mysql-mysql-lb-1:3306/$sqlname",
+        "url" : "jdbc:mysql://mysql-mysql-lb-1:3306/"'$sqlname'",
        "user" : "root",
         "password" : "12qwaszx",
         "schedule" : "0/10 * 0-23 ? * *",
@@ -20,8 +20,8 @@ echo '
         ],
         "elasticsearch.autodiscover":true,
         "elasticsearch.cluster":"es-sanwang-prod",
-        "index" : "$index",
-        "type" : "$indextype",
+        "index" : "'$index'",
+        "type" : "'$indextype'",
         "elasticsearch" : {
            "host" : "172.31.17.29",
            "port" : 9300
