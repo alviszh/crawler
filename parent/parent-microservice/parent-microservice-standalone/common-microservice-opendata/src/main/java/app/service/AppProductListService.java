@@ -28,7 +28,7 @@ public class AppProductListService {
      * @return
      */
     @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
-    public AppProductList queryAppProductList(String prodClientId, String flag, String appmode) {
+    public AppProductList findAppProductList(String prodClientId, String flag, String appmode) {
         AppProductList appProductList = appProductListRepository.findByProdClientIdAndFlagAndAppmode(prodClientId,flag,appmode);
         return appProductList;
     }

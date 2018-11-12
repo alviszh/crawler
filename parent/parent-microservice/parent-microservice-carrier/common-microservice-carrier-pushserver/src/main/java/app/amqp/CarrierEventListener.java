@@ -17,25 +17,17 @@ public class CarrierEventListener {
 	@Autowired
 	private TracerLog tracer;
 	
-	@Autowired
-	private TaskMobileRepository taskMobileRepository;
-	
     @Autowired
     private MobileSendService mobileSendService;
 
 	@StreamListener(Sink.INPUT)
 	public void messageSink(TaskMobile taskMobile) {
-		tracer.addTag("Task Received", taskMobile.toString()); 
-		
-		if (taskMobile.getFinished() !=null && taskMobile.getFinished() && taskMobile.getPhase().equals(StatusCodeEnum.TASKMOBILE_CRAWLER_SUCCESS.getPhase())
-                && taskMobile.getPhase_status().equals(StatusCodeEnum.TASKMOBILE_CRAWLER_SUCCESS.getPhasestatus())) {
-			tracer.qryKeyValue("Mobile数据采集完成 推送前置规则",taskMobile.getTaskid());
-			TaskMobile taskMobilen = taskMobileRepository.findByTaskid(taskMobile.getTaskid());
-            tracer.qryKeyValue("sendPrecedingRule start", "开始前置规则的推送");
-            mobileSendService.sendPrecedingRule(taskMobilen);
-            tracer.qryKeyValue("sendPrecedingRule end", "结束前置规则的推送");
-        }
-		
+		if (taskMobile != null ) {
+			tracer.addTag("Pushserver Received", taskMobile.toString());
+
+			//推送状态
+			mobileSendService.sendMessageResult(taskMobile);
+		}
 		
 	}
 

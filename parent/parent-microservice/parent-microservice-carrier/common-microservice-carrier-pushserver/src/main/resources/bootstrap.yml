@@ -1,7 +1,7 @@
 spring:
   application:
     name: '@app.carrier.pushserver.name@'
-  profiles: 
+#  profiles:
 #    active: '@app.mobilecrawlertask.active@'
   cloud: 
     config:

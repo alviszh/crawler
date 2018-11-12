@@ -1,6 +1,6 @@
 spring: 
   application:
-    name: '@app.mobilecrawlertask.name@'
+    name: '@app.mobiletask.name@'
 #  profiles:
 #    active: '@app.mobilecrawlertask.active@'
   cloud:
