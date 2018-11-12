@@ -34,8 +34,8 @@ spring:
             spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
             spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes} 
   datasource:
+    data: ${datasource.schema}
     separator: ;;
-    schema: classpath:/datasource/*.sql
     initialization-mode: ${datasource.initialization-mode}  
     continueOnError: false
     hikari: 
