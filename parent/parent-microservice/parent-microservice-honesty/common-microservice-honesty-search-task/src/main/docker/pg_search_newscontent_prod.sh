@@ -3,7 +3,7 @@ bin=/elasticsearch-jdbc-2.3.4.0/bin
 lib=/elasticsearch-jdbc-2.3.4.0/lib
 sqlname=$1  
 index=$2
-indextype=$3
+esip=$3
 
 echo '
 {
@@ -21,9 +21,9 @@ echo '
         "elasticsearch.autodiscover":true,
         "elasticsearch.cluster":"es-sanwang-prod",
         "index" : "'$index'",
-        "type" : "'$indextype'",
+        "type" :  "'$index'",
         "elasticsearch" : {
-           "host" : "172.31.17.29",
+           "host" : "'$esip'",,
            "port" : 9300
         },
         "index_settings" : {
