@@ -36,7 +36,7 @@ echo '
         }
         },
         "type_mapping": {
-            "newscontent" : {
+            "'$index'" : {
                 "properties" : {
                     "id" : {
                         "type" : "integer",
