@@ -172,11 +172,13 @@
 			</properties>
 		</profile>
 		<profile>
-			<!-- mariadb5.5.56 生产环境 -->
-			<id>mariadb5.5.56</id>
+			<!-- preview1.1.2 生产环境 -->
+			<id>preview1.1.2</id>
 			<properties>
-				<app.active>mariadb5.5.56</app.active>
+				<app.active>preview1.1.2</app.active>
 				<app.standalonetask.name>standalone-task</app.standalonetask.name>
+				<app.monitor.platform.name>monitor-platform</app.monitor.platform.name>
+				<app.ip.api>api-ip</app.ip.api>
 			</properties>
 		</profile>
 	</profiles>

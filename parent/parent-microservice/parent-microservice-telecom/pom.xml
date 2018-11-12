@@ -266,6 +266,9 @@
 				<app.telecom.hainan.name>crawler-telecom-hainan</app.telecom.hainan.name>
 				<app.telecom.jiangsu.name>crawler-telecom-jiangsu</app.telecom.jiangsu.name>
 				<app.telecom.login.name>crawler-telecom-login</app.telecom.login.name>
+				<app.telecom.shanxi3.name>crawler-telecom-shanxi3</app.telecom.shanxi3.name>
+				<app.telecom.jiangxi.name>crawler-telecom-jiangxi</app.telecom.jiangxi.name>
+				<app.telecom.tianjin.name>crawler-telecom-tianjin</app.telecom.tianjin.name>
 			</properties>
 		</profile>
 	</profiles>

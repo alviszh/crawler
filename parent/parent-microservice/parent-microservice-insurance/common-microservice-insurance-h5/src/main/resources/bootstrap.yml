@@ -3,8 +3,8 @@ spring:
     name: insurance-h5
   thymeleaf:
     cache: false
-  profiles:
-    active: dev 
+#  profiles:
+#    active: dev 
   cloud:
     config:
       uri: http://configserver:8000

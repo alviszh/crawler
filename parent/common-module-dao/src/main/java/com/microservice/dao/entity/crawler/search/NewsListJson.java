@@ -60,7 +60,7 @@ public class NewsListJson  extends IdEntity implements Serializable {
      */
     private String type;
     
-    private String key;
+    private String keyword;
     @JsonManagedReference
     private List<NewsContent> list;
     
@@ -84,14 +84,14 @@ public class NewsListJson  extends IdEntity implements Serializable {
 		this.list = list;
 	}
 
-	public String getKey() {
-		return key;
-	}
 
-	public void setKey(String key) {
-		this.key = key;
-	}
 
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	public String getType() {
 		return type;
 	}
@@ -147,8 +147,8 @@ public class NewsListJson  extends IdEntity implements Serializable {
 	@Override
 	public String toString() {
 		return "NewsListJson [taskid=" + taskid + ", title=" + title + ", abstractTxt=" + abstractTxt + ", linkUrl="
-				+ linkUrl + ", type=" + type + ", key=" + key + ", list=" + list + ", sensitivekey=" + sensitivekey
-				+ "]";
+				+ linkUrl + ", type=" + type + ", keyword=" + keyword + ", list=" + list + ", sensitivekey="
+				+ sensitivekey + "]";
 	}
    
 	

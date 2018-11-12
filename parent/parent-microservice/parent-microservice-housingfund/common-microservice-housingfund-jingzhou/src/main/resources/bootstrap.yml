@@ -1,8 +1,8 @@
 spring: 
   application:
     name: '@app.housing.jingzhou.name@'
-  profiles:
-    active: '@app.housingcrawlertask.active@'   
+#  profiles:
+#    active: '@app.housingcrawlertask.active@'   
   cloud: 
     config:
       uri: http://configserver:8000

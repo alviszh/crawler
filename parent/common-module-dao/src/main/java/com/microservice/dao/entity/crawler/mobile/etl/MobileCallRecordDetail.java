@@ -10,18 +10,20 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.microservice.dao.entity.IdEntity;
 
-@Entity
-@Table(name="mobile_call_record_detail",indexes = {@Index(name = "index_mobile_call_record_detail_taskid", columnList = "taskId")})
+
 
 
 /*
  * 手机详细通话记录
  */
+@Entity
+@Table(name="mobile_call_record_detail",indexes = {@Index(name = "index_mobile_call_record_detail_taskid", columnList = "taskId")})
+//@Table(name="mobile_call_record_detail")
 public class MobileCallRecordDetail extends IdEntity implements Serializable {
 	
 	private static final long serialVersionUID = 5133365472766002696L;
 	
-	@Column(name="task_id")
+	//@Column(name="task_id")
 	private String taskId;	//唯一标识
 	private String communicationType;	//通信类型
 	private String callDuration;	//通话时长

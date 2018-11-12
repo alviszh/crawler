@@ -50,6 +50,17 @@ public class TaskQQ extends IdEntity implements Serializable{
 	private Date etltime;
 	
 	private String taskOwner;//数据所属人
+	
+	private String servicename;
+	
+
+	public String getServicename() {
+		return servicename;
+	}
+
+	public void setServicename(String servicename) {
+		this.servicename = servicename;
+	}
 
 	public String getTaskid() {
 		return taskid;
@@ -177,6 +188,9 @@ public class TaskQQ extends IdEntity implements Serializable{
 				+ ", description=" + description + ", finished=" + finished + ", qqnum=" + qqnum + ", password="
 				+ password + ", qqMessageStatus=" + qqMessageStatus + ", qqQunStatus=" + qqQunStatus
 				+ ", qqFriendStatus=" + qqFriendStatus + ", crawlerHost=" + crawlerHost + ", crawlerPort=" + crawlerPort
-				+ ", etltime=" + etltime + ", taskOwner=" + taskOwner + "]";
+				+ ", etltime=" + etltime + ", taskOwner=" + taskOwner + ", servicename=" + servicename + "]";
 	}
+	
+	
+
 }

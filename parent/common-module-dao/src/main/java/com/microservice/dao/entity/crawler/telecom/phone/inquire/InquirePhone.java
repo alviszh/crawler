@@ -15,9 +15,7 @@ import com.microservice.dao.entity.IdEntity;
 @Entity
 @DynamicUpdate(true)
 @DynamicInsert
-//@Table(name  ="inquire_phone_item_code",indexes = {@Index(name = "index_inquire_phone", columnList = "phone")})
-//@Table(name  ="inquire_phone_item_code",indexes = {@Index(name = "index_inquire_phone_item_code_phone", columnList = "phone")})
-@Table(name = "inquire_phone_item_code")
+@Table(name  ="inquire_phone_item_code",indexes = {@Index(name = "index_inquire_phone_item_code_phone", columnList = "phone")})
 public class InquirePhone extends IdEntity{
 	
 	private String taskId;

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.crawler.PageInfo;
 import com.microservice.dao.entity.crawler.mobile.TaskMobile;
 
-@FeignClient("MobileCrawlerTask")
+@FeignClient("mobile-task")
 //@FeignClient(name = "mobileTask", url = "http://10.167.202.203:8000")
 public interface MobileTaskClient {
 
@@ -37,7 +37,6 @@ public interface MobileTaskClient {
     @GetMapping(value = "/carrier/tasks/lineData")
     public @ResponseBody
     List lineData();
-
 
     /**
      * 统计每个运营商的调用量（饼图）

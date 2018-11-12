@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import app.entity.crawler.MonitorRancherInfo;
+import app.entity.system.MonitorRancherInfo;
 
 @Repository
 public interface MonitorRancherInfoRepository extends JpaRepository<MonitorRancherInfo, Long> {

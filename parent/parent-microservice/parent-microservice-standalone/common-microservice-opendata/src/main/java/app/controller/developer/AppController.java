@@ -21,6 +21,7 @@ import app.entity.developer.Product;
 import app.entity.security.SUser;
 import app.service.AppService;
 import app.service.SUserService;
+import app.utils.QrCodeUtil;
 
 /**
  * 开发者中心
@@ -40,6 +41,10 @@ public class AppController {
 
 	@Value("${pbccrc.prod.url.domain}")
 	String prodDomain;
+	
+	@Value("${opendata.pbccrc.h5url}")
+	String pbccrch5url;
+	
 	
 	/**
 	 * 开发者中心 - 应用管理
@@ -171,6 +176,9 @@ public class AppController {
 	public String apitestPbccrc(Model model,Long appid){
 		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("prodDomain", prodDomain);
+		String createQrCode = QrCodeUtil.createQrCode(pbccrch5url);
+		model.addAttribute("qrcode", "data:image/jpg;base64,"+createQrCode);
+		
 		return "developer/apitestpbccrc";
 	}
 

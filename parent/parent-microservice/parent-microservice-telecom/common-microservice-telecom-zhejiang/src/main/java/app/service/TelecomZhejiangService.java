@@ -360,10 +360,11 @@ public class TelecomZhejiangService implements ISmsTwice{
 			telecomZhejiangCallRecRepository.saveAll(list);
 			taskMobileRepository.updateCallRecordStatus(taskMobile.getTaskid(), 200, "【通讯信息】第"+mon+"月采集完成！");			
 			crawlerStatusMobileService.updateTaskMobile(taskMobile.getTaskid());
-		}else{
-			taskMobileRepository.updateCallRecordStatus(taskMobile.getTaskid(), 404, "【通讯信息】采集超时！");			
-			crawlerStatusMobileService.updateTaskMobile(taskMobile.getTaskid());
 		}
+//		else{
+//			taskMobileRepository.updateCallRecordStatus(taskMobile.getTaskid(), 404, "【通讯信息】采集超时！");			
+//			crawlerStatusMobileService.updateTaskMobile(taskMobile.getTaskid());
+//		}
 		webClient.close();
 	}
 
@@ -396,10 +397,11 @@ public class TelecomZhejiangService implements ISmsTwice{
 			telecomZhejiangMsgRepository.saveAll(list);
 			taskMobileRepository.updateSMSRecordStatus(taskMobile.getTaskid(), 200, "【短信信息】第"+mon+"月采集完成！");			
 			crawlerStatusMobileService.updateTaskMobile(taskMobile.getTaskid());
-		}else{
-			taskMobileRepository.updateSMSRecordStatus(taskMobile.getTaskid(), 404, "【短信信息】采集超时！");			
-			crawlerStatusMobileService.updateTaskMobile(taskMobile.getTaskid());
 		}
+//		else{
+//			taskMobileRepository.updateSMSRecordStatus(taskMobile.getTaskid(), 404, "【短信信息】采集超时！");			
+//			crawlerStatusMobileService.updateTaskMobile(taskMobile.getTaskid());
+//		}
 		webClient.close();
 	}
 

@@ -45,7 +45,7 @@ import app.service.common.aop.ICrawlerLogin;
 @Component
 @EntityScan(basePackages = { "com.microservice.dao.entity.crawler.housing.jingzhou"})
 @EnableJpaRepositories(basePackages = { "com.microservice.dao.repository.crawler.housing.jingzhou"})
-public class HousingfundJingZhouService extends HousingBasicService implements ICrawler,ICrawlerLogin{
+public class HousingfundJingZhouService extends HousingBasicService implements ICrawlerLogin{
 	@Autowired
 	private TracerLog tracer;
 	@Autowired
@@ -146,6 +146,15 @@ public class HousingfundJingZhouService extends HousingBasicService implements I
 	 * @param taskHousing
 	 * @param webClient 
 	 */
+	@Override
+	public TaskHousing getAllData(MessageLoginForHousing messageLoginForHousing) {
+		TaskHousing taskHousing = findTaskHousing(messageLoginForHousing.getTask_id());
+		taskHousing = getcrawler(messageLoginForHousing, taskHousing);
+		taskHousing = getuserinfo(messageLoginForHousing, taskHousing);
+		TaskHousing updateTaskHousing = updateTaskHousing(messageLoginForHousing.getTask_id());
+		return updateTaskHousing;
+	}
+	
 	public TaskHousing getcrawler(MessageLoginForHousing messageLogin, TaskHousing taskHousing) {
 		WebClient webClient = WebCrawler.getInstance().getNewWebClient();
 		taskHousing.setPhase(HousingfundStatusCodeEnum.HOUSING_CRAWLER_DONING.getPhase());
@@ -270,14 +279,7 @@ public class HousingfundJingZhouService extends HousingBasicService implements I
 		}
 		return taskHousing;
 	}
-	@Override
-	public TaskHousing getAllData(MessageLoginForHousing messageLoginForHousing) {
-		TaskHousing taskHousing = findTaskHousing(messageLoginForHousing.getTask_id());
-		getcrawler(messageLoginForHousing, taskHousing);
-		getuserinfo(messageLoginForHousing, taskHousing);
-		TaskHousing updateTaskHousing = updateTaskHousing(messageLoginForHousing.getTask_id());
-		return updateTaskHousing;
-	}
+	
 	@Override
 	public TaskHousing getAllDataDone(String taskId) {
 		return null; 

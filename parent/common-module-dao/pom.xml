@@ -51,11 +51,15 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- ehcache -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.3-1102.jdbc41</version>
-		</dependency>
+		</dependency> -->
+		<dependency>
+	        <groupId>org.postgresql</groupId>
+	        <artifactId>postgresql</artifactId>
+    	</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>

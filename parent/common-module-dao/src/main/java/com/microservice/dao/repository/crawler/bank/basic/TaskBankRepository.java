@@ -23,14 +23,14 @@ public interface TaskBankRepository extends JpaRepository<TaskBank, Long>,JpaSpe
 	
 	
 	//lineData
-	@Transactional
+    @Transactional
 	@Modifying
-	@Query(value = "select count(*) as num, to_char(createtime,'yyyy-mm-dd') as createtime from TaskBank  GROUP BY to_char(createtime,'yyyy-mm-dd') ORDER BY to_char(createtime,'yyyy-mm-dd')")
+	@Query(value = "select count(*) as num, to_char(createtime,'yyyy-mm-dd') as createtime from TaskBank  GROUP BY to_char(createtime,'yyyy-mm-dd') ORDER BY to_char(createtime,'yyyy-mm-dd')", nativeQuery = true)
 	List findGroupByCreatetimeOrderByCreatetimeDesc();
     //pieData
 	@Transactional
 	@Modifying
-	@Query(value = "select count(*), bankType from TaskBank WHERE bankType is not null GROUP BY bankType")
+	@Query(value = "select count(*), bankType from TaskBank WHERE bankType is not null GROUP BY bankType", nativeQuery = true)
 	List findGroupByCarrier();
 
 	/**
@@ -40,7 +40,7 @@ public interface TaskBankRepository extends JpaRepository<TaskBank, Long>,JpaSpe
 	 */
 	@Transactional
 	@Modifying	
-	@Query(value="select t from TaskBank t where t.createtime > ?1 and t.cardType is not null order by t.createtime desc")
+	@Query(value="select t from TaskBank t where t.createtime > ?1 and t.cardType is not null order by t.createtime desc", nativeQuery = true)
 	List<TaskBank> findTaskResultForEtlByData(Date date);
 	
 	

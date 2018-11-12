@@ -8,17 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.crawler.housingfund.json.MessageLoginForHousing;
-import com.crawler.mobile.json.ResultData;
-import com.crawler.mobile.json.StatusCodeEnum;
-import com.crawler.mobile.json.StatusCodeLogin;
-import com.google.gson.Gson;
 import com.microservice.dao.entity.crawler.housing.basic.TaskHousing;
 
 import app.commontracerlog.TracerLog;
 import app.service.HousingfundJingZhouService;
 import app.service.common.HousingBasicService;
-import app.service.common.aop.ICrawler;
-import app.service.common.aop.ICrawlerLogin;
 
 
 @RestController
@@ -31,10 +25,6 @@ public class HousingfundJingZhouController extends HousingBasicController{
 	private HousingfundJingZhouService housingfundJingZhouService;
 	@Autowired
 	private HousingBasicService housingBasicService;
-	@Autowired
-	private ICrawlerLogin iCrawlerLogin;
-	@Autowired
-	private ICrawler iCrawler;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public TaskHousing login(@RequestBody MessageLoginForHousing messageLoginForHousing) {
@@ -50,7 +40,7 @@ public class HousingfundJingZhouController extends HousingBasicController{
 		save(taskHousing);
 		housingfundJingZhouService.login(messageLoginForHousing,taskHousing);*/
 		
-		TaskHousing taskHousing = iCrawlerLogin.login(messageLoginForHousing);
+		TaskHousing taskHousing = housingfundJingZhouService.login(messageLoginForHousing);
 		return taskHousing;
 		
 	}
@@ -86,7 +76,7 @@ public class HousingfundJingZhouController extends HousingBasicController{
 		ResultData<TaskHousing> result = new ResultData<TaskHousing>();
 		result.setData(taskHousing);*/
 		
-		iCrawler.getAllData(messageLogin);
+		housingfundJingZhouService.getAllData(messageLogin);
 		return "SUCCESS";
 	}
 }
