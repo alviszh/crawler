@@ -45,14 +45,11 @@ public class MonitorSystemService {
 	//如下注解是后来加上的，为了避免黄线
 	@SuppressWarnings({ "deprecation", "serial" })   
 	public Page<MonitorEurekaServerInfo> getMobileTaskByParams(Map<String, Object> searchParams, int currentPage, int pageSize){
-//		Sort sort = new Sort(Sort.Direction.ASC, "id");
 		Sort sort = new Sort(Sort.Direction.ASC, "appname");
 		Pageable page = new PageRequest(currentPage, pageSize, sort);
-
+		
 		String appname = "";
 		String developer = "";
-		
-		System.out.println("条件查询时传进来的参数是:   "+appname+"   "+developer);
 		
 		if (searchParams.get("appname") != null)
 			appname = (String) searchParams.get("appname");
@@ -88,5 +85,10 @@ public class MonitorSystemService {
 				return null;
 			}
 		}, page);
+	}
+//	删除监控项
+	public int deleteItemById(Long id) {
+		int i = eurekaServerInfoRepository.deleteItemById(id);
+		return i;
 	}
 }

@@ -127,7 +127,7 @@ public class yidongtest {
 		//List<Object> lists = jsonObject.getPageMap().getResult();
 		List<UnicomNoteResult> lists = gs.fromJson(json2,  new TypeToken<List<UnicomNoteResult>>(){}.getType());
 		
-		UnicomUserResultRoot rootresult = new UnicomUserResultRoot();
+		UnicomUserResultRoot<UnicomNoteResult> rootresult = new UnicomUserResultRoot<UnicomNoteResult>();
 		rootresult.setResult(lists);
 		List<UnicomNoteResult> lists2 = rootresult.getResult();
 		for(UnicomNoteResult result:lists2){
