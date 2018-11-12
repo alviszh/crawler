@@ -1,8 +1,8 @@
 spring: 
   application:
     name: '@app.maoming.name@'
-  profiles:
-    active: '@app.mobilecrawlertask.active@'   
+#  profiles:
+#    active: '@app.mobilecrawlertask.active@'   
   cloud:
     config:
       uri: http://configserver:8000
