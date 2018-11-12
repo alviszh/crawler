@@ -656,6 +656,8 @@
 				<app.guilin.name>Insurance-GuiLin</app.guilin.name>
 				<app.chongqing.name>Insurance-Chongqing</app.chongqing.name>
 				<app.huzhou.name>Insurance-HuZhou</app.huzhou.name>
+				<app.qingdao.name>Insurance-Qingdao</app.qingdao.name>
+				<app.hengshui.name>Insurance-HengShui</app.hengshui.name>
 			</properties>
 		</profile>
 	</profiles>
