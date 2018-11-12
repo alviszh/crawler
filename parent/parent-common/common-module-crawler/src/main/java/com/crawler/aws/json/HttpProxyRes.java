@@ -1,9 +1,7 @@
 package com.crawler.aws.json;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 public class HttpProxyRes implements Serializable{
 	
