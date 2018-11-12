@@ -23,7 +23,7 @@ echo '
         "index" : "'$index'",
         "type" :  "'$index'",
         "elasticsearch" : {
-           "host" : "'$esip'",,
+           "host" : "'$esip'",
            "port" : 9300
         },
         "index_settings" : {
