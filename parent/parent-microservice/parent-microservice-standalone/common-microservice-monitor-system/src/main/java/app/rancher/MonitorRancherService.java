@@ -114,7 +114,7 @@ public class MonitorRancherService {
 										//遍历的时候，只要有一个超标，就跳出循环，认为这个主机cpu使用占比超标
 										if(Double.parseDouble((String) jsonArrayCpu.get(j))>ranchercpu){ //超标
 //											System.out.println("超标的数据是："+jsonArrayCpu.get(j));
-											rancherCpuProp=(String) jsonArrayCpu.get(j)+"(警告)";
+											rancherCpuProp=(String) jsonArrayCpu.get(j)+"%(警告)";
 											break;   //跳出这个for循环
 										}
 									}
@@ -143,17 +143,24 @@ public class MonitorRancherService {
 										//主机网络连接不上，或者硬盘使用率大于等于90%，或者swap小于10%，就纳入报警邮件信息
 										if(!state.equals("active") || (memfreeProp>0 && memfreeProp<=rancherswap) || diskInfoProp>=rancherdisk){
 											rancherChange=new MonitorRancherChange();
-											rancherChange.setDiskprop(diskInfoProp+"(警告)");
-											rancherChange.setIp(agentIpAddress);
-											rancherChange.setNetstate(state);
-											rancherChange.setNodename(hostname);
+											if(!state.equals("active")){
+												rancherChange.setNetstate(state+"(警告)");
+											}
 											if(memfreeProp==0){  //说明系统未启用硬盘转内存功能
 												rancherChange.setSwapfree("--");
 											}else{
-												rancherChange.setSwapfree(memfreeProp+"(警告)");
+												if((memfreeProp>0 && memfreeProp<=rancherswap)){
+													rancherChange.setSwapfree(memfreeProp+"%(警告)");
+												}
 											}
+											if(diskInfoProp>=rancherdisk){
+												rancherChange.setDiskprop(diskInfoProp+"%(警告)");
+											}
+											rancherChange.setIp(agentIpAddress);
+											rancherChange.setNodename(hostname);
 											rancherChange.setSelflink(selflink);
 											rancherChange.setEnvirtype(envirtype);
+											//rancherCpuProp 在对应程序位置已经加以判断
 											rancherChange.setLoadavg(rancherCpuProp);
 											warnList.add(rancherChange);
 										}
