@@ -37,7 +37,7 @@ public class InsuranceWeiFangController {
 		tracer.addTag("crawler.insurance.login", insuranceRequestParameters.getTaskId());   
 		TaskInsurance taskInsurance = taskInsuranceRepository.findByTaskid(insuranceRequestParameters.getTaskId());
 		try {
-			taskInsurance =  agentService.postAgent(insuranceRequestParameters, "/insurance/huizhou/crawler"); 
+			taskInsurance =  agentService.postAgent(insuranceRequestParameters, "/insurance/weifang/crawler"); 
 		} catch (RuntimeException e) {
 			tracer.qryKeyValue("RuntimeException", e.toString());
 		}
