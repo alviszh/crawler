@@ -47,7 +47,7 @@ spring:
     hibernate: 
         ddl-auto: update
         naming: 
-          strategy : org.hibernate.cfg.ImprovedNamingStrategy  
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl 
     properties:  
       hibernate:  
 #       dialect: com.microservice.persistence.SRDB10Dialect
@@ -59,4 +59,3 @@ spring:
     ehcache:
       config: classpath:ehcache.xml
           
-
