@@ -658,6 +658,10 @@
 				<app.huzhou.name>Insurance-HuZhou</app.huzhou.name>
 				<app.qingdao.name>Insurance-Qingdao</app.qingdao.name>
 				<app.hengshui.name>Insurance-HengShui</app.hengshui.name>
+				<app.luzhou.name>Insurance-LuZhou</app.luzhou.name>
+				<app.zhaoqing.name>Insurance-ZhaoQing</app.zhaoqing.name>
+				<app.taizhou.name>Insurance-TaiZhou</app.taizhou.name>
+				<app.maoming.name>Insurance-MaoMing</app.maoming.name>
 			</properties>
 		</profile>
 	</profiles>
