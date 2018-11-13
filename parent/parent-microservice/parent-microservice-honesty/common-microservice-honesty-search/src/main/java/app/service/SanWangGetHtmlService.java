@@ -27,8 +27,8 @@ import app.service.unit.SanWangUnitService;
 @Component
 public class SanWangGetHtmlService {
 
-	public final int DEFAULT_PAGE_TIME_OUT = 50000; // ms
-	public final int DEFAULT_JS_TIME_OUT = 50000;
+	public final int DEFAULT_PAGE_TIME_OUT = 100000; // ms
+	public final int DEFAULT_JS_TIME_OUT = 100000;
 	
 	@Autowired
 	private SanWangUnitService sanWangUnitService;
@@ -55,8 +55,6 @@ public class SanWangGetHtmlService {
 			webRequest.setProxyPort(Integer.parseInt(searchTask.getIpport()));
 		}
 
-//		webClient.setJavaScriptTimeout(50000);
-		webClient.getOptions().setTimeout(10000); // 15->60
 		Page page = webClient.getPage(webRequest);
 		webClient.close();// 关闭webclient 防止资源占用
 		return page.getWebResponse().getContentAsString();

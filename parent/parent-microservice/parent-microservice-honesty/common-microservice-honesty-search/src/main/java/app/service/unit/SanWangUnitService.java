@@ -102,7 +102,7 @@ public class SanWangUnitService {
 						.header("Accept-Encoding", "gzip, deflate").header("Accept-Language", "zh-CN,zh;q=0.9")
 						.header("Connection", "keep-alive")
 						.header("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
-						.followRedirects(true).timeout(50000).get();
+						.followRedirects(true).timeout(100000).get();
 			} else {
 				doc = Jsoup.connect(url)
 						.header("User-Agent",
@@ -111,7 +111,7 @@ public class SanWangUnitService {
 						.header("Accept-Encoding", "gzip, deflate").header("Accept-Language", "zh-CN,zh;q=0.9")
 						.header("Connection", "keep-alive")
 						.header("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
-						.followRedirects(true).timeout(50000).get();
+						.followRedirects(true).timeout(100000).get();
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
