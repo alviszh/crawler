@@ -12,9 +12,7 @@ import com.microservice.dao.entity.crawler.insurance.basic.TaskInsurance;
 import com.microservice.dao.repository.crawler.insurance.basic.TaskInsuranceRepository;
 
 import app.commontracerlog.TracerLog;
-import app.service.InsuranceService;
 import app.service.InsuranceTaiZhouCommonService;
-import app.service.aop.InsuranceLogin;
 
 @RestController  
 @Configuration
@@ -26,12 +24,7 @@ public class InsuranceTaiZhouController {
 	@Autowired
 	private TracerLog tracer;
 	@Autowired
-	private InsuranceService insuranceService;
-	@Autowired
 	private TaskInsuranceRepository taskInsuranceRepository;
-	@Autowired
-	private InsuranceLogin insuranceLogin;
-	
 	@PostMapping(value="/login")
 	public TaskInsurance login(@RequestBody InsuranceRequestParameters insuranceRequestParameters){
 		
@@ -40,11 +33,11 @@ public class InsuranceTaiZhouController {
 		TaskInsurance taskInsurance = taskInsuranceRepository.findByTaskid(insuranceRequestParameters.getTaskId());
 //	    taskInsurance = insuranceService.changeLoginStatusDoing(taskInsurance);
 //		try {
-//			insuranceTaiZhouCommonService.login(insuranceRequestParameters,taskInsurance);
+			taskInsurance = insuranceTaiZhouCommonService.login(insuranceRequestParameters);
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-		taskInsurance = insuranceLogin.login(insuranceRequestParameters);
+//		taskInsurance = insuranceLogin.login(insuranceRequestParameters);
 		return taskInsurance;
 	}
 	
@@ -60,9 +53,9 @@ public class InsuranceTaiZhouController {
 //			tracer.addTag("正在进行上次未完成的爬取任务。。。",insuranceRequestParameters.toString());
 //		}else{
 //			taskInsurance = insuranceService.changeLoginStatusDoing(taskInsurance);
-//			insuranceTaiZhouCommonService.getAllData(insuranceRequestParameters,taskInsurance);	
+		taskInsurance = insuranceTaiZhouCommonService.getAllData(insuranceRequestParameters);	
 //		}
-		taskInsurance = insuranceLogin.getAllData(insuranceRequestParameters);
+//		taskInsurance = insuranceLogin.getAllData(insuranceRequestParameters);
 		return taskInsurance;
 		
 	}
