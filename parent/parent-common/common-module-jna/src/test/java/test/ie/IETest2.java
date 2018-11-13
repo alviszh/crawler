@@ -31,25 +31,25 @@ public class IETest2 {
 
 		
 
-		Input(accountNum);// ÊäÈëÕË»§
+		Input(accountNum);//
 
-		InputTab(); // ÊäÈë Tab ÇÐ»»µ½ÃÜÂë¿ò
+		InputTab(); //
 
-		Input(password);// ÊäÈëÃÜÂë
+		Input(password);//
 		
 		
-		RobotSubmit();//»úÆ÷ÈËµã»÷µÇÂ¼°´Å¥
+		RobotSubmit();//
 	}
 	
 	public static void RobotSubmit() throws Exception{
 		Thread.sleep(1000L);
 		Robot robot = new Robot();
-		//ÒÆ¶¯Êó±ê
+		//
         robot.mouseMove(1122, 487);
 
-        //µã»÷Êó±ê
-        //Êó±ê×ó¼ü
-        System.out.println("µ¥»÷");
+        //
+        //
+        System.out.println("");
         robot.mousePress(InputEvent.BUTTON1_MASK);
         robot.mouseRelease(InputEvent.BUTTON1_MASK);
 		
@@ -75,7 +75,7 @@ public class IETest2 {
 	public static void OpenIE(String url) {
 		System.out.println("============================= CASE 2");
 
-		// ´ò¿ª IE ä¯ÀÀÆ÷
+		// ï¿½ï¿½ IE ï¿½ï¿½ï¿½ï¿½ï¿½
 		// http://msdn.microsoft.com/en-us/library/windows/desktop/ms682425%28v=vs.85%29.aspx
 		Kernel32 kernel32 = Kernel32.INSTANCE;
 		SECURITY_ATTRIBUTES procSecAttr = new SECURITY_ATTRIBUTES();
@@ -85,14 +85,14 @@ public class IETest2 {
 		boolean success = kernel32.CreateProcess(null, "C:\\Program Files\\Internet Explorer\\iexplore.exe " + url,
 				procSecAttr, threadSecAttr, false, new DWORD(0x00000010), null, null, startupInfo, pi);
 
-		// ½«Ê¹ÓÃÄ¬ÈÏä¯ÀÀÆ÷´ò¿ª£¨ÎÒÕâÀïÊÇ»ðºüä¯ÀÀÆ÷£©
+		// ï¿½ï¿½Ê¹ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò¿ª£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		// Shell32.INSTANCE.ShellExecute(null, "open", "http://news.baidu.com",
 		// null, null, 9);
 
 		if (!success) {
-			System.out.println("´ò¿ªIEä¯ÀÀÆ÷Ê§°Ü");
+			System.out.println("ï¿½ï¿½IEï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½");
 		} else {
-			System.out.println("´ò¿ªIEä¯ÀÀÆ÷³É¹¦");
+			System.out.println("ï¿½ï¿½IEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½");
 		}
 
 		kernel32.CloseHandle(pi.hProcess);

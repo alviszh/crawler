@@ -1,7 +1,7 @@
 /*
  * NOTIFYICONDATA.java
  *
- * Created on 2. März 2007, 11:49
+ * Created on 2. Mrz 2007, 11:49
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

@@ -9,12 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(name ="Insurance-Wuzhou",configuration = InsurClientConfig.class)
 public interface InsurWuzhouClient {
 
-    @PostMapping(value="/insurance/wuzhou/login")
+    @PostMapping(value="/insurance/Wuzhou")
     public TaskInsurance login(@RequestBody InsuranceRequestParameters insuranceRequestParameters);
 
-    @PostMapping(value="/insurance/wuzhou/crawler")
+    @PostMapping(value="/insurance/Wuzhou/crawler")
     public TaskInsurance crawler(@RequestBody InsuranceRequestParameters insuranceRequestParameters);
-
-
-
 }

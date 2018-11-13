@@ -179,6 +179,7 @@
 				<app.standalonetask.name>standalone-task</app.standalonetask.name>
 				<app.monitor.platform.name>monitor-platform</app.monitor.platform.name>
 				<app.ip.api>api-ip</app.ip.api>
+				<app.monitor.system.name>monitor-system</app.monitor.system.name>
 			</properties>
 		</profile>
 	</profiles>

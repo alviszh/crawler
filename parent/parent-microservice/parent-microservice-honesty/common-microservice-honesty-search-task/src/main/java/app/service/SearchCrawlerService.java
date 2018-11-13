@@ -58,7 +58,6 @@ public class SearchCrawlerService {
 		HttpProxyRes httpProxyRes = null;
 		List<HttpProxyBean> httpProxyBeanSet = null;
 		if (istrueip) {
-			httpProxyRes = awsApiClient.getResProxy(40);
 			httpProxyRes = awsApiClient.getProxy(40);
 			sysLog.output("httpProxyBean", httpProxyRes.toString());
 
@@ -91,6 +90,7 @@ public class SearchCrawlerService {
 				sysLog.output("存储 数据", e.getMessage());
 
 			}
+			i++;
 
 		}
 

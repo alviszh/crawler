@@ -38,6 +38,7 @@ spring:
   datasource:
 #    schema: classpath:/datasource/*.sql
     data: ${datasource.schema}
+    data: ${datasource.schema} 
     initialization-mode: ${datasource.initialization-mode}
     continueOnError: false
     separator: ;;

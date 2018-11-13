@@ -1,7 +1,7 @@
 /*
  * SHFILEINFO.java
  *
- * Created on 13. März 2007, 15:22
+ * Created on 13. Mrz 2007, 15:22
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
