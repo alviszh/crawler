@@ -1,7 +1,7 @@
 /*
  * WindowsVersion.java
  *
- * Created on 2. März 2007, 12:28
+ * Created on 2. Mrz 2007, 12:28
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

@@ -1,8 +1,8 @@
 spring: 
   application:
     name: '@app.e_commerce.jingdong.name@'
-  profiles:
-    active: '@app.e_commerce.active@'
+#  profiles:
+#    active: '@app.e_commerce.active@'
   cloud:
     config:
       uri: http://configserver:8000

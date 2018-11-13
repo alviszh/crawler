@@ -17,7 +17,6 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
 import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 import com.module.htmlunit.WebCrawler;
-
 public class AppJiaofei {
 
 	public static void main(String[] args) {

@@ -187,6 +187,12 @@ public class InsuranceCrawlerController {
     private InsurBengbuClient insurBengbuClient;
     @Autowired
     private InsurZhanjiangClient insurZhanjiangClient;
+    @Autowired
+    private InsurZhaoqingClient insurZhaoqingClient;
+    @Autowired
+    private InsurMaomingClient insurMaomingClient;
+    @Autowired
+    private InsurWuzhouClient insurWuzhouClient;
 
     @PostMapping(value = "/login")
     public @ResponseBody
@@ -513,6 +519,18 @@ public class InsuranceCrawlerController {
             log.info("-----------湛江市 登录------------" + insuranceRequestParameters);
             taskInsurancea = insurZhanjiangClient.login(insuranceRequestParameters);
         }
+        else if (city.equals("肇庆市")) {
+            log.info("-----------肇庆市 登录------------" + insuranceRequestParameters);
+            taskInsurancea = insurZhaoqingClient.login(insuranceRequestParameters);
+        }
+        else if (city.equals("茂名市")) {
+            log.info("-----------茂名市 登录------------" + insuranceRequestParameters);
+            taskInsurancea = insurMaomingClient.login(insuranceRequestParameters);
+        }
+        else if (city.equals("梧州市")) {
+            log.info("-----------梧州市 登录------------" + insuranceRequestParameters);
+            taskInsurancea = insurWuzhouClient.login(insuranceRequestParameters);
+        }
 
         log.info("-----------taskInsurancea------------" + taskInsurancea);
         return  taskInsurancea;
@@ -797,6 +815,22 @@ public class InsuranceCrawlerController {
         else if (city.equals("蚌埠市")) {
             log.info("-----------蚌埠市 爬取数据------------" + insuranceRequestParameters);
             taskInsurancea = insurBengbuClient.crawler(insuranceRequestParameters);
+        }
+        else if (city.equals("肇庆市")) {
+            log.info("-----------肇庆市 爬取数据------------" + insuranceRequestParameters);
+            taskInsurancea = insurZhaoqingClient.crawler(insuranceRequestParameters);
+        }
+        else if (city.equals("茂名市")) {
+            log.info("-----------茂名市 爬取数据------------" + insuranceRequestParameters);
+            taskInsurancea = insurMaomingClient.crawler(insuranceRequestParameters);
+        }
+        else if (city.equals("泸州市")) {
+            log.info("-----------泸州市 爬取数据------------" + insuranceRequestParameters);
+            taskInsurancea = insurLuzhouClient.crawler(insuranceRequestParameters);
+        }
+        else if (city.equals("梧州市")) {
+            log.info("-----------梧州市 爬取数据------------" + insuranceRequestParameters);
+            taskInsurancea = insurWuzhouClient.crawler(insuranceRequestParameters);
         }
 
         log.info("-----------taskInsurancea------------" + taskInsurancea);

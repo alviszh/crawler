@@ -60,9 +60,9 @@ public class HousingLYParse {
 			fee = ele2.get(17).text().trim();              //缴存余额
 			state = ele2.get(19).text().trim();            //账户状态
 			date = ele2.get(21).text().trim();             //开户日期
-			years = ele2.get(23).text().trim();            //缴至年月
-			bank = ele2.get(25).text().trim();             //绑定银行
-			cardNumber = ele2.get(27).text().trim();       //绑定银行卡号
+			years = ele2.get(25).text().trim();            //缴至年月
+			bank = ele2.get(27).text().trim();             //绑定银行
+			cardNumber = ele2.get(29).text().trim();       //绑定银行卡号
 		}
 		userinfo.setName(name);
 		userinfo.setIdCard(idCard);

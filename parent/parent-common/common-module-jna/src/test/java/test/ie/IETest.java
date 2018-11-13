@@ -28,11 +28,11 @@ public class IETest {
 
 		
 
-		Input(accountNum);// 输入账户
+		Input(accountNum);//
 
-		InputTab(); // 输入 Tab 切换到密码框
+		InputTab(); //
 
-		Input(password);// 输入密码
+		Input(password);//
 		
 		
 		
@@ -58,7 +58,7 @@ public class IETest {
 	public static void OpenIE(String url) {
 		System.out.println("============================= CASE 2");
 
-		// 打开 IE 浏览器
+		//
 		// http://msdn.microsoft.com/en-us/library/windows/desktop/ms682425%28v=vs.85%29.aspx
 		Kernel32 kernel32 = Kernel32.INSTANCE;
 		SECURITY_ATTRIBUTES procSecAttr = new SECURITY_ATTRIBUTES();
@@ -68,14 +68,14 @@ public class IETest {
 		boolean success = kernel32.CreateProcess(null, "C:\\Program Files\\Internet Explorer\\iexplore.exe " + url,
 				procSecAttr, threadSecAttr, false, new DWORD(0x00000010), null, null, startupInfo, pi);
 
-		// 将使用默认浏览器打开（我这里是火狐浏览器）
+		//
 		// Shell32.INSTANCE.ShellExecute(null, "open", "http://news.baidu.com",
 		// null, null, 9);
 
 		if (!success) {
-			System.out.println("打开IE浏览器失败");
+			System.out.println("");
 		} else {
-			System.out.println("打开IE浏览器成功");
+			System.out.println("");
 		}
 
 		kernel32.CloseHandle(pi.hProcess);
