@@ -13,7 +13,6 @@ import com.microservice.dao.entity.crawler.e_commerce.jingdong.JDCoffers;
  */
 public class CoffersRooBean {
 
-	
 	private JDCoffers accountResult;
 	private String incomeAward;
 
