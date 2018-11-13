@@ -68,4 +68,3 @@ spring:
     static-path-pattern: /snapshot/**
   resources:
     static-locations: file:./snapshot        
-

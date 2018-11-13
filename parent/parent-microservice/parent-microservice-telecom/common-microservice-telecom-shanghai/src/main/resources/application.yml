@@ -30,7 +30,8 @@ spring:
             
   datasource:
     separator: ;;
-    schema: classpath:/datasource/*.sql
+#    schema: classpath:/datasource/*.sql
+    data: ${datasource.schema}
     initialization-mode: ${datasource.initialization-mode} 
     continueOnError: false
     hikari: 
