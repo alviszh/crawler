@@ -147,10 +147,10 @@
 			</properties>
 		</profile>
 		<profile>
-			<!--mariadb5.5.56 生产环境 -->
-			<id>mariadb5.5.56</id>
+			<!--preview1.1.2 生产环境 -->
+			<id>preview1.1.2</id>
 			<properties>
-				<app.e_commerce.active>mariadb5.5.56</app.e_commerce.active>
+				<app.e_commerce.active>preview1.1.2</app.e_commerce.active>
 				<app.e_commercetask.name>Ecommerce-Task</app.e_commercetask.name>
 				<app.e_commerce.jingdong.name>Ecommerce-JingDong</app.e_commerce.jingdong.name>
 				<app.e_commerce.taobao.name>Ecommerce-Taobao</app.e_commerce.taobao.name>
