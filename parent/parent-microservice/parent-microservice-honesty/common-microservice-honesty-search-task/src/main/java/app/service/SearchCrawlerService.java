@@ -90,6 +90,7 @@ public class SearchCrawlerService {
 				sysLog.output("存储 数据", e.getMessage());
 
 			}
+			i++;
 
 		}
 
