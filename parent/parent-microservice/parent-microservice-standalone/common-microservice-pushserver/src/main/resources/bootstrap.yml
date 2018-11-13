@@ -1,8 +1,8 @@
 spring:
   application:
-    name: '@app.carrier.pushserver.name@'
+    name: '@app.pushserver.name@'
 #  profiles:
-#    active: '@app.mobilecrawlertask.active@'
+#    active: '@app.active@'
   cloud: 
     config:
       uri: http://configserver:8000

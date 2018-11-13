@@ -3,17 +3,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>parent-microservice-carrier</artifactId>
+        <artifactId>parent-microservice-standalone</artifactId>
         <groupId>com.sr.microservice</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>common-microservice-carrier-pushserver</artifactId>
+    <artifactId>common-microservice-pushserver</artifactId>
 
     <properties>
-        <start-class>app.CarrierPushServerApplication</start-class>
+        <start-class>app.PushServerApplication</start-class>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -32,11 +33,14 @@
             <artifactId>common-microservice-client</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <!--carrier service-->
         <dependency>
             <groupId>com.sr.microservice</groupId>
             <artifactId>common-microservice-service</artifactId>
             <version>${project.version}</version>
         </dependency>
+
         <dependency>
             <groupId>net.sf.json-lib</groupId>
             <artifactId>json-lib</artifactId>
