@@ -32,12 +32,13 @@ public class SanWangGetHtmlService {
 	
 	@Autowired
 	private SanWangUnitService sanWangUnitService;
-	
+	private WebClient webClient = new WebClient(BrowserVersion.CHROME);
+
 	
 	public String getHtmlByUrlForGET(SearchTask searchTask) throws Exception{
 
 		String url = sanWangUnitService.toUtf8String(searchTask.getLinkurl());
-		WebClient webClient = new WebClient(BrowserVersion.CHROME);
+//		WebClient webClient = new WebClient(BrowserVersion.CHROME);
 		webClient.setRefreshHandler(new ThreadedRefreshHandler());
 		webClient.getOptions().setCssEnabled(false);
 		webClient.getOptions().setJavaScriptEnabled(false);
@@ -57,7 +58,7 @@ public class SanWangGetHtmlService {
 
 
 		Page page = webClient.getPage(webRequest);
-		webClient.close();// 关闭webclient 防止资源占用
+//		webClient.close();// 关闭webclient 防止资源占用
 		return page.getWebResponse().getContentAsString();
 	}
 	
@@ -65,7 +66,6 @@ public class SanWangGetHtmlService {
 		
 		String url = sanWangUnitService.toUtf8String(searchTask.getLinkurl());
 
-		WebClient webClient = new WebClient(BrowserVersion.CHROME);
 		webClient.setRefreshHandler(new ThreadedRefreshHandler());
 		webClient.getOptions().setCssEnabled(false);
 		webClient.getOptions().setJavaScriptEnabled(false);
@@ -84,7 +84,6 @@ public class SanWangGetHtmlService {
 		}
 
 		Page page = webClient.getPage(webRequest);
-		webClient.close();// 关闭webclient 防止资源占用
 
 		return page.getWebResponse().getContentAsString();
 	}
