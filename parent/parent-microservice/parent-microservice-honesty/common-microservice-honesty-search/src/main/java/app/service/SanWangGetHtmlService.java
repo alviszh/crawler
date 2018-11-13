@@ -27,8 +27,8 @@ import app.service.unit.SanWangUnitService;
 @Component
 public class SanWangGetHtmlService {
 
-	public final int DEFAULT_PAGE_TIME_OUT = 100000; // ms
-	public final int DEFAULT_JS_TIME_OUT = 100000;
+	public final int DEFAULT_PAGE_TIME_OUT = 10000; // ms
+	public final int DEFAULT_JS_TIME_OUT = 10000;
 	
 	@Autowired
 	private SanWangUnitService sanWangUnitService;
@@ -36,7 +36,7 @@ public class SanWangGetHtmlService {
 
 	
 	public String getHtmlByUrlForGET(SearchTask searchTask) throws Exception{
-
+		webClient = new WebClient(BrowserVersion.CHROME);
 		String url = sanWangUnitService.toUtf8String(searchTask.getLinkurl());
 //		WebClient webClient = new WebClient(BrowserVersion.CHROME);
 		webClient.setRefreshHandler(new ThreadedRefreshHandler());
@@ -58,12 +58,12 @@ public class SanWangGetHtmlService {
 
 
 		Page page = webClient.getPage(webRequest);
-//		webClient.close();// 关闭webclient 防止资源占用
+		webClient.close();// 关闭webclient 防止资源占用
 		return page.getWebResponse().getContentAsString();
 	}
 	
 	public  String getDocByHtmlunitFalse(SearchTask searchTask,String linkurl) throws Exception{
-		
+		webClient = new WebClient(BrowserVersion.CHROME);
 		String url = sanWangUnitService.toUtf8String(searchTask.getLinkurl());
 
 		webClient.setRefreshHandler(new ThreadedRefreshHandler());
@@ -84,7 +84,7 @@ public class SanWangGetHtmlService {
 		}
 
 		Page page = webClient.getPage(webRequest);
-
+		webClient.close();
 		return page.getWebResponse().getContentAsString();
 	}
 
