@@ -84,6 +84,8 @@ public class E_CommerceTask extends IdEntity implements Serializable {
     private String report_time;		//报告处理时间
 	
 	private String report_status;	//报告处理状态	
+	
+	private String etlStatus;		//etl处理状态
 
 
 	@Column(name = "task_owner")
@@ -345,6 +347,15 @@ public class E_CommerceTask extends IdEntity implements Serializable {
 	public void setQrUrl(String qrUrl) {
 		this.qrUrl = qrUrl;
 	}
+	
+
+	public String getEtlStatus() {
+		return etlStatus;
+	}
+
+	public void setEtlStatus(String etlStatus) {
+		this.etlStatus = etlStatus;
+	}
 
 	@Override
 	public String toString() {
@@ -357,7 +368,10 @@ public class E_CommerceTask extends IdEntity implements Serializable {
 				+ ", addressInfoStatus=" + addressInfoStatus + ", bankCardInfoStatus=" + bankCardInfoStatus
 				+ ", alipayPaymentInfoStatus=" + alipayPaymentInfoStatus + ", alipayInfoStatus=" + alipayInfoStatus
 				+ ", btPrivilegeInfoStatus=" + btPrivilegeInfoStatus + ", renzhengInfoStatus=" + renzhengInfoStatus
-				+ ", webdriverHandle=" + webdriverHandle + ", baseCode=" + baseCode + ", qrUrl=" + qrUrl + "]";
+				+ ", webdriverHandle=" + webdriverHandle + ", baseCode=" + baseCode + ", qrUrl=" + qrUrl + ", owner="
+				+ owner + ", taskKey=" + taskKey + ", environmentId=" + environmentId + ", report_time=" + report_time
+				+ ", report_status=" + report_status + ", etlStatus=" + etlStatus + "]";
 	}
+
 
 }
