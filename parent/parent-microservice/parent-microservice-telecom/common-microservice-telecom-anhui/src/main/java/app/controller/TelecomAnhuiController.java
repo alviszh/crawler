@@ -18,7 +18,7 @@ import app.service.aop.ISms;
 @RestController     
 @RequestMapping("/carrier")            
 public class TelecomAnhuiController {    
-	@Autowired  
+	@Autowired    
 	private TelecomCommonAnhuiService telecomCommonAnhuiService;
 	@Autowired
 	private TracerLog tracer;

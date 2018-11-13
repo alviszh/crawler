@@ -12,9 +12,7 @@ import com.microservice.dao.entity.crawler.insurance.basic.TaskInsurance;
 import com.microservice.dao.repository.crawler.insurance.basic.TaskInsuranceRepository;
 
 import app.commontracerlog.TracerLog;
-import app.service.InsuranceService;
 import app.service.InsuranceTaiZhouCommonService;
-import app.service.aop.InsuranceLogin;
 
 @RestController  
 @Configuration
@@ -26,11 +24,7 @@ public class InsuranceTaiZhouController {
 	@Autowired
 	private TracerLog tracer;
 	@Autowired
-	private InsuranceService insuranceService;
-	@Autowired
 	private TaskInsuranceRepository taskInsuranceRepository;
-	@Autowired
-	private InsuranceLogin insuranceLogin;
 	
 	@PostMapping(value="/login")
 	public TaskInsurance login(@RequestBody InsuranceRequestParameters insuranceRequestParameters){
@@ -38,13 +32,7 @@ public class InsuranceTaiZhouController {
 		tracer.addTag("InsuranceTianjinController login", insuranceRequestParameters.getTaskId());
 		//通过taskid查出对应表中的数据
 		TaskInsurance taskInsurance = taskInsuranceRepository.findByTaskid(insuranceRequestParameters.getTaskId());
-//	    taskInsurance = insuranceService.changeLoginStatusDoing(taskInsurance);
-//		try {
-//			insuranceTaiZhouCommonService.login(insuranceRequestParameters,taskInsurance);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-		taskInsurance = insuranceLogin.login(insuranceRequestParameters);
+		taskInsurance = insuranceTaiZhouCommonService.login(insuranceRequestParameters);
 		return taskInsurance;
 	}
 	
@@ -52,17 +40,9 @@ public class InsuranceTaiZhouController {
 	
 	@PostMapping(value="/crawler")
 	public TaskInsurance crawler(@RequestBody InsuranceRequestParameters insuranceRequestParameters) throws Exception{
-		
 		tracer.addTag("InsuranceTianJinController crawler", insuranceRequestParameters.getTaskId());
-//		boolean isCrawler = insuranceService.isDoing(insuranceRequestParameters);
 		TaskInsurance taskInsurance = taskInsuranceRepository.findByTaskid(insuranceRequestParameters.getTaskId());
-//		if(isCrawler){
-//			tracer.addTag("正在进行上次未完成的爬取任务。。。",insuranceRequestParameters.toString());
-//		}else{
-//			taskInsurance = insuranceService.changeLoginStatusDoing(taskInsurance);
-//			insuranceTaiZhouCommonService.getAllData(insuranceRequestParameters,taskInsurance);	
-//		}
-		taskInsurance = insuranceLogin.getAllData(insuranceRequestParameters);
+		taskInsurance = insuranceTaiZhouCommonService.getAllData(insuranceRequestParameters);	
 		return taskInsurance;
 		
 	}
