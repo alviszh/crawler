@@ -11,7 +11,7 @@ import app.commontracerlog.TracerLog;
 import app.service.IpApiService;
 
 @RestController
-@RequestMapping("/jg/api") 
+@RequestMapping("/api-service") 
 public class IpApiController {
 	
 	@Autowired
@@ -32,6 +32,9 @@ public class IpApiController {
 		System.out.println("获取IP的数量： "+num);
 		System.out.println("获取IP的省份： "+pro);
 //		System.out.println("获取IP的城市： "+city);	
+		if(num==null){
+			num = "1";
+		}
 		return ipApiService.getIP(num,pro);		
 	}
 

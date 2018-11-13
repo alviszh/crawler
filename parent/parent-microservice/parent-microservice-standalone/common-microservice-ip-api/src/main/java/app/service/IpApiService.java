@@ -5,9 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Component;
 import com.crawler.aws.json.HttpProxyBean;
@@ -30,7 +33,6 @@ import app.commontracerlog.TracerLog;
 @EnableJpaRepositories(
 		basePackages="com.microservice.dao.repository.crawler.mobile")
 public class IpApiService {
-	
 	@Autowired
 	private TracerLog tracer;
 	@Autowired
@@ -39,9 +41,10 @@ public class IpApiService {
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	String jgCity = "";
 
+	@Cacheable(value ="mycache", key = "#p0")
 	public HttpProxyRes getIP(String num, String pro) {
 		tracer.addTag("获取极光IP开始", "数量："+num+" ;省份："+pro);
-		
+		System.out.println("aaa");
 		//参数错误，num为空的情况
 		if(StringUtils.isBlank(num)){			
 			HttpProxyRes httpProxyRes = getHttpProxyRes(num,false,"参数有误，num不能为0！",null);
@@ -57,7 +60,7 @@ public class IpApiService {
 			HttpProxyRes httpProxyRes = getIpByNumAndPro(num,pro);
 			return httpProxyRes;
 		}
-		
+
 		HttpProxyRes httpProxyRes = getHttpProxyRes(num,false,"未知错误，未能返回IP！",null);
 		return  httpProxyRes;
 	}
