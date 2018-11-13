@@ -25,19 +25,14 @@ public class InsuranceTaiZhouController {
 	private TracerLog tracer;
 	@Autowired
 	private TaskInsuranceRepository taskInsuranceRepository;
+	
 	@PostMapping(value="/login")
 	public TaskInsurance login(@RequestBody InsuranceRequestParameters insuranceRequestParameters){
 		
 		tracer.addTag("InsuranceTianjinController login", insuranceRequestParameters.getTaskId());
 		//通过taskid查出对应表中的数据
 		TaskInsurance taskInsurance = taskInsuranceRepository.findByTaskid(insuranceRequestParameters.getTaskId());
-//	    taskInsurance = insuranceService.changeLoginStatusDoing(taskInsurance);
-//		try {
-			taskInsurance = insuranceTaiZhouCommonService.login(insuranceRequestParameters);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		taskInsurance = insuranceLogin.login(insuranceRequestParameters);
+		taskInsurance = insuranceTaiZhouCommonService.login(insuranceRequestParameters);
 		return taskInsurance;
 	}
 	
@@ -45,17 +40,9 @@ public class InsuranceTaiZhouController {
 	
 	@PostMapping(value="/crawler")
 	public TaskInsurance crawler(@RequestBody InsuranceRequestParameters insuranceRequestParameters) throws Exception{
-		
 		tracer.addTag("InsuranceTianJinController crawler", insuranceRequestParameters.getTaskId());
-//		boolean isCrawler = insuranceService.isDoing(insuranceRequestParameters);
 		TaskInsurance taskInsurance = taskInsuranceRepository.findByTaskid(insuranceRequestParameters.getTaskId());
-//		if(isCrawler){
-//			tracer.addTag("正在进行上次未完成的爬取任务。。。",insuranceRequestParameters.toString());
-//		}else{
-//			taskInsurance = insuranceService.changeLoginStatusDoing(taskInsurance);
 		taskInsurance = insuranceTaiZhouCommonService.getAllData(insuranceRequestParameters);	
-//		}
-//		taskInsurance = insuranceLogin.getAllData(insuranceRequestParameters);
 		return taskInsurance;
 		
 	}
