@@ -3,7 +3,7 @@ var city = $('p.navbar-brand').find('span').text();
  * 点击下一步
  */
 $('#nextBtn').click( function() {
-    if(city.indexOf("德州市")!=-1||city.indexOf("呼和浩特市")!=-1||city.indexOf("沧州市")!=-1||city.indexOf("西安市")!=-1||city.indexOf("郑州市")!=-1){
+    if(city.indexOf("德州市")!=-1||city.indexOf("呼和浩特市")!=-1||city.indexOf("沧州市")!=-1||city.indexOf("西安市")!=-1||city.indexOf("郑州市")!=-1||city.indexOf("海口市")!=-1){
         nextLogin();  //触发爬虫
     }
     else{

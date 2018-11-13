@@ -1,7 +1,7 @@
 /*
  * HDC.java
  *
- * Created on 14. März 2007, 10:57
+ * Created on 14. Mrz 2007, 10:57
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

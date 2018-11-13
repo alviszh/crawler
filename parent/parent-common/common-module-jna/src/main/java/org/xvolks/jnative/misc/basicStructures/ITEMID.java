@@ -1,7 +1,7 @@
 /*
  * SHITEMID.java
  *
- * Created on 13. März 2007, 16:49
+ * Created on 13. Mrz 2007, 16:49
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

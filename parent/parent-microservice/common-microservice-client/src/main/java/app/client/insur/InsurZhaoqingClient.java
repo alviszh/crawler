@@ -6,12 +6,13 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name ="Insurance-Wuzhou",configuration = InsurClientConfig.class)
-public interface InsurWuzhouClient {
+@FeignClient(name ="INSURANCE-ZHAOQING",configuration = InsurClientConfig.class)
+public interface InsurZhaoqingClient {
 
-    @PostMapping(value="/insurance/Wuzhou")
+    @PostMapping(value="/insurance/zhaoqing/login")
     public TaskInsurance login(@RequestBody InsuranceRequestParameters insuranceRequestParameters);
 
-    @PostMapping(value="/insurance/Wuzhou/crawler")
+    @PostMapping(value="/insurance/zhaoqing/crawler")
     public TaskInsurance crawler(@RequestBody InsuranceRequestParameters insuranceRequestParameters);
+
 }
