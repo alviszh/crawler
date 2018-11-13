@@ -931,6 +931,7 @@
 				<app.housing.jingzhou.name>HousingFund-JingZhou</app.housing.jingzhou.name>
 				<app.housing.nanjing.name>HousingFund-NanJing</app.housing.nanjing.name>
 				<app.housing.chongqing.name>HousingFund-ChongQing</app.housing.chongqing.name>
+				<app.housing.luoyang.name>HousingFund-LuoYang</app.housing.luoyang.name>
 			</properties>
 		</profile>
 	</profiles>
