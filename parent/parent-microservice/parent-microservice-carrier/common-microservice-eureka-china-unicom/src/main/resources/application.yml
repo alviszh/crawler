@@ -31,11 +31,11 @@ spring:
           environment:
             spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
             spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes} 
-  datasource:
+  datasource: 
     separator: ;;
-    schema: classpath:/datasource/*.sql
+    data: ${datasource.schema}
     initialization-mode: ${datasource.initialization-mode} 
-    continueOnError: true
+    continueOnError: false
     hikari: 
       minimum-idle: ${datasource.jdbc.minIdle}
       maximum-pool-size: ${datasource.jdbc.maxPoolSize}

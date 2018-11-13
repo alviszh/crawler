@@ -1,7 +1,6 @@
 package com.test;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.gargoylesoftware.htmlunit.HttpMethod;
