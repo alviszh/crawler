@@ -1,10 +1,6 @@
 package com.test;
 
 import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
-import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 import com.gargoylesoftware.htmlunit.util.Cookie;
 import com.gargoylesoftware.htmlunit.util.NameValuePair;
 import com.module.htmlunit.WebCrawler;
@@ -12,13 +8,7 @@ import com.module.htmlunit.WebCrawler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
-import java.util.logging.Level;
-
 import javax.swing.JOptionPane;
-
-import org.apache.commons.logging.LogFactory;
-
 import com.gargoylesoftware.htmlunit.Page;
 
 public class qinghaitest {
@@ -33,7 +23,7 @@ public class qinghaitest {
 			// "yn.189.cn");
 			if (webClient != null) {
 				String url = "http://www.189.cn/dqmh/my189/initMy189home.do?fastcode=01941226";
-				Page page = TelecomLogin.getHtml2(url, webClient);
+				TelecomLogin.getHtml2(url, webClient);
 
 				Set<Cookie> cookies4 = webClient.getCookieManager().getCookies();
 				for (Cookie cookie4 : cookies4) {
@@ -102,7 +92,7 @@ public class qinghaitest {
 		
 		
 		url2 = "http://yn.189.cn/service/jt/bill/actionjt/ifr_bill_detailslist_new.jsp?NUM=13312530250&AREA_CODE=0871&PROD_NO=4217";
-		HtmlPage htmlPage = (HtmlPage) TelecomLogin.getHtml(url2, webClient);
+		 TelecomLogin.getHtml(url2, webClient);
 		// page = TelecomLogin.getHtml(url, webClient);
 	/*	System.out.println("asdfs="+htmlPage.getWebResponse().getContentAsString());
 		
