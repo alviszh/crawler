@@ -265,6 +265,8 @@ public class HousingfundCrawlerController {
     private FundBengbuClient fundBengbuClient;
     @Autowired
     private FundZhuzhouClient fundZhuzhouClient;
+    @Autowired
+    private FundHaikouClient fundHaikouClient;
 
     @PostMapping(value = "/login")
     public @ResponseBody
@@ -587,6 +589,10 @@ public class HousingfundCrawlerController {
         else if (city.equals("株洲市")) {
             log.info("----------株洲市公积金 登录------------" + messageLoginForHousing);
             taskHousingfunda = fundZhuzhouClient.login(messageLoginForHousing);
+        }
+        else if (city.equals("海口市")) {
+            log.info("----------海口市公积金 登录------------" + messageLoginForHousing);
+            taskHousingfunda = fundHaikouClient.login(messageLoginForHousing);
         }
 
         log.info("-----------taskInsurancea------------" + taskHousingfunda);
@@ -1072,6 +1078,10 @@ public class HousingfundCrawlerController {
         else if (city.equals("株洲市")) {
             log.info("-----------株洲市公积金 爬取数据------------" + messageLoginForHousing);
             taskHousingfunda = fundZhuzhouClient.crawler(messageLoginForHousing);
+        }
+        else if (city.equals("海口市")) {
+            log.info("-----------海口市公积金 爬取数据------------" + messageLoginForHousing);
+            taskHousingfunda = fundHaikouClient.crawler(messageLoginForHousing);
         }
         System.out.println("taskHousingfunda is:"+taskHousingfunda);
 

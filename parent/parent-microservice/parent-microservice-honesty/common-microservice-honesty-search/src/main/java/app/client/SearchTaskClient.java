@@ -22,7 +22,7 @@ import com.crawler.search.bean.SearchTaskBean;
 //@FeignClient(name = "search-task", url = "${jobs.url}")
 public interface SearchTaskClient {
 
-	@RequestMapping(method = RequestMethod.POST, value = "/sanwang/search/gettask")
+	@RequestMapping(method = RequestMethod.POST, value = "/api-service/sanwang/search/gettask")
 	public List<SearchTaskBean> getTask();
 
 //	@PostMapping(value = "/sanwang/search/gettask")

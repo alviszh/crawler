@@ -1,7 +1,7 @@
 /*
  * Shell32.java
  *
- * Created on 2. März 2007, 11:45
+ * Created on 2. Mrz 2007, 11:45
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
@@ -160,7 +160,7 @@ public class Shell32 {
 
     public static final int CSIDL_DESKTOP = 0x0;  // Desktop 
     public static final int CSIDL_INTERNET = 0x1; // Internet 
-    public static final int CSIDL_PROGRAMS = 0x2; // Startmenü: Programme 
+    public static final int CSIDL_PROGRAMS = 0x2; // Startmen Programme
     public static final int CSIDL_CONTROLS = 0x3; // Systemsteuerung 
     public static final int CSIDL_PRINTERS = 0x4; // Drucker 
     public static final int CSIDL_PERSONAL = 0x5; // Eigene Dateien 
@@ -169,7 +169,7 @@ public class Shell32 {
     public static final int CSIDL_RECENT = 0x8;   // Zuletzt benutzte Dokumente 
     public static final int CSIDL_SENDTO = 0x9;   // Senden an / SendTo 
     public static final int CSIDL_BITBUCKET = 0xA;   // Papierkorb 
-    public static final int CSIDL_STARTMENU = 0xB;   // Startmenü 
+    public static final int CSIDL_STARTMENU = 0xB;   // Startmen
     public static final int CSIDL_MYMUSIC = 0xD;   // Eigene Musik 
     public static final int CSIDL_MYVIDEO = 0xE;   // Eigene Videos 
     public static final int CSIDL_DESKTOPDIRECTORY = 0x10; // Desktopverzeichnis 
@@ -178,7 +178,7 @@ public class Shell32 {
     public static final int CSIDL_NETHOOD = 0x13; // Netzwerkumgebung 
     public static final int CSIDL_FONTS = 0x14;   // Windows\Fonts 
     public static final int CSIDL_TEMPLATES = 0x15;  // Vorlagen 
-    public static final int CSIDL_COMMON_STARTMENU = 0x16;  // "All Users" - Startmenü 
+    public static final int CSIDL_COMMON_STARTMENU = 0x16;  // "All Users" - Startmen
     public static final int CSIDL_COMMON_PROGRAMS = 0x17;   // "All Users" - Programme 
     public static final int CSIDL_COMMON_STARTUP = 0x18; // "All Users" - Autostart 
     public static final int CSIDL_COMMON_DESKTOPDIRECTORY = 0x19; // "All Users" - Desktop 
@@ -186,7 +186,7 @@ public class Shell32 {
     public static final int CSIDL_PRINTHOOD = 0x1B;   // Druckumgebung 
     public static final int CSIDL_LOCAL_APPDATA = 0x1C;  // Lokale Einstellungen\Anwendungsdaten 
     public static final int CSIDL_COMMON_FAVORITES = 0x1F;  // "All Users" - Favoriten 
-    public static final int CSIDL_INTERNET_CACHE = 0x20; // IE: Temporäre Internetdateien 
+    public static final int CSIDL_INTERNET_CACHE = 0x20; // IE: Temporre Internetdateien
     public static final int CSIDL_COOKIES = 0x21;  // IE: Cookies 
     public static final int CSIDL_HISTORY = 0x22;  // IE: Verlauf 
     public static final int CSIDL_COMMON_APPDATA = 0x23; // "All Users" - Anwendungsdaten 
@@ -200,7 +200,7 @@ public class Shell32 {
     public static final int CSIDL_COMMON_TEMPLATES = 0x2D;  // "All Users" - Vorlagen 
     public static final int CSIDL_COMMON_DOCUMENTS = 0x2E;  // "All Users" - Dokumente 
     public static final int CSIDL_COMMON_ADMINTOOLS = 0x2F; // "All Users" - Verwaltung 
-    public static final int CSIDL_ADMINTOOLS = 0x30;  // Startmenü\Programme\Verwaltung 
+    public static final int CSIDL_ADMINTOOLS = 0x30;  // Startmen\Programme\Verwaltung
     
     
     /** Creates a new instance of Shell32 */
