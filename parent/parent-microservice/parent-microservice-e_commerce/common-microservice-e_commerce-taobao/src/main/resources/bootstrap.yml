@@ -1,8 +1,8 @@
 spring:
   application:
     name: '@app.e_commerce.taobao.name@'
-  profiles:
-    active: '@app.e_commerce.active@'
+#  profiles:
+#    active: '@app.e_commerce.active@'
   cloud:
     config:
       uri: http://configserver:8000
@@ -11,7 +11,7 @@ spring:
     base-url: http://zipkinserver:9411
   sleuth: 
     sampler: 
-      percentage: 1
+      probability: 1
     web: 
       skip-pattern: /ecommerce/tasks/.*|/e_commerce/taobao/checkQRcode
  #zipkin地址，Sleuth会将trace数据以http的方式发送，采样率percentage=1意味着100%发送 
