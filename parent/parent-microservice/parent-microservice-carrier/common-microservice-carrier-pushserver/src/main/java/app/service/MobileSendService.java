@@ -48,7 +48,7 @@ public class MobileSendService{
         tracer.addTag("appProductList=", appProductList+"");
         if (appProductList != null) {
             System.out.println("callbackparams=" + appProductList.getCallbackparams());
-            String tasl_url = appProductList.getTask_notice_url(); //任务创建通知接口
+            String task_url = appProductList.getTask_notice_url(); //任务创建通知接口
             String login_url = appProductList.getLogin_notice_url(); //授权结果通知接口
             String crawler_url = appProductList.getCrawler_notice_url();//采集结果通知接口
             String report_url = appProductList.getReport_notice_url();//报告生成通知接口
@@ -64,6 +64,13 @@ public class MobileSendService{
             if (taskMobile.getPhase().equals(StatusCodeEnum.TASKMOBILE_CRAWLER_SUCCESS.getPhase())) {
                 if (crawler_url != null) {
                     Map<String, Object> result = pushServerService.requestnoticeurl(crawler_url, requestBody, null);
+                    System.out.println("sendResul=" + result);
+                }
+            }
+            //推送报告
+            if (taskMobile.getPhase().equals(StatusCodeEnum.TASKMOBILE_REPORT_DONING.getPhase())) {
+                if (report_url != null) {
+                    Map<String, Object> result = pushServerService.requestnoticeurl(report_url, requestBody, null);
                     System.out.println("sendResul=" + result);
                 }
             }
