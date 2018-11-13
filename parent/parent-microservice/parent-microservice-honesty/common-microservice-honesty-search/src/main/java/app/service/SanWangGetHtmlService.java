@@ -27,8 +27,8 @@ import app.service.unit.SanWangUnitService;
 @Component
 public class SanWangGetHtmlService {
 
-	public final int DEFAULT_PAGE_TIME_OUT = 10000; // ms
-	public final int DEFAULT_JS_TIME_OUT = 10000;
+	public final int DEFAULT_PAGE_TIME_OUT = 50000; // ms
+	public final int DEFAULT_JS_TIME_OUT = 50000;
 	
 	@Autowired
 	private SanWangUnitService sanWangUnitService;
