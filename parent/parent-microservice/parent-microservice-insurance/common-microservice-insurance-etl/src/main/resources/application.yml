@@ -34,6 +34,7 @@ spring:
             spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
             spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes}
   datasource:
+    data: ${datasource.schema}
     hikari: 
       minimum-idle: ${datasource.jdbc.minIdle}
       maximum-pool-size: ${datasource.jdbc.maxPoolSize}
