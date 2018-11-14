@@ -317,7 +317,6 @@ public class TelecomAsyncYunNaniService extends TelecomBasicService {
 			tracerLog.addTag("中国电信抓取用户   账单信息 ", e.getMessage());
 			taskMobile = taskMobileRepository.findByTaskid(taskMobile.getTaskid());
 			taskMobile.setPhase(StatusCodeClass.StatusCodeClass_CHECK_MSG(i).getPhase());
-			taskMobile.setPhase_status(StatusCodeClass.StatusCodeClass_CHECK_MSG(i).getPhasestatus());
 			taskMobile.setDescription(StatusCodeClass.StatusCodeClass_CHECK_MSG(i).getDescription());
 			save(taskMobile);
 			return null;
@@ -328,7 +327,6 @@ public class TelecomAsyncYunNaniService extends TelecomBasicService {
 		if (html == null) {
 			taskMobile = taskMobileRepository.findByTaskid(taskMobile.getTaskid());
 			taskMobile.setPhase(StatusCodeClass.StatusCodeClass_CHECK_MSG(i).getPhase());
-			taskMobile.setPhase_status(StatusCodeClass.StatusCodeClass_CHECK_MSG(i).getPhasestatus());
 			taskMobile.setDescription(StatusCodeClass.StatusCodeClass_CHECK_MSG(i).getDescription());
 			save(taskMobile);
 			return null;
@@ -346,9 +344,7 @@ public class TelecomAsyncYunNaniService extends TelecomBasicService {
 
 		taskMobile = taskMobileRepository.findByTaskid(taskMobile.getTaskid());
 		taskMobile.setPhase(StatusCodeClass.StatusCodeClass_CHECK_MSG(i).getPhase());
-		taskMobile.setPhase_status(StatusCodeClass.StatusCodeClass_CHECK_MSG(i).getPhasestatus());
 		taskMobile.setDescription(StatusCodeClass.StatusCodeClass_CHECK_MSG(i).getDescription());
-		taskMobile.setAccountMsgStatus(StatusCodeRec.CRAWLER_AccountMsgStatus_SUCESS.getCode());
 		save(taskMobile);
 		return null;
 
