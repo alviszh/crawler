@@ -14,10 +14,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableEurekaClient
 @EnableFeignClients
 @SpringBootApplication
-public class CarrierPushServerApplication {
+public class PushServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CarrierPushServerApplication.class, args);
+		SpringApplication.run(PushServerApplication.class, args);
 	}
 
 
