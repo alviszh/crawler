@@ -8,6 +8,7 @@ import java.util.UUID;
 import app.bean.mobsec.Area;
 import app.bean.mobsec.MobsecDetail;
 import app.client.MobsecBaiduClient;
+import app.service.aop.ITask;
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 
@@ -50,7 +51,7 @@ import javax.persistence.criteria.*;
 @EntityScan(basePackages = { "com.microservice.dao.entity.crawler.mobile", "com.microservice.dao.entity.crawler.cmcc" })
 @EnableJpaRepositories(basePackages = { "com.microservice.dao.repository.crawler.mobile",
 		"com.microservice.dao.repository.crawler.cmcc" })
-public class TaskService {
+public class TaskService implements ITask{
 
 	public static final Logger log = LoggerFactory.getLogger(TaskService.class);
 
@@ -143,6 +144,7 @@ public class TaskService {
 		return dirMobileSegment;
 	}
 
+	@Override
 	public TaskMobile createTask(MobileJsonBean mobileJsonBean) { 
 
 		if (mobileJsonBean == null) {
