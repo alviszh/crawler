@@ -1,5 +1,7 @@
 package app.service;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +48,15 @@ public class SearchFutureService {
 	 * @version 1 返回值 List<SearchTask>
 	 */
 	public List<SearchTask> geturlByPageBaidu(String taskid, String keyword, int pagenum, int priority) {
-		String url = "https://www.baidu.com/s?wd=" + keyword;
+		String url = null;
+		try {
+			url = "https://www.baidu.com/s?wd=" +URLDecoder.decode(keyword,"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			return null;
+		}
 
 		List<SearchTask> list = new ArrayList<>();
 		for (int i = 0; i < pagenum; i++) {
@@ -73,7 +83,15 @@ public class SearchFutureService {
 	 * @version 1 返回值 List<SearchTask>
 	 */
 	public List<SearchTask> geturlByPageHaoSou(String taskid, String keyword, int pagenum, int priority) {
-		String url = "https://www.so.com/s?q=" + keyword;
+		String url;
+		try {
+			url = "https://www.so.com/s?q=" + URLDecoder.decode(keyword,"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+
+		}
 
 		if (pagenum == 0) {
 			pagenum = 1;
@@ -102,7 +120,15 @@ public class SearchFutureService {
 	 * @version 1 返回值 List<SearchTask>
 	 */
 	public List<SearchTask> geturlByPageSouGou(String taskid, String keyword, int pagenum, int priority) {
-		String url = "https://www.sogou.com/web?query=" + keyword;
+		String url;
+		try {
+			url = "https://www.sogou.com/web?query=" + URLDecoder.decode(keyword,"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+
+		}
 
 		if (pagenum == 0) {
 			pagenum = 1;

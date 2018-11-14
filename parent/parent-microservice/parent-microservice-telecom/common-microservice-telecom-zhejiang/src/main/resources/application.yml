@@ -39,7 +39,8 @@ spring:
 
   datasource:
     separator: ;;
-    schema: classpath:/datasource/*.sql
+#    schema: classpath:/datasource/*.sql
+    data: ${datasource.schema}
     initialization-mode: ${datasource.initialization-mode} 
     continueOnError: false
     hikari: 
@@ -62,7 +63,8 @@ spring:
     properties:  
       hibernate:  
 #       dialect: com.microservice.persistence.SRDB10Dialect
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: ${datasource.jdbc.dialect}
         temp: 
           use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法为实现
 #       dialect: org.hibernate.dialect.MySQLDialect

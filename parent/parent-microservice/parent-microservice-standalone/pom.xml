@@ -46,7 +46,8 @@
     	<module>common-microservice-ip-api</module>
     	<module>common-microservice-wechat</module>
     	<module>common-microservice-phone</module>
-  </modules>
+		<module>common-microservice-pushserver</module>
+	</modules>
 
 	<profiles>
 		<profile> 			<!-- 本机开发环境 -->
@@ -80,6 +81,10 @@
 				<app.monitor.platform.name>monitor-platform-local</app.monitor.platform.name>
 				
 				<app.phonenum-detect.name>phonenum-detect-local</app.phonenum-detect.name>
+
+				<!-- 推送服务 -->
+				<app.pushserver.name>pushserver-local</app.pushserver.name>
+
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -117,6 +122,9 @@
 				<app.monitor.platform.name>monitor-platform</app.monitor.platform.name>
 				
 				<app.phonenum-detect.name>phonenum-detect</app.phonenum-detect.name>
+				<!-- 推送服务 -->
+				<app.pushserver.name>pushserver</app.pushserver.name>
+
 			</properties>
 		</profile>
 		<profile> 			<!-- 测试环境 - v2 -->
@@ -160,6 +168,8 @@
 				<app.monitor.platform.name>monitor-platform</app.monitor.platform.name>
 				
 				<app.phonenum-detect.name>phonenum-detect</app.phonenum-detect.name>
+				<!-- 推送服务 -->
+				<app.pushserver.name>pushserver</app.pushserver.name>
 			</properties>
 		</profile>
 		<profile> 			<!-- 生产环境 - v2 -->
@@ -169,6 +179,8 @@
 				<app.h5pbccrc.name>pbccrc-h5-v2</app.h5pbccrc.name>
 				<app.h5qq.name>qq-h5-v2</app.h5qq.name>
 				<app.pbccrc.name>pbccrc-v2</app.pbccrc.name>
+				<!-- 推送服务 -->
+				<app.pushserver.name>pushserver</app.pushserver.name>
 			</properties>
 		</profile>
 		<profile>
@@ -180,6 +192,8 @@
 				<app.monitor.platform.name>monitor-platform</app.monitor.platform.name>
 				<app.ip.api>api-ip</app.ip.api>
 				<app.monitor.system.name>monitor-system</app.monitor.system.name>
+				<!-- 推送服务 -->
+				<app.pushserver.name>pushserver</app.pushserver.name>
 			</properties>
 		</profile>
 	</profiles>

@@ -101,7 +101,7 @@ public class AuthController {
             return "auth_beijing";
         } else if (city.equals("上海市")) {
             return "auth_shanghai";
-        } else if (city.equals("长春市")||city.equals("泰安市")||city.equals("滨州市")||city.equals("德州市")||city.equals("临沂市")||city.equals("兰州市")||city.equals("日照市")||city.equals("桂林市")||city.equals("内蒙古自治区")||city.equals("济南市")||city.equals("南宁市")||city.equals("贵港市")||city.equals("宿迁市")||city.equals("淮安市")) {
+        } else if (city.equals("长春市")||city.equals("泰安市")||city.equals("滨州市")||city.equals("德州市")||city.equals("临沂市")||city.equals("兰州市")||city.equals("日照市")||city.equals("桂林市")||city.equals("内蒙古自治区")||city.equals("济南市")||city.equals("南宁市")||city.equals("贵港市")||city.equals("宿迁市")||city.equals("淮安市")||city.equals("肇庆市")||city.equals("梧州市")) {
             return "auth_changchun";
         } else if (city.equals("深圳市")) {
             return "auth_shenzhen";
@@ -153,7 +153,7 @@ public class AuthController {
             return "auth_guiyang";
         } else if (city.equals("湖南省")) {
             return "auth_hunan";
-        } else if (city.equals("合肥市")||city.equals("柳州市")||city.equals("湖州市")||city.equals("蚌埠市")) {
+        } else if (city.equals("合肥市")||city.equals("柳州市")||city.equals("湖州市")||city.equals("蚌埠市")||city.equals("茂名市")) {
             return "auth_hefei";
         } else if (city.equals("武汉市")) {
             return "auth_wuhan";

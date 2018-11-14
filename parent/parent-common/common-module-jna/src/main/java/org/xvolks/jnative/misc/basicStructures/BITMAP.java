@@ -1,7 +1,7 @@
 /*
  * BITMAP.java
  *
- * Created on 15. März 2007, 14:39
+ * Created on 15. Mrz 2007, 14:39
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

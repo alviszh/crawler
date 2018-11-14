@@ -150,7 +150,10 @@ public enum StatusCodeEnum {
 	HOUSING_LOGIN_CARD_FUND_ERROR("输入的身份证号或公积金账号错误！","LOGIN","FAIL",104),
 	HOUSING_LOGIN_CARD_NAME_ERROR("输入的身份证号或姓名错误！","LOGIN","FAIL",104),
 	HOUSING_LOGIN_PWD_ERROR("输入的密码错误！","LOGIN","FAIL",104),
-	HOUSING_LOGIN_CODE_ERROR("输入的验证码错误！","LOGIN","FAIL",104);
+	HOUSING_LOGIN_CODE_ERROR("输入的验证码错误！","LOGIN","FAIL",104),
+
+	//生成报告
+	TASKMOBILE_REPORT_DONING("开始生成报告","REPORT","DOING",0);
 
 	
 

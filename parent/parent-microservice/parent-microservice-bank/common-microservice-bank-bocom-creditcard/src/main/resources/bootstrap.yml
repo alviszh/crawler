@@ -1,8 +1,8 @@
 spring: 
   application:
     name: '@app.bank.bocom.creditcard.name@'
-  profiles:
-    active: '@app.bank.active@'
+#  profiles:
+#    active: '@app.bank.active@'
   cloud:
     config:
       uri: http://configserver:8000
