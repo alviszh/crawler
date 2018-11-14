@@ -1,8 +1,5 @@
 package app.test;
 
-import java.io.IOException;
-
-import net.sourceforge.htmlunit.corejs.javascript.tools.debugger.Main;
 
 /**   
 *    
@@ -18,23 +15,23 @@ public class TesseractTrainCmd {
 	
 
 	public static void main(String[] args) throws Exception {
-		String cmdString = "D://Tesseract-OCR//tesseract.exe D:\\home\\img\\tr\\langyp.fontyp.exp0.tif  D:\\home\\img\\tr\\langyp.fontyp.exp0 batch.nochop makebox";
-	
-		String cmdString1 = "D://Tesseract-OCR//tesseract.exe D:\\home\\img\\tr\\bocom.tif D:\\home\\img\\tr\\bocom nobatch box.train";
-		
-		String cmdString2 = "D://Tesseract-OCR//unicharset_extractor.exe D:\\home\\img\\tr\\bocom.box";
-
-		String cmdString3 = "D://Tesseract-OCR//mftraining -F font_properties.exe  -U  D:\\home\\img\\tr\\unicharset D:\\home\\img\\tr\\bocom.tr";
-		
-		String cmdString4 = "D://Tesseract-OCR//cntraining D:\\home\\img\\tr\\bocom.tr";
-
-		String cmdString5 = "D://Tesseract-OCR//combine_tessdata D:\\home\\img\\tr\\bocom.";
-		
-		
-		Runtime r = Runtime.getRuntime();
-		
-		System.out.println(cmdString);
-		Process p = r.exec(cmdString);
-		System.out.println(p.waitFor());
+//		String cmdString = "D://Tesseract-OCR//tesseract.exe D:\\home\\img\\tr\\langyp.fontyp.exp0.tif  D:\\home\\img\\tr\\langyp.fontyp.exp0 batch.nochop makebox";
+//	
+//		String cmdString1 = "D://Tesseract-OCR//tesseract.exe D:\\home\\img\\tr\\bocom.tif D:\\home\\img\\tr\\bocom nobatch box.train";
+//		
+//		String cmdString2 = "D://Tesseract-OCR//unicharset_extractor.exe D:\\home\\img\\tr\\bocom.box";
+//
+//		String cmdString3 = "D://Tesseract-OCR//mftraining -F font_properties.exe  -U  D:\\home\\img\\tr\\unicharset D:\\home\\img\\tr\\bocom.tr";
+//		
+//		String cmdString4 = "D://Tesseract-OCR//cntraining D:\\home\\img\\tr\\bocom.tr";
+//
+//		String cmdString5 = "D://Tesseract-OCR//combine_tessdata D:\\home\\img\\tr\\bocom.";
+//		
+//		
+//		Runtime r = Runtime.getRuntime();
+//		
+//		System.out.println(cmdString);
+//		Process p = r.exec(cmdString);
+//		System.out.println(p.waitFor());
 	}
 }
