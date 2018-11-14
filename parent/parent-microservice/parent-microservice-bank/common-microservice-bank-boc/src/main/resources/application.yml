@@ -8,10 +8,6 @@ logging:
   level:  
     org.springframework.boot.env.PropertySourcesLoader: TRACE
     org.springframework.web: INFO
-# Spring boot UI 页面关闭该应用的权限限制
-management: 
-  security: 
-    enabled: false
 eureka: 
   client: 
     serviceUrl: 
@@ -36,7 +32,11 @@ spring:
           environment:
             spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
             spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes} 
-  datasource:
+  datasource: 
+    separator: ;;
+    data: ${datasource.schema}
+    initialization-mode: ${datasource.initialization-mode} 
+    continueOnError: false
     hikari: 
       minimum-idle: ${datasource.jdbc.minIdle}
       maximum-pool-size: ${datasource.jdbc.maxPoolSize}
