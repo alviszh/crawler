@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name ="PBCCRC",configuration = PbccrcClientConfig.class,fallback=PbccrcClientFallback.class)
+//@FeignClient(name ="PBCCRC",configuration = PbccrcClientConfig.class,fallback=PbccrcClientFallback.class)
+@FeignClient(name ="PBCCRC-V2",configuration = PbccrcClientConfig.class,fallback=PbccrcClientFallback.class)
 public interface PbccrcClient {
 
     /**

@@ -1,5 +1,7 @@
 package app.impl;
 
+import app.client.proxy.HttpProxyClient;
+import com.crawler.aws.json.HttpProxyRes;
 import com.crawler.pbccrc.json.MessageResult;
 import app.bean.PbcCreditReport;
 import app.client.aws.AwsApiClient;
@@ -8,7 +10,6 @@ import app.htmlparser.PbcCreditFeedParser;
 import app.parser.PbccrcV2Parser;
 import app.service.*;
 import app.service.aop.ICrawlerLogin;
-import com.crawler.aws.json.HttpProxyBean;
 import com.crawler.domain.json.Result;
 import com.crawler.microservice.unit.CommonUnit;
 import com.crawler.pbccrc.json.*;
@@ -65,6 +66,8 @@ public class CrawlerLoginImpl implements ICrawlerLogin {
     @Autowired
     private AwsApiClient awsApiClient;
     @Autowired
+    private HttpProxyClient httpProxyClient;
+    @Autowired
     private AgentService agentService;
     @Autowired
     private PbccrcV2Parser pbccrcV2Parser;
@@ -72,7 +75,7 @@ public class CrawlerLoginImpl implements ICrawlerLogin {
     private CrawlerStatusStandaloneService crawlerStatusStandaloneService;
 
     @Value("${isHttpProxy}")
-    String isHttpProxy;
+    String isHttpProxy; //1使用代理ip
 
     private WebDriver driver = null;
 
@@ -81,7 +84,8 @@ public class CrawlerLoginImpl implements ICrawlerLogin {
     private static final String TIME_ADD = "0";
     private static final String STR_DEBUG = "a";
 
-    private HttpProxyBean httpProxyBean = null;
+//    private HttpProxyBean httpProxyBean = null;
+    private HttpProxyRes httpProxyRes = null;
     private static int size = 1;
 
     /**
@@ -113,18 +117,19 @@ public class CrawlerLoginImpl implements ICrawlerLogin {
                 size = 1; //初始化
                 if (isHttpProxy.equals("1")) { //使用HTTP代理
                     try {
-                        httpProxyBean = getProxy();
+//                        httpProxyBean = getProxy();
+                          httpProxyRes = getProxyClient("20", "");
                     } catch (Exception ex) {
                         System.out.println("获取代理IP、端口出错。");
-                        tracerLog.qryKeyValue("httpProxyBean.Exception", "获取代理IP、端口出错");
+                        tracerLog.qryKeyValue("httpProxyRes.Exception", "获取代理IP、端口出错");
                         ;
-                        tracerLog.addTag("httpProxyBean.Exception.e", ex.toString());
+                        tracerLog.addTag("httpProxyRes.Exception.e", ex.toString());
                     }
                 }
 
-                System.out.println("httpProxyBean:" + httpProxyBean);
-                tracerLog.addTag("获取代理IP、端口httpProxyBean", httpProxyBean + "");
-                getLoginPBCCRCHtml(httpProxyBean);
+                System.out.println("httpProxyRes:" + httpProxyRes);
+                tracerLog.addTag("获取代理IP、端口httpProxyRes", httpProxyRes + "");
+                getLoginPBCCRCHtml(httpProxyRes);
                 Thread.sleep(4000);
             }
 
@@ -536,10 +541,10 @@ public class CrawlerLoginImpl implements ICrawlerLogin {
 
         //获取信用信息（授权码是否过期）
         WebRequest queryReportRequest = new WebRequest(new URL("https://ipcrs.pbccrc.org.cn/reportAction.do?method=queryReport"), HttpMethod.GET);
-        if (httpProxyBean != null) {
+        if (httpProxyRes != null) {
             //代理ip，端口
-            queryReportRequest.setProxyHost(httpProxyBean.getIp());
-            queryReportRequest.setProxyPort(Integer.parseInt(httpProxyBean.getPort()));
+            queryReportRequest.setProxyHost(httpProxyRes.getIp());
+            queryReportRequest.setProxyPort(Integer.parseInt(httpProxyRes.getPort()));
         }
         Page queryReportResult = webClient.getPage(queryReportRequest);
         String queryReportHtml = queryReportResult.getWebResponse().getContentAsString();
@@ -576,10 +581,10 @@ public class CrawlerLoginImpl implements ICrawlerLogin {
         nameValuePairs.add(new NameValuePair("reportformat", "21"));
         nameValuePairs.add(new NameValuePair("tradeCode", pbccrcJsonBean.getTradecode())); //身份验证码
         request.setRequestParameters(nameValuePairs);
-        if (httpProxyBean != null) {
+        if (httpProxyRes != null) {
             //代理ip，端口
-            request.setProxyHost(httpProxyBean.getIp());
-            request.setProxyPort(Integer.parseInt(httpProxyBean.getPort()));
+            request.setProxyHost(httpProxyRes.getIp());
+            request.setProxyPort(Integer.parseInt(httpProxyRes.getPort()));
         }
         Page page = webClient.getPage(request);
         int statusCode = page.getWebResponse().getStatusCode();
@@ -652,8 +657,8 @@ public class CrawlerLoginImpl implements ICrawlerLogin {
      * 打开人行征信登录页面
      * @return
      */
-    public WebDriver getLoginPBCCRCHtml(HttpProxyBean httpProxyBean){
-        driver = webDriverIEService.getNewWebDriver(httpProxyBean);
+    public WebDriver getLoginPBCCRCHtml(HttpProxyRes httpProxyRes){
+        driver = webDriverIEService.getNewWebDriver(httpProxyRes);
 //        driver.manage().window().maximize();
         System.out.println("WebDriverIEService loginSpdb Msg 开始登录人行征信的登录页");
         tracerLog.qryKeyValue("WebDriverIEService loginSpdb Msg", "开始登录人行征信的登录页");
@@ -741,9 +746,15 @@ public class CrawlerLoginImpl implements ICrawlerLogin {
     }
 
     //获取代理IP、端口
-    public HttpProxyBean getProxy(){
+    /*public HttpProxyBean getProxy(){
         httpProxyBean = awsApiClient.getProxy();
         return httpProxyBean;
+    }*/
+
+    //获取代理IP、端口（极光代理）
+    public HttpProxyRes getProxyClient(String num, String pro){
+        httpProxyRes = httpProxyClient.getProxy(num,pro);
+        return httpProxyRes;
     }
 
 }
