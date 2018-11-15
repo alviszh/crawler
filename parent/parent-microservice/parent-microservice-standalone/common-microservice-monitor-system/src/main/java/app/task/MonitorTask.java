@@ -26,7 +26,7 @@ public class MonitorTask {
 	@Async
 	@Scheduled(cron = "${eurekacron}")
 	public void eurekaTask() {
-		taskerEurekaService.eurekaTasker();
+		taskerEurekaService.getRancherMicroServicesAndMonitorEureka();
 	}
 	//监测rancher各主机网络连接、内存、硬盘指标
 	@Async
