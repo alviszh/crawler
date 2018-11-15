@@ -11,13 +11,9 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 import com.crawler.monitor.json.EurekaInstanceBean;
 import com.microservice.dao.entity.crawler.monitor.MonitorEurekaEvent;
 import com.microservice.dao.repository.crawler.monitor.MonitorEurekaEventRepository;
-
-import app.commontracerlog.TracerLog;
  
 @EnableBinding(Sink.class)
 public class EurekaInstanceChangeListener {
-	@Autowired
-	private TracerLog tracer;
 	@Autowired
 	private EurekaInstanceChangeMailService eurekaInstanceChangeMailService;
 	@Autowired
@@ -26,7 +22,6 @@ public class EurekaInstanceChangeListener {
 	@StreamListener(Sink.INPUT)
 	public void messageSink(EurekaInstanceBean eurekaInstanceBean) {
 		String microEventType="";
-		tracer.addTag("monitor-system Received", eurekaInstanceBean.toString()); 
 		String eventType = eurekaInstanceBean.getEventType().trim();
 		//将时间戳转成指定格式的时间
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

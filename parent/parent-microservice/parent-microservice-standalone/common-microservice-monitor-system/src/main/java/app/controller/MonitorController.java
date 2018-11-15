@@ -27,14 +27,15 @@ public class MonitorController {
 	@Autowired
 	private MonitorRancherService taskerRancherService;
 //	=================================================================
-	//监测eureka上微服务和节点变化
+	//监测eureka上微服务变化
 	@GetMapping(path = "/eurekainfo")
 	public void eurekaTasker() { 
-		taskerEurekaService.eurekaTasker();
+		taskerEurekaService.getRancherMicroServicesAndMonitorEureka();
 	}
 	//监测rancher上主机相关信息
 	@GetMapping(path = "/rancherinfo")
 	public void rancherTasker() { 
 		taskerRancherService.rancherTasker();
 	}
+
 }

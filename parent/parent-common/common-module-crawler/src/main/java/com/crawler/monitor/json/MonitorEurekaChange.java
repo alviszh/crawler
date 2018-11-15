@@ -2,46 +2,31 @@ package com.crawler.monitor.json;
 
 public class MonitorEurekaChange {
 	private String appname;
-	private int instancecount;
-	private int actualInstanceCount; 
-	private String changeDetail;  //监测结果说明：微服务暂时没有；实例数量变化
-	//微服务对应的负责人
-	private String developer; 
-	private String servicename;   //微服务的汉语名称
+	//当前环境下的微服务分组
+	private String servicegroup;
+	private String changedetail;
 	public String getAppname() {
 		return appname;
 	}
 	public void setAppname(String appname) {
 		this.appname = appname;
 	}
-	public int getInstancecount() {
-		return instancecount;
+	public String getServicegroup() {
+		return servicegroup;
 	}
-	public void setInstancecount(int instancecount) {
-		this.instancecount = instancecount;
+	public void setServicegroup(String servicegroup) {
+		this.servicegroup = servicegroup;
 	}
-	public int getActualInstanceCount() {
-		return actualInstanceCount;
+	
+	public String getChangedetail() {
+		return changedetail;
 	}
-	public void setActualInstanceCount(int actualInstanceCount) {
-		this.actualInstanceCount = actualInstanceCount;
+	public void setChangedetail(String changedetail) {
+		this.changedetail = changedetail;
 	}
-	public String getChangeDetail() {
-		return changeDetail;
-	}
-	public void setChangeDetail(String changeDetail) {
-		this.changeDetail = changeDetail;
-	}
-	public String getDeveloper() {
-		return developer;
-	}
-	public void setDeveloper(String developer) {
-		this.developer = developer;
-	}
-	public String getServicename() {
-		return servicename;
-	}
-	public void setServicename(String servicename) {
-		this.servicename = servicename;
+	@Override
+	public String toString() {
+		return "MonitorEurekaChange [appname=" + appname + ", servicegroup=" + servicegroup + ", changedetail="
+				+ changedetail + "]";
 	}
 }
