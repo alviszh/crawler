@@ -104,9 +104,15 @@ public interface TaskMobileRepository extends JpaRepository<TaskMobile, Long>, J
 	@Modifying	
 //	@Query(value="select t from TaskMobile t where t.createtime > ?1 order by t.createtime desc")
 //	@Query(value="select t from TaskMobile t where t.createtime > ?1 order by t.carrier,t.province,t.createtime desc", nativeQuery = true)
+	//如下代码不好做兼容性
 	@Query(value="select t.* from task_mobile t where t.createtime >= now() - interval '24 hours' order by t.carrier,t.province,t.createtime desc", nativeQuery = true)
 	List<TaskMobile> findTaskResultForEtl();
 
+	//查询近24小时执行的所有任务(兼容性角度考虑)
+	@Transactional
+	@Modifying	
+	@Query(value="select t from TaskMobile t where t.createtime > ?1 order by t.carrier,t.province,t.createtime desc")
+	List<TaskMobile> findTaskResultForEtlByTimeInterval(Date date);
 	
 	//尝试获取近10天的执行记录(owner=tasker)
 	/*@Transactional
