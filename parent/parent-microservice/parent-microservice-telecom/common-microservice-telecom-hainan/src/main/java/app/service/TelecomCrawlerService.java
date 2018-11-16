@@ -75,11 +75,7 @@ public class TelecomCrawlerService extends TelecomBasicService implements ISms, 
 			return null;
 		}
 
-		try {
-			telecomHaiNanService.getSMSBill(telecomHaiNanUserIdBean, messageLogin, taskMobile);// 成功
-		} catch (Exception e) {
-			tracerLog.addTag("parser.crawler.auth", "getSMSThrem" + e.toString());
-		}
+		
 
 		try {
 			telecomHaiNanService.getphoneBill(messageLogin, taskMobile, telecomHaiNanUserIdBean);
@@ -123,6 +119,12 @@ public class TelecomCrawlerService extends TelecomBasicService implements ISms, 
 			e.printStackTrace();
 
 			tracerLog.addTag("parser.crawler.auth", "getBill" + e.toString());
+		}
+		
+		try {
+			telecomHaiNanService.getSMSBill(telecomHaiNanUserIdBean, messageLogin, taskMobile);// 成功
+		} catch (Exception e) {
+			tracerLog.addTag("parser.crawler.auth", "getSMSThrem" + e.toString());
 		}
 
 		
