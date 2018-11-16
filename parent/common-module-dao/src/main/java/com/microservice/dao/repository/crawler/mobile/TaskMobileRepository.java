@@ -123,8 +123,9 @@ public interface TaskMobileRepository extends JpaRepository<TaskMobile, Long>, J
 	//尝试获取近10天的执行记录(task_owner=tasker)  update by meidi 20180927 a.owner 替换成 a.task_owner
 	@Transactional
 	@Modifying	
-	@Query(value="select b.* from ( select a.*,row_number() over(partition by a.phonenum,to_char(a.createtime,'yyyy-mm-dd'),a.task_owner,a.finished) as rn from task_mobile a where a.createtime >= now() - interval '10 days' ) b where b.task_owner = 'tasker' and b.rn = 1 order by b.phonenum,b.createtime desc",nativeQuery=true)
-	List<TaskMobile> findTenDaysTaskResultOwnerIsTasker();
+//	@Query(value="select b.* from ( select a.*,row_number() over(partition by a.phonenum,to_char(a.createtime,'yyyy-mm-dd'),a.task_owner,a.finished) as rn from task_mobile a where a.createtime >= now() - interval '10 days' ) b where b.task_owner = 'tasker' and b.rn = 1 order by b.phonenum,b.createtime desc",nativeQuery=true)
+	@Query(value="select t.* from TaskMobile t where t.createtime > ?1 and task_owner='tasker' order by t.carrier,t.province,t.createtime desc")
+	List<TaskMobile> findTenDaysTaskResultOwnerIsTasker(Date date);
 
 	//查询etltime不为空(finished为true)，reportStatus为null（调用存储过程）
 	/*@Transactional
