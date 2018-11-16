@@ -163,7 +163,14 @@ public class MonitorCarrierTaskerResultService {
 	//获取近10天tasker的执行结果
 	public List<MonitorCarrierTempBean> carrierEtlResultForMoreDay() {
 		List<MonitorCarrierTempBean> taskerList=new ArrayList<MonitorCarrierTempBean>();
-		List<TaskMobile> taskerTenDaysResultList = taskMobileRepository.findTenDaysTaskResultOwnerIsTasker();
+//		List<TaskMobile> taskerTenDaysResultList = taskMobileRepository.findTenDaysTaskResultOwnerIsTasker();
+		//考虑到数据库兼容性问题，所以查询指定时间记录的时候需要用参数方式
+		Date date=new Date();  
+        Calendar calendar = Calendar.getInstance();  
+        calendar.setTime(date);  
+        calendar.add(Calendar.DAY_OF_MONTH, -10);  //获取近10天所有tasker任务
+        date = calendar.getTime();  
+		List<TaskMobile> taskerTenDaysResultList = taskMobileRepository.findTenDaysTaskResultOwnerIsTasker(date);
 		for (TaskMobile taskMobile : taskerTenDaysResultList) {
 			String carrier = taskMobile.getCarrier().trim();  //获取运营商
 			String taskid = taskMobile.getTaskid().trim();
