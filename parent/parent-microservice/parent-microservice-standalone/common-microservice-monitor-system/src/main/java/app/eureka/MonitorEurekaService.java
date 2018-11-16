@@ -51,7 +51,9 @@ public class MonitorEurekaService {
 		// 用于存储当前环境下的微服务分组
 		List<String> servicesGroupList = new ArrayList<String>();
 		// 用于存储响应回来的页面中包含的微服务
-		List<String> servicesList = new ArrayList<String>();
+//		List<String> servicesList = new ArrayList<String>();
+		//在查询分组中的微服务时new,如果此处new集合对象，将会保留其他分组的结果，导致邮件内容交叉重复
+		List<String> servicesList = null;
 		// 获取该环境下所有的微服务分组
 		try {
 			String baseUrl = "http://rancher-metadata/latest/stacks/";
@@ -80,6 +82,8 @@ public class MonitorEurekaService {
 					WebClient webClient = WebCrawler.getInstance().getWebClient();
 					webClient.getOptions().setJavaScriptEnabled(false);
 					Page page = webClient.getPage(webRequest);
+					//在此处new对象集合，否则，将会存储上一次的结果
+					servicesList = new ArrayList<String>();
 					if (null != page) {
 						String html = page.getWebResponse().getContentAsString();
 						// 根据换行获取所有的微服务
