@@ -38,6 +38,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -88,6 +90,8 @@ public class CrawlerLoginImpl implements ICrawlerLogin {
     private HttpProxyRes httpProxyRes = null;
     private static int size = 1;
 
+    private static int proxySize = 0;  //获取代理Ip的标识（大于0 表示重新获取新的代理Ip）
+
     /**
      *
      * 登录
@@ -98,6 +102,7 @@ public class CrawlerLoginImpl implements ICrawlerLogin {
      * @throws Exception
      */
     @Override
+    @Retryable(value={RuntimeException.class},maxAttempts=3,backoff = @Backoff(delay = 1500l,multiplier = 1.5))
     public String login(PbccrcJsonBean pbccrcJsonBean){
         tracerLog.qryKeyValue("owner", pbccrcJsonBean.getOwner());
         tracerLog.qryKeyValue("username", pbccrcJsonBean.getUsername());//账号
@@ -111,67 +116,72 @@ public class CrawlerLoginImpl implements ICrawlerLogin {
         System.out.println("isHttpProxy===="+isHttpProxy);
         tracerLog.addTag("isHttpProxy", isHttpProxy);
 
-        try {
-            long starttime = System.currentTimeMillis();
-            if (pbccrcJsonBean.isFirst()) { //是否是第一次打开页面（验证码错误直接重新输入）
-                size = 1; //初始化
-                if (isHttpProxy.equals("1")) { //使用HTTP代理
-                    try {
+        long starttime = System.currentTimeMillis();
+        if (pbccrcJsonBean.isFirst()) { //是否是第一次打开页面（验证码错误直接重新输入）
+            size = 1; //初始化
+            if (isHttpProxy.equals("1")) { //使用HTTP代理
+                try {
+                    proxySize ++; //标记获取代理iP次数
+                    tracerLog.addTag("开始第"+ proxySize +"次获取代理IP、端口", "start");
+                    if (proxySize <= 1 ) {
 //                        httpProxyBean = getProxy();
-                          httpProxyRes = getProxyClient("1", "");
-                    } catch (Exception ex) {
-                        System.out.println("获取代理IP、端口出错。");
-                        tracerLog.qryKeyValue("httpProxyRes.Exception", "获取代理IP、端口出错");
-                        ;
-                        tracerLog.addTag("httpProxyRes.Exception.e", ex.toString());
+                        httpProxyRes = getProxyClient("1", "");
+                        System.out.println("httpProxyRes:" + httpProxyRes);
+                        tracerLog.addTag("第"+ proxySize +"次获取代理IP、端口httpProxyRes", httpProxyRes + "");
+                    } else {
+                        httpProxyRes = getDelProxy("1", "");
+                        System.out.println("httpProxyRes:" + httpProxyRes);
+                        tracerLog.addTag("第"+ proxySize +"次获取代理IP、端口httpProxyRes", httpProxyRes + "");
                     }
+                } catch (Exception ex) {
+                    System.out.println("获取代理IP、端口出错。");
+                    tracerLog.qryKeyValue("httpProxyRes.Exception", "获取代理IP、端口出错");
+                    tracerLog.addTag("httpProxyRes.Exception.e", ex.toString());
                 }
-
-                System.out.println("httpProxyRes:" + httpProxyRes);
-                tracerLog.addTag("获取代理IP、端口httpProxyRes", httpProxyRes + "");
-                getLoginPBCCRCHtml(httpProxyRes);
-                Thread.sleep(4000);
             }
 
+            getLoginPBCCRCHtml(httpProxyRes);
             try {
-                tracerLog.addTag("开始输入登录账号", pbccrcJsonBean.getUsername());
-                //键盘输入账号
-                driver.findElement(By.id("loginname")).clear();
-                driver.findElement(By.id("loginname")).sendKeys(pbccrcJsonBean.getUsername());
-                Thread.sleep(1000);
-            } catch (NoSuchElementException ex) {
-                tracerLog.qryKeyValue("CrawlerLoginImpl.login.Exception", "人行征信网站被屏蔽！！！");
-                tracerLog.addTag("CrawlerLoginImpl.NoSuchElementException", ex.toString());
-                System.out.println("CrawlerLoginImpl.login.Exception" + ex.toString());
-                ReportData reportData = new ReportData("-2", "人行征信网站被屏蔽，请稍后再试！", null, null);
-                reportResult.setData(reportData);
-
-                //保存状态
-                pbccrcV2Service.saveFlowStatus(pbccrcJsonBean.getMapping_id(), reportData.getMessage());
-                //发送状态
-//                sendMessageResult(pbccrcJsonBean, "-1", "人行征信网站被屏蔽");
-                crawlerStatusStandaloneService.changeStatus(StandaloneEnum.STANDALONE_LOGIN_PBCCRC_ERROR1.getPhase(),
-                        StandaloneEnum.STANDALONE_LOGIN_PBCCRC_ERROR1.getPhasestatus(),
-                        StandaloneEnum.STANDALONE_LOGIN_PBCCRC_ERROR1.getDescription(),
-                        StandaloneEnum.STANDALONE_LOGIN_PBCCRC_ERROR1.getCode(),
-                        true, pbccrcJsonBean.getMapping_id());
-
-                if (driver != null) {
-                    //截图
-                    String loginerrorPath = WebDriverUnit.getPathBySystem("loginerror");
-                    path = WebDriverUnit.saveScreenshotByPath(driver, loginerrorPath);
-                    tracerLog.addTag("打开人行征信网站异常", "截图:" + path);
-                    System.out.println("打开人行征信网站异常，截图路径：" + path);
-
-                    //释放instance ip ，quit webdriver
-                    tracerLog.addTag("释放instance ip ，quit webdriver:", pbccrcJsonBean.getIp());
-                    agentService.releaseInstance(pbccrcJsonBean.getIp(), driver);
-                }
-                long endtime = System.currentTimeMillis();
-                tracerLog.addTag("人行征信网站被屏蔽", (endtime - starttime) + ":ms");
-                return gson.toJson(reportResult);
+                Thread.sleep(4000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+        }
 
+        try {
+            tracerLog.addTag("开始输入登录账号", pbccrcJsonBean.getUsername());
+            //键盘输入账号
+            driver.findElement(By.id("loginname")).clear();
+            driver.findElement(By.id("loginname")).sendKeys(pbccrcJsonBean.getUsername());
+        } catch (NoSuchElementException ex) {
+            tracerLog.qryKeyValue("CrawlerLoginImpl.login.Exception", "人行征信网站被屏蔽！！！");
+            tracerLog.addTag("CrawlerLoginImpl.NoSuchElementException", ex.toString());
+            System.out.println("CrawlerLoginImpl.login.Exception" + ex.toString());
+            ReportData reportData = new ReportData("-2", "人行征信网站被屏蔽，请稍后再试！", null, null);
+            reportResult.setData(reportData);
+
+            if (driver != null) {
+                //截图
+                String loginerrorPath = WebDriverUnit.getPathBySystem("loginerror");
+                try {
+                    path = WebDriverUnit.saveScreenshotByPath(driver, loginerrorPath);
+                } catch (Exception e) {
+                    tracerLog.addTag("人行征信网站被屏蔽,截图失败", e.getMessage());
+                }
+                tracerLog.addTag("打开人行征信网站异常", "截图:" + path);
+                System.out.println("打开人行征信网站异常，截图路径：" + path);
+
+                //释放instance ip ，quit webdriver
+                tracerLog.addTag("释放instance ip ，quit webdriver:", pbccrcJsonBean.getIp());
+                agentService.releaseInstance(pbccrcJsonBean.getIp(), driver);
+            }
+            long endtime = System.currentTimeMillis();
+            tracerLog.addTag("人行征信网站被屏蔽", (endtime - starttime) + ":ms");
+            throw new RuntimeException(gson.toJson(reportResult));
+//                return gson.toJson(reportResult);
+        }
+
+        try {
             tracerLog.addTag("开始输入登录密码，mappingId=", pbccrcJsonBean.getMapping_id());
             //输入密码
             driver.findElement(By.id("pass")).sendKeys(pbccrcJsonBean.getPassword());
@@ -754,6 +764,12 @@ public class CrawlerLoginImpl implements ICrawlerLogin {
     //获取代理IP、端口（极光代理）
     public HttpProxyRes getProxyClient(String num, String pro){
         httpProxyRes = httpProxyClient.getProxy(num,pro);
+        return httpProxyRes;
+    }
+
+    //删除缓存代理IP并获取新的代理IP、端口
+    public HttpProxyRes getDelProxy(String num, String pro){
+        httpProxyRes = httpProxyClient.getDelProxy(num,pro);
         return httpProxyRes;
     }
 
