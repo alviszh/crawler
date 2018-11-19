@@ -17,5 +17,8 @@ public interface HttpProxyClient {
 	@RequestMapping(value = "/api-service/proxy/get",method = RequestMethod.GET)
 	public HttpProxyRes getProxy(@RequestParam(name = "num",required=false) String num, @RequestParam(name = "pro",required=false) String pro);
 
+	//删除缓存代理IP并获取新的代理IP、端口
+	@RequestMapping(value = "/api-service//proxy/del",method = RequestMethod.GET)
+	public HttpProxyRes getDelProxy(@RequestParam(name = "num",required=false) String num, @RequestParam(name = "pro",required=false) String pro);
 }
 

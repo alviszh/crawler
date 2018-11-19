@@ -38,4 +38,15 @@ public class IpApiController {
 		return ipApiService.getIP(num,pro);		
 	}
 
+	@GetMapping(value="/proxy/del")
+	public HttpProxyRes getDelProxy(String num, String pro){
+		tracer.addTag("删除", "删除代理ip");
+		if(num==null){
+			num = "1";
+		}
+		ipApiService.delete(num,pro);
+		tracer.addTag("获取IP的参数：", "数量："+num+" ;省份："+pro);
+		return ipApiService.getIP(num,pro);
+		
+	}
 }
