@@ -105,12 +105,12 @@
 			<id>dev</id>
 			<properties>
 				<app.e_commerce.active>dev</app.e_commerce.active>
-				<app.e_commerce.jingdong.name>Ecommerce-JingDong-local</app.e_commerce.jingdong.name>
-				<app.e_commercetask.name>Ecommerce-Task-local</app.e_commercetask.name>
-				<app.e_commerce.taobao.name>Ecommerce-Taobao-local</app.e_commerce.taobao.name>
-				<app.e_commerce.zhifubao.name>Ecommerce-Zhifubao-local</app.e_commerce.zhifubao.name>
-				<app.e_commerce.suning.name>Ecommerce-SuNing-local</app.e_commerce.suning.name>
-				<app.e_commerce.etl.name>Ecommerce-etl-local</app.e_commerce.etl.name>
+				<app.e_commerce.jingdong.name>ecommerce-jingdong-local</app.e_commerce.jingdong.name>
+				<app.e_commercetask.name>ecommerce-task-local</app.e_commercetask.name>
+				<app.e_commerce.taobao.name>ecommerce-taobao-local</app.e_commerce.taobao.name>
+				<app.e_commerce.zhifubao.name>ecommerce-zhifubao-local</app.e_commerce.zhifubao.name>
+				<app.e_commerce.suning.name>ecommerce-suning-local</app.e_commerce.suning.name>
+				<app.e_commerce.etl.name>ecommerce-etl-local</app.e_commerce.etl.name>
 				<app.elemo.name>elema-local</app.elemo.name>
 			</properties>
 			<activation>
@@ -122,12 +122,12 @@
 			<id>test</id>
 			<properties>
 				<app.e_commerce.active>test</app.e_commerce.active>
-				<app.e_commerce.jingdong.name>Ecommerce-JingDong</app.e_commerce.jingdong.name>
-				<app.e_commercetask.name>Ecommerce-Task</app.e_commercetask.name>
-				<app.e_commerce.taobao.name>Ecommerce-Taobao</app.e_commerce.taobao.name>
-				<app.e_commerce.zhifubao.name>Ecommerce-Zhifubao</app.e_commerce.zhifubao.name>
-				<app.e_commerce.suning.name>Ecommerce-SuNing</app.e_commerce.suning.name>
-				<app.e_commerce.etl.name>Ecommerce-etl</app.e_commerce.etl.name>
+				<app.e_commerce.jingdong.name>ecommerce-jingdong</app.e_commerce.jingdong.name>
+				<app.e_commercetask.name>ecommerce-task</app.e_commercetask.name>
+				<app.e_commerce.taobao.name>ecommerce-taobao</app.e_commerce.taobao.name>
+				<app.e_commerce.zhifubao.name>ecommerce-zhifubao</app.e_commerce.zhifubao.name>
+				<app.e_commerce.suning.name>ecommerce-suning</app.e_commerce.suning.name>
+				<app.e_commerce.etl.name>ecommerce-etl</app.e_commerce.etl.name>
 				<app.elemo.name>elema</app.elemo.name>
 			</properties>
 			<!-- <activation> <activeByDefault>true</activeByDefault> </activation> -->
@@ -137,12 +137,12 @@
 			<id>prod</id>
 			<properties>
 				<app.e_commerce.active>prod</app.e_commerce.active>
-				<app.e_commercetask.name>Ecommerce-Task</app.e_commercetask.name>
-				<app.e_commerce.jingdong.name>Ecommerce-JingDong</app.e_commerce.jingdong.name>
-				<app.e_commerce.taobao.name>Ecommerce-Taobao</app.e_commerce.taobao.name>
-				<app.e_commerce.zhifubao.name>Ecommerce-Zhifubao</app.e_commerce.zhifubao.name>
-				<app.e_commerce.suning.name>Ecommerce-SuNing</app.e_commerce.suning.name>
-				<app.e_commerce.etl.name>Ecommerce-etl</app.e_commerce.etl.name>
+				<app.e_commercetask.name>ecommerce-task</app.e_commercetask.name>
+				<app.e_commerce.jingdong.name>ecommerce-jingdong</app.e_commerce.jingdong.name>
+				<app.e_commerce.taobao.name>ecommerce-taobao</app.e_commerce.taobao.name>
+				<app.e_commerce.zhifubao.name>ecommerce-zhifubao</app.e_commerce.zhifubao.name>
+				<app.e_commerce.suning.name>ecommerce-suning</app.e_commerce.suning.name>
+				<app.e_commerce.etl.name>ecommerce-etl</app.e_commerce.etl.name>
 				<app.elemo.name>elema</app.elemo.name>
 			</properties>
 		</profile>
@@ -152,12 +152,12 @@
 			<id>preview1.1.2</id>
 			<properties>
 				<app.e_commerce.active>preview1.1.2</app.e_commerce.active>
-				<app.e_commercetask.name>Ecommerce-Task</app.e_commercetask.name>
-				<app.e_commerce.jingdong.name>Ecommerce-JingDong</app.e_commerce.jingdong.name>
-				<app.e_commerce.taobao.name>Ecommerce-Taobao</app.e_commerce.taobao.name>
-				<app.e_commerce.zhifubao.name>Ecommerce-Zhifubao</app.e_commerce.zhifubao.name>
-				<app.e_commerce.suning.name>Ecommerce-SuNing</app.e_commerce.suning.name>
-				<app.e_commerce.etl.name>Ecommerce-etl</app.e_commerce.etl.name>
+				<app.e_commercetask.name>ecommerce-task</app.e_commercetask.name>
+				<app.e_commerce.jingdong.name>ecommerce-jingdong</app.e_commerce.jingdong.name>
+				<app.e_commerce.taobao.name>ecommerce-taobao</app.e_commerce.taobao.name>
+				<app.e_commerce.zhifubao.name>ecommerce-zhifubao</app.e_commerce.zhifubao.name>
+				<app.e_commerce.suning.name>ecommerce-suning</app.e_commerce.suning.name>
+				<app.e_commerce.etl.name>ecommerce-etl</app.e_commerce.etl.name>
 				<app.elemo.name>elema</app.elemo.name>
 			</properties>
 		</profile>

@@ -104,9 +104,15 @@ public interface TaskMobileRepository extends JpaRepository<TaskMobile, Long>, J
 	@Modifying	
 //	@Query(value="select t from TaskMobile t where t.createtime > ?1 order by t.createtime desc")
 //	@Query(value="select t from TaskMobile t where t.createtime > ?1 order by t.carrier,t.province,t.createtime desc", nativeQuery = true)
+	//如下代码不好做兼容性
 	@Query(value="select t.* from task_mobile t where t.createtime >= now() - interval '24 hours' order by t.carrier,t.province,t.createtime desc", nativeQuery = true)
 	List<TaskMobile> findTaskResultForEtl();
 
+	//查询近24小时执行的所有任务(兼容性角度考虑)
+	@Transactional
+	@Modifying	
+	@Query(value="select t from TaskMobile t where t.createtime > ?1 order by t.carrier,t.province,t.createtime desc")
+	List<TaskMobile> findTaskResultForEtlByTimeInterval(Date date);
 	
 	//尝试获取近10天的执行记录(owner=tasker)
 	/*@Transactional
@@ -117,8 +123,9 @@ public interface TaskMobileRepository extends JpaRepository<TaskMobile, Long>, J
 	//尝试获取近10天的执行记录(task_owner=tasker)  update by meidi 20180927 a.owner 替换成 a.task_owner
 	@Transactional
 	@Modifying	
-	@Query(value="select b.* from ( select a.*,row_number() over(partition by a.phonenum,to_char(a.createtime,'yyyy-mm-dd'),a.task_owner,a.finished) as rn from task_mobile a where a.createtime >= now() - interval '10 days' ) b where b.task_owner = 'tasker' and b.rn = 1 order by b.phonenum,b.createtime desc",nativeQuery=true)
-	List<TaskMobile> findTenDaysTaskResultOwnerIsTasker();
+//	@Query(value="select b.* from ( select a.*,row_number() over(partition by a.phonenum,to_char(a.createtime,'yyyy-mm-dd'),a.task_owner,a.finished) as rn from task_mobile a where a.createtime >= now() - interval '10 days' ) b where b.task_owner = 'tasker' and b.rn = 1 order by b.phonenum,b.createtime desc",nativeQuery=true)
+	@Query(value="select t.* from TaskMobile t where t.createtime > ?1 and task_owner='tasker' order by t.carrier,t.province,t.createtime desc")
+	List<TaskMobile> findTenDaysTaskResultOwnerIsTasker(Date date);
 
 	//查询etltime不为空(finished为true)，reportStatus为null（调用存储过程）
 	/*@Transactional

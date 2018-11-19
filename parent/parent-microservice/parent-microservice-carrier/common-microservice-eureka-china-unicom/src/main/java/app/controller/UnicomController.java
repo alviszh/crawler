@@ -52,7 +52,7 @@ public class UnicomController {
 
 	@RequestMapping(value = "/crawler", method = RequestMethod.POST)
 	public TaskMobile unicomcrawler(@RequestBody MessageLogin messageLogin) {
-		tracerLog.addTag("taskid", "==============>中国联通抓取 <===============" + messageLogin.getTask_id());
+		tracerLog.addTag("taskid",messageLogin.getTask_id());
 		tracerLog.addTag("------------UnicomController getAllData-------------", messageLogin.toString());
 
 		TaskMobile taskMobile = taskMobileRepository.findByTaskid(messageLogin.getTask_id());
