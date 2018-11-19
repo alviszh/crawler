@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 import com.crawler.mobile.json.TaskMobile;
 import com.microservice.dao.entity.crawler.sms.SmsRecv;
 
+import app.client.CarrierProxyClient;
 import app.client.SmsClient;
-import app.client.carrier.TaskClient;
 import app.commontracerlog.TracerLog;
 
 @Component
@@ -18,7 +18,7 @@ public class MonitorTelecomUtils {
 	@Autowired
 	private TracerLog tracer;
 	@Autowired
-	private TaskClient taskClient;
+	private CarrierProxyClient taskClient;
 	@Autowired
 	private SmsClient smsClient;
 	
