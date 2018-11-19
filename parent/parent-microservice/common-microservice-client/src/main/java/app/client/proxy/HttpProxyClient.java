@@ -9,7 +9,7 @@ import com.crawler.aws.json.HttpProxyRes;
 
 import app.client.MiddleClientConfig;
 
-@FeignClient(name = "api-ip",url="https://apitxboss.txtechnologies.com")
+@FeignClient(name = "api-ip",url="https://apitxboss.txtechnologies.com" ,configuration = MiddleClientConfig.class)
 public interface HttpProxyClient {
 
 	//获取代理IP、端口

@@ -118,7 +118,7 @@ public class CrawlerLoginImpl implements ICrawlerLogin {
                 if (isHttpProxy.equals("1")) { //使用HTTP代理
                     try {
 //                        httpProxyBean = getProxy();
-                          httpProxyRes = getProxyClient("20", "");
+                          httpProxyRes = getProxyClient("1", "");
                     } catch (Exception ex) {
                         System.out.println("获取代理IP、端口出错。");
                         tracerLog.qryKeyValue("httpProxyRes.Exception", "获取代理IP、端口出错");
