@@ -60,7 +60,6 @@ public class MobileSendService{
                     System.out.println("sendResul=" + result);
                 }
             }
-
             //授权结果
             if (taskMobile.getPhase().equals(StatusCodeEnum.TASKMOBILE_LOGIN_LOADING.getPhase())) {
                 if (login_url != null) {
