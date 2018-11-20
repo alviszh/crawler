@@ -212,5 +212,4 @@ public class V2PbccrcRestController {
         System.out.println("^^^^^" + precedingRule);
         return "发送成功";
     }
-
 }

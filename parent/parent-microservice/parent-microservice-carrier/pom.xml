@@ -19,7 +19,6 @@
 		<module>common-microservice-task</module>
 		<module>common-microservice-service</module>
 		<module>common-microservice-mobile-etl</module>
-		<module>common-microservice-carrier-pushserver</module>
 	</modules>
 
 	<profiles>
@@ -33,7 +32,6 @@
 				<app.unicom.name>crawler-unicom-local</app.unicom.name>
 				<app.etl.name>mobile-etl-local</app.etl.name>
 				<app.mobileh5.name>mobile-h5-local</app.mobileh5.name>
-				<app.carrier.pushserver.name>carrier-pushserver-local</app.carrier.pushserver.name>
 
 			</properties>
 			<activation>
@@ -50,7 +48,6 @@
 				<app.unicom.name>crawler-unicom</app.unicom.name>
 				<app.etl.name>mobile-etl</app.etl.name>
 				<app.mobileh5.name>mobile-h5</app.mobileh5.name>
-				<app.carrier.pushserver.name>carrier-pushserver</app.carrier.pushserver.name>
 			</properties>
 		</profile>
 		<profile>
@@ -63,7 +60,6 @@
 				<app.unicom.name>crawler-unicom</app.unicom.name>
 				<app.etl.name>mobile-etl</app.etl.name>
 				<app.mobileh5.name>mobile-h5</app.mobileh5.name>
-				<app.carrier.pushserver.name>carrier-pushserver</app.carrier.pushserver.name>
 			</properties>
 		</profile>
 		<profile>
@@ -76,7 +72,6 @@
 				<app.unicom.name>crawler-unicom</app.unicom.name>
 				<app.etl.name>mobile-etl</app.etl.name>
 				<app.mobileh5.name>mobile-h5</app.mobileh5.name>
-				<app.carrier.pushserver.name>carrier-pushserver</app.carrier.pushserver.name>
 			</properties>
 		</profile>
 	</profiles>

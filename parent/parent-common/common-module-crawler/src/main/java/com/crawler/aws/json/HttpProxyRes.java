@@ -120,8 +120,20 @@ public class HttpProxyRes implements Serializable{
 		this.httpProxyBeanSet = httpProxyBeanSet;
 	}
 
-	
-	
-
-
+	@Override
+	public String toString() {
+		return "HttpProxyRes{" +
+				"ip='" + ip + '\'' +
+				", port='" + port + '\'' +
+				", result=" + result +
+				", message='" + message + '\'' +
+				", name='" + name + '\'' +
+				", instanceId='" + instanceId + '\'' +
+				", totalnum=" + totalnum +
+				", city='" + city + '\'' +
+				", updateTime='" + updateTime + '\'' +
+				", errornum=" + errornum +
+				", httpProxyBeanSet=" + httpProxyBeanSet +
+				'}';
+	}
 }

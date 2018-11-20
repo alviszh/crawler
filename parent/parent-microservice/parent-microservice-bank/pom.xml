@@ -238,6 +238,10 @@
 				<app.bank.citicchina.creditcard.name>bank-citicchina-creditcard</app.bank.citicchina.creditcard.name>
 				<app.bank.cibchina.name>bank-cibchina</app.bank.cibchina.name>
 				<app.bank.spdb.creditcard.name>bank-spdb-creditcard</app.bank.spdb.creditcard.name>
+				<!-- hyx -->
+				<app.bank.boc.debitcard.name>bank-boc-debitcard</app.bank.boc.debitcard.name>
+				<app.bank.bocom.creditcard.name>bank-bocom-creditcard</app.bank.bocom.creditcard.name>
+				<!-- hyx -->
 			</properties>
 		</profile>
 	</profiles>
