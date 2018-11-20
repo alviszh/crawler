@@ -6,10 +6,7 @@ import app.service.MobileSendService;
 import com.microservice.dao.entity.crawler.mobile.TaskMobile;
 import com.microservice.dao.repository.crawler.mobile.TaskMobileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/carrier/pushserver")
@@ -35,8 +32,9 @@ public class CarrierPushServerController {
 
     //测试回调接口
     @PostMapping("/testApi")
-    public void testApi(){
-        System.out.println("================  test api  ============== ");
+    public String testApi(@RequestBody String messageResult){
+        System.out.println("================  test api  ============== " + messageResult);
         tracerLog.addTag("testApi","回调方法");
+        return "test success";
     }
 }

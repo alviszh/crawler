@@ -47,7 +47,7 @@ public class PhoneInquireController {
 			if(list.size()>0){
 				if (isHttpProxy.equals("1")) {  //使用HTTP代理
 					try {
-						httpProxyRes = getProxyClient("2","北京市");
+						httpProxyRes = getProxyClient("2","北京市","");
 		            } catch (Exception ex) {
 		                System.out.println("获取代理IP、端口出错。");
 		            }
@@ -71,8 +71,8 @@ public class PhoneInquireController {
 	}
 	
 	//获取代理IP、端口
-    public HttpProxyRes getProxyClient(String num, String pro){
-    	httpProxyRes = httpProxyClient.getProxy(num,pro);
+    public HttpProxyRes getProxyClient(String num, String pro,String useCache){
+    	httpProxyRes = httpProxyClient.getProxy(num,pro,useCache);
         return httpProxyRes;
     }
 }
