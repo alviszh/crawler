@@ -1,6 +1,9 @@
 package app.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +39,7 @@ public class StandaloneTaskMailController {
 				key="未提供";
 			}
 			pbccrcBean=new MonitorStandaloneTaskerBean(taskStandalone.getServiceName().trim(),
-					taskStandalone.getCreatetime().toString(),
+					getTimeAddEightHours(taskStandalone.getCreatetime().toString()),
 					taskStandalone.getOwner().trim(), taskStandalone.getFinished(),
 					taskStandalone.getDescription().trim(),
 					key, taskStandalone.getTaskid().trim());
@@ -49,5 +52,20 @@ public class StandaloneTaskMailController {
 	public String getOnePbccrcRecord(){
 		String topSuccessPbccrcRecord = taskStandaloneRepository.findTopSuccessPbccrcRecord();
 		return topSuccessPbccrcRecord;
+	}
+	//时间转换，增加8小时
+	public String getTimeAddEightHours(String time){
+		Date d = null;
+		String newtime = null;
+		SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			d = sd.parse(time);
+			long rightTime = (long) (d.getTime() + 8 * 60 * 60 * 1000);
+			newtime = sd.format(rightTime);
+		} catch (ParseException e) {
+			System.out.println("时间转换是报异常："+e.toString());
+			newtime=time;  //如果转换出现异常，就把传入的参数作为结果
+		}
+		return newtime;
 	}
 }
