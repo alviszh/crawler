@@ -62,7 +62,7 @@ public class SearchCrawlerService {
 		HttpProxyRes httpProxyRes = null;
 		List<HttpProxyBean> httpProxyBeanSet = null;
 		if (istrueip) {
-			httpProxyRes = awsApiClient.getProxy(40);
+			httpProxyRes = awsApiClient.getProxy(4);
 			sysLog.output("httpProxyBean", httpProxyRes.toString());
 
 			// System.out.println(httpProxyBean.getIp()+"=========="+httpProxyBean.getPort());
@@ -82,8 +82,8 @@ public class SearchCrawlerService {
 
 			if (istrueip) {
 				if (httpProxyBeanSet != null && httpProxyBeanSet.size() > 0) {
-					searchTask.setIpaddress(httpProxyBeanSet.get(i).getIp());
-					searchTask.setIpport(httpProxyBeanSet.get(i).getPort());
+					searchTask.setIpaddress(httpProxyBeanSet.get(i/10).getIp());
+					searchTask.setIpport(httpProxyBeanSet.get(i/10).getPort());
 				}
 			}
 
@@ -114,5 +114,9 @@ public class SearchCrawlerService {
 		}
 
 		return queue;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(32/10);
 	}
 }
