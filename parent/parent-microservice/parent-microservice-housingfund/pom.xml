@@ -918,7 +918,20 @@
 			<id>preview1.1.2</id>
 			<properties>
 				<app.housingcrawlertask.active>preview1.1.2</app.housingcrawlertask.active>
+				
+				<!-- hyx开发 -->
 				<app.housingcrawlertask.name>housingfund-task</app.housingcrawlertask.name>
+				<app.housing.beijing.name>housingfund-beijing</app.housing.beijing.name>
+				<app.housing.changchun.name>housingfund-changchun</app.housing.changchun.name>
+				<app.housing.daqing.name>housingfund-daqing</app.housing.daqing.name>
+				<app.housing.anqing.name>housingfund-anqing</app.housing.anqing.name>
+				<app.housing.yvlin.name>housingfund-yvlin</app.housing.yvlin.name>
+				<app.housing.changzhou.name>housingfund-changzhou</app.housing.changzhou.name>
+				<app.housing.anhui.tongyi.name>housingfund-sz-anhui-tongyi</app.housing.anhui.tongyi.name>
+
+				<app.housing.fuyang.name>housingfund-fuyang</app.housing.fuyang.name>
+				<app.housing.beijing.cent.name>housingfund-beijing-cent</app.housing.beijing.cent.name>
+				<!-- hyx开发 -->
 				<app.housing.etl.name>housingfund-etl</app.housing.etl.name>
 				<app.housing.jinan.name>housingfund-jinan</app.housing.jinan.name>
 				<app.housing.bengbu.name>housingfund-bengbu</app.housing.bengbu.name>
