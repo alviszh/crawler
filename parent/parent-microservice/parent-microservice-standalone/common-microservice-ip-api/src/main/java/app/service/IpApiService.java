@@ -43,15 +43,15 @@ public class IpApiService {
 	String jgCity = "";
 
 	
-	@CacheEvict(value="mycache",key = "#num+#pro")
-	public String delete(String num,String pro) {
-		System.out.println("删除成功");
-		return "删除成功";
-	}
+//	@CacheEvict(value="mycache",key = "#num+#pro")
+//	public String delete(String num,String pro) {
+//		System.out.println("删除成功");
+//		return "删除成功";
+//	}
 	
 	
-	@Cacheable(value ="mycache", key = "#num+#pro")
-	public HttpProxyRes getIP(String num, String pro) {
+	@Cacheable(value ="mycache", key = "#num+#pro",unless="#useCache eq 'false'")
+	public HttpProxyRes getIP(String num, String pro,String useCache) {
 		tracer.addTag("获取极光IP开始", "数量："+num+" ;省份："+pro);
 		System.out.println("aaa");
 		//参数错误，num为空的情况
@@ -71,6 +71,7 @@ public class IpApiService {
 		}
 
 		HttpProxyRes httpProxyRes = getHttpProxyRes(num,false,"未知错误，未能返回IP！",null);
+		
 		return  httpProxyRes;
 	}
 

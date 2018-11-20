@@ -27,7 +27,7 @@ public class IpApiController {
 	 * @return
 	 */
 	@GetMapping(value="/proxy/get")
-	public HttpProxyRes getProxy(String num, String pro){
+	public HttpProxyRes getProxy(String num, String pro,String useCache){
 		tracer.addTag("获取IP的参数：", "数量："+num+" ;省份："+pro);
 		System.out.println("获取IP的数量： "+num);
 		System.out.println("获取IP的省份： "+pro);
@@ -35,18 +35,21 @@ public class IpApiController {
 		if(num==null){
 			num = "1";
 		}
-		return ipApiService.getIP(num,pro);		
+		if(useCache==null){
+			useCache = "true";
+		}
+		return ipApiService.getIP(num,pro,useCache);		
 	}
 
-	@GetMapping(value="/proxy/del")
-	public HttpProxyRes getDelProxy(String num, String pro){
-		tracer.addTag("删除", "删除代理ip");
-		if(num==null){
-			num = "1";
-		}
-		ipApiService.delete(num,pro);
-		tracer.addTag("获取IP的参数：", "数量："+num+" ;省份："+pro);
-		return ipApiService.getIP(num,pro);
-		
-	}
+//	@GetMapping(value="/proxy/del")
+//	public HttpProxyRes getDelProxy(String num, String pro){
+//		tracer.addTag("删除", "删除代理ip");
+//		if(num==null){
+//			num = "1";
+//		}
+//		ipApiService.delete(num,pro);
+//		tracer.addTag("获取IP的参数：", "数量："+num+" ;省份："+pro);
+//		return ipApiService.getIP(num,pro);
+//		
+//	}
 }

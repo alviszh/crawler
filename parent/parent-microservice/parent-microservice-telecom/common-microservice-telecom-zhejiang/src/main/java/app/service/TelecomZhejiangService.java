@@ -50,8 +50,8 @@ import app.service.aop.impl.CrawlerImpl;
 import app.unit.TeleComCommonUnit;
 
 @Component
-@EntityScan(basePackages = "com.microservice.dao.entity.crawler.telecom.zhejiang")
-@EnableJpaRepositories(basePackages = "com.microservice.dao.repository.crawler.telecom.zhejiang")
+@EntityScan(basePackages = {"com.microservice.dao.entity.crawler.telecom.zhejiang","com.microservice.dao.entity.crawler.mobile"})
+@EnableJpaRepositories(basePackages = {"com.microservice.dao.repository.crawler.telecom.zhejiang","com.microservice.dao.repository.crawler.mobile"})
 public class TelecomZhejiangService implements ISmsTwice{
 	
 	@Autowired
