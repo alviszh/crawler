@@ -15,7 +15,6 @@ import com.module.jna.winio.WinIOAPI;
 
 public class TestABC_base {
 	static String driverPath = "C:\\IEDriverServer_Win32\\IEDriverServer.exe";
-
 	public static void main(String[] args) throws Exception {
 
 		DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
