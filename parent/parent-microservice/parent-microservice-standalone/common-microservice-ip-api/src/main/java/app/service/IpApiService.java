@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Component;
@@ -41,8 +42,16 @@ public class IpApiService {
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	String jgCity = "";
 
-	@Cacheable(value ="mycache", key = "#p0")
-	public HttpProxyRes getIP(String num, String pro) {
+	
+//	@CacheEvict(value="mycache",key = "#num+#pro")
+//	public String delete(String num,String pro) {
+//		System.out.println("删除成功");
+//		return "删除成功";
+//	}
+	
+	
+	@Cacheable(value ="mycache", key = "#num+#pro",unless="#useCache eq 'false'")
+	public HttpProxyRes getIP(String num, String pro,String useCache) {
 		tracer.addTag("获取极光IP开始", "数量："+num+" ;省份："+pro);
 		System.out.println("aaa");
 		//参数错误，num为空的情况
@@ -62,6 +71,7 @@ public class IpApiService {
 		}
 
 		HttpProxyRes httpProxyRes = getHttpProxyRes(num,false,"未知错误，未能返回IP！",null);
+		
 		return  httpProxyRes;
 	}
 
@@ -109,7 +119,7 @@ public class IpApiService {
 		
 		pro = getCityCode(pro);
 		String url = "http://d.jghttp.golangapi.com/getip?num="+num+"&type=2&"
-				+ "pro="+pro+"&city=0&yys=0&port=1&time=1&"
+				+ "pro="+pro+"&city=0&yys=0&port=1&time=2&"
 				+ "ts=1&ys=1&cs=1&lb=1&sb=0&pb=4&mr=0&regions=";
 		String result = getIPByWebClient(url);
 		if(null != result){

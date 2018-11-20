@@ -101,7 +101,8 @@ public class MailContentBuilder {
 		Context context = new Context();
 		context.setVariable("eurekaChangelist", eurekaChangelist);
 		context.setVariable("envirtype", envirtype);
-		String mailContent = templateEngine.process("eureka", context);
+//		String mailContent = templateEngine.process("eureka", context);
+		String mailContent = templateEngine.process("microServiceChange", context);
 		return mailContent;
 	}
 	/**

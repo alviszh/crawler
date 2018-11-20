@@ -70,7 +70,23 @@ public class PbccrcService{
                // System.out.println("getAllData.reportResultStr==" + reportResultStr);
             }
 
-        }catch(Exception e){
+        } catch (RuntimeException rex) {
+            System.out.println("RuntimeException rex" + rex.getMessage());
+            tracerLog.addTag("人行征信网站被屏蔽RuntimeException rex", rex.getMessage());
+
+            //保存状态
+            pbccrcV2Service.saveFlowStatus(pbccrcJsonBean.getMapping_id(), rex.getMessage());
+            //发送状态
+//                sendMessageResult(pbccrcJsonBean, "-1", "人行征信网站被屏蔽");
+            crawlerStatusStandaloneService.changeStatus(StandaloneEnum.STANDALONE_LOGIN_PBCCRC_ERROR1.getPhase(),
+                    StandaloneEnum.STANDALONE_LOGIN_PBCCRC_ERROR1.getPhasestatus(),
+                    StandaloneEnum.STANDALONE_LOGIN_PBCCRC_ERROR1.getDescription(),
+                    StandaloneEnum.STANDALONE_LOGIN_PBCCRC_ERROR1.getCode(),
+                    true, pbccrcJsonBean.getMapping_id());
+
+            return rex.getMessage();
+
+        } catch(Exception e){
             tracerLog.qryKeyValue("PbccrcService.getCreditAsync.exception", "-1");
             reportResult = new Result<ReportData>();
             ReportData reportData = new ReportData("-1", "查询失败,请重试", null, null);

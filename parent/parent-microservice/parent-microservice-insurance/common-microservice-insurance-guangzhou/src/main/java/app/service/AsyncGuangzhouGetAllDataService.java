@@ -231,7 +231,7 @@ public class AsyncGuangzhouGetAllDataService implements InsuranceLogin, Insuranc
 						InsuranceStatusCode.INSURANCE_SMS_VALIDATE_FAILUE.getPhasestatus(),
 						InsuranceStatusCode.INSURANCE_SMS_VALIDATE_FAILUE.getDescription(), taskInsurance);
 			}else{
-				tracer.addTag("crawler.checkSMS.service.fail", "短信验证码错误。");
+				tracer.addTag("crawler.checkSMS.service.success", "短信验证码正确。");
 				insuranceService.changeLoginStatus(InsuranceStatusCode.INSURANCE_SMS_VALIDATE_SUCCESS.getPhase(),
 						InsuranceStatusCode.INSURANCE_SMS_VALIDATE_SUCCESS.getPhasestatus(),
 						InsuranceStatusCode.INSURANCE_SMS_VALIDATE_SUCCESS.getDescription(), taskInsurance);

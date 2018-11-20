@@ -9,13 +9,16 @@ import com.crawler.aws.json.HttpProxyRes;
 
 import app.client.MiddleClientConfig;
 
-@FeignClient(name = "api-ip",url="https://apitxboss.txtechnologies.com")
+@FeignClient(name = "api-ip",url="https://apitxboss.txtechnologies.com" ,configuration = MiddleClientConfig.class)
 public interface HttpProxyClient {
 
 	//获取代理IP、端口
 //	@GetMapping(value = "/aws/api/proxy/get")
 	@RequestMapping(value = "/api-service/proxy/get",method = RequestMethod.GET)
-	public HttpProxyRes getProxy(@RequestParam(name = "num",required=false) String num, @RequestParam(name = "pro",required=false) String pro);
+	public HttpProxyRes getProxy(@RequestParam(name = "num",required=false) String num, @RequestParam(name = "pro",required=false) String pro, @RequestParam(name = "useCache",required=false) String useCache);
 
+	//删除缓存代理IP并获取新的代理IP、端口
+	@RequestMapping(value = "/api-service/proxy/del",method = RequestMethod.GET)
+	public HttpProxyRes getDelProxy(@RequestParam(name = "num",required=false) String num, @RequestParam(name = "pro",required=false) String pro);
 }
 

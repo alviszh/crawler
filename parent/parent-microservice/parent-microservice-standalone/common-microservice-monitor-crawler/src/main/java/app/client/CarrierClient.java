@@ -17,6 +17,7 @@ import com.crawler.mobile.json.TaskMobile;
  * 或者经过加密或者其他操作后的登陆信息作为参数，故在调用其他接口的时候，将登陆信息也作参数传入)
  */
 @FeignClient(name = "h5-proxy",configuration = ClientConfig.class, url = "${h5-proxy}")
+//@FeignClient(name = "MOBILE-H5")
 public interface CarrierClient { 
 	//登陆
 	@RequestMapping(value = "/h5/carrier/telecom/login",method = RequestMethod.POST,headers={"content-type=application/x-www-form-urlencoded"}) 

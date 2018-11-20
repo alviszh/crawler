@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.xvolks.jnative.exceptions.NativeException;
 
 import com.crawler.TaskStatusCode;
-import com.crawler.bank.json.BankStatusCode;
+import com.crawler.e_commerce.json.E_ComerceStatusCode;
 import com.crawler.e_commerce.json.E_CommerceJsonBean;
 import com.microservice.dao.entity.crawler.e_commerce.basic.E_CommerceTask;
 import com.microservice.dao.repository.crawler.e_commerce.basic.E_CommerceTaskRepository;
@@ -39,8 +39,8 @@ public class SuNingController {
 	public E_CommerceTask sendSMS(@RequestBody E_CommerceJsonBean e_CommerceJsonBean) throws Exception {
 
 		tracerLog.output("crawler.e_commerce.SuNingController.sendSMS.taskid", e_CommerceJsonBean.getTaskid());
-		E_CommerceTask ecommerceTask = e_commerceTaskStatusService.changeStatus(TaskStatusCode.SEND_CODE_DONING.getPhase(), TaskStatusCode.SEND_CODE_DONING.getPhasestatus(), TaskStatusCode.SEND_CODE_DONING.getDescription(),
-					TaskStatusCode.SEND_CODE_DONING.getError_code(), false, e_CommerceJsonBean.getTaskid());
+		E_CommerceTask ecommerceTask = e_commerceTaskStatusService.changeStatus(E_ComerceStatusCode.E_COMMERCE_SEND_CODE_DONING.getPhase(), E_ComerceStatusCode.E_COMMERCE_SEND_CODE_DONING.getPhasestatus(), E_ComerceStatusCode.E_COMMERCE_SEND_CODE_DONING.getDescription(),
+				E_ComerceStatusCode.E_COMMERCE_SEND_CODE_DONING.getError_code(), false, e_CommerceJsonBean.getTaskid());
 		ecommerceTask.setWebsiteType("sn");
 		e_CommerceTaskRepository.save(ecommerceTask);
 		ecommerceTask = suNingService.sendSMS(e_CommerceJsonBean, ecommerceTask);
@@ -56,10 +56,10 @@ public class SuNingController {
 			ecommerceTask =  agentService.postAgent(e_CommerceJsonBean, "/ds/suning/login"); 
 		} catch (RuntimeException e) {
 			tracerLog.output("SuNingController.loginAgent.exception", e.getMessage());
-			ecommerceTask = e_commerceTaskStatusService.changeStatus(BankStatusCode.BANK_AGENT_ERROR.getPhase(),
-                    BankStatusCode.BANK_AGENT_ERROR.getPhasestatus(),
-                    BankStatusCode.BANK_AGENT_ERROR.getDescription(),
-                    BankStatusCode.BANK_AGENT_ERROR.getError_code(), true, e_CommerceJsonBean.getTaskid());
+			ecommerceTask = e_commerceTaskStatusService.changeStatus(E_ComerceStatusCode.E_COMMERCE_AGENT_ERROR.getPhase(),
+					E_ComerceStatusCode.E_COMMERCE_AGENT_ERROR.getPhasestatus(),
+					E_ComerceStatusCode.E_COMMERCE_AGENT_ERROR.getDescription(),
+					E_ComerceStatusCode.E_COMMERCE_AGENT_ERROR.getError_code(), true, e_CommerceJsonBean.getTaskid());
 		}
 		return ecommerceTask;
 	}

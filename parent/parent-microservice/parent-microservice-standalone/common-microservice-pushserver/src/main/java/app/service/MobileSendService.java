@@ -53,7 +53,13 @@ public class MobileSendService{
             String crawler_url = appProductList.getCrawler_notice_url();//采集结果通知接口
             String report_url = appProductList.getReport_notice_url();//报告生成通知接口
 
-
+            //任务创建结果
+            if (taskMobile.getPhase() == null && taskMobile.getPayMsgStatus()==null && !taskMobile.getFinished()) {
+                if (task_url != null) {
+                    Map<String, Object> result = pushServerService.requestnoticeurl(task_url, requestBody, null);
+                    System.out.println("sendResul=" + result);
+                }
+            }
             //授权结果
             if (taskMobile.getPhase().equals(StatusCodeEnum.TASKMOBILE_LOGIN_LOADING.getPhase())) {
                 if (login_url != null) {

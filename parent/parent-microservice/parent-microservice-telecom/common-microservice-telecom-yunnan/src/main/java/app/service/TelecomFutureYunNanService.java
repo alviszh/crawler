@@ -196,22 +196,20 @@ public class TelecomFutureYunNanService extends TelecomBasicService {
 			listfuture.add(future);
 		}
 		boolean istrue = true;
-		int i = 0;
 		while (istrue) { /// 这里使用了循环判断，等待获取结果信息
 			for (Future<String> future : listfuture) {
-				if (i >= 5) {
-					istrue = false;
-				}
+
 				if (future.isDone()) { // 判断是否执行完毕
-					System.out.println("Result getBill - " + future.toString() + ":::" + future.isDone());
-					i++;
+					listfuture.remove(future);
 					break;
 				}
+				
 			}
-
+			if (listfuture.size() <= 0) {
+				istrue = false;
+			}
 		}
 		taskMobile = findtaskMobile(taskMobile.getTaskid());
-		taskMobile.setPhase(StatusCodeClass.StatusCodeClass_CHECK_MSG(i).getPhase());
 
 	    taskMobile.setAccountMsgStatus(StatusCodeRec.CRAWLER_AccountMsgStatus_SUCESS.getCode());
 		save(taskMobile);
@@ -237,22 +235,18 @@ public class TelecomFutureYunNanService extends TelecomBasicService {
 				Thread.sleep(5000);
 			}
 			boolean istrue = true;
-			int i = 0;
 			while (istrue) { /// 这里使用了循环判断，等待获取结果信息
 				for (Future<String> future : listfuture) {
-					if (i >= 5) {
-						istrue = false;
-					}
+
 					if (future.isDone()) { // 判断是否执行完毕
 						listfuture.remove(future);
-						System.out.println("Result getphoneBill - "+i+":" + future.toString() + ":::" + future.isDone());
-						i++;
-						
 						break;
 					}
 					
 				}
-
+				if (listfuture.size() <= 0) {
+					istrue = false;
+				}
 			}
 			taskMobile = findtaskMobile(taskMobile.getTaskid());
 			taskMobile.setPhase(StatusCodeClass.StatusCodeClass_CALL_MSG(0).getPhase());
@@ -303,22 +297,18 @@ public class TelecomFutureYunNanService extends TelecomBasicService {
 			}
 
 			boolean istrue = true;
-			int i = 0;
 			while (istrue) { /// 这里使用了循环判断，等待获取结果信息
 				for (Future<String> future : listfuture) {
-					if (i >= 5) {
-						istrue = false;
-					}
+
 					if (future.isDone()) { // 判断是否执行完毕
 						listfuture.remove(future);
-						System.out.println("Result getSMSBill - "+i+":" + future.toString() + ":::" + future.isDone());
-						i++;
-						
 						break;
 					}
 					
 				}
-
+				if (listfuture.size() <= 0) {
+					istrue = false;
+				}
 			}
 			taskMobile = taskMobileRepository.findByTaskid(taskMobile.getTaskid());
 
