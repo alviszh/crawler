@@ -54,7 +54,11 @@ public class SearchCrawlerService {
 
 	public Queue<SearchTask> getSearchTask(Queue<SearchTask> queue) {
 
-		List<SearchTask> list2 = searchTaskRepository.findTop40ByPhase("0");
+		List<SearchTask> list_searchtask = searchTaskRepository.findTop40ByPhase("0");
+		if(list_searchtask ==null || list_searchtask.size() <=0){
+			return queue;
+
+		}
 		HttpProxyRes httpProxyRes = null;
 		List<HttpProxyBean> httpProxyBeanSet = null;
 		if (istrueip) {
@@ -72,7 +76,7 @@ public class SearchCrawlerService {
 			httpProxyBeanSet = httpProxyRes.getHttpProxyBeanSet();
 		}
 		int i = 0;
-		for (SearchTask searchTask : list2) {
+		for (SearchTask searchTask : list_searchtask) {
 			searchTask.setPhase("1");
 			searchTask.setRenum(searchTask.getRenum() + 1);
 
@@ -94,15 +98,15 @@ public class SearchCrawlerService {
 
 		}
 
-		if (list2.size() > 0) {
+		if (list_searchtask.size() > 0) {
 			try {
-				queue.addAll(list2);
+				queue.addAll(list_searchtask);
 
 			} catch (Exception e) {
 				sysLog.output("加入数据queue报错", e.getMessage());
 
 				queue = new LinkedList<SearchTask>();
-				queue.addAll(list2);
+				queue.addAll(list_searchtask);
 
 			}
 		} else {
