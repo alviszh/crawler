@@ -3,6 +3,7 @@ package app.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +31,13 @@ public class StandaloneTaskMailController {
 	public List<MonitorStandaloneTaskerBean> oneDayPbccrc(){
 		List<MonitorStandaloneTaskerBean> list=new ArrayList<MonitorStandaloneTaskerBean>();
 		MonitorStandaloneTaskerBean pbccrcBean=null;
-		List<TaskStandalone> oneDayPbccrcList = taskStandaloneRepository.findAllPbccrcTaskForOneDay();
+		//考虑到数据库兼容性问题，所以查询指定时间记录的时候需要用参数方式
+		Date date=new Date();  
+        Calendar calendar = Calendar.getInstance();  
+        calendar.setTime(date);  
+        calendar.add(Calendar.DAY_OF_MONTH, -1);  //获取24小时之前
+        date = calendar.getTime();  
+		List<TaskStandalone> oneDayPbccrcList = taskStandaloneRepository.findAllPbccrcTaskForOneDay(date);
 		String key;
 		for (TaskStandalone taskStandalone : oneDayPbccrcList) {
 			try {
