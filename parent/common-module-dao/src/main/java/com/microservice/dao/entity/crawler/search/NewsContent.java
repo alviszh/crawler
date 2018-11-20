@@ -95,7 +95,7 @@ public class NewsContent extends IdEntity implements Serializable {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	@Column(columnDefinition="text")
+	@Column(columnDefinition="longtext")
 	public String getContent() {
 		return content;
 	}

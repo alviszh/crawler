@@ -1,20 +1,11 @@
 package org.common.microservice.housingfund.yvlin;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
-
-import javax.imageio.ImageReader;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import org.jsoup.Connection;
@@ -30,15 +21,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
-import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
-import com.gargoylesoftware.htmlunit.Page;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.util.Cookie;
-import com.gargoylesoftware.htmlunit.util.NameValuePair;
-import com.module.htmlunit.WebCrawler;
-
 import app.crawler.htmlparse.HousingYvLinParse;
-import app.service.common.LoginAndGetCommon;
 
 /**
  * 
@@ -83,7 +66,7 @@ public class yvlintest {
 		driver.get(baseUrl);
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(60, TimeUnit.SECONDS)
 				.pollingEvery(2, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
-		WebElement loginByUserButton = wait.until(new Function<WebDriver, WebElement>() {
+		wait.until(new Function<WebDriver, WebElement>() {
 			public WebElement apply(WebDriver driver) {
 				return driver.findElement(By.className("current"));
 			}
@@ -100,7 +83,7 @@ public class yvlintest {
 		driver.findElement(By.xpath("//*[@id='tabs-1']/form/div[4]/div/button")).click();
 		
 
-		String htmlsource3 = driver.getPageSource();
+		driver.getPageSource();
 		Thread.sleep(5000);
 
 		// System.out.println("===="+htmlsource3);
