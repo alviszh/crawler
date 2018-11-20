@@ -22,9 +22,13 @@ public class MonitorRancherNodeMailService {
 	private MailClient mailClient;
 	@Autowired
 	private MailContentBuilder mailContentBuilder;
-	@Value("${rancherreceivers}") 
+//	@Value("${rancherreceivers}") 
+//	public String receivers;
+//	@Value("${mailsender}") 
+//	public String mailsender;
+	@Value("${MAIL_RECEIVERS}") 
 	public String receivers;
-	@Value("${mailsender}") 
+	@Value("${MAIL_SENDER}") 
 	public String mailsender;
 	//发送通知邮件
 	public void sendResultMail(List<MonitorRancherChange> changeList, double rancherdisk, double rancherswap,double ranchercpu) {
