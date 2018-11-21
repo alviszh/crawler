@@ -30,7 +30,10 @@ spring:
         dialect: ${datasource.jdbc.dialect} 
         temp: 
           use_jdbc_metadata_defaults: false #此处是为了解决启动时报错createClob()方法未实现
-          
+  cache:
+    cache-names: mycache
+    caffeine:
+      spec: ${datasource.jdbc.spec}       
 #  datasource: 
 #    separator: ;;
 ##    schema: classpath:/datasource/*.sql
