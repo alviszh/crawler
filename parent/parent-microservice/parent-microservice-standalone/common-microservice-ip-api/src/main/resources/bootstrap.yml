@@ -12,7 +12,3 @@ spring:
   sleuth: 
     sampler: 
       probability: 1
-  cache:
-    cache-names: mycache
-    caffeine:
-      spec: expireAfterWrite=180s
