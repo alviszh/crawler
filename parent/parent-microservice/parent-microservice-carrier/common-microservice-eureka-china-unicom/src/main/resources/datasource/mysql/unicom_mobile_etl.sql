@@ -1,6 +1,6 @@
 ﻿DROP FUNCTION IF EXISTS unicom_mobile_etl;
 
-CREATE FUNCTION unicom_mobile_etl(mission_id varchar(50)) RETURNS text CHARSET utf8
+CREATE FUNCTION unicom_mobile_etl(taskid varchar(50)) RETURNS text CHARSET utf8
 BEGIN
 	#Routine body goes here...
 	DECLARE	this_id text;
