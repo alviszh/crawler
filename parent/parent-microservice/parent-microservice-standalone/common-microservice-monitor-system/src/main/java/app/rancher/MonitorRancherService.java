@@ -37,22 +37,12 @@ public class MonitorRancherService {
 	private TracerLog tracer;
 	@Autowired
 	private MonitorRancherNodeMailService rancherNodeMailService;
-	/*@Value("${rancherhost}") 
-	public String rancherhost;
-	//rancher硬盘占用阈值
-	@Value("${rancherdisk}") 
-	public double rancherdisk;
-	//rancher的swap剩余阈值
-	@Value("${rancherswap}") 
-	public double rancherswap;
-	//rancher的cpu阈值
-	@Value("${ranchercpu}") 
-	public double ranchercpu;*/
-	
-	@Value("${RANCHERSERVER_HOST}") 
-	public String rancherhost;
-	@Value("${RANCHERSERVER_APIKEY}") 
-	public String rancherapi;
+	@Value("${RANCHER_API_HOST}") 
+	public String rancher_api_host;
+	@Value("${RANCHER_API_ACCESS_KEY}") 
+	public String rancher_api_access_key;
+	@Value("${RANCHER_API_SECRET_KEY}") 
+	public String rancher_api_secret_key;
 	//rancher硬盘占用阈值
 	@Value("${DISK_USED_PROP}") 
 	public double rancherdisk;
@@ -60,7 +50,7 @@ public class MonitorRancherService {
 	@Value("${SWAPFREE_PROP}") 
 	public double rancherswap;
 	//rancher的cpu阈值
-	@Value("${CPU_USE_PROP}") 
+	@Value("${CPU_USED_PROP}") 
 	public double ranchercpu;
 	
 	public void rancherTasker(){
@@ -68,7 +58,7 @@ public class MonitorRancherService {
 		List<MonitorRancherChange> warnList=new ArrayList<MonitorRancherChange>();
 		try {
 			//所有需要监控的环境通过基本的url获取到
-			String baseUrl="http://"+rancherapi+"@"+rancherhost+"/v2-beta/projects";
+			String baseUrl="http://"+rancher_api_access_key+":"+rancher_api_secret_key+"@"+rancher_api_host+"/v2-beta/projects";
 			WebRequest webRequest = new WebRequest(new URL(baseUrl), HttpMethod.GET);
 			WebClient webClient = WebCrawler.getInstance().getWebClient(); 
 //			webClient.getOptions().setJavaScriptEnabled(false);
@@ -106,7 +96,7 @@ public class MonitorRancherService {
 					//=========================================
 					//获取该环境id下的所有主机信息
 					try {
-						nodeUrl="http://"+rancherapi+"@"+rancherhost+"/v2-beta/projects/"+baseaddr+"/hosts";
+						nodeUrl="http://"+rancher_api_access_key+":"+rancher_api_secret_key+"@"+rancher_api_host+"/v2-beta/projects/"+baseaddr+"/hosts";
 						rancherChange = new MonitorRancherChange();
 						webRequest = new WebRequest(new URL(nodeUrl), HttpMethod.GET);
 						page = webClient.getPage(webRequest); 
