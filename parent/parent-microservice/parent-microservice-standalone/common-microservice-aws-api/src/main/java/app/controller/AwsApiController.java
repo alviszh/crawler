@@ -6,6 +6,7 @@ import app.service.SanWangEsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,8 @@ import java.util.Set;
 
 
 @RestController
-@RequestMapping("/aws/api") 
+@RequestMapping("/api-service/proxy/aws")
+@EnableScheduling
 public class AwsApiController {
 
 
@@ -40,7 +42,7 @@ public class AwsApiController {
 	 * */
 
 	
-	@GetMapping(value="/proxy/get")
+	@GetMapping(value="/get")
 	public HttpProxyRes getProxy(){
 		System.out.println("-----request getProxy()-----");
 		HttpProxyRes httpProxyRes = awsApiService.getProxyIps();
@@ -71,6 +73,7 @@ public class AwsApiController {
 	}
 
 	@Scheduled(cron = "0 00 18 ? * ?")
+//	@Scheduled(cron = "0 11 15 ? * ?")
 	public void changeIP(){
 		System.out.println("开始切换ip");
 		tracer.addTag("changeip", "开始切换ip");

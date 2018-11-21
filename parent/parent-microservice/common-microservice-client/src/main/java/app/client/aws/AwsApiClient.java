@@ -17,6 +17,11 @@ public interface AwsApiClient {
 	@RequestMapping(value = "/api-service/proxy/get",method = RequestMethod.GET)
 	public HttpProxyBean getProxy() ;
 
+
+	//获取AWS的代理
+	@RequestMapping(value = "/api-service/proxy/aws/get",method = RequestMethod.GET)
+	public HttpProxyRes getApiProxy();
+
 	/**   
 	 * @Title: getResProxy   
 	 * @Description:  获取代理ip ，不穿参数默认为1
