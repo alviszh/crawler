@@ -1,6 +1,6 @@
 ﻿DROP FUNCTION IF EXISTS telecom_tianjin_etl;
 
-CREATE FUNCTION telecom_tianjin_etl(mission_id varchar(50)) RETURNS text CHARSET utf8
+CREATE FUNCTION telecom_tianjin_etl(taskid varchar(50)) RETURNS text CHARSET utf8
 BEGIN
 	#Routine body goes here...
 	DECLARE	this_id text;
