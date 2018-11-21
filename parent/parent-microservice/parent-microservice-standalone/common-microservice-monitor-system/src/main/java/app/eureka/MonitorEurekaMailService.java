@@ -28,13 +28,9 @@ public class MonitorEurekaMailService {
 	private MailContentBuilder mailContentBuilder;
 	@Autowired
 	private MailClient mailClient;
-/*	@Value("${eurekareceivers}") 
-	public String receivers;
-	@Value("${mailsender}") 
-	public String mailsender;*/
 	@Value("${MAIL_RECEIVERS}") 
 	public String receivers;
-	@Value("${MAIL_SENDER}") 
+	@Value("${mailsender}") 
 	public String mailsender;
 	@Value("${envirtype}")     //根据环境类型改变邮件展示时候的标题说明
 	public String envirtype;
