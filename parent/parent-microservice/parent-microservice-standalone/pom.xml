@@ -194,6 +194,8 @@
 				<app.monitor.system.name>monitor-system</app.monitor.system.name>
 				<!-- 推送服务 -->
 				<app.pushserver.name>pushserver</app.pushserver.name>
+				<!-- 邮件服务  -->
+				<app.mail.name>mail</app.mail.name>
 			</properties>
 		</profile>
 	</profiles>
