@@ -31,7 +31,6 @@ public class AwsApiController {
 	private TracerLog tracer;
 	@Autowired
 	private AwsApiService awsApiService;
-
 	@Autowired
 	private SanWangEsService sanWangEsService;
 	
