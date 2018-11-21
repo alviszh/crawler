@@ -78,8 +78,7 @@ public class CrawlerLoginImpl implements ICrawlerLogin {
     String isHttpProxy; //1使用代理ip
 
     private WebDriver driver = null;
-
-    private HttpProxyRes httpProxyRes = null;
+    private HttpProxyRes httpProxyRes = null; //代理IP、端口
 
     /**
      *
