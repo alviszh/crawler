@@ -44,6 +44,7 @@ public class IpApiController {
 			
 		httpProxyRes =ipApiService.getAwsIp(num);
 
+		
 		if(httpProxyRes == null){
 			System.out.println("获取aws代理IP、端口出错。");
 	        httpProxyRes=ipApiService.getIP(num,pro,useCache);
