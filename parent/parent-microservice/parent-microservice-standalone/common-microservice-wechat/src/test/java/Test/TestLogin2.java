@@ -57,7 +57,7 @@ public class TestLogin2 {
 		
 		URL url = new URL(a1);       
 		String string = encodeImageToBase64(url);
-		System.out.println(string);
+		System.out.println("codecode"+string);
 
 		
 		String a2 ="https://login.wx.qq.com/cgi-bin/mmwebwx-bin/login?loginicon=true&uuid="+substring+"&tip=1&r=1539670736426&=1539670736424";
@@ -71,16 +71,14 @@ public class TestLogin2 {
 		}
 		
 		
-		// String substring2 =
-		// page2.getWebResponse().getContentAsString().substring(38,
-		// page2.getWebResponse().getContentAsString().length()-2);
-		//
-		// substring2+="&fun=new&version=v2";
-		// System.out.println("substring2"+substring2);
-		// webRequest = new WebRequest(new URL(substring2), HttpMethod.POST);
-		// Page page3 = webClient.getPage(webRequest);
-		// System.out.println("wechat1234"+page3.getWebResponse().getContentAsString());
-		//
+		 String substring2 = page2.getWebResponse().getContentAsString().substring(38,page2.getWebResponse().getContentAsString().length()-2);
+		 substring2+="&fun=new&version=v2";
+		 System.out.println("substring2"+substring2);
+		 webRequest = new WebRequest(new URL(substring2), HttpMethod.POST);
+		 Page page3 = webClient.getPage(webRequest);
+		 System.out.println("wechat1234"+page3.getWebResponse().getContentAsString());
+		 
+		 
 		// int indexOf =
 		// page3.getWebResponse().getContentAsString().indexOf("<skey>");
 		// int indexOf2 =

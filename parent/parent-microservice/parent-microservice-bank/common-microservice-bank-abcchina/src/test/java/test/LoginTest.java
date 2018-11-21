@@ -14,7 +14,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.module.ddxoft.VK;
 
-
 /**
  * @author sln
  * @date 2018年8月14日上午11:36:24

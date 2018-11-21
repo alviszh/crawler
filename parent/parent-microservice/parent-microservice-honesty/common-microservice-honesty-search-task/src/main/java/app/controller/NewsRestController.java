@@ -1,20 +1,11 @@
 package app.controller;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -65,11 +56,6 @@ public class NewsRestController {
 	private SysLog sysLog;
 	
 	
-	@Value("${jobs.istrueip}")
-	boolean istrueip;
-	
-	@Value("${jobs.num}")
-	int num;
 	
 	private Gson gs = new Gson();
 
@@ -92,34 +78,11 @@ public class NewsRestController {
 		return searchCrawlerService.createTaskList(sanWangJsonBean);
 	}
 
-	private static Queue<SearchTask> queue = new ConcurrentLinkedQueue<SearchTask>();
 
 	@RequestMapping(value = "/gettask", method = RequestMethod.POST)
-	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.SERIALIZABLE)
 	public List<SearchTask> getTask() {
-		System.out.println("======进入serchtask 查询====");
 		
-		if (queue.size() <= 0) {
-			return new ArrayList<>();
-		}
-		
-		if(num<=0){
-			return new ArrayList<>();
-		}
-		sysLog.output("queue", queue.size()+"");
-		List<SearchTask> listreturn = new ArrayList<>();
-		for(int i=0;i<num;i++){
-			SearchTask searchTask = queue.poll();
-			try{
-				sysLog.output("queue 分发出的数据数据",searchTask.toString());
-				
-				listreturn.add(searchTask);
-			}catch(Exception e){
-				sysLog.output("queue 分发出的数据数据","null");
-			}
-			
-		}		
-		return listreturn;
+		return searchCrawlerService.getTask();
 	}
 
 	@GetMapping(path = "/statue/taskid")
@@ -161,22 +124,7 @@ public class NewsRestController {
 
 	@Scheduled(cron = "0/2 * * * * ?")
 	public void geterror() {
-		System.out.println("queue===" +queue.size());
-		if (queue.size() < 20) {
-			queue = searchCrawlerService.getSearchTask(queue);
-		}
-		Timestamp time = Timestamp.valueOf(LocalDateTime.now().plusMinutes(-1));
-
-		List<SearchTask> list = searchTaskRepository.findByPhaseAndUpdateTimeOrderByIdDescPrioritynumDesc("1", time);
-		List<SearchTask> list2 = new ArrayList<>();
-		for (SearchTask searchTask : list) {
-			searchTask.setPhase("404");
-			System.out.println(searchTask.toString());
-
-			list2.add(searchTask);
-		}
-
-		searchTaskRepository.saveAll(list2);
+		searchCrawlerService.geterror();
 	}
 
 }

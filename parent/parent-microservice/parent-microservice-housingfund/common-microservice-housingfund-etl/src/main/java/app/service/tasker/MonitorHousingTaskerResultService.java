@@ -1,6 +1,8 @@
 package app.service.tasker;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,16 +27,15 @@ public class MonitorHousingTaskerResultService {
 	//获取近24小时所有执行过的任务
 	public List<MonitorHousingTaskerBean> housingEtlResultForOneDay() {
 		List<MonitorHousingTaskerBean> todayList=new ArrayList<MonitorHousingTaskerBean>();
-		/*Date date=new Date();  
+		Date date=new Date();  
         Calendar calendar = Calendar.getInstance();  
         calendar.setTime(date);  
         calendar.add(Calendar.DAY_OF_MONTH, -1);  //获取24小时之前
-        date = calendar.getTime();*/  
+        date = calendar.getTime();  
         //=============================================
         MonitorHousingTaskerBean monitorHousingTaskerBean=null;
         int etlTreatCount = 0;   //etl处理的通话记录总数
-//		List<TaskHousing> taskResultList = taskHousingRepository.findTaskResultForEtlByData(date);
-		List<TaskHousing> taskResultList = taskHousingRepository.findTaskResultForEtlByData();
+		List<TaskHousing> taskResultList = taskHousingRepository.findTaskResultForEtlByData(date);
 		for (TaskHousing taskHousing : taskResultList) {
 			String taskid = taskHousing.getTaskid().trim();
 			try {
