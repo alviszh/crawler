@@ -649,6 +649,12 @@
 			<id>preview1.1.2</id>
 			<properties>
 				<app.mobilecrawlertask.active>preview1.1.2</app.mobilecrawlertask.active>
+				<!--hyx -->
+				<app.suqian.name>insurance-suqian</app.suqian.name>
+				<app.changzhou.name>insurance-changzhou</app.changzhou.name>
+				<app.lianyungang.name>insurance-lianyungang</app.lianyungang.name>
+
+				<!--hyx -->
 				<app.insuranceTask.name>Insurance-Task</app.insuranceTask.name>
 				<app.etl.name>Insurance-ETL</app.etl.name>
 				<app.bengbu.name>Insurance-BengBu</app.bengbu.name>
