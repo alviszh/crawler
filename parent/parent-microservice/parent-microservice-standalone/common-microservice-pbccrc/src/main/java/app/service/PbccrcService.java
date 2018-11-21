@@ -57,7 +57,7 @@ public class PbccrcService{
 
         //准备登陆
         try{
-            pbccrcJsonBean.setIsFirst(true);
+//            pbccrcJsonBean.setIsFirst(true);
 
             tracerLog.addTag("PbccrcService.getCreditAsync.login.start","开始登录");
             reportResultStr = iCrawlerLogin.login(pbccrcJsonBean);
@@ -123,7 +123,7 @@ public class PbccrcService{
 
         //准备登陆
         try{
-            pbccrcJsonBean.setIsFirst(true);
+//            pbccrcJsonBean.setIsFirst(true);
 
             tracerLog.addTag("PbccrcService.getCredit.login.start","开始登录");
             reportResultStr = iCrawlerLogin.login(pbccrcJsonBean);

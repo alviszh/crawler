@@ -1144,7 +1144,7 @@ public class PbccrcV2Parser extends AbstractParser{
                 }
             }
 
-            if ("252421".equals(val)) {
+            if (!val.equals("") && "252421".equals(val)) {
                 return true;
             }
         }
