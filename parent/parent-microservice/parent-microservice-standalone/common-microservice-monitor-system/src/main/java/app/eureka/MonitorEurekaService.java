@@ -116,7 +116,7 @@ public class MonitorEurekaService {
 									log.info(appName + "  在Eureka上未找到相关实例,请检查该微服务启动情况");
 									monitorEurekaChange.setServicegroup(eachGroup);
 									monitorEurekaChange.setAppname(appName);
-									monitorEurekaChange.setChangedetail("微服务被外星人偷走了！！！");
+									monitorEurekaChange.setChangedetail("微服务节点消失,请尽快处理~");
 									changeList.add(monitorEurekaChange);
 								}
 							}
