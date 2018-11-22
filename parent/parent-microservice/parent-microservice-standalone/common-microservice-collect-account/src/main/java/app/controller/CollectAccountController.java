@@ -1,12 +1,13 @@
 package app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.microservice.dao.entity.crawler.collect.account.InsuranceHousingCollectAccount;
+
+import app.commontracerlog.TracerLog;
 import app.service.CollectAccountService;
 
 @RestController
@@ -14,7 +15,7 @@ import app.service.CollectAccountService;
 public class CollectAccountController {
 	
 	@Autowired
-	private Tracer tracer;
+	private TracerLog tracer;
 	@Autowired
 	private CollectAccountService collectAccountService;
 

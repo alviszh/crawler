@@ -46,7 +46,8 @@
     	<module>common-microservice-ip-api</module>
     	<module>common-microservice-wechat</module>
     	<module>common-microservice-phone</module>
-  </modules>
+    	<module>common-microservice-appium</module>
+	</modules>
 
 	<profiles>
 		<profile> 			<!-- 本机开发环境 -->
