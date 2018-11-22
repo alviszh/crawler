@@ -23,7 +23,8 @@ public interface TaskStandaloneRepository extends JpaRepository<TaskStandalone, 
     @Transactional
 	@Modifying	
 	//因为人行征信有了V2版本，所以，要用如下方式查询
-    @Query(value="select t from TaskStandalone t where t.createtime > ?1 and t.serviceName like '%pbccrc%' order by t.createtime desc",nativeQuery=true)
+    //@Query(value="select * from task_standalone t where t.createtime > ?1 and t.service_name like '%pbccrc%' order by t.createtime desc",nativeQuery=true)
+    @Query(value="select t from TaskStandalone t where t.createtime > ?1 and t.serviceName like '%pbccrc%' order by t.createtime desc")
 	List<TaskStandalone> findAllPbccrcTaskForOneDay(Date date);
 
 	//获取最新执行成功的人行征信的json串

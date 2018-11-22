@@ -90,6 +90,6 @@ public interface TaskInsuranceRepository extends JpaRepository<TaskInsurance, Lo
 	 */
 	@Transactional
 	@Modifying	
-	@Query(value="select t from TaskInsurance t where t.createtime > ?1 order by t.createtime desc", nativeQuery = true)
+	@Query(value="select t from TaskInsurance t where t.createtime > ?1 order by t.createtime desc")
 	List<TaskInsurance> findTaskResultForEtlByData(Date date);
 }
