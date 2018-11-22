@@ -93,10 +93,11 @@ public class AwsApiService {
                         System.out.println("name:"+name);
                         String instanceId = instance.getInstanceId();
                         System.out.println("instanceId:"+instanceId);
-                        
-                       
+
+                        String publicDnsName = instance.getPublicDnsName();//共有DNS
+
                         hpb.setIp(publicIpAddress); 
-                        hpb.setName(name); 
+                        hpb.setName(publicDnsName);
                         hpb.setPort(proxy_port); 
                         
                        
