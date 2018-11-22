@@ -26,6 +26,7 @@ import app.bean.IsDoneBean;
 import app.bean.SanWangJsonBean;
 import app.client.aws.AwsApiClient;
 import app.service.log.SysLog;
+import app.unit.SanWangUnit;
 
 /**
  * 
@@ -124,12 +125,6 @@ public class SearchCrawlerService {
 			httpProxyRes = awsApiClient.getProxy(4);
 			sysLog.output("httpProxyBean", httpProxyRes.toString());
 
-			// System.out.println(httpProxyBean.getIp()+"=========="+httpProxyBean.getPort());
-			// searchTask.setIpaddress(httpProxyBean.getIp());
-			// searchTask.setIpport(httpProxyBean.getPort());
-
-			// searchTask = searchTaskRepository.save(searchTask);
-			// sysLog.output("istrueip searchTask", searchTask.toString());
 		}
 		if (httpProxyRes != null) {
 			httpProxyBeanSet = httpProxyRes.getHttpProxyBeanSet();
@@ -141,8 +136,17 @@ public class SearchCrawlerService {
 
 			if (istrueip) {
 				if (httpProxyBeanSet != null && httpProxyBeanSet.size() > 0) {
-					searchTask.setIpaddress(httpProxyBeanSet.get(i/10).getIp());
-					searchTask.setIpport(httpProxyBeanSet.get(i/10).getPort());
+					
+					try{
+						String ip = SanWangUnit.getIpByDNS(httpProxyBeanSet.get(i/10).getName());
+						searchTask.setIpaddress(ip);
+						searchTask.setIpport(httpProxyBeanSet.get(i/10).getPort());
+
+					}catch(Exception e){
+						e.printStackTrace();
+						sysLog.output("解析dns错误", httpProxyBeanSet.get(i/10).toString());
+						
+					}
 				}
 			}
 

@@ -2,8 +2,10 @@ package app.service.unit;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
+import java.net.UnknownHostException;
 import java.util.concurrent.Future;
 
 import org.jsoup.Jsoup;
@@ -181,17 +183,27 @@ public class SanWangUnitService {
 	}
 
 	public static void main(String[] args) {
-		String url = "https://www.baidu.com/s?wd=13915565806&pn=0";
-		SanWangUnitService sanWangUnitService = new SanWangUnitService();
-		SearchTask searchTask = new SearchTask();
-		searchTask.setLinkurl(url);
+//		String url = "https://www.baidu.com/s?wd=13915565806&pn=0";
+//		SanWangUnitService sanWangUnitService = new SanWangUnitService();
+//		SearchTask searchTask = new SearchTask();
+//		searchTask.setLinkurl(url);
+//		try {
+//			Document page = sanWangUnitService.getDoc(url, searchTask);
+//
+//			System.out.println(page);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		InetAddress addresses;
 		try {
-			Document page = sanWangUnitService.getDoc(url, searchTask);
+			addresses = InetAddress.getByName("ec2-52-80-90-143.cn-north-1.compute.amazonaws.com.cn");
+		    System.out.println(addresses.getHostAddress());
 
-			System.out.println(page);
-		} catch (Exception e) {
+		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} // ip or DNS name
 	}
 }
