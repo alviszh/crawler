@@ -1,6 +1,8 @@
 package app.service.tasker;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -134,7 +136,14 @@ public class MonitorCarrierTaskerResultService {
 	//获取近24小时所有执行过的运营商任务
 	public List<MonitorCarrierTempBean> carrierEtlResultForOneDay(){
 		List<MonitorCarrierTempBean> todayList=new ArrayList<MonitorCarrierTempBean>();
-		List<TaskMobile> carrierTaskResultList = taskMobileRepository.findTaskResultForEtl();
+//		List<TaskMobile> carrierTaskResultList = taskMobileRepository.findTaskResultForEtl();
+		//考虑到数据库兼容性问题，所以查询指定时间记录的时候需要用参数方式
+		Date date=new Date();  
+        Calendar calendar = Calendar.getInstance();  
+        calendar.setTime(date);  
+        calendar.add(Calendar.DAY_OF_MONTH, -1);  //获取24小时之前
+        date = calendar.getTime();  
+		List<TaskMobile> carrierTaskResultList = taskMobileRepository.findTaskResultForEtlByTimeInterval(date);
 		for (TaskMobile taskMobile : carrierTaskResultList) {
 			String carrier = taskMobile.getCarrier().trim();  //获取运营商
 			String taskid = taskMobile.getTaskid().trim();
@@ -154,7 +163,14 @@ public class MonitorCarrierTaskerResultService {
 	//获取近10天tasker的执行结果
 	public List<MonitorCarrierTempBean> carrierEtlResultForMoreDay() {
 		List<MonitorCarrierTempBean> taskerList=new ArrayList<MonitorCarrierTempBean>();
-		List<TaskMobile> taskerTenDaysResultList = taskMobileRepository.findTenDaysTaskResultOwnerIsTasker();
+//		List<TaskMobile> taskerTenDaysResultList = taskMobileRepository.findTenDaysTaskResultOwnerIsTasker();
+		//考虑到数据库兼容性问题，所以查询指定时间记录的时候需要用参数方式
+		Date date=new Date();  
+        Calendar calendar = Calendar.getInstance();  
+        calendar.setTime(date);  
+        calendar.add(Calendar.DAY_OF_MONTH, -10);  //获取近10天所有tasker任务
+        date = calendar.getTime();  
+		List<TaskMobile> taskerTenDaysResultList = taskMobileRepository.findTenDaysTaskResultOwnerIsTasker(date);
 		for (TaskMobile taskMobile : taskerTenDaysResultList) {
 			String carrier = taskMobile.getCarrier().trim();  //获取运营商
 			String taskid = taskMobile.getTaskid().trim();
@@ -182,7 +198,7 @@ public class MonitorCarrierTaskerResultService {
 			MonitorCarrierTempBean monitorCarrierTempBean=null;
 			if(carrier.equals("CMCC")){  //移动
 				isNeedSms = "是2";
-				developer="张振";
+				developer="赵辉";
 				taskCallCount=cmccUserCallResultRepository.countByTaskId(taskid);
 			}else if(carrier.equals("UNICOM")){  //联通
 				isNeedSms = "是2";
@@ -227,7 +243,7 @@ public class MonitorCarrierTaskerResultService {
 		        	developer="韩译兴";
 		        	taskCallCount=telecomYunNanCallThremResultRepository.countByTaskid(taskid);
 		        } else if (province.equals("上海")) {
-		        	developer="张振";
+		        	developer="赵辉";
 		        	taskCallCount=telecomShanghaiCallRecRepository.countByTaskid(taskid);
 		        } else if (province.equals("广西")) {
 		        	isNeedSms = "是2";
@@ -253,10 +269,10 @@ public class MonitorCarrierTaskerResultService {
 		        	developer="杨磊";
 		        	taskCallCount = telecomAnhuiRepositoryCall.countByTaskid(taskid);
 		        } else if (province.equals("浙江")) {
-		        	developer="张振";
+		        	developer="赵辉";
 		        	taskCallCount=telecomZhejiangCallRecRepository.countByTaskid(taskid);
 		        } else if (province.equals("河北")) {
-		        	developer="张振";
+		        	developer="赵辉";
 		        	taskCallCount=telecomHebeiCallRecRepository.countByTaskid(taskid);
 		        } else if(province.equals("天津")){
 		        	isNeedSms = "否";

@@ -5,14 +5,20 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Component;
 import com.crawler.aws.json.HttpProxyBean;
 import com.crawler.aws.json.HttpProxyRes;
 import com.gargoylesoftware.htmlunit.HttpMethod;
+import com.gargoylesoftware.htmlunit.ProxyConfig;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebRequest;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
@@ -20,9 +26,12 @@ import com.google.gson.Gson;
 import com.microservice.dao.entity.crawler.mobile.IpCityCode;
 import com.microservice.dao.repository.crawler.mobile.IpCityCodeRepository;
 import com.module.htmlunit.WebCrawler;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 import app.bean.IPbean;
 import app.bean.IpResponseBean;
+import app.client.aws.AwsApiClient;
+import app.client.proxy.HttpProxyClient;
 import app.commontracerlog.TracerLog;
 
 @Component
@@ -30,18 +39,129 @@ import app.commontracerlog.TracerLog;
 @EnableJpaRepositories(
 		basePackages="com.microservice.dao.repository.crawler.mobile")
 public class IpApiService {
-	
 	@Autowired
 	private TracerLog tracer;
 	@Autowired
 	private IpCityCodeRepository ipCityCodeRepository;
-	
+	@Autowired
+    private AwsApiClient awsApiClient;
+	private HttpProxyRes httpProxyRes1 = null;
+//	@Autowired
+//    private HttpProxyClient httpProxyClient;
+//	private HttpProxyRes httpProxyRes = null;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	String jgCity = "";
-
-	public HttpProxyRes getIP(String num, String pro) {
-		tracer.addTag("获取极光IP开始", "数量："+num+" ;省份："+pro);
+	@Value("${url}")
+    String urlPath;
+//	//获取代理IP、端口
+//    public HttpProxyRes getProxyClient(String num, String pro,String useCache){
+//    	httpProxyRes = httpProxyClient.getProxy(num,pro,useCache);
+//        return httpProxyRes;
+//    }
+	
+	//获取代理IP、端口
+	public HttpProxyRes getProxy(){
+		  httpProxyRes1 = awsApiClient.getApiProxy();
+	      return httpProxyRes1;
+	} 
+	public HttpProxyRes reliableShowji(String num) {
+		tracer.addTag("ShowjiResult", "reliableShowji");
+		return null;
+	}
+	
+	//调用aws代理ip
+	@HystrixCommand(fallbackMethod = "reliableShowji")
+	public HttpProxyRes getAwsIp(String num){
+		httpProxyRes1 = getProxy();
+		int n = Integer.parseInt(num);
+		List<HttpProxyBean> proxyBeans = new ArrayList<HttpProxyBean>();
+		for(int i = 0; i<n ;i++){
+			HttpProxyBean proxyBean = new HttpProxyBean();
+			if(i==0){
+				proxyBean.setIp(httpProxyRes1.getIp());
+				proxyBean.setPort(httpProxyRes1.getPort());
+			}else{
+				proxyBean.setIp(httpProxyRes1.getHttpProxyBeanSet().get(i).getIp());
+				proxyBean.setPort(httpProxyRes1.getHttpProxyBeanSet().get(i).getPort());	
+			}
+			
+			proxyBean.setName("");
+			proxyBean.setInstanceId("");
+			proxyBeans.add(proxyBean);
+		}
 		
+		HttpProxyRes httpProxyRes = new HttpProxyRes();
+		httpProxyRes.setCity(jgCity);
+		httpProxyRes.setHttpProxyBeanSet(proxyBeans);
+		httpProxyRes.setIp(httpProxyRes1.getIp());
+		httpProxyRes.setPort(httpProxyRes1.getPort());
+		httpProxyRes.setTotalnum(Integer.parseInt(num));
+		httpProxyRes.setErrornum(0);
+		httpProxyRes.setInstanceId("");
+		httpProxyRes.setName("");
+		httpProxyRes.setUpdateTime(sdf.format(new Date()));
+		httpProxyRes.setResult(true);
+		httpProxyRes.setMessage("SUCCESS");
+		return httpProxyRes;
+		
+	}
+	
+	public HttpProxyRes getIpExamination(HttpProxyRes httpProxyRes,String num, String pro,String useCache){
+//		try {
+//			httpProxyRes = getProxyClient("2","","");
+//			
+//        } catch (Exception ex) {
+//            System.out.println("获取代理IP、端口出错。");
+//        }
+		String url = urlPath;
+		WebClient webClient = WebCrawler.getInstance().getNewWebClient();
+		webClient.getOptions().setJavaScriptEnabled(false);
+//		if (httpProxyRes != null) {
+		for(int i = 0;i < httpProxyRes.getHttpProxyBeanSet().size();i++){
+			ProxyConfig proxyConfig = webClient.getOptions().getProxyConfig();
+			System.err.println("代理："+httpProxyRes.getHttpProxyBeanSet().get(i).getIp()+":"+Integer.parseInt(httpProxyRes.getHttpProxyBeanSet().get(i).getPort()));
+			proxyConfig.setProxyHost(httpProxyRes.getHttpProxyBeanSet().get(i).getIp()); 
+			proxyConfig.setProxyPort(Integer.parseInt(httpProxyRes.getHttpProxyBeanSet().get(i).getPort()));
+			try {
+				//
+				//        }
+				WebRequest webRequest = new WebRequest(new URL(url), HttpMethod.GET);
+				HtmlPage searchPage1 = webClient.getPage(webRequest);
+				String html = searchPage1.getWebResponse().getContentAsString();
+//				System.err.println(html);
+//				if (html.contains("请输入登录密码")) {
+//					System.err.println("代理ip可用");
+//				} 
+				System.err.println("代理ip可用");
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.err.println("代理ip不可用");
+				delete(num,pro);
+				httpProxyRes = getIP(num,pro,useCache);
+//				if(httpProxyRes.getHttpProxyBeanSet().size()==1){
+//					delete(num,pro);
+//					getIP(num,pro,useCache);
+//				}else{
+//					httpProxyRes.getHttpProxyBeanSet().remove(i);
+//				}
+			}
+		}
+		
+		return httpProxyRes;
+		
+	}
+	
+	@CacheEvict(value="mycache",key = "#num+#pro")
+	public String delete(String num,String pro) {
+		System.out.println("删除成功");
+		return "删除成功";
+	}
+	
+	//调用极光代理ip
+	@Cacheable(value ="mycache", key = "#num+#pro",unless="#useCache eq 'false'",condition="#httpProxyRes==null")
+	public HttpProxyRes getIP(String num, String pro,String useCache) {
+		tracer.addTag("获取极光IP开始", "数量："+num+" ;省份："+pro);
+		System.out.println("aaa");
 		//参数错误，num为空的情况
 		if(StringUtils.isBlank(num)){			
 			HttpProxyRes httpProxyRes = getHttpProxyRes(num,false,"参数有误，num不能为0！",null);
@@ -57,8 +177,9 @@ public class IpApiService {
 			HttpProxyRes httpProxyRes = getIpByNumAndPro(num,pro);
 			return httpProxyRes;
 		}
-		
+
 		HttpProxyRes httpProxyRes = getHttpProxyRes(num,false,"未知错误，未能返回IP！",null);
+		
 		return  httpProxyRes;
 	}
 
@@ -78,7 +199,7 @@ public class IpApiService {
 			httpProxyRes.setUpdateTime(sdf.format(new Date()));
 			httpProxyRes.setResult(false);
 			httpProxyRes.setMessage(message);
-			return  httpProxyRes;
+			return  null;
 		}else{
 			int random = (int) ( Math.random () * proxyBeans.size() ); 
 			HttpProxyBean hpb = proxyBeans.get(random); 

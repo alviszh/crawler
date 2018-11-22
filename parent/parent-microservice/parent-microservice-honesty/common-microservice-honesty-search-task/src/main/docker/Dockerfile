@@ -11,4 +11,4 @@ ADD entry_point.sh /run.sh
 RUN chmod a+x /run.sh
 RUN sh -c ' touch /app.jar'
 ENV JAVA_OPTS=""
-ENTRYPOINT ["sh","-c","/run.sh $SPRING_PROFILES_ACTIVE $SPRING_SQL_NAME $SPRING_ES_INDEX $SPRING_ES_TYPE"]
+ENTRYPOINT ["sh","-c","/run.sh $SPRING_PROFILES_ACTIVE $SPRING_SQL_NAME $SPRING_ES_INDEX  $SPRING_ES_IP"]

@@ -16,16 +16,16 @@ import app.service.aop.ICrawlerLogin;
 import app.service.aop.ISms;
     
 @RestController     
-@RequestMapping("/carrier")
+@RequestMapping("/carrier")            
 public class TelecomAnhuiController {    
-	@Autowired  
+	@Autowired    
 	private TelecomCommonAnhuiService telecomCommonAnhuiService;
 	@Autowired
 	private TracerLog tracer;
-	@Autowired 
-	private ICrawlerLogin iCrawlerLogin;
-	@Autowired 
-	private ISms iSms;
+//	@Autowired 
+//	private ICrawlerLogin iCrawlerLogin;
+//	@Autowired 
+//	private ISms iSms;
 		// 登陆wap
 		@RequestMapping(value = "/anhui/login", method = { RequestMethod.POST })
 		public ResultData<TaskMobile> login(@RequestBody MessageLogin messageLogin) throws Exception {
@@ -96,8 +96,8 @@ public class TelecomAnhuiController {
 			tracer.addTag("parser.crawler.taskid", taskMobile.getTaskid());
 			tracer.addTag("parser.crawler.auth", messageLogin.getName());
 			telecomCommonAnhuiService.save(taskMobile);
-//			telecomCommonAnhuiService.getAllData(messageLogin);
-			taskMobile = iCrawlerLogin.getAllData(messageLogin);
+			telecomCommonAnhuiService.getAllData(messageLogin);
+//			taskMobile = iCrawlerLogin.getAllData(messageLogin);
 			result.setData(taskMobile);
 			return result;
 	
@@ -170,8 +170,8 @@ public class TelecomAnhuiController {
 			tracer.addTag("parser.crawler.taskid 发送手机验证码",messageLogin.getTask_id());
 			tracer.addTag("parser.crawler.auth",messageLogin.getName());
 			TaskMobile taskMobile = telecomCommonAnhuiService.findtaskMobile(messageLogin.getTask_id());
-//			telecomCommonAnhuiService.sendSms(messageLogin);
-			taskMobile = iSms.sendSms(messageLogin);
+			telecomCommonAnhuiService.sendSms(messageLogin);
+//			taskMobile = iSms.sendSms(messageLogin);
 			ResultData<TaskMobile> result = new ResultData<TaskMobile>();
 			result.setData(taskMobile);
 			return result;
@@ -184,8 +184,8 @@ public class TelecomAnhuiController {
 			tracer.addTag("parser.crawler.taskid 验证验证码",messageLogin.getTask_id());
 			tracer.addTag("parser.crawler.auth",messageLogin.getName());
 			TaskMobile taskMobile = telecomCommonAnhuiService.findtaskMobile(messageLogin.getTask_id());
-//			telecomCommonAnhuiService.verifySms(messageLogin);
-			taskMobile = iSms.verifySms(messageLogin);
+			telecomCommonAnhuiService.verifySms(messageLogin);
+//			taskMobile = iSms.verifySms(messageLogin);
 			ResultData<TaskMobile> result = new ResultData<TaskMobile>();
 			result.setData(taskMobile);
 			return result;

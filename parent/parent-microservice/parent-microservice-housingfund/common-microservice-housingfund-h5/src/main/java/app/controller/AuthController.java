@@ -120,7 +120,7 @@ public class AuthController {
             return "auth_hangzhou";
         } else if (city.equals("沈阳市")) {
             return "auth_shenyang";
-        } else if (city.equals("郑州市")||city.equals("楚雄市")||city.equals("德州市")||city.equals("呼和浩特市")||city.equals("沧州市")||city.equals("西安市")||city.equals("大理市")) {
+        } else if (city.equals("郑州市")||city.equals("海口市")||city.equals("楚雄市")||city.equals("德州市")||city.equals("呼和浩特市")||city.equals("沧州市")||city.equals("西安市")||city.equals("大理市")) {
             return "auth_zhengzhou";
         } else if (city.equals("贵阳市")) {
             return "auth_guiyang";

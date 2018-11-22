@@ -229,7 +229,7 @@ public class Win32SessionManager {
 								}
 						}
 					} else {
-						System.err.println("Je ne gere pas ça !");
+						System.err.println("Je ne gere pas a !");
 						
 						return -1;
 					}

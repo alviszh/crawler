@@ -19,5 +19,5 @@ ENV JAVA_OPTS=""
 #ENTRYPOINT ["sudo apt-get -y install libjpeg62-dev"]
 RUN sudo apt-get update
 RUN sudo apt-get -y install libjpeg62-dev
-ENTRYPOINT ["/run.sh"]
+ENTRYPOINT ["sh","-c","/run.sh $SPRING_PROFILES_ACTIVE"]
 

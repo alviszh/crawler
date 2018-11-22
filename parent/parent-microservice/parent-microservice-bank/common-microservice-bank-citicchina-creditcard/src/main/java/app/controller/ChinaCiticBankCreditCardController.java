@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.crawler.bank.json.BankJsonBean;
-import com.crawler.bank.json.BankStatusCode;
 import com.google.gson.Gson;
 import com.microservice.dao.entity.crawler.bank.basic.TaskBank;
 import com.microservice.dao.repository.crawler.bank.basic.TaskBankRepository;
@@ -21,7 +20,7 @@ import app.service.TaskBankStatusService;
 @Configuration
 @RequestMapping("/bank/citicchina/creditcard")
 public class ChinaCiticBankCreditCardController {
-	@Autowired 
+	@Autowired   
 	private TracerLog tracer;
 	@Autowired    
 	private TaskBankStatusService taskBankStatusService;

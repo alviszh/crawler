@@ -57,7 +57,7 @@ spring:
     static-path-pattern: /snapshot/**
   resources:
 #    static-locations: file:G:\workspace\2018-4-2\strong-auth-crawler/snapshot,file:G:\workspace\2018-4-2\strong-auth-crawler\file
-    static-locations: file:./snapshot
+    static-locations: file:./snapshot,file:./loginerror
 feign:
   hystrix:
     enabled: false

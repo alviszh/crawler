@@ -2,6 +2,7 @@ package app.service;
 
 import app.commontracerlog.TracerLog;
 import com.crawler.aws.json.HttpProxyBean;
+import com.crawler.aws.json.HttpProxyRes;
 import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
@@ -32,13 +33,13 @@ public class WebDriverIEService {
 
     //private WebDriver driver ;
 
-    public WebDriver getNewWebDriver(HttpProxyBean httpProxyBean){
+    public WebDriver getNewWebDriver(HttpProxyRes httpProxyRes){
 
         DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
 
-        if (httpProxyBean != null) {
+        if (httpProxyRes != null && !httpProxyRes.getIp().equals("")) {
             Proxy proxy = new Proxy();
-            String PROXY = ""+httpProxyBean.getIp()+":"+httpProxyBean.getPort()+"";
+            String PROXY = ""+httpProxyRes.getIp()+":"+httpProxyRes.getPort()+"";
             proxy.setHttpProxy(PROXY);
             proxy.setFtpProxy(PROXY);
             proxy.setSslProxy(PROXY);

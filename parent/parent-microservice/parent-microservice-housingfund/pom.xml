@@ -918,18 +918,33 @@
 			<id>preview1.1.2</id>
 			<properties>
 				<app.housingcrawlertask.active>preview1.1.2</app.housingcrawlertask.active>
-				<app.housingcrawlertask.name>HousingFund-Task</app.housingcrawlertask.name>
-				<app.housing.etl.name>HousingFund-etl</app.housing.etl.name>
-				<app.housing.jinan.name>HousingFund-JiNan</app.housing.jinan.name>
-				<app.housing.bengbu.name>HousingFund-BengBu</app.housing.bengbu.name>
-				<app.housing.enshi.name>HousingFund-EnShi</app.housing.enshi.name>
-				<app.housing.wenshan.name>HousingFund-WenShan</app.housing.wenshan.name>
-				<app.housing.baoshan.name>HousingFund-BaoShan</app.housing.baoshan.name>
-				<app.housing.liaocheng.name>HousingFund-LiaoCheng</app.housing.liaocheng.name>
-				<app.housing.sz.anhui.name>HousingFund-sz-Anhui</app.housing.sz.anhui.name>
-				<app.housing.dandong.name>HousingFund-DanDong</app.housing.dandong.name>
-				<app.housing.jingzhou.name>HousingFund-JingZhou</app.housing.jingzhou.name>
-				<app.housing.nanjing.name>HousingFund-NanJing</app.housing.nanjing.name>
+				
+				<!-- hyx开发 -->
+				<app.housingcrawlertask.name>housingfund-task</app.housingcrawlertask.name>
+				<app.housing.beijing.name>housingfund-beijing</app.housing.beijing.name>
+				<app.housing.changchun.name>housingfund-changchun</app.housing.changchun.name>
+				<app.housing.daqing.name>housingfund-daqing</app.housing.daqing.name>
+				<app.housing.anqing.name>housingfund-anqing</app.housing.anqing.name>
+				<app.housing.yvlin.name>housingfund-yvlin</app.housing.yvlin.name>
+				<app.housing.changzhou.name>housingfund-changzhou</app.housing.changzhou.name>
+				<app.housing.anhui.tongyi.name>housingfund-sz-anhui-tongyi</app.housing.anhui.tongyi.name>
+
+				<app.housing.fuyang.name>housingfund-fuyang</app.housing.fuyang.name>
+				<app.housing.beijing.cent.name>housingfund-beijing-cent</app.housing.beijing.cent.name>
+				<!-- hyx开发 -->
+				<app.housing.etl.name>housingfund-etl</app.housing.etl.name>
+				<app.housing.jinan.name>housingfund-jinan</app.housing.jinan.name>
+				<app.housing.bengbu.name>housingfund-bengbu</app.housing.bengbu.name>
+				<app.housing.enshi.name>housingfund-enshi</app.housing.enshi.name>
+				<app.housing.wenshan.name>housingfund-wenshan</app.housing.wenshan.name>
+				<app.housing.baoshan.name>housingfund-baoshan</app.housing.baoshan.name>
+				<app.housing.liaocheng.name>housingfund-liaocheng</app.housing.liaocheng.name>
+				<app.housing.sz.anhui.name>housingfund-sz-anhui</app.housing.sz.anhui.name>
+				<app.housing.dandong.name>housingfund-dandong</app.housing.dandong.name>
+				<app.housing.jingzhou.name>housingfund-jingzhou</app.housing.jingzhou.name>
+				<app.housing.nanjing.name>housingfund-nanjing</app.housing.nanjing.name>
+				<app.housing.chongqing.name>housingfund-chongqing</app.housing.chongqing.name>
+				<app.housing.luoyang.name>housingfund-luoyang</app.housing.luoyang.name>
 			</properties>
 		</profile>
 	</profiles>

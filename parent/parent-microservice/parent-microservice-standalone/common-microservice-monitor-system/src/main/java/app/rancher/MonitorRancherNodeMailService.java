@@ -22,7 +22,7 @@ public class MonitorRancherNodeMailService {
 	private MailClient mailClient;
 	@Autowired
 	private MailContentBuilder mailContentBuilder;
-	@Value("${rancherreceivers}") 
+	@Value("${MAIL_RECEIVERS}") 
 	public String receivers;
 	@Value("${mailsender}") 
 	public String mailsender;

@@ -94,7 +94,7 @@ public class LoginAngGetService extends HousingBasicService{
 	  */
 	public  WebParamHousing<?> loginChrome(MessageLoginForHousing messageLoginForHousing) throws Exception {
 		WebDriver driver = intiChrome();
-		WebParamHousing<?> webParamHousing = new WebParamHousing();
+		WebParamHousing<?> webParamHousing = new WebParamHousing<>();
 		// WebDriver driver = new RemoteWebDriver(new
 		// URL("http://10.167.202.218:32768//wd/hub/"),
 		// DesiredCapabilities.chrome());
@@ -213,7 +213,7 @@ public class LoginAngGetService extends HousingBasicService{
 		con1.header("Referer", "http://www.ylzfgjj.cn/ylwsyyt/init.summer?_PROCID=70000002");
 		con1.header("X-Requested-With", "XMLHttpRequest");
 		// 设置cookie和post上面的map数据
-		Response login2 = con1.ignoreContentType(true).method(Method.POST).data(datas2).cookies(cookiesmap).execute();
+		con1.ignoreContentType(true).method(Method.POST).data(datas2).cookies(cookiesmap).execute();
 		// 打印，登陆成功后的信息
 		//System.out.println(login2.body());		
 		

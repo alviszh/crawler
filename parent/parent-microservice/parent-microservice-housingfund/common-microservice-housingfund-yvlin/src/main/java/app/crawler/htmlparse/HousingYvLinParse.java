@@ -1,6 +1,5 @@
 package app.crawler.htmlparse;
 
-import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +15,6 @@ import org.jsoup.select.Elements;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.microservice.dao.entity.crawler.e_commerce.jingdong.JDBtPrivilege;
 import com.microservice.dao.entity.crawler.housing.yvlin.HousingBasicPayResult;
 import com.microservice.dao.entity.crawler.housing.yvlin.HousingBasicUserData;
 

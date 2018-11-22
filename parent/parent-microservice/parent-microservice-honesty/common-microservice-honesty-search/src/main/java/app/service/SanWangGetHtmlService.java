@@ -32,19 +32,20 @@ public class SanWangGetHtmlService {
 	
 	@Autowired
 	private SanWangUnitService sanWangUnitService;
-	
+	private WebClient webClient = new WebClient(BrowserVersion.CHROME);
+
 	
 	public String getHtmlByUrlForGET(SearchTask searchTask) throws Exception{
-
+		webClient = new WebClient(BrowserVersion.CHROME);
 		String url = sanWangUnitService.toUtf8String(searchTask.getLinkurl());
-		WebClient webClient = new WebClient(BrowserVersion.CHROME);
+//		WebClient webClient = new WebClient(BrowserVersion.CHROME);
 		webClient.setRefreshHandler(new ThreadedRefreshHandler());
 		webClient.getOptions().setCssEnabled(false);
 		webClient.getOptions().setJavaScriptEnabled(false);
 		webClient.getOptions().setThrowExceptionOnScriptError(false);
 		webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
 		webClient.getOptions().setPrintContentOnFailingStatusCode(false);
-		webClient.getOptions().setRedirectEnabled(false);
+		webClient.getOptions().setRedirectEnabled(true);
 		webClient.getOptions().setTimeout(DEFAULT_PAGE_TIME_OUT); // 15->60
 		webClient.waitForBackgroundJavaScript(DEFAULT_JS_TIME_OUT); // 5s
 		webClient.setAjaxController(new NicelyResynchronizingAjaxController());
@@ -55,25 +56,23 @@ public class SanWangGetHtmlService {
 			webRequest.setProxyPort(Integer.parseInt(searchTask.getIpport()));
 		}
 
-//		webClient.setJavaScriptTimeout(50000);
-		webClient.getOptions().setTimeout(10000); // 15->60
+
 		Page page = webClient.getPage(webRequest);
 		webClient.close();// 关闭webclient 防止资源占用
 		return page.getWebResponse().getContentAsString();
 	}
 	
 	public  String getDocByHtmlunitFalse(SearchTask searchTask,String linkurl) throws Exception{
-		
+		webClient = new WebClient(BrowserVersion.CHROME);
 		String url = sanWangUnitService.toUtf8String(searchTask.getLinkurl());
 
-		WebClient webClient = new WebClient(BrowserVersion.CHROME);
 		webClient.setRefreshHandler(new ThreadedRefreshHandler());
 		webClient.getOptions().setCssEnabled(false);
 		webClient.getOptions().setJavaScriptEnabled(false);
 		webClient.getOptions().setThrowExceptionOnScriptError(false);
 		webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
 		webClient.getOptions().setPrintContentOnFailingStatusCode(false);
-		webClient.getOptions().setRedirectEnabled(false);
+		webClient.getOptions().setRedirectEnabled(true);
 		webClient.getOptions().setTimeout(DEFAULT_PAGE_TIME_OUT); // 15->60
 		webClient.waitForBackgroundJavaScript(DEFAULT_JS_TIME_OUT); // 5s
 		webClient.setAjaxController(new NicelyResynchronizingAjaxController());
@@ -84,11 +83,8 @@ public class SanWangGetHtmlService {
 			webRequest.setProxyPort(Integer.parseInt(searchTask.getIpport()));
 		}
 
-//		webClient.setJavaScriptTimeout(10000);
-		webClient.getOptions().setTimeout(10000); // 15->60
 		Page page = webClient.getPage(webRequest);
-		webClient.close();// 关闭webclient 防止资源占用
-
+		webClient.close();
 		return page.getWebResponse().getContentAsString();
 	}
 

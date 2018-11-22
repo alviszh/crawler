@@ -99,7 +99,9 @@ public class SearchFutureService {
 							List<NewsContent> listNewsContent = new ArrayList<>();
 							if (!(future.get() == null || future.get().getContent() == null
 									|| future.get().getContent().isEmpty())) {
-								listNewsContent.add(future.get());
+								if(future.get().getContent()!=null  ||future.get().getUrl()!=null){
+									listNewsContent.add(future.get());
+								}
 								tracerLog.System("baidu抓取url:size", listNewsContent.size() + "");
 								NewsListJson newsListJson = future.get().getNewsListJson();
 								newsListJson.setList(listNewsContent);
@@ -205,7 +207,9 @@ public class SearchFutureService {
 							List<NewsContent> listNewsContent = new ArrayList<>();
 							if (!(future.get() == null || future.get().getContent() == null
 									|| future.get().getContent().isEmpty())) {
-								listNewsContent.add(future.get());
+								if(future.get().getContent()!=null  ||future.get().getUrl()!=null){
+									listNewsContent.add(future.get());
+								}
 								tracerLog.System("haosou抓取url:size", listNewsContent.size() + "");
 								NewsListJson newsListJson = future.get().getNewsListJson();
 								newsListJson.setList(listNewsContent);
@@ -287,16 +291,7 @@ public class SearchFutureService {
 			for (NewsListJson newsListJson : list) {
 				tracerLog.System("sogou抓取url:"+System.currentTimeMillis(), newsListJson.getLinkUrl());
 
-////				String url = sanWangUnit.getSouGouurl(newsListJson.getLinkUrl(), searchTask);
-//				if (url == null) {
-//					newsListJson.setLinkUrl(newsListJson.getLinkUrl());
-//					future_content_list.add(sanWangUnit.getContent(newsListJson, searchTask));
-//
-//				} else {
-//					newsListJson.setLinkUrl(url);
 					future_content_list.add(sanWangUnitService.getContent(newsListJson, searchTask));
-//				}
-
 			}
 			boolean isdone = true;
 			tracerLog.System("sougou["+searchTask.getLinkurl()+"] 获取到了列表数量",""+future_content_list.size());
@@ -311,8 +306,10 @@ public class SearchFutureService {
 							List<NewsContent> listNewsContent = new ArrayList<>();
 							if (!(future.get() == null || future.get().getContent() == null
 									|| future.get().getContent().isEmpty())) {
-								listNewsContent.add(future.get());
-
+								
+								if(future.get().getContent()!=null  ||future.get().getUrl()!=null){
+									listNewsContent.add(future.get());
+								}
 								tracerLog.System("sogouurl:size", listNewsContent.size() + "");
 								NewsListJson newsListJson = future.get().getNewsListJson();
 								newsListJson.setList(listNewsContent);

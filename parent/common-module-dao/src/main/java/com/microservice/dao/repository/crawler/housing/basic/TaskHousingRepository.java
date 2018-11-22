@@ -37,11 +37,4 @@ public interface TaskHousingRepository extends JpaRepository<TaskHousing, Long>,
 	@Modifying	
 	@Query(value="select t from TaskHousing t where t.createtime > ?1 order by t.createtime desc")
 	List<TaskHousing> findTaskResultForEtlByData(Date date);
-	
-	//直接用自然语言查询
-	@Transactional
-	@Modifying	
-	@Query(value="select t.* from task_housing t where t.createtime >= now() - interval '24 hours' order by t.createtime desc", nativeQuery = true)
-	List<TaskHousing> findTaskResultForEtlByData();
-
 }

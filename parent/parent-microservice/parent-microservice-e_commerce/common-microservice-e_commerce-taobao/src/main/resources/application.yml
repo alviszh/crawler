@@ -30,11 +30,17 @@ spring:
             spring.cloud.stream.kafka.binder.brokers: ${kafka.brokers}
             spring.cloud.stream.kafka.binder.zk-nodes: ${kafka.zknodes}
   datasource:
+    separator: ;;
+    data: ${datasource.schema}
+    initialization-mode: ${datasource.initialization-mode} 
+    continueOnError: false
     hikari: 
       minimum-idle: ${datasource.jdbc.minIdle}
       maximum-pool-size: ${datasource.jdbc.maxPoolSize}
     driver-class-name: ${datasource.jdbc.driver}
     url: ${datasource.jdbc.url}
+    schema-username: ${datasource.jdbc.username} 
+    schema-password: ${datasource.jdbc.password}
     username: ${datasource.jdbc.username}
     password: ${datasource.jdbc.password}
     type: ${datasource.jdbc.type}
