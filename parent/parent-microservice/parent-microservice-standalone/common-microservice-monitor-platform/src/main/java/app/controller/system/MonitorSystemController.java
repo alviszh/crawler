@@ -46,7 +46,7 @@ public class MonitorSystemController {
 		paramMap.put("appname",appname);
 		paramMap.put("developer",developer);
 
-		Page<MonitorEurekaServerInfo> tasksPage = monitorSystemService.getMobileTaskByParams(paramMap, currentPage, pageSize);
+		Page<MonitorEurekaServerInfo> tasksPage = monitorSystemService.getTaskByParams(paramMap, currentPage, pageSize);
 		System.out.println("******getTaskPages:"+tasksPage);
 
 		PageInfo<MonitorEurekaServerInfo> pageInfo = new PageInfo<MonitorEurekaServerInfo>();
