@@ -16,32 +16,39 @@ $(function(){
     
     //点击添加
     $("#addItem").on("click",function(){
-    	
-    	var tr=$(this).parent().parent();
-        var dataItem = tr.children();
-        var ps = dataItem.eq(6).text();
-        var count=0;
-        for (var i = 0; i < $('div[id^="introducediv"]').length; i++) {
-        	if($('input[id^="introduce"]').eq(i).prop('checked')==true){
-        		console.log("1");
-        		count++;
-	        }
-		}
-        if(count==0){
-        	console.log("2");
-        	$("#bitian").text("*为必填项！");
-    	}
-        else if($("#name").val().trim()==""| $("#email").val().trim()==""| $("#phone").val().trim()==""){
-        	console.log("3");
-    		$("#bitian").text("*为必填项！");
-    	}
-    	else if($("#getTypeEmail").prop('checked')==false & $("#getTypeMessage").prop('checked')==false){
-    		console.log("4");
-    			$("#bitian").text("*为必填项！");
-    	}
-    	else{
-    		console.log("5");
-    		addBusinessItem();
+        /*一次短信和二次短信的关键字是选填项目，根据实际情况填写*/
+        if($("#province").val().trim()=="" | $("#developer").val().trim()==""
+        		| $("#phonenum").val().trim()=="" | $("#servicepwd").val().trim()==""
+        			| $("#name").val().trim()=="" | $("#idnum").val().trim()==""){
+    		$("#bitian").text("*为必填项！请完善相关信息录入~");
+    	} else{
+    		var mobileNum = $('#phonenum').val().trim();//手机号码
+    	    var idNum = $('#idnum').val();//身份证号码
+    	    var mobileRegExp = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(14[0-9]{1})|(17[0-9]{1})|(166))+\d{8})$/;
+    	    var idNumRegExp = /^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/;
+    	    if(!mobileRegExp.test(mobileNum)){
+    	        /*$('#phonenum').val("请输入有效的手机号码").css({color:"red"});*/
+    	    	$("#bitian").text("请输入有效的手机号码~");
+    	    	//先清空不符合格式的内容
+    	    	$("#phonenum").val("");   
+    	    	//还原默认提示信息
+    	    	$("#phonenum").attr("placeholder","*请输入有效的手机号码");
+    	    	//将边框设置为红色
+    	    	$("#phonenum").css({"border":"1px solid red"});
+    	        return;
+    	    }else{  //符合标准，恢复默认边框颜色
+    	    	$("#phonenum").css({"border":"1px solid LightGrey"});
+    	    }
+    	    if(!idNumRegExp.test(idNum)){
+    	    	$("#bitian").text("请输入有效的身份证号码~");
+    	    	$("#idnum").val("");   
+    	    	$("#idnum").attr("placeholder","*请输入有效的身份证号码");
+    	    	$("#idnum").css({"border":"1px solid red"});
+    	        return;
+    	    }else{
+    	    	$("#idnum").css({"border":"1px solid LightGrey"});
+    	    }
+    		addItem();
         	$('#addModal').modal('hide');
         	location.reload();
     	}
@@ -49,11 +56,6 @@ $(function(){
     
     //点击删除
     $("#removeItem").on("click",function(){
-    	/*var tr=$(this).parent();
-    	var h=tr.prev();
-    	var c = tr.children();
-    	var id = c.eq(1).text();
-    	alert("删除项对应的id==" + id);*/
     	var id = $("#id").val();
 	    //调用删除监控项代码的具体方法
 	    removeItem(id);  
@@ -70,12 +72,12 @@ function show_firstPage_task(){
 
     var taskPage='',taskList='';
     var totalElements = ''; //总记录
-    var appname='',developer='';
+    var province='',developer='';
 
-    appname = $("#appname_search").val();
+    province = $("#province_search").val();
     developer = $("#developer_search").val();
 
-    taskPage=searchTask(false,pageSize,currentPage,appname,developer);
+    taskPage=searchTask(false,pageSize,currentPage,province,developer);
     taskList = taskPage["content"];
     totalElements = taskPage["totalElements"];
 
@@ -91,17 +93,17 @@ function show_firstPage_task(){
 
 }
 //分页查询
-function searchTask(async,pageSize,currentPage,appname,developer){
+function searchTask(async,pageSize,currentPage,province,developer){
     var taskPage='';
     /*如下位置减去1(currentPage-1),否则查询不到第一页，不知道为啥*/
     $.ajax({
-        url: "/monitor/platform/system/getEurekaPages",
+        url: "/monitor/platform/crawler/getCarrierPages",
         type:"post",
         async:async,
         data:{
             pageSize:pageSize,
             currentPage:currentPage-1,
-            appname:appname,
+            province:province,
             developer:developer,
         },
         success:function(data){
@@ -119,26 +121,31 @@ function searchTask(async,pageSize,currentPage,appname,developer){
 }
 
 //生成任务列表
-function query_taskList(eurekaList){
+function query_taskList(taskList){
 
     var trs='',createtime='',btn1='',btn2='';
     var monitorflag;
 
-    $.each(eurekaList,function(index,eureka){
+    $.each(taskList,function(index,task){
     	/*行号,随着翻页变化*/
         lineIndex = (currentPage-1)*pageSize + index + 1;
         
         btn1="<a id='update"+(index+1)+"' style='cursor:pointer'>信息修改</a>";
         btn2="<a id='delete"+(index+1)+"' style='cursor:pointer'>信息删除</a>";
         
-        monitorflag=(eureka.isneedmonitor == 1) ? '正常监控' : '暂停监控';
+        monitorflag=(task.isneedmonitor == 1) ? '正常监控' : '暂停监控';
         
         trs +="<tr>"
-            +"<td style=\"display:none\">"+eureka.id+"</td>"
+            +"<td style=\"display:none\">"+task.id+"</td>"
             +"<td>"+lineIndex+"</td>"
-            +"<td>"+eureka.appname+"</td>"
-            +"<td>"+eureka.developer+"</td>"
-            +"<td>"+eureka.instancecount+"</td>"
+            +"<td>"+task.province+"</td>"
+            +"<td>"+task.developer+"</td>"
+            +"<td>"+task.phonenum+"</td>"
+            +"<td>"+task.servicepwd+"</td>"
+            +"<td>"+task.name+"</td>"
+            +"<td>"+task.idnum+"</td>"
+            +"<td>"+task.oncesmskey+"</td>"
+            +"<td>"+task.twicesmskey+"</td>"
             +"<td>"+monitorflag+"</td>"
             +"<td>"+btn1+"  "+btn2+"</td>"
             +"</tr>";
@@ -156,7 +163,7 @@ function query_taskList(eurekaList){
 	        
 		    $('#addModal').modal('show');
 		    
-		    document.getElementById("appname").value=dataItem.eq(1).text(); 
+		    document.getElementById("province").value=dataItem.eq(1).text(); 
 		    document.getElementById("developer").value=dataItem.eq(2).text(); 
 		    document.getElementById("instancecount").value=dataItem.eq(3).text(); 
 	　　});
@@ -176,17 +183,17 @@ function query_taskList(eurekaList){
 
 //搜索
 function task_search(){
-    var appname='',developer='';
+    var province='',developer='';
     var taskPage='',searchResult='';
     var noKeys='';
 
-    appname = $("#appname_search").val();
+    province = $("#province_search").val();
     developer = $("#developer_search").val();
 
     noKeys="<tr style='text-align: center;'><td colspan='6'>没有搜索到相关信息~</td></tr>";
 
     currentPage = 1;
-    taskPage=searchTask(false,pageSize,currentPage,appname,developer);
+    taskPage=searchTask(false,pageSize,currentPage,province,developer);
     searchResult = taskPage["content"];
     var totalElements = taskPage["totalElements"];
 
@@ -210,15 +217,15 @@ function task_search(){
 function getTask__pageCallback(){
 
     var currentPage_content='',taskPage='';
-    var appname='',developer='';
+    var province='',developer='';
 
-    appname = $("#appname_search").val();
+    province = $("#province_search").val();
     developer = $("#developer_search").val();
 
     //获取当前页
     currentPage=parseInt($("#page #currentPage").text());
 
-    taskPage=searchTask(false,pageSize,currentPage,appname,developer);
+    taskPage=searchTask(false,pageSize,currentPage,province,developer);
     currentPage_content = taskPage["content"];
 
     //生成查询结果列表
@@ -246,7 +253,7 @@ function addItem(){
 function removeItem(id,async){
 	console.log("coming please"+id);
 	$.ajax({
-        url: "/monitor/platform/system/removeItem",
+        url: "/monitor/platform/crawler/removeCarrierItem",
         type:"POST",
         async:true,
         dataType:"json",
@@ -275,4 +282,20 @@ function updateItem(){
         }
     });
 }
-
+//添加监控项
+function addItem(){
+	$.ajax({
+        url: "/monitor/platform/crawler/addCarrierItem",
+        type:"POST",
+        async:true,
+        dataType:"json",
+        data:$('#authform').serialize(),
+        success:function(data){
+        	$('.modal-backdrop').hide();
+        	console.log("addSuccess");
+        	$('#authform')[0].reset();
+        	$("#bitian").text("");
+        	return;
+        }
+    });
+}
