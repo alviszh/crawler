@@ -63,7 +63,7 @@ $(function(){
     	location.reload();
     });
     
-    //点击修改
+    //点击修改（用的是添加监控项页面的“提交”方法）
 	
 });
 /*-----------------------------查询功能start-----------------------------*/
@@ -162,10 +162,16 @@ function query_taskList(taskList){
 	        var dataItem = tr.children();
 	        
 		    $('#addModal').modal('show');
-		    
-		    document.getElementById("province").value=dataItem.eq(1).text(); 
-		    document.getElementById("developer").value=dataItem.eq(2).text(); 
-		    document.getElementById("instancecount").value=dataItem.eq(3).text(); 
+		    //信息回显
+		    document.getElementById("id").value=dataItem.eq(0).text();  //获取id，根据id内容更新信息
+		    document.getElementById("province").value=dataItem.eq(2).text(); 
+		    document.getElementById("developer").value=dataItem.eq(3).text(); 
+		    document.getElementById("phonenum").value=dataItem.eq(4).text(); 
+		    document.getElementById("servicepwd").value=dataItem.eq(5).text(); 
+		    document.getElementById("name").value=dataItem.eq(6).text(); 
+		    document.getElementById("idnum").value=dataItem.eq(7).text(); 
+		    document.getElementById("oncesmskey").value=dataItem.eq(8).text(); 
+		    document.getElementById("twicesmskey").value=dataItem.eq(9).text(); 
 	　　});
 	   //将要删除的记录的id放在隐藏域中，传给弹出页面，在确认删除的时候根据id删除
 	   $("a[id^='delete']").click(function(){
@@ -235,7 +241,7 @@ function getTask__pageCallback(){
 //添加监控项
 function addItem(){
 	$.ajax({
-        url: "/opendata/contactData/addItem",
+        url: "/monitor/platform/crawler/addCarrierItem",
         type:"POST",
         async:true,
         dataType:"json",
@@ -247,8 +253,9 @@ function addItem(){
         	$("#bitian").text("");
         	return;
         }
-    });	
+    });
 }
+
 //删除监控项
 function removeItem(id,async){
 	console.log("coming please"+id);
@@ -265,15 +272,15 @@ function removeItem(id,async){
     });
 	
 }
-//修改监控项
+/*//修改监控项(jpa的save方法，先查找在更新，如果没有对应的记录，就保存)
 function updateItem(){
 	console.log("修改监控项");
 	$.ajax({
-        url: "/opendata/contactData/addItem",
+        url: "/monitor/platform/crawler/updateCarrierItem",
         type:"POST",
         async:true,
         dataType:"json",
-        data:$('#authform1').serialize(),
+        data:$('#authform').serialize(),
         success:function(data){
         	console.log("updateSuccess");
         	$('#authform')[0].reset();
@@ -281,21 +288,4 @@ function updateItem(){
         	return;
         }
     });
-}
-//添加监控项
-function addItem(){
-	$.ajax({
-        url: "/monitor/platform/crawler/addCarrierItem",
-        type:"POST",
-        async:true,
-        dataType:"json",
-        data:$('#authform').serialize(),
-        success:function(data){
-        	$('.modal-backdrop').hide();
-        	console.log("addSuccess");
-        	$('#authform')[0].reset();
-        	$("#bitian").text("");
-        	return;
-        }
-    });
-}
+}*/
