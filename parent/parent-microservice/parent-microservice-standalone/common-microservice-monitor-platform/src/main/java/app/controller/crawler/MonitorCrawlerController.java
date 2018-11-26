@@ -21,7 +21,7 @@ import app.service.crawler.MonitorCrawlerService;
 
 /**
  * @author sln
- * @Description: 爬虫层面-数据库操作接口
+ * @Description: 爬虫层面-数据库操作接口(修改操作，用的是添加的save方法，jpa自身策略)
  */
 @Controller
 @RequestMapping(value="/crawler")
