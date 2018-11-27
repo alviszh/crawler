@@ -197,6 +197,7 @@
 				<app.pushserver.name>pushserver</app.pushserver.name>
 				<!-- 邮件服务  -->
 				<app.mail.name>mail</app.mail.name>
+				<app.monitor.crawler.name>monitor-crawler</app.monitor.crawler.name>
 			</properties>
 		</profile>
 	</profiles>
