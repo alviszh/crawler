@@ -1,8 +1,8 @@
 spring: 
   application:
     name: '@app.monitor.crawler.name@'
-  profiles:
-    active: '@app.active@'
+#  profiles:
+#    active: '@app.active@'
   cloud:
     config:
       uri: http://configserver:8000
