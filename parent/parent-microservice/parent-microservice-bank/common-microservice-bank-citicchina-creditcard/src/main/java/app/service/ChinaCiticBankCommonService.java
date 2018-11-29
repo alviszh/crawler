@@ -53,7 +53,7 @@ public class ChinaCiticBankCommonService implements ICrawlerLogin,ISms{
 	@Override
 	public TaskBank verifySms(BankJsonBean bankJsonBean) {
 		TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
-		chinaCiticBankService.creditcardSaveCodeHtmlunit(taskBank,bankJsonBean);
+		chinaCiticBankService.creditcardSaveCodeHtmlunit(taskBank,bankJsonBean,fileSavePath);
 		return taskBank;
 	}
 	

@@ -73,6 +73,11 @@ public class BankCrawlerController {
     @Autowired
     private MonitorClient monitorClient;
 
+    @RequestMapping("/contact-list")
+    public String businessContact(Model model){
+        return "contact/contact_list";
+    }
+    
     @PostMapping(value = "/loginD")
     public @ResponseBody
     TaskBank loginD(Model model,BankJsonBean bankJsonBean,BankUserBean bankUserBean) {

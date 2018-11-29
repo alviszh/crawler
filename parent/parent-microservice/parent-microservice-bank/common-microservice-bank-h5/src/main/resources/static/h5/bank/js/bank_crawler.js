@@ -102,6 +102,19 @@ function interval_loginD() {
                         return;
                     }
                 }
+                //中信credit
+                else if((data.phase == "VALIDATE" && data.phase_status == "FAIL")||data.error_code == -1){
+                    console.log("VALIDATE+FAIL");
+                    clearInterval(interval_loginD);
+                    $('#myModal').modal('hide');
+                    //弹出提示框
+                    $('#msg').modal('show');
+                    $('#alertMsg').text("您不是会员，请去官网注册");
+                    $('#msg').find("button").bind("click",function(){
+                        location.href = "/h5/bank"
+                    });
+                    return;
+                }
                 else if((data.phase == "AGENT" && data.phase_status == "ERROR")||data.error_code == -1){
                     console.log("AGENT+ERROR");
                     clearInterval(interval_loginD);

@@ -1,7 +1,5 @@
 package app.service;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -57,9 +55,34 @@ public class ChinaCiticBankService {
 	public void loginCreditCardHtmlunit(BankJsonBean bankJsonBean, TaskBank taskBank, String fileSavePath) {
 		try {
 			tracer.addTag("action.loginCreditCard.start", taskBank.getTaskid());
-			WebParam webParam = chinaCiticCreditBankParser.loginCreditCardHtmlunit(bankJsonBean, taskBank,
-					fileSavePath);
+			WebParam webParam = chinaCiticCreditBankParser.loginCreditCardHtmlunit(bankJsonBean, taskBank,fileSavePath);
 			if (null != webParam) {
+				if (webParam.getHtml().contains("短信发送成功")) {
+					taskBankStatusService.changeStatusbyWebdriverHandle(
+							BankStatusCode.BANK_VALIDATE_CODE_SUCCESS.getPhase(),
+							BankStatusCode.BANK_VALIDATE_CODE_SUCCESS.getPhasestatus(),
+							BankStatusCode.BANK_VALIDATE_CODE_SUCCESS.getDescription(),
+							BankStatusCode.BANK_VALIDATE_CODE_SUCCESS.getError_code(), true,
+							bankJsonBean.getTaskid(), webParam.getWebHandle());
+					
+					taskBank.setCrawlerHost(bankJsonBean.getIp());
+					taskBank.setCrawlerPort(bankJsonBean.getPort());
+					taskBank.setTaskid(bankJsonBean.getTaskid());
+					taskBank.setBankType(bankJsonBean.getBankType());
+					tracer.addTag("action.login.getsms.success", taskBank.getTaskid());
+					tracer.addTag("action.loginCreditCard.SUCCESS.time", taskBank.getTaskid());
+					taskBankRepository.save(taskBank);
+				} else if (webParam.getHtml().contains("短信验证码已失效，请重新获取")) {
+					taskBankStatusService.changeStatusbyWebdriverHandle(
+							BankStatusCode.BANK_SEND_CODE_ERROR.getPhase(),
+							BankStatusCode.BANK_SEND_CODE_ERROR.getPhasestatus(),
+							BankStatusCode.BANK_SEND_CODE_ERROR.getDescription(),
+							BankStatusCode.BANK_SEND_CODE_ERROR.getError_code(), false,
+							bankJsonBean.getTaskid(), webParam.getWebHandle());
+					tracer.addTag("action.loginCreditCard.ERROR.code", taskBank.getTaskid());
+					taskBankRepository.save(taskBank);
+				} 
+				/*
 				if (webParam.getHtml().contains("手机格式错误，请重新输入")) {
 					taskBankStatusService.changeStatusbyWebdriverHandle(
 							BankStatusCode.BANK_LOGIN_LOGINNAME_PWD_ERROR.getPhase(),
@@ -203,6 +226,8 @@ public class ChinaCiticBankService {
 					tracer.addTag("action.login.SUCCESS", taskBank.getTaskid());
 					taskBankRepository.save(taskBank);
 				}
+			*/
+				
 			} else {
 				taskBankStatusService.changeStatus(BankStatusCode.BANK_LOGIN_TIMEOUT_ERROR.getPhase(),
 						BankStatusCode.BANK_LOGIN_TIMEOUT_ERROR.getPhasestatus(),
@@ -222,15 +247,34 @@ public class ChinaCiticBankService {
 	}
 
 	// 发送验证码htmlunit
-	public void creditcardSaveCodeHtmlunit(TaskBank taskBank, BankJsonBean bankJsonBean) {
+	public void creditcardSaveCodeHtmlunit(TaskBank taskBank, BankJsonBean bankJsonBean,String fileSavePath) {
 		try {
 			tracer.addTag("action.creditcard.SaveCode", taskBank.getTaskid());
 			CiticChinaCreditCardCode c = new CiticChinaCreditCardCode();
 			c.setCode(bankJsonBean.getVerification());
 			c.setTaskid(bankJsonBean.getTaskid());
 			citicChinaCreditCardCodeRepository.save(c);
-			WebParam webParam = chinaCiticCreditBankParser.creditcardSaveCodeHtmlunit(taskBank, bankJsonBean);
+			WebParam webParam = chinaCiticCreditBankParser.creditcardSaveCodeHtmlunit(taskBank, bankJsonBean,fileSavePath);
 			if (null != webParam) {
+				
+				if (webParam.getHtml().contains("验证成功")) {
+					String cookieString = CommonUnit.transcookieToJson(webParam.getWebClient());
+					taskBank.setCookies(cookieString);
+					taskBankRepository.save(taskBank);
+					tracer.addTag("action.creditcard.SaveCode.SUCCESS", taskBank.getTaskid());
+					taskBank = taskBankStatusService.changeStatus(BankStatusCode.BANK_LOGIN_SUCCESS_NEXTSTEP.getPhase(),
+							BankStatusCode.BANK_LOGIN_SUCCESS_NEXTSTEP.getPhasestatus(),
+							BankStatusCode.BANK_LOGIN_SUCCESS_NEXTSTEP.getDescription(),
+							BankStatusCode.BANK_LOGIN_SUCCESS_NEXTSTEP.getError_code(), false, bankJsonBean.getTaskid());
+				} else if (webParam.getHtml().contains("会员注册")) {
+					tracer.addTag("action.creditcard.SaveCode。TIMEOUT", taskBank.getTaskid());
+					taskBank = taskBankStatusService.changeStatus(BankStatusCode.BANK_VALIDATE_CODE_SUCCESS.getPhase(),
+							BankStatusCode.BANK_VALIDATE_CODE_ERROR.getPhasestatus(), "验证码失效,登陆失败",
+							BankStatusCode.BANK_VALIDATE_CODE_ERROR.getError_code(), false, bankJsonBean.getTaskid());
+					taskBank.setParam(webParam.getHtml());
+					taskBankRepository.save(taskBank);
+				} 
+				/*
 				if (webParam.getHtml().contains("首页-我的账户")) {
 					Document doc = Jsoup.parse(webParam.getHtml());
 					String elementsByClass = doc.getElementsByClass("title").get(0).getElementsByTag("p").text()
@@ -262,6 +306,8 @@ public class ChinaCiticBankService {
 					taskBank.setParam(webParam.getHtml());
 					taskBankRepository.save(taskBank);
 				}
+			*/
+				
 			} else {
 				// 验证码为空
 				tracer.addTag("action.creditcard.SaveCode。NULL", taskBank.getTaskid());

@@ -54,46 +54,27 @@ public class ChinaCiticBankCreditCardController {
 				tracer.addTag("action.crawler.bank.login.exception", e.getMessage());
 			}
 			return taskBank;
-			
 		}
-		
-		
 		
 		//爬取
 		@PostMapping(path = "/crawler")
 		public TaskBank creditcardCrawlerChina(@RequestBody BankJsonBean bankJsonBean){
-			
 			tracer.addTag("action.crawler.bank.crawler", bankJsonBean.getTaskid());
 			boolean isDoing = taskBankStatusService.isDoing(bankJsonBean.getTaskid());
 			TaskBank taskBank = null;
 			if(isDoing){
 				tracer.addTag("正在进行上次未完成的爬取。。。。", bankJsonBean.getTaskid());
 			}else{
-//				taskBank = taskBankStatusService.changeStatus(BankStatusCode.BANK_CRAWLER_DOING.getPhase(), 
-//						BankStatusCode.BANK_CRAWLER_DOING.getPhasestatus(), 
-//						BankStatusCode.BANK_CRAWLER_DOING.getDescription(), 
-//						null, false, bankJsonBean.getTaskid());
 				chinaCiticBankCommonService.getAllData(bankJsonBean);
 			}
 			return taskBank;
-			
 		}
-		
-
-		
 		
 		//保存验证码
 		@PostMapping(path = "/saveCode")
 		public TaskBank creditcardSaveCode(@RequestBody BankJsonBean bankJsonBean){
-			
 			tracer.addTag("action.crawler.bank.saveCode", bankJsonBean.getTaskid());
 			TaskBank taskBank = taskBankRepository.findByTaskid(bankJsonBean.getTaskid());
-//			TaskBank taskBank = null;
-//			taskBank = taskBankStatusService.changeStatus(BankStatusCode.BANK_VALIDATE_CODE_DONING.getPhase(), 
-//						BankStatusCode.BANK_VALIDATE_CODE_DONING.getPhasestatus(), 
-//						BankStatusCode.BANK_VALIDATE_CODE_DONING.getDescription(), 
-//						null, false, bankJsonBean.getTaskid());
-				
 			chinaCiticBankCommonService.verifySms(bankJsonBean);
 			return taskBank;
 		}

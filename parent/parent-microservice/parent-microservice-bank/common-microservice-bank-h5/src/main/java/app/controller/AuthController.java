@@ -1,7 +1,6 @@
 package app.controller;
 
 
-import app.commontracerlog.TracerLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,7 @@ import com.crawler.bank.json.BankUserBean;
 import com.crawler.bank.json.TaskBank;
 
 import app.client.bank.BankTaskClient;
+import app.commontracerlog.TracerLog;
 
 
 
@@ -27,7 +27,8 @@ public class AuthController {
     private BankTaskClient bankTaskClient;
     @Autowired
     private TracerLog tracer;
-
+    
+    
     /**
      * 认证首页
      * @param model
@@ -162,7 +163,8 @@ public class AuthController {
         } else if (city.equals("招商银行") && cardType.equals("CREDIT_CARD")) {
             return "auth_CMB_C";
         } else if (city.equals("中信银行") && cardType.equals("CREDIT_CARD")) {
-            return "auth_CITIC_C";
+//            return "auth_CITIC_C";
+        	return "auth_sms_citic";
         } else if (city.equals("光大银行") && cardType.equals("CREDIT_CARD")) {
             return "auth_CEB_C";
         } else if (city.equals("工商银行")) {
@@ -227,6 +229,36 @@ public class AuthController {
         return "auth_qasms";
     }
 
+    
+    //中信银行
+    @RequestMapping(value = {"/login"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public String login( Model model,@RequestParam(name="themeColor",required = false,defaultValue = "5bc0de") String themeColor
+            , @RequestParam(name = "isTopHide", required = false,defaultValue = "false") boolean isTopHide,
+                           @RequestParam(name = "taskid") String taskid,
+                           @RequestParam(name = "bankType") String bankType,
+                           @RequestParam(name = "loginName") String loginName,
+                           @RequestParam(name = "cardType") String cardType,
+                           @RequestParam(name = "loginType") String loginType,
+                           @RequestParam(name = "question") String question,
+                           @RequestParam(name = "sms_code") String sms_code) {
+
+        model.addAttribute("themeColor",themeColor);
+        String topHide = "block";
+        if (isTopHide) {
+            topHide = "none";
+        }
+        model.addAttribute("topHide",topHide);
+        model.addAttribute("taskid",taskid);
+        model.addAttribute("bankType", bankType);
+        model.addAttribute("loginName", loginName);
+        model.addAttribute("cardType", cardType);
+        model.addAttribute("loginType", loginType);
+        model.addAttribute("question", question);
+        model.addAttribute("sms_code", sms_code);
+        System.out.println("************* question"+ question);
+        return "auth_CITIC_C";
+    }
+    
     /**
      * 跳转到采集成功页
      * @param model
