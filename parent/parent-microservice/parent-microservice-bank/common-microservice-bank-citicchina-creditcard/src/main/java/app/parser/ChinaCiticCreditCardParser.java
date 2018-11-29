@@ -2,8 +2,10 @@ package app.parser;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,6 +19,8 @@ import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.JOptionPane;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -28,6 +32,7 @@ import org.springframework.stereotype.Component;
 import com.crawler.bank.json.BankJsonBean;
 import com.crawler.microservice.unit.CommonUnit;
 import com.crawler.mobile.json.CookieJson;
+import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.HttpMethod;
 import com.gargoylesoftware.htmlunit.Page;
 import com.gargoylesoftware.htmlunit.WebClient;
@@ -105,7 +110,7 @@ public class ChinaCiticCreditCardParser {
 
 
 		//登陆信用卡htmlunit
-		public WebParam loginCreditCardHtmlunit(BankJsonBean bankJsonBean, TaskBank taskBank,String fileSavePath) throws Exception {
+		/*public WebParam loginCreditCardHtmlunit(BankJsonBean bankJsonBean, TaskBank taskBank,String fileSavePath) throws Exception {
 			WebClient webClient = WebCrawler.getInstance().getNewWebClient();
 			// 图片请求
 			String loginurl3 = "https://creditcard.ecitic.com/citiccard/ucweb/newvalicode.do";
@@ -183,12 +188,12 @@ public class ChinaCiticCreditCardParser {
 				}
 			}
 			return webParam;
-		}
+		}*/
 
 
 
 
-		//输入验证码htmlunit
+		/*//输入验证码htmlunit
 		public WebParam creditcardSaveCodeHtmlunit(TaskBank taskBank, BankJsonBean bankJsonBean) throws Exception {
 			WebClient webClient = WebCrawler.getInstance().getNewWebClient();
 			WebParam webParam = new WebParam();
@@ -226,7 +231,7 @@ public class ChinaCiticCreditCardParser {
 				webParam.setWebClient(webClient);
 			}
 			return webParam;
-		}
+		}*/
 
 
 
@@ -688,6 +693,80 @@ public class ChinaCiticCreditCardParser {
 				
 				  }
 				}
+			return webParam;
+		}
+
+
+		//2018.11.26改版新的登陆
+		public WebParam loginCreditCardHtmlunit(BankJsonBean bankJsonBean, TaskBank taskBank, String fileSavePath) throws Exception {
+			WebParam webParam = new WebParam();
+			WebClient webClient = WebCrawler.getInstance().getNewWebClient();
+			String url="https://creditcard.ecitic.com/citiccard/ucweb/entry.do?func=entryebank&ebankPage=mainpage";
+			Page page = webClient.getPage(url);
+			Document doc = Jsoup.parse(page.getWebResponse().getContentAsString());
+			Element elementById = doc.getElementById("img_code");
+//			System.out.println(elementById.toString());
+			String code =null;
+			if(elementById.toString().contains("style=\"display:none\""))
+			{
+				String imgUrl="https://creditcard.ecitic.com/citiccard/ucweb/newvalicode.do?time=1543218849691";
+				WebRequest webRequest = new WebRequest(new URL(imgUrl), HttpMethod.GET);
+				Page html = webClient.getPage(webRequest);
+				String imgagePath=getImagePath(html,fileSavePath);
+				ChaoJiYingOcrService chaoJiYingOcrService = new ChaoJiYingOcrService();
+				code = chaoJiYingOcrService.callChaoJiYingService(imgagePath, "1004");
+				System.out.println(code);
+			}
+//			{"resultCode":"0000000","resultDesc":"短信发送成功"}   {"resultCode":"0000001","resultDesc":"请输入4位图形验证码"}
+			String loginurl3 = "https://creditcard.ecitic.com/citiccard/ucweb/getsms.do?&timestamp1543217717367";
+			WebRequest webRequest = new WebRequest(new URL(loginurl3), HttpMethod.POST);
+			webRequest.setRequestBody("phone="+bankJsonBean.getLoginName()+"&imgValidCode="+code);
+			Page html = webClient.getPage(webRequest);
+//			System.out.println(html.getWebResponse().getContentAsString());
+//			https://creditcard.ecitic.com/citiccard/ucweb/registrycheck.do?&timestamp1543218056296
+//			phone=13261252572&smsCode=237132  {"resultCode":"0000032","resultDesc":"短信验证码已失效，请重新获取"}
+			webParam.setHtml(html.getWebResponse().getContentAsString());
+			webParam.setWebClient(webClient);
+			webParam.setUrl(loginurl3);
+			return webParam;
+		}
+
+
+
+		public WebParam creditcardSaveCodeHtmlunit(TaskBank taskBank, BankJsonBean bankJsonBean,String fileSavePath) throws Exception {
+			WebParam webParam = new WebParam();
+			WebClient webClient = WebCrawler.getInstance().getNewWebClient();
+			Set<Cookie> cookies1 = CommonUnit.transferJsonToSet(taskBank.getCookies());
+			for (Cookie cookie : cookies1) {
+				webClient.getCookieManager().addCookie(cookie);
+			}
+			String urlLogin="https://creditcard.ecitic.com/citiccard/ucweb/registrycheck.do?&timestamp1543221006458";
+			WebRequest webRequest = new WebRequest(new URL(urlLogin), HttpMethod.POST);
+//			String inputValue = JOptionPane.showInputDialog("请输入验证码……");
+			webRequest.setRequestBody("phone="+bankJsonBean.getLoginName()+"&smsCode="+bankJsonBean.getVerification());
+			Page html2 = webClient.getPage(webRequest);
+			System.out.println(html2.getWebResponse().getContentAsString());//{"resultCode":"0000005","resultDesc":"用户已注册"}
+			webParam.setHtml(html2.getWebResponse().getContentAsString());
+			if(html2.getWebResponse().getContentAsString().contains("用户已注册"))
+			{
+				String url2="https://creditcard.ecitic.com/citiccard/ucweb/tologin.do";
+				webRequest = new WebRequest(new URL(url2), HttpMethod.GET);
+				Page page2 = webClient.getPage(webRequest);
+				webParam.setHtml(page2.getWebResponse().getContentAsString());
+				if(page2.getWebResponse().getContentAsString().contains("请输入登录密码"))
+				{
+					//密码加密
+					String str=DigestUtils.md5Hex(bankJsonBean.getPassword());
+					String url3="https://creditcard.ecitic.com/citiccard/ucweb/newlogin.do?&timestamp1543220152915";
+					webRequest = new WebRequest(new URL(url3), HttpMethod.POST);
+					webRequest.setRequestBody("mm="+str);
+					Page html3 = webClient.getPage(webRequest);
+					System.out.println(html3.getWebResponse().getContentAsString());
+					webParam.setWebClient(webClient);
+					webParam.setUrl(url3);
+					webParam.setHtml(html3.getWebResponse().getContentAsString());
+				}
+			}
 			return webParam;
 		}
 }

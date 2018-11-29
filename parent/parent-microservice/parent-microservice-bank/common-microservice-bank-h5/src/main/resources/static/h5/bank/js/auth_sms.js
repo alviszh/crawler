@@ -11,10 +11,30 @@ $('#nextBtn').click( function() {
     else if($('#bankType').val()=="渤海银行"&& $(".qaspan").length == 0){
         nextSec()
     }
+    //中信credit
+    else if($('#bankType').val()=="中信银行"&& $(".qaspan").length == 0){
+    	nextLoginD()
+    }
     else{
         nextSendSmsCodeD()
     }
+});
 
+//中信credit
+$('#sendSmsBtn').click( function() {
+	if($('#loginCiticName').val()!=""){
+		if((/^[1][3,4,5,7,8][0-9]{9}$/.test($('#loginCiticName').val()))){
+			
+			alert($('#bankType').val());
+			$('#bitian').text("");
+			nextSendSmsCodeD(); //点击发送验证码
+		}else{
+			$('#bitian').text("手机号输入有误");
+		}
+	}
+	else{
+		$('#bitian').text("手机号不能为空");
+	}
 });
 
 //表单验证
@@ -98,8 +118,16 @@ $(function(){
                     // $('#smsCode').modal('show');
                     if(bankType=="中信银行" && cardType =="CREDIT_CARD"){
                         console.log("中信crawler");
-                        crawlerD(); //调用数据采集接口
+//                        crawlerD(); //调用数据采集接口
                         clearInterval(interval_sendSmsD);
+
+                        var taskid = $("#taskid").val();
+                        var bankType = $("#bankType").val();
+                        var loginName = $("input[name='loginName']").not(':disabled').val();
+                        var cardType = $("#cardType").val();
+                        var sms_code = $("#sms_code").val();
+                        window.location.href = "/h5/bank/login?taskid=" + taskid + "&bankType=" + bankType
+                        + "&loginName=" + loginName + "&cardType=" + cardType + "&loginType=" + loginType + "&sms_code=" + sms_code
                     }
                     return;
                 }

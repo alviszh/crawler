@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient(name ="Bank-Task",configuration = BankClientConfig.class)
+//@FeignClient(name ="Bank-Task",configuration = BankClientConfig.class)
+@FeignClient(name ="Bank-Task",url = "http://10.167.35.20:81")
 public interface BankTaskClient {
 
     /**

@@ -50,7 +50,7 @@ function showCities(){
                 }
             });
 
-            monitor();
+//            monitor();
             /*跳转登录页面*/
             //$("[name='num_name']:not(.disabled)").off("click");
             $(document).on("click", "[name='num_name']:not(.disabled)", function(){
