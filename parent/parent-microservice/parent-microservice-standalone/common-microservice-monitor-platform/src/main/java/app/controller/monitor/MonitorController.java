@@ -22,6 +22,14 @@ public class MonitorController {
     @GetMapping(value = "/eureka-info")
 	public String eurekaHtml(Model model) {
     	model.addAttribute("isMicroService", 10);
-		return "eureka/eureka_list2";
+		return "eureka/eureka_list";
 	}
+    /**
+     * carrier——运营商监控信息
+     */
+    @GetMapping(value = "/carrier-info")
+    public String carrierHtml(Model model) {
+    	model.addAttribute("isCarrier", 10);
+    	return "carrier/carrier_list";
+    }
 }

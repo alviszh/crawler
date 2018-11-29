@@ -17,8 +17,8 @@ eureka:
     serviceUrl: 
       defaultZone: http://eurekaserver:8888/eureka/
   instance:
-    prefer-ip-address: true
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+#    prefer-ip-address: true
+#    instance-id: ${spring.cloud.client.ip-address}:${server.port}
     metadata-map:
       winio: false
 

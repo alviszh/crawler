@@ -46,6 +46,7 @@
     	<module>common-microservice-ip-api</module>
     	<module>common-microservice-wechat</module>
     	<module>common-microservice-phone</module>
+    	<module>common-microservice-appium</module>
 		<module>common-microservice-pushserver</module>
 	</modules>
 
@@ -194,6 +195,9 @@
 				<app.monitor.system.name>monitor-system</app.monitor.system.name>
 				<!-- 推送服务 -->
 				<app.pushserver.name>pushserver</app.pushserver.name>
+				<!-- 邮件服务  -->
+				<app.mail.name>mail</app.mail.name>
+				<app.monitor.crawler.name>monitor-crawler</app.monitor.crawler.name>
 			</properties>
 		</profile>
 	</profiles>

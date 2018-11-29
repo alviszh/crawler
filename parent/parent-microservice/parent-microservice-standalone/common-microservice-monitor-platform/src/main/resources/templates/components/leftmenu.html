@@ -1,5 +1,5 @@
 <div class="panel-group" id="accordion" th:fragment="leftmenu">
-	<div class="panel panel-primary">
+	<!-- <div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title" style="cursor: pointer;"
 				data-toggle="collapse" data-parent="#accordion"
@@ -27,18 +27,18 @@
 				<a class="list-group-item" th:href="@{/}">超标主机信息</a>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title" style="cursor: pointer;"
 				data-toggle="collapse" data-parent="#accordion"
-				data-target="#collapseMobile">运营商定时任务</h3>
+				data-target="#collapseCarrier">运营商定时任务</h3>
 		</div>
-		<div id="collapseMobile"
-			th:class="${isMobile} == 10 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
+		<div id="collapseCarrier"
+			th:class="${isCarrier} == 10 ? 'panel-collapse collapse in' : 'panel-collapse collapse'">
 			<div class="list-group">
-				<a class="list-group-item" th:href="@{/}">任务项维护</a>
+				<a class="list-group-item" th:href="@{/tasker/carrier-info}">任务项维护</a>
 				<a class="list-group-item" th:href="@{/}">任务状态跟踪</a>
 			</div>
 		</div>

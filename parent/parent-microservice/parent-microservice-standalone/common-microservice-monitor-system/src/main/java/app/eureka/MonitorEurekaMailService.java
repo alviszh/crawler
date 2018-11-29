@@ -28,7 +28,7 @@ public class MonitorEurekaMailService {
 	private MailContentBuilder mailContentBuilder;
 	@Autowired
 	private MailClient mailClient;
-	@Value("${eurekareceivers}") 
+	@Value("${MAIL_RECEIVERS}") 
 	public String receivers;
 	@Value("${mailsender}") 
 	public String mailsender;
@@ -42,8 +42,10 @@ public class MonitorEurekaMailService {
 			mailEnvirType="开发环境";
 		}else if(envirtype.trim().equals("test")){
 			mailEnvirType="测试环境";
-		}else{
+		}else if(envirtype.trim().equals("prod")){
 			mailEnvirType="生产环境";
+		}else{
+			mailEnvirType="应用商店";
 		}
 		//==========================
 		String content = mailContentBuilder.buildEurekaEmailContent(changeList,mailEnvirType);

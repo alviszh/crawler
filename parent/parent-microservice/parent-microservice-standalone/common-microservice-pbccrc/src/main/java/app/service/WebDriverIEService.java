@@ -37,7 +37,7 @@ public class WebDriverIEService {
 
         DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
 
-        if (httpProxyRes != null) {
+        if (httpProxyRes != null && !httpProxyRes.getIp().equals("")) {
             Proxy proxy = new Proxy();
             String PROXY = ""+httpProxyRes.getIp()+":"+httpProxyRes.getPort()+"";
             proxy.setHttpProxy(PROXY);

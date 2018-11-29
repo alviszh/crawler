@@ -40,7 +40,7 @@ public interface TaskBankRepository extends JpaRepository<TaskBank, Long>,JpaSpe
 	 */
 	@Transactional
 	@Modifying	
-	@Query(value="select t from TaskBank t where t.createtime > ?1 and t.cardType is not null order by t.createtime desc", nativeQuery = true)
+	@Query(value="select t from TaskBank t where t.createtime > ?1 and t.cardType is not null order by t.createtime desc")
 	List<TaskBank> findTaskResultForEtlByData(Date date);
 	
 	

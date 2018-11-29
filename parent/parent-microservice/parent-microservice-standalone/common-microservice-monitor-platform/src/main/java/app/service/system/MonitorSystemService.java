@@ -44,7 +44,7 @@ public class MonitorSystemService {
 	 */
 	//如下注解是后来加上的，为了避免黄线
 	@SuppressWarnings({ "deprecation", "serial" })   
-	public Page<MonitorEurekaServerInfo> getMobileTaskByParams(Map<String, Object> searchParams, int currentPage, int pageSize){
+	public Page<MonitorEurekaServerInfo> getTaskByParams(Map<String, Object> searchParams, int currentPage, int pageSize){
 		Sort sort = new Sort(Sort.Direction.ASC, "appname");
 		Pageable page = new PageRequest(currentPage, pageSize, sort);
 		
