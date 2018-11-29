@@ -17,7 +17,7 @@ import app.service.ChinaCiticBankCommonService;
 import app.service.TaskBankStatusService;
       
 @RestController  
-@Configuration
+@Configuration   
 @RequestMapping("/bank/citicchina/creditcard")
 public class ChinaCiticBankCreditCardController {
 	@Autowired   
